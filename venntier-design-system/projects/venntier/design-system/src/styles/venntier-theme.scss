@@ -19,6 +19,15 @@
 }
 
 // Apply component themes AFTER Material themes to override
+// Apply button overrides globally
+@include components.vt-button-theme();
+
+// Apply card overrides globally  
+@include components.vt-card-theme();
+
+// Apply input overrides globally
+@include components.vt-input-theme();
+
 // Apply list overrides globally
 @include components.vt-list-overrides();
 
@@ -58,11 +67,23 @@ body {
   outline: none;
 }
 
-// Custom focus visible styles
+// OpenAI-style focus states - subtle shadows instead of outlines
 *:focus-visible {
-  outline: 2px solid var(--md-sys-color-focus-ring);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--md-sys-color-surface),
+              0 0 0 4px var(--md-sys-color-focus-ring);
   border-radius: var(--md-sys-shape-corner-small);
+}
+
+// Specific focus states for interactive elements
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--md-sys-color-surface),
+              0 0 0 3px var(--md-sys-color-focus-ring);
 }
 
 // Smooth scrolling
@@ -106,8 +127,9 @@ a {
   }
   
   &:focus-visible {
-    outline: 2px solid var(--md-sys-color-focus-ring);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 2px var(--md-sys-color-surface),
+                0 0 0 3px var(--md-sys-color-focus-ring);
     border-radius: var(--md-sys-shape-corner-small);
   }
 }

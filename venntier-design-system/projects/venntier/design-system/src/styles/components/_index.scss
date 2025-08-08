@@ -1,5 +1,8 @@
 // Venntier Design System - Component Themes
 // Export all component-specific theme mixins
 
+@forward 'button';
+@forward 'card';
+@forward 'input';
 @forward 'sidenav';
 @forward 'list-overrides';

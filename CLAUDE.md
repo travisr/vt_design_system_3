@@ -211,3 +211,12 @@ Based on `REFINEMENTS_NEEDED.md` analysis, critical improvements needed:
 - **Package README**: `venntier-design-system/README.md`
 - **M3 Docs**: https://m3.material.io/
 - **Angular Material**: https://material.angular.io/
+
+## Design Principles
+
+- **CSS Usage**: 
+  - Never use !important
+
+## Best Practices
+
+- Always use md tokens instead of hard coded values

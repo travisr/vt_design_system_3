@@ -15,15 +15,15 @@ $_gray-900: #202123;  // OpenAI dark
 $_gray-800: #353740;  // OpenAI sidebar dark
 $_gray-700: #40414f;  // OpenAI border dark
 $_gray-600: #565869;  // OpenAI text secondary
-$_gray-500: #8e8ea0;  // OpenAI text muted
-$_gray-400: #acacbe;  // OpenAI placeholder
-$_gray-300: #c5c5d2;  // OpenAI border light
-$_gray-200: #e5e5e5;  // OpenAI divider
-$_gray-175: #efefef;  // Custom hover shade - lighter than gray-200
-$_gray-150: #dcdcdc;  // Even darker gray selected (more contrast)
-$_gray-100: #fafbfc;  // Barely visible hover (very subtle)
-$_gray-50: #f9f9f9;   // OpenAI background
-$_gray-25: #fafafa;   // OpenAI surface
+$_gray-500: #6e6e80;  // OpenAI focus border
+$_gray-400: #9ca3af;  // OpenAI disabled text
+$_gray-300: #d1d5db;  // OpenAI standard border
+$_gray-200: #e5e5e5;  // OpenAI active state (exact match)
+$_gray-175: #ececf1;  // OpenAI hover state (exact match)
+$_gray-150: #f7f7f8;  // OpenAI sidenav background (exact match)
+$_gray-100: #f9f9f9;  // OpenAI input background
+$_gray-50: #fafafa;   // OpenAI body background
+$_gray-25: #ffffff;   // OpenAI card surface
 
 // Light theme tokens
 :root {
@@ -51,26 +51,26 @@ $_gray-25: #fafafa;   // OpenAI surface
   --md-sys-color-error-container: #fef2f2;
   --md-sys-color-on-error-container: #7f1d1d;
   
-  // Background - subtle off-white
-  --md-sys-color-background: #{$_gray-50};
+  // Background - OpenAI body background
+  --md-sys-color-background: #{$_gray-50};  // #fafafa
   --md-sys-color-on-background: #{$_gray-900};
   
-  // Surface - layered hierarchy
-  --md-sys-color-surface: #{$_white};
+  // Surface - OpenAI hierarchy
+  --md-sys-color-surface: #{$_gray-25};  // #ffffff for cards
   --md-sys-color-on-surface: #{$_gray-900};
-  --md-sys-color-surface-variant: #{$_gray-25};
+  --md-sys-color-surface-variant: #{$_gray-100};  // #f9f9f9 for inputs
   --md-sys-color-on-surface-variant: #{$_gray-600};
   
-  // Surface containers (elevation levels)
-  --md-sys-color-surface-container-lowest: #{$_white};
-  --md-sys-color-surface-container-low: #{$_gray-50};
-  --md-sys-color-surface-container: #{$_gray-100};
-  --md-sys-color-surface-container-high: #{$_gray-100};
-  --md-sys-color-surface-container-highest: #{$_gray-200};
+  // Surface containers - OpenAI interaction states
+  --md-sys-color-surface-container-lowest: #{$_gray-25};  // #ffffff
+  --md-sys-color-surface-container-low: #{$_gray-150};    // #f7f7f8 hover
+  --md-sys-color-surface-container: #{$_gray-100};        // #f9f9f9 inputs
+  --md-sys-color-surface-container-high: #{$_gray-175};   // #ececf1 selected
+  --md-sys-color-surface-container-highest: #{$_gray-200}; // #e5e5e5
   
-  // Outline
-  --md-sys-color-outline: #{$_gray-200};
-  --md-sys-color-outline-variant: #{$_gray-100};
+  // Outline - OpenAI borders
+  --md-sys-color-outline: #{$_gray-300};         // #d1d5db standard border
+  --md-sys-color-outline-variant: #{$_gray-200}; // #e5e5e5 subtle border
   
   // Inverse
   --md-sys-color-inverse-surface: #{$_gray-900};
@@ -83,11 +83,16 @@ $_gray-25: #fafafa;   // OpenAI surface
   // Shadow
   --md-sys-color-shadow: rgba(0, 0, 0, 0.08);
   
-  // Interactive states (Refined OpenAI-style)
-  --md-sys-color-hover: #{$_gray-175};  // Using custom gray-175 for subtle but visible hover
-  --md-sys-color-selected: #{$_gray-150};
-  --md-sys-color-focus-ring: #{$_gray-400};
-  --md-sys-color-pressed: #{$_gray-200};
+  // Interactive states - OpenAI patterns (exact matches)
+  --md-sys-color-hover: #{$_gray-175};     // #ececf1 - OpenAI hover
+  --md-sys-color-selected: #{$_gray-200};  // #e5e5e5 - OpenAI active  
+  --md-sys-color-focus-ring: #{$_gray-500}; // #6e6e80
+  --md-sys-color-pressed: #{$_gray-200};    // #e5e5e5
+  --md-sys-color-disabled: #{$_gray-400};   // #9ca3af
+  
+  // Additional surface properties
+  --md-sys-color-surface-dim: #{$_gray-50};     // #fafafa body
+  --md-sys-color-surface-bright: #{$_gray-25};  // #ffffff cards
   
   // Data visualization (purple)
   --md-sys-color-data-primary: #{$_purple};

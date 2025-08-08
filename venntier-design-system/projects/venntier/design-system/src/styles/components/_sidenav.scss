@@ -8,8 +8,9 @@
   mat-sidenav,
   .mat-drawer.mat-sidenav,
   .mat-sidenav {
-    background: var(--md-sys-color-surface-container-low);
+    background: #f7f7f8;  // OpenAI exact sidenav background
     border-right: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 0;  // Remove rounded corners
     
     // Standard width for navigation drawer
     &.vt-sidenav-standard {
@@ -120,7 +121,7 @@
       
       // Hover state - use pseudo-class chain for specificity
       &:hover:not(.active):not([disabled]) {
-        background-color: var(--md-sys-color-hover);
+        background-color: var(--md-sys-color-hover);  // #f7f7f8 - middle shade
         
         .mat-mdc-list-item-unscoped-content {
           color: var(--md-sys-color-on-surface-variant);
@@ -130,7 +131,7 @@
       // Active/selected state
       &.active,
       &[aria-selected="true"] {
-        background-color: var(--md-sys-color-selected);
+        background-color: var(--md-sys-color-selected);  // #ececf1 - darkest shade
         
         .mat-mdc-list-item-unscoped-content {
           color: var(--md-sys-color-primary);  // Use primary (black) for maximum contrast
@@ -197,7 +198,7 @@
   // Dark theme adjustments
   [data-theme="dark"] & {
     .mat-sidenav {
-      background: var(--md-sys-color-surface-container-low);
+      background: var(--md-sys-color-surface);  // Dark theme sidenav
       border-right-color: var(--md-sys-color-outline-variant);
     }
   }

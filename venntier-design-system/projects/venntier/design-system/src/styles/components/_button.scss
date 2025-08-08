@@ -1,0 +1,195 @@
+// Button Component Overrides - OpenAI Style
+// Achieving 36px compact height, gray tertiary buttons, refined states
+
+@mixin vt-button-theme() {
+  // Base button styles - OpenAI compact height (36px)
+  .mat-mdc-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-flat-button,
+  .mat-mdc-outlined-button,
+  .mat-mdc-unelevated-button {
+    min-height: 36px;
+    height: 36px;
+    padding: 0 16px;
+    font-weight: var(--md-sys-typescale-label-large-weight); // 450
+    border-radius: var(--md-sys-shape-corner-small); // 6px
+    transition: all var(--md-sys-motion-hover);
+    
+    // Ensure proper text alignment
+    .mat-mdc-button-touch-target {
+      height: 36px;
+    }
+    
+    // Icon sizing
+    .mat-icon {
+      width: 18px;
+      height: 18px;
+      font-size: 18px;
+      margin: 0 4px;
+    }
+  }
+  
+  // Primary filled button - Green accent for CTAs only
+  .mat-mdc-raised-button.mat-primary,
+  .mat-mdc-flat-button.mat-primary,
+  .mat-mdc-unelevated-button.mat-primary {
+    --mdc-filled-button-container-color: var(--md-sys-color-tertiary);
+    --mdc-filled-button-label-text-color: var(--md-sys-color-on-tertiary);
+    
+    &:hover:not(:disabled) {
+      --mdc-filled-button-container-color: #0e8a69; // Darker green
+    }
+    
+    &:active:not(:disabled) {
+      --mdc-filled-button-container-color: #0c7356;
+    }
+    
+    &:disabled {
+      --mdc-filled-button-container-color: var(--md-sys-color-surface-container);
+      --mdc-filled-button-label-text-color: var(--md-sys-color-disabled);
+      opacity: 0.6;
+    }
+  }
+  
+  // Secondary outlined button - Black outline (most common)
+  .mat-mdc-outlined-button:not(.mat-accent):not(.mat-warn) {
+    --mdc-outlined-button-outline-color: var(--md-sys-color-outline);
+    --mdc-outlined-button-label-text-color: var(--md-sys-color-on-surface);
+    --mdc-outlined-button-container-color: transparent;
+    border-width: 1px;
+    
+    &:hover:not(:disabled) {
+      --mdc-outlined-button-container-color: var(--md-sys-color-hover);
+      --mdc-outlined-button-outline-color: var(--md-sys-color-outline);
+    }
+    
+    &:active:not(:disabled) {
+      --mdc-outlined-button-container-color: var(--md-sys-color-selected);
+    }
+    
+    &:disabled {
+      --mdc-outlined-button-outline-color: var(--md-sys-color-outline-variant);
+      --mdc-outlined-button-label-text-color: var(--md-sys-color-disabled);
+      opacity: 0.6;
+    }
+  }
+  
+  // Tertiary text button - Gray text (OpenAI pattern)
+  .mat-mdc-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
+    --mdc-text-button-label-text-color: #565869; // OpenAI secondary text
+    
+    &:hover:not(:disabled) {
+      --mdc-text-button-label-text-color: var(--md-sys-color-on-surface);
+      background-color: var(--md-sys-color-hover);
+    }
+    
+    &:active:not(:disabled) {
+      background-color: var(--md-sys-color-selected);
+    }
+    
+    &:disabled {
+      --mdc-text-button-label-text-color: var(--md-sys-color-disabled);
+      opacity: 0.6;
+    }
+  }
+  
+  // Icon buttons - OpenAI style
+  .mat-mdc-icon-button {
+    --mdc-icon-button-icon-size: 18px;
+    width: 36px;
+    height: 36px;
+    padding: 9px;
+    
+    .mat-icon {
+      width: 18px;
+      height: 18px;
+      font-size: 18px;
+    }
+    
+    &:hover:not(:disabled) {
+      background-color: var(--md-sys-color-hover);
+    }
+    
+    &:active:not(:disabled) {
+      background-color: var(--md-sys-color-selected);
+    }
+    
+    &:disabled {
+      opacity: 0.4;
+    }
+  }
+  
+  // FAB buttons - Keep standard but with OpenAI colors
+  .mat-mdc-fab,
+  .mat-mdc-mini-fab {
+    --mdc-fab-container-color: var(--md-sys-color-tertiary);
+    --mdc-fab-icon-color: var(--md-sys-color-on-tertiary);
+    
+    &:hover:not(:disabled) {
+      --mdc-fab-container-color: #0e8a69;
+    }
+  }
+  
+  // Button group styling
+  .vt-button-group {
+    display: inline-flex;
+    gap: 8px;
+    
+    &.vt-button-group--tight {
+      gap: 4px;
+    }
+    
+    &.vt-button-group--loose {
+      gap: 16px;
+    }
+  }
+  
+  // Loading state
+  .mat-mdc-button.vt-loading,
+  .mat-mdc-raised-button.vt-loading,
+  .mat-mdc-outlined-button.vt-loading {
+    pointer-events: none;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 50%;
+      left: 50%;
+      margin-left: -8px;
+      margin-top: -8px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: vt-spin 0.6s linear infinite;
+    }
+    
+    .mat-button-wrapper {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes vt-spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  // Focus states - OpenAI subtle shadow instead of outline
+  .mat-mdc-button:focus-visible,
+  .mat-mdc-raised-button:focus-visible,
+  .mat-mdc-outlined-button:focus-visible,
+  .mat-mdc-icon-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--md-sys-color-surface),
+                0 0 0 4px var(--md-sys-color-focus-ring);
+  }
+  
+  // Remove Material ripple for cleaner OpenAI feel (optional)
+  .mat-mdc-button .mat-ripple,
+  .mat-mdc-raised-button .mat-ripple,
+  .mat-mdc-outlined-button .mat-ripple,
+  .mat-mdc-icon-button .mat-ripple {
+    display: none;
+  }
+}
