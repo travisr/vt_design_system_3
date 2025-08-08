@@ -1,8 +1,11 @@
 // Venntier Design System - Sidenav Theme
 // OpenAI-inspired sidenav styling for Angular Material
 
+@use '@angular/material' as mat;
+
 @mixin vt-sidenav-theme() {
   // Base sidenav container styles
+  mat-sidenav,
   .mat-drawer.mat-sidenav,
   .mat-sidenav {
     background: var(--md-sys-color-surface-container-low);
@@ -65,13 +68,14 @@
     }
   }
   
-  // Override Material's list styles for sidenav
-  .vt-sidenav-content .mat-mdc-nav-list,
-  .vt-nav-section .mat-mdc-nav-list {
+  // Override Material's list styles using custom class wrapper
+  .vt-nav-section .mat-mdc-nav-list,
+  mat-sidenav .mat-mdc-nav-list {
     padding: 0;
     
-    // Target the actual Material list item class
-    .mat-mdc-list-item {
+    // Use custom class for better specificity without !important
+    .vt-nav-item,
+    a[mat-list-item] {
       height: 32px;
       margin: 2px 0;
       padding: 0 8px;
@@ -80,9 +84,9 @@
       position: relative;
       background-color: transparent;
       
-      // Override Material's state layer
-      .mat-mdc-list-item-interactive::before {
-        display: none !important;
+      // Disable Material's state layer using opacity
+      &::before {
+        opacity: 0;
       }
       
       // Default state text
@@ -114,9 +118,9 @@
         color: inherit;
       }
       
-      // Hover state
+      // Hover state - use pseudo-class chain for specificity
       &:hover:not(.active):not([disabled]) {
-        background-color: var(--md-sys-color-hover) !important;
+        background-color: var(--md-sys-color-hover);
         
         .mat-mdc-list-item-unscoped-content {
           color: var(--md-sys-color-on-surface-variant);
@@ -126,7 +130,7 @@
       // Active/selected state
       &.active,
       &[aria-selected="true"] {
-        background-color: var(--md-sys-color-selected) !important;
+        background-color: var(--md-sys-color-selected);
         
         .mat-mdc-list-item-unscoped-content {
           color: var(--md-sys-color-primary);  // Use primary (black) for maximum contrast

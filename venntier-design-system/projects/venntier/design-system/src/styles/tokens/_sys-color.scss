@@ -19,6 +19,7 @@ $_gray-500: #8e8ea0;  // OpenAI text muted
 $_gray-400: #acacbe;  // OpenAI placeholder
 $_gray-300: #c5c5d2;  // OpenAI border light
 $_gray-200: #e5e5e5;  // OpenAI divider
+$_gray-175: #efefef;  // Custom hover shade - lighter than gray-200
 $_gray-150: #dcdcdc;  // Even darker gray selected (more contrast)
 $_gray-100: #fafbfc;  // Barely visible hover (very subtle)
 $_gray-50: #f9f9f9;   // OpenAI background
@@ -83,7 +84,7 @@ $_gray-25: #fafafa;   // OpenAI surface
   --md-sys-color-shadow: rgba(0, 0, 0, 0.08);
   
   // Interactive states (Refined OpenAI-style)
-  --md-sys-color-hover: #{$_gray-100};
+  --md-sys-color-hover: #{$_gray-175};  // Using custom gray-175 for subtle but visible hover
   --md-sys-color-selected: #{$_gray-150};
   --md-sys-color-focus-ring: #{$_gray-400};
   --md-sys-color-pressed: #{$_gray-200};

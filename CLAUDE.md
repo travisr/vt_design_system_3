@@ -4,14 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Venntier Design System v3 - Angular 18 + Material Design 3 library creating a private npm package (`@venntier/design-system`) for cross-application UI consistency. Implements OpenAI-inspired minimalist design with monochromatic interaction states.
+Venntier Design System v3 - Angular 19 + Material Design 3 library creating a private npm package (`@venntier/design-system`) for cross-application UI consistency. Implements OpenAI-inspired minimalist design with monochromatic interaction states.
 
 ## Current Status
 
-**Phase**: Requirements Complete, Ready for Implementation
+**Phase**: Active Development  
+- Workspace setup complete with Angular 19.2, Material 19.2, Inter fonts
+- Project structure: `venntier-design-system/` workspace with library and demo app
+- Token system implemented: `projects/venntier/design-system/src/styles/tokens/`
+- Theme service created: `projects/venntier/design-system/src/lib/theme.service.ts`
 - Comprehensive PRD with M3 specifications: `docs/prd.md`
-- Reference designs: `openai_reference_screenshots/`
-- No code implementation yet
+- Visual reference: `openai_reference_screenshots/`
+- Design refinements identified: `venntier-design-system/REFINEMENTS_NEEDED.md`
 
 ## Initial Setup Commands
 
@@ -32,20 +36,32 @@ npm install @fontsource/inter --save
 
 ## Development Commands
 
+**Working Directory**: Always work from `venntier-design-system/` directory
+
 ```bash
-# Concurrent development
+# Concurrent development (recommended)
 ng build @venntier/design-system --watch &
 ng serve demo
 
-# Testing
-ng test @venntier/design-system
-ng test demo --watch=false
+# Individual commands
+ng build @venntier/design-system --watch         # Watch library builds
+ng serve demo                                    # Demo app dev server
+ng build demo                                    # Build demo app
 
-# Production build
+# Testing
+ng test @venntier/design-system                  # Library unit tests
+ng test demo                                     # Demo app tests
+
+# Production builds
 ng build @venntier/design-system --configuration=production
+ng build demo --configuration=production
 
 # Package for distribution
 cd dist/venntier/design-system && npm pack
+
+# Visual testing (requires built demo)
+node capture-screenshot.js                      # Screenshots for reference
+node detailed-analysis.js                       # Component analysis
 ```
 
 ## Material Design 3 Architecture
@@ -102,7 +118,7 @@ mat.define-theme((
 - **Padding**: Cards 24px, Sections 16-24px
 - **Typography**: Inter primary, Roboto fallback
 
-## Angular 18 Patterns
+## Angular 19 Patterns
 
 ### Use Signals (not Observables)
 ```typescript
@@ -128,12 +144,32 @@ readonly sortedData = computed(() => {...});
 ### Standalone Components
 All components are standalone. No NgModules except for backwards compatibility.
 
-## M3 Migration Notes
+## Project Structure
 
-- Angular Material 18 has stable M3 support (not experimental)
-- Custom palette generation not yet available - use predefined palettes
-- Override components using token mixins, not deep selectors
-- Can maintain M2 compatibility with `m2-` prefix during migration
+```
+venntier-design-system/
+├── projects/
+│   ├── venntier/design-system/          # Library source
+│   │   ├── src/
+│   │   │   ├── lib/theme.service.ts     # Theme management
+│   │   │   ├── styles/                  # SCSS token system
+│   │   │   │   ├── tokens/              # M3 design tokens
+│   │   │   │   ├── themes/              # Light/dark themes  
+│   │   │   │   └── components/          # Component overrides
+│   │   │   └── public-api.ts           # Library exports
+│   │   └── package.json                # Library metadata
+│   └── demo/                           # Demo application
+│       └── src/app/                    # Demo components
+├── dist/venntier/design-system/        # Build output
+└── node_modules/                       # Dependencies
+```
+
+## M3 Implementation Notes
+
+- Angular Material 19.2 has stable M3 support with token system
+- Using `use-system-variables: true` approach for M3 tokens
+- Token overrides via SCSS mixins, not CSS selector specificity
+- Component customization through `md-sys-*` variable prefixes
 
 ## Package Distribution
 
@@ -148,12 +184,30 @@ Build as `@venntier/design-system` for:
 2. **Flat design** - Use borders not shadows
 3. **8px grid** - All spacing multiples of 8
 4. **Token-based theming** - Use CSS custom properties
-5. **Signals over RxJS** - Angular 18 reactive patterns
+5. **Signals over RxJS** - Angular 19 reactive patterns
 6. **M3 tokens** - Follow md-sys-* naming convention
+
+## Key Implementation Refinements
+
+Based on `REFINEMENTS_NEEDED.md` analysis, critical improvements needed:
+
+### High Priority Fixes
+- **Soften color palette**: Use #fafafa backgrounds instead of harsh whites
+- **Reduce font weights**: Display 200-300, body 400, labels 400-450
+- **Fix button colors**: Tertiary buttons use #565869, improve disabled states
+- **Increase spacing**: 32px card padding, 24-32px section gaps
+
+### Medium Priority Polish
+- **Input pattern**: Labels above (not floating), 44-48px height
+- **Focus states**: Subtle shadows instead of border color changes
+- **Background hierarchy**: body (#fafafa) → cards (#ffffff) → inputs (#f9f9f9)
+- **Icon sizing**: 16-18px instead of 24px
 
 ## Reference Files
 
-- **Full Requirements**: `docs/prd.md` (91KB comprehensive spec)
+- **Full Requirements**: `docs/prd.md` (comprehensive M3 spec)
 - **Visual Reference**: `openai_reference_screenshots/`
+- **Implementation Issues**: `venntier-design-system/REFINEMENTS_NEEDED.md`
+- **Package README**: `venntier-design-system/README.md`
 - **M3 Docs**: https://m3.material.io/
 - **Angular Material**: https://material.angular.io/

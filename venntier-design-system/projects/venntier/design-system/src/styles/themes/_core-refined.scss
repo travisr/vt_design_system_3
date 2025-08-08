@@ -23,558 +23,617 @@
 }
 
 @mixin vt-component-overrides-refined() {
-  // Global refinements
-  * {
-    --mdc-elevation-box-shadow-for-gss: none !important;
+  // Global refinements - use CSS custom properties instead of !important
+  :root {
+    --mdc-elevation-box-shadow-for-gss: none;
+    --vt-surface-background: var(--md-sys-color-surface);
+    --vt-on-surface-text: var(--md-sys-color-on-surface);
   }
   
-  body {
-    background: #ffffff !important;  // Clean white background
-    color: #000000 !important;       // Pure black for main text
+  // Wrap in .vt-theme class for higher specificity without !important
+  .vt-theme {
+    // Body styles with proper CSS custom property usage
+    background: var(--vt-surface-background);
+    color: var(--vt-on-surface-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  
-  // Remove ALL shadows
-  [class*='mat-elevation-z'],
-  [class*='mat-mdc-elevation'],
-  .mat-mdc-card,
-  .mat-mdc-menu-panel,
-  .mat-mdc-dialog-container {
-    box-shadow: none !important;
-  }
-  
-  // BUTTONS - Refined with proper heights and padding
-  .mat-mdc-button,
-  .mat-mdc-raised-button,
-  .mat-mdc-flat-button,
-  .mat-mdc-stroked-button,
-  .mat-mdc-icon-button {
-    --mdc-text-button-container-height: 40px;
-    --mdc-filled-button-container-height: 40px;
-    --mdc-outlined-button-container-height: 40px;
     
-    height: 40px !important;
-    min-height: 40px !important;
-    border-radius: 6px !important;
-    font-weight: 400 !important;  // Lighter weight
-    font-size: 14px !important;
-    letter-spacing: 0.01em !important;
-    padding: 0 20px !important;
-    transition: all 0.15s ease !important;
-    box-shadow: none !important;
-    
-    // Remove all ripples
-    .mat-mdc-button-ripple,
-    .mat-mdc-button-persistent-ripple,
-    .mat-ripple {
-      display: none !important;
+    // Remove shadows using higher specificity
+    [class*='mat-elevation-z'],
+    [class*='mat-mdc-elevation'],
+    .mat-mdc-card,
+    .mat-mdc-menu-panel,
+    .mat-mdc-dialog-container {
+      box-shadow: none;
     }
   }
   
-  // Primary button (green CTA)
-  .mat-mdc-raised-button.mat-primary,
-  .mat-mdc-flat-button.mat-primary {
-    background-color: #10a37f !important;
-    color: white !important;
-    font-weight: 500 !important;
-    
-    &:not(:disabled):hover {
-      background-color: #0d9d6e !important;
-      transform: translateY(-1px);
-    }
-    
-    &:not(:disabled):active {
-      transform: translateY(0);
-    }
-  }
-  
-  // Secondary (outlined)
-  .mat-mdc-stroked-button,
-  .mat-mdc-outlined-button {
-    background-color: transparent !important;
-    color: #202123 !important;
-    border: 1px solid #d9d9e3 !important;
-    
-    &:not(:disabled):hover {
-      background-color: #f7f7f8 !important;
-      border-color: #c5c5d2 !important;
-    }
-  }
-  
-  // Tertiary (flat) - lighter background
-  .mat-mdc-flat-button:not(.mat-primary) {
-    background-color: #ececf1 !important;  // Lighter gray
-    color: #202123 !important;
-    border: none !important;
-    
-    &:not(:disabled):hover {
-      background-color: #e5e5ea !important;
-    }
-  }
-  
-  // Text button
-  .mat-mdc-button {
-    background-color: transparent !important;
-    color: #565869 !important;
-    padding: 0 12px !important;
-    
-    &:not(:disabled):hover {
-      background-color: #f7f7f8 !important;
-      color: #202123 !important;
-    }
-  }
-  
-  // Disabled state - better visibility
-  button:disabled {
-    opacity: 0.4 !important;
-    background-color: #f4f4f4 !important;
-    color: #8e8ea0 !important;
-  }
-  
-  // CARDS - Refined with proper layering
-  .mat-mdc-card {
-    border: 1px solid #e5e5ea !important;
-    border-radius: 8px !important;
-    padding: 24px !important;
-    background-color: white !important;
-    margin-bottom: 24px !important;
-    
-    .mat-mdc-card-header {
-      padding: 0 0 20px 0 !important;
+  // BUTTONS - Use CSS custom properties and higher specificity
+  .vt-theme {
+    .mat-mdc-button,
+    .mat-mdc-raised-button,
+    .mat-mdc-flat-button,
+    .mat-mdc-stroked-button,
+    .mat-mdc-icon-button {
+      --mdc-text-button-container-height: 40px;
+      --mdc-filled-button-container-height: 40px;
+      --mdc-outlined-button-container-height: 40px;
+      --mdc-text-button-label-text-font: var(--md-sys-typescale-label-large-font);
+      --mdc-text-button-label-text-size: 14px;
+      --mdc-text-button-label-text-weight: 400;
+      --mdc-text-button-label-text-tracking: 0.01em;
       
-      .mat-mdc-card-title {
-        font-size: 16px !important;
-        font-weight: 600 !important;
-        color: #000000 !important;
-        margin: 0 !important;
-      }
-    }
-    
-    .mat-mdc-card-content {
-      padding: 0 !important;
+      height: 40px;
+      min-height: 40px;
+      border-radius: 6px;
+      padding: 0 20px;
+      transition: all 0.15s ease;
+      box-shadow: none;
       
-      > *:not(:last-child) {
-        margin-bottom: 16px !important;
+      // Remove all ripples using higher specificity
+      .mat-mdc-button-ripple,
+      .mat-mdc-button-persistent-ripple,
+      .mat-ripple {
+        display: none;
       }
     }
   }
   
-  // FORM FIELDS - Clean OpenAI style
-  .mat-mdc-form-field {
-    width: 100% !important;
-    margin-bottom: 20px !important;
-    
-    // Remove all Material Design artifacts
-    .mat-mdc-text-field-wrapper {
-      padding: 0 !important;
+  // Primary button (green CTA) - Use CSS custom properties
+  .vt-theme {
+    .mat-mdc-raised-button.mat-primary,
+    .mat-mdc-flat-button.mat-primary {
+      --mdc-filled-button-container-color: var(--md-sys-color-tertiary);
+      --mdc-filled-button-label-text-color: var(--md-sys-color-on-tertiary);
+      --mdc-filled-button-hover-container-color: #0d9d6e;
+      --mdc-filled-button-label-text-weight: 500;
+      
+      &:not(:disabled):hover {
+        transform: translateY(-1px);
+      }
+      
+      &:not(:disabled):active {
+        transform: translateY(0);
+      }
     }
     
-    .mat-mdc-form-field-flex {
-      align-items: stretch !important;
+    // Secondary (outlined) - Use Material's outlined button tokens
+    .mat-mdc-stroked-button,
+    .mat-mdc-outlined-button {
+      --mdc-outlined-button-container-color: transparent;
+      --mdc-outlined-button-label-text-color: var(--md-sys-color-on-surface);
+      --mdc-outlined-button-outline-color: var(--md-sys-color-outline);
+      --mdc-outlined-button-hover-container-color: var(--md-sys-color-hover);
+      --mdc-outlined-button-hover-outline-color: var(--md-sys-color-outline-variant);
+    }
+  }
+  
+  // Tertiary (flat) and Text buttons - Use proper CSS custom properties
+  .vt-theme {
+    .mat-mdc-flat-button:not(.mat-primary) {
+      --mdc-filled-button-container-color: var(--md-sys-color-surface-container);
+      --mdc-filled-button-label-text-color: var(--md-sys-color-on-surface);
+      --mdc-filled-button-hover-container-color: var(--md-sys-color-surface-container-high);
+      border: none;
     }
     
-    // Outline appearance
-    &.mat-form-field-appearance-outline {
-      .mdc-text-field {
-        height: 44px !important;
-        background-color: white !important;
-        border-radius: 6px !important;
-        padding: 0 !important;
+    .mat-mdc-button {
+      --mdc-text-button-container-color: transparent;
+      --mdc-text-button-label-text-color: var(--md-sys-color-on-surface-variant);
+      --mdc-text-button-hover-container-color: var(--md-sys-color-hover);
+      --mdc-text-button-hover-label-text-color: var(--md-sys-color-on-surface);
+      padding: 0 12px;
+    }
+    
+    // Disabled state - using CSS custom properties
+    button:disabled {
+      --mdc-text-button-disabled-label-text-color: var(--md-sys-color-on-surface-variant);
+      --mdc-filled-button-disabled-container-color: var(--md-sys-color-surface-variant);
+      --mdc-filled-button-disabled-label-text-color: var(--md-sys-color-on-surface-variant);
+      opacity: 0.4;
+    }
+  }
+  
+  // CARDS - Use CSS custom properties and higher specificity
+  .vt-theme {
+    .mat-mdc-card {
+      --mdc-elevated-card-container-color: var(--md-sys-color-surface);
+      --mdc-elevated-card-container-shape: 8px;
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: 8px;
+      padding: 24px;
+      background-color: var(--md-sys-color-surface);
+      margin-bottom: 24px;
+      
+      .mat-mdc-card-header {
+        padding: 0 0 20px 0;
         
-        &.mdc-text-field--outlined {
-          .mdc-notched-outline {
-            top: 0 !important;
-            
-            // Clean border without notch
-            .mdc-notched-outline__leading {
-              border: 1px solid #d9d9e3 !important;
-              border-right: none !important;
-              border-radius: 6px 0 0 6px !important;
-              width: 12px !important;
+        .mat-mdc-card-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--md-sys-color-on-surface);
+          margin: 0;
+        }
+      }
+      
+      .mat-mdc-card-content {
+        padding: 0;
+        
+        > *:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+  
+  // FORM FIELDS - Proper CSS custom properties and higher specificity
+  .vt-theme {
+    .mat-mdc-form-field {
+      --mdc-filled-text-field-container-height: 44px;
+      --mdc-outlined-text-field-container-height: 44px;
+      --mdc-filled-text-field-container-color: var(--md-sys-color-surface);
+      --mdc-outlined-text-field-container-shape: 6px;
+      --mdc-outlined-text-field-outline-color: var(--md-sys-color-outline);
+      --mdc-outlined-text-field-hover-outline-color: var(--md-sys-color-outline-variant);
+      --mdc-outlined-text-field-focus-outline-color: var(--md-sys-color-tertiary);
+      --mdc-outlined-text-field-focus-outline-width: 2px;
+      --mdc-outlined-text-field-label-text-color: var(--md-sys-color-on-surface-variant);
+      --mdc-outlined-text-field-input-text-color: var(--md-sys-color-on-surface);
+      --mdc-outlined-text-field-placeholder-text-color: var(--md-sys-color-on-surface-variant);
+      
+      width: 100%;
+      margin-bottom: 20px;
+      
+      .mat-mdc-text-field-wrapper {
+        padding: 0;
+      }
+      
+      .mat-mdc-form-field-flex {
+        align-items: stretch;
+      }
+      
+      // Outline appearance with proper tokens
+      &.mat-form-field-appearance-outline {
+        .mdc-text-field {
+          height: 44px;
+          background-color: var(--md-sys-color-surface);
+          border-radius: 6px;
+          padding: 0;
+        
+          // Use Material's outline tokens instead of custom borders
+          &.mdc-text-field--outlined {
+            .mdc-notched-outline {
+              .mdc-notched-outline__leading,
+              .mdc-notched-outline__trailing,
+              .mdc-notched-outline__notch {
+                border-color: var(--mdc-outlined-text-field-outline-color);
+              }
             }
             
-            .mdc-notched-outline__trailing {
-              border: 1px solid #d9d9e3 !important;
-              border-left: none !important;
-              border-radius: 0 6px 6px 0 !important;
+            &:hover .mdc-notched-outline {
+              .mdc-notched-outline__leading,
+              .mdc-notched-outline__trailing,
+              .mdc-notched-outline__notch {
+                border-color: var(--mdc-outlined-text-field-hover-outline-color);
+              }
             }
             
-            .mdc-notched-outline__notch {
-              border-top: 1px solid #d9d9e3 !important;
-              border-bottom: 1px solid #d9d9e3 !important;
-              border-left: none !important;
-              border-right: none !important;
-              max-width: 100% !important;
+            &.mdc-text-field--focused .mdc-notched-outline {
+              .mdc-notched-outline__leading,
+              .mdc-notched-outline__trailing,
+              .mdc-notched-outline__notch {
+                border-color: var(--mdc-outlined-text-field-focus-outline-color);
+                border-width: var(--mdc-outlined-text-field-focus-outline-width);
+              }
+            }
+          }
+        
+          // Input alignment
+          .mat-mdc-form-field-infix {
+            padding: 0 16px;
+            border: none;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+          }
+        
+          input,
+          textarea {
+            padding: 0;
+            height: 100%;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--mdc-outlined-text-field-input-text-color);
+            border: none;
+            background: transparent;
+            outline: none;
+            
+            &::placeholder {
+              color: var(--mdc-outlined-text-field-placeholder-text-color);
             }
           }
           
-          &:hover .mdc-notched-outline {
-            .mdc-notched-outline__leading,
-            .mdc-notched-outline__trailing {
-              border-color: #c5c5d2 !important;
-            }
-            .mdc-notched-outline__notch {
-              border-top-color: #c5c5d2 !important;
-              border-bottom-color: #c5c5d2 !important;
-            }
+          textarea {
+            padding: 12px 0;
+            min-height: 60px;
+            resize: vertical;
           }
+      }
+      
+        // Clean label using CSS custom properties
+        .mat-mdc-floating-label {
+          font-size: 14px;
+          color: var(--mdc-outlined-text-field-label-text-color);
+          background-color: var(--md-sys-color-surface);
+          padding: 0 4px;
+          top: 50%;
+          transform: translateY(-50%);
+          transition: all 0.2s ease;
+          pointer-events: none;
           
-          &.mdc-text-field--focused .mdc-notched-outline {
-            .mdc-notched-outline__leading,
-            .mdc-notched-outline__trailing {
-              border-color: #10a37f !important;
-              border-width: 2px !important;
-            }
-            .mdc-notched-outline__notch {
-              border-top: 2px solid #10a37f !important;
-              border-bottom: 2px solid #10a37f !important;
-            }
+          &.mdc-floating-label--float-above {
+            font-size: 12px;
+            top: 0;
+            transform: translateY(-50%) scale(0.85);
+            background-color: var(--md-sys-color-surface);
           }
         }
+      
+        // Hide ripple and subscript
+        .mdc-line-ripple,
+        .mat-mdc-form-field-subscript-wrapper {
+          display: none;
+        }
+    }
+    
+      // Icons - properly aligned
+      .mat-mdc-form-field-icon-suffix,
+      .mat-mdc-form-field-icon-prefix {
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        height: 44px;
         
-        // Input alignment
-        .mat-mdc-form-field-infix {
-          padding: 0 16px !important;
-          border: none !important;
-          min-height: 44px !important;
-          display: flex !important;
-          align-items: center !important;
+        mat-icon {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+          color: var(--md-sys-color-on-surface-variant);
+        }
+      }
+    }
+  }
+  
+  // SELECT - Clean approach with CSS custom properties
+  .vt-theme {
+    .mat-mdc-select {
+      --mat-select-trigger-height: 44px;
+      --mat-select-trigger-text-size: 14px;
+      --mat-select-trigger-text-color: var(--md-sys-color-on-surface);
+      --mat-select-arrow-color: var(--md-sys-color-on-surface-variant);
+      
+      &.mat-mdc-select-outlined {
+        .mat-mdc-select-trigger {
+          height: 44px;
+          padding: 0;
         }
         
-        input,
-        textarea {
-          padding: 0 !important;
-          height: 100% !important;
-          font-size: 14px !important;
-          font-weight: 400 !important;
-          color: #202123 !important;
-          border: none !important;
-          background: transparent !important;
-          outline: none !important;
+        .mat-mdc-select-value {
+          padding: 0 16px;
+          font-size: 14px;
+          color: var(--md-sys-color-on-surface);
+          display: flex;
+          align-items: center;
+          height: 44px;
+        }
+        
+        .mat-mdc-select-arrow-wrapper {
+          padding-right: 16px;
           
-          &::placeholder {
-            color: #8e8ea0 !important;
+          .mat-mdc-select-arrow {
+            color: var(--md-sys-color-on-surface-variant);
           }
         }
-        
-        textarea {
-          padding: 12px 0 !important;
-          min-height: 60px !important;
-          resize: vertical;
-        }
-      }
-      
-      // Clean label
-      .mat-mdc-floating-label {
-        font-size: 14px !important;
-        color: #565869 !important;
-        background-color: white !important;
-        padding: 0 4px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        transition: all 0.2s ease !important;
-        pointer-events: none !important;
-        
-        &.mdc-floating-label--float-above {
-          font-size: 12px !important;
-          top: 0 !important;
-          transform: translateY(-50%) scale(0.85) !important;
-          background-color: white !important;
-        }
-      }
-      
-      // Hide ripple and subscript
-      .mdc-line-ripple,
-      .mat-mdc-form-field-subscript-wrapper {
-        display: none !important;
-      }
-    }
-    
-    // Icons - properly aligned
-    .mat-mdc-form-field-icon-suffix,
-    .mat-mdc-form-field-icon-prefix {
-      padding: 0 12px !important;
-      display: flex !important;
-      align-items: center !important;
-      height: 44px !important;
-      
-      mat-icon {
-        font-size: 20px !important;
-        width: 20px !important;
-        height: 20px !important;
-        color: var(--md-sys-color-on-surface-variant) !important;
       }
     }
   }
   
-  // SELECT - Fixed alignment to match input fields
-  .mat-mdc-select {
-    &.mat-mdc-select-outlined {
-      .mat-mdc-select-trigger {
-        height: 44px !important;
-        padding: 0 !important;
-      }
+  // Select panel dropdown with higher specificity
+  .vt-theme {
+    .mat-mdc-select-panel {
+      --mat-option-hover-state-layer-color: var(--md-sys-color-hover);
+      --mat-option-selected-state-layer-color: var(--md-sys-color-selected);
+      --mat-option-focus-state-layer-color: var(--md-sys-color-hover);
       
-      .mat-mdc-select-value {
-        padding: 0 16px !important;
-        font-size: 14px !important;
-        color: #202123 !important;
-        display: flex !important;
-        align-items: center !important;
-        height: 44px !important;
-      }
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: 6px;
+      box-shadow: 0 2px 8px var(--md-sys-color-shadow);
+      margin-top: 4px;
       
-      .mat-mdc-select-arrow-wrapper {
-        padding-right: 16px !important;
+      .mat-mdc-option {
+        height: 40px;
+        padding: 0 16px;
+        font-size: 14px;
         
-        .mat-mdc-select-arrow {
-          color: #8e8ea0 !important;
+        &:hover {
+          background-color: var(--md-sys-color-hover);
+        }
+        
+        &.mat-mdc-option-active,
+        &.mdc-list-item--selected {
+          background-color: var(--md-sys-color-selected);
+          color: var(--md-sys-color-on-surface);
         }
       }
     }
   }
   
-  // Select panel dropdown
-  .mat-mdc-select-panel {
-    border: 1px solid #e5e5ea !important;
-    border-radius: 6px !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
-    margin-top: 4px !important;
-    
-    .mat-mdc-option {
-      height: 40px !important;
-      padding: 0 16px !important;
-      font-size: 14px !important;
+  // TOOLBAR - Clean style with CSS custom properties
+  .vt-theme {
+    .mat-toolbar {
+      --mat-toolbar-background-color: var(--md-sys-color-surface);
+      --mat-toolbar-title-text-color: var(--md-sys-color-on-surface);
       
-      &:hover {
-        background-color: #f7f7f8 !important;
-      }
+      background-color: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
+      border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      height: 56px;
+      padding: 0 32px;
+      font-weight: 400;
       
-      &.mat-mdc-option-active,
-      &.mdc-list-item--selected {
-        background-color: #ececf1 !important;
-        color: #202123 !important;
+      &.mat-primary {
+        background-color: var(--md-sys-color-surface);
       }
     }
   }
   
-  // TOOLBAR - Minimal style
-  .mat-toolbar {
-    background-color: white !important;
-    color: #202123 !important;
-    border-bottom: 1px solid #e5e5ea !important;
-    height: 56px !important;
-    padding: 0 32px !important;
-    font-weight: 400 !important;
+  // TYPOGRAPHY - Using M3 typescale tokens
+  .vt-theme {
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--md-sys-color-on-surface);
+      margin-top: 0;
+    }
     
-    &.mat-primary {
-      background-color: white !important;
+    h1 {
+      font: var(--md-sys-typescale-headline-large-font);
+      font-size: var(--md-sys-typescale-headline-large-size);
+      font-weight: var(--md-sys-typescale-headline-large-weight);
+      line-height: var(--md-sys-typescale-headline-large-line-height);
+      margin-bottom: 12px;
+    }
+    
+    h2 {
+      font: var(--md-sys-typescale-headline-medium-font);
+      font-size: var(--md-sys-typescale-headline-medium-size);
+      font-weight: var(--md-sys-typescale-headline-medium-weight);
+      line-height: var(--md-sys-typescale-headline-medium-line-height);
+      margin-bottom: 16px;
+    }
+    
+    h3 {
+      font: var(--md-sys-typescale-headline-small-font);
+      font-size: var(--md-sys-typescale-headline-small-size);
+      font-weight: var(--md-sys-typescale-headline-small-weight);
+      line-height: var(--md-sys-typescale-headline-small-line-height);
+      margin-bottom: 12px;
+    }
+    
+    p {
+      color: var(--md-sys-color-on-surface-variant);
+      line-height: 1.6;
+      margin-bottom: 12px;
     }
   }
   
-  // TYPOGRAPHY - Global refinements
-  h1, h2, h3, h4, h5, h6 {
-    color: #000000 !important;
-    margin-top: 0 !important;
-  }
-  
-  h1 {
-    font-weight: 600 !important;
-    font-size: 32px !important;
-    line-height: 1.4 !important;
-    margin-bottom: 12px !important;
-  }
-  
-  h2 {
-    font-weight: 600 !important;
-    font-size: 24px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 16px !important;
-  }
-  
-  h3 {
-    font-weight: 600 !important;
-    font-size: 18px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 12px !important;
-  }
-  
-  p {
-    color: #666666 !important;
-    line-height: 1.6 !important;
-    margin-bottom: 12px !important;
-  }
-  
-  // CHECKBOXES & RADIOS - Subtle green accent
-  .mat-mdc-checkbox {
-    --mdc-checkbox-selected-icon-color: #10a37f;
-    --mdc-checkbox-selected-checkmark-color: white;
-    --mdc-checkbox-unselected-icon-color: #d9d9e3;
-    
-    .mdc-checkbox__background {
-      border-radius: 4px !important;
-    }
-  }
-  
-  .mat-mdc-radio-button {
-    --mdc-radio-selected-icon-color: #10a37f;
-    --mdc-radio-unselected-icon-color: #d9d9e3;
-  }
-  
-  // CHIPS - Lighter style
-  .mat-mdc-chip {
-    --mdc-chip-container-height: 32px;
-    
-    border: 1px solid #e5e5ea !important;
-    background-color: #fafafa !important;
-    font-size: 13px !important;
-    font-weight: 400 !important;
-    
-    &.mat-mdc-chip-selected {
-      background-color: #ececf1 !important;
-      border-color: #c5c5d2 !important;
-      color: #202123 !important;
-    }
-  }
-  
-  // MENU
-  .mat-mdc-menu-panel {
-    border: 1px solid #e5e5ea !important;
-    border-radius: 8px !important;
-    background-color: white !important;
-    padding: 4px 0 !important;
-    
-    .mat-mdc-menu-item {
-      font-size: 14px !important;
-      height: 40px !important;
-      padding: 0 16px !important;
-      color: #202123 !important;
+  // CHECKBOXES & RADIOS - Using tertiary color for selection
+  .vt-theme {
+    .mat-mdc-checkbox {
+      --mdc-checkbox-selected-icon-color: var(--md-sys-color-tertiary);
+      --mdc-checkbox-selected-checkmark-color: var(--md-sys-color-on-tertiary);
+      --mdc-checkbox-unselected-icon-color: var(--md-sys-color-outline);
       
-      &:hover {
-        background-color: #f7f7f8 !important;
+      .mdc-checkbox__background {
+        border-radius: 4px;
       }
+    }
+    
+    .mat-mdc-radio-button {
+      --mdc-radio-selected-icon-color: var(--md-sys-color-tertiary);
+      --mdc-radio-unselected-icon-color: var(--md-sys-color-outline);
+    }
+  }
+  
+  // CHIPS - Clean style with tokens
+  .vt-theme {
+    .mat-mdc-chip {
+      --mdc-chip-container-height: 32px;
+      --mdc-chip-container-shape: 16px;
+      --mdc-chip-label-text-size: 13px;
+      --mdc-chip-label-text-weight: 400;
       
-      &.mat-mdc-menu-item-highlighted {
-        background-color: #f7f7f8 !important;
+      border: 1px solid var(--md-sys-color-outline-variant);
+      background-color: var(--md-sys-color-surface-variant);
+      font-size: 13px;
+      font-weight: 400;
+      
+      &.mat-mdc-chip-selected {
+        background-color: var(--md-sys-color-selected);
+        border-color: var(--md-sys-color-outline);
+        color: var(--md-sys-color-on-surface);
       }
     }
   }
   
-  // PROGRESS
-  .mat-mdc-progress-bar {
-    --mdc-linear-progress-active-indicator-color: #10a37f !important;
-    --mdc-linear-progress-track-color: #e5e5ea !important;
-    height: 4px !important;
-    border-radius: 2px !important;
-  }
-  
-  .mat-mdc-progress-spinner {
-    --mdc-circular-progress-active-indicator-color: #10a37f !important;
-  }
-  
-  // SNACKBAR
-  .mat-mdc-snack-bar-container {
-    --mdc-snackbar-container-color: #202123;
-    --mdc-snackbar-supporting-text-color: white;
-    
-    border-radius: 8px !important;
-    
-    .mat-mdc-snack-bar-action {
-      color: #7dd3c0 !important;
-    }
-  }
-  
-  // DIALOG
-  .mat-mdc-dialog-container {
-    border: 1px solid #e5e5ea !important;
-    border-radius: 12px !important;
-    padding: 32px !important;
-    background-color: white !important;
-  }
-  
-  // TABLE
-  table.mat-mdc-table {
-    border: 1px solid #e5e5ea !important;
-    border-radius: 8px !important;
-    overflow: hidden;
-    background-color: white !important;
-    
-    .mat-mdc-header-row {
-      background-color: #fafafa !important;
-      height: 48px !important;
-      border-bottom: 1px solid #e5e5ea !important;
-    }
-    
-    .mat-mdc-row {
-      height: 52px !important;
-      border-bottom: 1px solid #f4f4f4 !important;
+  // MENU - Consistent with select dropdown
+  .vt-theme {
+    .mat-mdc-menu-panel {
+      --mat-menu-container-color: var(--md-sys-color-surface);
+      --mat-menu-container-shape: 8px;
+      --mat-menu-item-label-text-color: var(--md-sys-color-on-surface);
+      --mat-menu-item-hover-state-layer-color: var(--md-sys-color-hover);
       
-      &:hover {
-        background-color: #fafafa !important;
-      }
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: 8px;
+      background-color: var(--md-sys-color-surface);
+      padding: 4px 0;
       
-      &:last-child {
-        border-bottom: none !important;
+      .mat-mdc-menu-item {
+        font-size: 14px;
+        height: 40px;
+        padding: 0 16px;
+        color: var(--md-sys-color-on-surface);
+        
+        &:hover {
+          background-color: var(--md-sys-color-hover);
+        }
+        
+        &.mat-mdc-menu-item-highlighted {
+          background-color: var(--md-sys-color-hover);
+        }
       }
     }
-    
-    .mat-mdc-cell,
-    .mat-mdc-header-cell {
-      font-size: 14px !important;
-      padding: 0 16px !important;
+  }
+  
+  // PROGRESS - Using tertiary color
+  .vt-theme {
+    .mat-mdc-progress-bar {
+      --mdc-linear-progress-active-indicator-color: var(--md-sys-color-tertiary);
+      --mdc-linear-progress-track-color: var(--md-sys-color-surface-container-high);
+      height: 4px;
+      border-radius: 2px;
     }
     
-    .mat-mdc-header-cell {
-      font-weight: 500 !important;
-      color: #565869 !important;
-    }
-    
-    .mat-mdc-cell {
-      color: #202123 !important;
+    .mat-mdc-progress-spinner {
+      --mdc-circular-progress-active-indicator-color: var(--md-sys-color-tertiary);
     }
   }
   
-  // SLIDE TOGGLE
-  .mat-mdc-slide-toggle {
-    --mdc-switch-selected-track-color: #10a37f;
-    --mdc-switch-selected-handle-color: white;
-    --mdc-switch-selected-hover-track-color: #0d9d6e;
-    --mdc-switch-unselected-track-color: #d9d9e3;
-    --mdc-switch-unselected-handle-color: white;
+  // SNACKBAR - Dark container for contrast
+  .vt-theme {
+    .mat-mdc-snack-bar-container {
+      --mdc-snackbar-container-color: var(--md-sys-color-inverse-surface);
+      --mdc-snackbar-supporting-text-color: var(--md-sys-color-inverse-on-surface);
+      --mdc-snackbar-container-shape: 8px;
+      
+      border-radius: 8px;
+      
+      .mat-mdc-snack-bar-action {
+        color: var(--md-sys-color-tertiary);
+      }
+    }
   }
   
-  // TOOLTIP
-  .mat-mdc-tooltip {
-    background-color: #202123 !important;
-    color: white !important;
-    font-size: 12px !important;
-    padding: 6px 10px !important;
-    border-radius: 6px !important;
+  // DIALOG - Clean modal style
+  .vt-theme {
+    .mat-mdc-dialog-container {
+      --mdc-dialog-container-color: var(--md-sys-color-surface);
+      --mdc-dialog-container-shape: 12px;
+      
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: 12px;
+      padding: 32px;
+      background-color: var(--md-sys-color-surface);
+    }
+  }
+  
+  // TABLE - Clean data presentation
+  .vt-theme {
+    table.mat-mdc-table {
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: var(--md-sys-color-surface);
+      
+      .mat-mdc-header-row {
+        background-color: var(--md-sys-color-surface-variant);
+        height: 48px;
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      }
+      
+      .mat-mdc-row {
+        height: 52px;
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        
+        &:hover {
+          background-color: var(--md-sys-color-hover);
+        }
+        
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+      
+      .mat-mdc-cell,
+      .mat-mdc-header-cell {
+        font-size: 14px;
+        padding: 0 16px;
+      }
+      
+      .mat-mdc-header-cell {
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+      
+      .mat-mdc-cell {
+        color: var(--md-sys-color-on-surface);
+      }
+    }
+  }
+  
+  // SLIDE TOGGLE - Tertiary accent
+  .vt-theme {
+    .mat-mdc-slide-toggle {
+      --mdc-switch-selected-track-color: var(--md-sys-color-tertiary);
+      --mdc-switch-selected-handle-color: var(--md-sys-color-on-tertiary);
+      --mdc-switch-selected-hover-track-color: var(--md-sys-color-tertiary);
+      --mdc-switch-unselected-track-color: var(--md-sys-color-outline);
+      --mdc-switch-unselected-handle-color: var(--md-sys-color-surface);
+    }
+  }
+  
+  // TOOLTIP - Inverse colors for contrast
+  .vt-theme {
+    .mat-mdc-tooltip {
+      --mdc-plain-tooltip-container-color: var(--md-sys-color-inverse-surface);
+      --mdc-plain-tooltip-supporting-text-color: var(--md-sys-color-inverse-on-surface);
+      --mdc-plain-tooltip-container-shape: 6px;
+      
+      background-color: var(--md-sys-color-inverse-surface);
+      color: var(--md-sys-color-inverse-on-surface);
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
   }
   
   // ICON refinements
-  .mat-icon,
-  mat-icon {
-    font-size: 20px !important;
-    width: 20px !important;
-    height: 20px !important;
-    color: #565869 !important;
-    
-    &.mat-icon-button mat-icon {
-      font-size: 20px !important;
+  .vt-theme {
+    .mat-icon,
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      color: var(--md-sys-color-on-surface-variant);
+      
+      &.mat-icon-button mat-icon {
+        font-size: 20px;
+      }
     }
   }
   
   // Focus states - subtle
-  *:focus-visible {
-    outline: 2px solid rgba(142, 142, 160, 0.3) !important;
-    outline-offset: 2px !important;
+  .vt-theme {
+    *:focus-visible {
+      outline: 2px solid var(--md-sys-color-focus-ring);
+      outline-offset: 2px;
+    }
   }
   
   // Selection
-  ::selection {
-    background-color: #d3f4eb !important;
-    color: #202123 !important;
+  .vt-theme {
+    ::selection {
+      background-color: var(--md-sys-color-tertiary-container);
+      color: var(--md-sys-color-on-tertiary-container);
+    }
   }
 }

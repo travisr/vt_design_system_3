@@ -3,3 +3,73 @@
 
 html, body { height: 100%; }
 body { margin: 0; }
+
+// Override Material's hover implementation
+.mat-mdc-list-item {
+  // Force hover to apply to element, not pseudo-element
+  &::before {
+    display: none;
+  }
+  
+  // Disable ripple
+  .mat-ripple,
+  .mdc-list-item__ripple {
+    display: none;
+  }
+}
+
+// Override sidenav list items with custom hover behavior
+mat-sidenav .mat-mdc-nav-list {
+  // Apply to all list items
+  a[mat-list-item],
+  .mat-mdc-list-item {
+      position: relative;
+      height: var(--md-sys-spacing-8);
+      margin: calc(var(--md-sys-spacing-1) / 2) var(--md-sys-spacing-2);
+      padding: 0 var(--md-sys-spacing-3);
+      border-radius: var(--md-sys-shape-corner-small);
+      background-color: transparent;
+      transition: background-color var(--md-sys-motion-hover);
+      
+      // Override MDC's internal element
+      .mdc-list-item__primary-text {
+        color: var(--md-sys-color-on-surface-variant);
+      }
+      
+      // Hover state - apply directly to element
+      &:hover {
+        &:not(.active) {
+          background-color: var(--md-sys-color-hover);
+        }
+      }
+      
+      // Active state
+      &.active {
+        background-color: var(--md-sys-color-selected);
+        
+        .mdc-list-item__primary-text,
+        mat-icon {
+          color: var(--md-sys-color-primary);
+          font-weight: var(--md-sys-typescale-label-medium-weight);
+        }
+      }
+    }
+}
+
+// Force hover state on all nav items with maximum specificity
+mat-sidenav-content .mat-mdc-nav-list a.mat-mdc-list-item:not(.active):hover,
+mat-sidenav .mat-mdc-nav-list a.mat-mdc-list-item:not(.active):hover,
+.mat-drawer .mat-mdc-nav-list a[mat-list-item]:not(.active):hover {
+  background-color: var(--md-sys-color-hover);
+}
+
+// Override Material's interactive state layer completely
+.mat-mdc-list-item-interactive {
+  &::before {
+    opacity: 0;
+  }
+  
+  &:not(.active):hover {
+    background-color: var(--md-sys-color-hover);
+  }
+}

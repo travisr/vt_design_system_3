@@ -19,7 +19,11 @@
 }
 
 // Apply component themes AFTER Material themes to override
-body {
+// Apply list overrides globally
+@include components.vt-list-overrides();
+
+// Wrap sidenav in body.vt-theme for specificity
+body.vt-theme {
   @include components.vt-sidenav-theme();
 }
 
