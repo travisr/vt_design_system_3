@@ -8,21 +8,21 @@
   "projects": {
     "@venntier/design-system": {
       "projectType": "library",
-      "root": "projects/venntier/design-system",
-      "sourceRoot": "projects/venntier/design-system/src",
+      "root": "projects/design-system",
+      "sourceRoot": "projects/design-system/src",
       "prefix": "vt",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/venntier/design-system/ng-package.json"
+            "project": "projects/design-system/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/venntier/design-system/tsconfig.lib.prod.json"
+              "tsConfig": "projects/design-system/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/venntier/design-system/tsconfig.lib.json"
+              "tsConfig": "projects/design-system/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -30,7 +30,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/venntier/design-system/tsconfig.spec.json",
+            "tsConfig": "projects/design-system/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

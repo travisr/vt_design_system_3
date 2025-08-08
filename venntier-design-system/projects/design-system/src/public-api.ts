@@ -8,6 +8,9 @@
 // Service exports
 export * from './lib/theme.service';
 
+// Component exports
+export * from './lib/components';
+
 // Type exports
 export type VenntierTheme = 'light' | 'dark';
 

@@ -1,0 +1,105 @@
+@use '../../../styles/tokens' as tokens;
+
+.vt-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  cursor: pointer;
+  transition: all var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-standard);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+
+  &--small {
+    height: 32px;
+    padding: 0 12px;
+    font-size: var(--md-sys-typescale-label-small-size);
+    border-radius: var(--md-sys-shape-corner-small);
+  }
+
+  &--medium {
+    height: 36px;
+    padding: 0 16px;
+    font-size: var(--md-sys-typescale-label-medium-size);
+    border-radius: var(--md-sys-shape-corner-small);
+  }
+
+  &--large {
+    height: 40px;
+    padding: 0 20px;
+    font-size: var(--md-sys-typescale-label-large-size);
+    border-radius: var(--md-sys-shape-corner-medium);
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &--primary {
+    background-color: #10a37f;
+    color: white;
+    
+    &:hover:not(:disabled) {
+      background-color: #0d8a6c;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: #0a7359;
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: var(--md-sys-color-on-surface);
+    border-color: var(--md-sys-color-outline);
+    
+    &:hover:not(:disabled) {
+      background-color: var(--md-sys-color-surface-container-low);
+    }
+    
+    &:active:not(:disabled) {
+      background-color: var(--md-sys-color-surface-container);
+    }
+  }
+
+  &--tertiary {
+    background-color: transparent;
+    color: #565869;
+    
+    &:hover:not(:disabled) {
+      background-color: #f7f7f8;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: #ececf1;
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: var(--md-sys-color-on-surface);
+    
+    &:hover:not(:disabled) {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+    
+    &:active:not(:disabled) {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #6e6e80;
+    outline-offset: 2px;
+  }
+}

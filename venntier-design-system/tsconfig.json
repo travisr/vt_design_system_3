@@ -5,7 +5,7 @@
   "compilerOptions": {
     "paths": {
       "@venntier/design-system": [
-        "./dist/venntier/design-system"
+        "./dist/design-system"
       ]
     },
     "outDir": "./dist/out-tsc",

@@ -3,7 +3,7 @@
 @use './tokens' as tokens;
 @use './themes/core-refined' as core;
 @use './components' as components;
-@use './tokens/sys-typescale' as typography;
+@use './tokens/typescale' as typography;
 
 // Import Inter font weights needed
 @import '@fontsource/inter/200.css';
