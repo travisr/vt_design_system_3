@@ -1,0 +1,215 @@
+// Demo Application Shared Utilities
+// Common styles used across all demo pages
+
+// ============================================
+// Layout & Structure
+// ============================================
+
+// Standard demo section wrapper
+.demo-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  & + & {
+    margin-top: var(--md-sys-spacing-8);
+  }
+}
+
+// Common section header styles
+.demo-section-title {
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  font-weight: var(--md-sys-typescale-headline-medium-weight);
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 8px 0;
+}
+
+.demo-section-description {
+  font-size: var(--md-sys-typescale-body-medium-size);
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+// ============================================
+// Cards & Containers
+// ============================================
+
+// Consistent card styling
+.demo-card {
+  margin-bottom: 20px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: none;
+  background: var(--md-sys-color-surface);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Card content padding
+.demo-card-content {
+  padding: var(--md-sys-spacing-6);
+}
+
+// ============================================
+// Grid Systems
+// ============================================
+
+// Responsive grid for demos
+.demo-grid {
+  display: grid;
+  gap: var(--md-sys-spacing-5);
+  
+  &.demo-grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  &.demo-grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  &.demo-grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  &.demo-grid-auto {
+    grid-template-columns: repeat(auto-fill, minmax(var(--min-width, 200px), 1fr));
+  }
+}
+
+// Form-specific grid
+.demo-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--md-sys-spacing-5);
+  
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+// ============================================
+// Code Blocks
+// ============================================
+
+.demo-code-block {
+  margin: var(--md-sys-spacing-4) 0;
+  
+  h4 {
+    font-size: var(--md-sys-typescale-label-large-size);
+    font-weight: var(--md-sys-typescale-label-large-weight);
+    color: var(--md-sys-color-on-surface);
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  pre {
+    background: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-medium);
+    padding: var(--md-sys-spacing-4);
+    margin: 0;
+    overflow-x: auto;
+    
+    code {
+      font-family: var(--md-sys-typescale-code-font);
+      font-size: var(--md-sys-typescale-code-size);
+      line-height: 1.6;
+      color: var(--md-sys-color-on-surface);
+      white-space: pre;
+      background: none;
+      padding: 0;
+    }
+  }
+}
+
+// ============================================
+// Interactive States
+// ============================================
+
+@mixin demo-hover-lift {
+  transition: all var(--md-sys-motion-hover);
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@mixin demo-hover-scale {
+  transition: transform var(--md-sys-motion-hover);
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+// ============================================
+// Typography Helpers
+// ============================================
+
+.demo-label {
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  color: var(--md-sys-color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.demo-caption {
+  font-size: var(--md-sys-typescale-body-small-size);
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.demo-monospace {
+  font-family: var(--md-sys-typescale-code-font);
+  font-size: var(--md-sys-typescale-code-size);
+}
+
+// ============================================
+// Spacing Utilities
+// ============================================
+
+.demo-spacing-xs { margin: var(--md-sys-spacing-2); }
+.demo-spacing-sm { margin: var(--md-sys-spacing-3); }
+.demo-spacing-md { margin: var(--md-sys-spacing-4); }
+.demo-spacing-lg { margin: var(--md-sys-spacing-6); }
+.demo-spacing-xl { margin: var(--md-sys-spacing-8); }
+
+// ============================================
+// Responsive Utilities
+// ============================================
+
+@media (max-width: 960px) {
+  .demo-grid {
+    &.demo-grid-2,
+    &.demo-grid-3,
+    &.demo-grid-4 {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .demo-hide-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 961px) {
+  .demo-hide-desktop {
+    display: none;
+  }
+}
+
+// ============================================
+// Full Width Utility
+// ============================================
+
+.demo-full-width {
+  width: 100%;
+}

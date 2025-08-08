@@ -3,6 +3,7 @@
 @use './tokens' as tokens;
 @use './themes/core-refined' as core;
 @use './components' as components;
+@use './tokens/sys-typescale' as typography;
 
 // Import Inter font weights needed
 @import '@fontsource/inter/200.css';
@@ -27,6 +28,9 @@
 
 // Apply input overrides globally
 @include components.vt-input-theme();
+
+// Apply form field overrides globally
+@include components.vt-form-field-theme();
 
 // Apply list overrides globally
 @include components.vt-list-overrides();

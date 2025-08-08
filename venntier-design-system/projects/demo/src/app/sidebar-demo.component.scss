@@ -1,4 +1,5 @@
 // Sidebar demo styles - now using design system theme
+@import '../demo-utilities';
 
 .demo-container {
   height: 100vh;
@@ -45,34 +46,22 @@
   flex: 1;
   background: var(--md-sys-color-surface);
   
+  // Use shared demo utilities for consistent styling
   section {
-    max-width: 1200px;
-    margin: 0 auto;
+    @extend .demo-section;
   }
   
   .section-title {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--md-sys-color-on-surface);
-    margin: 0 0 8px 0;
+    @extend .demo-section-title;
   }
   
   .section-description {
-    font-size: 14px;
-    color: var(--md-sys-color-on-surface-variant);
-    margin: 0 0 24px 0;
-    line-height: 1.5;
+    @extend .demo-section-description;
   }
   
   mat-card {
-    margin-bottom: 20px;
-    border: 1px solid var(--md-sys-color-outline-variant);
-    box-shadow: none !important;
-    background: var(--md-sys-color-surface);
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
+    @extend .demo-card;
+    box-shadow: none !important; // Override Material default
   }
 }
 
@@ -100,115 +89,16 @@
   }
 }
 
-// Typography classes
-.vt-typescale-display-large {
-  font-size: 56px !important;
-  font-weight: 200 !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.02em !important;
-}
+// Typography classes are now imported from the design system
+// @use '@venntier/design-system/styles/tokens/sys-typescale'
 
-.vt-typescale-display-medium {
-  font-size: 44px !important;
-  font-weight: 200 !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.01em !important;
-}
-
-.vt-typescale-display-small {
-  font-size: 36px !important;
-  font-weight: 300 !important;
-  line-height: 1.25 !important;
-}
-
-.vt-typescale-headline-large {
-  font-size: 32px !important;
-  font-weight: 450 !important;
-  line-height: 1.3 !important;
-}
-
-.vt-typescale-headline-medium {
-  font-size: 28px !important;
-  font-weight: 450 !important;
-  line-height: 1.3 !important;
-}
-
-.vt-typescale-headline-small {
-  font-size: 24px !important;
-  font-weight: 400 !important;
-  line-height: 1.4 !important;
-}
-
-.vt-typescale-title-large {
-  font-size: 22px !important;
-  font-weight: 450 !important;
-  line-height: 1.4 !important;
-}
-
-.vt-typescale-title-medium {
-  font-size: 18px !important;
-  font-weight: 450 !important;
-  line-height: 1.5 !important;
-}
-
-.vt-typescale-title-small {
-  font-size: 16px !important;
-  font-weight: 450 !important;
-  line-height: 1.5 !important;
-}
-
-.vt-typescale-body-large {
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  line-height: 1.6 !important;
-}
-
-.vt-typescale-body-medium {
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 1.6 !important;
-}
-
-.vt-typescale-body-small {
-  font-size: 12px !important;
-  font-weight: 400 !important;
-  line-height: 1.5 !important;
-}
-
-.vt-typescale-label-large {
-  font-size: 14px !important;
-  font-weight: 450 !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0.05em !important;
-}
-
-.vt-typescale-label-medium {
-  font-size: 12px !important;
-  font-weight: 450 !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0.05em !important;
-}
-
-.vt-typescale-label-small {
-  font-size: 11px !important;
-  font-weight: 450 !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0.05em !important;
-}
-
-// Form grids
+// Form grids - use shared utilities
 .form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  
-  mat-form-field {
-    width: 100%;
-  }
+  @extend .demo-form-grid;
 }
 
 .full-width {
-  width: 100%;
+  @extend .demo-full-width;
 }
 
 // Choice controls spacing
@@ -224,41 +114,8 @@
   }
 }
 
-// Ensure proper form field alignment
-::ng-deep {
-  .mat-mdc-form-field-subscript-wrapper {
-    display: none;
-  }
-  
-  .mat-mdc-text-field-wrapper {
-    padding: 0 !important;
-  }
-  
-  .mat-mdc-form-field-flex {
-    align-items: center;
-  }
-  
-  .mdc-text-field__input {
-    padding: 12px 16px !important;
-    height: 44px !important;
-    box-sizing: border-box;
-  }
-  
-  .mat-mdc-form-field-infix {
-    padding: 0 !important;
-    border: none !important;
-    min-height: 44px !important;
-  }
-  
-  .mat-mdc-floating-label {
-    display: none !important;
-  }
-  
-  .mat-mdc-form-field-label-wrapper {
-    top: -24px !important;
-    padding: 0 !important;
-  }
-}
+// Form field styles are now handled by the design system
+// See: @venntier/design-system/styles/components/form-fields
 
 // Colors demo styles
 .color-grid {
@@ -312,13 +169,13 @@
         
         .swatch-value {
           font-size: 13px;
-          font-family: 'SF Mono', Monaco, monospace;
+          font-family: var(--md-sys-typescale-code-font);
           color: var(--md-sys-color-on-surface-variant);
         }
         
         .swatch-token {
           font-size: 11px;
-          font-family: 'SF Mono', Monaco, monospace;
+          font-family: var(--md-sys-typescale-code-font);
           color: var(--md-sys-color-on-surface-variant);
           opacity: 0.7;
         }
@@ -363,7 +220,7 @@
       
       .gray-value {
         font-size: 11px;
-        font-family: 'SF Mono', Monaco, monospace;
+        font-family: var(--md-sys-typescale-code-font);
         color: var(--md-sys-color-on-surface-variant);
       }
       
@@ -395,25 +252,25 @@
         transition: all 0.2s ease;
         
         &.state-default {
-          background: #ffffff;
+          background: var(--md-sys-color-surface);
           border-color: var(--md-sys-color-outline);
         }
         
         &.state-hover {
-          background: #ececf1;
+          background: var(--md-sys-color-hover);
           border-color: var(--md-sys-color-outline);
           color: var(--md-sys-color-on-surface);
         }
         
         &.state-selected {
-          background: #e5e5e5;
+          background: var(--md-sys-color-selected);
           border-color: var(--md-sys-color-outline);
           color: var(--md-sys-color-on-surface);
         }
         
         &.state-focus {
-          background: #ffffff;
-          border: 2px solid #6e6e80;
+          background: var(--md-sys-color-surface);
+          border: 2px solid var(--md-sys-color-focus-ring);
           padding: 8px 23px; // Adjust for thicker border
         }
       }
@@ -492,39 +349,12 @@
   }
 }
 
-// Code examples
+// Code examples - use shared utilities
 .code-examples {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 24px;
+  @extend .demo-grid;
+  --min-width: 400px;
   
   .code-block {
-    h4 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--md-sys-color-on-surface);
-      margin: 0 0 12px 0;
-    }
-    
-    pre {
-      background: var(--md-sys-color-surface-container);
-      border: 1px solid var(--md-sys-color-outline-variant);
-      border-radius: 6px;
-      padding: 16px;
-      margin: 0;
-      overflow-x: auto;
-      
-      code {
-        font-family: 'SF Mono', Monaco, 'Courier New', monospace;
-        font-size: 12px;
-        line-height: 1.6;
-        color: var(--md-sys-color-on-surface);
-        white-space: pre;
-      }
-    }
-  }
-  
-  @media (max-width: 960px) {
-    grid-template-columns: 1fr;
+    @extend .demo-code-block;
   }
 }

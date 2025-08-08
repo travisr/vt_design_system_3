@@ -1,6 +1,9 @@
 /* Import Venntier Design System theme */
 @import '../../venntier/design-system/src/styles/venntier-theme';
 
+/* Import demo utilities */
+@import 'demo-utilities';
+
 html, body { height: 100%; }
 body { margin: 0; }
 
