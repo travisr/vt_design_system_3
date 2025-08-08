@@ -1,0 +1,113 @@
+Component HMR has been enabled, see https://angular.dev/hmr for more info.
+❯ Building...
+✔ Building...
+Initial chunk files | Names         |  Raw size
+styles.css          | styles        | 219.80 kB | 
+polyfills.js        | polyfills     |  89.77 kB | 
+main.js             | main          |  72.13 kB | 
+
+                    | Initial total | 381.71 kB
+
+Application bundle generation complete. [2.613 seconds]
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe same base theme styles are generated multiple times. Read more about how style duplication can be avoided in a dedicated guide. https://v18.material.angular.dev/guide/duplicate-theming-styles[0m [1m[35m[plugin angular-sass][0m
+
+    angular:styles/global:styles:1:8:
+[37m      1 │ @import [32m'projects/demo/src/styles.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  node_modules/@angular/material/core/theming/_theming.scss 149:7            -check-duplicate-theme-styles-v1()
+  node_modules/@angular/material/core/theming/_theming.scss 58:5             private-check-duplicate-theme-styles()
+  node_modules/@angular/material/core/theming/_all-theme.scss 45:3           all-component-themes()
+  projects/venntier/design-system/src/styles/themes/_core-refined.scss 19:5  vt-material-theme()
+  projects/venntier/design-system/src/styles/venntier-theme.scss 33:3        @use
+  projects/demo/src/styles.scss 2:1                                          root stylesheet
+  
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe same density styles are generated multiple times. Read more about how style duplication can be avoided in a dedicated guide. https://v18.material.angular.dev/guide/duplicate-theming-styles[0m [1m[35m[plugin angular-sass][0m
+
+    angular:styles/global:styles:1:8:
+[37m      1 │ @import [32m'projects/demo/src/styles.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  node_modules/@angular/material/core/theming/_theming.scss 140:7            -check-duplicate-theme-styles-v1()
+  node_modules/@angular/material/core/theming/_theming.scss 58:5             private-check-duplicate-theme-styles()
+  node_modules/@angular/material/core/theming/_all-theme.scss 45:3           all-component-themes()
+  projects/venntier/design-system/src/styles/themes/_core-refined.scss 19:5  vt-material-theme()
+  projects/venntier/design-system/src/styles/venntier-theme.scss 33:3        @use
+  projects/demo/src/styles.scss 2:1                                          root stylesheet
+  
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe same typography styles are generated multiple times. Read more about how style duplication can be avoided in a dedicated guide. https://v18.material.angular.dev/guide/duplicate-theming-styles[0m [1m[35m[plugin angular-sass][0m
+
+    angular:styles/global:styles:1:8:
+[37m      1 │ @import [32m'projects/demo/src/styles.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  node_modules/@angular/material/core/theming/_theming.scss 131:7            -check-duplicate-theme-styles-v1()
+  node_modules/@angular/material/core/theming/_theming.scss 58:5             private-check-duplicate-theme-styles()
+  node_modules/@angular/material/core/theming/_all-theme.scss 45:3           all-component-themes()
+  projects/venntier/design-system/src/styles/themes/_core-refined.scss 19:5  vt-material-theme()
+  projects/venntier/design-system/src/styles/venntier-theme.scss 33:3        @use
+  projects/demo/src/styles.scss 2:1                                          root stylesheet
+  
+
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:4200/
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names | Raw size
+main.js             | main  | 72.05 kB | 
+
+Application bundle generation complete. [0.496 seconds]
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe same base theme styles are generated multiple times. Read more about how style duplication can be avoided in a dedicated guide. https://v18.material.angular.dev/guide/duplicate-theming-styles[0m [1m[35m[plugin angular-sass][0m
+
+    angular:styles/global:styles:1:8:
+[37m      1 │ @import [32m'projects/demo/src/styles.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  node_modules/@angular/material/core/theming/_theming.scss 149:7            -check-duplicate-theme-styles-v1()
+  node_modules/@angular/material/core/theming/_theming.scss 58:5             private-check-duplicate-theme-styles()
+  node_modules/@angular/material/core/theming/_all-theme.scss 45:3           all-component-themes()
+  projects/venntier/design-system/src/styles/themes/_core-refined.scss 19:5  vt-material-theme()
+  projects/venntier/design-system/src/styles/venntier-theme.scss 33:3        @use
+  projects/demo/src/styles.scss 2:1                                          root stylesheet
+  
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe same density styles are generated multiple times. Read more about how style duplication can be avoided in a dedicated guide. https://v18.material.angular.dev/guide/duplicate-theming-styles[0m [1m[35m[plugin angular-sass][0m
+
+    angular:styles/global:styles:1:8:
+[37m      1 │ @import [32m'projects/demo/src/styles.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  node_modules/@angular/material/core/theming/_theming.scss 140:7            -check-duplicate-theme-styles-v1()
+  node_modules/@angular/material/core/theming/_theming.scss 58:5             private-check-duplicate-theme-styles()
+  node_modules/@angular/material/core/theming/_all-theme.scss 45:3           all-component-themes()
+  projects/venntier/design-system/src/styles/themes/_core-refined.scss 19:5  vt-material-theme()
+  projects/venntier/design-system/src/styles/venntier-theme.scss 33:3        @use
+  projects/demo/src/styles.scss 2:1                                          root stylesheet
+  
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe same typography styles are generated multiple times. Read more about how style duplication can be avoided in a dedicated guide. https://v18.material.angular.dev/guide/duplicate-theming-styles[0m [1m[35m[plugin angular-sass][0m
+
+    angular:styles/global:styles:1:8:
+[37m      1 │ @import [32m'projects/demo/src/styles.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  node_modules/@angular/material/core/theming/_theming.scss 131:7            -check-duplicate-theme-styles-v1()
+  node_modules/@angular/material/core/theming/_theming.scss 58:5             private-check-duplicate-theme-styles()
+  node_modules/@angular/material/core/theming/_all-theme.scss 45:3           all-component-themes()
+  projects/venntier/design-system/src/styles/themes/_core-refined.scss 19:5  vt-material-theme()
+  projects/venntier/design-system/src/styles/venntier-theme.scss 33:3        @use
+  projects/demo/src/styles.scss 2:1                                          root stylesheet
+  
+
+
+Component update sent to client(s).

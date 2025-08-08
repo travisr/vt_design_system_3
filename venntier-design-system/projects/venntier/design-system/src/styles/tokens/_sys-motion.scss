@@ -1,0 +1,174 @@
+// M3 System Motion Tokens - Smooth, subtle animations
+
+// Duration scale
+$_duration-instant: 0ms;
+$_duration-shortest: 100ms;
+$_duration-short: 200ms;
+$_duration-medium: 300ms;
+$_duration-long: 400ms;
+$_duration-longer: 500ms;
+$_duration-longest: 600ms;
+
+// Easing functions (Material Design standard)
+$_easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1); // Standard curve
+$_easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1); // Decelerate curve
+$_easing-accelerate: cubic-bezier(0.4, 0.0, 1, 1); // Accelerate curve
+$_easing-sharp: cubic-bezier(0.4, 0.0, 0.6, 1); // Sharp curve
+$_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
+
+// Motion tokens
+:root {
+  // Duration tokens
+  --md-sys-motion-duration-instant: #{$_duration-instant};
+  --md-sys-motion-duration-shortest: #{$_duration-shortest};
+  --md-sys-motion-duration-short: #{$_duration-short};
+  --md-sys-motion-duration-medium: #{$_duration-medium};
+  --md-sys-motion-duration-long: #{$_duration-long};
+  --md-sys-motion-duration-longer: #{$_duration-longer};
+  --md-sys-motion-duration-longest: #{$_duration-longest};
+  
+  // Easing tokens
+  --md-sys-motion-easing-standard: #{$_easing-standard};
+  --md-sys-motion-easing-decelerate: #{$_easing-decelerate};
+  --md-sys-motion-easing-accelerate: #{$_easing-accelerate};
+  --md-sys-motion-easing-sharp: #{$_easing-sharp};
+  --md-sys-motion-easing-emphasized: #{$_easing-emphasized};
+  --md-sys-motion-easing-linear: linear;
+  
+  // Component-specific transitions
+  --md-sys-motion-button: 
+    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    transform var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
+    box-shadow var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+  
+  --md-sys-motion-card:
+    transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard),
+    box-shadow var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
+  
+  --md-sys-motion-input:
+    border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+  
+  --md-sys-motion-fade:
+    opacity var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+  
+  --md-sys-motion-slide:
+    transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-decelerate);
+  
+  --md-sys-motion-expand:
+    max-height var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard),
+    opacity var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+  
+  // Hover transitions (faster for responsiveness)
+  --md-sys-motion-hover:
+    background-color var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
+    color var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard);
+  
+  // Focus transitions
+  --md-sys-motion-focus:
+    outline var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
+    box-shadow var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard);
+}
+
+// Motion mixins
+@mixin motion($property: all, $duration: short, $easing: standard) {
+  transition: $property var(--md-sys-motion-duration-#{$duration}) var(--md-sys-motion-easing-#{$easing});
+}
+
+@mixin motion-button() {
+  transition: var(--md-sys-motion-button);
+}
+
+@mixin motion-card() {
+  transition: var(--md-sys-motion-card);
+}
+
+@mixin motion-input() {
+  transition: var(--md-sys-motion-input);
+}
+
+@mixin motion-fade() {
+  transition: var(--md-sys-motion-fade);
+}
+
+@mixin motion-slide() {
+  transition: var(--md-sys-motion-slide);
+}
+
+@mixin motion-hover() {
+  transition: var(--md-sys-motion-hover);
+}
+
+@mixin motion-focus() {
+  transition: var(--md-sys-motion-focus);
+}
+
+// Animation keyframes
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vt-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-slide-in-up {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes vt-slide-in-down {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes vt-scale-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Utility classes
+.vt-motion-none {
+  transition: none !important;
+}
+
+.vt-motion-all {
+  @include motion(all, medium, standard);
+}
+
+.vt-motion-fade {
+  @include motion-fade();
+}
+
+.vt-motion-slide {
+  @include motion-slide();
+}

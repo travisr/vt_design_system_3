@@ -1,0 +1,352 @@
+<mat-sidenav-container class="demo-container">
+  <!-- Sidebar -->
+  <mat-sidenav mode="side" opened class="vt-sidenav-standard">
+    <div class="vt-sidenav-header">
+      <div class="vt-sidenav-logo">
+        <mat-icon>layers</mat-icon>
+        <span>Venntier</span>
+      </div>
+    </div>
+    
+    <div class="vt-sidenav-content">
+      <!-- Create Section -->
+      <div class="vt-nav-section">
+        <div class="vt-nav-section-title">Create</div>
+        <mat-nav-list>
+          <a mat-list-item [class.active]="activeSection === 'typography'" (click)="activeSection = 'typography'">
+            <mat-icon matListItemIcon>text_fields</mat-icon>
+            <span matListItemTitle>Typography</span>
+          </a>
+          <a mat-list-item [class.active]="activeSection === 'colors'" (click)="activeSection = 'colors'">
+            <mat-icon matListItemIcon>palette</mat-icon>
+            <span matListItemTitle>Colors</span>
+          </a>
+          <a mat-list-item [class.active]="activeSection === 'buttons'" (click)="activeSection = 'buttons'">
+            <mat-icon matListItemIcon>smart_button</mat-icon>
+            <span matListItemTitle>Buttons</span>
+          </a>
+        </mat-nav-list>
+      </div>
+
+      <!-- Manage Section -->
+      <div class="vt-nav-section">
+        <div class="vt-nav-section-title">Manage</div>
+        <mat-nav-list>
+          <a mat-list-item [class.active]="activeSection === 'inputs'" (click)="activeSection = 'inputs'">
+            <mat-icon matListItemIcon>input</mat-icon>
+            <span matListItemTitle>Inputs</span>
+          </a>
+          <a mat-list-item [class.active]="activeSection === 'selection'" (click)="activeSection = 'selection'">
+            <mat-icon matListItemIcon>list</mat-icon>
+            <span matListItemTitle>Selects</span>
+          </a>
+          <a mat-list-item [class.active]="activeSection === 'choice'" (click)="activeSection = 'choice'">
+            <mat-icon matListItemIcon>check_box</mat-icon>
+            <span matListItemTitle>Checkboxes</span>
+          </a>
+          <a mat-list-item [class.active]="activeSection === 'cards'" (click)="activeSection = 'cards'">
+            <mat-icon matListItemIcon>dashboard</mat-icon>
+            <span matListItemTitle>Cards</span>
+          </a>
+          <a mat-list-item [class.active]="activeSection === 'tables'" (click)="activeSection = 'tables'">
+            <mat-icon matListItemIcon>table_chart</mat-icon>
+            <span matListItemTitle>Tables</span>
+          </a>
+        </mat-nav-list>
+      </div>
+
+      <!-- Optimize Section -->
+      <div class="vt-nav-section">
+        <div class="vt-nav-section-title">Optimize</div>
+        <mat-nav-list>
+          <a mat-list-item [class.active]="activeSection === 'progress'" (click)="activeSection = 'progress'">
+            <mat-icon matListItemIcon>show_chart</mat-icon>
+            <span matListItemTitle>Progress</span>
+          </a>
+          <a mat-list-item [class.active]="activeSection === 'dialogs'" (click)="activeSection = 'dialogs'">
+            <mat-icon matListItemIcon>chat_bubble</mat-icon>
+            <span matListItemTitle>Dialogs</span>
+          </a>
+          <a mat-list-item [class.active]="activeSection === 'tooltips'" (click)="activeSection = 'tooltips'">
+            <mat-icon matListItemIcon>info</mat-icon>
+            <span matListItemTitle>Tooltips</span>
+          </a>
+        </mat-nav-list>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content class="demo-content">
+    <!-- Top Bar -->
+    <mat-toolbar class="demo-toolbar">
+      <h1>Venntier Design System</h1>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
+        <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Content Area -->
+    <div class="content-wrapper">
+      
+      <!-- Typography Section -->
+      @if (activeSection === 'typography') {
+        <section>
+          <h2 class="section-title">Typography</h2>
+          <p class="section-description">
+            The Venntier Design System uses Inter as its primary typeface with a refined type scale for optimal readability.
+          </p>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Display Styles</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="typography-sample">
+                <span class="type-label">Display Large · 56px · 200</span>
+                <p class="vt-typescale-display-large">Build amazing products</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Display Medium · 44px · 200</span>
+                <p class="vt-typescale-display-medium">Build amazing products</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Display Small · 36px · 300</span>
+                <p class="vt-typescale-display-small">Build amazing products</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Headline Styles</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="typography-sample">
+                <span class="type-label">Headline Large · 32px · 450</span>
+                <p class="vt-typescale-headline-large">Create powerful interfaces</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Headline Medium · 28px · 450</span>
+                <p class="vt-typescale-headline-medium">Create powerful interfaces</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Headline Small · 24px · 400</span>
+                <p class="vt-typescale-headline-small">Create powerful interfaces</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Body & Label Styles</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="typography-sample">
+                <span class="type-label">Title Large · 22px · 450</span>
+                <p class="vt-typescale-title-large">Section titles and emphasis</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Title Medium · 18px · 450</span>
+                <p class="vt-typescale-title-medium">Subsection headers</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Title Small · 16px · 450</span>
+                <p class="vt-typescale-title-small">Card titles and labels</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Body Large · 16px · 400</span>
+                <p class="vt-typescale-body-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Body Medium · 14px · 400</span>
+                <p class="vt-typescale-body-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Body Small · 12px · 400</span>
+                <p class="vt-typescale-body-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Label Large · 14px · 450</span>
+                <p class="vt-typescale-label-large">BUTTON TEXT</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Label Medium · 12px · 450</span>
+                <p class="vt-typescale-label-medium">SMALL BUTTON</p>
+              </div>
+              <div class="typography-sample">
+                <span class="type-label">Label Small · 11px · 450</span>
+                <p class="vt-typescale-label-small">CAPTION TEXT</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </section>
+      }
+
+      <!-- Form Controls Section -->
+      @if (activeSection === 'inputs') {
+        <section>
+          <h2 class="section-title">Text Inputs</h2>
+          <p class="section-description">
+            Input fields with clean borders and proper alignment for data entry.
+          </p>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Input Fields</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="form-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="name@example.com" [(ngModel)]="emailValue">
+                  <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" placeholder="Enter password">
+                  <mat-icon matSuffix>lock</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Search</mat-label>
+                  <input matInput placeholder="Search...">
+                  <mat-icon matPrefix>search</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput type="tel" placeholder="+1 (555) 123-4567">
+                  <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Textarea</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput rows="4" placeholder="Enter a detailed description..."></textarea>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </section>
+      }
+
+      <!-- Selection Controls -->
+      @if (activeSection === 'selection') {
+        <section>
+          <h2 class="section-title">Selection Controls</h2>
+          <p class="section-description">
+            Dropdowns and selection components for choosing from predefined options.
+          </p>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Select Dropdowns</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="form-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Country</mat-label>
+                  <mat-select [(ngModel)]="countryValue">
+                    <mat-option value="us">United States</mat-option>
+                    <mat-option value="uk">United Kingdom</mat-option>
+                    <mat-option value="ca">Canada</mat-option>
+                    <mat-option value="au">Australia</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Language</mat-label>
+                  <mat-select [(ngModel)]="languageValue">
+                    <mat-option value="en">English</mat-option>
+                    <mat-option value="es">Spanish</mat-option>
+                    <mat-option value="fr">French</mat-option>
+                    <mat-option value="de">German</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Team Size</mat-label>
+                  <mat-select>
+                    <mat-option value="1">1-10 employees</mat-option>
+                    <mat-option value="2">11-50 employees</mat-option>
+                    <mat-option value="3">51-200 employees</mat-option>
+                    <mat-option value="4">201+ employees</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </section>
+      }
+
+      <!-- Choice Controls -->
+      @if (activeSection === 'choice') {
+        <section>
+          <h2 class="section-title">Choice Controls</h2>
+          <p class="section-description">
+            Checkboxes, radio buttons, and toggles for binary and multiple choice selections.
+          </p>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Checkboxes</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="choice-group">
+                <mat-checkbox [(ngModel)]="checkbox1">Receive email notifications</mat-checkbox>
+                <mat-checkbox [(ngModel)]="checkbox2">Receive SMS notifications</mat-checkbox>
+                <mat-checkbox [(ngModel)]="checkbox3">Receive marketing updates</mat-checkbox>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Radio Buttons</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-radio-group [(ngModel)]="radioValue" class="choice-group">
+                <mat-radio-button value="monthly">Monthly billing</mat-radio-button>
+                <mat-radio-button value="yearly">Yearly billing (save 20%)</mat-radio-button>
+                <mat-radio-button value="enterprise">Enterprise (custom)</mat-radio-button>
+              </mat-radio-group>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Toggle Switches</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="choice-group">
+                <mat-slide-toggle [(ngModel)]="toggle1">Enable two-factor authentication</mat-slide-toggle>
+                <mat-slide-toggle [(ngModel)]="toggle2">Show profile publicly</mat-slide-toggle>
+                <mat-slide-toggle [(ngModel)]="toggle3">Allow data collection</mat-slide-toggle>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </section>
+      }
+
+      <!-- Default content for other sections -->
+      @if (!['typography', 'inputs', 'selection', 'choice'].includes(activeSection)) {
+        <section>
+          <h2 class="section-title">{{ activeSection | titlecase }}</h2>
+          <p class="section-description">
+            This section is under construction. Select Typography, Text Inputs, Selection Controls, or Choice Controls to see examples.
+          </p>
+        </section>
+      }
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

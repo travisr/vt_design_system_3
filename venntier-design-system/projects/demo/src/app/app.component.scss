@@ -1,0 +1,69 @@
+.demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--md-sys-spacing-6);
+}
+
+.demo-section {
+  text-align: center;
+  margin-bottom: var(--md-sys-spacing-8);
+}
+
+.tab-content {
+  padding: var(--md-sys-spacing-6);
+}
+
+mat-card {
+  margin-bottom: var(--md-sys-spacing-4);
+}
+
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-3);
+  align-items: center;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--md-sys-spacing-4);
+  margin-bottom: var(--md-sys-spacing-4);
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.radio-group {
+  mat-radio-button {
+    margin-right: var(--md-sys-spacing-4);
+  }
+}
+
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-3);
+  align-items: flex-start;
+  
+  mat-progress-bar {
+    width: 100%;
+  }
+}
+
+.badges {
+  margin-top: var(--md-sys-spacing-4);
+  display: flex;
+  gap: var(--md-sys-spacing-4);
+}
+
+.typography-samples {
+  p {
+    margin: var(--md-sys-spacing-3) 0;
+  }
+}
+
+table {
+  width: 100%;
+}

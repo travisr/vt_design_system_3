@@ -1,0 +1,106 @@
+// M3 System Shape Tokens - Minimal rounded corners
+
+// Base radius values
+$_radius-none: 0;
+$_radius-xs: 2px;
+$_radius-sm: 4px;
+$_radius-md: 6px;
+$_radius-lg: 8px;
+$_radius-xl: 12px;
+$_radius-2xl: 16px;
+$_radius-3xl: 24px;
+$_radius-full: 9999px;
+
+// Shape scale tokens
+:root {
+  // Corner radius tokens
+  --md-sys-shape-corner-none: #{$_radius-none};
+  --md-sys-shape-corner-extra-small: #{$_radius-xs};
+  --md-sys-shape-corner-small: #{$_radius-sm};
+  --md-sys-shape-corner-medium: #{$_radius-md};
+  --md-sys-shape-corner-large: #{$_radius-lg};
+  --md-sys-shape-corner-extra-large: #{$_radius-xl};
+  --md-sys-shape-corner-full: #{$_radius-full};
+  
+  // Component-specific shapes (from PRD)
+  --md-sys-shape-button: var(--md-sys-shape-corner-medium); // 6px
+  --md-sys-shape-card: var(--md-sys-shape-corner-large); // 8px
+  --md-sys-shape-dialog: var(--md-sys-shape-corner-extra-large); // 12px
+  --md-sys-shape-chip: var(--md-sys-shape-corner-full); // pill
+  --md-sys-shape-input: var(--md-sys-shape-corner-medium); // 6px
+  --md-sys-shape-container: var(--md-sys-shape-corner-large); // 8px
+  --md-sys-shape-tooltip: var(--md-sys-shape-corner-small); // 4px
+  --md-sys-shape-menu: var(--md-sys-shape-corner-medium); // 6px
+  --md-sys-shape-badge: var(--md-sys-shape-corner-full); // pill
+  --md-sys-shape-snackbar: var(--md-sys-shape-corner-small); // 4px
+  
+  // Special shapes
+  --md-sys-shape-corner-top: var(--md-sys-shape-corner-large) var(--md-sys-shape-corner-large) 0 0;
+  --md-sys-shape-corner-bottom: 0 0 var(--md-sys-shape-corner-large) var(--md-sys-shape-corner-large);
+  --md-sys-shape-corner-left: var(--md-sys-shape-corner-large) 0 0 var(--md-sys-shape-corner-large);
+  --md-sys-shape-corner-right: 0 var(--md-sys-shape-corner-large) var(--md-sys-shape-corner-large) 0;
+}
+
+// Shape function
+@function shape($name) {
+  @return var(--md-sys-shape-#{$name});
+}
+
+// Shape mixins
+@mixin shape($radius-name) {
+  border-radius: var(--md-sys-shape-#{$radius-name});
+}
+
+@mixin shape-corner($corner) {
+  border-radius: var(--md-sys-shape-corner-#{$corner});
+}
+
+// Component shape mixins
+@mixin button-shape() {
+  border-radius: var(--md-sys-shape-button);
+}
+
+@mixin card-shape() {
+  border-radius: var(--md-sys-shape-card);
+}
+
+@mixin dialog-shape() {
+  border-radius: var(--md-sys-shape-dialog);
+}
+
+@mixin chip-shape() {
+  border-radius: var(--md-sys-shape-chip);
+}
+
+@mixin input-shape() {
+  border-radius: var(--md-sys-shape-input);
+}
+
+// Utility classes
+.vt-shape-none {
+  border-radius: var(--md-sys-shape-corner-none);
+}
+
+.vt-shape-xs {
+  border-radius: var(--md-sys-shape-corner-extra-small);
+}
+
+.vt-shape-sm {
+  border-radius: var(--md-sys-shape-corner-small);
+}
+
+.vt-shape-md {
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+.vt-shape-lg {
+  border-radius: var(--md-sys-shape-corner-large);
+}
+
+.vt-shape-xl {
+  border-radius: var(--md-sys-shape-corner-extra-large);
+}
+
+.vt-shape-full {
+  border-radius: var(--md-sys-shape-corner-full);
+}

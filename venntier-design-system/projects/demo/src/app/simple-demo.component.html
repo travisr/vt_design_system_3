@@ -1,0 +1,82 @@
+<mat-toolbar color="primary">
+  <span>Venntier Design System Demo</span>
+  <span style="flex: 1"></span>
+  <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
+    <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="demo-container">
+  <section class="demo-section">
+    <h1 class="vt-typescale-headline-large">Venntier Design System</h1>
+    <p class="vt-typescale-body-large">
+      Angular Material components with OpenAI-inspired styling
+    </p>
+  </section>
+
+  <h2 class="vt-typescale-headline-medium">Buttons</h2>
+  
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Button Variants</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="button-grid">
+        <button mat-raised-button class="mat-primary">Primary (Green CTA)</button>
+        <button mat-stroked-button>Secondary (Outlined)</button>
+        <button mat-flat-button>Tertiary (Flat)</button>
+        <button mat-button>Text Button</button>
+        <button mat-raised-button color="warn">Danger</button>
+        <button mat-raised-button disabled>Disabled</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <h2 class="vt-typescale-headline-medium">Form Controls</h2>
+  
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Input Fields</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Enter your email" [(ngModel)]="inputValue">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Enter password">
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Select an option</mat-label>
+          <mat-select [(ngModel)]="selectValue">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2">Option 2</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <h2 class="vt-typescale-headline-medium">Typography Scale</h2>
+  
+  <mat-card>
+    <mat-card-content>
+      <div class="typography-samples">
+        <p class="vt-typescale-display-large">Display Large</p>
+        <p class="vt-typescale-display-medium">Display Medium</p>
+        <p class="vt-typescale-headline-large">Headline Large</p>
+        <p class="vt-typescale-headline-medium">Headline Medium</p>
+        <p class="vt-typescale-title-large">Title Large</p>
+        <p class="vt-typescale-body-large">Body Large - Lorem ipsum dolor sit amet.</p>
+        <p class="vt-typescale-label-large">Label Large</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

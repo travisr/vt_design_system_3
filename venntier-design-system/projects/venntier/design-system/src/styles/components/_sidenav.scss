@@ -1,0 +1,210 @@
+// Venntier Design System - Sidenav Theme
+// OpenAI-inspired sidenav styling for Angular Material
+
+@mixin vt-sidenav-theme() {
+  // Base sidenav container styles
+  .mat-drawer.mat-sidenav,
+  .mat-sidenav {
+    background: var(--md-sys-color-surface-container-low);
+    border-right: 1px solid var(--md-sys-color-outline-variant);
+    
+    // Standard width for navigation drawer
+    &.vt-sidenav-standard {
+      width: 240px;
+    }
+    
+    &.vt-sidenav-expanded {
+      width: 280px;
+    }
+    
+    &.vt-sidenav-collapsed {
+      width: 64px;
+    }
+  }
+  
+  // Sidenav header area (logo/brand)
+  .vt-sidenav-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    
+    .vt-sidenav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--md-sys-color-on-surface);
+      
+      mat-icon {
+        color: var(--md-sys-color-tertiary);
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  
+  // Sidenav content area
+  .vt-sidenav-content {
+    padding: 4px 0;
+    overflow-y: auto;
+    height: calc(100vh - 69px); // Account for header
+  }
+  
+  // Navigation sections
+  .vt-nav-section {
+    padding: 8px 8px 4px 8px;
+    
+    .vt-nav-section-title {
+      padding: 12px 8px 4px 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--md-sys-color-on-surface-variant);
+      text-transform: none;
+    }
+  }
+  
+  // Override Material's list styles for sidenav
+  .vt-sidenav-content .mat-mdc-nav-list,
+  .vt-nav-section .mat-mdc-nav-list {
+    padding: 0;
+    
+    // Target the actual Material list item class
+    .mat-mdc-list-item {
+      height: 32px;
+      margin: 2px 0;
+      padding: 0 8px;
+      border-radius: 6px;
+      transition: background-color 0.15s ease;
+      position: relative;
+      background-color: transparent;
+      
+      // Override Material's state layer
+      .mat-mdc-list-item-interactive::before {
+        display: none !important;
+      }
+      
+      // Default state text
+      .mat-mdc-list-item-unscoped-content {
+        color: var(--md-sys-color-on-surface-variant);
+        padding: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+      
+      // Icon styling
+      .mat-icon,
+      mat-icon {
+        margin-right: 10px;
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        color: var(--md-sys-color-on-surface-variant);
+        transition: color 0.15s ease;
+      }
+      
+      // Text styling
+      .mat-mdc-list-item-title,
+      span[matListItemTitle] {
+        font-size: 14px;
+        line-height: 32px;
+        font-weight: 400;
+        color: inherit;
+      }
+      
+      // Hover state
+      &:hover:not(.active):not([disabled]) {
+        background-color: var(--md-sys-color-hover) !important;
+        
+        .mat-mdc-list-item-unscoped-content {
+          color: var(--md-sys-color-on-surface-variant);
+        }
+      }
+      
+      // Active/selected state
+      &.active,
+      &[aria-selected="true"] {
+        background-color: var(--md-sys-color-selected) !important;
+        
+        .mat-mdc-list-item-unscoped-content {
+          color: var(--md-sys-color-primary);  // Use primary (black) for maximum contrast
+          font-weight: 500;  // Medium weight - not too heavy
+        }
+        
+        .mat-icon,
+        mat-icon {
+          color: var(--md-sys-color-primary);
+        }
+        
+        .mat-mdc-list-item-title,
+        span[matListItemTitle] {
+          color: var(--md-sys-color-primary);
+          font-weight: 500;  // Medium weight - not too heavy
+        }
+      }
+      
+      // Disabled state
+      &[disabled] {
+        opacity: 0.38;
+        cursor: not-allowed;
+      }
+      
+      // Focus state
+      &:focus-visible {
+        outline: 2px solid var(--md-sys-color-focus-ring);
+        outline-offset: -2px;
+      }
+      
+      // Remove Material's ripple
+      .mat-ripple,
+      .mat-mdc-list-item-ripple {
+        display: none;
+      }
+    }
+  }
+  
+  // Nested navigation items (submenu)
+  .vt-nav-nested {
+    .mat-mdc-nav-list {
+      padding-left: 16px;
+      
+      .mat-mdc-list-item {
+        height: 28px;
+        font-size: 13px;
+        
+        mat-icon {
+          font-size: 14px;
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+  
+  // Sidenav footer area
+  .vt-sidenav-footer {
+    padding: 16px;
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+    margin-top: auto;
+  }
+  
+  // Dark theme adjustments
+  [data-theme="dark"] & {
+    .mat-sidenav {
+      background: var(--md-sys-color-surface-container-low);
+      border-right-color: var(--md-sys-color-outline-variant);
+    }
+  }
+  
+  // Responsive behavior
+  @media (max-width: 960px) {
+    .mat-sidenav {
+      &.vt-sidenav-standard {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  }
+}

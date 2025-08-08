@@ -1,0 +1,170 @@
+@use 'sass:map';
+
+// M3 System Color Tokens - OpenAI-inspired monochromatic palette
+// Using CSS custom properties for runtime theming
+
+// Core palette values
+$_black: #000000;
+$_white: #ffffff;
+$_green: #10a37f;
+$_purple: #8b5cf6;
+
+// Refined OpenAI gray scale - softer, warmer
+$_gray-950: #0a0a0a;
+$_gray-900: #202123;  // OpenAI dark
+$_gray-800: #353740;  // OpenAI sidebar dark
+$_gray-700: #40414f;  // OpenAI border dark
+$_gray-600: #565869;  // OpenAI text secondary
+$_gray-500: #8e8ea0;  // OpenAI text muted
+$_gray-400: #acacbe;  // OpenAI placeholder
+$_gray-300: #c5c5d2;  // OpenAI border light
+$_gray-200: #e5e5e5;  // OpenAI divider
+$_gray-150: #dcdcdc;  // Even darker gray selected (more contrast)
+$_gray-100: #fafbfc;  // Barely visible hover (very subtle)
+$_gray-50: #f9f9f9;   // OpenAI background
+$_gray-25: #fafafa;   // OpenAI surface
+
+// Light theme tokens
+:root {
+  // Primary (monochrome)
+  --md-sys-color-primary: #{$_black};
+  --md-sys-color-on-primary: #{$_white};
+  --md-sys-color-primary-container: #{$_gray-100};
+  --md-sys-color-on-primary-container: #{$_black};
+  
+  // Secondary (also monochrome)
+  --md-sys-color-secondary: #{$_gray-700};
+  --md-sys-color-on-secondary: #{$_white};
+  --md-sys-color-secondary-container: #{$_gray-200};
+  --md-sys-color-on-secondary-container: #{$_gray-900};
+  
+  // Tertiary (green for CTAs only)
+  --md-sys-color-tertiary: #{$_green};
+  --md-sys-color-on-tertiary: #{$_white};
+  --md-sys-color-tertiary-container: #d4f4ec;
+  --md-sys-color-on-tertiary-container: #005038;
+  
+  // Error
+  --md-sys-color-error: #dc2626;
+  --md-sys-color-on-error: #{$_white};
+  --md-sys-color-error-container: #fef2f2;
+  --md-sys-color-on-error-container: #7f1d1d;
+  
+  // Background - subtle off-white
+  --md-sys-color-background: #{$_gray-50};
+  --md-sys-color-on-background: #{$_gray-900};
+  
+  // Surface - layered hierarchy
+  --md-sys-color-surface: #{$_white};
+  --md-sys-color-on-surface: #{$_gray-900};
+  --md-sys-color-surface-variant: #{$_gray-25};
+  --md-sys-color-on-surface-variant: #{$_gray-600};
+  
+  // Surface containers (elevation levels)
+  --md-sys-color-surface-container-lowest: #{$_white};
+  --md-sys-color-surface-container-low: #{$_gray-50};
+  --md-sys-color-surface-container: #{$_gray-100};
+  --md-sys-color-surface-container-high: #{$_gray-100};
+  --md-sys-color-surface-container-highest: #{$_gray-200};
+  
+  // Outline
+  --md-sys-color-outline: #{$_gray-200};
+  --md-sys-color-outline-variant: #{$_gray-100};
+  
+  // Inverse
+  --md-sys-color-inverse-surface: #{$_gray-900};
+  --md-sys-color-inverse-on-surface: #{$_gray-100};
+  --md-sys-color-inverse-primary: #{$_gray-100};
+  
+  // Scrim
+  --md-sys-color-scrim: rgba(0, 0, 0, 0.32);
+  
+  // Shadow
+  --md-sys-color-shadow: rgba(0, 0, 0, 0.08);
+  
+  // Interactive states (Refined OpenAI-style)
+  --md-sys-color-hover: #{$_gray-100};
+  --md-sys-color-selected: #{$_gray-150};
+  --md-sys-color-focus-ring: #{$_gray-400};
+  --md-sys-color-pressed: #{$_gray-200};
+  
+  // Data visualization (purple)
+  --md-sys-color-data-primary: #{$_purple};
+  --md-sys-color-data-secondary: #a78bfa;
+  --md-sys-color-data-tertiary: #c4b5fd;
+}
+
+// Dark theme tokens
+[data-theme="dark"] {
+  // Primary (monochrome inverted)
+  --md-sys-color-primary: #{$_white};
+  --md-sys-color-on-primary: #{$_black};
+  --md-sys-color-primary-container: #{$_gray-800};
+  --md-sys-color-on-primary-container: #{$_gray-100};
+  
+  // Secondary
+  --md-sys-color-secondary: #{$_gray-400};
+  --md-sys-color-on-secondary: #{$_gray-900};
+  --md-sys-color-secondary-container: #{$_gray-700};
+  --md-sys-color-on-secondary-container: #{$_gray-100};
+  
+  // Tertiary (green for CTAs)
+  --md-sys-color-tertiary: #{$_green};
+  --md-sys-color-on-tertiary: #{$_white};
+  --md-sys-color-tertiary-container: #00442e;
+  --md-sys-color-on-tertiary-container: #a2f5da;
+  
+  // Error
+  --md-sys-color-error: #ef4444;
+  --md-sys-color-on-error: #{$_white};
+  --md-sys-color-error-container: #7f1d1d;
+  --md-sys-color-on-error-container: #fecaca;
+  
+  // Background
+  --md-sys-color-background: #{$_gray-950};
+  --md-sys-color-on-background: #{$_gray-100};
+  
+  // Surface
+  --md-sys-color-surface: #{$_gray-950};
+  --md-sys-color-on-surface: #{$_gray-100};
+  --md-sys-color-surface-variant: #{$_gray-800};
+  --md-sys-color-on-surface-variant: #{$_gray-300};
+  
+  // Surface containers
+  --md-sys-color-surface-container-lowest: #{$_gray-950};
+  --md-sys-color-surface-container-low: #{$_gray-900};
+  --md-sys-color-surface-container: #{$_gray-800};
+  --md-sys-color-surface-container-high: #{$_gray-700};
+  --md-sys-color-surface-container-highest: #{$_gray-600};
+  
+  // Outline
+  --md-sys-color-outline: #{$_gray-700};
+  --md-sys-color-outline-variant: #{$_gray-800};
+  
+  // Inverse
+  --md-sys-color-inverse-surface: #{$_gray-100};
+  --md-sys-color-inverse-on-surface: #{$_gray-900};
+  --md-sys-color-inverse-primary: #{$_gray-800};
+  
+  // Scrim
+  --md-sys-color-scrim: rgba(0, 0, 0, 0.5);
+  
+  // Shadow
+  --md-sys-color-shadow: rgba(0, 0, 0, 0.3);
+  
+  // Interactive states
+  --md-sys-color-hover: #{$_gray-800};
+  --md-sys-color-selected: #{$_gray-700};
+  --md-sys-color-focus-ring: #{$_gray-500};
+  --md-sys-color-pressed: #{$_gray-600};
+  
+  // Data visualization
+  --md-sys-color-data-primary: #{$_purple};
+  --md-sys-color-data-secondary: #8b5cf6;
+  --md-sys-color-data-tertiary: #7c3aed;
+}
+
+// Utility function to get color
+@function color($name) {
+  @return var(--md-sys-color-#{$name});
+}

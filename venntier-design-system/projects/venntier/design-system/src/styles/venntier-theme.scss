@@ -1,0 +1,145 @@
+// Venntier Design System - Main Theme File
+@use '@angular/material' as mat;
+@use './tokens' as tokens;
+@use './themes/core-refined' as core;
+@use './components' as components;
+
+// Import Inter font weights needed
+@import '@fontsource/inter/200.css';
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+
+// Include Material core styles
+@include mat.core();
+
+// Apply default light theme
+:root {
+  @include core.vt-material-theme('light');
+}
+
+// Apply component themes AFTER Material themes to override
+body {
+  @include components.vt-sidenav-theme();
+}
+
+// Global styles
+:root {
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  color: var(--md-sys-color-on-background);
+  background-color: var(--md-sys-color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Dark theme support
+[data-theme="dark"] {
+  @include core.vt-material-theme('dark');
+}
+
+// Base resets
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// Remove default focus outlines in favor of custom ones
+*:focus {
+  outline: none;
+}
+
+// Custom focus visible styles
+*:focus-visible {
+  outline: 2px solid var(--md-sys-color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--md-sys-shape-corner-small);
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Selection colors
+::selection {
+  background-color: var(--md-sys-color-selected);
+  color: var(--md-sys-color-on-surface);
+}
+
+// Scrollbar styling (webkit browsers)
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--md-sys-color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  
+  &:hover {
+    background: var(--md-sys-color-on-surface-variant);
+  }
+}
+
+// Links
+a {
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+  transition: var(--md-sys-motion-hover);
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--md-sys-color-focus-ring);
+    outline-offset: 2px;
+    border-radius: var(--md-sys-shape-corner-small);
+  }
+}
+
+// Code blocks
+code {
+  font-family: var(--md-sys-typescale-code-font);
+  font-size: var(--md-sys-typescale-code-size);
+  background-color: var(--md-sys-color-surface-variant);
+  padding: 2px 6px;
+  border-radius: var(--md-sys-shape-corner-small);
+}
+
+pre {
+  font-family: var(--md-sys-typescale-code-font);
+  font-size: var(--md-sys-typescale-code-size);
+  background-color: var(--md-sys-color-surface-variant);
+  padding: var(--md-sys-spacing-4);
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow-x: auto;
+  
+  code {
+    background: none;
+    padding: 0;
+  }
+}
+
+// Utility: Screen reader only
+.vt-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
