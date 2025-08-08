@@ -157,8 +157,17 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
 }
 
 // Utility classes
+// Note: Use higher specificity or data attributes instead of !important
 .vt-motion-none {
-  transition: none !important;
+  transition: none;
+  
+  // Ensure this overrides Material's transitions through specificity
+  &,
+  &::before,
+  &::after,
+  & * {
+    transition: none;
+  }
 }
 
 .vt-motion-all {

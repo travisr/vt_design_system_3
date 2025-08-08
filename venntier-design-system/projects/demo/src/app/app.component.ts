@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -27,6 +27,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
+import { VenntierThemeService } from '@venntier/design-system';
 
 @Component({
   selector: 'app-root',
@@ -64,50 +65,91 @@ import { MatDividerModule } from '@angular/material/divider';
   styleUrl: './sidebar-demo.component.scss'
 })
 export class AppComponent {
-  isDarkMode = signal(false);
-  activeSection = 'typography';  // Default section
-  selectedTab = 0;
+  private readonly themeService = inject(VenntierThemeService);
   
-  // Form field values
-  emailValue = '';
-  countryValue = 'us';
-  languageValue = 'en';
-  inputValue = '';
-  selectValue = 'option1';
+  // Signals for reactive state
+  readonly isDarkMode = this.themeService.isDark;
+  readonly themeClass = this.themeService.themeClass;
+  readonly activeSection = signal('typography');
+  readonly selectedTab = signal(0);
   
-  // Checkbox and radio values
-  checkbox1 = false;
-  checkbox2 = true;
-  checkbox3 = false;
-  checkboxValue = false;
-  radioValue = 'monthly';
+  // Form field signals
+  readonly emailValue = signal('');
+  readonly countryValue = signal('us');
+  readonly languageValue = signal('en');
+  readonly inputValue = signal('');
+  readonly selectValue = signal('option1');
   
-  // Toggle values
-  toggle1 = false;
-  toggle2 = true;
-  toggle3 = false;
-  slideToggleValue = false;
+  // Checkbox and radio signals
+  readonly checkbox1 = signal(false);
+  readonly checkbox2 = signal(true);
+  readonly checkbox3 = signal(false);
+  readonly checkboxValue = signal(false);
+  readonly radioValue = signal('monthly');
   
-  tableData = [
+  // Toggle signals
+  readonly toggle1 = signal(false);
+  readonly toggle2 = signal(true);
+  readonly toggle3 = signal(false);
+  readonly slideToggleValue = signal(false);
+  
+  // Table data as signals
+  readonly tableData = signal([
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
     { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
     { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  ];
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  ]);
+  readonly displayedColumns = signal(['position', 'name', 'weight', 'symbol']);
   
-  constructor(private snackBar: MatSnackBar) {}
+  // Computed property example
+  readonly formIsValid = computed(() => {
+    return this.emailValue().includes('@') && this.inputValue().length > 0;
+  });
   
-  toggleTheme() {
-    this.isDarkMode.update(v => !v);
-    document.documentElement.setAttribute(
-      'data-theme',
-      this.isDarkMode() ? 'dark' : 'light'
-    );
+  private readonly snackBar = inject(MatSnackBar);
+  
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
   
-  showSnackbar() {
+  setActiveSection(section: string): void {
+    this.activeSection.set(section);
+  }
+  
+  setSelectedTab(index: number): void {
+    this.selectedTab.set(index);
+  }
+  
+  showSnackbar(): void {
     this.snackBar.open('This is a snackbar message!', 'Close', {
       duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
     });
+  }
+  
+  // Helper methods for form bindings with signals
+  updateEmailValue(value: string): void {
+    this.emailValue.set(value);
+  }
+  
+  updateCountryValue(value: string): void {
+    this.countryValue.set(value);
+  }
+  
+  updateLanguageValue(value: string): void {
+    this.languageValue.set(value);
+  }
+  
+  updateInputValue(value: string): void {
+    this.inputValue.set(value);
+  }
+  
+  updateSelectValue(value: string): void {
+    this.selectValue.set(value);
+  }
+  
+  updateRadioValue(value: string): void {
+    this.radioValue.set(value);
   }
 }

@@ -15,11 +15,11 @@
 }
 
 .demo-toolbar {
-  background: var(--md-sys-color-surface) !important;
+  background: var(--md-sys-color-surface);
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
   height: 56px;
   padding: 0 24px;
-  box-shadow: none !important;
+  box-shadow: none;
   
   h1 {
     font-size: 20px;
@@ -61,7 +61,7 @@
   
   mat-card {
     @extend .demo-card;
-    box-shadow: none !important; // Override Material default
+    box-shadow: none; // Follow MD3 flat design
   }
 }
 

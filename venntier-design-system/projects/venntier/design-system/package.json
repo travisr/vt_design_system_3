@@ -1,15 +1,71 @@
 {
   "name": "@venntier/design-system",
   "version": "0.0.1",
+  "description": "Venntier Design System v3 - Angular 19 + Material Design 3 component library with OpenAI-inspired minimalist design",
+  "author": "Venntier",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/venntier/design-system.git"
+  },
+  "homepage": "https://github.com/venntier/design-system#readme",
+  "keywords": [
+    "angular",
+    "material-design",
+    "material-design-3",
+    "design-system",
+    "component-library",
+    "venntier",
+    "ui-components",
+    "angular-19"
+  ],
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "esm2022": "./esm2022/venntier-design-system.mjs",
+      "esm": "./esm2022/venntier-design-system.mjs",
+      "default": "./fesm2022/venntier-design-system.mjs"
+    },
+    "./theme": {
+      "sass": "./src/styles/_theme.scss"
+    },
+    "./theme/prebuilt/light": {
+      "style": "./src/styles/prebuilt-themes/light.css"
+    },
+    "./theme/prebuilt/dark": {
+      "style": "./src/styles/prebuilt-themes/dark.css"
+    },
+    "./tokens": {
+      "sass": "./src/styles/tokens/_index.scss"
+    }
+  },
   "peerDependencies": {
-    "@angular/common": "^19.2.0",
-    "@angular/core": "^19.2.0",
-    "@angular/material": "^19.2.0",
-    "@angular/cdk": "^19.2.0",
-    "@angular/forms": "^19.2.0"
+    "@angular/animations": "^19.0.0",
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "@angular/material": "^19.0.0",
+    "@angular/cdk": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@fontsource/inter": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@angular/animations": {
+      "optional": false
+    },
+    "@fontsource/inter": {
+      "optional": true
+    }
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  }
 }
