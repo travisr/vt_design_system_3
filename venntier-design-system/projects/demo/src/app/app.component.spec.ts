@@ -1,11 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent, NoopAnimationsModule],
+      providers: [provideRouter([])]
     }).compileComponents();
   });
 
@@ -36,7 +38,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.vt-sidenav-logo span')?.textContent).toContain('Venntier');
+    expect(compiled.querySelector('.vt-sidenav-logo span')?.textContent).toContain('Venntier DS');
   });
 
   it('should have default activeSection set to typography', () => {

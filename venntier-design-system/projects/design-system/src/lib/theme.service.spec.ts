@@ -132,8 +132,11 @@ describe('VenntierThemeService', () => {
       media: '(prefers-color-scheme: dark)',
       addEventListener: jasmine.createSpy('addEventListener'),
       removeEventListener: jasmine.createSpy('removeEventListener'),
-      dispatchEvent: jasmine.createSpy('dispatchEvent')
-    } as any);
+      dispatchEvent: jasmine.createSpy('dispatchEvent'),
+      addListener: jasmine.createSpy('addListener'),
+      removeListener: jasmine.createSpy('removeListener'),
+      onchange: null
+    } as MediaQueryList);
     
     // Create a fresh TestBed for this test
     TestBed.resetTestingModule();

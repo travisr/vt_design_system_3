@@ -14,13 +14,13 @@
     font-weight: var(--md-sys-typescale-label-large-weight); // 450
     border-radius: var(--md-sys-shape-corner-small); // 6px
     transition: all var(--md-sys-motion-hover);
-    
+
     // Use MD3 tokens for consistent sizing
     --mdc-button-container-height: var(--md-sys-spacing-5); // 36px
     --mdc-text-button-container-height: var(--md-sys-spacing-5);
     --mdc-filled-button-container-height: var(--md-sys-spacing-5);
     --mdc-outlined-button-container-height: var(--md-sys-spacing-5);
-    
+
     // Icon sizing
     .mat-icon {
       width: 18px;
@@ -29,129 +29,135 @@
       margin: 0 4px;
     }
   }
-  
+
   // Primary filled button - Green accent for CTAs only
   .mat-mdc-raised-button.mat-primary,
   .mat-mdc-flat-button.mat-primary,
   .mat-mdc-unelevated-button.mat-primary {
     --mdc-filled-button-container-color: var(--md-sys-color-tertiary);
     --mdc-filled-button-label-text-color: var(--md-sys-color-on-tertiary);
-    
+
     &:hover:not(:disabled) {
       --mdc-filled-button-container-color: var(--md-sys-color-primary-container);
     }
-    
+
     &:active:not(:disabled) {
       --mdc-filled-button-container-color: var(--md-sys-color-primary);
     }
-    
+
     &:disabled {
       --mdc-filled-button-container-color: var(--md-sys-color-surface-container);
       --mdc-filled-button-label-text-color: var(--md-sys-color-disabled);
+
       opacity: 0.6;
     }
   }
-  
+
   // Secondary outlined button - Black outline (most common)
-  .mat-mdc-outlined-button:not(.mat-accent):not(.mat-warn) {
+  .mat-mdc-outlined-button:not(.mat-accent, .mat-warn) {
     --mdc-outlined-button-outline-color: var(--md-sys-color-outline);
     --mdc-outlined-button-label-text-color: var(--md-sys-color-on-surface);
     --mdc-outlined-button-container-color: transparent;
+
     border-width: 1px;
-    
+
     &:hover:not(:disabled) {
       --mdc-outlined-button-container-color: var(--md-sys-color-hover);
       --mdc-outlined-button-outline-color: var(--md-sys-color-outline);
     }
-    
+
     &:active:not(:disabled) {
       --mdc-outlined-button-container-color: var(--md-sys-color-selected);
     }
-    
+
     &:disabled {
       --mdc-outlined-button-outline-color: var(--md-sys-color-outline-variant);
       --mdc-outlined-button-label-text-color: var(--md-sys-color-disabled);
+
       opacity: 0.6;
     }
   }
-  
+
   // Tertiary text button - Gray text (OpenAI pattern)
-  .mat-mdc-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
+  .mat-mdc-button:not(.mat-primary, .mat-accent, .mat-warn) {
     --mdc-text-button-label-text-color: var(--md-sys-color-on-surface-variant);
-    
+
     &:hover:not(:disabled) {
       --mdc-text-button-label-text-color: var(--md-sys-color-on-surface);
+
       background-color: var(--md-sys-color-hover);
     }
-    
+
     &:active:not(:disabled) {
       background-color: var(--md-sys-color-selected);
     }
-    
+
     &:disabled {
       --mdc-text-button-label-text-color: var(--md-sys-color-disabled);
+
       opacity: 0.6;
     }
   }
-  
+
   // Icon buttons - OpenAI style
   .mat-mdc-icon-button {
     --mdc-icon-button-icon-size: 18px;
+
     width: 36px;
     height: 36px;
     padding: 9px;
-    
+
     .mat-icon {
       width: 18px;
       height: 18px;
       font-size: 18px;
     }
-    
+
     &:hover:not(:disabled) {
       background-color: var(--md-sys-color-hover);
     }
-    
+
     &:active:not(:disabled) {
       background-color: var(--md-sys-color-selected);
     }
-    
+
     &:disabled {
       opacity: 0.4;
     }
   }
-  
+
   // FAB buttons - Keep standard but with OpenAI colors
   .mat-mdc-fab,
   .mat-mdc-mini-fab {
     --mdc-fab-container-color: var(--md-sys-color-tertiary);
     --mdc-fab-icon-color: var(--md-sys-color-on-tertiary);
-    
+
     &:hover:not(:disabled) {
       --mdc-fab-container-color: var(--md-sys-color-primary-container);
     }
   }
-  
+
   // Button group styling
   .vt-button-group {
     display: inline-flex;
     gap: 8px;
-    
+
     &.vt-button-group--tight {
       gap: 4px;
     }
-    
+
     &.vt-button-group--loose {
       gap: 16px;
     }
   }
-  
+
   // Loading state
   .mat-mdc-button.vt-loading,
   .mat-mdc-raised-button.vt-loading,
   .mat-mdc-outlined-button.vt-loading {
     pointer-events: none;
     position: relative;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -166,26 +172,29 @@
       border-top-color: transparent;
       animation: vt-spin 0.6s linear infinite;
     }
-    
+
     .vt-loading & {
       color: transparent;
     }
   }
-  
+
   @keyframes vt-spin {
-    to { transform: rotate(360deg); }
+    to {
+      transform: rotate(360deg);
+    }
   }
-  
+
   // Focus states - OpenAI subtle shadow instead of outline
   .mat-mdc-button:focus-visible,
   .mat-mdc-raised-button:focus-visible,
   .mat-mdc-outlined-button:focus-visible,
   .mat-mdc-icon-button:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px var(--md-sys-color-surface),
-                0 0 0 4px var(--md-sys-color-focus-ring);
+    box-shadow:
+      0 0 0 2px var(--md-sys-color-surface),
+      0 0 0 4px var(--md-sys-color-focus-ring);
   }
-  
+
   // Disable Material ripple for cleaner OpenAI feel using MD3 tokens
   .mat-mdc-button,
   .mat-mdc-raised-button,

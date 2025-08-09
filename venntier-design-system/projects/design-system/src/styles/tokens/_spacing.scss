@@ -24,7 +24,7 @@ $_spacing-unit: 8px;
   --md-sys-spacing-96: 96px;
   --md-sys-spacing-112: 112px;
   --md-sys-spacing-128: 128px;
-  
+
   // Component-specific spacing (Refined for OpenAI)
   --md-sys-spacing-card-padding: var(--md-sys-spacing-32); // 32px
   --md-sys-spacing-button-padding-x: var(--md-sys-spacing-20); // 20px
@@ -34,20 +34,20 @@ $_spacing-unit: 8px;
   --md-sys-spacing-section-gap: var(--md-sys-spacing-24); // 24px
   --md-sys-spacing-list-gap: var(--md-sys-spacing-12); // 12px
   --md-sys-spacing-inline-gap: var(--md-sys-spacing-8); // 8px
-  
+
   // Layout spacing
   --md-sys-spacing-page-margin: var(--md-sys-spacing-24); // 24px
   --md-sys-spacing-section-margin: var(--md-sys-spacing-32); // 32px
   --md-sys-spacing-container-padding: var(--md-sys-spacing-16); // 16px
-  
+
   // Responsive spacing
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     --md-sys-spacing-page-margin: var(--md-sys-spacing-32); // 32px
     --md-sys-spacing-section-margin: var(--md-sys-spacing-48); // 48px
     --md-sys-spacing-container-padding: var(--md-sys-spacing-24); // 24px
   }
-  
-  @media (min-width: 1280px) {
+
+  @media (width >= 1280px) {
     --md-sys-spacing-page-margin: var(--md-sys-spacing-48); // 48px
     --md-sys-spacing-section-margin: var(--md-sys-spacing-64); // 64px
     --md-sys-spacing-container-padding: var(--md-sys-spacing-32); // 32px
@@ -101,31 +101,31 @@ $_spacing-unit: 8px;
   .vt-spacing-#{$size} {
     @include spacing(margin, $size);
   }
-  
+
   .vt-p-#{$size} {
     @include padding($size);
   }
-  
+
   .vt-px-#{$size} {
     @include padding-x($size);
   }
-  
+
   .vt-py-#{$size} {
     @include padding-y($size);
   }
-  
+
   .vt-m-#{$size} {
     @include margin($size);
   }
-  
+
   .vt-mx-#{$size} {
     @include margin-x($size);
   }
-  
+
   .vt-my-#{$size} {
     @include margin-y($size);
   }
-  
+
   .vt-gap-#{$size} {
     @include gap($size);
   }

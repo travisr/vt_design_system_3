@@ -43,11 +43,11 @@
   &--primary {
     background-color: var(--md-sys-color-tertiary);
     color: var(--md-sys-color-on-tertiary);
-    
+
     &:hover:not(:disabled) {
       background-color: var(--md-sys-color-tertiary-container);
     }
-    
+
     &:active:not(:disabled) {
       background-color: var(--md-sys-color-tertiary-dark, var(--md-sys-color-tertiary));
     }
@@ -57,11 +57,11 @@
     background-color: transparent;
     color: var(--md-sys-color-on-surface);
     border-color: var(--md-sys-color-outline);
-    
+
     &:hover:not(:disabled) {
       background-color: var(--md-sys-color-surface-container-low);
     }
-    
+
     &:active:not(:disabled) {
       background-color: var(--md-sys-color-surface-container);
     }
@@ -70,11 +70,11 @@
   &--tertiary {
     background-color: transparent;
     color: var(--md-sys-color-on-surface-variant);
-    
+
     &:hover:not(:disabled) {
       background-color: var(--md-sys-color-hover);
     }
-    
+
     &:active:not(:disabled) {
       background-color: var(--md-sys-color-selected);
     }
@@ -83,11 +83,11 @@
   &--ghost {
     background-color: transparent;
     color: var(--md-sys-color-on-surface);
-    
+
     &:hover:not(:disabled) {
       background-color: var(--md-sys-color-hover);
     }
-    
+
     &:active:not(:disabled) {
       background-color: var(--md-sys-color-selected);
     }

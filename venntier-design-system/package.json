@@ -4,10 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run build:lib && ng serve demo",
-    "build": "ng build",
-    "build:lib": "ng build @venntier/design-system --configuration=production",
+    "build": "npm run lint:all && npm run build:lib:only && npm run build:demo:only",
+    "build:lib": "npm run lint:all && npm run build:lib:only",
+    "build:lib:only": "ng build @venntier/design-system --configuration=production",
     "build:lib:watch": "ng build @venntier/design-system --watch",
-    "build:demo": "npm run build:lib && ng build demo --configuration=production",
+    "build:demo": "npm run lint:all && npm run build:lib:only && npm run build:demo:only",
+    "build:demo:only": "ng build demo --configuration=production",
+    "build:ci": "npm run lint:all && npm run typecheck && npm run build",
     "serve:demo": "ng serve demo",
     "dev": "npm run build:lib && concurrently \"npm run build:lib:watch\" \"npm run serve:demo\"",
     "watch": "ng build --watch --configuration development",
@@ -17,7 +20,26 @@
     "audit:ng": "../.claude/scripts/ng-audit.sh .",
     "audit:ds": "../.claude/scripts/ds-audit.sh .",
     "audit:full": "../.claude/scripts/full-audit.sh .",
-    "pack:lib": "cd dist/design-system && npm pack"
+    "pack:lib": "cd dist/design-system && npm pack",
+    "prepare": "husky",
+    "lint:ts": "ng lint",
+    "lint:scss": "stylelint \"**/*.scss\" --ignore-path .gitignore",
+    "lint:all": "npm run lint:ts && npm run lint:scss",
+    "format": "prettier --write \"**/*.{ts,html,scss,json,md}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,html,scss,json,md}\" --ignore-path .gitignore"
+  },
+  "lint-staged": {
+    "*.{ts,html}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.scss": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -44,15 +66,25 @@
     "@angular/compiler-cli": "^19.2.0",
     "@playwright/test": "^1.54.2",
     "@types/jasmine": "~5.1.0",
+    "angular-eslint": "20.1.1",
     "concurrently": "^9.2.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "^16.1.5",
     "ng-packagr": "^19.2.0",
     "playwright": "^1.54.2",
-    "typescript": "~5.7.2"
+    "prettier": "^3.6.2",
+    "stylelint": "^16.23.1",
+    "stylelint-config-standard-scss": "^15.0.1",
+    "stylelint-prettier": "^5.0.3",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "8.34.1"
   }
 }

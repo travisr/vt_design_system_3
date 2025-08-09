@@ -10,11 +10,11 @@ $_duration-longer: 500ms;
 $_duration-longest: 600ms;
 
 // Easing functions (Material Design standard)
-$_easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1); // Standard curve
-$_easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1); // Decelerate curve
-$_easing-accelerate: cubic-bezier(0.4, 0.0, 1, 1); // Accelerate curve
-$_easing-sharp: cubic-bezier(0.4, 0.0, 0.6, 1); // Sharp curve
-$_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
+$_easing-standard: cubic-bezier(0.4, 0, 0.2, 1); // Standard curve
+$_easing-decelerate: cubic-bezier(0, 0, 0.2, 1); // Decelerate curve
+$_easing-accelerate: cubic-bezier(0.4, 0, 1, 1); // Accelerate curve
+$_easing-sharp: cubic-bezier(0.4, 0, 0.6, 1); // Sharp curve
+$_easing-emphasized: cubic-bezier(0.2, 0, 0, 1); // Emphasized
 
 // Motion tokens
 :root {
@@ -26,7 +26,7 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
   --md-sys-motion-duration-long: #{$_duration-long};
   --md-sys-motion-duration-longer: #{$_duration-longer};
   --md-sys-motion-duration-longest: #{$_duration-longest};
-  
+
   // Easing tokens
   --md-sys-motion-easing-standard: #{$_easing-standard};
   --md-sys-motion-easing-decelerate: #{$_easing-decelerate};
@@ -34,37 +34,32 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
   --md-sys-motion-easing-sharp: #{$_easing-sharp};
   --md-sys-motion-easing-emphasized: #{$_easing-emphasized};
   --md-sys-motion-easing-linear: linear;
-  
+
   // Component-specific transitions
-  --md-sys-motion-button: 
+  --md-sys-motion-button:
     background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
     transform var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
     box-shadow var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
-  
   --md-sys-motion-card:
     transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard),
     box-shadow var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
-  
   --md-sys-motion-input:
     border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
     background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
-  
-  --md-sys-motion-fade:
-    opacity var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
-  
-  --md-sys-motion-slide:
-    transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-decelerate);
-  
+  --md-sys-motion-fade: opacity var(--md-sys-motion-duration-short)
+    var(--md-sys-motion-easing-standard);
+  --md-sys-motion-slide: transform var(--md-sys-motion-duration-medium)
+    var(--md-sys-motion-easing-decelerate);
   --md-sys-motion-expand:
     max-height var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard),
     opacity var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
-  
+
   // Hover transitions (faster for responsiveness)
   --md-sys-motion-hover:
     background-color var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
     border-color var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
     color var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard);
-  
+
   // Focus transitions
   --md-sys-motion-focus:
     outline var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
@@ -73,7 +68,8 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
 
 // Motion mixins
 @mixin motion($property: all, $duration: short, $easing: standard) {
-  transition: $property var(--md-sys-motion-duration-#{$duration}) var(--md-sys-motion-easing-#{$easing});
+  transition: $property var(--md-sys-motion-duration-#{$duration})
+    var(--md-sys-motion-easing-#{$easing});
 }
 
 @mixin motion-button() {
@@ -109,6 +105,7 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -118,6 +115,7 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -128,6 +126,7 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
     transform: translateY(8px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -139,6 +138,7 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
     transform: translateY(-8px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -150,6 +150,7 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
     transform: scale(0.95);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -160,7 +161,7 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
 // Note: Use higher specificity or data attributes instead of !important
 .vt-motion-none {
   transition: none;
-  
+
   // Ensure this overrides Material's transitions through specificity
   &,
   &::before,
@@ -175,9 +176,9 @@ $_easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1); // Emphasized
 }
 
 .vt-motion-fade {
-  @include motion-fade();
+  @include motion-fade;
 }
 
 .vt-motion-slide {
-  @include motion-slide();
+  @include motion-slide;
 }

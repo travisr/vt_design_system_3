@@ -18,28 +18,28 @@
   .mat-sidenav {
     background: var(--md-sys-color-surface-container-low);
     border-right: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: 0;  // Remove rounded corners
-    
+    border-radius: 0; // Remove rounded corners
+
     // Standard width for navigation drawer using CSS custom properties for flexibility
     &.vt-sidenav-standard {
       width: var(--vt-sidenav-width, 240px);
       min-width: 200px;
       max-width: 320px;
     }
-    
+
     &.vt-sidenav-expanded {
       width: var(--vt-sidenav-expanded-width, 280px);
       min-width: 240px;
       max-width: 360px;
     }
-    
+
     &.vt-sidenav-collapsed {
       width: var(--vt-sidenav-collapsed-width, 64px);
       min-width: 56px;
       max-width: 72px;
     }
   }
-  
+
   // Sidenav header area (logo/brand) - match toolbar height
   .vt-sidenav-header {
     height: 64px; // Match toolbar height
@@ -47,7 +47,7 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--md-sys-color-outline-variant);
-    
+
     .vt-sidenav-logo {
       display: flex;
       align-items: center;
@@ -55,7 +55,7 @@
       font-size: 16px;
       font-weight: 600;
       color: var(--md-sys-color-on-surface);
-      
+
       mat-icon {
         color: var(--md-sys-color-tertiary);
         font-size: 20px;
@@ -64,30 +64,29 @@
       }
     }
   }
-  
+
   // Sidenav content area
   .vt-sidenav-content {
     padding: 4px 0;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden auto;
     height: calc(100vh - 64px); // Account for header (64px height)
-    
+
     // Hide scrollbar but keep functionality
     &::-webkit-scrollbar {
       width: 0;
       background: transparent;
     }
-    
+
     // Firefox
     scrollbar-width: none;
   }
-  
+
   // Navigation sections
   .vt-nav-section {
-    padding: 8px 8px 4px 8px;
-    
+    padding: 8px 8px 4px;
+
     .vt-nav-section-title {
-      padding: 12px 8px 4px 8px;
+      padding: 12px 8px 4px;
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.05em;
@@ -95,12 +94,12 @@
       text-transform: none;
     }
   }
-  
+
   // Override Material's list styles using custom class wrapper
   .vt-nav-section .mat-mdc-nav-list,
   mat-sidenav .mat-mdc-nav-list {
     padding: 0;
-    
+
     // Use custom class for better specificity without !important
     .vt-nav-item,
     a[mat-list-item] {
@@ -111,12 +110,12 @@
       transition: background-color 0.15s ease;
       position: relative;
       background-color: transparent;
-      
+
       // Disable Material's state layer using opacity
       &::before {
         opacity: 0;
       }
-      
+
       // Default state text
       .mat-mdc-list-item-unscoped-content {
         color: var(--md-sys-color-on-surface-variant);
@@ -125,7 +124,7 @@
         align-items: center;
         height: 100%;
       }
-      
+
       // Icon styling
       .mat-icon,
       mat-icon {
@@ -136,7 +135,7 @@
         color: var(--md-sys-color-on-surface-variant);
         transition: color 0.15s ease;
       }
-      
+
       // Text styling
       .mat-mdc-list-item-title,
       span[matListItemTitle] {
@@ -145,38 +144,38 @@
         font-weight: 400;
         color: inherit;
       }
-      
+
       // Hover state - use pseudo-class chain for specificity
-      &:hover:not(.active):not([disabled]) {
-        background-color: var(--md-sys-color-hover);  // #f7f7f8 - middle shade
-        
+      &:hover:not(.active, [disabled]) {
+        background-color: var(--md-sys-color-hover); // #f7f7f8 - middle shade
+
         .mat-mdc-list-item-unscoped-content {
           color: var(--md-sys-color-on-surface-variant);
         }
       }
-      
+
       // Active/selected state
       &.active,
-      &[aria-selected="true"] {
-        background-color: var(--md-sys-color-selected);  // #ececf1 - darkest shade
-        
+      &[aria-selected='true'] {
+        background-color: var(--md-sys-color-selected); // #ececf1 - darkest shade
+
         .mat-mdc-list-item-unscoped-content {
-          color: var(--md-sys-color-primary);  // Use primary (black) for maximum contrast
-          font-weight: 500;  // Medium weight - not too heavy
+          color: var(--md-sys-color-primary); // Use primary (black) for maximum contrast
+          font-weight: 500; // Medium weight - not too heavy
         }
-        
+
         .mat-icon,
         mat-icon {
           color: var(--md-sys-color-primary);
         }
-        
+
         .mat-mdc-list-item-title,
         span[matListItemTitle] {
           color: var(--md-sys-color-primary);
-          font-weight: 500;  // Medium weight - not too heavy
+          font-weight: 500; // Medium weight - not too heavy
         }
       }
-      
+
       // Disable Material's ripple using CSS variables (wrapped in & {} for Sass 3.0)
       & {
         --mat-ripple-color: transparent;
@@ -185,13 +184,13 @@
         --mdc-ripple-focus-opacity: 0;
         --mdc-ripple-pressed-opacity: 0;
       }
-      
+
       // Disabled state
       &[disabled] {
         opacity: 0.38;
         cursor: not-allowed;
       }
-      
+
       // Focus state
       &:focus-visible {
         outline: 2px solid var(--md-sys-color-focus-ring);
@@ -199,16 +198,16 @@
       }
     }
   }
-  
+
   // Nested navigation items (submenu)
   .vt-nav-nested {
     .mat-mdc-nav-list {
       padding-left: 16px;
-      
+
       .mat-mdc-list-item {
         height: 28px;
         font-size: 13px;
-        
+
         mat-icon {
           font-size: 14px;
           width: 14px;
@@ -217,36 +216,36 @@
       }
     }
   }
-  
+
   // Sidenav footer area
   .vt-sidenav-footer {
     padding: 16px;
     border-top: 1px solid var(--md-sys-color-outline-variant);
     margin-top: auto;
   }
-  
+
   // Dark theme adjustments
-  [data-theme="dark"] & {
+  [data-theme='dark'] & {
     .mat-sidenav {
-      background: var(--md-sys-color-surface);  // Dark theme sidenav
+      background: var(--md-sys-color-surface); // Dark theme sidenav
       border-right-color: var(--md-sys-color-outline-variant);
     }
   }
-  
+
   // Responsive behavior
-  @media (max-width: 1280px) {
+  @media (width <= 1280px) {
     .mat-sidenav {
       &.vt-sidenav-standard {
         width: var(--vt-sidenav-width-tablet, 220px);
       }
-      
+
       &.vt-sidenav-expanded {
         width: var(--vt-sidenav-expanded-width-tablet, 260px);
       }
     }
   }
-  
-  @media (max-width: 960px) {
+
+  @media (width <= 960px) {
     .mat-sidenav {
       &.vt-sidenav-standard,
       &.vt-sidenav-expanded {
@@ -255,8 +254,8 @@
       }
     }
   }
-  
-  @media (max-width: 600px) {
+
+  @media (width <= 600px) {
     .mat-sidenav {
       &.vt-sidenav-standard,
       &.vt-sidenav-expanded {

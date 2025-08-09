@@ -3,34 +3,36 @@
 
 // Define the base theme structure (only once)
 @mixin vt-material-base-theme() {
-  $theme: mat.define-theme((
-    color: (
-      theme-type: light,
-      use-system-variables: true,
-      system-variables-prefix: md-sys-color,
-    ),
-    typography: (
-      use-system-variables: true,
-      system-variables-prefix: md-sys-typescale,
-    ),
-  ));
-  
+  $theme: mat.define-theme(
+    (
+      color: (
+        theme-type: light,
+        use-system-variables: true,
+        system-variables-prefix: md-sys-color,
+      ),
+      typography: (
+        use-system-variables: true,
+        system-variables-prefix: md-sys-typescale,
+      ),
+    )
+  );
+
   // M3 themes must be wrapped in a selector
   html {
     @include mat.all-component-themes($theme);
   }
-  
-  @include vt-component-overrides-refined();
+
+  @include vt-component-overrides-refined;
 }
 
 // Apply color scheme for light/dark modes
 @mixin vt-material-colors($theme-type: 'light') {
   @if $theme-type == 'dark' {
     // Apply dark theme color tokens
-    @include tokens.apply-dark-colors();
+    @include tokens.apply-dark-colors;
   } @else {
     // Apply light theme color tokens (default)
-    @include tokens.apply-light-colors();
+    @include tokens.apply-light-colors;
   }
 }
 
@@ -41,7 +43,7 @@
     --vt-surface-background: var(--md-sys-color-surface);
     --vt-on-surface-text: var(--md-sys-color-on-surface);
   }
-  
+
   // Wrap in .vt-theme class for higher specificity without !important
   .vt-theme {
     // Body styles with proper CSS custom property usage
@@ -49,7 +51,7 @@
     color: var(--vt-on-surface-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
+
     // Remove shadows using higher specificity
     [class*='mat-elevation-z'],
     [class*='mat-mdc-elevation'],
@@ -59,7 +61,7 @@
       box-shadow: none;
     }
   }
-  
+
   // BUTTONS - Use CSS custom properties and higher specificity
   .vt-theme {
     .mat-mdc-button,
@@ -74,14 +76,14 @@
       --mdc-text-button-label-text-size: 14px;
       --mdc-text-button-label-text-weight: 400;
       --mdc-text-button-label-text-tracking: 0.01em;
-      
+
       height: 40px;
       min-height: 40px;
       border-radius: 6px;
       padding: 0 20px;
       transition: all 0.15s ease;
       box-shadow: none;
-      
+
       // Disable ripples using CSS variables
       --mat-ripple-color: transparent;
       --mdc-ripple-color: transparent;
@@ -90,7 +92,7 @@
       --mdc-ripple-pressed-opacity: 0;
     }
   }
-  
+
   // Primary button (green CTA) - Use CSS custom properties
   .vt-theme {
     .mat-mdc-raised-button.mat-primary,
@@ -99,16 +101,16 @@
       --mdc-filled-button-label-text-color: var(--md-sys-color-on-tertiary);
       --mdc-filled-button-hover-container-color: #0d9d6e;
       --mdc-filled-button-label-text-weight: 500;
-      
+
       &:not(:disabled):hover {
         transform: translateY(-1px);
       }
-      
+
       &:not(:disabled):active {
         transform: translateY(0);
       }
     }
-    
+
     // Secondary (outlined) - Use Material's outlined button tokens
     .mat-mdc-stroked-button,
     .mat-mdc-outlined-button {
@@ -119,47 +121,51 @@
       --mdc-outlined-button-hover-outline-color: var(--md-sys-color-outline-variant);
     }
   }
-  
+
   // Tertiary (flat) and Text buttons - Use proper CSS custom properties
   .vt-theme {
     .mat-mdc-flat-button:not(.mat-primary) {
       --mdc-filled-button-container-color: var(--md-sys-color-surface-container);
       --mdc-filled-button-label-text-color: var(--md-sys-color-on-surface);
       --mdc-filled-button-hover-container-color: var(--md-sys-color-surface-container-high);
+
       border: none;
     }
-    
+
     .mat-mdc-button {
       --mdc-text-button-container-color: transparent;
       --mdc-text-button-label-text-color: var(--md-sys-color-on-surface-variant);
       --mdc-text-button-hover-container-color: var(--md-sys-color-hover);
       --mdc-text-button-hover-label-text-color: var(--md-sys-color-on-surface);
+
       padding: 0 12px;
     }
-    
+
     // Disabled state - using CSS custom properties
     button:disabled {
       --mdc-text-button-disabled-label-text-color: var(--md-sys-color-on-surface-variant);
       --mdc-filled-button-disabled-container-color: var(--md-sys-color-surface-variant);
       --mdc-filled-button-disabled-label-text-color: var(--md-sys-color-on-surface-variant);
+
       opacity: 0.4;
     }
   }
-  
+
   // CARDS - Use CSS custom properties and higher specificity
   .vt-theme {
     .mat-mdc-card {
       --mdc-elevated-card-container-color: var(--md-sys-color-surface);
       --mdc-elevated-card-container-shape: 8px;
+
       border: 1px solid var(--md-sys-color-outline-variant);
       border-radius: 8px;
       padding: 24px;
       background-color: var(--md-sys-color-surface);
       margin-bottom: 24px;
-      
+
       .mat-mdc-card-header {
-        padding: 0 0 20px 0;
-        
+        padding: 0 0 20px;
+
         .mat-mdc-card-title {
           font-size: 16px;
           font-weight: 600;
@@ -167,17 +173,17 @@
           margin: 0;
         }
       }
-      
+
       .mat-mdc-card-content {
         padding: 0;
-        
+
         > *:not(:last-child) {
           margin-bottom: 16px;
         }
       }
     }
   }
-  
+
   // FORM FIELDS - Proper CSS custom properties and higher specificity
   .vt-theme {
     .mat-mdc-form-field {
@@ -192,18 +198,18 @@
       --mdc-outlined-text-field-label-text-color: var(--md-sys-color-on-surface-variant);
       --mdc-outlined-text-field-input-text-color: var(--md-sys-color-on-surface);
       --mdc-outlined-text-field-placeholder-text-color: var(--md-sys-color-on-surface-variant);
-      
+
       width: 100%;
       margin-bottom: 20px;
-      
+
       .mat-mdc-text-field-wrapper {
         padding: 0;
       }
-      
+
       .mat-mdc-form-field-flex {
         align-items: stretch;
       }
-      
+
       // Outline appearance with proper tokens
       &.mat-form-field-appearance-outline {
         .mdc-text-field {
@@ -211,7 +217,7 @@
           background-color: var(--md-sys-color-surface);
           border-radius: 6px;
           padding: 0;
-        
+
           // Use Material's outline tokens instead of custom borders
           &.mdc-text-field--outlined {
             .mdc-notched-outline {
@@ -221,7 +227,7 @@
                 border-color: var(--mdc-outlined-text-field-outline-color);
               }
             }
-            
+
             &:hover .mdc-notched-outline {
               .mdc-notched-outline__leading,
               .mdc-notched-outline__trailing,
@@ -229,7 +235,7 @@
                 border-color: var(--mdc-outlined-text-field-hover-outline-color);
               }
             }
-            
+
             &.mdc-text-field--focused .mdc-notched-outline {
               .mdc-notched-outline__leading,
               .mdc-notched-outline__trailing,
@@ -239,7 +245,7 @@
               }
             }
           }
-        
+
           // Input alignment
           .mat-mdc-form-field-infix {
             padding: 0 16px;
@@ -248,7 +254,7 @@
             display: flex;
             align-items: center;
           }
-        
+
           input,
           textarea {
             padding: 0;
@@ -259,19 +265,19 @@
             border: none;
             background: transparent;
             outline: none;
-            
+
             &::placeholder {
               color: var(--mdc-outlined-text-field-placeholder-text-color);
             }
           }
-          
+
           textarea {
             padding: 12px 0;
             min-height: 60px;
             resize: vertical;
           }
-      }
-      
+        }
+
         // Clean label using CSS custom properties
         .mat-mdc-floating-label {
           font-size: 14px;
@@ -282,7 +288,7 @@
           transform: translateY(-50%);
           transition: all 0.2s ease;
           pointer-events: none;
-          
+
           &.mdc-floating-label--float-above {
             font-size: 12px;
             top: 0;
@@ -290,14 +296,14 @@
             background-color: var(--md-sys-color-surface);
           }
         }
-      
+
         // Hide ripple and subscript
         .mdc-line-ripple,
         .mat-mdc-form-field-subscript-wrapper {
           display: none;
         }
-    }
-    
+      }
+
       // Icons - properly aligned
       .mat-mdc-form-field-icon-suffix,
       .mat-mdc-form-field-icon-prefix {
@@ -305,7 +311,7 @@
         display: flex;
         align-items: center;
         height: 44px;
-        
+
         mat-icon {
           font-size: 20px;
           width: 20px;
@@ -315,7 +321,7 @@
       }
     }
   }
-  
+
   // SELECT - Clean approach with CSS custom properties
   .vt-theme {
     .mat-mdc-select {
@@ -323,13 +329,13 @@
       --mat-select-trigger-text-size: 14px;
       --mat-select-trigger-text-color: var(--md-sys-color-on-surface);
       --mat-select-arrow-color: var(--md-sys-color-on-surface-variant);
-      
+
       &.mat-mdc-select-outlined {
         .mat-mdc-select-trigger {
           height: 44px;
           padding: 0;
         }
-        
+
         .mat-mdc-select-value {
           padding: 0 16px;
           font-size: 14px;
@@ -338,10 +344,10 @@
           align-items: center;
           height: 44px;
         }
-        
+
         .mat-mdc-select-arrow-wrapper {
           padding-right: 16px;
-          
+
           .mat-mdc-select-arrow {
             color: var(--md-sys-color-on-surface-variant);
           }
@@ -349,28 +355,28 @@
       }
     }
   }
-  
+
   // Select panel dropdown with higher specificity
   .vt-theme {
     .mat-mdc-select-panel {
       --mat-option-hover-state-layer-color: var(--md-sys-color-hover);
       --mat-option-selected-state-layer-color: var(--md-sys-color-selected);
       --mat-option-focus-state-layer-color: var(--md-sys-color-hover);
-      
+
       border: 1px solid var(--md-sys-color-outline-variant);
       border-radius: 6px;
       box-shadow: 0 2px 8px var(--md-sys-color-shadow);
       margin-top: 4px;
-      
+
       .mat-mdc-option {
         height: 40px;
         padding: 0 16px;
         font-size: 14px;
-        
+
         &:hover {
           background-color: var(--md-sys-color-hover);
         }
-        
+
         &.mat-mdc-option-active,
         &.mdc-list-item--selected {
           background-color: var(--md-sys-color-selected);
@@ -379,33 +385,38 @@
       }
     }
   }
-  
+
   // TOOLBAR - Clean style with CSS custom properties
   .vt-theme {
     .mat-toolbar {
       --mat-toolbar-background-color: var(--md-sys-color-surface);
       --mat-toolbar-title-text-color: var(--md-sys-color-on-surface);
-      
+
       background-color: var(--md-sys-color-surface);
       color: var(--md-sys-color-on-surface);
       border-bottom: 1px solid var(--md-sys-color-outline-variant);
       height: 56px;
       padding: 0 32px;
       font-weight: 400;
-      
+
       &.mat-primary {
         background-color: var(--md-sys-color-surface);
       }
     }
   }
-  
+
   // TYPOGRAPHY - Using M3 typescale tokens
   .vt-theme {
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: var(--md-sys-color-on-surface);
       margin-top: 0;
     }
-    
+
     h1 {
       font: var(--md-sys-typescale-headline-large-font);
       font-size: var(--md-sys-typescale-headline-large-size);
@@ -413,7 +424,7 @@
       line-height: var(--md-sys-typescale-headline-large-line-height);
       margin-bottom: 12px;
     }
-    
+
     h2 {
       font: var(--md-sys-typescale-headline-medium-font);
       font-size: var(--md-sys-typescale-headline-medium-size);
@@ -421,7 +432,7 @@
       line-height: var(--md-sys-typescale-headline-medium-line-height);
       margin-bottom: 16px;
     }
-    
+
     h3 {
       font: var(--md-sys-typescale-headline-small-font);
       font-size: var(--md-sys-typescale-headline-small-size);
@@ -429,32 +440,32 @@
       line-height: var(--md-sys-typescale-headline-small-line-height);
       margin-bottom: 12px;
     }
-    
+
     p {
       color: var(--md-sys-color-on-surface-variant);
       line-height: 1.6;
       margin-bottom: 12px;
     }
   }
-  
+
   // CHECKBOXES & RADIOS - Using tertiary color for selection
   .vt-theme {
     .mat-mdc-checkbox {
       --mdc-checkbox-selected-icon-color: var(--md-sys-color-tertiary);
       --mdc-checkbox-selected-checkmark-color: var(--md-sys-color-on-tertiary);
       --mdc-checkbox-unselected-icon-color: var(--md-sys-color-outline);
-      
+
       .mdc-checkbox__background {
         border-radius: 4px;
       }
     }
-    
+
     .mat-mdc-radio-button {
       --mdc-radio-selected-icon-color: var(--md-sys-color-tertiary);
       --mdc-radio-unselected-icon-color: var(--md-sys-color-outline);
     }
   }
-  
+
   // CHIPS - Clean style with tokens
   .vt-theme {
     .mat-mdc-chip {
@@ -462,12 +473,12 @@
       --mdc-chip-container-shape: 16px;
       --mdc-chip-label-text-size: 13px;
       --mdc-chip-label-text-weight: 400;
-      
+
       border: 1px solid var(--md-sys-color-outline-variant);
       background-color: var(--md-sys-color-surface-variant);
       font-size: 13px;
       font-weight: 400;
-      
+
       &.mat-mdc-chip-selected {
         background-color: var(--md-sys-color-selected);
         border-color: var(--md-sys-color-outline);
@@ -475,7 +486,7 @@
       }
     }
   }
-  
+
   // MENU - Consistent with select dropdown
   .vt-theme {
     .mat-mdc-menu-panel {
@@ -483,71 +494,72 @@
       --mat-menu-container-shape: 8px;
       --mat-menu-item-label-text-color: var(--md-sys-color-on-surface);
       --mat-menu-item-hover-state-layer-color: var(--md-sys-color-hover);
-      
+
       border: 1px solid var(--md-sys-color-outline-variant);
       border-radius: 8px;
       background-color: var(--md-sys-color-surface);
       padding: 4px 0;
-      
+
       .mat-mdc-menu-item {
         font-size: 14px;
         height: 40px;
         padding: 0 16px;
         color: var(--md-sys-color-on-surface);
-        
+
         &:hover {
           background-color: var(--md-sys-color-hover);
         }
-        
+
         &.mat-mdc-menu-item-highlighted {
           background-color: var(--md-sys-color-hover);
         }
       }
     }
   }
-  
+
   // PROGRESS - Using tertiary color
   .vt-theme {
     .mat-mdc-progress-bar {
       --mdc-linear-progress-active-indicator-color: var(--md-sys-color-tertiary);
       --mdc-linear-progress-track-color: var(--md-sys-color-surface-container-high);
+
       height: 4px;
       border-radius: 2px;
     }
-    
+
     .mat-mdc-progress-spinner {
       --mdc-circular-progress-active-indicator-color: var(--md-sys-color-tertiary);
     }
   }
-  
+
   // SNACKBAR - Dark container for contrast
   .vt-theme {
     .mat-mdc-snack-bar-container {
       --mdc-snackbar-container-color: var(--md-sys-color-inverse-surface);
       --mdc-snackbar-supporting-text-color: var(--md-sys-color-inverse-on-surface);
       --mdc-snackbar-container-shape: 8px;
-      
+
       border-radius: 8px;
-      
+
       .mat-mdc-snack-bar-action {
         color: var(--md-sys-color-tertiary);
       }
     }
   }
-  
+
   // DIALOG - Clean modal style
   .vt-theme {
     .mat-mdc-dialog-container {
       --mdc-dialog-container-color: var(--md-sys-color-surface);
       --mdc-dialog-container-shape: 12px;
-      
+
       border: 1px solid var(--md-sys-color-outline-variant);
       border-radius: 12px;
       padding: 32px;
       background-color: var(--md-sys-color-surface);
     }
   }
-  
+
   // TABLE - Clean data presentation
   .vt-theme {
     table.mat-mdc-table {
@@ -555,43 +567,43 @@
       border-radius: 8px;
       overflow: hidden;
       background-color: var(--md-sys-color-surface);
-      
+
       .mat-mdc-header-row {
         background-color: var(--md-sys-color-surface-variant);
         height: 48px;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
       }
-      
+
       .mat-mdc-row {
         height: 52px;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
-        
+
         &:hover {
           background-color: var(--md-sys-color-hover);
         }
-        
+
         &:last-child {
           border-bottom: none;
         }
       }
-      
+
       .mat-mdc-cell,
       .mat-mdc-header-cell {
         font-size: 14px;
         padding: 0 16px;
       }
-      
+
       .mat-mdc-header-cell {
         font-weight: 500;
         color: var(--md-sys-color-on-surface-variant);
       }
-      
+
       .mat-mdc-cell {
         color: var(--md-sys-color-on-surface);
       }
     }
   }
-  
+
   // SLIDE TOGGLE - Tertiary accent
   .vt-theme {
     .mat-mdc-slide-toggle {
@@ -602,14 +614,14 @@
       --mdc-switch-unselected-handle-color: var(--md-sys-color-surface);
     }
   }
-  
+
   // TOOLTIP - Inverse colors for contrast
   .vt-theme {
     .mat-mdc-tooltip {
       --mdc-plain-tooltip-container-color: var(--md-sys-color-inverse-surface);
       --mdc-plain-tooltip-supporting-text-color: var(--md-sys-color-inverse-on-surface);
       --mdc-plain-tooltip-container-shape: 6px;
-      
+
       background-color: var(--md-sys-color-inverse-surface);
       color: var(--md-sys-color-inverse-on-surface);
       font-size: 12px;
@@ -617,7 +629,7 @@
       border-radius: 6px;
     }
   }
-  
+
   // ICON refinements
   .vt-theme {
     .mat-icon,
@@ -626,13 +638,13 @@
       width: 20px;
       height: 20px;
       color: var(--md-sys-color-on-surface-variant);
-      
+
       &.mat-icon-button mat-icon {
         font-size: 20px;
       }
     }
   }
-  
+
   // Focus states - subtle
   .vt-theme {
     *:focus-visible {
@@ -640,7 +652,7 @@
       outline-offset: 2px;
     }
   }
-  
+
   // Selection
   .vt-theme {
     ::selection {

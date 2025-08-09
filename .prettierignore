@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+.angular/
+**/.angular/
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+**/coverage/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Package files
+package-lock.json
+**/package-lock.json

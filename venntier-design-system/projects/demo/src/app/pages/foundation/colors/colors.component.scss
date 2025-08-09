@@ -1,4 +1,3 @@
-
 // Color page specific styles
 .color-grid {
   display: grid;
@@ -29,29 +28,73 @@
   height: 80px;
   border-radius: var(--md-sys-shape-corner-small, 8px);
   border: 1px solid var(--md-sys-color-outline-variant);
-  
+
   // Specific token-based swatches
-  &.swatch-primary { background: var(--md-sys-color-primary); }
-  &.swatch-on-primary { background: var(--md-sys-color-on-primary); border-color: var(--md-sys-color-outline); }
-  &.swatch-tertiary { background: var(--md-sys-color-tertiary); }
-  &.swatch-data-primary { background: var(--md-sys-color-data-primary); }
-  
-  &.swatch-background { background: var(--md-sys-color-background); border-color: var(--md-sys-color-outline); }
-  &.swatch-surface { background: var(--md-sys-color-surface); border-color: var(--md-sys-color-outline); }
-  &.swatch-surface-variant { background: var(--md-sys-color-surface-variant); border-color: var(--md-sys-color-outline); }
-  
-  &.swatch-surface-container-low { background: var(--md-sys-color-surface-container-low); border-color: var(--md-sys-color-outline); }
-  &.swatch-surface-container { background: var(--md-sys-color-surface-container); border-color: var(--md-sys-color-outline); }
-  &.swatch-surface-container-high { background: var(--md-sys-color-surface-container-high); border-color: var(--md-sys-color-outline); }
-  &.swatch-surface-container-highest { background: var(--md-sys-color-surface-container-highest); border-color: var(--md-sys-color-outline); }
-  
-  &.swatch-hover { background: var(--md-sys-color-hover); border-color: var(--md-sys-color-outline); }
-  &.swatch-selected { background: var(--md-sys-color-selected); border-color: var(--md-sys-color-outline); }
-  &.swatch-focus-ring { background: var(--md-sys-color-focus-ring); }
-  &.swatch-disabled { background: var(--md-sys-color-disabled); }
-  
-  &.swatch-outline { background: var(--md-sys-color-outline); }
-  &.swatch-outline-variant { background: var(--md-sys-color-outline-variant); }
+  &.swatch-primary {
+    background: var(--md-sys-color-primary);
+  }
+  &.swatch-on-primary {
+    background: var(--md-sys-color-on-primary);
+    border-color: var(--md-sys-color-outline);
+  }
+  &.swatch-tertiary {
+    background: var(--md-sys-color-tertiary);
+  }
+  &.swatch-data-primary {
+    background: var(--md-sys-color-data-primary);
+  }
+
+  &.swatch-background {
+    background: var(--md-sys-color-background);
+    border-color: var(--md-sys-color-outline);
+  }
+  &.swatch-surface {
+    background: var(--md-sys-color-surface);
+    border-color: var(--md-sys-color-outline);
+  }
+  &.swatch-surface-variant {
+    background: var(--md-sys-color-surface-variant);
+    border-color: var(--md-sys-color-outline);
+  }
+
+  &.swatch-surface-container-low {
+    background: var(--md-sys-color-surface-container-low);
+    border-color: var(--md-sys-color-outline);
+  }
+  &.swatch-surface-container {
+    background: var(--md-sys-color-surface-container);
+    border-color: var(--md-sys-color-outline);
+  }
+  &.swatch-surface-container-high {
+    background: var(--md-sys-color-surface-container-high);
+    border-color: var(--md-sys-color-outline);
+  }
+  &.swatch-surface-container-highest {
+    background: var(--md-sys-color-surface-container-highest);
+    border-color: var(--md-sys-color-outline);
+  }
+
+  &.swatch-hover {
+    background: var(--md-sys-color-hover);
+    border-color: var(--md-sys-color-outline);
+  }
+  &.swatch-selected {
+    background: var(--md-sys-color-selected);
+    border-color: var(--md-sys-color-outline);
+  }
+  &.swatch-focus-ring {
+    background: var(--md-sys-color-focus-ring);
+  }
+  &.swatch-disabled {
+    background: var(--md-sys-color-disabled);
+  }
+
+  &.swatch-outline {
+    background: var(--md-sys-color-outline);
+  }
+  &.swatch-outline-variant {
+    background: var(--md-sys-color-outline-variant);
+  }
 }
 
 .swatch-info {
@@ -194,17 +237,17 @@
   border-radius: var(--md-sys-shape-corner-small, 6px);
   padding: var(--md-sys-spacing-24, 24px);
   margin-bottom: var(--md-sys-spacing-16, 16px);
-  
+
   &.hierarchy-background {
     background: var(--md-sys-color-background);
     border: 1px solid var(--md-sys-color-outline-variant);
   }
-  
+
   &.hierarchy-surface {
     background: var(--md-sys-color-surface);
     border: 1px solid var(--md-sys-color-outline-variant);
   }
-  
+
   &.hierarchy-surface-variant {
     background: var(--md-sys-color-surface-variant);
     border: 1px solid var(--md-sys-color-outline-variant);
@@ -220,26 +263,26 @@
   display: flex;
   flex-direction: column;
   gap: var(--md-sys-spacing-8, 8px);
-  
+
   p {
     margin: 0;
     padding: var(--md-sys-spacing-8, 8px);
-    
+
     &.text-on-surface-primary {
       color: var(--md-sys-color-on-surface);
       font-weight: var(--md-sys-typescale-title-medium-weight, 600);
     }
-    
+
     &.text-on-surface {
       color: var(--md-sys-color-on-surface);
       font-weight: var(--md-sys-typescale-body-medium-weight, 400);
     }
-    
+
     &.text-on-surface-variant {
       color: var(--md-sys-color-on-surface-variant);
       font-weight: var(--md-sys-typescale-body-medium-weight, 400);
     }
-    
+
     &.text-disabled {
       color: var(--md-sys-color-disabled);
       font-weight: var(--md-sys-typescale-body-medium-weight, 400);
@@ -258,7 +301,7 @@
   &.demo-btn--hover {
     background: var(--md-sys-color-hover);
   }
-  
+
   &.demo-btn--selected {
     background: var(--md-sys-color-selected);
     color: var(--md-sys-color-on-surface);
@@ -276,15 +319,15 @@
   background: var(--md-sys-color-surface);
   padding: var(--md-sys-spacing-16, 16px);
   margin-bottom: var(--md-sys-spacing-8, 8px);
-  
+
   &--standard {
     border: 1px solid var(--md-sys-color-outline);
   }
-  
+
   &--subtle {
     border: 1px solid var(--md-sys-color-outline-variant);
   }
-  
+
   &--focus {
     border: 2px solid var(--md-sys-color-primary);
   }
@@ -304,7 +347,7 @@
     color: var(--md-sys-color-on-surface);
     margin: 0 0 var(--md-sys-spacing-12, 12px) 0;
   }
-  
+
   pre {
     background: var(--md-sys-color-surface-container-low);
     border: 1px solid var(--md-sys-color-outline-variant);
@@ -312,7 +355,7 @@
     padding: var(--md-sys-spacing-16, 16px);
     overflow-x: auto;
     margin: 0;
-    
+
     code {
       font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
       font-size: var(--md-sys-typescale-body-small-size, 12px);

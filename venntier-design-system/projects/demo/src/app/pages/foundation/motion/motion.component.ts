@@ -191,8 +191,12 @@ $md-sys-motion-duration-long2: 500ms;`
   animateDuration(duration: number) {
     const boxes = document.querySelectorAll('.duration-box');
     boxes.forEach(box => {
-      box.classList.remove('animate');
-      setTimeout(() => box.classList.add('animate'), 10);
+      const element = box as HTMLElement;
+      // Set the animation duration dynamically
+      element.style.animationDuration = `${duration}ms`;
+      element.classList.remove('animate');
+      // Trigger reflow to restart animation
+      setTimeout(() => element.classList.add('animate'), 10);
     });
   }
 

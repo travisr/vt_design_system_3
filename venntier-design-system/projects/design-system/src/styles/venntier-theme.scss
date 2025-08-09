@@ -12,37 +12,37 @@
 @import '@fontsource/inter/500.css';
 
 // Include Material core styles (only once)
-@include mat.core();
+@include mat.core;
 
 // Apply base Material theme structure (only once)
-@include core.vt-material-base-theme();
+@include core.vt-material-base-theme;
 
 // Apply light theme colors by default
 @include core.vt-material-colors('light');
 
 // Apply component themes AFTER Material themes to override
 // Apply button overrides globally
-@include components.vt-button-theme();
+@include components.vt-button-theme;
 
-// Apply card overrides globally  
-@include components.vt-card-theme();
+// Apply card overrides globally
+@include components.vt-card-theme;
 
 // Apply input overrides globally
-@include components.vt-input-theme();
+@include components.vt-input-theme;
 
 // Apply form field overrides globally
-@include components.vt-form-field-theme();
+@include components.vt-form-field-theme;
 
 // Apply list overrides globally
-@include components.vt-list-overrides();
+@include components.vt-list-overrides;
 
 // Wrap sidenav in body.vt-theme for specificity
 body.vt-theme {
-  @include components.vt-sidenav-theme();
+  @include components.vt-sidenav-theme;
 }
 
 // Apply toolbar theme globally
-@include components.vt-toolbar-theme();
+@include components.vt-toolbar-theme;
 
 // Global styles
 :root {
@@ -56,7 +56,7 @@ body.vt-theme {
 }
 
 // Dark theme support - only apply color changes, not full theme
-[data-vt-theme="dark"],
+[data-vt-theme='dark'],
 .vt-theme-dark {
   // Only apply color changes for dark mode
   @include core.vt-material-colors('dark');
@@ -80,8 +80,9 @@ body {
 // OpenAI-style focus states - subtle shadows instead of outlines
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--md-sys-color-surface),
-              0 0 0 4px var(--md-sys-color-focus-ring);
+  box-shadow:
+    0 0 0 2px var(--md-sys-color-surface),
+    0 0 0 4px var(--md-sys-color-focus-ring);
   border-radius: var(--md-sys-shape-corner-small);
 }
 
@@ -92,8 +93,9 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--md-sys-color-surface),
-              0 0 0 3px var(--md-sys-color-focus-ring);
+  box-shadow:
+    0 0 0 2px var(--md-sys-color-surface),
+    0 0 0 3px var(--md-sys-color-focus-ring);
 }
 
 // Smooth scrolling
@@ -120,7 +122,7 @@ html {
 ::-webkit-scrollbar-thumb {
   background: var(--md-sys-color-outline);
   border-radius: var(--md-sys-shape-corner-full);
-  
+
   &:hover {
     background: var(--md-sys-color-on-surface-variant);
   }
@@ -131,15 +133,16 @@ a {
   color: var(--md-sys-color-primary);
   text-decoration: none;
   transition: var(--md-sys-motion-hover);
-  
+
   &:hover {
     text-decoration: underline;
   }
-  
+
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px var(--md-sys-color-surface),
-                0 0 0 3px var(--md-sys-color-focus-ring);
+    box-shadow:
+      0 0 0 2px var(--md-sys-color-surface),
+      0 0 0 3px var(--md-sys-color-focus-ring);
     border-radius: var(--md-sys-shape-corner-small);
   }
 }
@@ -160,7 +163,7 @@ pre {
   padding: var(--md-sys-spacing-4);
   border-radius: var(--md-sys-shape-corner-medium);
   overflow-x: auto;
-  
+
   code {
     background: none;
     padding: 0;

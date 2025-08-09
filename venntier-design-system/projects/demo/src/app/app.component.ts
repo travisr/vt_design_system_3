@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -99,6 +99,7 @@ export class AppComponent {
   
   readonly isDarkMode = this.themeService.isDark;
   readonly themeClass = this.themeService.themeClass;
+  readonly activeSection = 'typography';
   
   readonly navSections: NavSection[] = [
     {

@@ -283,6 +283,14 @@ export class ChipsComponent {
     { id: '1', label: 'john@example.com', removable: true },
     { id: '2', label: 'sarah@example.com', removable: true }
   ]);
+  
+  private _searchChips = signal<Chip[]>([]);
+  
+  private _quickActions = signal<(Chip & { selected?: boolean })[]>([
+    { id: '1', label: 'copy', selected: false },
+    { id: '2', label: 'share', selected: false },
+    { id: '3', label: 'delete', selected: false }
+  ]);
 
   private _searchSuggestions = signal<Chip[]>([
     { id: '1', label: 'angular components' },
@@ -304,6 +312,8 @@ export class ChipsComponent {
   readonly emailChips = this._emailChips.asReadonly();
   readonly searchSuggestions = this._searchSuggestions.asReadonly();
   readonly skills = this._skills.asReadonly();
+  readonly searchChips = this._searchChips.asReadonly();
+  readonly quickActions = this._quickActions.asReadonly();
 
   chipExamples = [
     {
@@ -418,11 +428,48 @@ export class ChipsComponent {
 
   selectSuggestion(id: string) {
     const suggestion = this._searchSuggestions().find(s => s.id === id);
-    console.log('Selected suggestion:', suggestion?.label);
+    if (suggestion) {
+      // Add the selected suggestion to the search chips
+      this._searchChips.update(chips => [...chips, {
+        id: `search-${Date.now()}`,
+        label: suggestion.label,
+        removable: true
+      }]);
+      // Clear the suggestion after selection
+      this._searchSuggestions.update(suggestions => 
+        suggestions.filter(s => s.id !== id)
+      );
+    }
   }
 
   quickAction(action: string) {
-    console.log('Quick action:', action);
+    // Handle different quick actions
+    switch(action) {
+      case 'copy':
+        // In a real app, copy to clipboard
+        this._quickActions.update(actions => 
+          actions.map(a => ({ ...a, selected: a.label === action }))
+        );
+        break;
+      case 'share':
+        // In a real app, open share dialog
+        this._quickActions.update(actions => 
+          actions.map(a => ({ ...a, selected: a.label === action }))
+        );
+        break;
+      case 'delete':
+        // In a real app, show delete confirmation
+        this._quickActions.update(actions => 
+          actions.map(a => ({ ...a, selected: a.label === action }))
+        );
+        break;
+    }
+    // Reset selection after a short delay for visual feedback
+    setTimeout(() => {
+      this._quickActions.update(actions => 
+        actions.map(a => ({ ...a, selected: false }))
+      );
+    }, 1000);
   }
 
   removeSkill(id: string) {

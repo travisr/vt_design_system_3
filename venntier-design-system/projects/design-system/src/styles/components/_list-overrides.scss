@@ -13,37 +13,37 @@
     --mdc-list-list-item-label-text-weight: var(--md-sys-typescale-body-medium-weight);
     --mdc-list-list-item-leading-icon-size: var(--md-sys-spacing-4);
     --mdc-list-list-item-trailing-icon-size: var(--md-sys-spacing-4);
-    
+
     // Hover state
     --mdc-list-list-item-hover-state-layer-color: var(--md-sys-color-hover);
     --mdc-list-list-item-hover-state-layer-opacity: 1;
     --mdc-list-list-item-hover-label-text-color: var(--md-sys-color-on-surface-variant);
     --mdc-list-list-item-hover-leading-icon-color: var(--md-sys-color-on-surface-variant);
-    
+
     // Focus state
     --mdc-list-list-item-focus-state-layer-color: transparent;
     --mdc-list-list-item-focus-state-layer-opacity: 0;
-    
+
     // Selected state
     --mdc-list-list-item-selected-container-color: var(--md-sys-color-selected);
-    
+
     // Disabled state
     --mdc-list-list-item-disabled-state-layer-opacity: 0.38;
     --mdc-list-list-item-disabled-label-text-opacity: 0.38;
   }
-  
+
   // Additional custom nav list styles
   .mat-mdc-nav-list {
     // Custom class for nav items
     .vt-nav-item {
       margin: calc(var(--md-sys-spacing-1) / 2) var(--md-sys-spacing-2);
       border-radius: var(--md-sys-shape-corner-small);
-      
+
       // Hover state using pseudo-class
       &:hover:not(.vt-active) {
         --mdc-list-list-item-container-color: var(--md-sys-color-hover);
       }
-      
+
       // Active state
       &.vt-active {
         --mdc-list-list-item-container-color: var(--md-sys-color-selected);

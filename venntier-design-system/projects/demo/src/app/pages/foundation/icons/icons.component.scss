@@ -3,8 +3,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--md-sys-spacing-24);
-  
-  @media (max-width: 768px) {
+
+  @media (width <= 768px) {
     grid-template-columns: 1fr;
   }
 }
@@ -29,7 +29,8 @@
   gap: var(--md-sys-spacing-8);
   padding: var(--md-sys-spacing-12);
   border-radius: var(--md-sys-shape-corner-small);
-  transition: background-color var(--md-sys-motion-duration-short2, 200ms) var(--md-sys-motion-easing-standard, ease);
+  transition: background-color var(--md-sys-motion-duration-short2, 200ms)
+    var(--md-sys-motion-easing-standard, ease);
 
   &:hover {
     background-color: var(--md-sys-color-surface-variant);
@@ -160,14 +161,15 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--md-sys-spacing-12);
-  
+
   mat-icon {
     color: var(--md-sys-color-on-surface-variant);
     justify-self: center;
     cursor: pointer;
     padding: var(--md-sys-spacing-8);
     border-radius: var(--md-sys-shape-corner-small);
-    transition: background-color var(--md-sys-motion-duration-short2, 200ms) var(--md-sys-motion-easing-standard, ease);
+    transition: background-color var(--md-sys-motion-duration-short2, 200ms)
+      var(--md-sys-motion-easing-standard, ease);
 
     &:hover {
       background-color: var(--md-sys-color-surface-variant);

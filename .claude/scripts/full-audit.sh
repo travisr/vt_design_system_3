@@ -1,15 +1,13 @@
 #!/bin/bash
 
-# Full Audit Script - Combines Angular best practices and Design System compliance
-# Usage: ./full-audit.sh [path]
+# Full Audit Script - Combines custom and industry tools
+# Usage: ./full-audit.sh [project-path]
 
 PROJECT_PATH="${1:-.}"
 cd "$PROJECT_PATH" || exit 1
 
 # Create audits directory if it doesn't exist
 mkdir -p audits
-
-REPORT_FILE="audits/full-audit-report.md"
 
 # Color codes for terminal output
 RED='\033[0;31m'
@@ -19,248 +17,268 @@ CYAN='\033[0;36m'
 MAGENTA='\033[0;35m'
 NC='\033[0m' # No Color
 
+TOTAL_ISSUES=0
+REPORT_FILE="audits/full-audit-report.md"
+
 # Initialize report
 cat > "$REPORT_FILE" << 'EOF'
-# Full Project Audit Report
+# Comprehensive Angular 19 / MD3 Design System Audit Report
 
-> Comprehensive analysis of Angular best practices and Design System compliance
-
-**Generated**: 
-EOF
-echo "*$(date '+%Y-%m-%d %H:%M:%S')*" >> "$REPORT_FILE"
-
-cat >> "$REPORT_FILE" << 'EOF'
-
----
-
-## 📋 Audit Scope
-
-This report combines:
-1. **Angular 19+ Best Practices** - Modern Angular patterns and performance
-2. **Material Design 3 Compliance** - Proper use of Material components and theming
-3. **Design System Usage** - Token adoption and separation of concerns
+> Combined analysis using custom scripts and industry-standard tools
 
 ---
 
 EOF
 
-echo -e "${CYAN}════════════════════════════════════════════════════════════════${NC}"
-echo -e "${CYAN}           Running Full Project Audit${NC}"
-echo -e "${CYAN}════════════════════════════════════════════════════════════════${NC}"
+echo -e "${CYAN}========================================${NC}"
+echo -e "${CYAN}  FULL AUDIT - Custom + Industry Tools ${NC}"
+echo -e "${CYAN}========================================${NC}"
 
 # =============================================================================
-# PART 1: Angular & MD3 Best Practices
+# SECTION 1: Custom Script Audits
 # =============================================================================
-echo -e "\n${MAGENTA}[1/3] Running Angular 19+ and Material Design 3 audit...${NC}"
-echo "" >> "$REPORT_FILE"
-echo "# Part 1: Angular 19+ & Material Design 3 Analysis" >> "$REPORT_FILE"
-echo "" >> "$REPORT_FILE"
-
-# Run the ng-audit script and capture key findings
+echo -e "\n${MAGENTA}[1/5] Running Custom Angular 19 Audit...${NC}"
 SCRIPT_DIR="$(dirname "$0")"
 if [ -f "$SCRIPT_DIR/ng-audit.sh" ]; then
-    # Run ng-audit and capture its output
-    NG_AUDIT_OUTPUT=$("$SCRIPT_DIR/ng-audit.sh" "$PROJECT_PATH" 2>&1)
-    
-    # Parse the ng-audit-report.md if it exists
-    if [ -f "$PROJECT_PATH/audits/ng-audit-report.md" ]; then
-        # Extract key sections from ng-audit report
-        sed -n '/## 🚨 CRITICAL:/,/^##/p' "$PROJECT_PATH/audits/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
-        sed -n '/## ⚠️ HIGH:/,/^##/p' "$PROJECT_PATH/audits/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
-        sed -n '/## 📝 MEDIUM:/,/^##/p' "$PROJECT_PATH/audits/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
-        
-        # Count issues (ensure single value output)
-        NG_CRITICAL=$(grep -c "❌" "$PROJECT_PATH/audits/ng-audit-report.md" 2>/dev/null | head -1 || echo "0")
-        NG_WARNINGS=$(grep -c "⚠️ Found" "$PROJECT_PATH/audits/ng-audit-report.md" 2>/dev/null | head -1 || echo "0")
-        
-        echo -e "${GREEN}✓${NC} Angular audit complete: $NG_CRITICAL critical, $NG_WARNINGS warnings"
+    "$SCRIPT_DIR/ng-audit.sh" "$PROJECT_PATH" > /dev/null 2>&1
+    if [ -f "audits/ng-audit-report.md" ]; then
+        echo "## 📋 Custom Angular 19 Compliance Audit" >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+        tail -n +4 audits/ng-audit-report.md >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+        echo -e "${GREEN}✓ Angular 19 audit complete${NC}"
     fi
 else
-    echo "**⚠️ Angular audit script not found**" >> "$REPORT_FILE"
-    NG_CRITICAL=0
-    NG_WARNINGS=0
+    echo -e "${YELLOW}⚠ Angular 19 audit script not found${NC}"
 fi
 
-# =============================================================================
-# PART 2: Design System Compliance
-# =============================================================================
-echo -e "\n${MAGENTA}[2/3] Running Design System compliance audit...${NC}"
-echo "" >> "$REPORT_FILE"
-echo "---" >> "$REPORT_FILE"
-echo "" >> "$REPORT_FILE"
-echo "# Part 2: Design System Compliance" >> "$REPORT_FILE"
-echo "" >> "$REPORT_FILE"
-
+echo -e "\n${MAGENTA}[2/5] Running Custom Design System Audit...${NC}"
 if [ -f "$SCRIPT_DIR/ds-audit.sh" ]; then
-    # Run ds-audit and capture its output
-    DS_AUDIT_OUTPUT=$("$SCRIPT_DIR/ds-audit.sh" "$PROJECT_PATH" 2>&1)
-    
-    # Parse the ds-audit-report.md if it exists
-    if [ -f "$PROJECT_PATH/audits/ds-audit-report.md" ]; then
-        # Extract design system sections
-        sed -n '/## 🎨 Design System Token Usage/,/^##/p' "$PROJECT_PATH/audits/ds-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
-        sed -n '/## 📐 Demo Layout Patterns/,/^##/p' "$PROJECT_PATH/audits/ds-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
-        sed -n '/## 📊 Design System Coverage/,/^##/p' "$PROJECT_PATH/audits/ds-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
-        
-        # Count design violations (ensure single value output)
-        DS_VIOLATIONS=$(grep -c "design system violation" "$PROJECT_PATH/audits/ds-audit-report.md" 2>/dev/null | head -1 || echo "0")
-        
-        echo -e "${GREEN}✓${NC} Design system audit complete: $DS_VIOLATIONS violations"
+    "$SCRIPT_DIR/ds-audit.sh" "$PROJECT_PATH" > /dev/null 2>&1
+    if [ -f "audits/ds-audit-report.md" ]; then
+        echo "## 🎨 Custom Design System Compliance Audit" >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+        tail -n +4 audits/ds-audit-report.md >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+        echo -e "${GREEN}✓ Design System audit complete${NC}"
     fi
 else
-    echo "**⚠️ Design system audit script not found**" >> "$REPORT_FILE"
-    DS_VIOLATIONS=0
+    echo -e "${YELLOW}⚠ Design System audit script not found${NC}"
 fi
 
 # =============================================================================
-# PART 3: Combined Analysis & Recommendations
+# SECTION 2: ESLint Analysis
 # =============================================================================
-echo -e "\n${MAGENTA}[3/3] Generating combined analysis...${NC}"
-echo "" >> "$REPORT_FILE"
-echo "---" >> "$REPORT_FILE"
-echo "" >> "$REPORT_FILE"
-echo "# Part 3: Overall Assessment" >> "$REPORT_FILE"
+echo -e "\n${MAGENTA}[3/5] Running ESLint Analysis...${NC}"
+echo "## 🔍 ESLint Analysis" >> "$REPORT_FILE"
 echo "" >> "$REPORT_FILE"
 
-# Calculate overall health score
-TOTAL_ISSUES=$((NG_CRITICAL + NG_WARNINGS + DS_VIOLATIONS))
-
-cat >> "$REPORT_FILE" << 'EOF'
-## 📊 Project Health Score
-
-EOF
-
-# Determine health status
-if [ $TOTAL_ISSUES -eq 0 ]; then
-    HEALTH_STATUS="🟢 EXCELLENT"
-    HEALTH_MSG="Your project follows all best practices!"
-elif [ $TOTAL_ISSUES -le 3 ]; then
-    HEALTH_STATUS="🟡 GOOD"
-    HEALTH_MSG="Minor improvements needed"
-elif [ $TOTAL_ISSUES -le 10 ]; then
-    HEALTH_STATUS="🟠 FAIR"
-    HEALTH_MSG="Several areas need attention"
+# Check if ESLint is configured (look in workspace root and current dir)
+if [ -f "eslint.config.js" ] || [ -f ".eslintrc.json" ] || [ -f "venntier-design-system/eslint.config.js" ] || [ -f "venntier-design-system/.eslintrc.json" ]; then
+    # Run ESLint and capture results
+    ESLINT_OUTPUT=$(npx ng lint 2>&1 || true)
+    ESLINT_EXIT_CODE=$?
+    
+    if [ $ESLINT_EXIT_CODE -eq 0 ]; then
+        echo "✅ **No ESLint violations found**" >> "$REPORT_FILE"
+        echo -e "${GREEN}✓ ESLint: No violations${NC}"
+    else
+        # Count different types of errors
+        ERROR_COUNT=$(echo "$ESLINT_OUTPUT" | grep -c "error" || echo "0")
+        WARNING_COUNT=$(echo "$ESLINT_OUTPUT" | grep -c "warning" || echo "0")
+        
+        echo "### ❌ ESLint found issues:" >> "$REPORT_FILE"
+        echo "- **Errors**: $ERROR_COUNT" >> "$REPORT_FILE"
+        echo "- **Warnings**: $WARNING_COUNT" >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+        
+        # Extract key violations
+        echo "**Sample violations:**" >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "$ESLINT_OUTPUT" | grep -E "(error|warning)" | head -10 >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        
+        echo -e "${YELLOW}⚠ ESLint: $ERROR_COUNT errors, $WARNING_COUNT warnings${NC}"
+        ((TOTAL_ISSUES++))
+    fi
 else
-    HEALTH_STATUS="🔴 NEEDS WORK"
-    HEALTH_MSG="Significant improvements required"
+    echo "⚠️ **ESLint not configured** - Run \`ng add @angular-eslint/schematics\`" >> "$REPORT_FILE"
+    echo -e "${YELLOW}⚠ ESLint not configured${NC}"
 fi
 
-echo "### Status: $HEALTH_STATUS" >> "$REPORT_FILE"
-echo "" >> "$REPORT_FILE"
-echo "$HEALTH_MSG" >> "$REPORT_FILE"
 echo "" >> "$REPORT_FILE"
 
-# Issue breakdown
-echo "**Issue Breakdown:**" >> "$REPORT_FILE"
-echo "- Angular critical issues: $NG_CRITICAL" >> "$REPORT_FILE"
-echo "- Angular/MD3 warnings: $NG_WARNINGS" >> "$REPORT_FILE"
-echo "- Design system violations: $DS_VIOLATIONS" >> "$REPORT_FILE"
-echo "- **Total issues: $TOTAL_ISSUES**" >> "$REPORT_FILE"
-
-# Priority recommendations
-cat >> "$REPORT_FILE" << 'EOF'
-
-## 🎯 Priority Recommendations
-
-Based on the analysis, here are your top priorities:
-
-EOF
-
-if [ $NG_CRITICAL -gt 0 ]; then
-    echo "### 🚨 Critical (Fix immediately)" >> "$REPORT_FILE"
-    echo "- Migrate legacy control flow to @if/@for syntax" >> "$REPORT_FILE"
-    echo "- Remove deprecated patterns (::ng-deep, etc.)" >> "$REPORT_FILE"
-    echo "" >> "$REPORT_FILE"
-fi
-
-if [ $DS_VIOLATIONS -gt 0 ]; then
-    echo "### ⚠️ High Priority" >> "$REPORT_FILE"
-    echo "- Replace custom styles with design tokens" >> "$REPORT_FILE"
-    echo "- Move visual styling to design system" >> "$REPORT_FILE"
-    echo "- Use layout utilities for demo components" >> "$REPORT_FILE"
-    echo "" >> "$REPORT_FILE"
-fi
-
-if [ $NG_WARNINGS -gt 0 ]; then
-    echo "### 📝 Medium Priority" >> "$REPORT_FILE"
-    echo "- Adopt Material 19 system variables" >> "$REPORT_FILE"
-    echo "- Migrate to standalone components" >> "$REPORT_FILE"
-    echo "- Use proper Material theming APIs" >> "$REPORT_FILE"
-    echo "" >> "$REPORT_FILE"
-fi
-
-# Quick wins section
-cat >> "$REPORT_FILE" << 'EOF'
-## ⚡ Quick Wins
-
-Automated fixes you can run now:
-```bash
-# Migrate to new control flow
-ng generate @angular/core:control-flow
-
-# Convert to standalone components
-ng generate @angular/core:standalone
-
-# Generate Material 3 theme
-ng generate @angular/material:m3-theme
-```
-
-## 📚 Best Practices Checklist
-
-### Angular 19+
-- [ ] Use @if/@for/@switch control flow
-- [ ] Prefer standalone components
-- [ ] Use signals over observables
-- [ ] Implement OnPush change detection
-
-### Material Design 3
-- [ ] Enable system variables (`use-system-variables: true`)
-- [ ] Use theme overrides instead of CSS overrides
-- [ ] Leverage Material elevation mixins
-- [ ] Follow Material component guidelines
-
-### Design System
-- [ ] All colors from MD3 tokens
-- [ ] All spacing from 8px grid tokens
-- [ ] Demo styles for layout only
-- [ ] Component customization in library, not demos
-
-EOF
-
-# Summary message
-echo "" >> "$REPORT_FILE"
-echo "---" >> "$REPORT_FILE"
-echo "" >> "$REPORT_FILE"
-echo "## 📈 Next Steps" >> "$REPORT_FILE"
+# =============================================================================
+# SECTION 3: Stylelint Analysis
+# =============================================================================
+echo -e "\n${MAGENTA}[4/5] Running Stylelint Analysis...${NC}"
+echo "## 🎨 Stylelint Analysis (MD3 Token Enforcement)" >> "$REPORT_FILE"
 echo "" >> "$REPORT_FILE"
 
-if [ $TOTAL_ISSUES -eq 0 ]; then
-    echo "1. Continue following best practices ✅" >> "$REPORT_FILE"
-    echo "2. Consider documenting your patterns" >> "$REPORT_FILE"
-    echo "3. Set up pre-commit hooks to maintain quality" >> "$REPORT_FILE"
+# Check if Stylelint is configured (look in workspace root and current dir)
+if [ -f ".stylelintrc.json" ] || [ -f "stylelint.config.js" ] || [ -f "venntier-design-system/.stylelintrc.json" ] || [ -f "venntier-design-system/stylelint.config.js" ]; then
+    # Run Stylelint and capture results
+    STYLELINT_OUTPUT=$(npx stylelint "**/*.scss" --ignore-path .gitignore 2>&1 || true)
+    STYLELINT_EXIT_CODE=$?
+    
+    if [ $STYLELINT_EXIT_CODE -eq 0 ]; then
+        echo "✅ **All styles follow MD3 token conventions**" >> "$REPORT_FILE"
+        echo -e "${GREEN}✓ Stylelint: No violations${NC}"
+    else
+        # Count violations
+        STYLE_VIOLATIONS=$(echo "$STYLELINT_OUTPUT" | grep -c "✖" || echo "0")
+        
+        echo "### ❌ Stylelint found $STYLE_VIOLATIONS style violations:" >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+        
+        # Check for specific MD3 token violations
+        TOKEN_VIOLATIONS=$(echo "$STYLELINT_OUTPUT" | grep -c "Use MD3 tokens" || echo "0")
+        if [ $TOKEN_VIOLATIONS -gt 0 ]; then
+            echo "**⚠️ $TOKEN_VIOLATIONS MD3 token violations found**" >> "$REPORT_FILE"
+            echo "" >> "$REPORT_FILE"
+        fi
+        
+        echo "**Sample violations:**" >> "$REPORT_FILE"
+        echo '```scss' >> "$REPORT_FILE"
+        echo "$STYLELINT_OUTPUT" | grep -A 2 "✖" | head -20 >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        
+        echo -e "${YELLOW}⚠ Stylelint: $STYLE_VIOLATIONS violations${NC}"
+        ((TOTAL_ISSUES++))
+    fi
 else
-    echo "1. Address critical issues first" >> "$REPORT_FILE"
-    echo "2. Run automated migrations where available" >> "$REPORT_FILE"
-    echo "3. Update design token usage in components" >> "$REPORT_FILE"
-    echo "4. Re-run this audit after fixes to track progress" >> "$REPORT_FILE"
+    echo "⚠️ **Stylelint not configured** - Run \`npm install --save-dev stylelint stylelint-config-standard-scss\`" >> "$REPORT_FILE"
+    echo -e "${YELLOW}⚠ Stylelint not configured${NC}"
 fi
 
 echo "" >> "$REPORT_FILE"
-echo "---" >> "$REPORT_FILE"
-echo "*End of Full Audit Report*" >> "$REPORT_FILE"
 
-# Terminal output summary
+# =============================================================================
+# SECTION 4: TypeScript Type Checking
+# =============================================================================
+echo -e "\n${MAGENTA}[5/5] Running TypeScript Type Check...${NC}"
+echo "## 📝 TypeScript Type Checking" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+
+# Run TypeScript compiler in no-emit mode
+TSC_OUTPUT=$(npx tsc --noEmit -p tsconfig.json 2>&1 || true)
+TSC_EXIT_CODE=$?
+
+if [ $TSC_EXIT_CODE -eq 0 ]; then
+    echo "✅ **No TypeScript errors**" >> "$REPORT_FILE"
+    echo -e "${GREEN}✓ TypeScript: No errors${NC}"
+else
+    # Count TypeScript errors
+    TS_ERROR_COUNT=$(echo "$TSC_OUTPUT" | grep -c "error TS" || echo "0")
+    
+    echo "### ❌ TypeScript found $TS_ERROR_COUNT errors:" >> "$REPORT_FILE"
+    echo "" >> "$REPORT_FILE"
+    echo "**Sample errors:**" >> "$REPORT_FILE"
+    echo '```typescript' >> "$REPORT_FILE"
+    echo "$TSC_OUTPUT" | grep "error TS" | head -10 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    
+    echo -e "${YELLOW}⚠ TypeScript: $TS_ERROR_COUNT errors${NC}"
+    ((TOTAL_ISSUES++))
+fi
+
+echo "" >> "$REPORT_FILE"
+
+# =============================================================================
+# SECTION 5: Migration Opportunities
+# =============================================================================
+echo "" >> "$REPORT_FILE"
+echo "## 🚀 Migration Opportunities" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+
+# Check for legacy control flow
+LEGACY_COUNT=$(grep -r '\*ngIf\|\*ngFor\|\*ngSwitch' \
+    --include="*.html" \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null | wc -l || echo "0")
+
+if [ "$LEGACY_COUNT" -gt 0 ]; then
+    echo "### Available Angular 19 Migrations:" >> "$REPORT_FILE"
+    echo "" >> "$REPORT_FILE"
+    echo "1. **Control Flow Migration** ($LEGACY_COUNT legacy directives found)" >> "$REPORT_FILE"
+    echo "   \`\`\`bash" >> "$REPORT_FILE"
+    echo "   ng generate @angular/core:control-flow" >> "$REPORT_FILE"
+    echo "   \`\`\`" >> "$REPORT_FILE"
+    echo "" >> "$REPORT_FILE"
+fi
+
+# Check for non-standalone components
+MODULE_COUNT=$(grep -r '@NgModule' --include="*.ts" --exclude="*.spec.ts" "$PROJECT_PATH" 2>/dev/null | wc -l || echo "0")
+if [ "$MODULE_COUNT" -gt 2 ]; then
+    echo "2. **Standalone Components Migration** ($MODULE_COUNT NgModules found)" >> "$REPORT_FILE"
+    echo "   \`\`\`bash" >> "$REPORT_FILE"
+    echo "   ng generate @angular/core:standalone" >> "$REPORT_FILE"
+    echo "   \`\`\`" >> "$REPORT_FILE"
+    echo "" >> "$REPORT_FILE"
+fi
+
+# =============================================================================
+# SECTION 6: Quick Fix Commands
+# =============================================================================
+echo "## 🔧 Quick Fix Commands" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+echo "\`\`\`bash" >> "$REPORT_FILE"
+echo "# Auto-fix ESLint violations" >> "$REPORT_FILE"
+echo "npx ng lint --fix" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+echo "# Auto-fix Stylelint violations" >> "$REPORT_FILE"
+echo "npx stylelint \"**/*.scss\" --fix" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+echo "# Format all files with Prettier" >> "$REPORT_FILE"
+echo "npm run format" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+echo "# Run all audits" >> "$REPORT_FILE"
+echo "npm run audit:full" >> "$REPORT_FILE"
+echo "\`\`\`" >> "$REPORT_FILE"
+
+# =============================================================================
+# Summary
+# =============================================================================
+echo "" >> "$REPORT_FILE"
+echo "---" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+echo "## 📊 Summary" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+
+# Calculate totals from all sources
+CUSTOM_ISSUES=$(grep -c "❌\|⚠️" audits/ng-audit-report.md 2>/dev/null || echo "0")
+CUSTOM_ISSUES=$((CUSTOM_ISSUES + $(grep -c "❌\|⚠️" audits/ds-audit-report.md 2>/dev/null || echo "0")))
+
+if [ $TOTAL_ISSUES -eq 0 ] && [ $CUSTOM_ISSUES -eq 0 ]; then
+    echo "### ✅ **Excellent! Full compliance achieved**" >> "$REPORT_FILE"
+    echo "" >> "$REPORT_FILE"
+    echo "- ✅ Angular 19 best practices" >> "$REPORT_FILE"
+    echo "- ✅ MD3 token usage" >> "$REPORT_FILE"
+    echo "- ✅ TypeScript type safety" >> "$REPORT_FILE"
+    echo "- ✅ Code formatting standards" >> "$REPORT_FILE"
+    
+    echo -e "\n${GREEN}========================================${NC}"
+    echo -e "${GREEN}  ✅ AUDIT PASSED - Full Compliance!   ${NC}"
+    echo -e "${GREEN}========================================${NC}"
+else
+    echo "### ⚠️ **Issues found across audits**" >> "$REPORT_FILE"
+    echo "" >> "$REPORT_FILE"
+    echo "**Review the sections above and run the quick fix commands to resolve issues.**" >> "$REPORT_FILE"
+    
+    echo -e "\n${YELLOW}========================================${NC}"
+    echo -e "${YELLOW}  ⚠️ Issues found - See report         ${NC}"
+    echo -e "${YELLOW}========================================${NC}"
+fi
+
+echo "" >> "$REPORT_FILE"
+echo "*Generated: $(date '+%Y-%m-%d %H:%M:%S')*" >> "$REPORT_FILE"
+
+echo -e "\n${CYAN}✅ Full audit complete!${NC}"
+echo -e "${CYAN}📄 Report: $PROJECT_PATH/$REPORT_FILE${NC}"
 echo ""
-echo -e "${CYAN}════════════════════════════════════════════════════════════════${NC}"
-echo -e "${CYAN}                    Audit Complete!${NC}"
-echo -e "${CYAN}════════════════════════════════════════════════════════════════${NC}"
-echo ""
-echo -e "Project Health: $HEALTH_STATUS"
-echo -e "Total Issues Found: ${YELLOW}$TOTAL_ISSUES${NC}"
-echo ""
-echo -e "Full report written to: ${GREEN}$PROJECT_PATH/$REPORT_FILE${NC}"
-echo ""
-echo "Run individual audits for detailed analysis:"
-echo "  • ng-audit.sh    - Angular & Material best practices"
-echo "  • ds-audit.sh    - Design system compliance"
-echo ""
+echo -e "${CYAN}Quick actions:${NC}"
+echo "  npm run lint:all      # Run all linters"
+echo "  npm run format        # Format all files"
+echo "  npm run audit:full    # Run this audit again"

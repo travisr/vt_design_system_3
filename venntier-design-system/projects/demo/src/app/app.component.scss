@@ -20,7 +20,7 @@ mat-sidenav-content {
 .demo-toolbar {
   flex: 0 0 auto; // Don't grow or shrink, maintain size
   min-height: var(--md-sys-spacing-64, 64px); // Ensure minimum height
-  
+
   .spacer {
     flex: 1 1 auto;
   }
@@ -29,7 +29,6 @@ mat-sidenav-content {
 // Content wrapper handles all scrolling
 .content-wrapper {
   flex: 1 1 auto; // Take remaining space
-  overflow-y: auto; // Enable vertical scrolling here
-  overflow-x: hidden;
+  overflow: hidden auto; // Enable vertical scrolling here
   background: var(--md-sys-color-surface);
 }

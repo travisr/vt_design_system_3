@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Run lint-staged in the venntier-design-system directory
+cd venntier-design-system && npx lint-staged
