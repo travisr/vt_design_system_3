@@ -33,7 +33,7 @@ interface NavItem {
     MatListModule,
     MatIconModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   template: `
     <mat-sidenav-container class="demo-container vt-theme">
@@ -46,7 +46,7 @@ interface NavItem {
               <span>Venntier DS</span>
             </div>
           </div>
-          
+
           <div class="vt-sidenav-content">
             @for (section of navSections; track section.title) {
               <div class="vt-nav-section">
@@ -55,9 +55,11 @@ interface NavItem {
                 </div>
                 <mat-nav-list>
                   @for (item of section.items; track item.path) {
-                    <a mat-list-item 
-                       [routerLink]="[section.path, item.path]"
-                       routerLinkActive="active">
+                    <a
+                      mat-list-item
+                      [routerLink]="[section.path, item.path]"
+                      routerLinkActive="active"
+                    >
                       @if (item.icon) {
                         <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
                       }
@@ -78,7 +80,12 @@ interface NavItem {
           <mat-toolbar class="demo-toolbar">
             <h1>Venntier Design System</h1>
             <span class="spacer"></span>
-            <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme" aria-label="Toggle dark mode">
+            <button
+              mat-icon-button
+              (click)="toggleTheme()"
+              matTooltip="Toggle theme"
+              aria-label="Toggle dark mode"
+            >
               <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
             </button>
           </mat-toolbar>
@@ -91,16 +98,16 @@ interface NavItem {
       </mat-sidenav-content>
     </mat-sidenav-container>
   `,
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   private readonly themeService = inject(VenntierThemeService);
   private readonly router = inject(Router);
-  
+
   readonly isDarkMode = this.themeService.isDark;
   readonly themeClass = this.themeService.themeClass;
   readonly activeSection = 'typography';
-  
+
   readonly navSections: NavSection[] = [
     {
       title: 'Foundation',
@@ -111,8 +118,8 @@ export class AppComponent {
         { label: 'Colors & Themes', path: 'colors', icon: 'palette' },
         { label: 'Spacing & Layout', path: 'spacing', icon: 'space_bar' },
         { label: 'Motion', path: 'motion', icon: 'animation' },
-        { label: 'Icons', path: 'icons', icon: 'emoji_symbols' }
-      ]
+        { label: 'Icons', path: 'icons', icon: 'emoji_symbols' },
+      ],
     },
     {
       title: 'Actions',
@@ -123,8 +130,8 @@ export class AppComponent {
         { label: 'FAB', path: 'fab', icon: 'add_circle' },
         { label: 'Icon Buttons', path: 'icon-buttons', icon: 'radio_button_unchecked' },
         { label: 'Segmented Buttons', path: 'segmented-buttons', icon: 'view_week' },
-        { label: 'Chips', path: 'chips', icon: 'label' }
-      ]
+        { label: 'Chips', path: 'chips', icon: 'label' },
+      ],
     },
     {
       title: 'Forms & Inputs',
@@ -137,8 +144,8 @@ export class AppComponent {
         { label: 'Radio Buttons', path: 'radio-buttons', icon: 'radio_button_checked' },
         { label: 'Switches', path: 'switches', icon: 'toggle_on' },
         { label: 'Sliders', path: 'sliders', icon: 'tune' },
-        { label: 'Date & Time', path: 'date-time', icon: 'calendar_today' }
-      ]
+        { label: 'Date & Time', path: 'date-time', icon: 'calendar_today' },
+      ],
     },
     {
       title: 'Navigation',
@@ -149,8 +156,8 @@ export class AppComponent {
         { label: 'Navigation Rail', path: 'rail', icon: 'view_sidebar' },
         { label: 'Navigation Drawer', path: 'drawer', icon: 'menu_open' },
         { label: 'Tabs', path: 'tabs', icon: 'tab' },
-        { label: 'Top App Bar', path: 'app-bar', icon: 'web_asset' }
-      ]
+        { label: 'Top App Bar', path: 'app-bar', icon: 'web_asset' },
+      ],
     },
     {
       title: 'Communication',
@@ -161,8 +168,8 @@ export class AppComponent {
         { label: 'Snackbar', path: 'snackbar', icon: 'announcement' },
         { label: 'Tooltips', path: 'tooltips', icon: 'help' },
         { label: 'Dialogs', path: 'dialogs', icon: 'chat_bubble' },
-        { label: 'Sheets', path: 'sheets', icon: 'vertical_split' }
-      ]
+        { label: 'Sheets', path: 'sheets', icon: 'vertical_split' },
+      ],
     },
     {
       title: 'Data Display',
@@ -172,8 +179,8 @@ export class AppComponent {
         { label: 'Cards', path: 'cards', icon: 'dashboard' },
         { label: 'Lists', path: 'lists', icon: 'list' },
         { label: 'Tables', path: 'tables', icon: 'table_chart' },
-        { label: 'Dividers', path: 'dividers', icon: 'horizontal_rule' }
-      ]
+        { label: 'Dividers', path: 'dividers', icon: 'horizontal_rule' },
+      ],
     },
     {
       title: 'Feedback',
@@ -183,8 +190,8 @@ export class AppComponent {
         { label: 'Progress', path: 'progress', icon: 'donut_large' },
         { label: 'Skeleton', path: 'skeleton', icon: 'content_copy' },
         { label: 'Loading', path: 'loading', icon: 'loop' },
-        { label: 'Empty States', path: 'empty', icon: 'inbox' }
-      ]
+        { label: 'Empty States', path: 'empty', icon: 'inbox' },
+      ],
     },
     {
       title: 'Layout',
@@ -193,12 +200,13 @@ export class AppComponent {
       items: [
         { label: 'Grid System', path: 'grid', icon: 'grid_on' },
         { label: 'Responsive', path: 'responsive', icon: 'devices' },
-        { label: 'Expansion Panels', path: 'expansion', icon: 'expand_more' }
-      ]
-    }
+        { label: 'Expansion Panels', path: 'expansion', icon: 'expand_more' },
+      ],
+    },
   ];
-  
+
   toggleTheme(): void {
     this.themeService.toggleTheme();
   }
-}// test comment
+} // test comment
+// Test comment

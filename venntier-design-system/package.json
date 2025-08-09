@@ -30,7 +30,6 @@
   },
   "lint-staged": {
     "*.{ts,html}": [
-      "eslint --fix",
       "prettier --write"
     ],
     "*.scss": [
