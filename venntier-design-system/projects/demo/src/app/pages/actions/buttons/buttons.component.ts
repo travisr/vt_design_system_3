@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { ExampleViewerComponent } from '../../../shared/components/example-viewer/example-viewer.component';
+import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
 @Component({
   selector: 'demo-buttons',
@@ -22,7 +23,7 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
       <demo-page-header
         title="Buttons"
         description="Buttons help people take action, such as sending an email, sharing a document, or liking a comment."
-        mdLink="https://m3.material.io/components/buttons">
+        [mdLink]="docLinks.BUTTONS">
       </demo-page-header>
 
       <!-- Button Variants -->
@@ -129,6 +130,8 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
   `
 })
 export class ButtonsComponent {
+  readonly docLinks = MD3_DOCS;
+
   variantsCode = {
     html: `<button mat-fab color="primary">
   <mat-icon>add</mat-icon>

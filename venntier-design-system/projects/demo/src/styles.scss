@@ -1,11 +1,7 @@
-/* Import Venntier Design System theme and tokens */
-@import '../../design-system/src/styles/venntier-theme';
-
-/* Import demo utilities */
-@import 'demo-utilities';
-
-/* Import shared demo styles globally */
-@import 'app/shared/styles/demo-shared';
+/* Use modern @use instead of @import for Sass 3.0 compatibility */
+@use '../../design-system/src/styles/venntier-theme';
+@use 'demo-utilities';
+@use 'app/shared/styles/demo-shared';
 
 html { 
   height: 100%;
@@ -14,13 +10,19 @@ html {
 body { 
   height: 100%;
   margin: 0;
-  // Force background color with !important to override Angular defaults
-  background-color: var(--md-sys-color-background) !important;
-  color: var(--md-sys-color-on-background) !important;
+  // Override Angular defaults with higher specificity
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
   font-family: var(--md-sys-typescale-body-large-font);
   
   // Apply the vt-theme class for component overrides
   @extend .vt-theme;
+}
+
+// Ensure body styles take precedence over Material defaults
+html body {
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
 }
 
 // Override Material's hover implementation
@@ -31,8 +33,7 @@ body {
   }
   
   // Disable ripple
-  .mat-ripple,
-  .mdc-list-item__ripple {
+  .mat-ripple {
     display: none;
   }
 }
@@ -50,8 +51,8 @@ mat-sidenav .mat-mdc-nav-list {
       background-color: transparent;
       transition: background-color var(--md-sys-motion-hover);
       
-      // Override MDC's internal element
-      .mdc-list-item__primary-text {
+      // Style list item text
+      .mat-mdc-list-item-title {
         color: var(--md-sys-color-on-surface-variant);
       }
       
@@ -66,7 +67,7 @@ mat-sidenav .mat-mdc-nav-list {
       &.active {
         background-color: var(--md-sys-color-selected);
         
-        .mdc-list-item__primary-text,
+        .mat-mdc-list-item-title,
         mat-icon {
           color: var(--md-sys-color-primary);
           font-weight: var(--md-sys-typescale-label-medium-weight);

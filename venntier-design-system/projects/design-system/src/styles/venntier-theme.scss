@@ -11,13 +11,14 @@
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 
-// Include Material core styles
+// Include Material core styles (only once)
 @include mat.core();
 
-// Apply default light theme
-:root {
-  @include core.vt-material-theme('light');
-}
+// Apply base Material theme structure (only once)
+@include core.vt-material-base-theme();
+
+// Apply light theme colors by default
+@include core.vt-material-colors('light');
 
 // Apply component themes AFTER Material themes to override
 // Apply button overrides globally
@@ -54,10 +55,11 @@ body.vt-theme {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Dark theme support
+// Dark theme support - only apply color changes, not full theme
 [data-vt-theme="dark"],
 .vt-theme-dark {
-  @include core.vt-material-theme('dark');
+  // Only apply color changes for dark mode
+  @include core.vt-material-colors('dark');
 }
 
 // Base resets

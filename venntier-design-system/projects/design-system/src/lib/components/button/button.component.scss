@@ -41,15 +41,15 @@
   }
 
   &--primary {
-    background-color: #10a37f;
-    color: white;
+    background-color: var(--md-sys-color-tertiary);
+    color: var(--md-sys-color-on-tertiary);
     
     &:hover:not(:disabled) {
-      background-color: #0d8a6c;
+      background-color: var(--md-sys-color-tertiary-container);
     }
     
     &:active:not(:disabled) {
-      background-color: #0a7359;
+      background-color: var(--md-sys-color-tertiary-dark, var(--md-sys-color-tertiary));
     }
   }
 
@@ -69,14 +69,14 @@
 
   &--tertiary {
     background-color: transparent;
-    color: #565869;
+    color: var(--md-sys-color-on-surface-variant);
     
     &:hover:not(:disabled) {
-      background-color: #f7f7f8;
+      background-color: var(--md-sys-color-hover);
     }
     
     &:active:not(:disabled) {
-      background-color: #ececf1;
+      background-color: var(--md-sys-color-selected);
     }
   }
 
@@ -85,11 +85,11 @@
     color: var(--md-sys-color-on-surface);
     
     &:hover:not(:disabled) {
-      background-color: rgba(0, 0, 0, 0.04);
+      background-color: var(--md-sys-color-hover);
     }
     
     &:active:not(:disabled) {
-      background-color: rgba(0, 0, 0, 0.08);
+      background-color: var(--md-sys-color-selected);
     }
   }
 
@@ -99,7 +99,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid #6e6e80;
+    outline: 2px solid var(--md-sys-color-focus-ring);
     outline-offset: 2px;
   }
 }

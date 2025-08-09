@@ -1,11 +1,11 @@
 @use '@angular/material' as mat;
 @use '../tokens' as tokens;
 
-// Refined OpenAI-style Material overrides
-@mixin vt-material-theme($theme-type: 'light') {
+// Define the base theme structure (only once)
+@mixin vt-material-base-theme() {
   $theme: mat.define-theme((
     color: (
-      theme-type: $theme-type,
+      theme-type: light,
       use-system-variables: true,
       system-variables-prefix: md-sys-color,
     ),
@@ -15,11 +15,23 @@
     ),
   ));
   
-  body {
+  // M3 themes must be wrapped in a selector
+  html {
     @include mat.all-component-themes($theme);
   }
   
   @include vt-component-overrides-refined();
+}
+
+// Apply color scheme for light/dark modes
+@mixin vt-material-colors($theme-type: 'light') {
+  @if $theme-type == 'dark' {
+    // Apply dark theme color tokens
+    @include tokens.apply-dark-colors();
+  } @else {
+    // Apply light theme color tokens (default)
+    @include tokens.apply-light-colors();
+  }
 }
 
 @mixin vt-component-overrides-refined() {
@@ -70,12 +82,12 @@
       transition: all 0.15s ease;
       box-shadow: none;
       
-      // Remove all ripples using higher specificity
-      .mat-mdc-button-ripple,
-      .mat-mdc-button-persistent-ripple,
-      .mat-ripple {
-        display: none;
-      }
+      // Disable ripples using CSS variables
+      --mat-ripple-color: transparent;
+      --mdc-ripple-color: transparent;
+      --mdc-ripple-hover-opacity: 0;
+      --mdc-ripple-focus-opacity: 0;
+      --mdc-ripple-pressed-opacity: 0;
     }
   }
   

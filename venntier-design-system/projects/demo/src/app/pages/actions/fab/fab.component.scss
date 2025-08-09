@@ -124,17 +124,20 @@
   }
 }
 
-.fab-bottom-right {
-  position: absolute !important;
-  bottom: 16px !important;
-  right: 16px !important;
-}
+// FAB positioning within layout containers
+.layout-container {
+  .fab-bottom-right {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+  }
 
-.fab-bottom-center {
-  position: absolute !important;
-  bottom: 16px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
+  .fab-bottom-center {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 // Loading state animation

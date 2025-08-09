@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
+import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
 @Component({
   selector: 'demo-spacing',
@@ -13,7 +14,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header/page
       <demo-page-header
         title="Spacing & Layout"
         description="Consistent spacing system based on 8px grid for predictable layouts and visual rhythm."
-        mdLink="https://m3.material.io/foundations/layout">
+        [mdLink]="docLinks.LAYOUT">
       </demo-page-header>
 
       <mat-card>
@@ -172,4 +173,5 @@ import { PageHeaderComponent } from '../../../shared/components/page-header/page
   `
 })
 export class SpacingComponent {
+  readonly docLinks = MD3_DOCS;
 }

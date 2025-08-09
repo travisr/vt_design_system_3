@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
+import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
 @Component({
   selector: 'demo-typography',
@@ -12,7 +13,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header/page
       <demo-page-header
         title="Typography"
         description="The Venntier Design System uses Inter as its primary typeface with a refined type scale for optimal readability."
-        mdLink="https://m3.material.io/styles/typography">
+        [mdLink]="docLinks.TYPOGRAPHY">
       </demo-page-header>
 
       <section class="demo-section">
@@ -96,4 +97,5 @@ import { PageHeaderComponent } from '../../../shared/components/page-header/page
   `
 })
 export class TypographyComponent {
+  readonly docLinks = MD3_DOCS;
 }

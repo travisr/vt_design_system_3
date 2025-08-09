@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { ExampleViewerComponent } from '../../../shared/components/example-viewer/example-viewer.component';
+import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
 @Component({
   selector: 'demo-motion',
@@ -22,9 +23,7 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
       <demo-page-header
         title="Motion"
         description="Motion provides meaning and helps users understand the interface through purposeful transitions and animations."
-        [links]="[
-          { label: 'M3 Motion Guidelines', url: 'https://m3.material.io/styles/motion' }
-        ]">
+        [links]="resources">
       </demo-page-header>
 
       <section class="demo-section">
@@ -61,13 +60,15 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
         <p>Motion durations are based on a structured scale for consistency.</p>
         <div class="demo-example">
           <div class="duration-demo">
-            <div class="duration-example" *ngFor="let duration of durations">
+            @for (duration of durations; track duration.value) {
+            <div class="duration-example">
               <span class="duration-label">{{ duration.label }}</span>
               <div class="motion-box duration-box" [style.animation-duration.ms]="duration.value">
                 {{ duration.value }}ms
               </div>
               <button mat-button (click)="animateDuration(duration.value)">Test</button>
             </div>
+            }
           </div>
         </div>
       </section>
@@ -115,6 +116,10 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
   styleUrl: './motion.component.scss'
 })
 export class MotionComponent {
+  readonly resources = [
+    { label: 'M3 Motion Guidelines', url: MD3_DOCS.MOTION }
+  ];
+
   fadeVisible = true;
   scaleActive = false;
   slideActive = false;

@@ -21,10 +21,8 @@
   ],
   "exports": {
     ".": {
-      "types": "./index.d.ts",
       "esm2022": "./esm2022/venntier-design-system.mjs",
-      "esm": "./esm2022/venntier-design-system.mjs",
-      "default": "./fesm2022/venntier-design-system.mjs"
+      "esm": "./esm2022/venntier-design-system.mjs"
     },
     "./theme": {
       "sass": "./src/styles/_theme.scss"

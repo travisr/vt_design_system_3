@@ -8,7 +8,7 @@
   mat-sidenav,
   .mat-drawer.mat-sidenav,
   .mat-sidenav {
-    background: #f7f7f8;  // OpenAI exact sidenav background
+    background: var(--md-sys-color-surface-container-low);
     border-right: 1px solid var(--md-sys-color-outline-variant);
     border-radius: 0;  // Remove rounded corners
     
@@ -163,6 +163,15 @@
         }
       }
       
+      // Disable Material's ripple using CSS variables (wrapped in & {} for Sass 3.0)
+      & {
+        --mat-ripple-color: transparent;
+        --mdc-ripple-color: transparent;
+        --mdc-ripple-hover-opacity: 0;
+        --mdc-ripple-focus-opacity: 0;
+        --mdc-ripple-pressed-opacity: 0;
+      }
+      
       // Disabled state
       &[disabled] {
         opacity: 0.38;
@@ -173,12 +182,6 @@
       &:focus-visible {
         outline: 2px solid var(--md-sys-color-focus-ring);
         outline-offset: -2px;
-      }
-      
-      // Remove Material's ripple
-      .mat-ripple,
-      .mat-mdc-list-item-ripple {
-        display: none;
       }
     }
   }

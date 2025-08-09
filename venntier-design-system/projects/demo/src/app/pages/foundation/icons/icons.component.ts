@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { ExampleViewerComponent } from '../../../shared/components/example-viewer/example-viewer.component';
+import { MD3_DOCS, EXTERNAL_RESOURCES } from '../../../shared/constants/documentation-links';
 
 @Component({
   selector: 'demo-icons',
@@ -28,10 +29,7 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
       <demo-page-header
         title="Icons"
         description="Icons are visual symbols that represent concepts, objects, or actions. Material Design uses filled and outlined icon styles."
-        [links]="[
-          { label: 'Material Icons', url: 'https://fonts.google.com/icons' },
-          { label: 'M3 Icon Guidelines', url: 'https://m3.material.io/styles/icons' }
-        ]">
+        [links]="resources">
       </demo-page-header>
 
       <section class="demo-section">
@@ -272,6 +270,11 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
   styleUrl: './icons.component.scss'
 })
 export class IconsComponent {
+  readonly resources = [
+    { label: 'Material Icons', url: EXTERNAL_RESOURCES.MATERIAL_ICONS },
+    { label: 'M3 Icon Guidelines', url: MD3_DOCS.ICONS }
+  ];
+
   iconExamples = [
     {
       title: 'Basic Icon Usage',

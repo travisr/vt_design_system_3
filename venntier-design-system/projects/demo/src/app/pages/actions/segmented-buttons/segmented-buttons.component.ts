@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { ExampleViewerComponent } from '../../../shared/components/example-viewer/example-viewer.component';
+import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
 @Component({
   selector: 'demo-segmented-buttons',
@@ -22,9 +23,7 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
       <demo-page-header
         title="Segmented Buttons"
         description="Segmented buttons help people select options, switch views, or sort elements."
-        [links]="[
-          { label: 'M3 Segmented Button Guidelines', url: 'https://m3.material.io/components/segmented-buttons' }
-        ]">
+        [links]="resources">
       </demo-page-header>
 
       <section class="demo-section">
@@ -228,6 +227,10 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
   styleUrl: './segmented-buttons.component.scss'
 })
 export class SegmentedButtonsComponent {
+  readonly resources = [
+    { label: 'M3 Segmented Button Guidelines', url: MD3_DOCS.SEGMENTED_BUTTONS }
+  ];
+
   private _viewMode = signal('list');
   private _textFormats = signal<string[]>([]);
   private _alignment = signal('left');

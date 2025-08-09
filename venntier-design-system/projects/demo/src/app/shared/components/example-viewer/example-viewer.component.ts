@@ -111,10 +111,11 @@ interface Example {
     
     .example-code-tabs {
       border-top: 1px solid var(--md-sys-color-outline-variant);
-      
-      ::ng-deep .mat-mdc-tab-body-content {
-        padding: 0;
-      }
+    }
+    
+    // Use :host-context to style Material tab content
+    :host-context(.example-code-tabs) .mat-mdc-tab-body-content {
+      padding: 0;
     }
     
     .demo-code {

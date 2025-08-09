@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { ExampleViewerComponent } from '../../../shared/components/example-viewer/example-viewer.component';
+import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
 @Component({
   selector: 'demo-fab',
@@ -24,9 +25,7 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
       <demo-page-header
         title="Floating Action Button (FAB)"
         description="FABs represent the primary action of a screen and are used for a promoted action."
-        [links]="[
-          { label: 'M3 FAB Guidelines', url: 'https://m3.material.io/components/floating-action-button' }
-        ]">
+        [links]="resources">
       </demo-page-header>
 
       <section class="demo-section">
@@ -236,6 +235,10 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
   styleUrl: './fab.component.scss'
 })
 export class FabComponent {
+  readonly resources = [
+    { label: 'M3 FAB Guidelines', url: MD3_DOCS.FAB }
+  ];
+
   private _isLoading = signal(false);
   readonly isLoading = this._isLoading.asReadonly();
 

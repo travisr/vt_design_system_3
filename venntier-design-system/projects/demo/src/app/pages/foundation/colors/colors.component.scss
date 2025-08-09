@@ -125,19 +125,21 @@
   color: var(--md-sys-color-on-surface-variant);
 }
 
-// Simulated state classes
-.state-hover {
-  background: var(--md-sys-color-hover) !important;
-}
+// Simulated state classes - higher specificity instead of !important
+.states-demo {
+  .state-hover {
+    background: var(--md-sys-color-hover);
+  }
 
-.state-selected {
-  background: var(--md-sys-color-selected) !important;
-  color: var(--md-sys-color-on-surface) !important;
-}
+  .state-selected {
+    background: var(--md-sys-color-selected);
+    color: var(--md-sys-color-on-surface);
+  }
 
-.state-focus {
-  outline: 2px solid var(--md-sys-color-focus-ring) !important;
-  outline-offset: 2px;
+  .state-focus {
+    outline: 2px solid var(--md-sys-color-focus-ring);
+    outline-offset: 2px;
+  }
 }
 
 // Usage examples

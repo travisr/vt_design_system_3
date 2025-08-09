@@ -7,6 +7,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { ExampleViewerComponent } from '../../../shared/components/example-viewer/example-viewer.component';
+import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
 @Component({
   selector: 'demo-icon-buttons',
@@ -26,9 +27,7 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
       <demo-page-header
         title="Icon Buttons"
         description="Icon buttons allow users to take actions and make choices with a single tap."
-        [links]="[
-          { label: 'M3 Icon Button Guidelines', url: 'https://m3.material.io/components/icon-buttons' }
-        ]">
+        [links]="resources">
       </demo-page-header>
 
       <section class="demo-section">
@@ -268,6 +267,10 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
   styleUrl: './icon-buttons.component.scss'
 })
 export class IconButtonsComponent {
+  readonly resources = [
+    { label: 'M3 Icon Button Guidelines', url: MD3_DOCS.ICON_BUTTONS }
+  ];
+
   private _favoriteToggled = signal(false);
   private _bookmarkToggled = signal(false);
   private _starToggled = signal(false);

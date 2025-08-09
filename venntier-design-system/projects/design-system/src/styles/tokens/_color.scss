@@ -175,3 +175,14 @@ $_gray-25: #ffffff;   // OpenAI card surface
 @function color($name) {
   @return var(--md-sys-color-#{$name});
 }
+
+// Mixins for applying color schemes
+@mixin apply-light-colors() {
+  // Light colors are already defined in :root, so this is empty
+  // Kept for consistency with apply-dark-colors
+}
+
+@mixin apply-dark-colors() {
+  // Dark colors are already defined in the dark theme selectors above
+  // This mixin is just a placeholder since CSS custom properties handle it
+}

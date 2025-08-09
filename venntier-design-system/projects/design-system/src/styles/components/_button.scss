@@ -15,10 +15,11 @@
     border-radius: var(--md-sys-shape-corner-small); // 6px
     transition: all var(--md-sys-motion-hover);
     
-    // Ensure proper text alignment
-    .mat-mdc-button-touch-target {
-      height: 36px;
-    }
+    // Use MD3 tokens for consistent sizing
+    --mdc-button-container-height: var(--md-sys-spacing-5); // 36px
+    --mdc-text-button-container-height: var(--md-sys-spacing-5);
+    --mdc-filled-button-container-height: var(--md-sys-spacing-5);
+    --mdc-outlined-button-container-height: var(--md-sys-spacing-5);
     
     // Icon sizing
     .mat-icon {
@@ -37,11 +38,11 @@
     --mdc-filled-button-label-text-color: var(--md-sys-color-on-tertiary);
     
     &:hover:not(:disabled) {
-      --mdc-filled-button-container-color: #0e8a69; // Darker green
+      --mdc-filled-button-container-color: var(--md-sys-color-primary-container);
     }
     
     &:active:not(:disabled) {
-      --mdc-filled-button-container-color: #0c7356;
+      --mdc-filled-button-container-color: var(--md-sys-color-primary);
     }
     
     &:disabled {
@@ -76,7 +77,7 @@
   
   // Tertiary text button - Gray text (OpenAI pattern)
   .mat-mdc-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
-    --mdc-text-button-label-text-color: #565869; // OpenAI secondary text
+    --mdc-text-button-label-text-color: var(--md-sys-color-on-surface-variant);
     
     &:hover:not(:disabled) {
       --mdc-text-button-label-text-color: var(--md-sys-color-on-surface);
@@ -126,7 +127,7 @@
     --mdc-fab-icon-color: var(--md-sys-color-on-tertiary);
     
     &:hover:not(:disabled) {
-      --mdc-fab-container-color: #0e8a69;
+      --mdc-fab-container-color: var(--md-sys-color-primary-container);
     }
   }
   
@@ -166,8 +167,8 @@
       animation: vt-spin 0.6s linear infinite;
     }
     
-    .mat-button-wrapper {
-      opacity: 0;
+    .vt-loading & {
+      color: transparent;
     }
   }
   
@@ -185,11 +186,16 @@
                 0 0 0 4px var(--md-sys-color-focus-ring);
   }
   
-  // Remove Material ripple for cleaner OpenAI feel (optional)
-  .mat-mdc-button .mat-ripple,
-  .mat-mdc-raised-button .mat-ripple,
-  .mat-mdc-outlined-button .mat-ripple,
-  .mat-mdc-icon-button .mat-ripple {
-    display: none;
+  // Disable Material ripple for cleaner OpenAI feel using MD3 tokens
+  .mat-mdc-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-outlined-button,
+  .mat-mdc-icon-button {
+    --mat-mdc-button-ripple-color: transparent;
+    --mat-mdc-button-persistent-ripple-color: transparent;
+    --mdc-ripple-color: transparent;
+    --mdc-ripple-hover-opacity: 0;
+    --mdc-ripple-focus-opacity: 0;
+    --mdc-ripple-pressed-opacity: 0;
   }
 }

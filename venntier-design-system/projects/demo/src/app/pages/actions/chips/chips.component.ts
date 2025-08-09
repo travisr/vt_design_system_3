@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { ExampleViewerComponent } from '../../../shared/components/example-viewer/example-viewer.component';
+import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
 interface Chip {
   id: string;
@@ -36,9 +37,7 @@ interface Chip {
       <demo-page-header
         title="Chips"
         description="Chips help people enter information, make selections, filter content, or trigger actions."
-        [links]="[
-          { label: 'M3 Chips Guidelines', url: 'https://m3.material.io/components/chips' }
-        ]">
+        [links]="resources">
       </demo-page-header>
 
       <section class="demo-section">
@@ -76,12 +75,13 @@ interface Chip {
           <div class="chip-demo">
             <h4>Category Filters</h4>
             <mat-chip-set>
-              <mat-chip 
-                *ngFor="let filter of categoryFilters()" 
-                [class.mat-mdc-chip-selected]="filter.selected"
-                (click)="toggleCategoryFilter(filter.id)">
-                {{ filter.label }}
-              </mat-chip>
+              @for (filter of categoryFilters(); track filter.id) {
+                <mat-chip 
+                  [class.mat-mdc-chip-selected]="filter.selected"
+                  (click)="toggleCategoryFilter(filter.id)">
+                  {{ filter.label }}
+                </mat-chip>
+              }
             </mat-chip-set>
             <p class="filter-result">Active filters: {{ getActiveCategoryFilters() }}</p>
           </div>
@@ -89,12 +89,13 @@ interface Chip {
           <div class="chip-demo">
             <h4>Price Range Filters</h4>
             <mat-chip-set>
-              <mat-chip 
-                *ngFor="let price of priceFilters()" 
-                [class.mat-mdc-chip-selected]="price.selected"
-                (click)="togglePriceFilter(price.id)">
-                {{ price.label }}
-              </mat-chip>
+              @for (price of priceFilters(); track price.id) {
+                <mat-chip 
+                  [class.mat-mdc-chip-selected]="price.selected"
+                  (click)="togglePriceFilter(price.id)">
+                  {{ price.label }}
+                </mat-chip>
+              }
             </mat-chip-set>
           </div>
         </div>
@@ -107,13 +108,16 @@ interface Chip {
           <div class="chip-demo">
             <h4>Tags</h4>
             <mat-chip-set>
-              <mat-chip 
-                *ngFor="let tag of tags()" 
-                (removed)="removeTag(tag.id)"
-                [removable]="tag.removable">
-                {{ tag.label }}
-                <mat-icon matChipRemove *ngIf="tag.removable">cancel</mat-icon>
-              </mat-chip>
+              @for (tag of tags(); track tag.id) {
+                <mat-chip 
+                  (removed)="removeTag(tag.id)"
+                  [removable]="tag.removable">
+                  {{ tag.label }}
+                  @if (tag.removable) {
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                  }
+                </mat-chip>
+              }
             </mat-chip-set>
             <button mat-stroked-button (click)="addTag()" class="add-chip-button">
               <mat-icon>add</mat-icon>
@@ -124,14 +128,15 @@ interface Chip {
           <div class="chip-demo">
             <h4>Email Recipients</h4>
             <mat-chip-set>
-              <mat-chip 
-                *ngFor="let email of emailChips()" 
-                (removed)="removeEmail(email.id)"
-                [removable]="true">
-                <mat-icon matChipAvatar>person</mat-icon>
-                {{ email.label }}
-                <mat-icon matChipRemove>cancel</mat-icon>
-              </mat-chip>
+              @for (email of emailChips(); track email.id) {
+                <mat-chip 
+                  (removed)="removeEmail(email.id)"
+                  [removable]="true">
+                  <mat-icon matChipAvatar>person</mat-icon>
+                  {{ email.label }}
+                  <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+              }
             </mat-chip-set>
             <mat-form-field appearance="outline" class="email-input">
               <mat-label>Add recipient</mat-label>
@@ -151,12 +156,13 @@ interface Chip {
           <div class="chip-demo">
             <h4>Search Suggestions</h4>
             <mat-chip-set>
-              <mat-chip 
-                *ngFor="let suggestion of searchSuggestions()" 
-                (click)="selectSuggestion(suggestion.id)">
-                <mat-icon matChipAvatar>search</mat-icon>
-                {{ suggestion.label }}
-              </mat-chip>
+              @for (suggestion of searchSuggestions(); track suggestion.id) {
+                <mat-chip 
+                  (click)="selectSuggestion(suggestion.id)">
+                  <mat-icon matChipAvatar>search</mat-icon>
+                  {{ suggestion.label }}
+                </mat-chip>
+              }
             </mat-chip-set>
           </div>
 
@@ -216,13 +222,14 @@ interface Chip {
             <mat-card class="variant-card">
               <h4>Removable</h4>
               <mat-chip-set>
-                <mat-chip 
-                  *ngFor="let skill of skills()" 
-                  (removed)="removeSkill(skill.id)"
-                  [removable]="true">
-                  {{ skill.label }}
-                  <mat-icon matChipRemove>cancel</mat-icon>
-                </mat-chip>
+                @for (skill of skills(); track skill.id) {
+                  <mat-chip 
+                    (removed)="removeSkill(skill.id)"
+                    [removable]="true">
+                    {{ skill.label }}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                  </mat-chip>
+                }
               </mat-chip-set>
             </mat-card>
 
@@ -247,6 +254,10 @@ interface Chip {
   styleUrl: './chips.component.scss'
 })
 export class ChipsComponent {
+  readonly resources = [
+    { label: 'M3 Chips Guidelines', url: MD3_DOCS.CHIPS }
+  ];
+
   private _categoryFilters = signal<Chip[]>([
     { id: '1', label: 'Electronics', selected: false },
     { id: '2', label: 'Clothing', selected: true },
@@ -315,25 +326,27 @@ export class ChipsComponent {
       title: 'Filter Chips',
       language: 'html',
       code: `<mat-chip-set multiple>
-  <mat-chip 
-    *ngFor="let filter of filters" 
-    [selected]="filter.selected"
-    (click)="toggleFilter(filter.id)">
-    {{ filter.label }}
-  </mat-chip>
+  @for (filter of filters; track filter.id) {
+    <mat-chip 
+      [selected]="filter.selected"
+      (click)="toggleFilter(filter.id)">
+      {{ filter.label }}
+    </mat-chip>
+  }
 </mat-chip-set>`
     },
     {
       title: 'Removable Chips',
       language: 'html',
       code: `<mat-chip-set>
-  <mat-chip 
-    *ngFor="let item of items" 
-    (removed)="remove(item.id)"
-    [removable]="true">
-    {{ item.label }}
-    <mat-icon matChipRemove>cancel</mat-icon>
-  </mat-chip>
+  @for (item of items; track item.id) {
+    <mat-chip 
+      (removed)="remove(item.id)"
+      [removable]="true">
+      {{ item.label }}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+  }
 </mat-chip-set>`
     },
     {

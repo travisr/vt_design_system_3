@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
+import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
 @Component({
   selector: 'demo-colors',
@@ -14,7 +15,7 @@ import { PageHeaderComponent } from '../../../shared/components/page-header/page
       <demo-page-header
         title="Colors & Themes"
         description="A refined monochromatic palette inspired by OpenAI's minimalist design. Our color system emphasizes clarity and focus through subtle gray variations."
-        mdLink="https://m3.material.io/styles/color">
+        [mdLink]="MD3_DOCS.COLOR">
       </demo-page-header>
 
       <!-- Primary Palette -->
@@ -319,4 +320,5 @@ import { PageHeaderComponent } from '../../../shared/components/page-header/page
   `
 })
 export class ColorsComponent {
+  readonly MD3_DOCS = MD3_DOCS;
 }
