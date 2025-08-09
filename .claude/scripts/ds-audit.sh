@@ -3,7 +3,10 @@
 PROJECT_PATH="${1:-.}"
 cd "$PROJECT_PATH" || exit 1
 
-REPORT_FILE="ng-audit-report.md"
+# Create audits directory if it doesn't exist
+mkdir -p audits
+
+REPORT_FILE="audits/ds-audit-report.md"
 
 # Initialize report
 cat > "$REPORT_FILE" << 'EOF'
@@ -45,30 +48,72 @@ EOF
 # Check demo component styles for non-layout properties
 echo -e "${YELLOW}Checking demo components for style violations...${NC}"
 
-# Find problematic style properties in demo components
-DEMO_STYLE_VIOLATIONS=$(grep -r '\(color:\|background\|border\|box-shadow\|font-\)' \
+# Find problematic style properties in demo components (SCSS/CSS)
+DEMO_STYLE_VIOLATIONS=$(grep -r '\(color:\|background:\|background-color:\|border:\|border-color:\|box-shadow:\|font-family:\|font-weight:\)' \
     --include="*.scss" \
     --include="*.css" \
-    "$PROJECT_PATH/venntier-design-system/projects/demo/src/app/pages" 2>/dev/null | \
+    "./projects/demo/src/app/pages" 2>/dev/null | \
     grep -v "var(--md-sys-" | \
     grep -v "var(--mat-sys-" | \
     grep -v "// \|/\*" | \
-    grep -v "grid\|flex\|display\|position\|margin\|padding\|width\|height\|gap" | \
-    head -20)
+    grep -v "grid\|flex\|display\|position\|margin\|padding\|width\|height\|gap")
 
-if [ -z "$DEMO_STYLE_VIOLATIONS" ]; then
+# Check for inline style violations in TypeScript templates and HTML files
+# Look for hardcoded colors and non-token styles
+INLINE_STYLE_VIOLATIONS=$(grep -r 'style="[^"]*\(#[0-9a-fA-F]\{3,8\}\|rgba\?([^)]*)\|hsla\?([^)]*)\)' \
+    --include="*.ts" \
+    --include="*.html" \
+    --include="*.component.ts" \
+    "./projects/demo/src/app" 2>/dev/null | \
+    grep -v "var(--md-sys-" | \
+    grep -v "// \|/\*")
+
+# Combine both types of violations
+ALL_STYLE_VIOLATIONS=""
+if [ -n "$DEMO_STYLE_VIOLATIONS" ]; then
+    ALL_STYLE_VIOLATIONS="$DEMO_STYLE_VIOLATIONS"
+fi
+if [ -n "$INLINE_STYLE_VIOLATIONS" ]; then
+    if [ -n "$ALL_STYLE_VIOLATIONS" ]; then
+        ALL_STYLE_VIOLATIONS="$ALL_STYLE_VIOLATIONS\n$INLINE_STYLE_VIOLATIONS"
+    else
+        ALL_STYLE_VIOLATIONS="$INLINE_STYLE_VIOLATIONS"
+    fi
+fi
+
+if [ -z "$ALL_STYLE_VIOLATIONS" ]; then
     echo "**✅ Demo components use design tokens correctly**" >> "$REPORT_FILE"
 else
     echo "**⚠️ Demo components have custom styling (should use tokens):**" >> "$REPORT_FILE"
-    echo '```scss' >> "$REPORT_FILE"
-    echo "$DEMO_STYLE_VIOLATIONS" >> "$REPORT_FILE"
-    echo '```' >> "$REPORT_FILE"
     echo "" >> "$REPORT_FILE"
+    
+    # Show SCSS violations if any
+    if [ -n "$DEMO_STYLE_VIOLATIONS" ]; then
+        echo "**SCSS/CSS violations:**" >> "$REPORT_FILE"
+        echo '```scss' >> "$REPORT_FILE"
+        echo "$DEMO_STYLE_VIOLATIONS" >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+    fi
+    
+    # Show inline style violations if any
+    if [ -n "$INLINE_STYLE_VIOLATIONS" ]; then
+        echo "**Inline style violations:**" >> "$REPORT_FILE"
+        echo '```typescript' >> "$REPORT_FILE"
+        echo "$INLINE_STYLE_VIOLATIONS" >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+    fi
+    
     echo "**Fix**: Replace with MD3 tokens:" >> "$REPORT_FILE"
     echo '```scss' >> "$REPORT_FILE"
+    echo '// For SCSS files:' >> "$REPORT_FILE"
     echo 'color: var(--md-sys-color-on-surface);' >> "$REPORT_FILE"
     echo 'background: var(--md-sys-color-surface);' >> "$REPORT_FILE"
     echo 'border: 1px solid var(--md-sys-color-outline);' >> "$REPORT_FILE"
+    echo '' >> "$REPORT_FILE"
+    echo '// For inline styles:' >> "$REPORT_FILE"
+    echo 'style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface);"' >> "$REPORT_FILE"
     echo '```' >> "$REPORT_FILE"
     ((DESIGN_VIOLATIONS++))
 fi
@@ -120,8 +165,7 @@ HARDCODED_SPACING=$(grep -r '\(margin:\|padding:\|gap:\)\s*[0-9]\+px' \
     --include="*.scss" \
     --include="*.css" \
     "$PROJECT_PATH/venntier-design-system/projects/demo" 2>/dev/null | \
-    grep -v "var(--md-sys-spacing" | \
-    head -10)
+    grep -v "var(--md-sys-spacing")
 
 if [ -z "$HARDCODED_SPACING" ]; then
     echo "**✅ All spacing uses MD3 tokens**" >> "$REPORT_FILE"
@@ -160,8 +204,8 @@ COMPONENT_OVERRIDES=$(grep -r '\.mat-\|\.mdc-' \
     --include="*.scss" \
     "$PROJECT_PATH/venntier-design-system/projects/demo/src/app/pages" 2>/dev/null | \
     grep -v "// \|/\*" | \
-    grep '\(color:\|background:\|border:\|font-\)' | \
-    head -10)
+    grep ':[^;]*\(#[0-9a-fA-F]\|rgba\?\|hsla\?\|px\|em\|rem\)' | \
+    grep -v "var(--")
 
 if [ -z "$COMPONENT_OVERRIDES" ]; then
     echo "**✅ No component style overrides in demos**" >> "$REPORT_FILE"
@@ -248,6 +292,7 @@ else
     echo "" >> "$REPORT_FILE"
     echo "**⚠️ Consider using more design tokens**" >> "$REPORT_FILE"
 fi
+
 
 # =============================================================================
 # Provide Actionable Recommendations

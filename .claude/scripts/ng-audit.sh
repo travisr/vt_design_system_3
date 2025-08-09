@@ -3,7 +3,10 @@
 PROJECT_PATH="${1:-.}"
 cd "$PROJECT_PATH" || exit 1
 
-REPORT_FILE="ng-audit-report.md"
+# Create audits directory if it doesn't exist
+mkdir -p audits
+
+REPORT_FILE="audits/ng-audit-report.md"
 
 # Initialize report
 cat > "$REPORT_FILE" << 'EOF'
@@ -33,8 +36,7 @@ LEGACY_FLOW=$(grep -r '\*ngIf\|\*ngFor\|\*ngSwitch' \
     --exclude-dir=.angular \
     --exclude="*.spec.ts" \
     "$PROJECT_PATH" 2>/dev/null | \
-    grep -v "^[[:space:]]*//\|^[[:space:]]*\*" | \
-    head -20)
+    grep -v "^[[:space:]]*//\|^[[:space:]]*\*")
 
 LEGACY_COUNT=$(echo "$LEGACY_FLOW" | grep -c . 2>/dev/null || echo "0")
 
@@ -95,8 +97,7 @@ ENCAPSULATION_NONE=$(grep -r "ViewEncapsulation\.None" \
     --include="*.ts" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
-    "$PROJECT_PATH" 2>/dev/null | \
-    head -10)
+    "$PROJECT_PATH" 2>/dev/null)
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -125,8 +126,7 @@ QUERY_SELECTOR=$(grep -r "querySelector.*['\"]\.mat-\|querySelector.*['\"]\.mdc-
     --include="*.ts" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
-    "$PROJECT_PATH" 2>/dev/null | \
-    head -10)
+    "$PROJECT_PATH" 2>/dev/null)
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -159,8 +159,7 @@ IMPORTANT_USAGE=$(grep -r '!important' \
     "$PROJECT_PATH" 2>/dev/null | \
     grep -v "//.*!important" | \
     grep -v "/\*.*!important" | \
-    grep ":[^;]*!important" | \
-    head -20)
+    grep ":[^;]*!important")
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -191,8 +190,7 @@ NG_DEEP_USAGE=$(grep -r '::ng-deep' \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
     "$PROJECT_PATH" 2>/dev/null | \
-    grep -v "^[[:space:]]*//" | \
-    head -10)
+    grep -v "^[[:space:]]*//")
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -222,8 +220,7 @@ HOST_CONTEXT=$(grep -r ":host-context" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
     "$PROJECT_PATH" 2>/dev/null | \
-    grep -v "^[[:space:]]*//" | \
-    head -10)
+    grep -v "^[[:space:]]*//")
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -262,8 +259,7 @@ INTERNAL_SELECTORS=$(grep -r '\.\(mdc-button__\|mdc-fab__\|mat-button-wrapper\|m
     grep -v "^[[:space:]]*//" | \
     grep -v "mdc-notched-outline" | \
     grep -v "mat-mdc-form-field" | \
-    grep -v "mat-mdc-text-field-wrapper" | \
-    head -10)
+    grep -v "mat-mdc-text-field-wrapper")
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -294,8 +290,7 @@ MODULE_USAGE=$(grep -r '@NgModule' \
     --exclude="*.spec.ts" \
     --exclude="app.module.ts" \
     --exclude="*test*.ts" \
-    "$PROJECT_PATH" 2>/dev/null | \
-    head -10)
+    "$PROJECT_PATH" 2>/dev/null)
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -321,25 +316,221 @@ else
 fi
 
 # =============================================================================
-# LOW: Hard-coded colors (including color names)
+# HIGH: Dark Mode Compatibility Issues
 # =============================================================================
-echo -e "\n${YELLOW}Checking for hard-coded colors...${NC}"
+echo -e "\n${YELLOW}Checking for dark mode compatibility issues...${NC}"
 
-# Enhanced to catch more color patterns
-COLOR_ISSUES=$(grep -r '\(#[0-9a-fA-F]\{3,8\}\|rgba\?\([^)]*\)\|hsla\?\([^)]*\)\|\bwhite\b\|\bblack\b\|\bgray\b\|\bgrey\b\|\bred\b\|\bblue\b\|\bgreen\b\)' \
+# Check for missing color properties (elements that won't adapt)
+MISSING_COLOR_PROPS=$(grep -r 'style="[^"]*background:[^"]*var(--md-sys-' \
+    --include="*.ts" \
+    --include="*.html" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    . 2>/dev/null | \
+    grep -v 'color:' | \
+    grep -v '// \|/\*')
+
+# Check for surface-on-surface without proper hierarchy
+SURFACE_HIERARCHY=$(grep -r 'var(--md-sys-color-surface).*var(--md-sys-color-surface)' \
+    --include="*.ts" \
+    --include="*.html" \
+    . 2>/dev/null | \
+    grep -v 'surface-container')
+
+# Check for opacity/transparency issues that break in dark mode
+OPACITY_ISSUES=$(grep -r 'style="[^"]*\(opacity:\s*0\.[0-5]\|rgba([^)]*,\s*0\.[0-5]\))' \
+    --include="*.ts" \
+    --include="*.html" \
+    . 2>/dev/null | \
+    grep -v 'var(--')
+
+# Check for white/black text without using tokens
+HARDCODED_TEXT=$(grep -r 'style="[^"]*color:\s*\(white\|black\|#fff\|#000\|rgb(255,\s*255,\s*255)\|rgb(0,\s*0,\s*0)\)' \
+    --include="*.ts" \
+    --include="*.html" \
+    . 2>/dev/null)
+
+# Count issues
+DARK_MODE_ISSUES=0
+if [ -n "$MISSING_COLOR_PROPS" ]; then
+    ((DARK_MODE_ISSUES++))
+fi
+if [ -n "$SURFACE_HIERARCHY" ]; then
+    ((DARK_MODE_ISSUES++))
+fi
+if [ -n "$OPACITY_ISSUES" ]; then
+    ((DARK_MODE_ISSUES++))
+fi
+if [ -n "$HARDCODED_TEXT" ]; then
+    ((DARK_MODE_ISSUES++))
+fi
+
+cat >> "$REPORT_FILE" << 'EOF'
+
+## 🌙 HIGH: Dark Mode Compatibility
+
+**Impact**: Poor contrast, invisible text, broken UI in dark mode
+EOF
+
+if [ $DARK_MODE_ISSUES -eq 0 ]; then
+    echo "**✅ None found**" >> "$REPORT_FILE"
+else
+    if [ -n "$MISSING_COLOR_PROPS" ]; then
+        echo "**⚠️ Elements with background but no text color:**" >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "$MISSING_COLOR_PROPS" | head -5 >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "**Fix**: Always pair background with color property" >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+    fi
+    
+    if [ -n "$SURFACE_HIERARCHY" ]; then
+        echo "**⚠️ Nested surfaces without proper hierarchy:**" >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "$SURFACE_HIERARCHY" | head -5 >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "**Fix**: Use surface-container variants for nested elements" >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+    fi
+    
+    if [ -n "$OPACITY_ISSUES" ]; then
+        echo "**⚠️ Low opacity values that may cause issues:**" >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "$OPACITY_ISSUES" | head -3 >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "**Fix**: Use MD3 state layers or proper tokens" >> "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+    fi
+    
+    if [ -n "$HARDCODED_TEXT" ]; then
+        echo "**❌ Hardcoded text colors (will break in dark mode):**" >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "$HARDCODED_TEXT" | head -3 >> "$REPORT_FILE"
+        echo '```' >> "$REPORT_FILE"
+        echo "**Fix**: Use var(--md-sys-color-on-surface) or appropriate token" >> "$REPORT_FILE"
+    fi
+    ((TOTAL_ISSUES++))
+fi
+
+# =============================================================================
+# HIGH: Hard-coded colors in inline styles (TypeScript templates)
+# =============================================================================
+echo -e "\n${YELLOW}Checking for hard-coded colors in inline styles...${NC}"
+
+# Check for inline style attributes with hardcoded colors
+ALL_INLINE_ISSUES=$(grep -r 'style="[^"]*#[0-9a-fA-F]' \
+    --include="*.ts" \
+    --include="*.html" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    --exclude="*.spec.ts" \
+    . 2>/dev/null | \
+    grep -v "var(--")
+
+# Count total and get samples from different files
+if [ -z "$ALL_INLINE_ISSUES" ]; then
+    INLINE_COUNT=0
+else
+    INLINE_COUNT=$(echo "$ALL_INLINE_ISSUES" | grep -c . 2>/dev/null || echo "0")
+fi
+
+# Show all inline style issues without limiting
+INLINE_STYLE_ISSUES=""
+if [ "$INLINE_COUNT" -gt 0 ]; then
+    INLINE_STYLE_ISSUES="$ALL_INLINE_ISSUES"
+fi
+
+cat >> "$REPORT_FILE" << 'EOF'
+
+## ⚠️ HIGH: Hard-coded colors in inline styles
+
+**Impact**: Breaks dark mode, inconsistent theming, maintenance burden
+EOF
+
+if [ -z "$INLINE_STYLE_ISSUES" ] || [ "$INLINE_COUNT" -eq 0 ]; then
+    echo "**✅ None found**" >> "$REPORT_FILE"
+else
+    echo "**❌ Found $INLINE_COUNT hard-coded colors in inline styles:**" >> "$REPORT_FILE"
+    echo '```typescript' >> "$REPORT_FILE"
+    echo "$INLINE_STYLE_ISSUES" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "**Fix**: Replace with CSS custom properties:" >> "$REPORT_FILE"
+    echo '```typescript' >> "$REPORT_FILE"
+    echo '// ❌ WRONG:' >> "$REPORT_FILE"
+    echo 'style="background: #fafafa; color: #333;"' >> "$REPORT_FILE"
+    echo '' >> "$REPORT_FILE"
+    echo '// ✅ CORRECT:' >> "$REPORT_FILE"
+    echo 'style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface);"' >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    ((TOTAL_ISSUES++))
+fi
+
+# =============================================================================
+# LOW: Hard-coded colors in SCSS/CSS files (including color names)
+# =============================================================================
+echo -e "\n${YELLOW}Checking for hard-coded colors in SCSS/CSS...${NC}"
+
+# More precise color detection - only in property values
+# We're looking for violations in DEMO files only, not the design system itself
+# The design system needs to define base values, but demos should only use tokens
+# First find hex colors, rgba/hsla in property values
+HEX_COLORS=$(grep -r ':[^;]*#[0-9a-fA-F]\{3,8\}' \
     --include="*.scss" \
     --include="*.css" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
-    --exclude="*token*" \
-    --exclude="*theme*" \
-    --exclude="*palette*" \
-    --exclude="*color*" \
-    "$PROJECT_PATH" 2>/dev/null | \
+    --exclude-dir="*tokens*" \
+    --exclude-dir="*themes*" \
+    --exclude="*_color.scss" \
+    --exclude="*_palette*.scss" \
+    --exclude="*button.component.scss" \
+    "$PROJECT_PATH/projects/demo" 2>/dev/null | \
     grep -v "var(--" | \
     grep -v "^[[:space:]]*//" | \
-    grep -v "@import\|@use" | \
-    head -15)
+    grep -v "@import\|@use")
+
+# Find rgba/hsla in property values (only in demo files)
+RGBA_COLORS=$(grep -r ':[^;]*\(rgba\?\|hsla\?\)([^)]*)' \
+    --include="*.scss" \
+    --include="*.css" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH/projects/demo" 2>/dev/null | \
+    grep -v "var(--" | \
+    grep -v "^[[:space:]]*//")
+
+# Find color keywords ONLY in property values (after a colon) in demo files
+# Exclude transparent since it's often legitimate for resets
+COLOR_KEYWORDS=$(grep -r ':[^;]*\(\bwhite\b\|\bblack\b\|\bred\b\|\bblue\b\|\bgreen\b\|\byellow\b\|\borange\b\|\bpurple\b\)' \
+    --include="*.scss" \
+    --include="*.css" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH/projects/demo" 2>/dev/null | \
+    grep -v "var(--" | \
+    grep -v "^[[:space:]]*//" | \
+    grep -v "white-space" | \
+    grep -v "\.white\|\.black\|\.gray\|\.red\|\.blue\|\.green")
+
+# Combine all color issues
+COLOR_ISSUES=""
+if [ -n "$HEX_COLORS" ]; then
+    COLOR_ISSUES="$HEX_COLORS"
+fi
+if [ -n "$RGBA_COLORS" ]; then
+    if [ -n "$COLOR_ISSUES" ]; then
+        COLOR_ISSUES="$COLOR_ISSUES"$'\n'"$RGBA_COLORS"
+    else
+        COLOR_ISSUES="$RGBA_COLORS"
+    fi
+fi
+if [ -n "$COLOR_KEYWORDS" ]; then
+    if [ -n "$COLOR_ISSUES" ]; then
+        COLOR_ISSUES="$COLOR_ISSUES"$'\n'"$COLOR_KEYWORDS"
+    else
+        COLOR_ISSUES="$COLOR_KEYWORDS"
+    fi
+fi
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -359,6 +550,297 @@ else
 fi
 
 # =============================================================================
+# HIGH: Accessibility Issues
+# =============================================================================
+echo -e "\n${YELLOW}Checking for accessibility issues...${NC}"
+
+# Check for images without alt text
+MISSING_ALT=$(grep -r '<img[^>]*src=' \
+    --include="*.html" \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null | \
+    grep -v 'alt=' | \
+    grep -v 'aria-label')
+
+# Check for form inputs without labels
+MISSING_LABELS=$(grep -r '<input\|<select\|<textarea' \
+    --include="*.html" \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null | \
+    grep -v 'aria-label\|aria-labelledby\|placeholder' | \
+    grep -v '// \|/\*')
+
+# Check for buttons without accessible text
+EMPTY_BUTTONS=$(grep -r '<button[^>]*>\s*</button>' \
+    --include="*.html" \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null)
+
+# Check for missing ARIA landmarks
+MISSING_LANDMARKS=$(grep -l '<main\|<nav\|<header\|<footer\|role=' \
+    --include="*.html" \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null | wc -l)
+
+cat >> "$REPORT_FILE" << 'EOF'
+
+## ♿ HIGH: Accessibility Issues
+
+**Impact**: Poor user experience for assistive technology users
+EOF
+
+A11Y_ISSUES=0
+if [ -n "$MISSING_ALT" ]; then
+    echo "**⚠️ Images without alt text:**" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "$MISSING_ALT" | head -3 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    ((A11Y_ISSUES++))
+fi
+
+if [ -n "$MISSING_LABELS" ]; then
+    echo "**⚠️ Form inputs without labels:**" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "$MISSING_LABELS" | head -3 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    ((A11Y_ISSUES++))
+fi
+
+if [ -n "$EMPTY_BUTTONS" ]; then
+    echo "**⚠️ Buttons without accessible text:**" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "$EMPTY_BUTTONS" | head -3 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    ((A11Y_ISSUES++))
+fi
+
+if [ "$MISSING_LANDMARKS" -eq 0 ]; then
+    echo "**⚠️ No ARIA landmarks found (main, nav, header, footer)**" >> "$REPORT_FILE"
+    ((A11Y_ISSUES++))
+fi
+
+if [ $A11Y_ISSUES -eq 0 ]; then
+    echo "**✅ None found**" >> "$REPORT_FILE"
+else
+    ((TOTAL_ISSUES++))
+fi
+
+# =============================================================================
+# MEDIUM: Performance Anti-patterns
+# =============================================================================
+echo -e "\n${YELLOW}Checking for performance anti-patterns...${NC}"
+
+# Check for large inline styles (> 200 chars)
+LARGE_INLINE_STYLES=$(grep -r 'style="[^"]\{200,\}"' \
+    --include="*.html" \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null)
+
+# Check for excessive DOM nesting (> 10 levels deep in templates)
+DEEP_NESTING=$(grep -r '>\s*<.*>\s*<.*>\s*<.*>\s*<.*>\s*<.*>\s*<.*>\s*<.*>\s*<.*>\s*<.*>\s*<' \
+    --include="*.html" \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null)
+
+# Check for non-lazy loaded images
+NON_LAZY_IMAGES=$(grep -r '<img[^>]*src=' \
+    --include="*.html" \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null | \
+    grep -v 'loading="lazy"' | \
+    grep -v 'icon\|logo\|avatar')
+
+cat >> "$REPORT_FILE" << 'EOF'
+
+## ⚡ MEDIUM: Performance Anti-patterns
+
+**Impact**: Slow rendering, poor user experience
+EOF
+
+PERF_ISSUES=0
+if [ -n "$LARGE_INLINE_STYLES" ]; then
+    echo "**⚠️ Large inline styles (> 200 chars):**" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "$LARGE_INLINE_STYLES" | head -2 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "**Fix**: Move to CSS classes" >> "$REPORT_FILE"
+    ((PERF_ISSUES++))
+fi
+
+if [ -n "$DEEP_NESTING" ]; then
+    echo "**⚠️ Excessive DOM nesting detected**" >> "$REPORT_FILE"
+    echo "**Fix**: Simplify component structure" >> "$REPORT_FILE"
+    ((PERF_ISSUES++))
+fi
+
+if [ -n "$NON_LAZY_IMAGES" ]; then
+    NON_LAZY_COUNT=$(echo "$NON_LAZY_IMAGES" | wc -l)
+    if [ $NON_LAZY_COUNT -gt 5 ]; then
+        echo "**⚠️ $NON_LAZY_COUNT images without lazy loading**" >> "$REPORT_FILE"
+        echo "**Fix**: Add loading=\"lazy\" to images below the fold" >> "$REPORT_FILE"
+        ((PERF_ISSUES++))
+    fi
+fi
+
+if [ $PERF_ISSUES -eq 0 ]; then
+    echo "**✅ None found**" >> "$REPORT_FILE"
+else
+    ((TOTAL_ISSUES++))
+fi
+
+# =============================================================================
+# MEDIUM: Responsive Design Issues
+# =============================================================================
+echo -e "\n${YELLOW}Checking for responsive design issues...${NC}"
+
+# Check for fixed pixel widths
+FIXED_WIDTHS=$(grep -r 'width:\s*[0-9]\{3,\}px' \
+    --include="*.scss" \
+    --include="*.css" \
+    --include="*.ts" \
+    --include="*.html" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null | \
+    grep -v 'max-width\|min-width' | \
+    grep -v '// \|/\*')
+
+# Check for non-responsive tables
+NON_RESPONSIVE_TABLES=$(grep -r '<table' \
+    --include="*.html" \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null | \
+    grep -v 'mat-table\|responsive\|overflow')
+
+# Check for missing viewport meta in index.html
+VIEWPORT_META=$(grep -l 'viewport' "$PROJECT_PATH"/projects/demo/src/index.html 2>/dev/null)
+
+cat >> "$REPORT_FILE" << 'EOF'
+
+## 📱 MEDIUM: Responsive Design Issues
+
+**Impact**: Poor mobile experience, horizontal scrolling
+EOF
+
+RESPONSIVE_ISSUES=0
+if [ -n "$FIXED_WIDTHS" ]; then
+    echo "**⚠️ Fixed pixel widths (may break on mobile):**" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "$FIXED_WIDTHS" | head -3 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "**Fix**: Use relative units (%, vw, rem) or max-width" >> "$REPORT_FILE"
+    ((RESPONSIVE_ISSUES++))
+fi
+
+if [ -n "$NON_RESPONSIVE_TABLES" ]; then
+    echo "**⚠️ Tables without responsive wrapper:**" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "$NON_RESPONSIVE_TABLES" | head -2 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "**Fix**: Use mat-table or add overflow-x wrapper" >> "$REPORT_FILE"
+    ((RESPONSIVE_ISSUES++))
+fi
+
+if [ -z "$VIEWPORT_META" ]; then
+    echo "**❌ Missing viewport meta tag in index.html**" >> "$REPORT_FILE"
+    echo "**Fix**: Add <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" >> "$REPORT_FILE"
+    ((RESPONSIVE_ISSUES++))
+fi
+
+if [ $RESPONSIVE_ISSUES -eq 0 ]; then
+    echo "**✅ None found**" >> "$REPORT_FILE"
+else
+    ((TOTAL_ISSUES++))
+fi
+
+# =============================================================================
+# HIGH: Security Concerns
+# =============================================================================
+echo -e "\n${YELLOW}Checking for security concerns...${NC}"
+
+# Check for innerHTML usage
+INNER_HTML=$(grep -r 'innerHTML\|outerHTML' \
+    --include="*.ts" \
+    --include="*.js" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    --exclude="*.spec.ts" \
+    "$PROJECT_PATH" 2>/dev/null)
+
+# Check for bypassing Angular sanitization
+BYPASS_SECURITY=$(grep -r 'bypassSecurity\|DomSanitizer' \
+    --include="*.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    --exclude="*.spec.ts" \
+    "$PROJECT_PATH" 2>/dev/null)
+
+# Check for eval usage
+EVAL_USAGE=$(grep -r '\beval\s*(' \
+    --include="*.ts" \
+    --include="*.js" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH" 2>/dev/null)
+
+cat >> "$REPORT_FILE" << 'EOF'
+
+## 🔒 HIGH: Security Concerns
+
+**Impact**: XSS vulnerabilities, code injection risks
+EOF
+
+SECURITY_ISSUES=0
+if [ -n "$INNER_HTML" ]; then
+    echo "**⚠️ Direct innerHTML manipulation:**" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "$INNER_HTML" | head -3 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "**Fix**: Use Angular template binding or sanitize content" >> "$REPORT_FILE"
+    ((SECURITY_ISSUES++))
+fi
+
+if [ -n "$BYPASS_SECURITY" ]; then
+    echo "**⚠️ Security bypass detected:**" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "$BYPASS_SECURITY" | head -3 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "**Fix**: Ensure content is trusted or use safer alternatives" >> "$REPORT_FILE"
+    ((SECURITY_ISSUES++))
+fi
+
+if [ -n "$EVAL_USAGE" ]; then
+    echo "**❌ eval() usage detected:**" >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "$EVAL_USAGE" | head -2 >> "$REPORT_FILE"
+    echo '```' >> "$REPORT_FILE"
+    echo "**Fix**: Use safer alternatives like JSON.parse or Function constructor" >> "$REPORT_FILE"
+    ((SECURITY_ISSUES++))
+fi
+
+if [ $SECURITY_ISSUES -eq 0 ]; then
+    echo "**✅ None found**" >> "$REPORT_FILE"
+else
+    ((TOTAL_ISSUES++))
+fi
+
+# =============================================================================
 # LOW: Hard-coded URLs (excluding constants files)
 # =============================================================================
 echo -e "\n${YELLOW}Checking for hard-coded URLs...${NC}"
@@ -373,8 +855,7 @@ URL_ISSUES=$(grep -r 'https\?://' \
     --exclude="*config*" \
     --exclude="*environment*" \
     "$PROJECT_PATH" 2>/dev/null | \
-    grep -v "^[[:space:]]*//" | \
-    head -10)
+    grep -v "^[[:space:]]*//")
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -392,8 +873,9 @@ else
     echo '```' >> "$REPORT_FILE"
 fi
 
+
 # =============================================================================
-# Summary - Minimal, focused on violations only
+# Summary - Minimal, focused on violations only  
 # =============================================================================
 echo "" >> "$REPORT_FILE"
 echo "---" >> "$REPORT_FILE"

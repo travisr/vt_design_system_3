@@ -6,7 +6,10 @@
 PROJECT_PATH="${1:-.}"
 cd "$PROJECT_PATH" || exit 1
 
-REPORT_FILE="full-audit-report.md"
+# Create audits directory if it doesn't exist
+mkdir -p audits
+
+REPORT_FILE="audits/full-audit-report.md"
 
 # Color codes for terminal output
 RED='\033[0;31m'

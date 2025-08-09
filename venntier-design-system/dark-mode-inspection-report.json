@@ -1,0 +1,122 @@
+{
+  "timestamp": "2025-08-09T19:43:59.872Z",
+  "summary": {
+    "totalPages": 5,
+    "pagesWithIssues": 3,
+    "totalIssues": 6
+  },
+  "pages": [
+    {
+      "page": "colors",
+      "url": "http://localhost:4200/foundation/colors",
+      "screenshot": "./dark-mode-colors.png",
+      "themeApplied": false,
+      "bodyStyles": {
+        "backgroundColor": "rgb(10, 10, 10)",
+        "color": "rgb(249, 249, 249)"
+      },
+      "issues": [
+        {
+          "element": "Text Content",
+          "index": 188,
+          "selector": "p, span, div",
+          "issue": "Light background in dark mode",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgb(249, 249, 249)",
+          "textContent": "..."
+        }
+      ]
+    },
+    {
+      "page": "typography",
+      "url": "http://localhost:4200/foundation/typography",
+      "screenshot": "./dark-mode-typography.png",
+      "themeApplied": false,
+      "bodyStyles": {
+        "backgroundColor": "rgb(10, 10, 10)",
+        "color": "rgb(249, 249, 249)"
+      },
+      "issues": []
+    },
+    {
+      "page": "icons",
+      "url": "http://localhost:4200/foundation/icons",
+      "screenshot": "./dark-mode-icons.png",
+      "themeApplied": false,
+      "bodyStyles": {
+        "backgroundColor": "rgb(10, 10, 10)",
+        "color": "rgb(249, 249, 249)"
+      },
+      "issues": []
+    },
+    {
+      "page": "spacing",
+      "url": "http://localhost:4200/foundation/spacing",
+      "screenshot": "./dark-mode-spacing.png",
+      "themeApplied": false,
+      "bodyStyles": {
+        "backgroundColor": "rgb(10, 10, 10)",
+        "color": "rgb(249, 249, 249)"
+      },
+      "issues": [
+        {
+          "element": "Text Content",
+          "index": 236,
+          "selector": "p, span, div",
+          "issue": "Light background in dark mode",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgb(249, 249, 249)",
+          "textContent": "Content with 16px padding8px vertical16px horizont..."
+        }
+      ]
+    },
+    {
+      "page": "motion",
+      "url": "http://localhost:4200/foundation/motion",
+      "screenshot": "./dark-mode-motion.png",
+      "themeApplied": false,
+      "bodyStyles": {
+        "backgroundColor": "rgb(10, 10, 10)",
+        "color": "rgb(249, 249, 249)"
+      },
+      "issues": [
+        {
+          "element": "Text Content",
+          "index": 188,
+          "selector": "p, span, div",
+          "issue": "Light background in dark mode",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgb(0, 0, 0)",
+          "textContent": "Standard..."
+        },
+        {
+          "element": "Text Content",
+          "index": 194,
+          "selector": "p, span, div",
+          "issue": "Light background in dark mode",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgb(0, 0, 0)",
+          "textContent": "Decelerate..."
+        },
+        {
+          "element": "Text Content",
+          "index": 200,
+          "selector": "p, span, div",
+          "issue": "Light background in dark mode",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgb(0, 0, 0)",
+          "textContent": "Accelerate..."
+        },
+        {
+          "element": "Text Content",
+          "index": 206,
+          "selector": "p, span, div",
+          "issue": "Light background in dark mode",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgb(0, 0, 0)",
+          "textContent": "Emphasized..."
+        }
+      ]
+    }
+  ]
+}

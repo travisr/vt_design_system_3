@@ -227,22 +227,22 @@
     
     &.text-on-surface-primary {
       color: var(--md-sys-color-on-surface);
-      font-weight: 600;
+      font-weight: var(--md-sys-typescale-title-medium-weight, 600);
     }
     
     &.text-on-surface {
       color: var(--md-sys-color-on-surface);
-      font-weight: 400;
+      font-weight: var(--md-sys-typescale-body-medium-weight, 400);
     }
     
     &.text-on-surface-variant {
       color: var(--md-sys-color-on-surface-variant);
-      font-weight: 400;
+      font-weight: var(--md-sys-typescale-body-medium-weight, 400);
     }
     
     &.text-disabled {
       color: var(--md-sys-color-disabled);
-      font-weight: 400;
+      font-weight: var(--md-sys-typescale-body-medium-weight, 400);
     }
   }
 }

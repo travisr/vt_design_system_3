@@ -9,7 +9,7 @@ model: sonnet
 ## Context
 
 - Project root: `$ARGUMENTS` (defaults to `.`)
-- This command will create or overwrite `full-audit-report.md` in the target directory
+- This command will create or overwrite `audits/full-audit-report.md` in the audits directory
 - Uses reusable audit script at `.claude/scripts/full-audit.sh`
 - **Combines**: Angular 19+ patterns, Material Design 3 compliance, AND design system usage
 

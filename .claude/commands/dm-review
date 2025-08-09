@@ -1,0 +1,182 @@
+#!/bin/bash
+
+# Dark Mode Review Command for Claude
+# 
+# This command runs a comprehensive dark mode visual audit using Playwright.
+# It tests all demo pages for contrast issues, hierarchy problems, and accessibility.
+#
+# Usage: dm-review [options]
+#
+# Options:
+#   --headless     Run browser in headless mode (default: false)
+#   --url=<URL>    Base URL to test (default: http://localhost:4200)
+#   --help         Show this help message
+
+# Parse command line arguments
+HEADLESS=""
+BASE_URL="http://localhost:4200"
+
+for arg in "$@"; do
+  case $arg in
+    --headless)
+      HEADLESS="--headless"
+      ;;
+    --url=*)
+      BASE_URL="${arg#*=}"
+      ;;
+    --help)
+      echo "Dark Mode Review - Visual audit for dark mode compatibility"
+      echo ""
+      echo "Usage: dm-review [options]"
+      echo ""
+      echo "Options:"
+      echo "  --headless     Run browser in headless mode (default: false)"
+      echo "  --url=<URL>    Base URL to test (default: http://localhost:4200)"
+      echo "  --help         Show this help message"
+      echo ""
+      echo "Examples:"
+      echo "  dm-review                    # Run interactive audit on localhost"
+      echo "  dm-review --headless          # Run headless audit"
+      echo "  dm-review --url=http://localhost:4300  # Test different port"
+      exit 0
+      ;;
+  esac
+done
+
+# Colors for output
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+echo -e "${CYAN}🌙 Dark Mode Visual Review${NC}"
+echo -e "${CYAN}================================${NC}"
+echo ""
+
+# Check if we're in the right directory
+if [ ! -f "package.json" ]; then
+  echo -e "${YELLOW}⚠️  Not in a project directory. Searching for venntier-design-system...${NC}"
+  
+  # Try to find the project directory
+  if [ -d "venntier-design-system" ]; then
+    cd venntier-design-system
+  elif [ -d "../venntier-design-system" ]; then
+    cd ../venntier-design-system
+  else
+    echo -e "${RED}❌ Could not find venntier-design-system directory${NC}"
+    exit 1
+  fi
+fi
+
+# Check if Playwright is installed
+if ! npm list playwright >/dev/null 2>&1; then
+  echo -e "${YELLOW}📦 Installing Playwright...${NC}"
+  npm install --save-dev playwright
+  npx playwright install chromium
+fi
+
+# Check if the server is running
+echo -e "${CYAN}Checking if server is running at $BASE_URL...${NC}"
+if ! curl -s -o /dev/null -w "%{http_code}" "$BASE_URL" | grep -q "200\|304"; then
+  echo -e "${YELLOW}⚠️  Server not responding at $BASE_URL${NC}"
+  echo -e "${YELLOW}Starting development server...${NC}"
+  
+  # Start server in background
+  npm run start:demo > /dev/null 2>&1 &
+  SERVER_PID=$!
+  
+  # Wait for server to start
+  echo -n "Waiting for server to start"
+  for i in {1..30}; do
+    if curl -s -o /dev/null -w "%{http_code}" "$BASE_URL" | grep -q "200\|304"; then
+      echo -e " ${GREEN}✅${NC}"
+      break
+    fi
+    echo -n "."
+    sleep 1
+  done
+  
+  if ! curl -s -o /dev/null -w "%{http_code}" "$BASE_URL" | grep -q "200\|304"; then
+    echo -e " ${RED}❌${NC}"
+    echo -e "${RED}Failed to start server${NC}"
+    kill $SERVER_PID 2>/dev/null
+    exit 1
+  fi
+else
+  echo -e "${GREEN}✅ Server is running${NC}"
+fi
+
+# Prepare the Playwright command
+PLAYWRIGHT_CMD="node"
+PLAYWRIGHT_ARGS=""
+
+# Add headless flag if specified
+if [ -n "$HEADLESS" ]; then
+  PLAYWRIGHT_ARGS="$PLAYWRIGHT_ARGS --headless"
+fi
+
+# Add URL if different from default
+if [ "$BASE_URL" != "http://localhost:4200" ]; then
+  PLAYWRIGHT_ARGS="$PLAYWRIGHT_ARGS --url=$BASE_URL"
+fi
+
+# Get the script directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+AUDIT_SCRIPT="$SCRIPT_DIR/../scripts/dark-mode-visual-audit.js"
+
+# Check if audit script exists
+if [ ! -f "$AUDIT_SCRIPT" ]; then
+  echo -e "${RED}❌ Dark mode audit script not found at: $AUDIT_SCRIPT${NC}"
+  exit 1
+fi
+
+echo ""
+echo -e "${CYAN}Running dark mode visual audit...${NC}"
+echo -e "${CYAN}================================${NC}"
+echo ""
+
+# Run the Playwright audit
+$PLAYWRIGHT_CMD "$AUDIT_SCRIPT" $PLAYWRIGHT_ARGS
+
+AUDIT_EXIT_CODE=$?
+
+# If we started a server, kill it
+if [ -n "$SERVER_PID" ]; then
+  echo -e "${CYAN}Stopping development server...${NC}"
+  kill $SERVER_PID 2>/dev/null
+fi
+
+echo ""
+echo -e "${CYAN}================================${NC}"
+
+# Check results
+if [ $AUDIT_EXIT_CODE -eq 0 ]; then
+  echo -e "${GREEN}✅ Dark mode audit passed!${NC}"
+  echo ""
+  echo "All pages have proper dark mode support with:"
+  echo "  • Good contrast ratios"
+  echo "  • Proper surface hierarchy"
+  echo "  • No hardcoded colors"
+  echo "  • Accessible text visibility"
+else
+  echo -e "${YELLOW}⚠️  Dark mode issues found${NC}"
+  echo ""
+  echo "Review the report at: ./audits/darkmode-audit-report.md"
+  echo "Screenshots saved to: ./audits/darkmode-screenshots/"
+  echo ""
+  echo "To fix issues:"
+  echo "  1. Replace hardcoded colors with MD3 tokens"
+  echo "  2. Use surface-container variants for nested elements"
+  echo "  3. Always pair background with text color"
+  echo "  4. Test in both light and dark modes"
+fi
+
+# Show quick summary from report if it exists
+if [ -f "./audits/darkmode-audit-report.md" ]; then
+  echo ""
+  echo -e "${CYAN}Quick Summary:${NC}"
+  grep -A 2 "## Summary" ./audits/darkmode-audit-report.md | tail -n +2 | head -3
+fi
+
+exit $AUDIT_EXIT_CODE
