@@ -335,6 +335,9 @@ MISSING_COLOR_PROPS=$(grep -r 'style="[^"]*background:[^"]*var(--md-sys-' \
 SURFACE_HIERARCHY=$(grep -r 'var(--md-sys-color-surface).*var(--md-sys-color-surface)' \
     --include="*.ts" \
     --include="*.html" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    --exclude-dir=.angular \
     . 2>/dev/null | \
     grep -v 'surface-container')
 
@@ -342,6 +345,9 @@ SURFACE_HIERARCHY=$(grep -r 'var(--md-sys-color-surface).*var(--md-sys-color-sur
 OPACITY_ISSUES=$(grep -r 'style="[^"]*\(opacity:\s*0\.[0-5]\|rgba([^)]*,\s*0\.[0-5]\))' \
     --include="*.ts" \
     --include="*.html" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    --exclude-dir=.angular \
     . 2>/dev/null | \
     grep -v 'var(--')
 
@@ -349,6 +355,9 @@ OPACITY_ISSUES=$(grep -r 'style="[^"]*\(opacity:\s*0\.[0-5]\|rgba([^)]*,\s*0\.[0
 HARDCODED_TEXT=$(grep -r 'style="[^"]*color:\s*\(white\|black\|#fff\|#000\|rgb(255,\s*255,\s*255)\|rgb(0,\s*0,\s*0)\)' \
     --include="*.ts" \
     --include="*.html" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    --exclude-dir=.angular \
     . 2>/dev/null)
 
 # Count issues
@@ -585,13 +594,13 @@ EMPTY_BUTTONS=$(grep -r '<button[^>]*>\s*</button>' \
     --exclude-dir=dist \
     "$PROJECT_PATH" 2>/dev/null)
 
-# Check for missing ARIA landmarks
-MISSING_LANDMARKS=$(grep -l '<main\|<nav\|<header\|<footer\|role=' \
-    --include="*.html" \
-    --include="*.ts" \
-    --exclude-dir=node_modules \
-    --exclude-dir=dist \
-    "$PROJECT_PATH" 2>/dev/null | wc -l)
+# Check for semantic HTML5 landmarks AND ARIA role landmarks
+# Count files that have at least one landmark
+FILES_WITH_LANDMARKS=$(find "$PROJECT_PATH/projects" -name "*.html" -o -name "*.component.html" 2>/dev/null | \
+    xargs grep -l '<main\|<nav\|<header\|<footer\|<aside\|role="main"\|role="navigation"\|role="banner"\|role="contentinfo"\|role="complementary"' 2>/dev/null | wc -l)
+
+# Count total HTML component files
+TOTAL_HTML_FILES=$(find "$PROJECT_PATH/projects" -name "*.component.html" -o -name "app.component.html" 2>/dev/null | wc -l)
 
 cat >> "$REPORT_FILE" << 'EOF'
 
@@ -625,7 +634,8 @@ if [ -n "$EMPTY_BUTTONS" ]; then
     ((A11Y_ISSUES++))
 fi
 
-if [ "$MISSING_LANDMARKS" -eq 0 ]; then
+# Only warn if we have HTML files but no landmarks
+if [ "$TOTAL_HTML_FILES" -gt 0 ] && [ "$FILES_WITH_LANDMARKS" -eq 0 ]; then
     echo "**⚠️ No ARIA landmarks found (main, nav, header, footer)**" >> "$REPORT_FILE"
     ((A11Y_ISSUES++))
 fi
@@ -731,8 +741,14 @@ NON_RESPONSIVE_TABLES=$(grep -r '<table' \
     "$PROJECT_PATH" 2>/dev/null | \
     grep -v 'mat-table\|responsive\|overflow')
 
-# Check for missing viewport meta in index.html
-VIEWPORT_META=$(grep -l 'viewport' "$PROJECT_PATH"/projects/demo/src/index.html 2>/dev/null)
+# Check for viewport meta tag in all index.html files
+# First check if there are any index.html files
+INDEX_FILES=$(find "$PROJECT_PATH" -path "*/src/index.html" -not -path "*/node_modules/*" 2>/dev/null)
+if [ -n "$INDEX_FILES" ]; then
+    VIEWPORT_META=$(echo "$INDEX_FILES" | xargs grep -l 'name="viewport"' 2>/dev/null)
+else
+    VIEWPORT_META=""
+fi
 
 cat >> "$REPORT_FILE" << 'EOF'
 

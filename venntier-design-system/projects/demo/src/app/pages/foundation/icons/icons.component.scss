@@ -133,11 +133,11 @@
   }
 
   .color-success mat-icon {
-    color: var(--md-sys-color-success, #4caf50);
+    color: var(--md-sys-color-success, var(--md-sys-color-tertiary));
   }
 
   .color-warning mat-icon {
-    color: var(--md-sys-color-warning, #ff9800);
+    color: var(--md-sys-color-warning, var(--md-sys-color-error));
   }
 }
 

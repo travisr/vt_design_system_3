@@ -69,9 +69,9 @@ if [ -f "$SCRIPT_DIR/ng-audit.sh" ]; then
         sed -n '/## ⚠️ HIGH:/,/^##/p' "$PROJECT_PATH/audits/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
         sed -n '/## 📝 MEDIUM:/,/^##/p' "$PROJECT_PATH/audits/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
         
-        # Count issues
-        NG_CRITICAL=$(grep -c "❌" "$PROJECT_PATH/audits/ng-audit-report.md" 2>/dev/null || echo "0")
-        NG_WARNINGS=$(grep -c "⚠️ Found" "$PROJECT_PATH/audits/ng-audit-report.md" 2>/dev/null || echo "0")
+        # Count issues (ensure single value output)
+        NG_CRITICAL=$(grep -c "❌" "$PROJECT_PATH/audits/ng-audit-report.md" 2>/dev/null | head -1 || echo "0")
+        NG_WARNINGS=$(grep -c "⚠️ Found" "$PROJECT_PATH/audits/ng-audit-report.md" 2>/dev/null | head -1 || echo "0")
         
         echo -e "${GREEN}✓${NC} Angular audit complete: $NG_CRITICAL critical, $NG_WARNINGS warnings"
     fi
@@ -102,8 +102,8 @@ if [ -f "$SCRIPT_DIR/ds-audit.sh" ]; then
         sed -n '/## 📐 Demo Layout Patterns/,/^##/p' "$PROJECT_PATH/audits/ds-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
         sed -n '/## 📊 Design System Coverage/,/^##/p' "$PROJECT_PATH/audits/ds-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
         
-        # Count design violations
-        DS_VIOLATIONS=$(grep -c "design system violation" "$PROJECT_PATH/audits/ds-audit-report.md" 2>/dev/null || echo "0")
+        # Count design violations (ensure single value output)
+        DS_VIOLATIONS=$(grep -c "design system violation" "$PROJECT_PATH/audits/ds-audit-report.md" 2>/dev/null | head -1 || echo "0")
         
         echo -e "${GREEN}✓${NC} Design system audit complete: $DS_VIOLATIONS violations"
     fi

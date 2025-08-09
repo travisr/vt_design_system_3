@@ -17,12 +17,12 @@
 .demo-toolbar {
   background: var(--md-sys-color-surface);
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
-  height: 56px;
-  padding: 0 24px;
+  height: var(--md-sys-spacing-56, 56px);
+  padding: 0 var(--md-sys-spacing-24, 24px);
   box-shadow: none;
   
   h1 {
-    font-size: 20px;
+    font-size: var(--md-sys-typescale-title-large-size, 20px);
     font-weight: 600;
     color: var(--md-sys-color-on-surface);
     margin: 0;
@@ -35,7 +35,7 @@
   button[mat-icon-button] {
     mat-icon {
       color: var(--md-sys-color-on-surface-variant);
-      font-size: 20px;
+      font-size: var(--md-sys-typescale-title-large-size, 20px);
     }
   }
 }
@@ -76,9 +76,9 @@
   
   .type-label {
     display: block;
-    font-size: 12px;
+    font-size: var(--md-sys-typescale-label-medium-size, 12px);
     color: var(--md-sys-color-on-surface-variant);
-    margin-bottom: 8px;
+    margin-bottom: var(--md-sys-spacing-8, 8px);
     font-weight: 400;
     letter-spacing: 0.02em;
   }
@@ -120,17 +120,17 @@
 // Colors demo styles
 .color-grid {
   .color-group {
-    margin-bottom: 24px;
+    margin-bottom: var(--md-sys-spacing-24, 24px);
     
     &:last-child {
       margin-bottom: 0;
     }
     
     .color-group-title {
-      font-size: 14px;
+      font-size: var(--md-sys-typescale-label-large-size, 14px);
       font-weight: 600;
       color: var(--md-sys-color-on-surface);
-      margin: 0 0 16px 0;
+      margin: 0 0 var(--md-sys-spacing-16, 16px) 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -147,8 +147,8 @@
       gap: var(--md-sys-spacing-12, 12px);
       
       .swatch-preview {
-        height: 80px;
-        border-radius: 8px;
+        height: var(--md-sys-spacing-80, 80px);
+        border-radius: var(--md-sys-shape-corner-medium, 8px);
         transition: transform 0.2s ease;
         
         &:hover {
@@ -162,19 +162,19 @@
         gap: var(--md-sys-spacing-4, 4px);
         
         .swatch-name {
-          font-size: 14px;
+          font-size: var(--md-sys-typescale-body-medium-size, 14px);
           font-weight: 600;
           color: var(--md-sys-color-on-surface);
         }
         
         .swatch-value {
-          font-size: 13px;
+          font-size: var(--md-sys-typescale-body-small-size, 13px);
           font-family: var(--md-sys-typescale-code-font);
           color: var(--md-sys-color-on-surface-variant);
         }
         
         .swatch-token {
-          font-size: 11px;
+          font-size: var(--md-sys-typescale-label-small-size, 11px);
           font-family: var(--md-sys-typescale-code-font);
           color: var(--md-sys-color-on-surface-variant);
           opacity: 0.7;
@@ -196,8 +196,8 @@
     gap: var(--md-sys-spacing-8, 8px);
     
     .gray-preview {
-      height: 60px;
-      border-radius: 6px;
+      height: var(--md-sys-spacing-60, 60px);
+      border-radius: var(--md-sys-shape-corner-small, 6px);
       transition: all 0.2s ease;
       cursor: pointer;
       
@@ -213,19 +213,19 @@
       gap: var(--md-sys-spacing-2, 2px);
       
       .gray-name {
-        font-size: 12px;
+        font-size: var(--md-sys-typescale-label-medium-size, 12px);
         font-weight: 600;
         color: var(--md-sys-color-on-surface);
       }
       
       .gray-value {
-        font-size: 11px;
+        font-size: var(--md-sys-typescale-label-small-size, 11px);
         font-family: var(--md-sys-typescale-code-font);
         color: var(--md-sys-color-on-surface-variant);
       }
       
       .gray-usage {
-        font-size: 10px;
+        font-size: var(--md-sys-typescale-label-small-size, 10px);
         color: var(--md-sys-color-on-surface-variant);
         opacity: 0.8;
       }
@@ -276,7 +276,7 @@
       }
       
       .state-label {
-        font-size: 12px;
+        font-size: var(--md-sys-typescale-label-medium-size, 12px);
         color: var(--md-sys-color-on-surface-variant);
         text-align: center;
       }
@@ -292,28 +292,28 @@
   
   .usage-section {
     .usage-title {
-      font-size: 14px;
+      font-size: var(--md-sys-typescale-label-large-size, 14px);
       font-weight: 600;
       color: var(--md-sys-color-on-surface);
-      margin: 0 0 16px 0;
+      margin: 0 0 var(--md-sys-spacing-16, 16px) 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
     
     .hierarchy-demo {
-      border-radius: 8px;
+      border-radius: var(--md-sys-shape-corner-medium, 8px);
       overflow: hidden;
       
       .hierarchy-level {
-        border-radius: 6px;
+        border-radius: var(--md-sys-shape-corner-small, 6px);
         position: relative;
         
         .hierarchy-label {
-          font-size: 12px;
+          font-size: var(--md-sys-typescale-label-medium-size, 12px);
           font-weight: 500;
           color: var(--md-sys-color-on-surface-variant);
           display: inline-block;
-          margin-bottom: 8px;
+          margin-bottom: var(--md-sys-spacing-8, 8px);
         }
       }
     }
@@ -325,7 +325,7 @@
       
       p {
         margin: 0;
-        font-size: 14px;
+        font-size: var(--md-sys-typescale-body-medium-size, 14px);
         line-height: 1.5;
       }
     }
@@ -335,8 +335,8 @@
       flex-direction: column;
       
       .border-example {
-        border-radius: 6px;
-        font-size: 13px;
+        border-radius: var(--md-sys-shape-corner-small, 6px);
+        font-size: var(--md-sys-typescale-body-small-size, 13px);
         color: var(--md-sys-color-on-surface-variant);
         background: var(--md-sys-color-surface);
         transition: all 0.2s ease;

@@ -19,7 +19,7 @@ mat-sidenav-content {
 // Toolbar should not scroll
 .demo-toolbar {
   flex: 0 0 auto; // Don't grow or shrink, maintain size
-  min-height: 64px; // Ensure minimum height
+  min-height: var(--md-sys-spacing-64, 64px); // Ensure minimum height
   
   .spacer {
     flex: 1 1 auto;

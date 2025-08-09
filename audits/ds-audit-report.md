@@ -50,10 +50,10 @@ Check for these reusable layout utilities:
 Analyzing how well the codebase uses the design system:
 
 **Token Usage Statistics:**
-- Color tokens:      939 uses
-- Spacing tokens:      328 uses
-- Shape tokens:      165 uses
-- Typography tokens:      295 uses
+- Color tokens:      943 uses
+- Spacing tokens:      349 uses
+- Shape tokens:      170 uses
+- Typography tokens:      310 uses
 
 **🎉 Excellent design system adoption!**
 
@@ -123,4 +123,4 @@ Analyzing how well the codebase uses the design system:
 
 Your codebase properly uses MD3 tokens and maintains separation of concerns.
 
-*Generated: 2025-08-09 16:12:55*
+*Generated: 2025-08-09 16:52:29*
