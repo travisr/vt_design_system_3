@@ -1,12 +1,14 @@
-<mat-toolbar color="primary">
-  <span>Venntier Design System Demo</span>
-  <span style="flex: 1"></span>
-  <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
-    <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
-  </button>
-</mat-toolbar>
+<header>
+  <mat-toolbar color="primary">
+    <span>Venntier Design System Demo</span>
+    <span style="flex: 1"></span>
+    <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
+      <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+  </mat-toolbar>
+</header>
 
-<div class="demo-container">
+<main class="demo-container">
   
   <section class="demo-section">
     <h1 class="vt-typescale-headline-large">Venntier Design System</h1>
@@ -299,4 +301,4 @@
       </div>
     </mat-tab>
   </mat-tabs>
-</div>
+</main>

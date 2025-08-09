@@ -1,6 +1,7 @@
 <mat-sidenav-container class="demo-container vt-theme">
   <!-- Sidebar -->
-  <mat-sidenav mode="side" opened class="vt-sidenav-standard">
+  <nav>
+    <mat-sidenav mode="side" opened class="vt-sidenav-standard">
     <div class="vt-sidenav-header">
       <div class="vt-sidenav-logo">
         <mat-icon>layers</mat-icon>
@@ -74,21 +75,24 @@
         </mat-nav-list>
       </div>
     </div>
-  </mat-sidenav>
+    </mat-sidenav>
+  </nav>
 
   <!-- Main Content -->
   <mat-sidenav-content class="demo-content">
     <!-- Top Bar -->
-    <mat-toolbar class="demo-toolbar">
-      <h1>Venntier Design System</h1>
-      <span class="spacer"></span>
-      <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
-        <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
-      </button>
-    </mat-toolbar>
+    <header>
+      <mat-toolbar class="demo-toolbar">
+        <h1>Venntier Design System</h1>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
+          <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+      </mat-toolbar>
+    </header>
 
     <!-- Content Area -->
-    <div class="content-wrapper">
+    <main class="content-wrapper">
       
       <!-- Typography Section -->
       @if (activeSection() === 'typography') {
@@ -203,7 +207,7 @@
                   <h4 class="color-group-title">Primary Colors</h4>
                   <div class="color-swatches">
                     <div class="color-swatch">
-                      <div class="swatch-preview" style="background: var(--md-sys-color-primary);"></div>
+                      <div class="swatch-preview" style="background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary);"></div>
                       <div class="swatch-info">
                         <span class="swatch-name">Black</span>
                         <span class="swatch-value">#000000</span>
@@ -211,7 +215,7 @@
                       </div>
                     </div>
                     <div class="color-swatch">
-                      <div class="swatch-preview" style="background: var(--md-sys-color-on-primary); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                      <div class="swatch-preview" style="background: var(--md-sys-color-on-primary); color: var(--md-sys-color-primary); border: 1px solid var(--md-sys-color-outline-variant);"></div>
                       <div class="swatch-info">
                         <span class="swatch-name">White</span>
                         <span class="swatch-value">#ffffff</span>
@@ -219,7 +223,7 @@
                       </div>
                     </div>
                     <div class="color-swatch">
-                      <div class="swatch-preview" style="background: var(--md-sys-color-tertiary);"></div>
+                      <div class="swatch-preview" style="background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
                       <div class="swatch-info">
                         <span class="swatch-name">Green (CTA)</span>
                         <span class="swatch-value">#10a37f</span>
@@ -227,7 +231,7 @@
                       </div>
                     </div>
                     <div class="color-swatch">
-                      <div class="swatch-preview" style="background: var(--md-sys-color-data-primary);"></div>
+                      <div class="swatch-preview" style="background: var(--md-sys-color-data-primary); color: var(--md-sys-color-on-data-primary);"></div>
                       <div class="swatch-info">
                         <span class="swatch-name">Purple (Data)</span>
                         <span class="swatch-value">#8b5cf6</span>
@@ -249,7 +253,7 @@
             <mat-card-content>
               <div class="gray-scale-grid">
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-background);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-background); color: var(--md-sys-color-on-background);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 950</span>
                     <span class="gray-value">#0a0a0a</span>
@@ -257,7 +261,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-on-surface);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-on-surface); color: var(--md-sys-color-surface);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 900</span>
                     <span class="gray-value">#202123</span>
@@ -265,7 +269,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-variant);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-surface-variant); color: var(--md-sys-color-on-surface-variant);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 800</span>
                     <span class="gray-value">#353740</span>
@@ -273,7 +277,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-outline);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-outline); color: var(--md-sys-color-on-surface);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 700</span>
                     <span class="gray-value">#40414f</span>
@@ -281,7 +285,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-on-surface-variant);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-on-surface-variant); color: var(--md-sys-color-surface-variant);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 600</span>
                     <span class="gray-value">#565869</span>
@@ -289,7 +293,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-focus-ring);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-focus-ring); color: var(--md-sys-color-on-surface);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 500</span>
                     <span class="gray-value">#6e6e80</span>
@@ -297,7 +301,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-disabled);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-disabled); color: var(--md-sys-color-on-surface);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 400</span>
                     <span class="gray-value">#9ca3af</span>
@@ -305,7 +309,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-outline);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-outline); color: var(--md-sys-color-on-surface);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 300</span>
                     <span class="gray-value">#d1d5db</span>
@@ -313,7 +317,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-outline-variant);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-outline-variant); color: var(--md-sys-color-on-surface);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 200</span>
                     <span class="gray-value">#e5e5e5</span>
@@ -321,7 +325,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-container-high);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-on-surface);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 175</span>
                     <span class="gray-value">#ececf1</span>
@@ -329,7 +333,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-container-low); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface); border: 1px solid var(--md-sys-color-outline-variant);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 150</span>
                     <span class="gray-value">#f7f7f8</span>
@@ -337,7 +341,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-surface-container); color: var(--md-sys-color-on-surface); border: 1px solid var(--md-sys-color-outline-variant);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 100</span>
                     <span class="gray-value">#f9f9f9</span>
@@ -345,7 +349,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-dim); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-surface-dim); color: var(--md-sys-color-on-surface); border: 1px solid var(--md-sys-color-outline-variant);"></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 50</span>
                     <span class="gray-value">#fafafa</span>
@@ -353,7 +357,7 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                  <div class="gray-preview" style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); border: 1px solid var(--md-sys-color-outline-variant);"></div>
                   <div class="gray-info">
                     <span class="gray-name">White</span>
                     <span class="gray-value">#ffffff</span>
@@ -408,11 +412,11 @@
                 <div class="usage-section">
                   <h4 class="usage-title">Background Hierarchy</h4>
                   <div class="hierarchy-demo">
-                    <div class="hierarchy-level" style="background: var(--md-sys-color-surface); padding: 24px; border: 1px solid var(--md-sys-color-surface-container-high); border-radius: 6px;">
+                    <div class="hierarchy-level" style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); padding: 24px; border: 1px solid var(--md-sys-color-surface-container-high); border-radius: 6px;">
                       <span class="hierarchy-label">Body Background · #ffffff</span>
-                      <div class="hierarchy-level" style="background: var(--md-sys-color-surface); padding: 24px; margin-top: 16px; border: 1px solid var(--md-sys-color-surface-container-high); border-radius: 6px;">
+                      <div class="hierarchy-level" style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); padding: 24px; margin-top: 16px; border: 1px solid var(--md-sys-color-surface-container-high); border-radius: 6px;">
                         <span class="hierarchy-label">Card Surface · #ffffff</span>
-                        <div class="hierarchy-level" style="background: var(--md-sys-color-surface); padding: 16px; margin-top: 16px; border: 1px solid var(--md-sys-color-surface-container-high); border-radius: 6px;">
+                        <div class="hierarchy-level" style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); padding: 16px; margin-top: 16px; border: 1px solid var(--md-sys-color-surface-container-high); border-radius: 6px;">
                           <span class="hierarchy-label">Input Background · #ffffff</span>
                         </div>
                       </div>
@@ -656,6 +660,6 @@
         </section>
       }
 
-    </div>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
