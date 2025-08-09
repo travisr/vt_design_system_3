@@ -1,0 +1,172 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+
+@Component({
+  selector: 'demo-spacing',
+  standalone: true,
+  imports: [CommonModule, MatCardModule],
+  template: `
+    <section>
+      <h2 class="section-title">Spacing & Layout</h2>
+      <p class="section-description">
+        Consistent spacing system based on 8px grid for predictable layouts and visual rhythm.
+      </p>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Spacing Scale</mat-card-title>
+          <mat-card-subtitle>8px base unit with systematic progression</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="spacing-examples">
+            <div class="spacing-item">
+              <div class="spacing-visual" style="width: 4px; background: #10a37f;"></div>
+              <div class="spacing-info">
+                <span class="spacing-name">4px</span>
+                <span class="spacing-token">--md-sys-spacing-4</span>
+                <span class="spacing-usage">Micro spacing, icon padding</span>
+              </div>
+            </div>
+            <div class="spacing-item">
+              <div class="spacing-visual" style="width: 8px; background: #10a37f;"></div>
+              <div class="spacing-info">
+                <span class="spacing-name">8px</span>
+                <span class="spacing-token">--md-sys-spacing-8</span>
+                <span class="spacing-usage">Base unit, tight spacing</span>
+              </div>
+            </div>
+            <div class="spacing-item">
+              <div class="spacing-visual" style="width: 12px; background: #10a37f;"></div>
+              <div class="spacing-info">
+                <span class="spacing-name">12px</span>
+                <span class="spacing-token">--md-sys-spacing-12</span>
+                <span class="spacing-usage">Small elements</span>
+              </div>
+            </div>
+            <div class="spacing-item">
+              <div class="spacing-visual" style="width: 16px; background: #10a37f;"></div>
+              <div class="spacing-info">
+                <span class="spacing-name">16px</span>
+                <span class="spacing-token">--md-sys-spacing-16</span>
+                <span class="spacing-usage">Component padding</span>
+              </div>
+            </div>
+            <div class="spacing-item">
+              <div class="spacing-visual" style="width: 24px; background: #10a37f;"></div>
+              <div class="spacing-info">
+                <span class="spacing-name">24px</span>
+                <span class="spacing-token">--md-sys-spacing-24</span>
+                <span class="spacing-usage">Card padding, section gaps</span>
+              </div>
+            </div>
+            <div class="spacing-item">
+              <div class="spacing-visual" style="width: 32px; background: #10a37f;"></div>
+              <div class="spacing-info">
+                <span class="spacing-name">32px</span>
+                <span class="spacing-token">--md-sys-spacing-32</span>
+                <span class="spacing-usage">Large sections</span>
+              </div>
+            </div>
+            <div class="spacing-item">
+              <div class="spacing-visual" style="width: 48px; background: #10a37f;"></div>
+              <div class="spacing-info">
+                <span class="spacing-name">48px</span>
+                <span class="spacing-token">--md-sys-spacing-48</span>
+                <span class="spacing-usage">Page margins</span>
+              </div>
+            </div>
+            <div class="spacing-item">
+              <div class="spacing-visual" style="width: 64px; background: #10a37f;"></div>
+              <div class="spacing-info">
+                <span class="spacing-name">64px</span>
+                <span class="spacing-token">--md-sys-spacing-64</span>
+                <span class="spacing-usage">Major sections</span>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Layout Examples</mat-card-title>
+          <mat-card-subtitle>Practical spacing applications</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="layout-examples">
+            <div class="layout-demo" style="padding: 24px; border: 1px solid #e5e5e5; border-radius: 8px; background: #fafafa;">
+              <h4 style="margin: 0 0 16px 0;">Card Example (24px padding)</h4>
+              <div style="padding: 16px; border: 1px solid #e5e5e5; border-radius: 4px; background: #ffffff;">
+                <p style="margin: 0 0 8px 0;">Content with 16px padding</p>
+                <div style="margin-top: 12px; display: flex; gap: 8px;">
+                  <button style="padding: 8px 16px; border: 1px solid #d1d5db; border-radius: 4px; background: #ffffff;">8px vertical</button>
+                  <button style="padding: 8px 16px; border: 1px solid #d1d5db; border-radius: 4px; background: #ffffff;">16px horizontal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Grid System</mat-card-title>
+          <mat-card-subtitle>Responsive layout foundation</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="grid-demo">
+            <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-bottom: 24px;">
+              @for (i of [1,2,3,4,5,6,7,8,9,10,11,12]; track i) {
+                <div style="background: #ececf1; padding: 8px; text-align: center; font-size: 12px; border-radius: 4px;">{{ i }}</div>
+              }
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+              <div style="background: #f7f7f8; padding: 24px; border: 1px solid #e5e5e5; border-radius: 8px;">
+                <h4 style="margin: 0 0 8px 0;">1/3 Column</h4>
+                <p style="margin: 0; color: #565869; font-size: 14px;">24px gaps between columns</p>
+              </div>
+              <div style="background: #f7f7f8; padding: 24px; border: 1px solid #e5e5e5; border-radius: 8px;">
+                <h4 style="margin: 0 0 8px 0;">1/3 Column</h4>
+                <p style="margin: 0; color: #565869; font-size: 14px;">24px gaps between columns</p>
+              </div>
+              <div style="background: #f7f7f8; padding: 24px; border: 1px solid #e5e5e5; border-radius: 8px;">
+                <h4 style="margin: 0 0 8px 0;">1/3 Column</h4>
+                <p style="margin: 0; color: #565869; font-size: 14px;">24px gaps between columns</p>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Implementation</mat-card-title>
+          <mat-card-subtitle>Using spacing tokens in your components</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="code-examples">
+            <div class="code-block">
+              <h4>CSS Variables</h4>
+              <pre><code>.card &#123;
+  padding: var(--md-sys-spacing-24);
+  margin-bottom: var(--md-sys-spacing-32);
+&#125;
+
+.button &#123;
+  padding: var(--md-sys-spacing-8) var(--md-sys-spacing-16);
+  margin-right: var(--md-sys-spacing-8);
+&#125;
+
+.section &#123;
+  margin-bottom: var(--md-sys-spacing-48);
+&#125;</code></pre>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </section>
+  `
+})
+export class SpacingComponent {
+}

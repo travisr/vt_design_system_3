@@ -1,69 +1,53 @@
+// Don't re-import styles.scss to avoid duplicate theme generation
+// Global styles are already included via angular.json
+@import './shared/styles/demo-shared.scss';
+
 .demo-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--md-sys-spacing-6);
-}
-
-.demo-section {
-  text-align: center;
-  margin-bottom: var(--md-sys-spacing-8);
-}
-
-.tab-content {
-  padding: var(--md-sys-spacing-6);
-}
-
-mat-card {
-  margin-bottom: var(--md-sys-spacing-4);
-}
-
-.button-grid {
+  height: 100vh;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--md-sys-spacing-3);
-  align-items: center;
 }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--md-sys-spacing-4);
-  margin-bottom: var(--md-sys-spacing-4);
-}
-
-mat-form-field {
-  width: 100%;
-}
-
-.radio-group {
-  mat-radio-button {
-    margin-right: var(--md-sys-spacing-4);
-  }
-}
-
-.progress-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--md-sys-spacing-3);
-  align-items: flex-start;
+.demo-toolbar {
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
   
-  mat-progress-bar {
-    width: 100%;
+  h1 {
+    font-size: var(--md-sys-typescale-title-large-size, 22px);
+    font-weight: var(--md-sys-typescale-title-large-weight, 400);
+    margin: 0;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
   }
 }
 
-.badges {
-  margin-top: var(--md-sys-spacing-4);
+.demo-content {
+  background: var(--md-sys-color-background);
+  overflow-y: auto;
+}
+
+.content-wrapper {
+  padding: 0;
+  min-height: calc(100vh - 64px);
+}
+
+// Navigation section title styling
+.vt-nav-section-title {
   display: flex;
-  gap: var(--md-sys-spacing-4);
-}
-
-.typography-samples {
-  p {
-    margin: var(--md-sys-spacing-3) 0;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: var(--md-sys-typescale-label-medium-size, 12px);
+  font-weight: var(--md-sys-typescale-label-medium-weight, 500);
+  color: var(--md-sys-color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
   }
-}
-
-table {
-  width: 100%;
 }

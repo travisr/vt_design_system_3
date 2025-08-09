@@ -1,0 +1,168 @@
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-8);
+  flex-wrap: wrap;
+}
+
+.variant-demo {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-32);
+  flex-wrap: wrap;
+}
+
+.variant-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--md-sys-spacing-12);
+
+  h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--md-sys-color-on-surface-variant);
+  }
+}
+
+.icon-button-raised,
+.icon-button-stroked,
+.icon-button-flat {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0;
+  
+  mat-icon {
+    margin: 0;
+  }
+}
+
+.toggle-demo {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-32);
+  flex-wrap: wrap;
+}
+
+.toggle-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--md-sys-spacing-12);
+
+  h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--md-sys-color-on-surface-variant);
+  }
+
+  button.active {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    
+    mat-icon {
+      color: var(--md-sys-color-on-secondary-container);
+    }
+  }
+}
+
+.states-demo {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-32);
+  flex-wrap: wrap;
+}
+
+.state-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--md-sys-spacing-12);
+
+  h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--md-sys-color-on-surface-variant);
+  }
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.color-demo {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-32);
+  flex-wrap: wrap;
+}
+
+.color-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--md-sys-spacing-12);
+
+  h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--md-sys-color-on-surface-variant);
+  }
+}
+
+.group-demo {
+  .button-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--md-sys-spacing-24);
+  }
+  
+  .button-section {
+    h4 {
+      margin: 0 0 var(--md-sys-spacing-8) 0;
+      font-size: 0.875rem;
+      color: var(--md-sys-color-on-surface);
+    }
+    
+    .button-group {
+      padding: var(--md-sys-spacing-8);
+      background-color: var(--md-sys-color-surface-variant);
+      border-radius: var(--md-sys-shape-corner-small);
+      border: 1px solid var(--md-sys-color-outline-variant);
+    }
+  }
+}
+
+// Hover and focus states
+button[mat-icon-button] {
+  transition: background-color 150ms ease;
+  
+  &:hover:not(:disabled) {
+    background-color: var(--md-sys-color-surface-variant);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .variant-demo,
+  .toggle-demo,
+  .states-demo,
+  .color-demo {
+    gap: var(--md-sys-spacing-16);
+  }
+  
+  .group-demo .button-toolbar {
+    gap: var(--md-sys-spacing-16);
+  }
+}

@@ -1,0 +1,119 @@
+// Shared demo styles - minimal overrides, use design system tokens
+
+// Page layout utilities
+.demo-page {
+  padding: var(--md-sys-spacing-24, 24px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.demo-section {
+  margin-bottom: var(--md-sys-spacing-32, 32px);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.demo-section-title {
+  font-size: var(--md-sys-typescale-headline-small-size, 24px);
+  font-weight: var(--md-sys-typescale-headline-small-weight, 400);
+  line-height: var(--md-sys-typescale-headline-small-line-height, 32px);
+  margin-bottom: var(--md-sys-spacing-16, 16px);
+  color: var(--md-sys-color-on-surface);
+}
+
+.demo-section-description {
+  font-size: var(--md-sys-typescale-body-large-size, 16px);
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: var(--md-sys-spacing-24, 24px);
+}
+
+// Example containers
+.demo-example {
+  padding: var(--md-sys-spacing-24, 24px);
+  background: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  margin-bottom: var(--md-sys-spacing-16, 16px);
+}
+
+.demo-example-row {
+  display: flex;
+  gap: var(--md-sys-spacing-16, 16px);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--md-sys-spacing-16, 16px);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.demo-example-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-16, 16px);
+}
+
+// Grid layouts for component demos
+.demo-grid {
+  display: grid;
+  gap: var(--md-sys-spacing-16, 16px);
+  
+  &.cols-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  &.cols-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  &.cols-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+// Code example styling
+.demo-code {
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-small, 8px);
+  padding: var(--md-sys-spacing-16, 16px);
+  overflow-x: auto;
+  
+  pre {
+    margin: 0;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  code {
+    color: var(--md-sys-color-on-surface);
+  }
+}
+
+// Variant labels
+.demo-variant-label {
+  font-size: var(--md-sys-typescale-label-medium-size, 12px);
+  font-weight: var(--md-sys-typescale-label-medium-weight, 500);
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: var(--md-sys-spacing-8, 8px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+// Responsive utilities
+@media (max-width: 840px) {
+  .demo-page {
+    padding: var(--md-sys-spacing-16, 16px);
+  }
+  
+  .demo-example {
+    padding: var(--md-sys-spacing-16, 16px);
+  }
+}
+
+// DO NOT add component-specific styles here
+// All component styling should come from the design system

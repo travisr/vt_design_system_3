@@ -1,155 +1,200 @@
-import { Component, signal, computed, inject } from '@angular/core';
-import { CommonModule, TitleCasePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-// Material imports
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatIconModule } from '@angular/material/icon';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component, signal, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
-import { MatTableModule } from '@angular/material/table';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatDividerModule } from '@angular/material/divider';
 import { VenntierThemeService } from '@venntier/design-system';
+
+interface NavSection {
+  title: string;
+  path: string;
+  items: NavItem[];
+  icon: string;
+}
+
+interface NavItem {
+  label: string;
+  path: string;
+  icon?: string;
+}
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
-    TitleCasePipe,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatRadioModule,
-    MatSlideToggleModule,
-    MatIconModule,
-    MatChipsModule,
-    MatTabsModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    MatMenuModule,
-    MatToolbarModule,
+    RouterModule,
     MatSidenavModule,
+    MatToolbarModule,
     MatListModule,
-    MatTableModule,
-    MatExpansionModule,
-    MatBadgeModule,
-    MatTooltipModule,
-    MatDividerModule
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
-  templateUrl: './sidebar-demo.component.html',
-  styleUrl: './sidebar-demo.component.scss'
+  template: `
+    <mat-sidenav-container class="demo-container vt-theme">
+      <!-- Sidebar -->
+      <mat-sidenav mode="side" opened class="vt-sidenav-standard">
+        <div class="vt-sidenav-header">
+          <div class="vt-sidenav-logo">
+            <mat-icon>layers</mat-icon>
+            <span>Venntier DS</span>
+          </div>
+        </div>
+        
+        <div class="vt-sidenav-content">
+          @for (section of navSections; track section.title) {
+            <div class="vt-nav-section">
+              <div class="vt-nav-section-title">
+                <mat-icon>{{ section.icon }}</mat-icon>
+                {{ section.title }}
+              </div>
+              <mat-nav-list>
+                @for (item of section.items; track item.path) {
+                  <a mat-list-item 
+                     [routerLink]="[section.path, item.path]"
+                     routerLinkActive="active">
+                    @if (item.icon) {
+                      <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                    }
+                    <span matListItemTitle>{{ item.label }}</span>
+                  </a>
+                }
+              </mat-nav-list>
+            </div>
+          }
+        </div>
+      </mat-sidenav>
+
+      <!-- Main Content -->
+      <mat-sidenav-content class="demo-content">
+        <!-- Top Bar -->
+        <mat-toolbar class="demo-toolbar">
+          <h1>Venntier Design System</h1>
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
+            <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+          </button>
+        </mat-toolbar>
+
+        <!-- Router Outlet -->
+        <div class="content-wrapper">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  `,
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   private readonly themeService = inject(VenntierThemeService);
+  private readonly router = inject(Router);
   
-  // Signals for reactive state
   readonly isDarkMode = this.themeService.isDark;
   readonly themeClass = this.themeService.themeClass;
-  readonly activeSection = signal('typography');
-  readonly selectedTab = signal(0);
   
-  // Form field signals
-  readonly emailValue = signal('');
-  readonly countryValue = signal('us');
-  readonly languageValue = signal('en');
-  readonly inputValue = signal('');
-  readonly selectValue = signal('option1');
-  
-  // Checkbox and radio signals
-  readonly checkbox1 = signal(false);
-  readonly checkbox2 = signal(true);
-  readonly checkbox3 = signal(false);
-  readonly checkboxValue = signal(false);
-  readonly radioValue = signal('monthly');
-  
-  // Toggle signals
-  readonly toggle1 = signal(false);
-  readonly toggle2 = signal(true);
-  readonly toggle3 = signal(false);
-  readonly slideToggleValue = signal(false);
-  
-  // Table data as signals
-  readonly tableData = signal([
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  ]);
-  readonly displayedColumns = signal(['position', 'name', 'weight', 'symbol']);
-  
-  // Computed property example
-  readonly formIsValid = computed(() => {
-    return this.emailValue().includes('@') && this.inputValue().length > 0;
-  });
-  
-  private readonly snackBar = inject(MatSnackBar);
+  readonly navSections: NavSection[] = [
+    {
+      title: 'Foundation',
+      path: '/foundation',
+      icon: 'foundation',
+      items: [
+        { label: 'Typography', path: 'typography', icon: 'text_fields' },
+        { label: 'Colors & Themes', path: 'colors', icon: 'palette' },
+        { label: 'Spacing & Layout', path: 'spacing', icon: 'space_bar' },
+        { label: 'Motion', path: 'motion', icon: 'animation' },
+        { label: 'Icons', path: 'icons', icon: 'emoji_symbols' }
+      ]
+    },
+    {
+      title: 'Actions',
+      path: '/actions',
+      icon: 'touch_app',
+      items: [
+        { label: 'Buttons', path: 'buttons', icon: 'smart_button' },
+        { label: 'FAB', path: 'fab', icon: 'add_circle' },
+        { label: 'Icon Buttons', path: 'icon-buttons', icon: 'radio_button_unchecked' },
+        { label: 'Segmented Buttons', path: 'segmented-buttons', icon: 'view_week' },
+        { label: 'Chips', path: 'chips', icon: 'label' }
+      ]
+    },
+    {
+      title: 'Forms & Inputs',
+      path: '/forms',
+      icon: 'edit_note',
+      items: [
+        { label: 'Text Fields', path: 'text-fields', icon: 'text_fields' },
+        { label: 'Select', path: 'select', icon: 'arrow_drop_down' },
+        { label: 'Checkboxes', path: 'checkboxes', icon: 'check_box' },
+        { label: 'Radio Buttons', path: 'radio-buttons', icon: 'radio_button_checked' },
+        { label: 'Switches', path: 'switches', icon: 'toggle_on' },
+        { label: 'Sliders', path: 'sliders', icon: 'tune' },
+        { label: 'Date & Time', path: 'date-time', icon: 'calendar_today' }
+      ]
+    },
+    {
+      title: 'Navigation',
+      path: '/navigation',
+      icon: 'navigation',
+      items: [
+        { label: 'Navigation Bar', path: 'navbar', icon: 'bottom_navigation' },
+        { label: 'Navigation Rail', path: 'rail', icon: 'side_navigation' },
+        { label: 'Navigation Drawer', path: 'drawer', icon: 'menu' },
+        { label: 'Tabs', path: 'tabs', icon: 'tab' },
+        { label: 'Top App Bar', path: 'app-bar', icon: 'web_asset' }
+      ]
+    },
+    {
+      title: 'Communication',
+      path: '/communication',
+      icon: 'message',
+      items: [
+        { label: 'Badges', path: 'badges', icon: 'numbers' },
+        { label: 'Snackbar', path: 'snackbar', icon: 'announcement' },
+        { label: 'Tooltips', path: 'tooltips', icon: 'help' },
+        { label: 'Dialogs', path: 'dialogs', icon: 'chat_bubble' },
+        { label: 'Sheets', path: 'sheets', icon: 'vertical_split' }
+      ]
+    },
+    {
+      title: 'Data Display',
+      path: '/data-display',
+      icon: 'dataset',
+      items: [
+        { label: 'Cards', path: 'cards', icon: 'dashboard' },
+        { label: 'Lists', path: 'lists', icon: 'list' },
+        { label: 'Tables', path: 'tables', icon: 'table_chart' },
+        { label: 'Dividers', path: 'dividers', icon: 'horizontal_rule' }
+      ]
+    },
+    {
+      title: 'Feedback',
+      path: '/feedback',
+      icon: 'feedback',
+      items: [
+        { label: 'Progress', path: 'progress', icon: 'pending' },
+        { label: 'Skeleton', path: 'skeleton', icon: 'view_agenda' },
+        { label: 'Loading', path: 'loading', icon: 'hourglass_empty' },
+        { label: 'Empty States', path: 'empty', icon: 'folder_open' }
+      ]
+    },
+    {
+      title: 'Layout',
+      path: '/layout',
+      icon: 'dashboard_customize',
+      items: [
+        { label: 'Grid System', path: 'grid', icon: 'grid_on' },
+        { label: 'Responsive', path: 'responsive', icon: 'devices' },
+        { label: 'Expansion Panels', path: 'expansion', icon: 'expand_more' }
+      ]
+    }
+  ];
   
   toggleTheme(): void {
     this.themeService.toggleTheme();
-  }
-  
-  setActiveSection(section: string): void {
-    this.activeSection.set(section);
-  }
-  
-  setSelectedTab(index: number): void {
-    this.selectedTab.set(index);
-  }
-  
-  showSnackbar(): void {
-    this.snackBar.open('This is a snackbar message!', 'Close', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    });
-  }
-  
-  // Helper methods for form bindings with signals
-  updateEmailValue(value: string): void {
-    this.emailValue.set(value);
-  }
-  
-  updateCountryValue(value: string): void {
-    this.countryValue.set(value);
-  }
-  
-  updateLanguageValue(value: string): void {
-    this.languageValue.set(value);
-  }
-  
-  updateInputValue(value: string): void {
-    this.inputValue.set(value);
-  }
-  
-  updateSelectValue(value: string): void {
-    this.selectValue.set(value);
-  }
-  
-  updateRadioValue(value: string): void {
-    this.radioValue.set(value);
   }
 }

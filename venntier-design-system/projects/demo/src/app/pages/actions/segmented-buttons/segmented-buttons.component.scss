@@ -1,0 +1,167 @@
+.segmented-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-12);
+  margin-bottom: var(--md-sys-spacing-24);
+
+  h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--md-sys-color-on-surface);
+  }
+}
+
+.density-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-24);
+}
+
+.density-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-12);
+
+  h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--md-sys-color-on-surface-variant);
+  }
+}
+
+.compact {
+  mat-button-toggle {
+    height: 32px;
+    line-height: 32px;
+    
+    .mat-button-toggle-label-content {
+      padding: 0 8px;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+.use-case-card {
+  padding: var(--md-sys-spacing-16);
+  margin-bottom: var(--md-sys-spacing-16);
+
+  h4 {
+    margin: 0 0 var(--md-sys-spacing-16) 0;
+    color: var(--md-sys-color-on-surface);
+  }
+
+  .result {
+    margin: var(--md-sys-spacing-16) 0 0 0;
+    padding: var(--md-sys-spacing-8);
+    background-color: var(--md-sys-color-surface-variant);
+    border-radius: var(--md-sys-shape-corner-small);
+    font-size: 0.875rem;
+    color: var(--md-sys-color-on-surface-variant);
+  }
+}
+
+// Custom styling for button toggles
+mat-button-toggle-group {
+  border-radius: var(--md-sys-shape-corner-medium);
+  border: 1px solid var(--md-sys-color-outline);
+  overflow: hidden;
+}
+
+mat-button-toggle {
+  border: none;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  
+  &:not(:last-child) {
+    border-right: 1px solid var(--md-sys-color-outline-variant);
+  }
+  
+  &.mat-button-toggle-checked {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    
+    mat-icon {
+      color: var(--md-sys-color-on-secondary-container);
+    }
+  }
+  
+  &:hover:not(.mat-button-toggle-disabled) {
+    background-color: var(--md-sys-color-surface-variant);
+  }
+  
+  &.mat-button-toggle-disabled {
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    opacity: 0.38;
+  }
+  
+  .mat-button-toggle-label-content {
+    display: flex;
+    align-items: center;
+    gap: var(--md-sys-spacing-8);
+    padding: var(--md-sys-spacing-8) var(--md-sys-spacing-12);
+    
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+// Focus styles
+mat-button-toggle:focus {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+// Icon-only button toggles
+mat-button-toggle-group:has(mat-button-toggle mat-icon:only-child) {
+  mat-button-toggle .mat-button-toggle-label-content {
+    padding: var(--md-sys-spacing-12);
+    min-width: 40px;
+    justify-content: center;
+  }
+}
+
+// Multi-selection styling
+mat-button-toggle-group[multiple] {
+  mat-button-toggle.mat-button-toggle-checked {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    
+    mat-icon {
+      color: var(--md-sys-color-on-primary-container);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  mat-button-toggle .mat-button-toggle-label-content {
+    padding: var(--md-sys-spacing-6) var(--md-sys-spacing-8);
+    font-size: 0.875rem;
+    
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+  
+  .density-demo {
+    gap: var(--md-sys-spacing-16);
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  mat-button-toggle-group {
+    border-width: 2px;
+  }
+  
+  mat-button-toggle:not(:last-child) {
+    border-right-width: 2px;
+  }
+}
