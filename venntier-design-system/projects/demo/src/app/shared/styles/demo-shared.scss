@@ -84,8 +84,8 @@
   
   pre {
     margin: 0;
-    font-family: 'JetBrains Mono', 'Consolas', monospace;
-    font-size: 14px;
+    font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
+    font-size: var(--md-sys-typescale-body-small-size, 14px);
     line-height: 1.5;
   }
   

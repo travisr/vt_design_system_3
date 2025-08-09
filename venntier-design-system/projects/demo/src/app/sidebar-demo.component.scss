@@ -41,7 +41,7 @@
 }
 
 .content-wrapper {
-  padding: 24px;
+  padding: var(--md-sys-spacing-24, 24px);
   overflow-y: auto;
   flex: 1;
   background: var(--md-sys-color-surface);
@@ -67,7 +67,7 @@
 
 // Typography samples
 .typography-sample {
-  padding: 20px 0;
+  padding: var(--md-sys-spacing-20, 20px) 0;
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
   
   &:last-child {
@@ -105,7 +105,7 @@
 .choice-group {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--md-sys-spacing-12, 12px);
   
   mat-checkbox,
   mat-radio-button,
@@ -138,13 +138,13 @@
     .color-swatches {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
+      gap: var(--md-sys-spacing-16, 16px);
     }
     
     .color-swatch {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: var(--md-sys-spacing-12, 12px);
       
       .swatch-preview {
         height: 80px;
@@ -159,7 +159,7 @@
       .swatch-info {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: var(--md-sys-spacing-4, 4px);
         
         .swatch-name {
           font-size: 14px;
@@ -188,12 +188,12 @@
 .gray-scale-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 20px;
+  gap: var(--md-sys-spacing-20, 20px);
   
   .gray-swatch {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--md-sys-spacing-8, 8px);
     
     .gray-preview {
       height: 60px;
@@ -210,7 +210,7 @@
     .gray-info {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: var(--md-sys-spacing-2, 2px);
       
       .gray-name {
         font-size: 12px;
@@ -238,12 +238,12 @@
   .state-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 24px;
+    gap: var(--md-sys-spacing-24, 24px);
     
     .state-example {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: var(--md-sys-spacing-12, 12px);
       align-items: center;
       
       button {
@@ -271,7 +271,7 @@
         &.state-focus {
           background: var(--md-sys-color-surface);
           border: 2px solid var(--md-sys-color-focus-ring);
-          padding: 8px 23px; // Adjust for thicker border
+          padding: var(--md-sys-spacing-8, 8px) var(--md-sys-spacing-23, 23px); // Adjust for thicker border
         }
       }
       
@@ -288,7 +288,7 @@
 .usage-examples {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--md-sys-spacing-32, 32px);
   
   .usage-section {
     .usage-title {
@@ -321,7 +321,7 @@
     .text-examples {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: var(--md-sys-spacing-12, 12px);
       
       p {
         margin: 0;

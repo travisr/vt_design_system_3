@@ -7,7 +7,7 @@
 
   h4 {
     margin: 0;
-    font-size: 1rem;
+    font-size: var(--md-sys-typescale-body-large-size, 16px);
     color: var(--md-sys-color-on-surface);
   }
 }
@@ -17,7 +17,7 @@
   padding: var(--md-sys-spacing-8);
   background-color: var(--md-sys-color-surface-variant);
   border-radius: var(--md-sys-shape-corner-small);
-  font-size: 0.875rem;
+  font-size: var(--md-sys-typescale-body-medium-size, 14px);
   color: var(--md-sys-color-on-surface-variant);
 }
 
@@ -44,7 +44,7 @@
   h4 {
     margin: 0 0 var(--md-sys-spacing-16) 0;
     color: var(--md-sys-color-on-surface);
-    font-size: 0.875rem;
+    font-size: var(--md-sys-typescale-body-medium-size, 14px);
   }
 }
 
@@ -60,7 +60,7 @@ mat-chip {
   background-color: var(--md-sys-color-surface-variant);
   color: var(--md-sys-color-on-surface-variant);
   border: 1px solid var(--md-sys-color-outline-variant);
-  font-size: 0.875rem;
+  font-size: var(--md-sys-typescale-body-medium-size, 14px);
   height: 32px;
   padding: 0 var(--md-sys-spacing-12);
   transition: all 150ms ease;
@@ -96,7 +96,7 @@ mat-chip {
   // Icon styling
   mat-icon {
     color: var(--md-sys-color-on-surface-variant);
-    font-size: 18px;
+    font-size: var(--md-sys-spacing-18, 18px);
     width: 18px;
     height: 18px;
     margin-right: var(--md-sys-spacing-4);
@@ -111,7 +111,7 @@ mat-chip {
       margin-right: -var(--md-sys-spacing-4);
       cursor: pointer;
       opacity: 0.7;
-      font-size: 16px;
+      font-size: var(--md-sys-spacing-16, 16px);
       width: 16px;
       height: 16px;
 
@@ -171,12 +171,12 @@ mat-chip-set[multiple] {
   }
 
   mat-chip {
-    font-size: 0.8125rem;
+    font-size: var(--md-sys-typescale-label-large-size, 13px);
     height: 28px;
     padding: 0 var(--md-sys-spacing-8);
 
     mat-icon {
-      font-size: 16px;
+      font-size: var(--md-sys-spacing-16, 16px);
       width: 16px;
       height: 16px;
     }

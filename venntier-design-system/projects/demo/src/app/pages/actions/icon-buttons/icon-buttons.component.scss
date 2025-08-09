@@ -21,7 +21,7 @@
 
   h4 {
     margin: 0;
-    font-size: 0.875rem;
+    font-size: var(--md-sys-typescale-body-medium-size, 14px);
     color: var(--md-sys-color-on-surface-variant);
   }
 }
@@ -54,7 +54,7 @@
 
   h4 {
     margin: 0;
-    font-size: 0.875rem;
+    font-size: var(--md-sys-typescale-body-medium-size, 14px);
     color: var(--md-sys-color-on-surface-variant);
   }
 
@@ -83,7 +83,7 @@
 
   h4 {
     margin: 0;
-    font-size: 0.875rem;
+    font-size: var(--md-sys-typescale-body-medium-size, 14px);
     color: var(--md-sys-color-on-surface-variant);
   }
 }
@@ -112,7 +112,7 @@
 
   h4 {
     margin: 0;
-    font-size: 0.875rem;
+    font-size: var(--md-sys-typescale-body-medium-size, 14px);
     color: var(--md-sys-color-on-surface-variant);
   }
 }
@@ -127,7 +127,7 @@
   .button-section {
     h4 {
       margin: 0 0 var(--md-sys-spacing-8) 0;
-      font-size: 0.875rem;
+      font-size: var(--md-sys-typescale-body-medium-size, 14px);
       color: var(--md-sys-color-on-surface);
     }
     
@@ -142,7 +142,7 @@
 
 // Hover and focus states
 button[mat-icon-button] {
-  transition: background-color 150ms ease;
+  transition: background-color var(--md-sys-motion-duration-short2, 200ms) var(--md-sys-motion-easing-standard, ease);
   
   &:hover:not(:disabled) {
     background-color: var(--md-sys-color-surface-variant);

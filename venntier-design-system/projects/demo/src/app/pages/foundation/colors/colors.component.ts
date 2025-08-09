@@ -18,10 +18,11 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         [mdLink]="MD3_DOCS.COLOR">
       </demo-page-header>
 
-      <!-- Primary Palette -->
+      <!-- MD3 Color Tokens -->
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Core Palette</mat-card-title>
+          <mat-card-title>Material Design 3 Color Tokens</mat-card-title>
+          <mat-card-subtitle>Design system colors using CSS custom properties</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <div class="color-grid">
@@ -29,35 +30,35 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               <h4 class="color-group-title">Primary Colors</h4>
               <div class="color-swatches">
                 <div class="color-swatch">
-                  <div class="swatch-preview" style="background: #000000;"></div>
+                  <div class="swatch-preview swatch-primary"></div>
                   <div class="swatch-info">
-                    <span class="swatch-name">Black</span>
-                    <span class="swatch-value">#000000</span>
+                    <span class="swatch-name">Primary</span>
                     <span class="swatch-token">--md-sys-color-primary</span>
+                    <span class="swatch-usage">Main actions, headers</span>
                   </div>
                 </div>
                 <div class="color-swatch">
-                  <div class="swatch-preview" style="background: #ffffff; border: 1px solid #e5e5e5;"></div>
+                  <div class="swatch-preview swatch-on-primary"></div>
                   <div class="swatch-info">
-                    <span class="swatch-name">White</span>
-                    <span class="swatch-value">#ffffff</span>
+                    <span class="swatch-name">On Primary</span>
                     <span class="swatch-token">--md-sys-color-on-primary</span>
+                    <span class="swatch-usage">Text on primary</span>
                   </div>
                 </div>
                 <div class="color-swatch">
-                  <div class="swatch-preview" style="background: #10a37f;"></div>
+                  <div class="swatch-preview swatch-tertiary"></div>
                   <div class="swatch-info">
-                    <span class="swatch-name">Green (CTA)</span>
-                    <span class="swatch-value">#10a37f</span>
+                    <span class="swatch-name">Tertiary (CTA)</span>
                     <span class="swatch-token">--md-sys-color-tertiary</span>
+                    <span class="swatch-usage">Primary call-to-actions only</span>
                   </div>
                 </div>
                 <div class="color-swatch">
-                  <div class="swatch-preview" style="background: #8b5cf6;"></div>
+                  <div class="swatch-preview swatch-data-primary"></div>
                   <div class="swatch-info">
-                    <span class="swatch-name">Purple (Data)</span>
-                    <span class="swatch-value">#8b5cf6</span>
+                    <span class="swatch-name">Data Primary</span>
                     <span class="swatch-token">--md-sys-color-data-primary</span>
+                    <span class="swatch-usage">Data visualization</span>
                   </div>
                 </div>
               </div>
@@ -66,158 +67,148 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </mat-card-content>
       </mat-card>
 
-      <!-- Gray Scale -->
+      <!-- Surface & Background Tokens -->
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Gray Scale</mat-card-title>
-          <mat-card-subtitle>OpenAI-inspired refined grays for UI hierarchy</mat-card-subtitle>
+          <mat-card-title>Surface & Background Tokens</mat-card-title>
+          <mat-card-subtitle>MD3 surface hierarchy for consistent layout backgrounds</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <div class="gray-scale-grid">
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #0a0a0a;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 950</span>
-                <span class="gray-value">#0a0a0a</span>
-                <span class="gray-usage">Dark theme background</span>
+          <div class="color-grid">
+            <div class="color-group">
+              <h4 class="color-group-title">Backgrounds</h4>
+              <div class="color-swatches">
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-background"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Background</span>
+                    <span class="swatch-token">--md-sys-color-background</span>
+                    <span class="swatch-usage">App/page background</span>
+                  </div>
+                </div>
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-surface"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Surface</span>
+                    <span class="swatch-token">--md-sys-color-surface</span>
+                    <span class="swatch-usage">Cards, dialogs</span>
+                  </div>
+                </div>
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-surface-variant"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Surface Variant</span>
+                    <span class="swatch-token">--md-sys-color-surface-variant</span>
+                    <span class="swatch-usage">Input backgrounds</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #202123;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 900</span>
-                <span class="gray-value">#202123</span>
-                <span class="gray-usage">Text primary</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #353740;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 800</span>
-                <span class="gray-value">#353740</span>
-                <span class="gray-usage">Dark sidebar</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #40414f;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 700</span>
-                <span class="gray-value">#40414f</span>
-                <span class="gray-usage">Dark borders</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #565869;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 600</span>
-                <span class="gray-value">#565869</span>
-                <span class="gray-usage">Secondary text</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #6e6e80;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 500</span>
-                <span class="gray-value">#6e6e80</span>
-                <span class="gray-usage">Focus borders</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #9ca3af;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 400</span>
-                <span class="gray-value">#9ca3af</span>
-                <span class="gray-usage">Disabled text</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #d1d5db;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 300</span>
-                <span class="gray-value">#d1d5db</span>
-                <span class="gray-usage">Standard borders</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #e5e5e5;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 200</span>
-                <span class="gray-value">#e5e5e5</span>
-                <span class="gray-usage">Active state</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #ececf1;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 175</span>
-                <span class="gray-value">#ececf1</span>
-                <span class="gray-usage">Hover state</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #f7f7f8; border: 1px solid #e5e5e5;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 150</span>
-                <span class="gray-value">#f7f7f8</span>
-                <span class="gray-usage">Sidenav background</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #f9f9f9; border: 1px solid #e5e5e5;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 100</span>
-                <span class="gray-value">#f9f9f9</span>
-                <span class="gray-usage">Subtle backgrounds</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #fafafa; border: 1px solid #e5e5e5;"></div>
-              <div class="gray-info">
-                <span class="gray-name">Gray 50</span>
-                <span class="gray-value">#fafafa</span>
-                <span class="gray-usage">Alt sections</span>
-              </div>
-            </div>
-            <div class="gray-swatch">
-              <div class="gray-preview" style="background: #ffffff; border: 1px solid #e5e5e5;"></div>
-              <div class="gray-info">
-                <span class="gray-name">White</span>
-                <span class="gray-value">#ffffff</span>
-                <span class="gray-usage">Primary background</span>
+            <div class="color-group">
+              <h4 class="color-group-title">Surface Containers</h4>
+              <div class="color-swatches">
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-surface-container-low"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Container Low</span>
+                    <span class="swatch-token">--md-sys-color-surface-container-low</span>
+                    <span class="swatch-usage">Hover states</span>
+                  </div>
+                </div>
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-surface-container"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Container</span>
+                    <span class="swatch-token">--md-sys-color-surface-container</span>
+                    <span class="swatch-usage">Input fields</span>
+                  </div>
+                </div>
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-surface-container-high"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Container High</span>
+                    <span class="swatch-token">--md-sys-color-surface-container-high</span>
+                    <span class="swatch-usage">Selected states</span>
+                  </div>
+                </div>
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-surface-container-highest"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Container Highest</span>
+                    <span class="swatch-token">--md-sys-color-surface-container-highest</span>
+                    <span class="swatch-usage">Elevated elements</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </mat-card-content>
       </mat-card>
 
-      <!-- Interactive States -->
+      <!-- Interactive State Tokens -->
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Interactive States</mat-card-title>
-          <mat-card-subtitle>Monochromatic state colors for consistent interactions</mat-card-subtitle>
+          <mat-card-title>Interactive State Tokens</mat-card-title>
+          <mat-card-subtitle>MD3 interaction states for consistent user experience</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <div class="states-demo">
-            <div class="state-row">
-              <div class="state-example">
-                <button mat-stroked-button class="state-default">Default State</button>
-                <span class="state-label">Default · #ffffff</span>
+          <div class="color-grid">
+            <div class="color-group">
+              <h4 class="color-group-title">Interaction States</h4>
+              <div class="color-swatches">
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-hover"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Hover</span>
+                    <span class="swatch-token">--md-sys-color-hover</span>
+                    <span class="swatch-usage">Element hover backgrounds</span>
+                  </div>
+                </div>
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-selected"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Selected</span>
+                    <span class="swatch-token">--md-sys-color-selected</span>
+                    <span class="swatch-usage">Active/selected items</span>
+                  </div>
+                </div>
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-focus-ring"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Focus Ring</span>
+                    <span class="swatch-token">--md-sys-color-focus-ring</span>
+                    <span class="swatch-usage">Focus outlines</span>
+                  </div>
+                </div>
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-disabled"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Disabled</span>
+                    <span class="swatch-token">--md-sys-color-disabled</span>
+                    <span class="swatch-usage">Disabled text/elements</span>
+                  </div>
+                </div>
               </div>
-              <div class="state-example">
-                <button mat-stroked-button class="state-hover">Hover State</button>
-                <span class="state-label">Hover · #ececf1</span>
-              </div>
-              <div class="state-example">
-                <button mat-stroked-button class="state-selected">Selected State</button>
-                <span class="state-label">Selected · #e5e5e5</span>
-              </div>
-              <div class="state-example">
-                <button mat-stroked-button class="state-focus">Focus State</button>
-                <span class="state-label">Focus · #6e6e80 border</span>
-              </div>
-              <div class="state-example">
-                <button mat-stroked-button disabled>Disabled State</button>
-                <span class="state-label">Disabled · #9ca3af</span>
+            </div>
+            <div class="color-group">
+              <h4 class="color-group-title">Outline & Border</h4>
+              <div class="color-swatches">
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-outline"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Outline</span>
+                    <span class="swatch-token">--md-sys-color-outline</span>
+                    <span class="swatch-usage">Standard borders</span>
+                  </div>
+                </div>
+                <div class="color-swatch">
+                  <div class="swatch-preview swatch-outline-variant"></div>
+                  <div class="swatch-info">
+                    <span class="swatch-name">Outline Variant</span>
+                    <span class="swatch-token">--md-sys-color-outline-variant</span>
+                    <span class="swatch-usage">Subtle borders</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -227,19 +218,20 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
       <!-- Usage Examples -->
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Color Usage Guidelines</mat-card-title>
+          <mat-card-title>Live Token Examples</mat-card-title>
+          <mat-card-subtitle>See MD3 tokens in action</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <div class="usage-examples">
             <div class="usage-section">
-              <h4 class="usage-title">Background Hierarchy</h4>
+              <h4 class="usage-title">Surface Hierarchy</h4>
               <div class="hierarchy-demo">
-                <div class="hierarchy-level" style="background: #ffffff; padding: 24px; border: 1px solid #ececf1; border-radius: 6px;">
-                  <span class="hierarchy-label">Body Background · #ffffff</span>
-                  <div class="hierarchy-level" style="background: #ffffff; padding: 24px; margin-top: 16px; border: 1px solid #ececf1; border-radius: 6px;">
-                    <span class="hierarchy-label">Card Surface · #ffffff</span>
-                    <div class="hierarchy-level" style="background: #ffffff; padding: 16px; margin-top: 16px; border: 1px solid #ececf1; border-radius: 6px;">
-                      <span class="hierarchy-label">Input Background · #ffffff</span>
+                <div class="hierarchy-level hierarchy-background">
+                  <span class="hierarchy-label">Background (--md-sys-color-background)</span>
+                  <div class="hierarchy-level hierarchy-surface">
+                    <span class="hierarchy-label">Surface (--md-sys-color-surface)</span>
+                    <div class="hierarchy-level hierarchy-surface-variant">
+                      <span class="hierarchy-label">Surface Variant (--md-sys-color-surface-variant)</span>
                     </div>
                   </div>
                 </div>
@@ -247,27 +239,22 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             </div>
 
             <div class="usage-section">
-              <h4 class="usage-title">Text Hierarchy</h4>
+              <h4 class="usage-title">Text on Surfaces</h4>
               <div class="text-examples">
-                <p style="color: #202123; font-weight: 600;">Primary Text · #202123 · Weight 600</p>
-                <p style="color: #202123; font-weight: 400;">Body Text · #202123 · Weight 400</p>
-                <p style="color: #565869; font-weight: 400;">Secondary Text · #565869 · Weight 400</p>
-                <p style="color: #9ca3af; font-weight: 400;">Disabled Text · #9ca3af · Weight 400</p>
+                <p class="text-on-surface-primary">Primary text using --md-sys-color-on-surface</p>
+                <p class="text-on-surface">Body text using --md-sys-color-on-surface</p>
+                <p class="text-on-surface-variant">Secondary text using --md-sys-color-on-surface-variant</p>
+                <p class="text-disabled">Disabled text using --md-sys-color-disabled</p>
               </div>
             </div>
 
             <div class="usage-section">
-              <h4 class="usage-title">Border Usage</h4>
-              <div class="border-examples">
-                <div class="border-example" style="border: 1px solid #d1d5db; padding: 16px;">
-                  Standard Border · #d1d5db
-                </div>
-                <div class="border-example" style="border: 1px solid #e5e5e5; padding: 16px; margin-top: 8px;">
-                  Subtle Border · #e5e5e5
-                </div>
-                <div class="border-example" style="border: 2px solid #6e6e80; padding: 16px; margin-top: 8px;">
-                  Focus Border · #6e6e80
-                </div>
+              <h4 class="usage-title">Interactive Examples</h4>
+              <div class="interactive-examples">
+                <button mat-stroked-button class="demo-btn demo-btn--default">Default Button</button>
+                <button mat-stroked-button class="demo-btn demo-btn--hover">Hover State</button>
+                <button mat-stroked-button class="demo-btn demo-btn--selected">Selected</button>
+                <button mat-flat-button color="primary" class="demo-btn">Primary CTA</button>
               </div>
             </div>
           </div>
