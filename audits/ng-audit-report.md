@@ -50,16 +50,6 @@
 ## 🌙 HIGH: Dark Mode Compatibility
 
 **Impact**: Poor contrast, invisible text, broken UI in dark mode
-**⚠️ Elements with background but no text color:**
-```
-./venntier-design-system/projects/demo/src/app/pages/foundation/spacing/spacing.component.ts:            <div class="layout-demo" style="padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; background: var(--md-sys-color-surface-container-low);">
-./venntier-design-system/projects/demo/src/app/pages/foundation/spacing/spacing.component.ts:              <div style="padding: 16px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 4px; background: var(--md-sys-color-surface-container);">
-./venntier-design-system/projects/demo/src/app/pages/foundation/spacing/spacing.component.ts:              <div style="background: var(--md-sys-color-surface-container-low); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px;">
-./venntier-design-system/projects/demo/src/app/pages/foundation/spacing/spacing.component.ts:              <div style="background: var(--md-sys-color-surface-container-low); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px;">
-./venntier-design-system/projects/demo/src/app/pages/foundation/spacing/spacing.component.ts:              <div style="background: var(--md-sys-color-surface-container-low); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px;">
-```
-**Fix**: Always pair background with color property
-
 **❌ Hardcoded text colors (will break in dark mode):**
 ```
 ./venntier-design-system/node_modules/needle/test/files/Appalachia.html:<span id="wm-media-button" style="color: rgb(0, 0, 0) !important;">Found 0 archived media items out of 0 total on this page. </span>
@@ -127,4 +117,4 @@
 - Control flow: `ng generate @angular/core:control-flow`
 - Standalone: `ng generate @angular/core:standalone`
 
-*Generated: 2025-08-09 16:10:38*
+*Generated: 2025-08-09 16:12:51*

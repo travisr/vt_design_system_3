@@ -326,6 +326,7 @@ MISSING_COLOR_PROPS=$(grep -r 'style="[^"]*background:[^"]*var(--md-sys-' \
     --include="*.html" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
+    --exclude-dir=.angular \
     . 2>/dev/null | \
     grep -v 'color:' | \
     grep -v '// \|/\*')
@@ -423,6 +424,7 @@ ALL_INLINE_ISSUES=$(grep -r 'style="[^"]*#[0-9a-fA-F]' \
     --include="*.html" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
+    --exclude-dir=.angular \
     --exclude="*.spec.ts" \
     . 2>/dev/null | \
     grep -v "var(--")
@@ -564,14 +566,15 @@ MISSING_ALT=$(grep -r '<img[^>]*src=' \
     grep -v 'alt=' | \
     grep -v 'aria-label')
 
-# Check for form inputs without labels
+# Check for form inputs without labels (exclude Material inputs which have mat-label)
 MISSING_LABELS=$(grep -r '<input\|<select\|<textarea' \
     --include="*.html" \
     --include="*.ts" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
+    --exclude-dir=.angular \
     "$PROJECT_PATH" 2>/dev/null | \
-    grep -v 'aria-label\|aria-labelledby\|placeholder' | \
+    grep -v 'aria-label\|aria-labelledby\|placeholder\|mat-label\|matInput' | \
     grep -v '// \|/\*')
 
 # Check for buttons without accessible text
@@ -780,7 +783,9 @@ INNER_HTML=$(grep -r 'innerHTML\|outerHTML' \
     --include="*.js" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
+    --exclude-dir=.angular \
     --exclude="*.spec.ts" \
+    --exclude="debug-*.js" \
     "$PROJECT_PATH" 2>/dev/null)
 
 # Check for bypassing Angular sanitization

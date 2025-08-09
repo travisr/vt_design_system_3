@@ -63,15 +63,15 @@ if [ -f "$SCRIPT_DIR/ng-audit.sh" ]; then
     NG_AUDIT_OUTPUT=$("$SCRIPT_DIR/ng-audit.sh" "$PROJECT_PATH" 2>&1)
     
     # Parse the ng-audit-report.md if it exists
-    if [ -f "$PROJECT_PATH/ng-audit-report.md" ]; then
+    if [ -f "$PROJECT_PATH/audits/ng-audit-report.md" ]; then
         # Extract key sections from ng-audit report
-        sed -n '/## 🚨 CRITICAL:/,/^##/p' "$PROJECT_PATH/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE"
-        sed -n '/## ⚠️ HIGH:/,/^##/p' "$PROJECT_PATH/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE"
-        sed -n '/## 📝 MEDIUM:/,/^##/p' "$PROJECT_PATH/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE"
+        sed -n '/## 🚨 CRITICAL:/,/^##/p' "$PROJECT_PATH/audits/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
+        sed -n '/## ⚠️ HIGH:/,/^##/p' "$PROJECT_PATH/audits/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
+        sed -n '/## 📝 MEDIUM:/,/^##/p' "$PROJECT_PATH/audits/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
         
         # Count issues
-        NG_CRITICAL=$(grep -c "❌" "$PROJECT_PATH/ng-audit-report.md" 2>/dev/null || echo "0")
-        NG_WARNINGS=$(grep -c "⚠️ Found" "$PROJECT_PATH/ng-audit-report.md" 2>/dev/null || echo "0")
+        NG_CRITICAL=$(grep -c "❌" "$PROJECT_PATH/audits/ng-audit-report.md" 2>/dev/null || echo "0")
+        NG_WARNINGS=$(grep -c "⚠️ Found" "$PROJECT_PATH/audits/ng-audit-report.md" 2>/dev/null || echo "0")
         
         echo -e "${GREEN}✓${NC} Angular audit complete: $NG_CRITICAL critical, $NG_WARNINGS warnings"
     fi
@@ -95,15 +95,15 @@ if [ -f "$SCRIPT_DIR/ds-audit.sh" ]; then
     # Run ds-audit and capture its output
     DS_AUDIT_OUTPUT=$("$SCRIPT_DIR/ds-audit.sh" "$PROJECT_PATH" 2>&1)
     
-    # Parse the ng-audit-report.md (ds-audit overwrites it)
-    if [ -f "$PROJECT_PATH/ng-audit-report.md" ]; then
+    # Parse the ds-audit-report.md if it exists
+    if [ -f "$PROJECT_PATH/audits/ds-audit-report.md" ]; then
         # Extract design system sections
-        sed -n '/## 🎨 Design System Token Usage/,/^##/p' "$PROJECT_PATH/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE"
-        sed -n '/## 📐 Demo Layout Patterns/,/^##/p' "$PROJECT_PATH/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE"
-        sed -n '/## 📊 Design System Coverage/,/^##/p' "$PROJECT_PATH/ng-audit-report.md" | head -n -1 >> "$REPORT_FILE"
+        sed -n '/## 🎨 Design System Token Usage/,/^##/p' "$PROJECT_PATH/audits/ds-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
+        sed -n '/## 📐 Demo Layout Patterns/,/^##/p' "$PROJECT_PATH/audits/ds-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
+        sed -n '/## 📊 Design System Coverage/,/^##/p' "$PROJECT_PATH/audits/ds-audit-report.md" | head -n -1 >> "$REPORT_FILE" 2>/dev/null
         
         # Count design violations
-        DS_VIOLATIONS=$(grep -c "design system violation" "$PROJECT_PATH/ng-audit-report.md" 2>/dev/null || echo "0")
+        DS_VIOLATIONS=$(grep -c "design system violation" "$PROJECT_PATH/audits/ds-audit-report.md" 2>/dev/null || echo "0")
         
         echo -e "${GREEN}✓${NC} Design system audit complete: $DS_VIOLATIONS violations"
     fi

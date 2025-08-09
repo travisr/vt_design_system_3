@@ -12,6 +12,11 @@
     "dev": "npm run build:lib && concurrently \"npm run build:lib:watch\" \"npm run serve:demo\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "lint": "ng lint",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "audit:ng": "../.claude/scripts/ng-audit.sh .",
+    "audit:ds": "../.claude/scripts/ds-audit.sh .",
+    "audit:full": "../.claude/scripts/full-audit.sh .",
     "pack:lib": "cd dist/design-system && npm pack"
   },
   "private": true,
@@ -27,6 +32,8 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
     "@fontsource/inter": "^5.2.6",
+    "@fontsource/material-icons": "^5.2.5",
+    "@fontsource/roboto": "^5.2.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

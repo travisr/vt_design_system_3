@@ -39,51 +39,55 @@ interface NavItem {
     <mat-sidenav-container class="demo-container vt-theme">
       <!-- Sidebar -->
       <mat-sidenav mode="side" opened class="vt-sidenav-standard">
-        <div class="vt-sidenav-header">
-          <div class="vt-sidenav-logo">
-            <mat-icon>layers</mat-icon>
-            <span>Venntier DS</span>
-          </div>
-        </div>
-        
-        <div class="vt-sidenav-content">
-          @for (section of navSections; track section.title) {
-            <div class="vt-nav-section">
-              <div class="vt-nav-section-title">
-                {{ section.title }}
-              </div>
-              <mat-nav-list>
-                @for (item of section.items; track item.path) {
-                  <a mat-list-item 
-                     [routerLink]="[section.path, item.path]"
-                     routerLinkActive="active">
-                    @if (item.icon) {
-                      <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
-                    }
-                    <span matListItemTitle>{{ item.label }}</span>
-                  </a>
-                }
-              </mat-nav-list>
+        <nav role="navigation" aria-label="Main navigation">
+          <div class="vt-sidenav-header">
+            <div class="vt-sidenav-logo">
+              <mat-icon>layers</mat-icon>
+              <span>Venntier DS</span>
             </div>
-          }
-        </div>
+          </div>
+          
+          <div class="vt-sidenav-content">
+            @for (section of navSections; track section.title) {
+              <div class="vt-nav-section">
+                <div class="vt-nav-section-title">
+                  {{ section.title }}
+                </div>
+                <mat-nav-list>
+                  @for (item of section.items; track item.path) {
+                    <a mat-list-item 
+                       [routerLink]="[section.path, item.path]"
+                       routerLinkActive="active">
+                      @if (item.icon) {
+                        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                      }
+                      <span matListItemTitle>{{ item.label }}</span>
+                    </a>
+                  }
+                </mat-nav-list>
+              </div>
+            }
+          </div>
+        </nav>
       </mat-sidenav>
 
       <!-- Main Content -->
       <mat-sidenav-content class="demo-content">
         <!-- Top Bar -->
-        <mat-toolbar class="demo-toolbar">
-          <h1>Venntier Design System</h1>
-          <span class="spacer"></span>
-          <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme">
-            <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
-          </button>
-        </mat-toolbar>
+        <header role="banner">
+          <mat-toolbar class="demo-toolbar">
+            <h1>Venntier Design System</h1>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle theme" aria-label="Toggle dark mode">
+              <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+            </button>
+          </mat-toolbar>
+        </header>
 
         <!-- Router Outlet -->
-        <div class="content-wrapper">
+        <main role="main" class="content-wrapper">
           <router-outlet></router-outlet>
-        </div>
+        </main>
       </mat-sidenav-content>
     </mat-sidenav-container>
   `,
@@ -140,9 +144,9 @@ export class AppComponent {
       path: '/navigation',
       icon: 'navigation',
       items: [
-        { label: 'Navigation Bar', path: 'navbar', icon: 'bottom_navigation' },
-        { label: 'Navigation Rail', path: 'rail', icon: 'side_navigation' },
-        { label: 'Navigation Drawer', path: 'drawer', icon: 'menu' },
+        { label: 'Navigation Bar', path: 'navbar', icon: 'call_to_action' },
+        { label: 'Navigation Rail', path: 'rail', icon: 'view_sidebar' },
+        { label: 'Navigation Drawer', path: 'drawer', icon: 'menu_open' },
         { label: 'Tabs', path: 'tabs', icon: 'tab' },
         { label: 'Top App Bar', path: 'app-bar', icon: 'web_asset' }
       ]
@@ -152,7 +156,7 @@ export class AppComponent {
       path: '/communication',
       icon: 'message',
       items: [
-        { label: 'Badges', path: 'badges', icon: 'numbers' },
+        { label: 'Badges', path: 'badges', icon: 'notifications' },
         { label: 'Snackbar', path: 'snackbar', icon: 'announcement' },
         { label: 'Tooltips', path: 'tooltips', icon: 'help' },
         { label: 'Dialogs', path: 'dialogs', icon: 'chat_bubble' },
@@ -162,7 +166,7 @@ export class AppComponent {
     {
       title: 'Data Display',
       path: '/data-display',
-      icon: 'dataset',
+      icon: 'table_view',
       items: [
         { label: 'Cards', path: 'cards', icon: 'dashboard' },
         { label: 'Lists', path: 'lists', icon: 'list' },
@@ -175,16 +179,16 @@ export class AppComponent {
       path: '/feedback',
       icon: 'feedback',
       items: [
-        { label: 'Progress', path: 'progress', icon: 'pending' },
-        { label: 'Skeleton', path: 'skeleton', icon: 'view_agenda' },
-        { label: 'Loading', path: 'loading', icon: 'hourglass_empty' },
-        { label: 'Empty States', path: 'empty', icon: 'folder_open' }
+        { label: 'Progress', path: 'progress', icon: 'donut_large' },
+        { label: 'Skeleton', path: 'skeleton', icon: 'content_copy' },
+        { label: 'Loading', path: 'loading', icon: 'loop' },
+        { label: 'Empty States', path: 'empty', icon: 'inbox' }
       ]
     },
     {
       title: 'Layout',
       path: '/layout',
-      icon: 'dashboard_customize',
+      icon: 'dashboard',
       items: [
         { label: 'Grid System', path: 'grid', icon: 'grid_on' },
         { label: 'Responsive', path: 'responsive', icon: 'devices' },

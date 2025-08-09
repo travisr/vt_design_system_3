@@ -1,7 +1,10 @@
-/* Use modern @use instead of @import for Sass 3.0 compatibility */
+/* Use modern @use for all Sass modules */
 @use '../../design-system/src/styles/venntier-theme';
 @use 'demo-utilities';
 @use 'app/shared/styles/demo-shared';
+@use 'material-icons';
+
+/* Font imports are now handled in angular.json to avoid Sass deprecation warnings */
 
 html { 
   height: 100%;
