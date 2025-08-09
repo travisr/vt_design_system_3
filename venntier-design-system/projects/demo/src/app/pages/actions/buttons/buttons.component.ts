@@ -36,7 +36,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         <demo-example-viewer 
           title="All Button Types"
           [code]="variantsCode">
-          <div class="demo-example-row">
+          <div class="demo-flex demo-flex--wrap demo-flex--gap-md demo-flex--align-center">
             <button mat-fab color="primary">
               <mat-icon>add</mat-icon>
             </button>
@@ -63,17 +63,17 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         <demo-example-viewer 
           title="Button States"
           [code]="statesCode">
-          <div class="demo-grid cols-3">
-            <div class="demo-example-column">
-              <span class="demo-variant-label">Enabled</span>
+          <div class="demo-grid demo-grid--3-col demo-grid--gap-lg">
+            <div class="demo-flex demo-flex--column demo-flex--gap-sm">
+              <span class="demo-label">Enabled</span>
               <button mat-flat-button color="primary">Primary</button>
             </div>
-            <div class="demo-example-column">
-              <span class="demo-variant-label">Disabled</span>
+            <div class="demo-flex demo-flex--column demo-flex--gap-sm">
+              <span class="demo-label">Disabled</span>
               <button mat-flat-button color="primary" disabled>Primary</button>
             </div>
-            <div class="demo-example-column">
-              <span class="demo-variant-label">Loading</span>
+            <div class="demo-flex demo-flex--column demo-flex--gap-sm">
+              <span class="demo-label">Loading</span>
               <button mat-flat-button color="primary" disabled>
                 <mat-spinner diameter="20" style="display: inline-block; margin-right: 8px;"></mat-spinner>
                 Loading...
@@ -93,7 +93,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         <demo-example-viewer 
           title="Icon Buttons"
           [code]="iconCode">
-          <div class="demo-example-row">
+          <div class="demo-component-group">
             <button mat-flat-button color="primary">
               <mat-icon>send</mat-icon>
               Send Email

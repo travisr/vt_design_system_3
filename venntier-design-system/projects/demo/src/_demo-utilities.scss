@@ -1,17 +1,36 @@
 // Demo Application Shared Utilities
 // Common styles used across all demo pages
+// IMPORTANT: These utilities handle ONLY structural layout - no visual styling.
+// All visual properties (colors, borders, shadows) come from MD3 tokens.
 
 // ============================================
 // Layout & Structure
 // ============================================
 
-// Standard demo section wrapper
+// Standard demo section wrapper with enhanced variations
 .demo-section {
   max-width: 1200px;
   margin: 0 auto;
-  
+  margin-bottom: var(--md-sys-spacing-32);
+
   & + & {
     margin-top: var(--md-sys-spacing-8);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &--compact {
+    margin-bottom: var(--md-sys-spacing-16);
+  }
+
+  &--spacious {
+    margin-bottom: var(--md-sys-spacing-48);
+  }
+
+  &--no-margin {
+    margin-bottom: 0;
   }
 }
 
@@ -40,7 +59,7 @@
   border: 1px solid var(--md-sys-color-outline-variant);
   box-shadow: none;
   background: var(--md-sys-color-surface);
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -52,26 +71,89 @@
 }
 
 // ============================================
-// Grid Systems
+// Grid Systems - Enhanced with more variations
 // ============================================
 
-// Responsive grid for demos
+// Responsive grid for demos with enhanced variations
 .demo-grid {
   display: grid;
-  gap: var(--md-sys-spacing-5);
-  
+  gap: var(--md-sys-spacing-16);
+
+  // Column variations
+  &--2-col {
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (width <= 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--3-col {
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (width <= 968px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (width <= 568px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--4-col {
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (width <= 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (width <= 968px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (width <= 568px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  &--auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  // Gap variations
+  &--gap-sm {
+    gap: var(--md-sys-spacing-8);
+  }
+
+  &--gap-md {
+    gap: var(--md-sys-spacing-16);
+  }
+
+  &--gap-lg {
+    gap: var(--md-sys-spacing-24);
+  }
+
+  &--gap-xl {
+    gap: var(--md-sys-spacing-32);
+  }
+
+  // Legacy class support (deprecated - use BEM modifiers above)
   &.demo-grid-2 {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-  
+
   &.demo-grid-3 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
-  
+
   &.demo-grid-4 {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
-  
+
   &.demo-grid-auto {
     grid-template-columns: repeat(auto-fill, minmax(var(--min-width, 200px), 1fr));
   }
@@ -82,7 +164,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--md-sys-spacing-5);
-  
+
   mat-form-field {
     width: 100%;
   }
@@ -94,7 +176,7 @@
 
 .demo-code-block {
   margin: var(--md-sys-spacing-4) 0;
-  
+
   h4 {
     font-size: var(--md-sys-typescale-label-large-size);
     font-weight: var(--md-sys-typescale-label-large-weight);
@@ -103,7 +185,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
-  
+
   pre {
     background: var(--md-sys-color-surface-container);
     border: 1px solid var(--md-sys-color-outline-variant);
@@ -111,7 +193,7 @@
     padding: var(--md-sys-spacing-4);
     margin: 0;
     overflow-x: auto;
-    
+
     code {
       font-family: var(--md-sys-typescale-code-font);
       font-size: var(--md-sys-typescale-code-size);
@@ -131,7 +213,7 @@
 @mixin demo-hover-lift {
   transition: all var(--md-sys-motion-hover);
   cursor: pointer;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px var(--md-sys-color-shadow);
@@ -140,7 +222,7 @@
 
 @mixin demo-hover-scale {
   transition: transform var(--md-sys-motion-hover);
-  
+
   &:hover {
     transform: scale(1.02);
   }
@@ -173,20 +255,156 @@
 }
 
 // ============================================
-// Spacing Utilities
+// Flexbox Layouts
 // ============================================
 
-.demo-spacing-xs { margin: var(--md-sys-spacing-2); }
-.demo-spacing-sm { margin: var(--md-sys-spacing-3); }
-.demo-spacing-md { margin: var(--md-sys-spacing-4); }
-.demo-spacing-lg { margin: var(--md-sys-spacing-6); }
-.demo-spacing-xl { margin: var(--md-sys-spacing-8); }
+.demo-flex {
+  display: flex;
+  gap: var(--md-sys-spacing-16);
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--row {
+    flex-direction: row;
+  }
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  &--center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--space-between {
+    justify-content: space-between;
+  }
+
+  &--align-start {
+    align-items: flex-start;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &--align-end {
+    align-items: flex-end;
+  }
+
+  // Gap variations
+  &--gap-sm {
+    gap: var(--md-sys-spacing-8);
+  }
+
+  &--gap-md {
+    gap: var(--md-sys-spacing-16);
+  }
+
+  &--gap-lg {
+    gap: var(--md-sys-spacing-24);
+  }
+
+  &--gap-xl {
+    gap: var(--md-sys-spacing-32);
+  }
+}
+
+// ============================================
+// Container Utilities
+// ============================================
+
+.demo-container {
+  padding: var(--md-sys-spacing-24);
+
+  &--compact {
+    padding: var(--md-sys-spacing-16);
+  }
+
+  &--spacious {
+    padding: var(--md-sys-spacing-32);
+  }
+
+  &--no-padding {
+    padding: 0;
+  }
+
+  // Directional padding
+  &--padding-top {
+    padding-top: var(--md-sys-spacing-24);
+  }
+
+  &--padding-bottom {
+    padding-bottom: var(--md-sys-spacing-24);
+  }
+
+  &--padding-horizontal {
+    padding-left: var(--md-sys-spacing-24);
+    padding-right: var(--md-sys-spacing-24);
+  }
+
+  &--padding-vertical {
+    padding-top: var(--md-sys-spacing-24);
+    padding-bottom: var(--md-sys-spacing-24);
+  }
+}
+
+// ============================================
+// Component Group Layouts
+// ============================================
+
+.demo-component-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-12);
+  align-items: center;
+
+  &--column {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &--tight {
+    gap: var(--md-sys-spacing-8);
+  }
+
+  &--loose {
+    gap: var(--md-sys-spacing-24);
+  }
+}
+
+// ============================================
+// Spacing Utilities - Enhanced
+// ============================================
+
+.demo-spacing-xs {
+  margin: var(--md-sys-spacing-2);
+}
+
+.demo-spacing-sm {
+  margin: var(--md-sys-spacing-3);
+}
+
+.demo-spacing-md {
+  margin: var(--md-sys-spacing-4);
+}
+
+.demo-spacing-lg {
+  margin: var(--md-sys-spacing-6);
+}
+
+.demo-spacing-xl {
+  margin: var(--md-sys-spacing-8);
+}
 
 // ============================================
 // Responsive Utilities
 // ============================================
 
-@media (max-width: 960px) {
+@media (width <= 960px) {
   .demo-grid {
     &.demo-grid-2,
     &.demo-grid-3,
@@ -194,14 +412,121 @@
       grid-template-columns: 1fr;
     }
   }
-  
+
   .demo-hide-mobile {
     display: none;
   }
 }
 
-@media (min-width: 961px) {
+@media (width >= 961px) {
   .demo-hide-desktop {
+    display: none;
+  }
+}
+
+// ============================================
+// Width Constraints
+// ============================================
+
+.demo-max-width {
+  &--sm {
+    max-width: 400px;
+  }
+
+  &--md {
+    max-width: 600px;
+  }
+
+  &--lg {
+    max-width: 800px;
+  }
+
+  &--xl {
+    max-width: 1200px;
+  }
+
+  &--full {
+    max-width: 100%;
+  }
+}
+
+// ============================================
+// Alignment Utilities
+// ============================================
+
+.demo-align {
+  &--center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &--left {
+    margin-right: auto;
+  }
+
+  &--right {
+    margin-left: auto;
+  }
+}
+
+// ============================================
+// Text Layout (structure only)
+// ============================================
+
+.demo-text {
+  &--center {
+    text-align: center;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+}
+
+// ============================================
+// Overflow Utilities
+// ============================================
+
+.demo-overflow {
+  &--auto {
+    overflow: auto;
+  }
+
+  &--hidden {
+    overflow: hidden;
+  }
+
+  &--scroll-x {
+    overflow: auto hidden;
+  }
+
+  &--scroll-y {
+    overflow: hidden auto;
+  }
+}
+
+// ============================================
+// Display Utilities
+// ============================================
+
+.demo-display {
+  &--block {
+    display: block;
+  }
+
+  &--inline {
+    display: inline;
+  }
+
+  &--inline-block {
+    display: inline-block;
+  }
+
+  &--none {
     display: none;
   }
 }

@@ -23,7 +23,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
           <mat-card-subtitle>8px base unit with systematic progression</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <div class="spacing-examples">
+          <div class="demo-flex demo-flex--column demo-flex--gap-sm">
             <div class="spacing-item">
               <div class="spacing-visual" style="width: 4px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
               <div class="spacing-info">
