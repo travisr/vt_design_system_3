@@ -5,52 +5,52 @@ $_spacing-unit: 8px;
 
 // Spacing scale
 :root {
-  // Core spacing values
+  // Core spacing values (number = pixel value)
   --md-sys-spacing-0: 0;
-  --md-sys-spacing-1: #{$_spacing-unit * 0.5};  // 4px
-  --md-sys-spacing-2: #{$_spacing-unit * 1};    // 8px
-  --md-sys-spacing-3: #{$_spacing-unit * 1.5};  // 12px
-  --md-sys-spacing-4: #{$_spacing-unit * 2};    // 16px
-  --md-sys-spacing-5: #{$_spacing-unit * 2.5};  // 20px
-  --md-sys-spacing-6: #{$_spacing-unit * 3};    // 24px
-  --md-sys-spacing-7: #{$_spacing-unit * 3.5};  // 28px
-  --md-sys-spacing-8: #{$_spacing-unit * 4};    // 32px
-  --md-sys-spacing-9: #{$_spacing-unit * 4.5};  // 36px
-  --md-sys-spacing-10: #{$_spacing-unit * 5};   // 40px
-  --md-sys-spacing-12: #{$_spacing-unit * 6};   // 48px
-  --md-sys-spacing-14: #{$_spacing-unit * 7};   // 56px
-  --md-sys-spacing-16: #{$_spacing-unit * 8};   // 64px
-  --md-sys-spacing-20: #{$_spacing-unit * 10};  // 80px
-  --md-sys-spacing-24: #{$_spacing-unit * 12};  // 96px
-  --md-sys-spacing-28: #{$_spacing-unit * 14};  // 112px
-  --md-sys-spacing-32: #{$_spacing-unit * 16};  // 128px
+  --md-sys-spacing-4: 4px;
+  --md-sys-spacing-8: 8px;
+  --md-sys-spacing-12: 12px;
+  --md-sys-spacing-16: 16px;
+  --md-sys-spacing-20: 20px;
+  --md-sys-spacing-24: 24px;
+  --md-sys-spacing-28: 28px;
+  --md-sys-spacing-32: 32px;
+  --md-sys-spacing-36: 36px;
+  --md-sys-spacing-40: 40px;
+  --md-sys-spacing-48: 48px;
+  --md-sys-spacing-56: 56px;
+  --md-sys-spacing-64: 64px;
+  --md-sys-spacing-80: 80px;
+  --md-sys-spacing-96: 96px;
+  --md-sys-spacing-112: 112px;
+  --md-sys-spacing-128: 128px;
   
   // Component-specific spacing (Refined for OpenAI)
-  --md-sys-spacing-card-padding: var(--md-sys-spacing-8); // 32px
-  --md-sys-spacing-button-padding-x: var(--md-sys-spacing-5); // 20px
-  --md-sys-spacing-button-padding-y: var(--md-sys-spacing-3); // 12px
-  --md-sys-spacing-input-padding-x: var(--md-sys-spacing-4); // 16px
-  --md-sys-spacing-input-padding-y: var(--md-sys-spacing-3); // 12px
-  --md-sys-spacing-section-gap: var(--md-sys-spacing-6); // 24px
-  --md-sys-spacing-list-gap: var(--md-sys-spacing-3); // 12px
-  --md-sys-spacing-inline-gap: var(--md-sys-spacing-2); // 8px
+  --md-sys-spacing-card-padding: var(--md-sys-spacing-32); // 32px
+  --md-sys-spacing-button-padding-x: var(--md-sys-spacing-20); // 20px
+  --md-sys-spacing-button-padding-y: var(--md-sys-spacing-12); // 12px
+  --md-sys-spacing-input-padding-x: var(--md-sys-spacing-16); // 16px
+  --md-sys-spacing-input-padding-y: var(--md-sys-spacing-12); // 12px
+  --md-sys-spacing-section-gap: var(--md-sys-spacing-24); // 24px
+  --md-sys-spacing-list-gap: var(--md-sys-spacing-12); // 12px
+  --md-sys-spacing-inline-gap: var(--md-sys-spacing-8); // 8px
   
   // Layout spacing
-  --md-sys-spacing-page-margin: var(--md-sys-spacing-6); // 24px
-  --md-sys-spacing-section-margin: var(--md-sys-spacing-8); // 32px
-  --md-sys-spacing-container-padding: var(--md-sys-spacing-4); // 16px
+  --md-sys-spacing-page-margin: var(--md-sys-spacing-24); // 24px
+  --md-sys-spacing-section-margin: var(--md-sys-spacing-32); // 32px
+  --md-sys-spacing-container-padding: var(--md-sys-spacing-16); // 16px
   
   // Responsive spacing
   @media (min-width: 768px) {
-    --md-sys-spacing-page-margin: var(--md-sys-spacing-8); // 32px
-    --md-sys-spacing-section-margin: var(--md-sys-spacing-12); // 48px
-    --md-sys-spacing-container-padding: var(--md-sys-spacing-6); // 24px
+    --md-sys-spacing-page-margin: var(--md-sys-spacing-32); // 32px
+    --md-sys-spacing-section-margin: var(--md-sys-spacing-48); // 48px
+    --md-sys-spacing-container-padding: var(--md-sys-spacing-24); // 24px
   }
   
   @media (min-width: 1280px) {
-    --md-sys-spacing-page-margin: var(--md-sys-spacing-12); // 48px
-    --md-sys-spacing-section-margin: var(--md-sys-spacing-16); // 64px
-    --md-sys-spacing-container-padding: var(--md-sys-spacing-8); // 32px
+    --md-sys-spacing-page-margin: var(--md-sys-spacing-48); // 48px
+    --md-sys-spacing-section-margin: var(--md-sys-spacing-64); // 64px
+    --md-sys-spacing-container-padding: var(--md-sys-spacing-32); // 32px
   }
 }
 
@@ -97,7 +97,7 @@ $_spacing-unit: 8px;
 }
 
 // Utility classes
-@each $size in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 20, 24, 28, 32) {
+@each $size in (0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 80, 96, 112, 128) {
   .vt-spacing-#{$size} {
     @include spacing(margin, $size);
   }

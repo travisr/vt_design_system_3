@@ -26,9 +26,12 @@
     }
   }
   
-  // Sidenav header area (logo/brand)
+  // Sidenav header area (logo/brand) - match toolbar height
   .vt-sidenav-header {
-    padding: 16px;
+    height: 64px; // Match toolbar height
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
     border-bottom: 1px solid var(--md-sys-color-outline-variant);
     
     .vt-sidenav-logo {
@@ -52,7 +55,17 @@
   .vt-sidenav-content {
     padding: 4px 0;
     overflow-y: auto;
-    height: calc(100vh - 69px); // Account for header
+    overflow-x: hidden;
+    height: calc(100vh - 64px); // Account for header (64px height)
+    
+    // Hide scrollbar but keep functionality
+    &::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
+    
+    // Firefox
+    scrollbar-width: none;
   }
   
   // Navigation sections

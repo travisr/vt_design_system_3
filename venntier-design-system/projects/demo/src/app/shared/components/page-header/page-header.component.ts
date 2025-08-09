@@ -33,10 +33,14 @@ interface Link {
     </header>
   `,
   styles: [`
+    :host {
+      display: block;
+    }
+    
     .page-header {
-      margin-bottom: var(--md-sys-spacing-32, 32px);
-      padding-bottom: var(--md-sys-spacing-24, 24px);
-      border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--md-sys-color-outline-variant, #e5e5e5);
     }
     
     .page-title {

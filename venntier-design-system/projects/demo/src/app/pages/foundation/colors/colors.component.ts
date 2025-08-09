@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'demo-colors',
   standalone: true,
-  imports: [CommonModule, MatCardModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, PageHeaderComponent],
+  styleUrl: './colors.component.scss',
   template: `
-    <section>
-      <h2 class="section-title">Color System</h2>
-      <p class="section-description">
-        A refined monochromatic palette inspired by OpenAI's minimalist design. Our color system emphasizes clarity and focus through subtle gray variations.
-      </p>
+    <div class="demo-page">
+      <demo-page-header
+        title="Colors & Themes"
+        description="A refined monochromatic palette inspired by OpenAI's minimalist design. Our color system emphasizes clarity and focus through subtle gray variations."
+        mdLink="https://m3.material.io/styles/color">
+      </demo-page-header>
 
       <!-- Primary Palette -->
       <mat-card>
@@ -311,7 +315,7 @@ import { MatCardModule } from '@angular/material/card';
           </div>
         </mat-card-content>
       </mat-card>
-    </section>
+    </div>
   `
 })
 export class ColorsComponent {

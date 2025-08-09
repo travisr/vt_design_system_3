@@ -126,10 +126,7 @@ import { ExampleViewerComponent } from '../../../shared/components/example-viewe
         </demo-example-viewer>
       </section>
     </div>
-  `,
-  styles: [`
-    @import '../../../shared/styles/demo-shared.scss';
-  `]
+  `
 })
 export class ButtonsComponent {
   variantsCode = {

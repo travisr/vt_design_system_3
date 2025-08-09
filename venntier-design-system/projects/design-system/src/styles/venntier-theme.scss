@@ -40,6 +40,9 @@ body.vt-theme {
   @include components.vt-sidenav-theme();
 }
 
+// Apply toolbar theme globally
+@include components.vt-toolbar-theme();
+
 // Global styles
 :root {
   font-family: var(--md-sys-typescale-body-large-font);
@@ -52,7 +55,8 @@ body.vt-theme {
 }
 
 // Dark theme support
-[data-theme="dark"] {
+[data-vt-theme="dark"],
+.vt-theme-dark {
   @include core.vt-material-theme('dark');
 }
 

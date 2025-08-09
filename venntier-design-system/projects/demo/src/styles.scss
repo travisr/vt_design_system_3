@@ -1,11 +1,27 @@
-/* Import Venntier Design System theme */
+/* Import Venntier Design System theme and tokens */
 @import '../../design-system/src/styles/venntier-theme';
 
 /* Import demo utilities */
 @import 'demo-utilities';
 
-html, body { height: 100%; }
-body { margin: 0; }
+/* Import shared demo styles globally */
+@import 'app/shared/styles/demo-shared';
+
+html { 
+  height: 100%;
+}
+
+body { 
+  height: 100%;
+  margin: 0;
+  // Force background color with !important to override Angular defaults
+  background-color: var(--md-sys-color-background) !important;
+  color: var(--md-sys-color-on-background) !important;
+  font-family: var(--md-sys-typescale-body-large-font);
+  
+  // Apply the vt-theme class for component overrides
+  @extend .vt-theme;
+}
 
 // Override Material's hover implementation
 .mat-mdc-list-item {
@@ -76,3 +92,5 @@ mat-sidenav .mat-mdc-nav-list a.mat-mdc-list-item:not(.active):hover,
     background-color: var(--md-sys-color-hover);
   }
 }
+
+// Toolbar positioning is handled in app.component.scss via flexbox

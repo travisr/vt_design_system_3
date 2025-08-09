@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
+import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'demo-typography',
   standalone: true,
-  imports: [CommonModule, MatCardModule],
+  imports: [CommonModule, PageHeaderComponent],
+  styleUrl: './typography.component.scss',
   template: `
-    <section>
-      <h2 class="section-title">Typography</h2>
-      <p class="section-description">
-        The Venntier Design System uses Inter as its primary typeface with a refined type scale for optimal readability.
-      </p>
+    <div class="demo-page">
+      <demo-page-header
+        title="Typography"
+        description="The Venntier Design System uses Inter as its primary typeface with a refined type scale for optimal readability."
+        mdLink="https://m3.material.io/styles/typography">
+      </demo-page-header>
 
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Display Styles</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
+      <section class="demo-section">
+        <h2 class="demo-section-title">Display Styles</h2>
+        <div class="demo-example">
           <div class="typography-sample">
             <span class="type-label">Display Large · 56px · 200</span>
             <p class="vt-typescale-display-large">Build amazing products</p>
@@ -30,14 +30,12 @@ import { MatCardModule } from '@angular/material/card';
             <span class="type-label">Display Small · 36px · 300</span>
             <p class="vt-typescale-display-small">Build amazing products</p>
           </div>
-        </mat-card-content>
-      </mat-card>
+        </div>
+      </section>
 
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Headline Styles</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
+      <section class="demo-section">
+        <h2 class="demo-section-title">Headline Styles</h2>
+        <div class="demo-example">
           <div class="typography-sample">
             <span class="type-label">Headline Large · 32px · 450</span>
             <p class="vt-typescale-headline-large">Create powerful interfaces</p>
@@ -50,14 +48,12 @@ import { MatCardModule } from '@angular/material/card';
             <span class="type-label">Headline Small · 24px · 400</span>
             <p class="vt-typescale-headline-small">Create powerful interfaces</p>
           </div>
-        </mat-card-content>
-      </mat-card>
+        </div>
+      </section>
 
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Body & Label Styles</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
+      <section class="demo-section">
+        <h2 class="demo-section-title">Body & Label Styles</h2>
+        <div class="demo-example">
           <div class="typography-sample">
             <span class="type-label">Title Large · 22px · 450</span>
             <p class="vt-typescale-title-large">Section titles and emphasis</p>
@@ -94,9 +90,9 @@ import { MatCardModule } from '@angular/material/card';
             <span class="type-label">Label Small · 11px · 450</span>
             <p class="vt-typescale-label-small">CAPTION TEXT</p>
           </div>
-        </mat-card-content>
-      </mat-card>
-    </section>
+        </div>
+      </section>
+    </div>
   `
 })
 export class TypographyComponent {

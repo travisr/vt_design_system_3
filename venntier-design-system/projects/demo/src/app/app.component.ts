@@ -50,7 +50,6 @@ interface NavItem {
           @for (section of navSections; track section.title) {
             <div class="vt-nav-section">
               <div class="vt-nav-section-title">
-                <mat-icon>{{ section.icon }}</mat-icon>
                 {{ section.title }}
               </div>
               <mat-nav-list>

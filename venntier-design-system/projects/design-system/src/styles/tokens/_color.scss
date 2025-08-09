@@ -101,7 +101,8 @@ $_gray-25: #ffffff;   // OpenAI card surface
 }
 
 // Dark theme tokens
-[data-theme="dark"] {
+[data-vt-theme="dark"],
+.vt-theme-dark {
   // Primary (monochrome inverted)
   --md-sys-color-primary: #{$_white};
   --md-sys-color-on-primary: #{$_black};

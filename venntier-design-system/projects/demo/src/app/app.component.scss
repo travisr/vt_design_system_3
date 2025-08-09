@@ -1,53 +1,35 @@
-// Don't re-import styles.scss to avoid duplicate theme generation
-// Global styles are already included via angular.json
-@import './shared/styles/demo-shared.scss';
+// Demo app layout styles only - all component styling comes from design system
 
+// Main container layout
 .demo-container {
   height: 100vh;
   display: flex;
+  overflow: hidden;
 }
 
+// Sidenav content container needs proper flex layout
+mat-sidenav-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; // Prevent the container itself from scrolling
+}
+
+// Toolbar should not scroll
 .demo-toolbar {
-  background: var(--md-sys-color-surface);
-  color: var(--md-sys-color-on-surface);
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
-  
-  h1 {
-    font-size: var(--md-sys-typescale-title-large-size, 22px);
-    font-weight: var(--md-sys-typescale-title-large-weight, 400);
-    margin: 0;
-  }
+  flex: 0 0 auto; // Don't grow or shrink, maintain size
+  min-height: 64px; // Ensure minimum height
   
   .spacer {
     flex: 1 1 auto;
   }
 }
 
-.demo-content {
-  background: var(--md-sys-color-background);
-  overflow-y: auto;
-}
-
+// Content wrapper handles all scrolling
 .content-wrapper {
-  padding: 0;
-  min-height: calc(100vh - 64px);
-}
-
-// Navigation section title styling
-.vt-nav-section-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  font-size: var(--md-sys-typescale-label-medium-size, 12px);
-  font-weight: var(--md-sys-typescale-label-medium-weight, 500);
-  color: var(--md-sys-color-on-surface-variant);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  
-  mat-icon {
-    font-size: 18px;
-    width: 18px;
-    height: 18px;
-  }
+  flex: 1 1 auto; // Take remaining space
+  overflow-y: auto; // Enable vertical scrolling here
+  overflow-x: hidden;
+  background: var(--md-sys-color-surface);
 }

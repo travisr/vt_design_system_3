@@ -1,0 +1,129 @@
+
+// Typography page specific styles
+.typography-sample {
+  margin-bottom: var(--md-sys-spacing-24, 24px);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.type-label {
+  display: block;
+  font-size: var(--md-sys-typescale-label-small-size, 11px);
+  font-weight: var(--md-sys-typescale-label-small-weight, 500);
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: var(--md-sys-spacing-8, 8px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vt-typescale-display-large,
+.vt-typescale-display-medium,
+.vt-typescale-display-small,
+.vt-typescale-headline-large,
+.vt-typescale-headline-medium,
+.vt-typescale-headline-small,
+.vt-typescale-title-large,
+.vt-typescale-title-medium,
+.vt-typescale-title-small,
+.vt-typescale-body-large,
+.vt-typescale-body-medium,
+.vt-typescale-body-small,
+.vt-typescale-label-large,
+.vt-typescale-label-medium,
+.vt-typescale-label-small {
+  margin: 0;
+  color: var(--md-sys-color-on-surface);
+}
+
+.vt-typescale-display-large { 
+  font-size: var(--md-sys-typescale-display-large-size, 56px);
+  font-weight: var(--md-sys-typescale-display-large-weight, 200);
+  line-height: var(--md-sys-typescale-display-large-line-height, 64px);
+}
+
+.vt-typescale-display-medium { 
+  font-size: var(--md-sys-typescale-display-medium-size, 44px);
+  font-weight: var(--md-sys-typescale-display-medium-weight, 200);
+  line-height: var(--md-sys-typescale-display-medium-line-height, 52px);
+}
+
+.vt-typescale-display-small { 
+  font-size: var(--md-sys-typescale-display-small-size, 36px);
+  font-weight: var(--md-sys-typescale-display-small-weight, 300);
+  line-height: var(--md-sys-typescale-display-small-line-height, 44px);
+}
+
+.vt-typescale-headline-large { 
+  font-size: var(--md-sys-typescale-headline-large-size, 32px);
+  font-weight: var(--md-sys-typescale-headline-large-weight, 450);
+  line-height: var(--md-sys-typescale-headline-large-line-height, 40px);
+}
+
+.vt-typescale-headline-medium { 
+  font-size: var(--md-sys-typescale-headline-medium-size, 28px);
+  font-weight: var(--md-sys-typescale-headline-medium-weight, 450);
+  line-height: var(--md-sys-typescale-headline-medium-line-height, 36px);
+}
+
+.vt-typescale-headline-small { 
+  font-size: var(--md-sys-typescale-headline-small-size, 24px);
+  font-weight: var(--md-sys-typescale-headline-small-weight, 400);
+  line-height: var(--md-sys-typescale-headline-small-line-height, 32px);
+}
+
+.vt-typescale-title-large { 
+  font-size: var(--md-sys-typescale-title-large-size, 22px);
+  font-weight: var(--md-sys-typescale-title-large-weight, 450);
+  line-height: var(--md-sys-typescale-title-large-line-height, 28px);
+}
+
+.vt-typescale-title-medium { 
+  font-size: var(--md-sys-typescale-title-medium-size, 18px);
+  font-weight: var(--md-sys-typescale-title-medium-weight, 450);
+  line-height: var(--md-sys-typescale-title-medium-line-height, 24px);
+}
+
+.vt-typescale-title-small { 
+  font-size: var(--md-sys-typescale-title-small-size, 16px);
+  font-weight: var(--md-sys-typescale-title-small-weight, 450);
+  line-height: var(--md-sys-typescale-title-small-line-height, 20px);
+}
+
+.vt-typescale-body-large { 
+  font-size: var(--md-sys-typescale-body-large-size, 16px);
+  font-weight: var(--md-sys-typescale-body-large-weight, 400);
+  line-height: var(--md-sys-typescale-body-large-line-height, 24px);
+}
+
+.vt-typescale-body-medium { 
+  font-size: var(--md-sys-typescale-body-medium-size, 14px);
+  font-weight: var(--md-sys-typescale-body-medium-weight, 400);
+  line-height: var(--md-sys-typescale-body-medium-line-height, 20px);
+}
+
+.vt-typescale-body-small { 
+  font-size: var(--md-sys-typescale-body-small-size, 12px);
+  font-weight: var(--md-sys-typescale-body-small-weight, 400);
+  line-height: var(--md-sys-typescale-body-small-line-height, 16px);
+}
+
+.vt-typescale-label-large { 
+  font-size: var(--md-sys-typescale-label-large-size, 14px);
+  font-weight: var(--md-sys-typescale-label-large-weight, 450);
+  line-height: var(--md-sys-typescale-label-large-line-height, 20px);
+}
+
+.vt-typescale-label-medium { 
+  font-size: var(--md-sys-typescale-label-medium-size, 12px);
+  font-weight: var(--md-sys-typescale-label-medium-weight, 450);
+  line-height: var(--md-sys-typescale-label-medium-line-height, 16px);
+}
+
+.vt-typescale-label-small { 
+  font-size: var(--md-sys-typescale-label-small-size, 11px);
+  font-weight: var(--md-sys-typescale-label-small-weight, 450);
+  line-height: var(--md-sys-typescale-label-small-line-height, 16px);
+  letter-spacing: 0.5px;
+}

@@ -1,0 +1,132 @@
+// Venntier Design System - Toolbar/App Bar Theme
+// OpenAI-inspired toolbar styling for Angular Material
+
+@use '@angular/material' as mat;
+
+@mixin vt-toolbar-theme() {
+  // Default toolbar styles
+  mat-toolbar,
+  .mat-mdc-toolbar {
+    background: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    height: 64px; // Consistent height with sidenav header
+    padding: 0 var(--md-sys-spacing-16);
+    box-shadow: none;
+    
+    @media (min-width: 600px) {
+      padding: 0 var(--md-sys-spacing-24);
+    }
+  }
+  
+  // Toolbar inside sidenav-content
+  mat-sidenav-content mat-toolbar,
+  mat-sidenav-content .mat-mdc-toolbar,
+  .mat-drawer-content mat-toolbar,
+  .mat-drawer-content .mat-mdc-toolbar {
+    
+    // Typography for toolbar title
+    h1, h2, h3 {
+      margin: 0;
+      font-size: var(--md-sys-typescale-title-large-size, 22px);
+      font-weight: var(--md-sys-typescale-title-large-weight, 400);
+      line-height: 1.2;
+    }
+    
+    // Spacer utility
+    .spacer,
+    .vt-toolbar-spacer {
+      flex: 1 1 auto;
+    }
+    
+    // Button alignment in toolbar
+    button[mat-icon-button] {
+      margin: 0 var(--md-sys-spacing-4);
+    }
+  }
+  
+  // Sticky toolbar utility class
+  mat-toolbar.vt-toolbar-sticky,
+  .mat-mdc-toolbar.vt-toolbar-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  // Fixed toolbar utility class  
+  mat-toolbar.vt-toolbar-fixed,
+  .mat-mdc-toolbar.vt-toolbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  
+  // Toolbar with sidenav adjustment
+  mat-sidenav-container {
+    // When toolbar is inside sidenav-content
+    mat-sidenav-content {
+      mat-toolbar,
+      .mat-toolbar {
+        // Simple positioning without negative margins
+        width: 100%;
+        padding-left: var(--md-sys-spacing-24);
+        padding-right: var(--md-sys-spacing-24);
+        
+        @media (min-width: 600px) {
+          padding-left: var(--md-sys-spacing-32);
+          padding-right: var(--md-sys-spacing-32);
+        }
+      }
+    }
+  }
+  
+  // Toolbar row utilities
+  .vt-toolbar-row {
+    display: flex;
+    align-items: center;
+    gap: var(--md-sys-spacing-16);
+    width: 100%;
+    
+    &.vt-toolbar-row-start {
+      justify-content: flex-start;
+    }
+    
+    &.vt-toolbar-row-center {
+      justify-content: center;
+    }
+    
+    &.vt-toolbar-row-end {
+      justify-content: flex-end;
+    }
+    
+    &.vt-toolbar-row-between {
+      justify-content: space-between;
+    }
+  }
+  
+  // Toolbar section utilities
+  .vt-toolbar-section {
+    display: flex;
+    align-items: center;
+    gap: var(--md-sys-spacing-8);
+    
+    &.vt-toolbar-section-start {
+      margin-right: auto;
+    }
+    
+    &.vt-toolbar-section-end {
+      margin-left: auto;
+    }
+  }
+  
+  // Dark theme adjustments
+  [data-vt-theme="dark"] mat-toolbar,
+  [data-vt-theme="dark"] .mat-toolbar,
+  .vt-theme-dark mat-toolbar,
+  .vt-theme-dark .mat-toolbar {
+    background: var(--md-sys-color-surface);
+    border-bottom-color: var(--md-sys-color-outline-variant);
+  }
+}

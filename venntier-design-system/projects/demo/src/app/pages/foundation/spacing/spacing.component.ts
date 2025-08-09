@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'demo-spacing',
   standalone: true,
-  imports: [CommonModule, MatCardModule],
+  imports: [CommonModule, MatCardModule, PageHeaderComponent],
+  styleUrl: './spacing.component.scss',
   template: `
-    <section>
-      <h2 class="section-title">Spacing & Layout</h2>
-      <p class="section-description">
-        Consistent spacing system based on 8px grid for predictable layouts and visual rhythm.
-      </p>
+    <div class="demo-page">
+      <demo-page-header
+        title="Spacing & Layout"
+        description="Consistent spacing system based on 8px grid for predictable layouts and visual rhythm."
+        mdLink="https://m3.material.io/foundations/layout">
+      </demo-page-header>
 
       <mat-card>
         <mat-card-header>
@@ -165,7 +168,7 @@ import { MatCardModule } from '@angular/material/card';
           </div>
         </mat-card-content>
       </mat-card>
-    </section>
+    </div>
   `
 })
 export class SpacingComponent {
