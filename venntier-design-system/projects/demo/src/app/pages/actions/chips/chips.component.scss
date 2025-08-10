@@ -195,14 +195,14 @@ mat-chip-set[multiple] {
 
 // Animation for chip addition/removal
 .chip-enter {
-  animation: chipEnter 200ms ease-out;
+  animation: chip-enter 200ms ease-out;
 }
 
 .chip-leave {
-  animation: chipLeave 150ms ease-in;
+  animation: chip-leave 150ms ease-in;
 }
 
-@keyframes chipEnter {
+@keyframes chip-enter {
   from {
     opacity: 0;
     transform: scale(0.8);
@@ -214,7 +214,7 @@ mat-chip-set[multiple] {
   }
 }
 
-@keyframes chipLeave {
+@keyframes chip-leave {
   from {
     opacity: 1;
     transform: scale(1);

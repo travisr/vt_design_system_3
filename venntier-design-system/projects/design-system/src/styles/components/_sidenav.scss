@@ -1,6 +1,5 @@
 // Venntier Design System - Sidenav Theme
 // OpenAI-inspired sidenav styling for Angular Material
-//
 // Customizable CSS Variables:
 // --vt-sidenav-width: Standard width (default: 240px)
 // --vt-sidenav-expanded-width: Expanded width (default: 280px)
@@ -111,6 +110,13 @@
       position: relative;
       background-color: transparent;
 
+      // Disable Material's ripple using CSS variables (moved before nested rules)
+      --mat-ripple-color: transparent;
+      --mdc-ripple-color: transparent;
+      --mdc-ripple-hover-opacity: 0;
+      --mdc-ripple-focus-opacity: 0;
+      --mdc-ripple-pressed-opacity: 0;
+
       // Disable Material's state layer using opacity
       &::before {
         opacity: 0;
@@ -174,15 +180,6 @@
           color: var(--md-sys-color-primary);
           font-weight: 500; // Medium weight - not too heavy
         }
-      }
-
-      // Disable Material's ripple using CSS variables (wrapped in & {} for Sass 3.0)
-      & {
-        --mat-ripple-color: transparent;
-        --mdc-ripple-color: transparent;
-        --mdc-ripple-hover-opacity: 0;
-        --mdc-ripple-focus-opacity: 0;
-        --mdc-ripple-pressed-opacity: 0;
       }
 
       // Disabled state

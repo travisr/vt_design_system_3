@@ -53,23 +53,8 @@
   align-items: center;
   gap: var(--md-sys-spacing-32);
   flex-wrap: wrap;
-}
 
-.size-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--md-sys-spacing-12);
-
-  h4 {
-    margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
-  }
-}
-
-// Icon size modifiers with mat-icon specificity
-.size-demo {
+  // Icon size modifiers with mat-icon specificity
   .size-18 mat-icon {
     font-size: var(--md-sys-spacing-18, 18px);
     width: var(--md-sys-spacing-18, 18px);
@@ -95,28 +80,26 @@
   }
 }
 
+.size-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--md-sys-spacing-12);
+
+  h4 {
+    margin: 0;
+    font-size: var(--md-sys-typescale-body-medium-size, 14px);
+    color: var(--md-sys-color-on-surface-variant);
+  }
+}
+
 .color-demo {
   display: flex;
   align-items: center;
   gap: var(--md-sys-spacing-24);
   flex-wrap: wrap;
-}
 
-.color-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--md-sys-spacing-8);
-
-  h4 {
-    margin: 0;
-    font-size: var(--md-sys-typescale-label-medium-size, 12px);
-    color: var(--md-sys-color-on-surface-variant);
-  }
-}
-
-// Icon color modifiers with mat-icon specificity
-.color-demo {
+  // Icon color modifiers with mat-icon specificity
   .color-on-surface mat-icon {
     color: var(--md-sys-color-on-surface);
   }
@@ -139,6 +122,19 @@
 
   .color-warning mat-icon {
     color: var(--md-sys-color-warning, var(--md-sys-color-error));
+  }
+}
+
+.color-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--md-sys-spacing-8);
+
+  h4 {
+    margin: 0;
+    font-size: var(--md-sys-typescale-label-medium-size, 12px);
+    color: var(--md-sys-color-on-surface-variant);
   }
 }
 

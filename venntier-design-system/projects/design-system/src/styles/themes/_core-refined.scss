@@ -44,7 +44,50 @@
     --vt-on-surface-text: var(--md-sys-color-on-surface);
   }
 
-  // Wrap in .vt-theme class for higher specificity without !important
+  // Icon button specific overrides with higher specificity
+  // Using button element selector for maximum specificity
+  .vt-theme button.mat-mdc-icon-button,
+  body button.mat-mdc-icon-button,
+  button.mat-mdc-icon-button.mat-mdc-button-base {
+    // Override the container size to be square
+    --mdc-icon-button-state-layer-size: 48px;
+    --mdc-icon-button-icon-size: 20px;
+
+    width: 48px;
+    height: 48px;
+    padding: 14px; // Centers a 20px icon in 48px button
+    border-radius: 50%;
+  }
+
+  // Select panel dropdown with higher specificity
+  .mat-mdc-select-panel {
+    --mat-option-hover-state-layer-color: var(--md-sys-color-hover);
+    --mat-option-selected-state-layer-color: var(--md-sys-color-selected);
+    --mat-option-focus-state-layer-color: var(--md-sys-color-hover);
+
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px var(--md-sys-color-shadow);
+    margin-top: 4px;
+
+    .mat-mdc-option {
+      height: 40px;
+      padding: 0 16px;
+      font-size: 14px;
+
+      &:hover {
+        background-color: var(--md-sys-color-hover);
+      }
+
+      &.mat-mdc-option-active,
+      &.mdc-list-item--selected {
+        background-color: var(--md-sys-color-selected);
+        color: var(--md-sys-color-on-surface);
+      }
+    }
+  }
+
+  // Wrap all component overrides in a single .vt-theme class for higher specificity
   .vt-theme {
     // Body styles with proper CSS custom property usage
     background: var(--vt-surface-background);
@@ -60,10 +103,8 @@
     .mat-mdc-dialog-container {
       box-shadow: none;
     }
-  }
 
-  // BUTTONS - Use CSS custom properties and higher specificity
-  .vt-theme {
+    // BUTTONS - Use CSS custom properties and higher specificity
     // Regular buttons (not icon buttons)
     .mat-mdc-button,
     .mat-mdc-raised-button,
@@ -91,20 +132,20 @@
       --mdc-ripple-focus-opacity: 0;
       --mdc-ripple-pressed-opacity: 0;
     }
-    
+
     // Icon buttons have different specs - must be square
     .mat-mdc-icon-button {
       // Override the container size to be square
       --mdc-icon-button-state-layer-size: 48px;
       --mdc-icon-button-icon-size: 20px;
-      
+
       width: 48px;
       height: 48px;
       padding: 14px; // Centers a 20px icon in 48px button
       transition: all 0.15s ease;
       box-shadow: none;
       border-radius: 50%;
-      
+
       // Disable ripples using CSS variables
       --mat-ripple-color: transparent;
       --mdc-ripple-color: transparent;
@@ -112,25 +153,8 @@
       --mdc-ripple-focus-opacity: 0;
       --mdc-ripple-pressed-opacity: 0;
     }
-  }
 
-  // Icon button specific overrides with higher specificity
-  // Using button element selector for maximum specificity
-  .vt-theme button.mat-mdc-icon-button,
-  body button.mat-mdc-icon-button,
-  button.mat-mdc-icon-button.mat-mdc-button-base {
-    // Override the container size to be square
-    --mdc-icon-button-state-layer-size: 48px;
-    --mdc-icon-button-icon-size: 20px;
-    
-    width: 48px;
-    height: 48px;
-    padding: 14px; // Centers a 20px icon in 48px button
-    border-radius: 50%;
-  }
-
-  // Primary button (green CTA) - Use CSS custom properties
-  .vt-theme {
+    // Primary button (green CTA) - Use CSS custom properties
     .mat-mdc-raised-button.mat-primary,
     .mat-mdc-flat-button.mat-primary {
       --mdc-filled-button-container-color: var(--md-sys-color-tertiary);
@@ -156,10 +180,8 @@
       --mdc-outlined-button-hover-container-color: var(--md-sys-color-hover);
       --mdc-outlined-button-hover-outline-color: var(--md-sys-color-outline-variant);
     }
-  }
 
-  // Tertiary (flat) and Text buttons - Use proper CSS custom properties
-  .vt-theme {
+    // Tertiary (flat) and Text buttons - Use proper CSS custom properties
     .mat-mdc-flat-button:not(.mat-primary) {
       --mdc-filled-button-container-color: var(--md-sys-color-surface-container);
       --mdc-filled-button-label-text-color: var(--md-sys-color-on-surface);
@@ -185,10 +207,8 @@
 
       opacity: 0.4;
     }
-  }
 
-  // CARDS - Use CSS custom properties and higher specificity
-  .vt-theme {
+    // CARDS - Use CSS custom properties and higher specificity
     .mat-mdc-card {
       --mdc-elevated-card-container-color: var(--md-sys-color-surface);
       --mdc-elevated-card-container-shape: 8px;
@@ -218,10 +238,8 @@
         }
       }
     }
-  }
 
-  // FORM FIELDS - Proper CSS custom properties and higher specificity
-  .vt-theme {
+    // FORM FIELDS - Proper CSS custom properties and higher specificity
     .mat-mdc-form-field {
       --mdc-filled-text-field-container-height: 44px;
       --mdc-outlined-text-field-container-height: 44px;
@@ -356,10 +374,8 @@
         }
       }
     }
-  }
 
-  // SELECT - Clean approach with CSS custom properties
-  .vt-theme {
+    // SELECT - Clean approach with CSS custom properties
     .mat-mdc-select {
       --mat-select-trigger-height: 44px;
       --mat-select-trigger-text-size: 14px;
@@ -390,40 +406,8 @@
         }
       }
     }
-  }
 
-  // Select panel dropdown with higher specificity
-  .vt-theme {
-    .mat-mdc-select-panel {
-      --mat-option-hover-state-layer-color: var(--md-sys-color-hover);
-      --mat-option-selected-state-layer-color: var(--md-sys-color-selected);
-      --mat-option-focus-state-layer-color: var(--md-sys-color-hover);
-
-      border: 1px solid var(--md-sys-color-outline-variant);
-      border-radius: 6px;
-      box-shadow: 0 2px 8px var(--md-sys-color-shadow);
-      margin-top: 4px;
-
-      .mat-mdc-option {
-        height: 40px;
-        padding: 0 16px;
-        font-size: 14px;
-
-        &:hover {
-          background-color: var(--md-sys-color-hover);
-        }
-
-        &.mat-mdc-option-active,
-        &.mdc-list-item--selected {
-          background-color: var(--md-sys-color-selected);
-          color: var(--md-sys-color-on-surface);
-        }
-      }
-    }
-  }
-
-  // TOOLBAR - Clean style with CSS custom properties
-  .vt-theme {
+    // TOOLBAR - Clean style with CSS custom properties
     .mat-toolbar {
       --mat-toolbar-background-color: var(--md-sys-color-surface);
       --mat-toolbar-title-text-color: var(--md-sys-color-on-surface);
@@ -439,10 +423,8 @@
         background-color: var(--md-sys-color-surface);
       }
     }
-  }
 
-  // TYPOGRAPHY - Using M3 typescale tokens
-  .vt-theme {
+    // TYPOGRAPHY - Using M3 typescale tokens
     h1,
     h2,
     h3,
@@ -482,10 +464,8 @@
       line-height: 1.6;
       margin-bottom: 12px;
     }
-  }
 
-  // CHECKBOXES & RADIOS - Using tertiary color for selection
-  .vt-theme {
+    // CHECKBOXES & RADIOS - Using tertiary color for selection
     .mat-mdc-checkbox {
       --mdc-checkbox-selected-icon-color: var(--md-sys-color-tertiary);
       --mdc-checkbox-selected-checkmark-color: var(--md-sys-color-on-tertiary);
@@ -500,10 +480,8 @@
       --mdc-radio-selected-icon-color: var(--md-sys-color-tertiary);
       --mdc-radio-unselected-icon-color: var(--md-sys-color-outline);
     }
-  }
 
-  // CHIPS - Clean style with tokens
-  .vt-theme {
+    // CHIPS - Clean style with tokens
     .mat-mdc-chip {
       --mdc-chip-container-height: 32px;
       --mdc-chip-container-shape: 16px;
@@ -521,10 +499,8 @@
         color: var(--md-sys-color-on-surface);
       }
     }
-  }
 
-  // MENU - Consistent with select dropdown
-  .vt-theme {
+    // MENU - Consistent with select dropdown
     .mat-mdc-menu-panel {
       --mat-menu-container-color: var(--md-sys-color-surface);
       --mat-menu-container-shape: 8px;
@@ -551,10 +527,8 @@
         }
       }
     }
-  }
 
-  // PROGRESS - Using tertiary color
-  .vt-theme {
+    // PROGRESS - Using tertiary color
     .mat-mdc-progress-bar {
       --mdc-linear-progress-active-indicator-color: var(--md-sys-color-tertiary);
       --mdc-linear-progress-track-color: var(--md-sys-color-surface-container-high);
@@ -566,10 +540,8 @@
     .mat-mdc-progress-spinner {
       --mdc-circular-progress-active-indicator-color: var(--md-sys-color-tertiary);
     }
-  }
 
-  // SNACKBAR - Dark container for contrast
-  .vt-theme {
+    // SNACKBAR - Dark container for contrast
     .mat-mdc-snack-bar-container {
       --mdc-snackbar-container-color: var(--md-sys-color-inverse-surface);
       --mdc-snackbar-supporting-text-color: var(--md-sys-color-inverse-on-surface);
@@ -581,10 +553,8 @@
         color: var(--md-sys-color-tertiary);
       }
     }
-  }
 
-  // DIALOG - Clean modal style
-  .vt-theme {
+    // DIALOG - Clean modal style
     .mat-mdc-dialog-container {
       --mdc-dialog-container-color: var(--md-sys-color-surface);
       --mdc-dialog-container-shape: 12px;
@@ -594,10 +564,8 @@
       padding: 32px;
       background-color: var(--md-sys-color-surface);
     }
-  }
 
-  // TABLE - Clean data presentation
-  .vt-theme {
+    // TABLE - Clean data presentation
     table.mat-mdc-table {
       border: 1px solid var(--md-sys-color-outline-variant);
       border-radius: 8px;
@@ -638,10 +606,8 @@
         color: var(--md-sys-color-on-surface);
       }
     }
-  }
 
-  // SLIDE TOGGLE - Tertiary accent
-  .vt-theme {
+    // SLIDE TOGGLE - Tertiary accent
     .mat-mdc-slide-toggle {
       --mdc-switch-selected-track-color: var(--md-sys-color-tertiary);
       --mdc-switch-selected-handle-color: var(--md-sys-color-on-tertiary);
@@ -649,10 +615,8 @@
       --mdc-switch-unselected-track-color: var(--md-sys-color-outline);
       --mdc-switch-unselected-handle-color: var(--md-sys-color-surface);
     }
-  }
 
-  // TOOLTIP - Inverse colors for contrast
-  .vt-theme {
+    // TOOLTIP - Inverse colors for contrast
     .mat-mdc-tooltip {
       --mdc-plain-tooltip-container-color: var(--md-sys-color-inverse-surface);
       --mdc-plain-tooltip-supporting-text-color: var(--md-sys-color-inverse-on-surface);
@@ -664,10 +628,8 @@
       padding: 6px 10px;
       border-radius: 6px;
     }
-  }
 
-  // ICON refinements
-  .vt-theme {
+    // ICON refinements
     .mat-icon,
     mat-icon {
       font-size: 20px;
@@ -679,18 +641,14 @@
         font-size: 20px;
       }
     }
-  }
 
-  // Focus states - subtle
-  .vt-theme {
+    // Focus states - subtle
     *:focus-visible {
       outline: 2px solid var(--md-sys-color-focus-ring);
       outline-offset: 2px;
     }
-  }
 
-  // Selection
-  .vt-theme {
+    // Selection
     ::selection {
       background-color: var(--md-sys-color-tertiary-container);
       color: var(--md-sys-color-on-tertiary-container);

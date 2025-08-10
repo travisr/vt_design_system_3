@@ -2,7 +2,7 @@
 // This is needed when using @fontsource/material-icons instead of Google Fonts CDN
 
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: 'Material Icons', sans-serif;
   font-weight: normal;
   font-style: normal;
   font-size: var(--md-sys-spacing-24, 24px);
@@ -13,44 +13,46 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
   font-feature-settings: 'liga';
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Support for IE
-.material-icons {
-  font-feature-settings: 'liga';
-}
-
 // Rules for sizing the icon
+
 .material-icons.md-18 {
   font-size: var(--md-sys-spacing-18, 18px);
 }
+
 .material-icons.md-24 {
   font-size: var(--md-sys-spacing-24, 24px);
 }
+
 .material-icons.md-36 {
   font-size: var(--md-sys-spacing-36, 36px);
 }
+
 .material-icons.md-48 {
   font-size: var(--md-sys-spacing-48, 48px);
 }
 
 // Rules for using icons as black on a light background
+
 .material-icons.md-dark {
   color: var(--md-sys-color-on-surface-variant);
 }
+
 .material-icons.md-dark.md-inactive {
   color: var(--md-sys-color-disabled);
 }
 
 // Rules for using icons as white on a dark background
+
 .material-icons.md-light {
   color: var(--md-sys-color-on-primary);
 }
+
 .material-icons.md-light.md-inactive {
   color: var(--md-sys-color-disabled);
 }

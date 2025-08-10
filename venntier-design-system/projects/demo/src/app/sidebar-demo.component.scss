@@ -65,19 +65,19 @@
 
   // Use shared demo utilities for consistent styling
   section {
-    @extend .demo-section;
+    @extend %demo-section;
   }
 
   .section-title {
-    @extend .demo-section-title;
+    @extend %demo-section-title;
   }
 
   .section-description {
-    @extend .demo-section-description;
+    @extend %demo-section-description;
   }
 
   mat-card {
-    @extend .demo-card;
+    @extend %demo-card;
 
     box-shadow: none; // Follow MD3 flat design
   }
@@ -112,11 +112,11 @@
 
 // Form grids - use shared utilities
 .form-grid {
-  @extend .demo-form-grid;
+  @extend %demo-form-grid;
 }
 
 .full-width {
-  @extend .demo-full-width;
+  @extend %demo-full-width;
 }
 
 // Choice controls spacing
@@ -369,11 +369,11 @@
 
 // Code examples - use shared utilities
 .code-examples {
-  @extend .demo-grid;
+  @extend %demo-grid;
 
   --min-width: 400px;
 
   .code-block {
-    @extend .demo-code-block;
+    @extend %demo-code-block;
   }
 }

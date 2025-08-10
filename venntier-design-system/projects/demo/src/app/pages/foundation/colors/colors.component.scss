@@ -33,13 +33,16 @@
   &.swatch-primary {
     background: var(--md-sys-color-primary);
   }
+
   &.swatch-on-primary {
     background: var(--md-sys-color-on-primary);
     border-color: var(--md-sys-color-outline);
   }
+
   &.swatch-tertiary {
     background: var(--md-sys-color-tertiary);
   }
+
   &.swatch-data-primary {
     background: var(--md-sys-color-data-primary);
   }
@@ -48,10 +51,12 @@
     background: var(--md-sys-color-background);
     border-color: var(--md-sys-color-outline);
   }
+
   &.swatch-surface {
     background: var(--md-sys-color-surface);
     border-color: var(--md-sys-color-outline);
   }
+
   &.swatch-surface-variant {
     background: var(--md-sys-color-surface-variant);
     border-color: var(--md-sys-color-outline);
@@ -61,14 +66,17 @@
     background: var(--md-sys-color-surface-container-low);
     border-color: var(--md-sys-color-outline);
   }
+
   &.swatch-surface-container {
     background: var(--md-sys-color-surface-container);
     border-color: var(--md-sys-color-outline);
   }
+
   &.swatch-surface-container-high {
     background: var(--md-sys-color-surface-container-high);
     border-color: var(--md-sys-color-outline);
   }
+
   &.swatch-surface-container-highest {
     background: var(--md-sys-color-surface-container-highest);
     border-color: var(--md-sys-color-outline);
@@ -78,13 +86,16 @@
     background: var(--md-sys-color-hover);
     border-color: var(--md-sys-color-outline);
   }
+
   &.swatch-selected {
     background: var(--md-sys-color-selected);
     border-color: var(--md-sys-color-outline);
   }
+
   &.swatch-focus-ring {
     background: var(--md-sys-color-focus-ring);
   }
+
   &.swatch-disabled {
     background: var(--md-sys-color-disabled);
   }
@@ -92,6 +103,7 @@
   &.swatch-outline {
     background: var(--md-sys-color-outline);
   }
+
   &.swatch-outline-variant {
     background: var(--md-sys-color-outline-variant);
   }
@@ -112,13 +124,17 @@
 .swatch-value {
   font-size: var(--md-sys-typescale-label-small-size, 12px);
   font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
-  color: var(--md-sys-color-on-surface); /* Changed: was on-surface-variant (#565869), now on-surface (#202123) for better contrast */
+  color: var(
+    --md-sys-color-on-surface
+  ); /* Changed: was on-surface-variant (#565869), now on-surface (#202123) for better contrast */
 }
 
 .swatch-token {
   font-size: var(--md-sys-typescale-label-small-size, 11px);
   font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
-  color: var(--md-sys-color-on-surface-variant); /* Changed: was outline (#d1d5db), now on-surface-variant (#565869) for better contrast */
+  color: var(
+    --md-sys-color-on-surface-variant
+  ); /* Changed: was outline (#d1d5db), now on-surface-variant (#565869) for better contrast */
 }
 
 // Gray scale grid
@@ -157,12 +173,16 @@
 .gray-value {
   font-size: var(--md-sys-typescale-label-small-size, 11px);
   font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
-  color: var(--md-sys-color-on-surface); /* Changed: was on-surface-variant (#565869), now on-surface (#202123) for better contrast */
+  color: var(
+    --md-sys-color-on-surface
+  ); /* Changed: was on-surface-variant (#565869), now on-surface (#202123) for better contrast */
 }
 
 .gray-usage {
   font-size: var(--md-sys-typescale-label-small-size, 11px);
-  color: var(--md-sys-color-on-surface-variant); /* Changed: was outline (#d1d5db), now on-surface-variant (#565869) for better contrast */
+  color: var(
+    --md-sys-color-on-surface-variant
+  ); /* Changed: was outline (#d1d5db), now on-surface-variant (#565869) for better contrast */
 }
 
 // Interactive states demo
@@ -170,6 +190,21 @@
   padding: var(--md-sys-spacing-16, 16px);
   background: var(--md-sys-color-surface-container-low);
   border-radius: var(--md-sys-shape-corner-small, 8px);
+
+  // Simulated state classes - higher specificity instead of !important
+  .state-hover {
+    background: var(--md-sys-color-hover);
+  }
+
+  .state-selected {
+    background: var(--md-sys-color-selected);
+    color: var(--md-sys-color-on-surface);
+  }
+
+  .state-focus {
+    outline: 2px solid var(--md-sys-color-focus-ring);
+    outline-offset: 2px;
+  }
 }
 
 .state-row {
@@ -188,24 +223,9 @@
 
 .state-label {
   font-size: var(--md-sys-typescale-label-small-size, 11px);
-  color: var(--md-sys-color-on-surface-variant); /* This is fine - #565869 has adequate contrast 5.7:1 */
-}
-
-// Simulated state classes - higher specificity instead of !important
-.states-demo {
-  .state-hover {
-    background: var(--md-sys-color-hover);
-  }
-
-  .state-selected {
-    background: var(--md-sys-color-selected);
-    color: var(--md-sys-color-on-surface);
-  }
-
-  .state-focus {
-    outline: 2px solid var(--md-sys-color-focus-ring);
-    outline-offset: 2px;
-  }
+  color: var(
+    --md-sys-color-on-surface-variant
+  ); /* This is fine - #565869 has adequate contrast 5.7:1 */
 }
 
 // Usage examples
@@ -256,7 +276,9 @@
 
 .hierarchy-label {
   font-size: var(--md-sys-typescale-label-medium-size, 12px);
-  color: var(--md-sys-color-on-surface-variant); /* This is fine - #565869 has adequate contrast 5.7:1 */
+  color: var(
+    --md-sys-color-on-surface-variant
+  ); /* This is fine - #565869 has adequate contrast 5.7:1 */
 }
 
 .text-examples {

@@ -8,6 +8,20 @@
 // ============================================
 
 // Standard demo section wrapper with enhanced variations
+%demo-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: var(--md-sys-spacing-32);
+
+  & + & {
+    margin-top: var(--md-sys-spacing-8);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .demo-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -35,11 +49,25 @@
 }
 
 // Common section header styles
+%demo-section-title {
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  font-weight: var(--md-sys-typescale-headline-medium-weight);
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 var(--md-sys-spacing-2) 0;
+}
+
 .demo-section-title {
   font-size: var(--md-sys-typescale-headline-medium-size);
   font-weight: var(--md-sys-typescale-headline-medium-weight);
   color: var(--md-sys-color-on-surface);
   margin: 0 0 var(--md-sys-spacing-2) 0;
+}
+
+%demo-section-description {
+  font-size: var(--md-sys-typescale-body-medium-size);
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 0 0 var(--md-sys-spacing-6) 0;
+  line-height: 1.5;
 }
 
 .demo-section-description {
@@ -54,6 +82,17 @@
 // ============================================
 
 // Consistent card styling
+%demo-card {
+  margin-bottom: var(--md-sys-spacing-5);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: none;
+  background: var(--md-sys-color-surface);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .demo-card {
   margin-bottom: var(--md-sys-spacing-5);
   border: 1px solid var(--md-sys-color-outline-variant);
@@ -75,6 +114,11 @@
 // ============================================
 
 // Responsive grid for demos with enhanced variations
+%demo-grid {
+  display: grid;
+  gap: var(--md-sys-spacing-16);
+}
+
 .demo-grid {
   display: grid;
   gap: var(--md-sys-spacing-16);
@@ -160,6 +204,16 @@
 }
 
 // Form-specific grid
+%demo-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--md-sys-spacing-5);
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
 .demo-form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -173,6 +227,38 @@
 // ============================================
 // Code Blocks
 // ============================================
+
+%demo-code-block {
+  margin: var(--md-sys-spacing-4) 0;
+
+  h4 {
+    font-size: var(--md-sys-typescale-label-large-size);
+    font-weight: var(--md-sys-typescale-label-large-weight);
+    color: var(--md-sys-color-on-surface);
+    margin: 0 0 var(--md-sys-spacing-3) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  pre {
+    background: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-medium);
+    padding: var(--md-sys-spacing-4);
+    margin: 0;
+    overflow-x: auto;
+
+    code {
+      font-family: var(--md-sys-typescale-code-font);
+      font-size: var(--md-sys-typescale-code-size);
+      line-height: 1.6;
+      color: var(--md-sys-color-on-surface);
+      white-space: pre;
+      background: none;
+      padding: 0;
+    }
+  }
+}
 
 .demo-code-block {
   margin: var(--md-sys-spacing-4) 0;
@@ -534,6 +620,10 @@
 // ============================================
 // Full Width Utility
 // ============================================
+
+%demo-full-width {
+  width: 100%;
+}
 
 .demo-full-width {
   width: 100%;

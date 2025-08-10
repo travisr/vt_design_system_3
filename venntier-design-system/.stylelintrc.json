@@ -49,7 +49,6 @@
     ".angular/**",
     "**/*.ts",
     "**/*.js",
-    "projects/venntier/design-system/src/styles/tokens/**/*.scss",
-    "projects/venntier/design-system/src/styles/themes/**/*.scss"
+    "projects/design-system/src/styles/tokens/**/*.scss"
   ]
 }
