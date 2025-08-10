@@ -8,7 +8,6 @@
     "build:lib": "npm run lint:all && npm run build:lib:only",
     "build:lib:only": "ng build @venntier/design-system --configuration=production",
     "build:lib:watch": "ng build @venntier/design-system --watch",
-    "build:demo": "npm run lint:all && npm run build:lib:only && npm run build:demo:only",
     "build:demo:only": "ng build demo --configuration=production",
     "build:demo:pages": "npm run lint:all && npm run build:lib:only && ng build demo --configuration=production --base-href=/vt_design_system_3/",
     "build:ci": "npm run lint:all && npm run build:lib:only && npm run typecheck && npm run build:demo:only",
