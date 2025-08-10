@@ -4,14 +4,14 @@ FROM node:20-alpine AS builder
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy package files from venntier-design-system directory
+COPY venntier-design-system/package*.json ./
 
 # Install dependencies (optimized for build speed)
 RUN npm ci --prefer-offline --no-audit
 
-# Copy source code
-COPY . .
+# Copy source code from venntier-design-system directory
+COPY venntier-design-system/ .
 
 # Build the library and demo
 RUN npm run build:ci
