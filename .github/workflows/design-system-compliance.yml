@@ -2,164 +2,185 @@ name: Design System Compliance
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   audit:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-        cache-dependency-path: venntier-design-system/package-lock.json
-    
-    - name: Install dependencies
-      run: |
-        cd venntier-design-system
-        npm ci
-    
-    - name: Build library
-      run: |
-        cd venntier-design-system
-        npm run build:lib
-    
-    - name: Run Angular 19+ compliance audit
-      id: ng-audit
-      run: |
-        cd venntier-design-system
-        ../.claude/scripts/ng-audit.sh . || true
-        if [ -f audits/ng-audit-report.md ]; then
-          echo "## Angular Audit Results" >> $GITHUB_STEP_SUMMARY
-          cat audits/ng-audit-report.md >> $GITHUB_STEP_SUMMARY
-        fi
-    
-    - name: Run Design System compliance audit
-      id: ds-audit
-      run: |
-        cd venntier-design-system
-        ../.claude/scripts/ds-audit.sh . || true
-        if [ -f audits/ds-audit-report.md ]; then
-          echo "## Design System Audit Results" >> $GITHUB_STEP_SUMMARY
-          cat audits/ds-audit-report.md >> $GITHUB_STEP_SUMMARY
-        fi
-    
-    - name: Run full compliance audit
-      run: |
-        cd venntier-design-system
-        ../.claude/scripts/full-audit.sh . || true
-        if [ -f audits/full-audit-report.md ]; then
-          echo "## Full Audit Results" >> $GITHUB_STEP_SUMMARY
-          cat audits/full-audit-report.md >> $GITHUB_STEP_SUMMARY
-        fi
-    
-    - name: Upload audit reports
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: audit-reports
-        path: venntier-design-system/audits/*.md
-        retention-days: 30
-    
-    - name: Lint check
-      run: |
-        cd venntier-design-system
-        npm run lint || true
-    
-    - name: Type check
-      run: |
-        cd venntier-design-system
-        npm run typecheck || echo "No typecheck script found"
-    
-    - name: Test
-      run: |
-        cd venntier-design-system
-        npm test -- --watch=false --browsers=ChromeHeadless || true
-    
-    - name: Comment PR with results
-      if: github.event_name == 'pull_request'
-      uses: actions/github-script@v7
-      with:
-        script: |
-          const fs = require('fs');
-          const path = require('path');
-          
-          let comment = '## 🎨 Design System Compliance Report\n\n';
-          
-          // Read audit report if it exists
-          const reportPath = path.join('venntier-design-system', 'audits', 'full-audit-report.md');
-          if (fs.existsSync(reportPath)) {
-            const report = fs.readFileSync(reportPath, 'utf8');
-            // Extract summary section
-            const summaryMatch = report.match(/## 📊 Project Health Score[\s\S]*?(?=\n##|\n---|\z)/);
-            if (summaryMatch) {
-              comment += summaryMatch[0] + '\n\n';
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: venntier-design-system/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd venntier-design-system
+          npm ci
+
+      - name: Build library
+        run: |
+          cd venntier-design-system
+          npm run build:lib
+
+      - name: Run Angular 19+ compliance audit
+        id: ng-audit
+        run: |
+          cd venntier-design-system
+          ../.claude/scripts/ng-audit.sh . || true
+          if [ -f audits/ng-audit-report.md ]; then
+            echo "## Angular Audit Results" >> $GITHUB_STEP_SUMMARY
+            cat audits/ng-audit-report.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Run Design System compliance audit
+        id: ds-audit
+        run: |
+          cd venntier-design-system
+          ../.claude/scripts/ds-audit.sh . || true
+          if [ -f audits/ds-audit-report.md ]; then
+            echo "## Design System Audit Results" >> $GITHUB_STEP_SUMMARY
+            cat audits/ds-audit-report.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Run full compliance audit
+        run: |
+          cd venntier-design-system
+          ../.claude/scripts/full-audit.sh . || true
+          if [ -f audits/full-audit-report.md ]; then
+            echo "## Full Audit Results" >> $GITHUB_STEP_SUMMARY
+            cat audits/full-audit-report.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Upload audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-reports
+          path: venntier-design-system/audits/*.md
+          retention-days: 30
+
+      - name: Lint check
+        run: |
+          cd venntier-design-system
+          npm run lint || true
+
+      - name: Type check
+        run: |
+          cd venntier-design-system
+          npm run typecheck || echo "No typecheck script found"
+
+      - name: Test
+        run: |
+          cd venntier-design-system
+          npm test -- --watch=false --browsers=ChromeHeadless || true
+
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            let comment = '## 🎨 Design System Compliance Report\n\n';
+
+            // Read audit report if it exists
+            const reportPath = path.join('venntier-design-system', 'audits', 'full-audit-report.md');
+            if (fs.existsSync(reportPath)) {
+              const report = fs.readFileSync(reportPath, 'utf8');
+              // Extract summary section
+              const summaryMatch = report.match(/## 📊 Project Health Score[\s\S]*?(?=\n##|\n---|\z)/);
+              if (summaryMatch) {
+                comment += summaryMatch[0] + '\n\n';
+              }
             }
-          }
-          
-          comment += '📋 View full report in the [workflow summary](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})';
-          
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: comment
-          });
+
+            comment += '📋 View full report in the [workflow summary](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})';
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
 
   code-quality:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Check for hardcoded values
-      run: |
-        echo "## 🔍 Code Quality Checks" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        
-        # Check for hardcoded colors in demo components
-        echo "### Hardcoded Colors in Demo Components" >> $GITHUB_STEP_SUMMARY
-        if grep -r "color: #\|background: #\|border-color: #" \
-          --include="*.scss" \
-          --include="*.css" \
-          --exclude-dir=node_modules \
-          --exclude-dir=.angular \
-          --exclude-dir=dist \
-          venntier-design-system/projects/demo 2>/dev/null; then
-          echo "⚠️ Found hardcoded colors in demo components" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "✅ No hardcoded colors found" >> $GITHUB_STEP_SUMMARY
-        fi
-        
-        # Check for !important usage
-        echo "### !important Usage" >> $GITHUB_STEP_SUMMARY
-        if grep -r "!important" \
-          --include="*.scss" \
-          --include="*.css" \
-          --exclude-dir=node_modules \
-          --exclude-dir=.angular \
-          --exclude-dir=dist \
-          venntier-design-system 2>/dev/null; then
-          echo "⚠️ Found !important usage" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "✅ No !important usage found" >> $GITHUB_STEP_SUMMARY
-        fi
-    
-    - name: Check accessibility
-      run: |
-        echo "### Accessibility Checks" >> $GITHUB_STEP_SUMMARY
-        
-        # Check for missing ARIA labels
-        if grep -r "<button" venntier-design-system/projects/demo --include="*.html" --include="*.ts" | \
-           grep -v "aria-label\|aria-labelledby" 2>/dev/null; then
-          echo "⚠️ Found buttons without ARIA labels" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "✅ All buttons have ARIA labels" >> $GITHUB_STEP_SUMMARY
-        fi
+      - uses: actions/checkout@v4
+
+      - name: Check for hardcoded values
+        run: |
+          echo "## 🔍 Code Quality Checks" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check for hardcoded colors in demo components (excluding comments)
+          echo "### Hardcoded Colors in Demo Components" >> $GITHUB_STEP_SUMMARY
+          if grep -r "color: #\|background: #\|border-color: #" \
+            --include="*.scss" \
+            --include="*.css" \
+            --exclude-dir=node_modules \
+            --exclude-dir=.angular \
+            --exclude-dir=dist \
+            venntier-design-system/projects/demo 2>/dev/null | \
+            grep -v "/\*.*\*/" | \
+            grep -v "var(--"; then
+            echo "⚠️ Found hardcoded colors in demo components" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No hardcoded colors found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Check for hardcoded URLs (excluding documentation constants)
+          echo "### Hardcoded URLs" >> $GITHUB_STEP_SUMMARY
+          if grep -r "https\?://" \
+            --include="*.ts" \
+            --include="*.html" \
+            --exclude="*documentation-links*" \
+            --exclude="*external-resources*" \
+            --exclude="*constant*" \
+            --exclude="*config*" \
+            --exclude="*environment*" \
+            --exclude-dir=node_modules \
+            --exclude-dir=.angular \
+            --exclude-dir=dist \
+            venntier-design-system/projects/demo 2>/dev/null; then
+            echo "⚠️ Found hardcoded URLs outside constants files" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ All URLs properly centralized in constants" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Check for !important usage
+          echo "### !important Usage" >> $GITHUB_STEP_SUMMARY
+          if grep -r "!important" \
+            --include="*.scss" \
+            --include="*.css" \
+            --exclude-dir=node_modules \
+            --exclude-dir=.angular \
+            --exclude-dir=dist \
+            venntier-design-system 2>/dev/null; then
+            echo "⚠️ Found !important usage" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No !important usage found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Check accessibility
+        run: |
+          echo "### Accessibility Checks" >> $GITHUB_STEP_SUMMARY
+
+          # Check for missing ARIA labels
+          if grep -r "<button" venntier-design-system/projects/demo --include="*.html" --include="*.ts" | \
+             grep -v "aria-label\|aria-labelledby" 2>/dev/null; then
+            echo "⚠️ Found buttons without ARIA labels" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ All buttons have ARIA labels" >> $GITHUB_STEP_SUMMARY
+          fi

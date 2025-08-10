@@ -528,6 +528,18 @@ HEX_COLORS=$(grep -r ':[^;]*#[0-9a-fA-F]\{3,8\}' \
     grep -v "^[[:space:]]*//" | \
     grep -v "@import\|@use")
 
+# Also check for hex colors in comments (which should also be avoided)
+COMMENT_HEX_COLORS=$(grep -r '/\*.*#[0-9a-fA-F]\{3,8\}.*\*/' \
+    --include="*.scss" \
+    --include="*.css" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    --exclude-dir="*tokens*" \
+    --exclude-dir="*themes*" \
+    --exclude="*_color.scss" \
+    --exclude="*_palette*.scss" \
+    "$PROJECT_PATH/projects/demo" 2>/dev/null)
+
 # Find rgba/hsla in property values (only in demo files)
 RGBA_COLORS=$(grep -r ':[^;]*\(rgba\?\|hsla\?\)([^)]*)' \
     --include="*.scss" \
@@ -568,6 +580,13 @@ if [ -n "$COLOR_KEYWORDS" ]; then
         COLOR_ISSUES="$COLOR_ISSUES"$'\n'"$COLOR_KEYWORDS"
     else
         COLOR_ISSUES="$COLOR_KEYWORDS"
+    fi
+fi
+if [ -n "$COMMENT_HEX_COLORS" ]; then
+    if [ -n "$COLOR_ISSUES" ]; then
+        COLOR_ISSUES="$COLOR_ISSUES"$'\n'"$COMMENT_HEX_COLORS"
+    else
+        COLOR_ISSUES="$COMMENT_HEX_COLORS"
     fi
 fi
 
@@ -903,6 +922,8 @@ URL_ISSUES=$(grep -r 'https\?://' \
     --exclude="*constant*" \
     --exclude="*config*" \
     --exclude="*environment*" \
+    --exclude="*documentation-links*" \
+    --exclude="*external-resources*" \
     "$PROJECT_PATH" 2>/dev/null | \
     grep -v "^[[:space:]]*//")
 
