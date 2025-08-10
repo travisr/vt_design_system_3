@@ -153,22 +153,31 @@
   }
 }
 
+// Category icons grid layout
+// IMPORTANT: There's a browser rendering bug where padding on mat-icon elements
+// breaks Material Icons font ligatures. We use margin instead of padding as a workaround.
 .category-icons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--md-sys-spacing-12);
 
   mat-icon {
+    font-family: 'Material Icons', sans-serif;
     color: var(--md-sys-color-on-surface-variant);
-    justify-self: center;
     cursor: pointer;
-    padding: var(--md-sys-spacing-8);
+
+    // Using margin instead of padding due to ligature rendering bug
+    margin: var(--md-sys-spacing-8);
     border-radius: var(--md-sys-shape-corner-small);
+    justify-self: center;
     transition: background-color var(--md-sys-motion-duration-short2, 200ms)
       var(--md-sys-motion-easing-standard, ease);
 
     &:hover {
       background-color: var(--md-sys-color-surface-variant);
+
+      // Box-shadow provides visual feedback similar to padding on hover
+      box-shadow: 0 0 0 var(--md-sys-spacing-8) var(--md-sys-color-surface-variant);
     }
   }
 }

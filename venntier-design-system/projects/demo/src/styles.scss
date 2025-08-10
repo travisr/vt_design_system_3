@@ -2,7 +2,6 @@
 @use '../../design-system/src/styles/venntier-theme';
 @use 'demo-utilities';
 @use 'app/shared/styles/demo-shared';
-@use 'material-icons';
 
 /* Font imports are now handled in angular.json to avoid Sass deprecation warnings */
 
@@ -44,6 +43,27 @@ app-sidebar-demo {
 html body {
   background-color: var(--md-sys-color-background);
   color: var(--md-sys-color-on-background);
+}
+
+// Ensure Material Icons font is properly applied to mat-icon elements
+// This is critical for ligature support to work with @fontsource/material-icons
+.mat-icon,
+mat-icon {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
 }
 
 // Override Material's hover implementation

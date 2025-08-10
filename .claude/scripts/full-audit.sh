@@ -219,13 +219,15 @@ echo "" >> "$REPORT_FILE"
 echo "## 🚀 Migration Opportunities" >> "$REPORT_FILE"
 echo "" >> "$REPORT_FILE"
 
-# Check for legacy control flow
+# Check for legacy control flow (only in project source files)
 LEGACY_COUNT=$(grep -r '\*ngIf\|\*ngFor\|\*ngSwitch' \
     --include="*.html" \
     --include="*.ts" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
-    "$PROJECT_PATH" 2>/dev/null | wc -l || echo "0")
+    --exclude-dir=.angular \
+    --exclude-dir=coverage \
+    "$PROJECT_PATH/projects" 2>/dev/null | wc -l || echo "0")
 
 if [ "$LEGACY_COUNT" -gt 0 ]; then
     echo "### Available Angular 19 Migrations:" >> "$REPORT_FILE"
@@ -237,9 +239,17 @@ if [ "$LEGACY_COUNT" -gt 0 ]; then
     echo "" >> "$REPORT_FILE"
 fi
 
-# Check for non-standalone components
-MODULE_COUNT=$(grep -r '@NgModule' --include="*.ts" --exclude="*.spec.ts" "$PROJECT_PATH" 2>/dev/null | wc -l || echo "0")
-if [ "$MODULE_COUNT" -gt 2 ]; then
+# Check for non-standalone components (exclude node_modules, dist, and test files)
+MODULE_COUNT=$(grep -r '@NgModule' \
+    --include="*.ts" \
+    --exclude="*.spec.ts" \
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    --exclude-dir=.angular \
+    --exclude-dir=coverage \
+    "$PROJECT_PATH/projects" 2>/dev/null | wc -l || echo "0")
+    
+if [ "$MODULE_COUNT" -gt 0 ]; then
     echo "2. **Standalone Components Migration** ($MODULE_COUNT NgModules found)" >> "$REPORT_FILE"
     echo "   \`\`\`bash" >> "$REPORT_FILE"
     echo "   ng generate @angular/core:standalone" >> "$REPORT_FILE"

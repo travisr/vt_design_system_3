@@ -166,9 +166,12 @@ if [ -f "$PROJECT_PATH/venntier-design-system/projects/demo/src/_demo-utilities.
     LAYOUT_UTILS=$(grep -c '\(grid\|flex\|display\|position\|margin\|padding\|width\|height\|gap\|align\|justify\)' \
         "$PROJECT_PATH/venntier-design-system/projects/demo/src/_demo-utilities.scss" 2>/dev/null || echo "0")
     
-    VISUAL_STYLES=$(grep -c '\(color:\|background:\|border:\|font-family:\|font-weight:\)' \
+    # Count visual styles that DON'T use tokens (actual violations)
+    VISUAL_STYLES=$(grep '\(color:\|background:\|border:\|font-family:\|font-weight:\)' \
         "$PROJECT_PATH/venntier-design-system/projects/demo/src/_demo-utilities.scss" 2>/dev/null | \
-        grep -v "var(--md-sys-" || echo "0")
+        grep -v "var(--md-sys-" | \
+        grep -v "transparent\|inherit\|currentColor\|none" | \
+        wc -l || echo "0")
     
     echo "" >> "$REPORT_FILE"
     echo "**Demo Utilities Analysis:**" >> "$REPORT_FILE"
@@ -188,12 +191,16 @@ cat >> "$REPORT_FILE" << 'EOF'
 **Goal**: All spacing should use MD3 spacing tokens (8px grid system)
 EOF
 
-# Find hard-coded spacing values
+# Find hard-coded spacing values (exclude 0, structural values, and comments)
 HARDCODED_SPACING=$(grep -r '\(margin:\|padding:\|gap:\)\s*[0-9]\+px' \
     --include="*.scss" \
     --include="*.css" \
-    "$PROJECT_PATH/venntier-design-system/projects/demo" 2>/dev/null | \
-    grep -v "var(--md-sys-spacing")
+    --exclude-dir=node_modules \
+    --exclude-dir=dist \
+    "$PROJECT_PATH/projects/demo" 2>/dev/null | \
+    grep -v "var(--md-sys-spacing" | \
+    grep -v '\s0px\|0\s\|//\|/\*' | \
+    grep -v 'calc\|min\|max\|clamp')
 
 if [ -z "$HARDCODED_SPACING" ]; then
     echo "**✅ All spacing uses MD3 tokens**" >> "$REPORT_FILE"

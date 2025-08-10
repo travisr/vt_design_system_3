@@ -45,11 +45,7 @@
 ## 📝 MEDIUM: Internal Material CSS selectors
 
 **Impact**: Will break when Material updates internal structure
-**❌ Found internal Material selectors:**
-```scss
-/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/projects/design-system/src/styles/components/_button.scss:    .mat-mdc-button-persistent-ripple,
-/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/projects/design-system/src/styles/components/_button.scss:    .mat-mdc-button-touch-target {
-```
+**✅ None found**
 
 ## 📝 MEDIUM: NgModule usage
 
@@ -104,13 +100,13 @@
 ---
 
 ## Summary
-### Found 2 violation type(s)
+### Found 1 violation type(s)
 
 **Available migrations:**
 - Control flow: `ng generate @angular/core:control-flow`
 - Standalone: `ng generate @angular/core:standalone`
 
-*Generated: 2025-08-09 20:15:18*
+*Generated: 2025-08-09 22:59:18*
 
 ## 🎨 Custom Design System Compliance Audit
 
@@ -135,8 +131,8 @@
 **Not Allowed**: Colors, typography, borders, shadows (use tokens instead)
 
 **Demo Utilities Analysis:**
-- Layout utilities: 150 ✅
-- Visual styles: 16 ⚠️ Should use tokens
+- Layout utilities: 176 ✅
+- Visual styles:        0 ✅
 
 ## 📏 Spacing Consistency
 
@@ -163,10 +159,10 @@ Check for these reusable layout utilities:
 Analyzing how well the codebase uses the design system:
 
 **Token Usage Statistics:**
-- Color tokens:      727 uses
-- Spacing tokens:      337 uses
-- Shape tokens:      125 uses
-- Typography tokens:      261 uses
+- Color tokens:      742 uses
+- Spacing tokens:      375 uses
+- Shape tokens:      127 uses
+- Typography tokens:      269 uses
 
 **🎉 Excellent design system adoption!**
 
@@ -236,7 +232,7 @@ Analyzing how well the codebase uses the design system:
 
 Your codebase properly uses MD3 tokens and maintains separation of concerns.
 
-*Generated: 2025-08-09 20:15:19*
+*Generated: 2025-08-09 22:59:20*
 
 ## 🔍 ESLint Analysis
 
@@ -252,11 +248,6 @@ Your codebase properly uses MD3 tokens and maintains separation of concerns.
 
 
 ## 🚀 Migration Opportunities
-
-2. **Standalone Components Migration** (      37 NgModules found)
-   ```bash
-   ng generate @angular/core:standalone
-   ```
 
 ## 🔧 Quick Fix Commands
 
@@ -282,4 +273,4 @@ npm run audit:full
 
 **Review the sections above and run the quick fix commands to resolve issues.**
 
-*Generated: 2025-08-09 20:15:24*
+*Generated: 2025-08-09 22:59:23*

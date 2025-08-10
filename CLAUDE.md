@@ -221,3 +221,4 @@ Based on `REFINEMENTS_NEEDED.md` analysis, critical improvements needed:
 
 - Always use md tokens instead of hard coded values
 - never use !important per md3 best practices
+- always use npm run dev for complete build of libary and demo

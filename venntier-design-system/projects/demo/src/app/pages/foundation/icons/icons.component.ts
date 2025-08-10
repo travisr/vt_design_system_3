@@ -22,14 +22,15 @@ import { MD3_DOCS, EXTERNAL_RESOURCES } from '../../../shared/constants/document
     MatFormFieldModule,
     MatInputModule,
     PageHeaderComponent,
-    ExampleViewerComponent
+    ExampleViewerComponent,
   ],
   template: `
     <div class="demo-page">
       <demo-page-header
         title="Icons"
         description="Icons are visual symbols that represent concepts, objects, or actions. Material Design uses filled and outlined icon styles."
-        [links]="resources">
+        [links]="resources"
+      >
       </demo-page-header>
 
       <section class="demo-section">
@@ -66,13 +67,13 @@ import { MD3_DOCS, EXTERNAL_RESOURCES } from '../../../shared/constants/document
                 </div>
               </div>
             </div>
-            
+
             <div class="style-group">
               <h4>Outlined Icons</h4>
               <div class="icon-grid">
                 <div class="icon-item">
                   <mat-icon>home</mat-icon>
-                  <span>home_outlined</span>
+                  <span>home</span>
                 </div>
                 <div class="icon-item">
                   <mat-icon>favorite_border</mat-icon>
@@ -84,15 +85,15 @@ import { MD3_DOCS, EXTERNAL_RESOURCES } from '../../../shared/constants/document
                 </div>
                 <div class="icon-item">
                   <mat-icon>settings</mat-icon>
-                  <span>settings_outlined</span>
+                  <span>settings</span>
                 </div>
                 <div class="icon-item">
                   <mat-icon>person_outline</mat-icon>
                   <span>person_outline</span>
                 </div>
                 <div class="icon-item">
-                  <mat-icon>shopping_cart</mat-icon>
-                  <span>shopping_cart_outlined</span>
+                  <mat-icon>add_shopping_cart</mat-icon>
+                  <span>add_shopping_cart</span>
                 </div>
               </div>
             </div>
@@ -261,18 +262,15 @@ import { MD3_DOCS, EXTERNAL_RESOURCES } from '../../../shared/constants/document
         </div>
       </section>
 
-      <demo-example-viewer
-        title="Icon Usage"
-        [examples]="iconExamples">
-      </demo-example-viewer>
+      <demo-example-viewer title="Icon Usage" [examples]="iconExamples"> </demo-example-viewer>
     </div>
   `,
-  styleUrl: './icons.component.scss'
+  styleUrl: './icons.component.scss',
 })
 export class IconsComponent {
   readonly resources = [
     { label: 'Material Icons', url: EXTERNAL_RESOURCES.MATERIAL_ICONS },
-    { label: 'M3 Icon Guidelines', url: MD3_DOCS.ICONS }
+    { label: 'M3 Icon Guidelines', url: MD3_DOCS.ICONS },
   ];
 
   iconExamples = [
@@ -286,7 +284,7 @@ export class IconsComponent {
 <mat-icon class="size-48">favorite</mat-icon>
 
 <!-- Colored icon -->
-<mat-icon class="color-primary">home</mat-icon>`
+<mat-icon class="color-primary">home</mat-icon>`,
     },
     {
       title: 'Icon Sizes (SCSS)',
@@ -307,7 +305,7 @@ export class IconsComponent {
   font-size: 36px;
   width: 36px;
   height: 36px;
-}`
+}`,
     },
     {
       title: 'Icon Colors (SCSS)',
@@ -322,7 +320,7 @@ export class IconsComponent {
 
 .color-error {
   color: var(--md-sys-color-error);
-}`
+}`,
     },
     {
       title: 'Interactive Icons',
@@ -342,7 +340,7 @@ export class IconsComponent {
 <mat-chip>
   <mat-icon matChipAvatar>person</mat-icon>
   User Name
-</mat-chip>`
-    }
+</mat-chip>`,
+    },
   ];
 }
