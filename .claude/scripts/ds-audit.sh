@@ -77,14 +77,30 @@ EOF
 echo -e "${YELLOW}Checking demo components for style violations...${NC}"
 
 # Find problematic style properties in demo components (SCSS/CSS)
-DEMO_STYLE_VIOLATIONS=$(grep -r '\(color:\|background:\|background-color:\|border:\|border-color:\|box-shadow:\|font-family:\|font-weight:\)' \
-    --include="*.scss" \
-    --include="*.css" \
-    "./projects/demo/src/app/pages" 2>/dev/null | \
+# Use a more sophisticated approach to handle multi-line CSS properties
+DEMO_STYLE_VIOLATIONS=""
+
+# Create a temporary file to process multi-line CSS
+TEMP_FILE=$(mktemp)
+
+# Process each SCSS/CSS file to handle multi-line properties
+find "./venntier-design-system/projects/demo/src/app/pages" -name "*.scss" -o -name "*.css" | while read -r file; do
+    # Remove comments and normalize multi-line CSS properties to single lines
+    sed 's|//.*||g; s|/\*.*\*/||g' "$file" | \
+    tr '\n' ' ' | \
+    sed 's/}/}\n/g' | \
+    sed 's/{/{/g' | \
+    tr '\n' '\n' | \
+    # Look for style properties that don't use MD3 tokens
+    grep -E '\s*(color|background|background-color|border|border-color|box-shadow|font-family|font-weight)\s*:\s*[^;]*[^}]*' | \
     grep -v "var(--md-sys-" | \
     grep -v "var(--mat-sys-" | \
-    grep -v "// \|/\*" | \
-    grep -v "grid\|flex\|display\|position\|margin\|padding\|width\|height\|gap")
+    grep -v "grid\|flex\|display\|position\|margin\|padding\|width\|height\|gap" | \
+    sed "s|^|$file: |" >> "$TEMP_FILE"
+done
+
+DEMO_STYLE_VIOLATIONS=$(cat "$TEMP_FILE" 2>/dev/null)
+rm -f "$TEMP_FILE"
 
 # Check for inline style violations in TypeScript templates and HTML files
 # Look for hardcoded colors and non-token styles
@@ -92,7 +108,7 @@ INLINE_STYLE_VIOLATIONS=$(grep -r 'style="[^"]*\(#[0-9a-fA-F]\{3,8\}\|rgba\?([^)
     --include="*.ts" \
     --include="*.html" \
     --include="*.component.ts" \
-    "./projects/demo/src/app" 2>/dev/null | \
+    "./venntier-design-system/projects/demo/src/app" 2>/dev/null | \
     grep -v "var(--md-sys-" | \
     grep -v "// \|/\*")
 
@@ -197,7 +213,7 @@ HARDCODED_SPACING=$(grep -r '\(margin:\|padding:\|gap:\)\s*[0-9]\+px' \
     --include="*.css" \
     --exclude-dir=node_modules \
     --exclude-dir=dist \
-    "$PROJECT_PATH/projects/demo" 2>/dev/null | \
+    "$PROJECT_PATH/venntier-design-system/projects/demo" 2>/dev/null | \
     grep -v "var(--md-sys-spacing" | \
     grep -v '\s0px\|0\s\|//\|/\*' | \
     grep -v 'calc\|min\|max\|clamp')

@@ -16,14 +16,15 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
     MatCardModule,
     MatIconModule,
     PageHeaderComponent,
-    ExampleViewerComponent
+    ExampleViewerComponent,
   ],
   template: `
     <div class="demo-page">
       <demo-page-header
         title="Motion"
         description="Motion provides meaning and helps users understand the interface through purposeful transitions and animations."
-        [links]="resources">
+        [links]="resources"
+      >
       </demo-page-header>
 
       <section class="demo-section">
@@ -61,13 +62,13 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         <div class="demo-example">
           <div class="duration-demo">
             @for (duration of durations; track duration.value) {
-            <div class="duration-example">
-              <span class="duration-label">{{ duration.label }}</span>
-              <div class="motion-box duration-box" [style.animation-duration.ms]="duration.value">
-                {{ duration.value }}ms
+              <div class="duration-example">
+                <span class="duration-label">{{ duration.label }}</span>
+                <div class="motion-box duration-box" [style.animation-duration.ms]="duration.value">
+                  {{ duration.value }}ms
+                </div>
+                <button mat-button (click)="animateDuration(duration.value)">Test</button>
               </div>
-              <button mat-button (click)="animateDuration(duration.value)">Test</button>
-            </div>
             }
           </div>
         </div>
@@ -107,18 +108,13 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </div>
       </section>
 
-      <demo-example-viewer
-        title="Motion Tokens"
-        [examples]="motionExamples">
-      </demo-example-viewer>
+      <demo-example-viewer title="Motion Tokens" [examples]="motionExamples"> </demo-example-viewer>
     </div>
   `,
-  styleUrl: './motion.component.scss'
+  styleUrl: './motion.component.scss',
 })
 export class MotionComponent {
-  readonly resources = [
-    { label: 'M3 Motion Guidelines', url: MD3_DOCS.MOTION }
-  ];
+  readonly resources = [{ label: 'M3 Motion Guidelines', url: MD3_DOCS.MOTION }];
 
   fadeVisible = true;
   scaleActive = false;
@@ -156,7 +152,7 @@ $md-sys-motion-duration-medium2: 300ms;
 $md-sys-motion-duration-medium3: 350ms;
 $md-sys-motion-duration-medium4: 400ms;
 $md-sys-motion-duration-long1: 450ms;
-$md-sys-motion-duration-long2: 500ms;`
+$md-sys-motion-duration-long2: 500ms;`,
     },
     {
       title: 'CSS Usage',
@@ -174,13 +170,13 @@ $md-sys-motion-duration-long2: 500ms;`
 @keyframes slide-in {
   from { transform: translateY(16px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
-}`
-    }
+}`,
+    },
   ];
 
   animateBox(type: string) {
     const boxes = document.querySelectorAll('.motion-box');
-    boxes.forEach(box => {
+    boxes.forEach((box) => {
       if (box.classList.contains(`${type}-easing`)) {
         box.classList.remove('animate');
         setTimeout(() => box.classList.add('animate'), 10);
@@ -190,7 +186,7 @@ $md-sys-motion-duration-long2: 500ms;`
 
   animateDuration(duration: number) {
     const boxes = document.querySelectorAll('.duration-box');
-    boxes.forEach(box => {
+    boxes.forEach((box) => {
       const element = box as HTMLElement;
       // Set the animation duration dynamically
       element.style.animationDuration = `${duration}ms`;

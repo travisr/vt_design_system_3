@@ -8,13 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'demo-select',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatSelectModule
-  ],
+  imports: [CommonModule, FormsModule, MatCardModule, MatFormFieldModule, MatSelectModule],
   template: `
     <section>
       <h2 class="section-title">Selection Controls</h2>
@@ -61,16 +55,16 @@ import { MatSelectModule } from '@angular/material/select';
         </mat-card-content>
       </mat-card>
     </section>
-  `
+  `,
 })
 export class SelectComponent {
   countryValue = signal('');
   languageValue = signal('');
-  
+
   updateCountryValue(value: string): void {
     this.countryValue.set(value);
   }
-  
+
   updateLanguageValue(value: string): void {
     this.languageValue.set(value);
   }

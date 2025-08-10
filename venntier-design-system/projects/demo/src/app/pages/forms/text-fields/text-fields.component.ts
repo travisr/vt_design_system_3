@@ -10,12 +10,12 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'demo-text-fields',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     FormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
   ],
   template: `
     <section>
@@ -32,25 +32,30 @@ import { MatIconModule } from '@angular/material/icon';
           <div class="form-grid">
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
-              <input matInput placeholder="name@example.com" [ngModel]="emailValue()" (ngModelChange)="updateEmailValue($event)">
+              <input
+                matInput
+                placeholder="name@example.com"
+                [ngModel]="emailValue()"
+                (ngModelChange)="updateEmailValue($event)"
+              />
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input matInput type="password" placeholder="Enter password">
+              <input matInput type="password" placeholder="Enter password" />
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Search</mat-label>
-              <input matInput placeholder="Search...">
+              <input matInput placeholder="Search..." />
               <mat-icon matPrefix>search</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Phone Number</mat-label>
-              <input matInput type="tel" placeholder="+1 (555) 123-4567">
+              <input matInput type="tel" placeholder="+1 (555) 123-4567" />
               <mat-icon matSuffix>phone</mat-icon>
             </mat-form-field>
           </div>
@@ -69,11 +74,11 @@ import { MatIconModule } from '@angular/material/icon';
         </mat-card-content>
       </mat-card>
     </section>
-  `
+  `,
 })
 export class TextFieldsComponent {
   emailValue = signal('');
-  
+
   updateEmailValue(value: string): void {
     this.emailValue.set(value);
   }

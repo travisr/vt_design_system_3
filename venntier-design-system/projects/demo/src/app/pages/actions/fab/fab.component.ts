@@ -18,14 +18,15 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
     MatCardModule,
     MatTooltipModule,
     PageHeaderComponent,
-    ExampleViewerComponent
+    ExampleViewerComponent,
   ],
   template: `
     <div class="demo-page">
       <demo-page-header
         title="Floating Action Button (FAB)"
         description="FABs represent the primary action of a screen and are used for a promoted action."
-        [links]="resources">
+        [links]="resources"
+      >
       </demo-page-header>
 
       <section class="demo-section">
@@ -226,18 +227,14 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </div>
       </section>
 
-      <demo-example-viewer
-        title="FAB Implementation"
-        [examples]="fabExamples">
+      <demo-example-viewer title="FAB Implementation" [examples]="fabExamples">
       </demo-example-viewer>
     </div>
   `,
-  styleUrl: './fab.component.scss'
+  styleUrl: './fab.component.scss',
 })
 export class FabComponent {
-  readonly resources = [
-    { label: 'M3 FAB Guidelines', url: MD3_DOCS.FAB }
-  ];
+  readonly resources = [{ label: 'M3 FAB Guidelines', url: MD3_DOCS.FAB }];
 
   private _isLoading = signal(false);
   readonly isLoading = this._isLoading.asReadonly();
@@ -260,7 +257,7 @@ export class FabComponent {
 <button mat-fab extended>
   <mat-icon>add</mat-icon>
   Create New
-</button>`
+</button>`,
     },
     {
       title: 'FAB Colors',
@@ -278,7 +275,7 @@ export class FabComponent {
 <!-- Warn -->
 <button mat-fab color="warn">
   <mat-icon>warning</mat-icon>
-</button>`
+</button>`,
     },
     {
       title: 'FAB Positioning (CSS)',
@@ -299,7 +296,7 @@ export class FabComponent {
 
 .fab-inline {
   margin: 8px;
-}`
+}`,
     },
     {
       title: 'FAB with Actions',
@@ -314,8 +311,8 @@ export class FabComponent {
     // Handle edit action
     console.log('Editing item...');
   }
-}`
-    }
+}`,
+    },
   ];
 
   toggleLoading() {

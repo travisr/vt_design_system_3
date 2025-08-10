@@ -30,14 +30,15 @@ interface Chip {
     MatFormFieldModule,
     MatInputModule,
     PageHeaderComponent,
-    ExampleViewerComponent
+    ExampleViewerComponent,
   ],
   template: `
     <div class="demo-page">
       <demo-page-header
         title="Chips"
         description="Chips help people enter information, make selections, filter content, or trigger actions."
-        [links]="resources">
+        [links]="resources"
+      >
       </demo-page-header>
 
       <section class="demo-section">
@@ -76,9 +77,10 @@ interface Chip {
             <h4>Category Filters</h4>
             <mat-chip-set>
               @for (filter of categoryFilters(); track filter.id) {
-                <mat-chip 
+                <mat-chip
                   [class.mat-mdc-chip-selected]="filter.selected"
-                  (click)="toggleCategoryFilter(filter.id)">
+                  (click)="toggleCategoryFilter(filter.id)"
+                >
                   {{ filter.label }}
                 </mat-chip>
               }
@@ -90,9 +92,10 @@ interface Chip {
             <h4>Price Range Filters</h4>
             <mat-chip-set>
               @for (price of priceFilters(); track price.id) {
-                <mat-chip 
+                <mat-chip
                   [class.mat-mdc-chip-selected]="price.selected"
-                  (click)="togglePriceFilter(price.id)">
+                  (click)="togglePriceFilter(price.id)"
+                >
                   {{ price.label }}
                 </mat-chip>
               }
@@ -109,9 +112,7 @@ interface Chip {
             <h4>Tags</h4>
             <mat-chip-set>
               @for (tag of tags(); track tag.id) {
-                <mat-chip 
-                  (removed)="removeTag(tag.id)"
-                  [removable]="tag.removable">
+                <mat-chip (removed)="removeTag(tag.id)" [removable]="tag.removable">
                   {{ tag.label }}
                   @if (tag.removable) {
                     <mat-icon matChipRemove>cancel</mat-icon>
@@ -129,9 +130,7 @@ interface Chip {
             <h4>Email Recipients</h4>
             <mat-chip-set>
               @for (email of emailChips(); track email.id) {
-                <mat-chip 
-                  (removed)="removeEmail(email.id)"
-                  [removable]="true">
+                <mat-chip (removed)="removeEmail(email.id)" [removable]="true">
                   <mat-icon matChipAvatar>person</mat-icon>
                   {{ email.label }}
                   <mat-icon matChipRemove>cancel</mat-icon>
@@ -140,10 +139,12 @@ interface Chip {
             </mat-chip-set>
             <mat-form-field appearance="outline" class="email-input">
               <mat-label>Add recipient</mat-label>
-              <input matInput 
-                     placeholder="Enter email address" 
-                     #emailInput
-                     (keydown.enter)="addEmail(emailInput.value); emailInput.value = ''">
+              <input
+                matInput
+                placeholder="Enter email address"
+                #emailInput
+                (keydown.enter)="addEmail(emailInput.value); emailInput.value = ''"
+              />
             </mat-form-field>
           </div>
         </div>
@@ -151,14 +152,16 @@ interface Chip {
 
       <section class="demo-section">
         <h2>Suggestion Chips</h2>
-        <p>Suggestion chips help narrow a user's intent by presenting dynamically generated suggestions.</p>
+        <p>
+          Suggestion chips help narrow a user's intent by presenting dynamically generated
+          suggestions.
+        </p>
         <div class="demo-example">
           <div class="chip-demo">
             <h4>Search Suggestions</h4>
             <mat-chip-set>
               @for (suggestion of searchSuggestions(); track suggestion.id) {
-                <mat-chip 
-                  (click)="selectSuggestion(suggestion.id)">
+                <mat-chip (click)="selectSuggestion(suggestion.id)">
                   <mat-icon matChipAvatar>search</mat-icon>
                   {{ suggestion.label }}
                 </mat-chip>
@@ -223,9 +226,7 @@ interface Chip {
               <h4>Removable</h4>
               <mat-chip-set>
                 @for (skill of skills(); track skill.id) {
-                  <mat-chip 
-                    (removed)="removeSkill(skill.id)"
-                    [removable]="true">
+                  <mat-chip (removed)="removeSkill(skill.id)" [removable]="true">
                     {{ skill.label }}
                     <mat-icon matChipRemove>cancel</mat-icon>
                   </mat-chip>
@@ -245,65 +246,61 @@ interface Chip {
         </div>
       </section>
 
-      <demo-example-viewer
-        title="Chips Implementation"
-        [examples]="chipExamples">
+      <demo-example-viewer title="Chips Implementation" [examples]="chipExamples">
       </demo-example-viewer>
     </div>
   `,
-  styleUrl: './chips.component.scss'
+  styleUrl: './chips.component.scss',
 })
 export class ChipsComponent {
-  readonly resources = [
-    { label: 'M3 Chips Guidelines', url: MD3_DOCS.CHIPS }
-  ];
+  readonly resources = [{ label: 'M3 Chips Guidelines', url: MD3_DOCS.CHIPS }];
 
   private _categoryFilters = signal<Chip[]>([
     { id: '1', label: 'Electronics', selected: false },
     { id: '2', label: 'Clothing', selected: true },
     { id: '3', label: 'Books', selected: false },
     { id: '4', label: 'Home & Garden', selected: true },
-    { id: '5', label: 'Sports', selected: false }
+    { id: '5', label: 'Sports', selected: false },
   ]);
 
   private _priceFilters = signal<Chip[]>([
     { id: '1', label: 'Under $25', selected: false },
     { id: '2', label: '$25-$50', selected: true },
     { id: '3', label: '$50-$100', selected: false },
-    { id: '4', label: 'Over $100', selected: false }
+    { id: '4', label: 'Over $100', selected: false },
   ]);
 
   private _tags = signal<Chip[]>([
     { id: '1', label: 'urgent', removable: true },
     { id: '2', label: 'meeting', removable: true },
-    { id: '3', label: 'follow-up', removable: true }
+    { id: '3', label: 'follow-up', removable: true },
   ]);
 
   private _emailChips = signal<Chip[]>([
     { id: '1', label: 'john@example.com', removable: true },
-    { id: '2', label: 'sarah@example.com', removable: true }
+    { id: '2', label: 'sarah@example.com', removable: true },
   ]);
-  
+
   private _searchChips = signal<Chip[]>([]);
-  
+
   private _quickActions = signal<(Chip & { selected?: boolean })[]>([
     { id: '1', label: 'copy', selected: false },
     { id: '2', label: 'share', selected: false },
-    { id: '3', label: 'delete', selected: false }
+    { id: '3', label: 'delete', selected: false },
   ]);
 
   private _searchSuggestions = signal<Chip[]>([
     { id: '1', label: 'angular components' },
     { id: '2', label: 'material design' },
     { id: '3', label: 'typescript tutorial' },
-    { id: '4', label: 'web development' }
+    { id: '4', label: 'web development' },
   ]);
 
   private _skills = signal<Chip[]>([
     { id: '1', label: 'Angular', removable: true },
     { id: '2', label: 'TypeScript', removable: true },
     { id: '3', label: 'Material Design', removable: true },
-    { id: '4', label: 'RxJS', removable: true }
+    { id: '4', label: 'RxJS', removable: true },
   ]);
 
   readonly categoryFilters = this._categoryFilters.asReadonly();
@@ -330,7 +327,7 @@ export class ChipsComponent {
 <mat-chip>
   <mat-icon matChipAvatar>home</mat-icon>
   Home
-</mat-chip>`
+</mat-chip>`,
     },
     {
       title: 'Filter Chips',
@@ -343,7 +340,7 @@ export class ChipsComponent {
       {{ filter.label }}
     </mat-chip>
   }
-</mat-chip-set>`
+</mat-chip-set>`,
     },
     {
       title: 'Removable Chips',
@@ -357,7 +354,7 @@ export class ChipsComponent {
       <mat-icon matChipRemove>cancel</mat-icon>
     </mat-chip>
   }
-</mat-chip-set>`
+</mat-chip-set>`,
     },
     {
       title: 'Component Logic',
@@ -377,24 +374,26 @@ export class ChipsComponent {
   removeItem(id: string) {
     this._items.update(items => items.filter(item => item.id !== id));
   }
-}`
-    }
+}`,
+    },
   ];
 
   toggleCategoryFilter(id: string) {
-    this._categoryFilters.update(filters =>
-      filters.map(f => f.id === id ? { ...f, selected: !f.selected } : f)
+    this._categoryFilters.update((filters) =>
+      filters.map((f) => (f.id === id ? { ...f, selected: !f.selected } : f)),
     );
   }
 
   togglePriceFilter(id: string) {
-    this._priceFilters.update(filters =>
-      filters.map(f => f.id === id ? { ...f, selected: !f.selected } : f)
+    this._priceFilters.update((filters) =>
+      filters.map((f) => (f.id === id ? { ...f, selected: !f.selected } : f)),
     );
   }
 
   getActiveCategoryFilters(): string {
-    const active = this._categoryFilters().filter(f => f.selected).map(f => f.label);
+    const active = this._categoryFilters()
+      .filter((f) => f.selected)
+      .map((f) => f.label);
     return active.length > 0 ? active.join(', ') : 'None';
   }
 
@@ -402,13 +401,13 @@ export class ChipsComponent {
     const newTag: Chip = {
       id: Date.now().toString(),
       label: `tag-${this._tags().length + 1}`,
-      removable: true
+      removable: true,
     };
-    this._tags.update(tags => [...tags, newTag]);
+    this._tags.update((tags) => [...tags, newTag]);
   }
 
   removeTag(id: string) {
-    this._tags.update(tags => tags.filter(tag => tag.id !== id));
+    this._tags.update((tags) => tags.filter((tag) => tag.id !== id));
   }
 
   addEmail(email: string) {
@@ -416,63 +415,62 @@ export class ChipsComponent {
       const newEmail: Chip = {
         id: Date.now().toString(),
         label: email.trim(),
-        removable: true
+        removable: true,
       };
-      this._emailChips.update(emails => [...emails, newEmail]);
+      this._emailChips.update((emails) => [...emails, newEmail]);
     }
   }
 
   removeEmail(id: string) {
-    this._emailChips.update(emails => emails.filter(email => email.id !== id));
+    this._emailChips.update((emails) => emails.filter((email) => email.id !== id));
   }
 
   selectSuggestion(id: string) {
-    const suggestion = this._searchSuggestions().find(s => s.id === id);
+    const suggestion = this._searchSuggestions().find((s) => s.id === id);
     if (suggestion) {
       // Add the selected suggestion to the search chips
-      this._searchChips.update(chips => [...chips, {
-        id: `search-${Date.now()}`,
-        label: suggestion.label,
-        removable: true
-      }]);
+      this._searchChips.update((chips) => [
+        ...chips,
+        {
+          id: `search-${Date.now()}`,
+          label: suggestion.label,
+          removable: true,
+        },
+      ]);
       // Clear the suggestion after selection
-      this._searchSuggestions.update(suggestions => 
-        suggestions.filter(s => s.id !== id)
-      );
+      this._searchSuggestions.update((suggestions) => suggestions.filter((s) => s.id !== id));
     }
   }
 
   quickAction(action: string) {
     // Handle different quick actions
-    switch(action) {
+    switch (action) {
       case 'copy':
         // In a real app, copy to clipboard
-        this._quickActions.update(actions => 
-          actions.map(a => ({ ...a, selected: a.label === action }))
+        this._quickActions.update((actions) =>
+          actions.map((a) => ({ ...a, selected: a.label === action })),
         );
         break;
       case 'share':
         // In a real app, open share dialog
-        this._quickActions.update(actions => 
-          actions.map(a => ({ ...a, selected: a.label === action }))
+        this._quickActions.update((actions) =>
+          actions.map((a) => ({ ...a, selected: a.label === action })),
         );
         break;
       case 'delete':
         // In a real app, show delete confirmation
-        this._quickActions.update(actions => 
-          actions.map(a => ({ ...a, selected: a.label === action }))
+        this._quickActions.update((actions) =>
+          actions.map((a) => ({ ...a, selected: a.label === action })),
         );
         break;
     }
     // Reset selection after a short delay for visual feedback
     setTimeout(() => {
-      this._quickActions.update(actions => 
-        actions.map(a => ({ ...a, selected: false }))
-      );
+      this._quickActions.update((actions) => actions.map((a) => ({ ...a, selected: false })));
     }, 1000);
   }
 
   removeSkill(id: string) {
-    this._skills.update(skills => skills.filter(skill => skill.id !== id));
+    this._skills.update((skills) => skills.filter((skill) => skill.id !== id));
   }
 }

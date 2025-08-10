@@ -20,14 +20,15 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
     MatTooltipModule,
     MatButtonToggleModule,
     PageHeaderComponent,
-    ExampleViewerComponent
+    ExampleViewerComponent,
   ],
   template: `
     <div class="demo-page">
       <demo-page-header
         title="Icon Buttons"
         description="Icon buttons allow users to take actions and make choices with a single tap."
-        [links]="resources">
+        [links]="resources"
+      >
       </demo-page-header>
 
       <section class="demo-section">
@@ -65,7 +66,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                 <mat-icon>favorite</mat-icon>
               </button>
             </div>
-            
+
             <div class="variant-group">
               <h4>Raised</h4>
               <button mat-raised-button class="icon-button-raised">
@@ -97,40 +98,48 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
           <div class="toggle-demo">
             <div class="toggle-group">
               <h4>Favorite Toggle</h4>
-              <button mat-icon-button 
-                      [class.active]="favoriteToggled()"
-                      (click)="toggleFavorite()"
-                      [attr.aria-label]="favoriteToggled() ? 'Remove from favorites' : 'Add to favorites'">
+              <button
+                mat-icon-button
+                [class.active]="favoriteToggled()"
+                (click)="toggleFavorite()"
+                [attr.aria-label]="favoriteToggled() ? 'Remove from favorites' : 'Add to favorites'"
+              >
                 <mat-icon>{{ favoriteToggled() ? 'favorite' : 'favorite_border' }}</mat-icon>
               </button>
             </div>
 
             <div class="toggle-group">
               <h4>Bookmark Toggle</h4>
-              <button mat-icon-button 
-                      [class.active]="bookmarkToggled()"
-                      (click)="toggleBookmark()"
-                      [attr.aria-label]="bookmarkToggled() ? 'Remove bookmark' : 'Add bookmark'">
+              <button
+                mat-icon-button
+                [class.active]="bookmarkToggled()"
+                (click)="toggleBookmark()"
+                [attr.aria-label]="bookmarkToggled() ? 'Remove bookmark' : 'Add bookmark'"
+              >
                 <mat-icon>{{ bookmarkToggled() ? 'bookmark' : 'bookmark_border' }}</mat-icon>
               </button>
             </div>
 
             <div class="toggle-group">
               <h4>Star Toggle</h4>
-              <button mat-icon-button 
-                      [class.active]="starToggled()"
-                      (click)="toggleStar()"
-                      [attr.aria-label]="starToggled() ? 'Unstar' : 'Star'">
+              <button
+                mat-icon-button
+                [class.active]="starToggled()"
+                (click)="toggleStar()"
+                [attr.aria-label]="starToggled() ? 'Unstar' : 'Star'"
+              >
                 <mat-icon>{{ starToggled() ? 'star' : 'star_border' }}</mat-icon>
               </button>
             </div>
 
             <div class="toggle-group">
               <h4>Visibility Toggle</h4>
-              <button mat-icon-button 
-                      [class.active]="visibilityToggled()"
-                      (click)="toggleVisibility()"
-                      [attr.aria-label]="visibilityToggled() ? 'Hide' : 'Show'">
+              <button
+                mat-icon-button
+                [class.active]="visibilityToggled()"
+                (click)="toggleVisibility()"
+                [attr.aria-label]="visibilityToggled() ? 'Hide' : 'Show'"
+              >
                 <mat-icon>{{ visibilityToggled() ? 'visibility' : 'visibility_off' }}</mat-icon>
               </button>
             </div>
@@ -160,7 +169,9 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <div class="state-group">
               <h4>Loading</h4>
               <button mat-icon-button [disabled]="isLoading()" (click)="startLoading()">
-                <mat-icon [class.spinning]="isLoading()">{{ isLoading() ? 'hourglass_empty' : 'refresh' }}</mat-icon>
+                <mat-icon [class.spinning]="isLoading()">{{
+                  isLoading() ? 'hourglass_empty' : 'refresh'
+                }}</mat-icon>
               </button>
             </div>
           </div>
@@ -258,18 +269,14 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </div>
       </section>
 
-      <demo-example-viewer
-        title="Icon Button Implementation"
-        [examples]="iconButtonExamples">
+      <demo-example-viewer title="Icon Button Implementation" [examples]="iconButtonExamples">
       </demo-example-viewer>
     </div>
   `,
-  styleUrl: './icon-buttons.component.scss'
+  styleUrl: './icon-buttons.component.scss',
 })
 export class IconButtonsComponent {
-  readonly resources = [
-    { label: 'M3 Icon Button Guidelines', url: MD3_DOCS.ICON_BUTTONS }
-  ];
+  readonly resources = [{ label: 'M3 Icon Button Guidelines', url: MD3_DOCS.ICON_BUTTONS }];
 
   private _favoriteToggled = signal(false);
   private _bookmarkToggled = signal(false);
@@ -300,7 +307,7 @@ export class IconButtonsComponent {
 <!-- Colored icon button -->
 <button mat-icon-button color="primary">
   <mat-icon>star</mat-icon>
-</button>`
+</button>`,
     },
     {
       title: 'Toggle Icon Buttons',
@@ -315,7 +322,7 @@ export class IconButtonsComponent {
 <!-- Toggle visibility -->
 <button mat-icon-button (click)="toggleVisibility()">
   <mat-icon>{{ isVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
-</button>`
+</button>`,
     },
     {
       title: 'Icon Button Groups',
@@ -330,7 +337,7 @@ export class IconButtonsComponent {
   <button mat-icon-button>
     <mat-icon>format_underlined</mat-icon>
   </button>
-</div>`
+</div>`,
     },
     {
       title: 'Component Logic',
@@ -346,7 +353,7 @@ export class IconButtonsComponent {
   onEdit() {
     console.log('Edit action triggered');
   }
-}`
+}`,
     },
     {
       title: 'Icon Button Styling',
@@ -363,24 +370,24 @@ export class IconButtonsComponent {
 .active {
   background-color: var(--md-sys-color-secondary-container);
   color: var(--md-sys-color-on-secondary-container);
-}`
-    }
+}`,
+    },
   ];
 
   toggleFavorite() {
-    this._favoriteToggled.update(value => !value);
+    this._favoriteToggled.update((value) => !value);
   }
 
   toggleBookmark() {
-    this._bookmarkToggled.update(value => !value);
+    this._bookmarkToggled.update((value) => !value);
   }
 
   toggleStar() {
-    this._starToggled.update(value => !value);
+    this._starToggled.update((value) => !value);
   }
 
   toggleVisibility() {
-    this._visibilityToggled.update(value => !value);
+    this._visibilityToggled.update((value) => !value);
   }
 
   startLoading() {

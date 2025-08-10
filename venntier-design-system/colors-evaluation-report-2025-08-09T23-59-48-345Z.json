@@ -13,22 +13,13 @@
   "visualHierarchy": {
     "cardCount": 5,
     "headingCount": 12,
-    "uniqueBackgrounds": [
-      "rgb(255, 255, 255)"
-    ],
+    "uniqueBackgrounds": ["rgb(255, 255, 255)"],
     "pageStructure": "content-wrapper"
   },
   "stylingCompliance": {
     "harshWhiteElements": 11,
-    "cardPaddings": [
-      "24px"
-    ],
-    "fontWeights": [
-      "600",
-      "400",
-      "500",
-      "450"
-    ],
+    "cardPaddings": ["24px"],
+    "fontWeights": ["600", "400", "500", "450"],
     "colorSwatchCount": 160,
     "hasProperSpacing": true,
     "usesSystemColors": false
@@ -56,9 +47,7 @@
     },
     "styling": {
       "score": 3,
-      "issues": [
-        "Not using Material Design 3 system color tokens"
-      ],
+      "issues": ["Not using Material Design 3 system color tokens"],
       "recommendations": [
         "Reduce font weights: Display 200-300, Body 400, Labels 400-450",
         "Ensure all colors use MD3 tokens (--md-sys-color-*)",
@@ -68,9 +57,7 @@
     },
     "usability": {
       "score": 4,
-      "issues": [
-        "Missing hover states on interactive elements"
-      ],
+      "issues": ["Missing hover states on interactive elements"],
       "recommendations": [
         "Add subtle hover states with opacity changes",
         "Ensure 4.5:1 contrast ratio for all text",

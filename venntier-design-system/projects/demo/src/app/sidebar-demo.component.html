@@ -2,79 +2,123 @@
   <!-- Sidebar -->
   <nav>
     <mat-sidenav mode="side" opened class="vt-sidenav-standard">
-    <div class="vt-sidenav-header">
-      <div class="vt-sidenav-logo">
-        <mat-icon>layers</mat-icon>
-        <span>Venntier</span>
-      </div>
-    </div>
-    
-    <div class="vt-sidenav-content">
-      <!-- Create Section -->
-      <div class="vt-nav-section">
-        <div class="vt-nav-section-title">Create</div>
-        <mat-nav-list>
-          <a mat-list-item [class.active]="activeSection() === 'typography'" (click)="setActiveSection('typography')">
-            <mat-icon matListItemIcon>text_fields</mat-icon>
-            <span matListItemTitle>Typography</span>
-          </a>
-          <a mat-list-item [class.active]="activeSection() === 'colors'" (click)="setActiveSection('colors')">
-            <mat-icon matListItemIcon>palette</mat-icon>
-            <span matListItemTitle>Colors</span>
-          </a>
-          <a mat-list-item [class.active]="activeSection() === 'buttons'" (click)="setActiveSection('buttons')">
-            <mat-icon matListItemIcon>smart_button</mat-icon>
-            <span matListItemTitle>Buttons</span>
-          </a>
-        </mat-nav-list>
+      <div class="vt-sidenav-header">
+        <div class="vt-sidenav-logo">
+          <mat-icon>layers</mat-icon>
+          <span>Venntier</span>
+        </div>
       </div>
 
-      <!-- Manage Section -->
-      <div class="vt-nav-section">
-        <div class="vt-nav-section-title">Manage</div>
-        <mat-nav-list>
-          <a mat-list-item [class.active]="activeSection() === 'inputs'" (click)="setActiveSection('inputs')">
-            <mat-icon matListItemIcon>input</mat-icon>
-            <span matListItemTitle>Inputs</span>
-          </a>
-          <a mat-list-item [class.active]="activeSection() === 'selection'" (click)="setActiveSection('selection')">
-            <mat-icon matListItemIcon>list</mat-icon>
-            <span matListItemTitle>Selects</span>
-          </a>
-          <a mat-list-item [class.active]="activeSection() === 'choice'" (click)="setActiveSection('choice')">
-            <mat-icon matListItemIcon>check_box</mat-icon>
-            <span matListItemTitle>Checkboxes</span>
-          </a>
-          <a mat-list-item [class.active]="activeSection() === 'cards'" (click)="setActiveSection('cards')">
-            <mat-icon matListItemIcon>dashboard</mat-icon>
-            <span matListItemTitle>Cards</span>
-          </a>
-          <a mat-list-item [class.active]="activeSection() === 'tables'" (click)="setActiveSection('tables')">
-            <mat-icon matListItemIcon>table_chart</mat-icon>
-            <span matListItemTitle>Tables</span>
-          </a>
-        </mat-nav-list>
-      </div>
+      <div class="vt-sidenav-content">
+        <!-- Create Section -->
+        <div class="vt-nav-section">
+          <div class="vt-nav-section-title">Create</div>
+          <mat-nav-list>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'typography'"
+              (click)="setActiveSection('typography')"
+            >
+              <mat-icon matListItemIcon>text_fields</mat-icon>
+              <span matListItemTitle>Typography</span>
+            </a>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'colors'"
+              (click)="setActiveSection('colors')"
+            >
+              <mat-icon matListItemIcon>palette</mat-icon>
+              <span matListItemTitle>Colors</span>
+            </a>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'buttons'"
+              (click)="setActiveSection('buttons')"
+            >
+              <mat-icon matListItemIcon>smart_button</mat-icon>
+              <span matListItemTitle>Buttons</span>
+            </a>
+          </mat-nav-list>
+        </div>
 
-      <!-- Optimize Section -->
-      <div class="vt-nav-section">
-        <div class="vt-nav-section-title">Optimize</div>
-        <mat-nav-list>
-          <a mat-list-item [class.active]="activeSection() === 'progress'" (click)="setActiveSection('progress')">
-            <mat-icon matListItemIcon>show_chart</mat-icon>
-            <span matListItemTitle>Progress</span>
-          </a>
-          <a mat-list-item [class.active]="activeSection() === 'dialogs'" (click)="setActiveSection('dialogs')">
-            <mat-icon matListItemIcon>chat_bubble</mat-icon>
-            <span matListItemTitle>Dialogs</span>
-          </a>
-          <a mat-list-item [class.active]="activeSection() === 'tooltips'" (click)="setActiveSection('tooltips')">
-            <mat-icon matListItemIcon>info</mat-icon>
-            <span matListItemTitle>Tooltips</span>
-          </a>
-        </mat-nav-list>
+        <!-- Manage Section -->
+        <div class="vt-nav-section">
+          <div class="vt-nav-section-title">Manage</div>
+          <mat-nav-list>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'inputs'"
+              (click)="setActiveSection('inputs')"
+            >
+              <mat-icon matListItemIcon>input</mat-icon>
+              <span matListItemTitle>Inputs</span>
+            </a>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'selection'"
+              (click)="setActiveSection('selection')"
+            >
+              <mat-icon matListItemIcon>list</mat-icon>
+              <span matListItemTitle>Selects</span>
+            </a>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'choice'"
+              (click)="setActiveSection('choice')"
+            >
+              <mat-icon matListItemIcon>check_box</mat-icon>
+              <span matListItemTitle>Checkboxes</span>
+            </a>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'cards'"
+              (click)="setActiveSection('cards')"
+            >
+              <mat-icon matListItemIcon>dashboard</mat-icon>
+              <span matListItemTitle>Cards</span>
+            </a>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'tables'"
+              (click)="setActiveSection('tables')"
+            >
+              <mat-icon matListItemIcon>table_chart</mat-icon>
+              <span matListItemTitle>Tables</span>
+            </a>
+          </mat-nav-list>
+        </div>
+
+        <!-- Optimize Section -->
+        <div class="vt-nav-section">
+          <div class="vt-nav-section-title">Optimize</div>
+          <mat-nav-list>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'progress'"
+              (click)="setActiveSection('progress')"
+            >
+              <mat-icon matListItemIcon>show_chart</mat-icon>
+              <span matListItemTitle>Progress</span>
+            </a>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'dialogs'"
+              (click)="setActiveSection('dialogs')"
+            >
+              <mat-icon matListItemIcon>chat_bubble</mat-icon>
+              <span matListItemTitle>Dialogs</span>
+            </a>
+            <a
+              mat-list-item
+              [class.active]="activeSection() === 'tooltips'"
+              (click)="setActiveSection('tooltips')"
+            >
+              <mat-icon matListItemIcon>info</mat-icon>
+              <span matListItemTitle>Tooltips</span>
+            </a>
+          </mat-nav-list>
+        </div>
       </div>
-    </div>
     </mat-sidenav>
   </nav>
 
@@ -93,13 +137,13 @@
 
     <!-- Content Area -->
     <main class="content-wrapper">
-      
       <!-- Typography Section -->
       @if (activeSection() === 'typography') {
         <section>
           <h2 class="section-title">Typography</h2>
           <p class="section-description">
-            The Venntier Design System uses Inter as its primary typeface with a refined type scale for optimal readability.
+            The Venntier Design System uses Inter as its primary typeface with a refined type scale
+            for optimal readability.
           </p>
 
           <mat-card>
@@ -161,15 +205,24 @@
               </div>
               <div class="typography-sample">
                 <span class="type-label">Body Large · 16px · 400</span>
-                <p class="vt-typescale-body-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="vt-typescale-body-large">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.
+                </p>
               </div>
               <div class="typography-sample">
                 <span class="type-label">Body Medium · 14px · 400</span>
-                <p class="vt-typescale-body-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="vt-typescale-body-medium">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.
+                </p>
               </div>
               <div class="typography-sample">
                 <span class="type-label">Body Small · 12px · 400</span>
-                <p class="vt-typescale-body-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="vt-typescale-body-small">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.
+                </p>
               </div>
               <div class="typography-sample">
                 <span class="type-label">Label Large · 14px · 450</span>
@@ -193,7 +246,8 @@
         <section>
           <h2 class="section-title">Color System</h2>
           <p class="section-description">
-            A refined monochromatic palette inspired by OpenAI's minimalist design. Our color system emphasizes clarity and focus through subtle gray variations.
+            A refined monochromatic palette inspired by OpenAI's minimalist design. Our color system
+            emphasizes clarity and focus through subtle gray variations.
           </p>
 
           <!-- Primary Palette -->
@@ -207,7 +261,13 @@
                   <h4 class="color-group-title">Primary Colors</h4>
                   <div class="color-swatches">
                     <div class="color-swatch">
-                      <div class="swatch-preview" style="background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary);"></div>
+                      <div
+                        class="swatch-preview"
+                        style="
+                          background: var(--md-sys-color-primary);
+                          color: var(--md-sys-color-on-primary);
+                        "
+                      ></div>
                       <div class="swatch-info">
                         <span class="swatch-name">Black</span>
                         <span class="swatch-value">#000000</span>
@@ -215,7 +275,14 @@
                       </div>
                     </div>
                     <div class="color-swatch">
-                      <div class="swatch-preview" style="background: var(--md-sys-color-on-primary); color: var(--md-sys-color-primary); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                      <div
+                        class="swatch-preview"
+                        style="
+                          background: var(--md-sys-color-on-primary);
+                          color: var(--md-sys-color-primary);
+                          border: 1px solid var(--md-sys-color-outline-variant);
+                        "
+                      ></div>
                       <div class="swatch-info">
                         <span class="swatch-name">White</span>
                         <span class="swatch-value">#ffffff</span>
@@ -223,7 +290,13 @@
                       </div>
                     </div>
                     <div class="color-swatch">
-                      <div class="swatch-preview" style="background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
+                      <div
+                        class="swatch-preview"
+                        style="
+                          background: var(--md-sys-color-tertiary);
+                          color: var(--md-sys-color-on-tertiary);
+                        "
+                      ></div>
                       <div class="swatch-info">
                         <span class="swatch-name">Green (CTA)</span>
                         <span class="swatch-value">#10a37f</span>
@@ -231,7 +304,13 @@
                       </div>
                     </div>
                     <div class="color-swatch">
-                      <div class="swatch-preview" style="background: var(--md-sys-color-data-primary); color: var(--md-sys-color-on-data-primary);"></div>
+                      <div
+                        class="swatch-preview"
+                        style="
+                          background: var(--md-sys-color-data-primary);
+                          color: var(--md-sys-color-on-data-primary);
+                        "
+                      ></div>
                       <div class="swatch-info">
                         <span class="swatch-name">Purple (Data)</span>
                         <span class="swatch-value">#8b5cf6</span>
@@ -253,7 +332,13 @@
             <mat-card-content>
               <div class="gray-scale-grid">
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-background); color: var(--md-sys-color-on-background);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-background);
+                      color: var(--md-sys-color-on-background);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 950</span>
                     <span class="gray-value">#0a0a0a</span>
@@ -261,7 +346,13 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-on-surface); color: var(--md-sys-color-surface);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-on-surface);
+                      color: var(--md-sys-color-surface);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 900</span>
                     <span class="gray-value">#202123</span>
@@ -269,7 +360,13 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-variant); color: var(--md-sys-color-on-surface-variant);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-surface-variant);
+                      color: var(--md-sys-color-on-surface-variant);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 800</span>
                     <span class="gray-value">#353740</span>
@@ -277,7 +374,13 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-outline); color: var(--md-sys-color-on-surface);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-outline);
+                      color: var(--md-sys-color-on-surface);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 700</span>
                     <span class="gray-value">#40414f</span>
@@ -285,7 +388,13 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-on-surface-variant); color: var(--md-sys-color-surface-variant);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-on-surface-variant);
+                      color: var(--md-sys-color-surface-variant);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 600</span>
                     <span class="gray-value">#565869</span>
@@ -293,7 +402,13 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-focus-ring); color: var(--md-sys-color-on-surface);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-focus-ring);
+                      color: var(--md-sys-color-on-surface);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 500</span>
                     <span class="gray-value">#6e6e80</span>
@@ -301,7 +416,13 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-disabled); color: var(--md-sys-color-on-surface);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-disabled);
+                      color: var(--md-sys-color-on-surface);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 400</span>
                     <span class="gray-value">#9ca3af</span>
@@ -309,7 +430,13 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-outline); color: var(--md-sys-color-on-surface);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-outline);
+                      color: var(--md-sys-color-on-surface);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 300</span>
                     <span class="gray-value">#d1d5db</span>
@@ -317,7 +444,13 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-outline-variant); color: var(--md-sys-color-on-surface);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-outline-variant);
+                      color: var(--md-sys-color-on-surface);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 200</span>
                     <span class="gray-value">#e5e5e5</span>
@@ -325,7 +458,13 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-on-surface);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-surface-container-high);
+                      color: var(--md-sys-color-on-surface);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 175</span>
                     <span class="gray-value">#ececf1</span>
@@ -333,7 +472,14 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-surface-container-low);
+                      color: var(--md-sys-color-on-surface);
+                      border: 1px solid var(--md-sys-color-outline-variant);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 150</span>
                     <span class="gray-value">#f7f7f8</span>
@@ -341,7 +487,14 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-container); color: var(--md-sys-color-on-surface); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-surface-container);
+                      color: var(--md-sys-color-on-surface);
+                      border: 1px solid var(--md-sys-color-outline-variant);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 100</span>
                     <span class="gray-value">#f9f9f9</span>
@@ -349,7 +502,14 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface-dim); color: var(--md-sys-color-on-surface); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-surface-dim);
+                      color: var(--md-sys-color-on-surface);
+                      border: 1px solid var(--md-sys-color-outline-variant);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">Gray 50</span>
                     <span class="gray-value">#fafafa</span>
@@ -357,7 +517,14 @@
                   </div>
                 </div>
                 <div class="gray-swatch">
-                  <div class="gray-preview" style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                  <div
+                    class="gray-preview"
+                    style="
+                      background: var(--md-sys-color-surface);
+                      color: var(--md-sys-color-on-surface);
+                      border: 1px solid var(--md-sys-color-outline-variant);
+                    "
+                  ></div>
                   <div class="gray-info">
                     <span class="gray-name">White</span>
                     <span class="gray-value">#ffffff</span>
@@ -372,7 +539,9 @@
           <mat-card>
             <mat-card-header>
               <mat-card-title>Interactive States</mat-card-title>
-              <mat-card-subtitle>Monochromatic state colors for consistent interactions</mat-card-subtitle>
+              <mat-card-subtitle
+                >Monochromatic state colors for consistent interactions</mat-card-subtitle
+              >
             </mat-card-header>
             <mat-card-content>
               <div class="states-demo">
@@ -412,11 +581,40 @@
                 <div class="usage-section">
                   <h4 class="usage-title">Background Hierarchy</h4>
                   <div class="hierarchy-demo">
-                    <div class="hierarchy-level" style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); padding: 24px; border: 1px solid var(--md-sys-color-surface-container-high); border-radius: 6px;">
+                    <div
+                      class="hierarchy-level"
+                      style="
+                        background: var(--md-sys-color-surface);
+                        color: var(--md-sys-color-on-surface);
+                        padding: 24px;
+                        border: 1px solid var(--md-sys-color-surface-container-high);
+                        border-radius: 6px;
+                      "
+                    >
                       <span class="hierarchy-label">Body Background · #ffffff</span>
-                      <div class="hierarchy-level" style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); padding: 24px; margin-top: 16px; border: 1px solid var(--md-sys-color-surface-container-high); border-radius: 6px;">
+                      <div
+                        class="hierarchy-level"
+                        style="
+                          background: var(--md-sys-color-surface);
+                          color: var(--md-sys-color-on-surface);
+                          padding: 24px;
+                          margin-top: 16px;
+                          border: 1px solid var(--md-sys-color-surface-container-high);
+                          border-radius: 6px;
+                        "
+                      >
                         <span class="hierarchy-label">Card Surface · #ffffff</span>
-                        <div class="hierarchy-level" style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); padding: 16px; margin-top: 16px; border: 1px solid var(--md-sys-color-surface-container-high); border-radius: 6px;">
+                        <div
+                          class="hierarchy-level"
+                          style="
+                            background: var(--md-sys-color-surface);
+                            color: var(--md-sys-color-on-surface);
+                            padding: 16px;
+                            margin-top: 16px;
+                            border: 1px solid var(--md-sys-color-surface-container-high);
+                            border-radius: 6px;
+                          "
+                        >
                           <span class="hierarchy-label">Input Background · #ffffff</span>
                         </div>
                       </div>
@@ -427,23 +625,48 @@
                 <div class="usage-section">
                   <h4 class="usage-title">Text Hierarchy</h4>
                   <div class="text-examples">
-                    <p style="color: var(--md-sys-color-on-surface); font-weight: 600;">Primary Text · #202123 · Weight 600</p>
-                    <p style="color: var(--md-sys-color-on-surface); font-weight: 400;">Body Text · #202123 · Weight 400</p>
-                    <p style="color: var(--md-sys-color-on-surface-variant); font-weight: 400;">Secondary Text · #565869 · Weight 400</p>
-                    <p style="color: var(--md-sys-color-disabled); font-weight: 400;">Disabled Text · #9ca3af · Weight 400</p>
+                    <p style="color: var(--md-sys-color-on-surface); font-weight: 600">
+                      Primary Text · #202123 · Weight 600
+                    </p>
+                    <p style="color: var(--md-sys-color-on-surface); font-weight: 400">
+                      Body Text · #202123 · Weight 400
+                    </p>
+                    <p style="color: var(--md-sys-color-on-surface-variant); font-weight: 400">
+                      Secondary Text · #565869 · Weight 400
+                    </p>
+                    <p style="color: var(--md-sys-color-disabled); font-weight: 400">
+                      Disabled Text · #9ca3af · Weight 400
+                    </p>
                   </div>
                 </div>
 
                 <div class="usage-section">
                   <h4 class="usage-title">Border Usage</h4>
                   <div class="border-examples">
-                    <div class="border-example" style="border: 1px solid var(--md-sys-color-outline); padding: 16px;">
+                    <div
+                      class="border-example"
+                      style="border: 1px solid var(--md-sys-color-outline); padding: 16px"
+                    >
                       Standard Border · #d1d5db
                     </div>
-                    <div class="border-example" style="border: 1px solid var(--md-sys-color-outline-variant); padding: 16px; margin-top: 8px;">
+                    <div
+                      class="border-example"
+                      style="
+                        border: 1px solid var(--md-sys-color-outline-variant);
+                        padding: 16px;
+                        margin-top: 8px;
+                      "
+                    >
                       Subtle Border · #e5e5e5
                     </div>
-                    <div class="border-example" style="border: 2px solid var(--md-sys-color-focus-ring); padding: 16px; margin-top: 8px;">
+                    <div
+                      class="border-example"
+                      style="
+                        border: 2px solid var(--md-sys-color-focus-ring);
+                        padding: 16px;
+                        margin-top: 8px;
+                      "
+                    >
                       Focus Border · #6e6e80
                     </div>
                   </div>
@@ -513,25 +736,30 @@
               <div class="form-grid">
                 <mat-form-field appearance="outline">
                   <mat-label>Email</mat-label>
-                  <input matInput placeholder="name@example.com" [ngModel]="emailValue()" (ngModelChange)="updateEmailValue($event)">
+                  <input
+                    matInput
+                    placeholder="name@example.com"
+                    [ngModel]="emailValue()"
+                    (ngModelChange)="updateEmailValue($event)"
+                  />
                   <mat-icon matSuffix>email</mat-icon>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                   <mat-label>Password</mat-label>
-                  <input matInput type="password" placeholder="Enter password">
+                  <input matInput type="password" placeholder="Enter password" />
                   <mat-icon matSuffix>lock</mat-icon>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                   <mat-label>Search</mat-label>
-                  <input matInput placeholder="Search...">
+                  <input matInput placeholder="Search..." />
                   <mat-icon matPrefix>search</mat-icon>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                   <mat-label>Phone Number</mat-label>
-                  <input matInput type="tel" placeholder="+1 (555) 123-4567">
+                  <input matInput type="tel" placeholder="+1 (555) 123-4567" />
                   <mat-icon matSuffix>phone</mat-icon>
                 </mat-form-field>
               </div>
@@ -545,7 +773,11 @@
             <mat-card-content>
               <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Description</mat-label>
-                <textarea matInput rows="4" placeholder="Enter a detailed description..."></textarea>
+                <textarea
+                  matInput
+                  rows="4"
+                  placeholder="Enter a detailed description..."
+                ></textarea>
               </mat-form-field>
             </mat-card-content>
           </mat-card>
@@ -568,7 +800,10 @@
               <div class="form-grid">
                 <mat-form-field appearance="outline">
                   <mat-label>Country</mat-label>
-                  <mat-select [ngModel]="countryValue()" (ngModelChange)="updateCountryValue($event)">
+                  <mat-select
+                    [ngModel]="countryValue()"
+                    (ngModelChange)="updateCountryValue($event)"
+                  >
                     <mat-option value="us">United States</mat-option>
                     <mat-option value="uk">United Kingdom</mat-option>
                     <mat-option value="ca">Canada</mat-option>
@@ -578,7 +813,10 @@
 
                 <mat-form-field appearance="outline">
                   <mat-label>Language</mat-label>
-                  <mat-select [ngModel]="languageValue()" (ngModelChange)="updateLanguageValue($event)">
+                  <mat-select
+                    [ngModel]="languageValue()"
+                    (ngModelChange)="updateLanguageValue($event)"
+                  >
                     <mat-option value="en">English</mat-option>
                     <mat-option value="es">Spanish</mat-option>
                     <mat-option value="fr">French</mat-option>
@@ -615,9 +853,15 @@
             </mat-card-header>
             <mat-card-content>
               <div class="choice-group">
-                <mat-checkbox [ngModel]="checkbox1()" (ngModelChange)="checkbox1.set($event)">Receive email notifications</mat-checkbox>
-                <mat-checkbox [ngModel]="checkbox2()" (ngModelChange)="checkbox2.set($event)">Receive SMS notifications</mat-checkbox>
-                <mat-checkbox [ngModel]="checkbox3()" (ngModelChange)="checkbox3.set($event)">Receive marketing updates</mat-checkbox>
+                <mat-checkbox [ngModel]="checkbox1()" (ngModelChange)="checkbox1.set($event)"
+                  >Receive email notifications</mat-checkbox
+                >
+                <mat-checkbox [ngModel]="checkbox2()" (ngModelChange)="checkbox2.set($event)"
+                  >Receive SMS notifications</mat-checkbox
+                >
+                <mat-checkbox [ngModel]="checkbox3()" (ngModelChange)="checkbox3.set($event)"
+                  >Receive marketing updates</mat-checkbox
+                >
               </div>
             </mat-card-content>
           </mat-card>
@@ -627,7 +871,11 @@
               <mat-card-title>Radio Buttons</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <mat-radio-group [ngModel]="radioValue()" (ngModelChange)="updateRadioValue($event)" class="choice-group">
+              <mat-radio-group
+                [ngModel]="radioValue()"
+                (ngModelChange)="updateRadioValue($event)"
+                class="choice-group"
+              >
                 <mat-radio-button value="monthly">Monthly billing</mat-radio-button>
                 <mat-radio-button value="yearly">Yearly billing (save 20%)</mat-radio-button>
                 <mat-radio-button value="enterprise">Enterprise (custom)</mat-radio-button>
@@ -641,9 +889,15 @@
             </mat-card-header>
             <mat-card-content>
               <div class="choice-group">
-                <mat-slide-toggle [ngModel]="toggle1()" (ngModelChange)="toggle1.set($event)">Enable two-factor authentication</mat-slide-toggle>
-                <mat-slide-toggle [ngModel]="toggle2()" (ngModelChange)="toggle2.set($event)">Show profile publicly</mat-slide-toggle>
-                <mat-slide-toggle [ngModel]="toggle3()" (ngModelChange)="toggle3.set($event)">Allow data collection</mat-slide-toggle>
+                <mat-slide-toggle [ngModel]="toggle1()" (ngModelChange)="toggle1.set($event)"
+                  >Enable two-factor authentication</mat-slide-toggle
+                >
+                <mat-slide-toggle [ngModel]="toggle2()" (ngModelChange)="toggle2.set($event)"
+                  >Show profile publicly</mat-slide-toggle
+                >
+                <mat-slide-toggle [ngModel]="toggle3()" (ngModelChange)="toggle3.set($event)"
+                  >Allow data collection</mat-slide-toggle
+                >
               </div>
             </mat-card-content>
           </mat-card>
@@ -655,11 +909,11 @@
         <section>
           <h2 class="section-title">{{ activeSection() | titlecase }}</h2>
           <p class="section-description">
-            This section is under construction. Select Typography, Text Inputs, Selection Controls, or Choice Controls to see examples.
+            This section is under construction. Select Typography, Text Inputs, Selection Controls,
+            or Choice Controls to see examples.
           </p>
         </section>
       }
-
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

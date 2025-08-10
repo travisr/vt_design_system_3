@@ -15,7 +15,8 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
       <demo-page-header
         title="Colors & Themes"
         description="A refined monochromatic palette inspired by OpenAI's minimalist design. Our color system emphasizes clarity and focus through subtle gray variations."
-        [mdLink]="MD3_DOCS.COLOR">
+        [mdLink]="MD3_DOCS.COLOR"
+      >
       </demo-page-header>
 
       <!-- MD3 Color Tokens -->
@@ -71,7 +72,9 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
       <mat-card>
         <mat-card-header>
           <mat-card-title>Surface & Background Tokens</mat-card-title>
-          <mat-card-subtitle>MD3 surface hierarchy for consistent layout backgrounds</mat-card-subtitle>
+          <mat-card-subtitle
+            >MD3 surface hierarchy for consistent layout backgrounds</mat-card-subtitle
+          >
         </mat-card-header>
         <mat-card-content>
           <div class="color-grid">
@@ -149,7 +152,9 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
       <mat-card>
         <mat-card-header>
           <mat-card-title>Interactive State Tokens</mat-card-title>
-          <mat-card-subtitle>MD3 interaction states for consistent user experience</mat-card-subtitle>
+          <mat-card-subtitle
+            >MD3 interaction states for consistent user experience</mat-card-subtitle
+          >
         </mat-card-header>
         <mat-card-content>
           <div class="color-grid">
@@ -231,7 +236,9 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   <div class="hierarchy-level hierarchy-surface">
                     <span class="hierarchy-label">Surface (--md-sys-color-surface)</span>
                     <div class="hierarchy-level hierarchy-surface-variant">
-                      <span class="hierarchy-label">Surface Variant (--md-sys-color-surface-variant)</span>
+                      <span class="hierarchy-label"
+                        >Surface Variant (--md-sys-color-surface-variant)</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -243,7 +250,9 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               <div class="text-examples">
                 <p class="text-on-surface-primary">Primary text using --md-sys-color-on-surface</p>
                 <p class="text-on-surface">Body text using --md-sys-color-on-surface</p>
-                <p class="text-on-surface-variant">Secondary text using --md-sys-color-on-surface-variant</p>
+                <p class="text-on-surface-variant">
+                  Secondary text using --md-sys-color-on-surface-variant
+                </p>
                 <p class="text-disabled">Disabled text using --md-sys-color-disabled</p>
               </div>
             </div>
@@ -251,7 +260,9 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <div class="usage-section">
               <h4 class="usage-title">Interactive Examples</h4>
               <div class="interactive-examples">
-                <button mat-stroked-button class="demo-btn demo-btn--default">Default Button</button>
+                <button mat-stroked-button class="demo-btn demo-btn--default">
+                  Default Button
+                </button>
                 <button mat-stroked-button class="demo-btn demo-btn--hover">Hover State</button>
                 <button mat-stroked-button class="demo-btn demo-btn--selected">Selected</button>
                 <button mat-flat-button color="primary" class="demo-btn">Primary CTA</button>
@@ -304,7 +315,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </mat-card-content>
       </mat-card>
     </div>
-  `
+  `,
 })
 export class ColorsComponent {
   readonly MD3_DOCS = MD3_DOCS;

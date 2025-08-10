@@ -3,23 +3,23 @@
   "recommendations": [
     // Angular essentials
     "angular.ng-template",
-    
+
     // Linting
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
-    
+
     // Formatting
     "esbenp.prettier-vscode",
-    
+
     // Additional helpful extensions
     "christian-kohler.path-intellisense",
     "nrwl.angular-console",
     "johnpapa.angular2",
     "cyrilletuzi.angular-schematics",
-    
+
     // SCSS support
     "mrmlnc.vscode-scss",
-    
+
     // Git integration
     "eamodio.gitlens"
   ]

@@ -9,7 +9,7 @@ export const MD3_DOCS = {
   ICONS: 'https://m3.material.io/styles/icons',
   MOTION: 'https://m3.material.io/styles/motion',
   LAYOUT: 'https://m3.material.io/foundations/layout',
-  
+
   // Components
   BUTTONS: 'https://m3.material.io/components/buttons',
   CHIPS: 'https://m3.material.io/components/chips',

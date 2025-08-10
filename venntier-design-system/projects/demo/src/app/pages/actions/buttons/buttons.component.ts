@@ -16,26 +16,26 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
     MatIconModule,
     MatProgressSpinnerModule,
     PageHeaderComponent,
-    ExampleViewerComponent
+    ExampleViewerComponent,
   ],
   template: `
     <div class="demo-page">
       <demo-page-header
         title="Buttons"
         description="Buttons help people take action, such as sending an email, sharing a document, or liking a comment."
-        [mdLink]="docLinks.BUTTONS">
+        [mdLink]="docLinks.BUTTONS"
+      >
       </demo-page-header>
 
       <!-- Button Variants -->
       <section class="demo-section">
         <h2 class="demo-section-title">Button Variants</h2>
         <p class="demo-section-description">
-          Material Design 3 offers five button types. Each type has its own emphasis level and use case.
+          Material Design 3 offers five button types. Each type has its own emphasis level and use
+          case.
         </p>
 
-        <demo-example-viewer 
-          title="All Button Types"
-          [code]="variantsCode">
+        <demo-example-viewer title="All Button Types" [code]="variantsCode">
           <div class="demo-flex demo-flex--wrap demo-flex--gap-md demo-flex--align-center">
             <button mat-fab color="primary">
               <mat-icon>add</mat-icon>
@@ -57,12 +57,11 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
       <section class="demo-section">
         <h2 class="demo-section-title">Interactive States</h2>
         <p class="demo-section-description">
-          Buttons have multiple interactive states including enabled, hovered, focused, pressed, and disabled.
+          Buttons have multiple interactive states including enabled, hovered, focused, pressed, and
+          disabled.
         </p>
 
-        <demo-example-viewer 
-          title="Button States"
-          [code]="statesCode">
+        <demo-example-viewer title="Button States" [code]="statesCode">
           <div class="demo-grid demo-grid--3-col demo-grid--gap-lg">
             <div class="demo-flex demo-flex--column demo-flex--gap-sm">
               <span class="demo-label">Enabled</span>
@@ -75,7 +74,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <div class="demo-flex demo-flex--column demo-flex--gap-sm">
               <span class="demo-label">Loading</span>
               <button mat-flat-button color="primary" disabled>
-                <mat-spinner diameter="20" style="display: inline-block; margin-right: 8px;"></mat-spinner>
+                <mat-spinner
+                  diameter="20"
+                  style="display: inline-block; margin-right: 8px;"
+                ></mat-spinner>
                 Loading...
               </button>
             </div>
@@ -90,9 +92,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
           Icons can reinforce the button's action and improve visual recognition.
         </p>
 
-        <demo-example-viewer 
-          title="Icon Buttons"
-          [code]="iconCode">
+        <demo-example-viewer title="Icon Buttons" [code]="iconCode">
           <div class="demo-component-group">
             <button mat-flat-button color="primary">
               <mat-icon>send</mat-icon>
@@ -117,9 +117,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
           Related actions can be grouped together for better organization.
         </p>
 
-        <demo-example-viewer 
-          title="Grouped Actions"
-          [code]="groupCode">
+        <demo-example-viewer title="Grouped Actions" [code]="groupCode">
           <div class="demo-example-row">
             <button mat-stroked-button>Cancel</button>
             <button mat-flat-button color="primary">Save</button>
@@ -127,7 +125,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </demo-example-viewer>
       </section>
     </div>
-  `
+  `,
 })
 export class ButtonsComponent {
   readonly docLinks = MD3_DOCS;
@@ -142,25 +140,25 @@ export class ButtonsComponent {
 <button mat-stroked-button>Outlined</button>
 <button mat-button>Text</button>`,
     ts: `import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';`
+import { MatIconModule } from '@angular/material/icon';`,
   };
 
   statesCode = {
     html: `<button mat-flat-button color="primary">Enabled</button>
-<button mat-flat-button color="primary" disabled>Disabled</button>`
+<button mat-flat-button color="primary" disabled>Disabled</button>`,
   };
 
   iconCode = {
     html: `<button mat-flat-button color="primary">
   <mat-icon>send</mat-icon>
   Send Email
-</button>`
+</button>`,
   };
 
   groupCode = {
     html: `<div class="button-group">
   <button mat-stroked-button>Cancel</button>
   <button mat-flat-button color="primary">Save</button>
-</div>`
+</div>`,
   };
 }

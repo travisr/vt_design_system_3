@@ -16,14 +16,15 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
     MatIconModule,
     MatCardModule,
     PageHeaderComponent,
-    ExampleViewerComponent
+    ExampleViewerComponent,
   ],
   template: `
     <div class="demo-page">
       <demo-page-header
         title="Segmented Buttons"
         description="Segmented buttons help people select options, switch views, or sort elements."
-        [links]="resources">
+        [links]="resources"
+      >
       </demo-page-header>
 
       <section class="demo-section">
@@ -57,15 +58,24 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
           <div class="segmented-demo">
             <h4>Text Formatting</h4>
             <mat-button-toggle-group multiple [value]="textFormats()">
-              <mat-button-toggle value="bold" (change)="toggleTextFormat('bold', $event.source.checked)">
+              <mat-button-toggle
+                value="bold"
+                (change)="toggleTextFormat('bold', $event.source.checked)"
+              >
                 <mat-icon>format_bold</mat-icon>
                 Bold
               </mat-button-toggle>
-              <mat-button-toggle value="italic" (change)="toggleTextFormat('italic', $event.source.checked)">
+              <mat-button-toggle
+                value="italic"
+                (change)="toggleTextFormat('italic', $event.source.checked)"
+              >
                 <mat-icon>format_italic</mat-icon>
                 Italic
               </mat-button-toggle>
-              <mat-button-toggle value="underline" (change)="toggleTextFormat('underline', $event.source.checked)">
+              <mat-button-toggle
+                value="underline"
+                (change)="toggleTextFormat('underline', $event.source.checked)"
+              >
                 <mat-icon>format_underlined</mat-icon>
                 Underline
               </mat-button-toggle>
@@ -130,7 +140,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         <div class="demo-example">
           <div class="segmented-demo">
             <h4>Document Actions</h4>
-            <mat-button-toggle-group [value]="documentAction()" (change)="setDocumentAction($event.value)">
+            <mat-button-toggle-group
+              [value]="documentAction()"
+              (change)="setDocumentAction($event.value)"
+            >
               <mat-button-toggle value="edit">
                 <mat-icon>edit</mat-icon>
                 Edit
@@ -203,13 +216,22 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               <mat-button-toggle value="new" (change)="toggleFilter('new', $event.source.checked)">
                 New
               </mat-button-toggle>
-              <mat-button-toggle value="popular" (change)="toggleFilter('popular', $event.source.checked)">
+              <mat-button-toggle
+                value="popular"
+                (change)="toggleFilter('popular', $event.source.checked)"
+              >
                 Popular
               </mat-button-toggle>
-              <mat-button-toggle value="sale" (change)="toggleFilter('sale', $event.source.checked)">
+              <mat-button-toggle
+                value="sale"
+                (change)="toggleFilter('sale', $event.source.checked)"
+              >
                 On Sale
               </mat-button-toggle>
-              <mat-button-toggle value="featured" (change)="toggleFilter('featured', $event.source.checked)">
+              <mat-button-toggle
+                value="featured"
+                (change)="toggleFilter('featured', $event.source.checked)"
+              >
                 Featured
               </mat-button-toggle>
             </mat-button-toggle-group>
@@ -220,15 +242,16 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
       <demo-example-viewer
         title="Segmented Buttons Implementation"
-        [examples]="segmentedButtonExamples">
+        [examples]="segmentedButtonExamples"
+      >
       </demo-example-viewer>
     </div>
   `,
-  styleUrl: './segmented-buttons.component.scss'
+  styleUrl: './segmented-buttons.component.scss',
 })
 export class SegmentedButtonsComponent {
   readonly resources = [
-    { label: 'M3 Segmented Button Guidelines', url: MD3_DOCS.SEGMENTED_BUTTONS }
+    { label: 'M3 Segmented Button Guidelines', url: MD3_DOCS.SEGMENTED_BUTTONS },
   ];
 
   private _viewMode = signal('list');
@@ -266,7 +289,7 @@ export class SegmentedButtonsComponent {
     <mat-icon>view_agenda</mat-icon>
     Cards
   </mat-button-toggle>
-</mat-button-toggle-group>`
+</mat-button-toggle-group>`,
     },
     {
       title: 'Multi-Selection',
@@ -280,7 +303,7 @@ export class SegmentedButtonsComponent {
     <mat-icon>format_italic</mat-icon>
     Italic
   </mat-button-toggle>
-</mat-button-toggle-group>`
+</mat-button-toggle-group>`,
     },
     {
       title: 'Icon-Only Segments',
@@ -295,7 +318,7 @@ export class SegmentedButtonsComponent {
   <mat-button-toggle value="right">
     <mat-icon>format_align_right</mat-icon>
   </mat-button-toggle>
-</mat-button-toggle-group>`
+</mat-button-toggle-group>`,
     },
     {
       title: 'Component Logic',
@@ -317,8 +340,8 @@ export class SegmentedButtonsComponent {
         : current.filter(f => f !== filter)
     );
   }
-}`
-    }
+}`,
+    },
   ];
 
   setViewMode(mode: string) {
@@ -326,10 +349,8 @@ export class SegmentedButtonsComponent {
   }
 
   toggleTextFormat(format: string, checked: boolean) {
-    this._textFormats.update(current => 
-      checked 
-        ? [...current, format]
-        : current.filter(f => f !== format)
+    this._textFormats.update((current) =>
+      checked ? [...current, format] : current.filter((f) => f !== format),
     );
   }
 
@@ -354,10 +375,8 @@ export class SegmentedButtonsComponent {
   }
 
   toggleFilter(filter: string, checked: boolean) {
-    this._filters.update(current => 
-      checked 
-        ? [...current, filter]
-        : current.filter(f => f !== filter)
+    this._filters.update((current) =>
+      checked ? [...current, filter] : current.filter((f) => f !== filter),
     );
   }
 }

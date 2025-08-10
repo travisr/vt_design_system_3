@@ -4,12 +4,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@venntier/design-system": [
-        "./dist/design-system"
-      ],
-      "@venntier/design-system/*": [
-        "./dist/design-system/*"
-      ]
+      "@venntier/design-system": ["./dist/design-system"],
+      "@venntier/design-system/*": ["./dist/design-system/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

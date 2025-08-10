@@ -97,7 +97,7 @@
 ## Summary
 ### ✅ No violations found - Angular 19/MD3 compliant
 
-*Generated: 2025-08-10 15:16:32*
+*Generated: 2025-08-10 15:47:07*
 
 ## 🎨 Custom Design System Compliance Audit
 
@@ -150,10 +150,10 @@ Check for these reusable layout utilities:
 Analyzing how well the codebase uses the design system:
 
 **Token Usage Statistics:**
-- Color tokens:      742 uses
+- Color tokens:      749 uses
 - Spacing tokens:      375 uses
 - Shape tokens:      127 uses
-- Typography tokens:      269 uses
+- Typography tokens:      270 uses
 
 **🎉 Excellent design system adoption!**
 
@@ -223,7 +223,7 @@ Analyzing how well the codebase uses the design system:
 
 Your codebase properly uses MD3 tokens and maintains separation of concerns.
 
-*Generated: 2025-08-10 15:16:33*
+*Generated: 2025-08-10 15:47:08*
 
 ## 🔍 ESLint Analysis
 
@@ -264,4 +264,4 @@ npm run audit:full
 
 **Review the sections above and run the quick fix commands to resolve issues.**
 
-*Generated: 2025-08-10 15:16:37*
+*Generated: 2025-08-10 15:47:11*

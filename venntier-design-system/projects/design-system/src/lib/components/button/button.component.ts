@@ -21,7 +21,7 @@ export type ButtonSize = 'small' | 'medium' | 'large';
       <ng-content></ng-content>
     </button>
   `,
-  styleUrl: './button.component.scss'
+  styleUrl: './button.component.scss',
 })
 export class VtButtonComponent {
   readonly variant = input<ButtonVariant>('primary');
@@ -29,7 +29,7 @@ export class VtButtonComponent {
   readonly disabled = input<boolean>(false);
   readonly type = input<'button' | 'submit' | 'reset'>('button');
   readonly fullWidth = input<boolean>(false);
-  
+
   readonly vtClick = output<MouseEvent>();
 
   buttonClasses() {
@@ -37,8 +37,10 @@ export class VtButtonComponent {
       'vt-button',
       `vt-button--${this.variant()}`,
       `vt-button--${this.size()}`,
-      this.fullWidth() ? 'vt-button--full-width' : ''
-    ].filter(Boolean).join(' ');
+      this.fullWidth() ? 'vt-button--full-width' : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
   }
 
   handleClick(event: MouseEvent) {

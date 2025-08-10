@@ -14,7 +14,8 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
       <demo-page-header
         title="Spacing & Layout"
         description="Consistent spacing system based on 8px grid for predictable layouts and visual rhythm."
-        [mdLink]="docLinks.LAYOUT">
+        [mdLink]="docLinks.LAYOUT"
+      >
       </demo-page-header>
 
       <mat-card>
@@ -25,7 +26,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         <mat-card-content>
           <div class="demo-flex demo-flex--column demo-flex--gap-sm">
             <div class="spacing-item">
-              <div class="spacing-visual" style="width: 4px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
+              <div
+                class="spacing-visual"
+                style="width: 4px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"
+              ></div>
               <div class="spacing-info">
                 <span class="spacing-name">4px</span>
                 <span class="spacing-token">--md-sys-spacing-4</span>
@@ -33,7 +37,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               </div>
             </div>
             <div class="spacing-item">
-              <div class="spacing-visual" style="width: 8px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
+              <div
+                class="spacing-visual"
+                style="width: 8px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"
+              ></div>
               <div class="spacing-info">
                 <span class="spacing-name">8px</span>
                 <span class="spacing-token">--md-sys-spacing-8</span>
@@ -41,7 +48,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               </div>
             </div>
             <div class="spacing-item">
-              <div class="spacing-visual" style="width: 12px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
+              <div
+                class="spacing-visual"
+                style="width: 12px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"
+              ></div>
               <div class="spacing-info">
                 <span class="spacing-name">12px</span>
                 <span class="spacing-token">--md-sys-spacing-12</span>
@@ -49,7 +59,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               </div>
             </div>
             <div class="spacing-item">
-              <div class="spacing-visual" style="width: 16px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
+              <div
+                class="spacing-visual"
+                style="width: 16px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"
+              ></div>
               <div class="spacing-info">
                 <span class="spacing-name">16px</span>
                 <span class="spacing-token">--md-sys-spacing-16</span>
@@ -57,7 +70,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               </div>
             </div>
             <div class="spacing-item">
-              <div class="spacing-visual" style="width: 24px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
+              <div
+                class="spacing-visual"
+                style="width: 24px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"
+              ></div>
               <div class="spacing-info">
                 <span class="spacing-name">24px</span>
                 <span class="spacing-token">--md-sys-spacing-24</span>
@@ -65,7 +81,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               </div>
             </div>
             <div class="spacing-item">
-              <div class="spacing-visual" style="width: 32px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
+              <div
+                class="spacing-visual"
+                style="width: 32px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"
+              ></div>
               <div class="spacing-info">
                 <span class="spacing-name">32px</span>
                 <span class="spacing-token">--md-sys-spacing-32</span>
@@ -73,7 +92,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               </div>
             </div>
             <div class="spacing-item">
-              <div class="spacing-visual" style="width: 48px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
+              <div
+                class="spacing-visual"
+                style="width: 48px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"
+              ></div>
               <div class="spacing-info">
                 <span class="spacing-name">48px</span>
                 <span class="spacing-token">--md-sys-spacing-48</span>
@@ -81,7 +103,10 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               </div>
             </div>
             <div class="spacing-item">
-              <div class="spacing-visual" style="width: 64px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"></div>
+              <div
+                class="spacing-visual"
+                style="width: 64px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary);"
+              ></div>
               <div class="spacing-info">
                 <span class="spacing-name">64px</span>
                 <span class="spacing-token">--md-sys-spacing-64</span>
@@ -99,13 +124,30 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </mat-card-header>
         <mat-card-content>
           <div class="layout-examples">
-            <div class="layout-demo" style="padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface);">
-              <h4 style="margin: 0 0 16px 0; color: var(--md-sys-color-on-surface);">Card Example (24px padding)</h4>
-              <div style="padding: 16px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 4px; background: var(--md-sys-color-surface-container); color: var(--md-sys-color-on-surface);">
-                <p style="margin: 0 0 8px 0; color: var(--md-sys-color-on-surface);">Content with 16px padding</p>
+            <div
+              class="layout-demo"
+              style="padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface);"
+            >
+              <h4 style="margin: 0 0 16px 0; color: var(--md-sys-color-on-surface);">
+                Card Example (24px padding)
+              </h4>
+              <div
+                style="padding: 16px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 4px; background: var(--md-sys-color-surface-container); color: var(--md-sys-color-on-surface);"
+              >
+                <p style="margin: 0 0 8px 0; color: var(--md-sys-color-on-surface);">
+                  Content with 16px padding
+                </p>
                 <div style="margin-top: 12px; display: flex; gap: 8px;">
-                  <button style="padding: 8px 16px; border: 1px solid var(--md-sys-color-outline); border-radius: 4px; background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-on-surface); cursor: pointer;">8px vertical</button>
-                  <button style="padding: 8px 16px; border: 1px solid var(--md-sys-color-outline); border-radius: 4px; background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-on-surface); cursor: pointer;">16px horizontal</button>
+                  <button
+                    style="padding: 8px 16px; border: 1px solid var(--md-sys-color-outline); border-radius: 4px; background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-on-surface); cursor: pointer;"
+                  >
+                    8px vertical
+                  </button>
+                  <button
+                    style="padding: 8px 16px; border: 1px solid var(--md-sys-color-outline); border-radius: 4px; background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-on-surface); cursor: pointer;"
+                  >
+                    16px horizontal
+                  </button>
                 </div>
               </div>
             </div>
@@ -120,23 +162,53 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </mat-card-header>
         <mat-card-content>
           <div class="grid-demo">
-            <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-bottom: 24px;">
-              @for (i of [1,2,3,4,5,6,7,8,9,10,11,12]; track i) {
-                <div style="background: var(--md-sys-color-surface-container-high); padding: 8px; text-align: center; font-size: 12px; border-radius: 4px; color: var(--md-sys-color-on-surface);">{{ i }}</div>
+            <div
+              style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-bottom: 24px;"
+            >
+              @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; track i) {
+                <div
+                  style="background: var(--md-sys-color-surface-container-high); padding: 8px; text-align: center; font-size: 12px; border-radius: 4px; color: var(--md-sys-color-on-surface);"
+                >
+                  {{ i }}
+                </div>
               }
             </div>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-              <div style="background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px;">
-                <h4 style="margin: 0 0 8px 0; color: var(--md-sys-color-on-surface);">1/3 Column</h4>
-                <p style="margin: 0; color: var(--md-sys-color-on-surface-variant); font-size: 14px;">24px gaps between columns</p>
+              <div
+                style="background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px;"
+              >
+                <h4 style="margin: 0 0 8px 0; color: var(--md-sys-color-on-surface);">
+                  1/3 Column
+                </h4>
+                <p
+                  style="margin: 0; color: var(--md-sys-color-on-surface-variant); font-size: 14px;"
+                >
+                  24px gaps between columns
+                </p>
               </div>
-              <div style="background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px;">
-                <h4 style="margin: 0 0 8px 0; color: var(--md-sys-color-on-surface);">1/3 Column</h4>
-                <p style="margin: 0; color: var(--md-sys-color-on-surface-variant); font-size: 14px;">24px gaps between columns</p>
+              <div
+                style="background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px;"
+              >
+                <h4 style="margin: 0 0 8px 0; color: var(--md-sys-color-on-surface);">
+                  1/3 Column
+                </h4>
+                <p
+                  style="margin: 0; color: var(--md-sys-color-on-surface-variant); font-size: 14px;"
+                >
+                  24px gaps between columns
+                </p>
               </div>
-              <div style="background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px;">
-                <h4 style="margin: 0 0 8px 0; color: var(--md-sys-color-on-surface);">1/3 Column</h4>
-                <p style="margin: 0; color: var(--md-sys-color-on-surface-variant); font-size: 14px;">24px gaps between columns</p>
+              <div
+                style="background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface); padding: 24px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px;"
+              >
+                <h4 style="margin: 0 0 8px 0; color: var(--md-sys-color-on-surface);">
+                  1/3 Column
+                </h4>
+                <p
+                  style="margin: 0; color: var(--md-sys-color-on-surface-variant); font-size: 14px;"
+                >
+                  24px gaps between columns
+                </p>
               </div>
             </div>
           </div>
@@ -170,7 +242,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </mat-card-content>
       </mat-card>
     </div>
-  `
+  `,
 })
 export class SpacingComponent {
   readonly docLinks = MD3_DOCS;

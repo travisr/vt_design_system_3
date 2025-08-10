@@ -40,7 +40,7 @@ import { VenntierThemeService } from '@venntier/design-system';
 
 export class AppComponent {
   constructor(private theme: VenntierThemeService) {}
-  
+
   toggleTheme() {
     this.theme.toggleTheme();
   }

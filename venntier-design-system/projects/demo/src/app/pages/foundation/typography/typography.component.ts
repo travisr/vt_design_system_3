@@ -13,7 +13,8 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
       <demo-page-header
         title="Typography"
         description="The Venntier Design System uses Inter as its primary typeface with a refined type scale for optimal readability."
-        [mdLink]="docLinks.TYPOGRAPHY">
+        [mdLink]="docLinks.TYPOGRAPHY"
+      >
       </demo-page-header>
 
       <section class="demo-section">
@@ -69,15 +70,24 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
           </div>
           <div class="typography-sample">
             <span class="type-label">Body Large · 16px · 400</span>
-            <p class="vt-typescale-body-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="vt-typescale-body-large">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
+            </p>
           </div>
           <div class="typography-sample">
             <span class="type-label">Body Medium · 14px · 400</span>
-            <p class="vt-typescale-body-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="vt-typescale-body-medium">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
+            </p>
           </div>
           <div class="typography-sample">
             <span class="type-label">Body Small · 12px · 400</span>
-            <p class="vt-typescale-body-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="vt-typescale-body-small">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
+            </p>
           </div>
           <div class="typography-sample">
             <span class="type-label">Label Large · 14px · 450</span>
@@ -94,7 +104,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
         </div>
       </section>
     </div>
-  `
+  `,
 })
 export class TypographyComponent {
   readonly docLinks = MD3_DOCS;

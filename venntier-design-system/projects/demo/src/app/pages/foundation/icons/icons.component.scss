@@ -162,7 +162,7 @@
   gap: var(--md-sys-spacing-12);
 
   mat-icon {
-    font-family: 'Material Icons', sans-serif;
+    font-family: var(--md-sys-typescale-icon-font, 'Material Icons'), sans-serif;
     color: var(--md-sys-color-on-surface-variant);
     cursor: pointer;
 

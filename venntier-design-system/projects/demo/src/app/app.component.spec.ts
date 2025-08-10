@@ -7,7 +7,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent, NoopAnimationsModule],
-      providers: [provideRouter([])]
+      providers: [provideRouter([])],
     }).compileComponents();
   });
 
@@ -26,7 +26,7 @@ describe('AppComponent', () => {
   it('should toggle theme when toggleTheme is called', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    
+
     expect(app.isDarkMode()).toBe(false);
     app.toggleTheme();
     expect(app.isDarkMode()).toBe(true);
