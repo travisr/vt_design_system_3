@@ -500,31 +500,123 @@
       }
     }
 
-    // MENU - Consistent with select dropdown
+    // MENU - Same pattern as sidenav but with white background
     .mat-mdc-menu-panel {
       --mat-menu-container-color: var(--md-sys-color-surface);
-      --mat-menu-container-shape: 8px;
-      --mat-menu-item-label-text-color: var(--md-sys-color-on-surface);
-      --mat-menu-item-hover-state-layer-color: var(--md-sys-color-hover);
+      --mat-menu-container-shape: var(--md-sys-shape-corner-small);
+      --mat-menu-item-label-text-color: var(--md-sys-color-on-surface-variant);
+      --mat-menu-item-hover-state-layer-color: transparent;
 
       border: 1px solid var(--md-sys-color-outline-variant);
-      border-radius: 8px;
-      background-color: var(--md-sys-color-surface);
-      padding: 4px 0;
+      border-radius: var(--md-sys-shape-corner-small);
+      background-color: var(--md-sys-color-surface); // White background
+      padding: var(--md-sys-spacing-1, 4px) var(--md-sys-spacing-2, 8px); // Add horizontal padding like sidenav
+      box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
+      min-width: 180px;
+      max-width: 280px;
+      overflow: hidden;
 
       .mat-mdc-menu-item {
-        font-size: 14px;
-        height: 40px;
-        padding: 0 16px;
-        color: var(--md-sys-color-on-surface);
+        // Use same dimensions as sidenav items
+        --mdc-list-list-item-container-height: var(--md-sys-spacing-8);
+        --mdc-list-list-item-label-text-size: var(--md-sys-typescale-body-medium-size);
+        --mdc-list-list-item-label-text-weight: var(--md-sys-typescale-body-medium-weight);
+        --mdc-list-list-item-leading-icon-size: var(--md-sys-spacing-4);
+        --mdc-list-list-item-trailing-icon-size: var(--md-sys-spacing-4);
 
-        &:hover {
-          background-color: var(--md-sys-color-hover);
+        height: var(--md-sys-spacing-8, 32px); // Same as sidenav
+        padding: 0 var(--md-sys-spacing-2, 8px); // Same as sidenav
+        margin: calc(var(--md-sys-spacing-1) / 2) 0; // Exact same as sidenav - very tight
+        border-radius: var(--md-sys-shape-corner-small); // Same as sidenav
+        color: var(--md-sys-color-on-surface-variant); // Same as sidenav
+        font-size: var(--md-sys-typescale-body-medium-size);
+        font-weight: var(--md-sys-typescale-body-medium-weight);
+        transition: background-color var(--md-sys-motion-hover);
+
+        // Disable Material's state layer
+        &::before {
+          opacity: 0;
         }
 
+        // Custom hover state - same as sidenav but more contained
+        &:hover:not([disabled]),
         &.mat-mdc-menu-item-highlighted {
           background-color: var(--md-sys-color-hover);
+          color: var(--md-sys-color-on-surface-variant);
         }
+
+        // Icon styling - same as sidenav
+        mat-icon {
+          font-size: 16px;
+          width: 16px;
+          height: 16px;
+          margin-right: 10px;
+          color: var(--md-sys-color-on-surface-variant);
+          transition: color var(--md-sys-motion-hover);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        // Text content - combined styling with overflow handling
+        .mat-mdc-menu-item-text {
+          display: flex;
+          align-items: center;
+          flex: 1;
+          color: inherit;
+          font-size: var(--md-sys-typescale-body-medium-size);
+          line-height: var(--md-sys-typescale-body-medium-line-height);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        // Trailing icon (chevron, etc.)
+        .mat-mdc-menu-item-submenu-trigger-icon {
+          font-size: var(--md-sys-spacing-4, 16px);
+          width: var(--md-sys-spacing-4, 16px);
+          height: var(--md-sys-spacing-4, 16px);
+          color: var(--md-sys-color-on-surface-variant);
+        }
+
+        // Disabled state
+        &[disabled] {
+          opacity: 0.38;
+          cursor: not-allowed;
+
+          mat-icon {
+            opacity: 0.38;
+          }
+        }
+
+        // Destructive actions (like delete) - keep error styling
+        &.mat-warn,
+        &[color='warn'] {
+          color: var(--md-sys-color-error);
+
+          mat-icon {
+            color: var(--md-sys-color-error);
+          }
+
+          &:hover {
+            background-color: var(--md-sys-color-error-container);
+            color: var(--md-sys-color-on-error-container);
+
+            mat-icon {
+              color: var(--md-sys-color-on-error-container);
+            }
+          }
+        }
+      }
+
+      // Menu dividers
+      .mat-mdc-menu-item-divider,
+      hr {
+        border-top: 1px solid var(--md-sys-color-outline-variant);
+        margin: var(--md-sys-spacing-4, 4px) 0;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
       }
     }
 

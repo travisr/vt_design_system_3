@@ -117,6 +117,7 @@ export class AppComponent {
         { label: 'Typography', path: 'typography', icon: 'text_fields' },
         { label: 'Colors & Themes', path: 'colors', icon: 'palette' },
         { label: 'Spacing & Layout', path: 'spacing', icon: 'space_bar' },
+        { label: 'Elevation & Depth', path: 'elevation', icon: 'layers' },
         { label: 'Motion', path: 'motion', icon: 'animation' },
         { label: 'Icons', path: 'icons', icon: 'emoji_symbols' },
       ],

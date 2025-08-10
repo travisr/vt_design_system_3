@@ -25,6 +25,13 @@ export const routes: Routes = [
           import('./pages/foundation/spacing/spacing.component').then((m) => m.SpacingComponent),
       },
       {
+        path: 'elevation',
+        loadComponent: () =>
+          import('./pages/foundation/elevation/elevation.component').then(
+            (m) => m.ElevationComponent,
+          ),
+      },
+      {
         path: 'motion',
         loadComponent: () =>
           import('./pages/foundation/motion/motion.component').then((m) => m.MotionComponent),
