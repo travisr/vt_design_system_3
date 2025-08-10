@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-08-10T00:08:25.251Z",
+  "totalIssues": 0,
+  "pageResults": [
+    {
+      "page": "Typography",
+      "url": "/foundation/typography",
+      "issues": [],
+      "warnings": [],
+      "totalIssues": 0,
+      "totalWarnings": 0
+    },
+    {
+      "page": "Colors",
+      "url": "/foundation/colors",
+      "issues": [],
+      "warnings": [
+        {
+          "selector": "p",
+          "element": "p.text-disabled",
+          "text": "Disabled text using --md-sys-color-disabled",
+          "color": "rgb(156, 163, 175)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        }
+      ],
+      "totalIssues": 0,
+      "totalWarnings": 1
+    },
+    {
+      "page": "Spacing",
+      "url": "/foundation/spacing",
+      "issues": [],
+      "warnings": [],
+      "totalIssues": 0,
+      "totalWarnings": 0
+    },
+    {
+      "page": "Motion",
+      "url": "/foundation/motion",
+      "issues": [],
+      "warnings": [],
+      "totalIssues": 0,
+      "totalWarnings": 0
+    },
+    {
+      "page": "Icons",
+      "url": "/foundation/icons",
+      "issues": [],
+      "warnings": [],
+      "totalIssues": 0,
+      "totalWarnings": 0
+    }
+  ]
+}

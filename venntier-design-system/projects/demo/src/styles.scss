@@ -8,11 +8,14 @@
 
 html {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   height: 100%;
   margin: 0;
+  padding: 0;
 
   // Override Angular defaults with higher specificity
   background-color: var(--md-sys-color-background);
@@ -21,6 +24,19 @@ body {
 
   // Apply the vt-theme class for component overrides
   @extend .vt-theme;
+}
+
+// Reset any Angular/Material default margins that might cause the 24px offset
+* {
+  box-sizing: border-box;
+}
+
+app-root,
+app-sidebar-demo {
+  margin: 0;
+  padding: 0;
+  display: block;
+  height: 100vh;
 }
 
 // Ensure body styles take precedence over Material defaults
@@ -98,4 +114,4 @@ mat-sidenav .mat-mdc-nav-list a.mat-mdc-list-item:not(.active):hover,
   }
 }
 
-// Toolbar positioning is handled in app.component.scss via flexbox
+// Demo layout styles - design system handles all component styling

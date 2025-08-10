@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-08-10T00:07:13.873Z",
+  "totalIssues": 0,
+  "pageResults": [
+    {
+      "page": "Typography",
+      "url": "/foundation/typography",
+      "issues": [],
+      "warnings": [],
+      "totalIssues": 0,
+      "totalWarnings": 0
+    },
+    {
+      "page": "Colors",
+      "url": "/foundation/colors",
+      "issues": [],
+      "warnings": [
+        {
+          "selector": "p",
+          "element": "p.text-disabled",
+          "text": "Disabled text using --md-sys-color-disabled",
+          "color": "rgb(156, 163, 175)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        }
+      ],
+      "totalIssues": 0,
+      "totalWarnings": 1
+    },
+    {
+      "page": "Spacing",
+      "url": "/foundation/spacing",
+      "issues": [],
+      "warnings": [
+        {
+          "selector": "span",
+          "element": "span.spacing-usage",
+          "text": "Micro spacing, icon padding",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": "span",
+          "element": "span.spacing-usage",
+          "text": "Base unit, tight spacing",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": "span",
+          "element": "span.spacing-usage",
+          "text": "Small elements",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": "span",
+          "element": "span.spacing-usage",
+          "text": "Component padding",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": "span",
+          "element": "span.spacing-usage",
+          "text": "Card padding, section gaps",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": "span",
+          "element": "span.spacing-usage",
+          "text": "Large sections",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": "span",
+          "element": "span.spacing-usage",
+          "text": "Page margins",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": "span",
+          "element": "span.spacing-usage",
+          "text": "Major sections",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": ".spacing-usage",
+          "element": "span.spacing-usage",
+          "text": "Micro spacing, icon padding",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": ".spacing-usage",
+          "element": "span.spacing-usage",
+          "text": "Base unit, tight spacing",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": ".spacing-usage",
+          "element": "span.spacing-usage",
+          "text": "Small elements",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": ".spacing-usage",
+          "element": "span.spacing-usage",
+          "text": "Component padding",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": ".spacing-usage",
+          "element": "span.spacing-usage",
+          "text": "Card padding, section gaps",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": ".spacing-usage",
+          "element": "span.spacing-usage",
+          "text": "Large sections",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": ".spacing-usage",
+          "element": "span.spacing-usage",
+          "text": "Page margins",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        },
+        {
+          "selector": ".spacing-usage",
+          "element": "span.spacing-usage",
+          "text": "Major sections",
+          "color": "rgb(209, 213, 219)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "issue": "Potentially low contrast color detected",
+          "severity": "medium"
+        }
+      ],
+      "totalIssues": 0,
+      "totalWarnings": 16
+    },
+    {
+      "page": "Motion",
+      "url": "/foundation/motion",
+      "issues": [],
+      "warnings": [],
+      "totalIssues": 0,
+      "totalWarnings": 0
+    },
+    {
+      "page": "Icons",
+      "url": "/foundation/icons",
+      "issues": [],
+      "warnings": [],
+      "totalIssues": 0,
+      "totalWarnings": 0
+    }
+  ]
+}

@@ -9,22 +9,69 @@
  * Usage: node dark-mode-visual-audit.js [--headless] [--url=http://localhost:4200]
  */
 
-// Try to find playwright in different locations
-let playwright;
-try {
-  playwright = require('playwright');
-} catch (e) {
-  try {
-    // Try relative to venntier-design-system directory
-    playwright = require('../../venntier-design-system/node_modules/playwright');
-  } catch (e2) {
-    console.error('Error: Playwright not found. Please install it with: npm install --save-dev playwright');
-    process.exit(1);
-  }
-}
-const { chromium } = playwright;
 const fs = require('fs');
 const path = require('path');
+
+// Function to find Angular workspace root
+function findAngularWorkspace(startDir = process.cwd()) {
+  let currentDir = path.resolve(startDir);
+  
+  while (currentDir !== path.parse(currentDir).root) {
+    // Check for angular.json (Angular workspace indicator)
+    if (fs.existsSync(path.join(currentDir, 'angular.json'))) {
+      return currentDir;
+    }
+    
+    // Check for package.json with Angular dependencies
+    const packageJsonPath = path.join(currentDir, 'package.json');
+    if (fs.existsSync(packageJsonPath)) {
+      try {
+        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+        if (packageJson.dependencies && Object.keys(packageJson.dependencies).some(dep => dep.startsWith('@angular'))) {
+          return currentDir;
+        }
+      } catch (e) {
+        // Continue searching
+      }
+    }
+    
+    // Move up one directory
+    currentDir = path.dirname(currentDir);
+  }
+  
+  // If no Angular workspace found, use current directory
+  return process.cwd();
+}
+
+// Auto-detect Angular workspace
+const WORKSPACE_ROOT = findAngularWorkspace();
+process.chdir(WORKSPACE_ROOT);
+console.log(`Working in Angular workspace: ${WORKSPACE_ROOT}`);
+
+// Try to find playwright in different locations
+let playwright;
+const possiblePaths = [
+  'playwright',
+  path.join(WORKSPACE_ROOT, 'node_modules', 'playwright'),
+  path.join(process.cwd(), 'node_modules', 'playwright'),
+  path.join(__dirname, '..', '..', 'venntier-design-system', 'node_modules', 'playwright')
+];
+
+for (const modulePath of possiblePaths) {
+  try {
+    playwright = require(modulePath);
+    break;
+  } catch (e) {
+    // Continue trying
+  }
+}
+
+if (!playwright) {
+  console.error('Error: Playwright not found. Please install it with: npm install --save-dev playwright');
+  process.exit(1);
+}
+
+const { chromium } = playwright;
 
 // Configuration
 const config = {
@@ -51,6 +98,12 @@ const pagesToTest = [
 
 // Utility functions
 function initReport() {
+  // Create audits directory if it doesn't exist
+  const auditsDir = path.dirname(config.reportFile);
+  if (!fs.existsSync(auditsDir)) {
+    fs.mkdirSync(auditsDir, { recursive: true });
+  }
+  
   // Create screenshot directory
   if (!fs.existsSync(config.screenshotDir)) {
     fs.mkdirSync(config.screenshotDir, { recursive: true });

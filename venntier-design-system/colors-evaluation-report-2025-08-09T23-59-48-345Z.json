@@ -1,0 +1,83 @@
+{
+  "timestamp": "2025-08-09T23-59-48-345Z",
+  "colorPalette": {
+    "primary": "#000",
+    "primaryContainer": "#f9f9f9",
+    "secondary": "#40414f",
+    "surface": "#fff",
+    "surfaceContainer": "#f9f9f9",
+    "background": "#fafafa",
+    "onSurface": "#202123",
+    "outline": "#d1d5db"
+  },
+  "visualHierarchy": {
+    "cardCount": 5,
+    "headingCount": 12,
+    "uniqueBackgrounds": [
+      "rgb(255, 255, 255)"
+    ],
+    "pageStructure": "content-wrapper"
+  },
+  "stylingCompliance": {
+    "harshWhiteElements": 11,
+    "cardPaddings": [
+      "24px"
+    ],
+    "fontWeights": [
+      "600",
+      "400",
+      "500",
+      "450"
+    ],
+    "colorSwatchCount": 160,
+    "hasProperSpacing": true,
+    "usesSystemColors": false
+  },
+  "usabilityMetrics": {
+    "potentialContrastIssues": 2,
+    "interactiveElements": 44,
+    "hasHoverStates": false,
+    "contentWidth": 1440,
+    "usesModernLayout": null,
+    "scrollHeight": 900
+  },
+  "assessment": {
+    "aesthetic": {
+      "score": 2,
+      "issues": [
+        "Too many harsh white backgrounds - use softer tones like #fafafa",
+        "Insufficient visual hierarchy through background variations"
+      ],
+      "recommendations": [
+        "Use #fafafa for body backgrounds instead of harsh white",
+        "Implement subtle background hierarchy: body (#fafafa) → cards (#ffffff) → inputs (#f9f9f9)",
+        "Consider adding subtle shadows or borders instead of pure elevation"
+      ]
+    },
+    "styling": {
+      "score": 3,
+      "issues": [
+        "Not using Material Design 3 system color tokens"
+      ],
+      "recommendations": [
+        "Reduce font weights: Display 200-300, Body 400, Labels 400-450",
+        "Ensure all colors use MD3 tokens (--md-sys-color-*)",
+        "Implement 8px spacing grid throughout",
+        "Use monochromatic interaction states (grays only)"
+      ]
+    },
+    "usability": {
+      "score": 4,
+      "issues": [
+        "Missing hover states on interactive elements"
+      ],
+      "recommendations": [
+        "Add subtle hover states with opacity changes",
+        "Ensure 4.5:1 contrast ratio for all text",
+        "Implement focus indicators for keyboard navigation",
+        "Test with screen readers for accessibility compliance"
+      ]
+    }
+  },
+  "overallScore": "3.0"
+}

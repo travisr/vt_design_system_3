@@ -16,8 +16,8 @@ model: sonnet
 ## Run the audit
 
 !bash -lc '
-# Run the audit script with the provided arguments
-.claude/scripts/ng-audit.sh "${ARGUMENTS:-.}"
+# Find and run the script (it auto-detects the Angular workspace)
+find . ../.. -name "ng-audit.sh" -path "*/.claude/scripts/*" 2>/dev/null | head -1 | xargs -I {} bash {} "${ARGUMENTS:-.}"
 '
 
 ## Your task

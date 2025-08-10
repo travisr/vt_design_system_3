@@ -45,7 +45,11 @@
 ## 📝 MEDIUM: Internal Material CSS selectors
 
 **Impact**: Will break when Material updates internal structure
-**✅ None found**
+**❌ Found internal Material selectors:**
+```scss
+/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/projects/design-system/src/styles/components/_button.scss:    .mat-mdc-button-persistent-ripple,
+/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/projects/design-system/src/styles/components/_button.scss:    .mat-mdc-button-touch-target {
+```
 
 ## 📝 MEDIUM: NgModule usage
 
@@ -85,7 +89,12 @@
 ## 🔒 HIGH: Security Concerns
 
 **Impact**: XSS vulnerabilities, code injection risks
-**✅ None found**
+**⚠️ Direct innerHTML manipulation:**
+```
+/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/inspect-demo.js:        innerHTML: button.innerHTML,
+/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/inspect-demo.js:    console.log('Button HTML:', buttonInfo?.innerHTML);
+```
+**Fix**: Use Angular template binding or sanitize content
 
 ## 💡 LOW: Hard-coded URLs
 
@@ -95,9 +104,13 @@
 ---
 
 ## Summary
-### ✅ No violations found - Angular 19/MD3 compliant
+### Found 2 violation type(s)
 
-*Generated: 2025-08-09 18:15:43*
+**Available migrations:**
+- Control flow: `ng generate @angular/core:control-flow`
+- Standalone: `ng generate @angular/core:standalone`
+
+*Generated: 2025-08-09 20:15:18*
 
 ## 🎨 Custom Design System Compliance Audit
 
@@ -122,7 +135,7 @@
 **Not Allowed**: Colors, typography, borders, shadows (use tokens instead)
 
 **Demo Utilities Analysis:**
-- Layout utilities: 53 ✅
+- Layout utilities: 150 ✅
 - Visual styles: 16 ⚠️ Should use tokens
 
 ## 📏 Spacing Consistency
@@ -150,10 +163,10 @@ Check for these reusable layout utilities:
 Analyzing how well the codebase uses the design system:
 
 **Token Usage Statistics:**
-- Color tokens:      953 uses
-- Spacing tokens:      349 uses
-- Shape tokens:      172 uses
-- Typography tokens:      310 uses
+- Color tokens:      727 uses
+- Spacing tokens:      337 uses
+- Shape tokens:      125 uses
+- Typography tokens:      261 uses
 
 **🎉 Excellent design system adoption!**
 
@@ -223,7 +236,7 @@ Analyzing how well the codebase uses the design system:
 
 Your codebase properly uses MD3 tokens and maintains separation of concerns.
 
-*Generated: 2025-08-09 18:15:45*
+*Generated: 2025-08-09 20:15:19*
 
 ## 🔍 ESLint Analysis
 
@@ -269,4 +282,4 @@ npm run audit:full
 
 **Review the sections above and run the quick fix commands to resolve issues.**
 
-*Generated: 2025-08-09 18:15:52*
+*Generated: 2025-08-09 20:15:24*

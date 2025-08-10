@@ -3,7 +3,35 @@
 # Full Audit Script - Combines custom and industry tools
 # Usage: ./full-audit.sh [project-path]
 
-PROJECT_PATH="${1:-.}"
+# Function to find Angular workspace root
+find_angular_workspace() {
+    local search_dir="${1:-.}"
+    local current_dir="$(cd "$search_dir" && pwd)"
+    
+    while [ "$current_dir" != "/" ]; do
+        # Check for angular.json (Angular workspace indicator)
+        if [ -f "$current_dir/angular.json" ]; then
+            echo "$current_dir"
+            return 0
+        fi
+        
+        # Check for package.json with Angular dependencies
+        if [ -f "$current_dir/package.json" ] && grep -q "@angular" "$current_dir/package.json" 2>/dev/null; then
+            echo "$current_dir"
+            return 0
+        fi
+        
+        # Move up one directory
+        current_dir="$(dirname "$current_dir")"
+    done
+    
+    # If no Angular workspace found, use the provided directory
+    echo "$(cd "$search_dir" && pwd)"
+    return 1
+}
+
+# Auto-detect Angular workspace
+PROJECT_PATH=$(find_angular_workspace "${1:-.}")
 cd "$PROJECT_PATH" || exit 1
 
 # Create audits directory if it doesn't exist
@@ -38,9 +66,9 @@ echo -e "${CYAN}========================================${NC}"
 # SECTION 1: Custom Script Audits
 # =============================================================================
 echo -e "\n${MAGENTA}[1/5] Running Custom Angular 19 Audit...${NC}"
-SCRIPT_DIR="$(dirname "$0")"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 if [ -f "$SCRIPT_DIR/ng-audit.sh" ]; then
-    "$SCRIPT_DIR/ng-audit.sh" "$PROJECT_PATH" > /dev/null 2>&1
+    "$SCRIPT_DIR/ng-audit.sh" . > /dev/null 2>&1
     if [ -f "audits/ng-audit-report.md" ]; then
         echo "## 📋 Custom Angular 19 Compliance Audit" >> "$REPORT_FILE"
         echo "" >> "$REPORT_FILE"
@@ -54,7 +82,7 @@ fi
 
 echo -e "\n${MAGENTA}[2/5] Running Custom Design System Audit...${NC}"
 if [ -f "$SCRIPT_DIR/ds-audit.sh" ]; then
-    "$SCRIPT_DIR/ds-audit.sh" "$PROJECT_PATH" > /dev/null 2>&1
+    "$SCRIPT_DIR/ds-audit.sh" . > /dev/null 2>&1
     if [ -f "audits/ds-audit-report.md" ]; then
         echo "## 🎨 Custom Design System Compliance Audit" >> "$REPORT_FILE"
         echo "" >> "$REPORT_FILE"

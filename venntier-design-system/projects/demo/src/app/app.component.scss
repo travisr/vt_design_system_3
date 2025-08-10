@@ -5,6 +5,11 @@
   height: 100vh;
   display: flex;
   overflow: hidden;
+  
+  // Override Material's default padding on the container itself
+  &.mat-drawer-container {
+    padding: 0;
+  }
 }
 
 // Sidenav content container needs proper flex layout
@@ -14,6 +19,11 @@ mat-sidenav-content {
   flex-direction: column;
   height: 100vh;
   overflow: hidden; // Prevent the container itself from scrolling
+
+  // Override Material's default 24px padding
+  &.mat-drawer-content {
+    padding: 0;
+  }
 }
 
 // Toolbar should not scroll

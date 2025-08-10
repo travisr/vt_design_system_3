@@ -22,7 +22,7 @@
 **Not Allowed**: Colors, typography, borders, shadows (use tokens instead)
 
 **Demo Utilities Analysis:**
-- Layout utilities: 53 ✅
+- Layout utilities: 150 ✅
 - Visual styles: 16 ⚠️ Should use tokens
 
 ## 📏 Spacing Consistency
@@ -50,10 +50,10 @@ Check for these reusable layout utilities:
 Analyzing how well the codebase uses the design system:
 
 **Token Usage Statistics:**
-- Color tokens:      953 uses
-- Spacing tokens:      349 uses
-- Shape tokens:      172 uses
-- Typography tokens:      310 uses
+- Color tokens:      727 uses
+- Spacing tokens:      337 uses
+- Shape tokens:      125 uses
+- Typography tokens:      261 uses
 
 **🎉 Excellent design system adoption!**
 
@@ -123,4 +123,4 @@ Analyzing how well the codebase uses the design system:
 
 Your codebase properly uses MD3 tokens and maintains separation of concerns.
 
-*Generated: 2025-08-09 18:15:45*
+*Generated: 2025-08-09 20:15:19*

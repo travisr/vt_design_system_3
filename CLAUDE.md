@@ -220,3 +220,4 @@ Based on `REFINEMENTS_NEEDED.md` analysis, critical improvements needed:
 ## Best Practices
 
 - Always use md tokens instead of hard coded values
+- never use !important per md3 best practices

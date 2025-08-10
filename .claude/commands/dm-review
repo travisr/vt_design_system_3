@@ -54,20 +54,8 @@ echo -e "${CYAN}🌙 Dark Mode Visual Review${NC}"
 echo -e "${CYAN}================================${NC}"
 echo ""
 
-# Check if we're in the right directory
-if [ ! -f "package.json" ]; then
-  echo -e "${YELLOW}⚠️  Not in a project directory. Searching for venntier-design-system...${NC}"
-  
-  # Try to find the project directory
-  if [ -d "venntier-design-system" ]; then
-    cd venntier-design-system
-  elif [ -d "../venntier-design-system" ]; then
-    cd ../venntier-design-system
-  else
-    echo -e "${RED}❌ Could not find venntier-design-system directory${NC}"
-    exit 1
-  fi
-fi
+# The dark-mode-visual-audit.js script auto-detects the Angular workspace
+# No need to change directories
 
 # Check if Playwright is installed
 if ! npm list playwright >/dev/null 2>&1; then
@@ -121,13 +109,12 @@ if [ "$BASE_URL" != "http://localhost:4200" ]; then
   PLAYWRIGHT_ARGS="$PLAYWRIGHT_ARGS --url=$BASE_URL"
 fi
 
-# Get the script directory
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-AUDIT_SCRIPT="$SCRIPT_DIR/../scripts/dark-mode-visual-audit.js"
+# Find the dark mode audit script
+AUDIT_SCRIPT=$(find . ../.. -name "dark-mode-visual-audit.js" -path "*/.claude/scripts/*" 2>/dev/null | head -1)
 
 # Check if audit script exists
-if [ ! -f "$AUDIT_SCRIPT" ]; then
-  echo -e "${RED}❌ Dark mode audit script not found at: $AUDIT_SCRIPT${NC}"
+if [ -z "$AUDIT_SCRIPT" ]; then
+  echo -e "${RED}❌ Dark mode audit script not found${NC}"
   exit 1
 fi
 

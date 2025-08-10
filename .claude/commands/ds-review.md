@@ -16,8 +16,8 @@ model: sonnet
 ## Run the audit
 
 !bash -lc '
-# Run the design system audit script with the provided arguments
-.claude/scripts/ds-audit.sh "${ARGUMENTS:-.}"
+# Find and run the script (it auto-detects the Angular workspace)
+find . ../.. -name "ds-audit.sh" -path "*/.claude/scripts/*" 2>/dev/null | head -1 | xargs -I {} bash {} "${ARGUMENTS:-.}"
 '
 
 ## Your task

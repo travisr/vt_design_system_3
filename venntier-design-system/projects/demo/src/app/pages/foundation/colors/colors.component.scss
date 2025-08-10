@@ -112,13 +112,13 @@
 .swatch-value {
   font-size: var(--md-sys-typescale-label-small-size, 12px);
   font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--md-sys-color-on-surface); /* Changed: was on-surface-variant (#565869), now on-surface (#202123) for better contrast */
 }
 
 .swatch-token {
   font-size: var(--md-sys-typescale-label-small-size, 11px);
   font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
-  color: var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-surface-variant); /* Changed: was outline (#d1d5db), now on-surface-variant (#565869) for better contrast */
 }
 
 // Gray scale grid
@@ -157,12 +157,12 @@
 .gray-value {
   font-size: var(--md-sys-typescale-label-small-size, 11px);
   font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--md-sys-color-on-surface); /* Changed: was on-surface-variant (#565869), now on-surface (#202123) for better contrast */
 }
 
 .gray-usage {
   font-size: var(--md-sys-typescale-label-small-size, 11px);
-  color: var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-surface-variant); /* Changed: was outline (#d1d5db), now on-surface-variant (#565869) for better contrast */
 }
 
 // Interactive states demo
@@ -188,7 +188,7 @@
 
 .state-label {
   font-size: var(--md-sys-typescale-label-small-size, 11px);
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--md-sys-color-on-surface-variant); /* This is fine - #565869 has adequate contrast 5.7:1 */
 }
 
 // Simulated state classes - higher specificity instead of !important
@@ -256,7 +256,7 @@
 
 .hierarchy-label {
   font-size: var(--md-sys-typescale-label-medium-size, 12px);
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--md-sys-color-on-surface-variant); /* This is fine - #565869 has adequate contrast 5.7:1 */
 }
 
 .text-examples {

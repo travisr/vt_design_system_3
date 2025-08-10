@@ -19,11 +19,16 @@
     }
   }
 
-  // Toolbar inside sidenav-content
+  // Toolbar inside sidenav-content - ensure no extra spacing
   mat-sidenav-content mat-toolbar,
   mat-sidenav-content .mat-mdc-toolbar,
   .mat-drawer-content mat-toolbar,
   .mat-drawer-content .mat-mdc-toolbar {
+    margin: 0;
+    padding: 0 var(--md-sys-spacing-24);
+    position: relative;
+    top: 0;
+
     // Typography for toolbar title
     h1,
     h2,
@@ -43,6 +48,14 @@
     // Button alignment in toolbar
     button[mat-icon-button] {
       margin: 0 var(--md-sys-spacing-4);
+    }
+  }
+
+  // Ensure headers inside sidenav content have no extra spacing
+  mat-sidenav-content {
+    header {
+      padding: 0;
+      margin: 0;
     }
   }
 

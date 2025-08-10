@@ -64,11 +64,11 @@
 
   // BUTTONS - Use CSS custom properties and higher specificity
   .vt-theme {
+    // Regular buttons (not icon buttons)
     .mat-mdc-button,
     .mat-mdc-raised-button,
     .mat-mdc-flat-button,
-    .mat-mdc-stroked-button,
-    .mat-mdc-icon-button {
+    .mat-mdc-stroked-button {
       --mdc-text-button-container-height: 40px;
       --mdc-filled-button-container-height: 40px;
       --mdc-outlined-button-container-height: 40px;
@@ -91,6 +91,42 @@
       --mdc-ripple-focus-opacity: 0;
       --mdc-ripple-pressed-opacity: 0;
     }
+    
+    // Icon buttons have different specs - must be square
+    .mat-mdc-icon-button {
+      // Override the container size to be square
+      --mdc-icon-button-state-layer-size: 48px;
+      --mdc-icon-button-icon-size: 20px;
+      
+      width: 48px;
+      height: 48px;
+      padding: 14px; // Centers a 20px icon in 48px button
+      transition: all 0.15s ease;
+      box-shadow: none;
+      border-radius: 50%;
+      
+      // Disable ripples using CSS variables
+      --mat-ripple-color: transparent;
+      --mdc-ripple-color: transparent;
+      --mdc-ripple-hover-opacity: 0;
+      --mdc-ripple-focus-opacity: 0;
+      --mdc-ripple-pressed-opacity: 0;
+    }
+  }
+
+  // Icon button specific overrides with higher specificity
+  // Using button element selector for maximum specificity
+  .vt-theme button.mat-mdc-icon-button,
+  body button.mat-mdc-icon-button,
+  button.mat-mdc-icon-button.mat-mdc-button-base {
+    // Override the container size to be square
+    --mdc-icon-button-state-layer-size: 48px;
+    --mdc-icon-button-icon-size: 20px;
+    
+    width: 48px;
+    height: 48px;
+    padding: 14px; // Centers a 20px icon in 48px button
+    border-radius: 50%;
   }
 
   // Primary button (green CTA) - Use CSS custom properties

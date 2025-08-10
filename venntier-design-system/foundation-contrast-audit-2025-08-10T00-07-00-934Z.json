@@ -1,0 +1,41 @@
+{
+  "timestamp": "2025-08-10T00:06:49.909Z",
+  "totalIssues": 0,
+  "pageResults": [
+    {
+      "page": "Typography",
+      "url": "/foundation/typography",
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object.",
+      "issues": [],
+      "warnings": []
+    },
+    {
+      "page": "Colors",
+      "url": "/foundation/colors",
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object.",
+      "issues": [],
+      "warnings": []
+    },
+    {
+      "page": "Spacing",
+      "url": "/foundation/spacing",
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object.",
+      "issues": [],
+      "warnings": []
+    },
+    {
+      "page": "Motion",
+      "url": "/foundation/motion",
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object.",
+      "issues": [],
+      "warnings": []
+    },
+    {
+      "page": "Icons",
+      "url": "/foundation/icons",
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object.",
+      "issues": [],
+      "warnings": []
+    }
+  ]
+}

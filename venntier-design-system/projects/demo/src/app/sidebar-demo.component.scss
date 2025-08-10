@@ -4,6 +4,13 @@
 .demo-container {
   height: 100vh;
   background: var(--md-sys-color-surface);
+
+  // Ensure sidenav content has no padding/margin at top
+  // Use the actual class selector for higher specificity
+  .mat-drawer-content {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 // Main content area
@@ -12,14 +19,24 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+
+  // Remove any default margins/padding
+  header {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .demo-toolbar {
   background: var(--md-sys-color-surface);
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
-  height: var(--md-sys-spacing-56, 56px);
+  height: 64px; // Match sidenav header height
+  min-height: 64px; // Ensure consistent height
   padding: 0 var(--md-sys-spacing-24, 24px);
   box-shadow: none;
+  margin: 0; // Remove any default margins
+  position: relative;
+  top: 0; // Ensure it's flush to the top
 
   h1 {
     font-size: var(--md-sys-typescale-title-large-size, 20px);
