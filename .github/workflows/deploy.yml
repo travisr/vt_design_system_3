@@ -99,7 +99,6 @@ jobs:
         id: upload-demo
         uses: actions/upload-pages-artifact@v3
         with:
-          name: demo-app
           path: venntier-design-system/dist/demo/browser
 
   # Build and push container images
@@ -155,5 +154,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: demo-app
