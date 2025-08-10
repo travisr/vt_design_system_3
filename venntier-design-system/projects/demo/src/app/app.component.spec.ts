@@ -38,7 +38,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.vt-sidenav-logo span')?.textContent).toContain('Venntier DS');
+    expect(compiled.querySelector('.vt-sidenav-logo span')?.textContent).toContain('Venntier');
   });
 
   it('should have default activeSection set to typography', () => {

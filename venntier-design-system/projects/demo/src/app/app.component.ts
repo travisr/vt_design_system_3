@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { VenntierThemeService } from '@venntier/design-system';
+import { VenntierLogoComponent } from './components/venntier-logo.component';
 
 interface NavSection {
   title: string;
@@ -34,6 +35,7 @@ interface NavItem {
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
+    VenntierLogoComponent,
   ],
   template: `
     <mat-sidenav-container class="demo-container vt-theme">
@@ -42,8 +44,8 @@ interface NavItem {
         <nav role="navigation" aria-label="Main navigation">
           <div class="vt-sidenav-header">
             <div class="vt-sidenav-logo">
-              <mat-icon>layers</mat-icon>
-              <span>Venntier DS</span>
+              <app-venntier-logo [size]="28"></app-venntier-logo>
+              <span>Venntier</span>
             </div>
           </div>
 
