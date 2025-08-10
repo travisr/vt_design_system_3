@@ -91,7 +91,7 @@ jobs:
       - name: Build demo app
         run: |
           cd venntier-design-system
-          npm run build:demo -- --base-href=/vt_design_system_3/
+          npm run build:demo:pages
         env:
           NODE_OPTIONS: --max-old-space-size=4096
 
