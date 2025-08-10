@@ -9,6 +9,7 @@ Both the design system library and demo application have been successfully built
 ## 📦 Design System Library
 
 ### Package Details
+
 - **Name**: `@venntier/design-system`
 - **Version**: 0.0.1
 - **Package Size**: 28.0 kB (compressed)
@@ -17,6 +18,7 @@ Both the design system library and demo application have been successfully built
 - **NPM Package**: `venntier-design-system-0.0.1.tgz`
 
 ### Build Output
+
 ```
 ✔ Compiling with Angular sources in Ivy partial compilation mode
 ✔ Writing FESM bundles
@@ -26,6 +28,7 @@ Both the design system library and demo application have been successfully built
 ```
 
 ### Package Contents
+
 - **JavaScript**: FESM2022 module format
 - **TypeScript Definitions**: Full type support
 - **SCSS Tokens**: Complete MD3 token system
@@ -40,12 +43,14 @@ Both the design system library and demo application have been successfully built
 ## 🎨 Demo Application
 
 ### Build Statistics
+
 - **Initial Bundle**: 779.68 kB (161.53 kB compressed)
 - **Lazy Chunks**: 20+ route-based code splits
 - **CSS**: 195.48 kB (16.97 kB compressed)
 - **Location**: `dist/demo/browser/`
 
 ### Features Demonstrated
+
 - ✅ All Material Design 3 components
 - ✅ Light/Dark theme switching
 - ✅ Responsive layouts
@@ -58,11 +63,13 @@ Both the design system library and demo application have been successfully built
 ### Installing the Library
 
 #### From NPM Package
+
 ```bash
 npm install ./dist/design-system/venntier-design-system-0.0.1.tgz
 ```
 
 #### From GitHub Package Registry (when configured)
+
 ```bash
 npm install @venntier/design-system
 ```
@@ -70,28 +77,33 @@ npm install @venntier/design-system
 ### Using in Angular Application
 
 1. **Import the theme in your styles.scss**:
+
 ```scss
 @use '@venntier/design-system/styles/venntier-theme';
 ```
 
 2. **Import the theme service**:
+
 ```typescript
 import { VenntierThemeService } from '@venntier/design-system';
 ```
 
 3. **Apply theme class to body**:
+
 ```html
-<body class="vt-theme">
+<body class="vt-theme"></body>
 ```
 
 ### Serving the Demo
 
 #### Development Mode
+
 ```bash
 npm run dev
 ```
 
 #### Production Preview
+
 ```bash
 npx http-server dist/demo/browser -p 8080
 ```
@@ -99,6 +111,7 @@ npx http-server dist/demo/browser -p 8080
 ## 📊 Quality Metrics
 
 ### Audit Results
+
 - **Angular 19+ Compliance**: ✅ PASSED
 - **Material Design 3**: ✅ PASSED
 - **Design System Tokens**: ✅ 100% usage
@@ -106,6 +119,7 @@ npx http-server dist/demo/browser -p 8080
 - **Performance**: ✅ Lazy loading implemented
 
 ### Bundle Analysis
+
 - **Tree-shaking**: Enabled
 - **Code Splitting**: Route-based lazy loading
 - **CSS Optimization**: Token-based theming reduces duplication
@@ -125,6 +139,12 @@ npm run build:demo
 
 # Development server (library + demo)
 npm run dev
+
+# Docker commands (optional - for production testing)
+npm run docker:dev      # Build and run in container
+npm run docker:build    # Build Docker image only
+npm run docker:run      # Run existing Docker image
+npm run docker:clean    # Remove local Docker image
 
 # Run audits
 npm run audit:full
@@ -150,4 +170,4 @@ cd dist/design-system && npm pack
 
 ---
 
-*Build completed successfully with zero errors and full Angular 19 / Material Design 3 compliance.*
+_Build completed successfully with zero errors and full Angular 19 / Material Design 3 compliance._

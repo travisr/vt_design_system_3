@@ -1,0 +1,163 @@
+name: Cleanup Old Resources
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  cleanup-containers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old container images
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            
+            // Package names to clean up
+            const packages = [
+              `${repo}/demo`,
+              `${repo}/theme-demo`
+            ];
+            
+            for (const packageName of packages) {
+              try {
+                console.log(`Cleaning up package: ${packageName}`);
+                
+                // Get all versions of the package
+                const { data: versions } = await github.rest.packages.getAllPackageVersionsForPackageOwnedByOrg({
+                  package_type: 'container',
+                  package_name: packageName,
+                  org: owner,
+                  per_page: 100
+                });
+                
+                console.log(`Found ${versions.length} versions for ${packageName}`);
+                
+                // Keep the 10 most recent versions and delete the rest
+                const versionsToDelete = versions
+                  .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                  .slice(10);
+                
+                console.log(`Will delete ${versionsToDelete.length} old versions`);
+                
+                for (const version of versionsToDelete) {
+                  try {
+                    await github.rest.packages.deletePackageVersionForOrg({
+                      package_type: 'container',
+                      package_name: packageName,
+                      org: owner,
+                      package_version_id: version.id
+                    });
+                    console.log(`Deleted version ${version.id} (${version.metadata?.container?.tags?.join(', ') || 'untagged'})`);
+                  } catch (error) {
+                    console.log(`Failed to delete version ${version.id}: ${error.message}`);
+                  }
+                }
+                
+                // Also clean up untagged images older than 7 days
+                const untaggedVersions = versions.filter(v => 
+                  (!v.metadata?.container?.tags || v.metadata.container.tags.length === 0) &&
+                  new Date(v.created_at) < new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+                );
+                
+                console.log(`Found ${untaggedVersions.length} untagged versions older than 7 days`);
+                
+                for (const version of untaggedVersions) {
+                  try {
+                    await github.rest.packages.deletePackageVersionForOrg({
+                      package_type: 'container',
+                      package_name: packageName,
+                      org: owner,
+                      package_version_id: version.id
+                    });
+                    console.log(`Deleted untagged version ${version.id}`);
+                  } catch (error) {
+                    console.log(`Failed to delete untagged version ${version.id}: ${error.message}`);
+                  }
+                }
+                
+              } catch (error) {
+                console.log(`Error processing package ${packageName}: ${error.message}`);
+              }
+            }
+
+  cleanup-preview-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Clean up old preview deployments
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            
+            try {
+              // Get all environments
+              const { data: environments } = await github.rest.repos.getAllEnvironments({
+                owner,
+                repo
+              });
+              
+              console.log(`Found ${environments.environments.length} environments`);
+              
+              // Find preview environments
+              const previewEnvs = environments.environments.filter(env => 
+                env.name.startsWith('preview-pr-')
+              );
+              
+              console.log(`Found ${previewEnvs.length} preview environments`);
+              
+              for (const env of previewEnvs) {
+                const prNumber = env.name.replace('preview-pr-', '');
+                
+                try {
+                  // Check if PR still exists and is open
+                  const { data: pr } = await github.rest.pulls.get({
+                    owner,
+                    repo,
+                    pull_number: parseInt(prNumber)
+                  });
+                  
+                  if (pr.state === 'closed') {
+                    console.log(`PR #${prNumber} is closed, cleaning up environment`);
+                    
+                    await github.rest.repos.deleteAnEnvironment({
+                      owner,
+                      repo,
+                      environment_name: env.name
+                    });
+                    
+                    console.log(`Deleted environment: ${env.name}`);
+                  }
+                } catch (error) {
+                  if (error.status === 404) {
+                    console.log(`PR #${prNumber} not found, cleaning up environment`);
+                    
+                    await github.rest.repos.deleteAnEnvironment({
+                      owner,
+                      repo,
+                      environment_name: env.name
+                    });
+                    
+                    console.log(`Deleted environment: ${env.name}`);
+                  } else {
+                    console.log(`Error checking PR #${prNumber}: ${error.message}`);
+                  }
+                }
+              }
+            } catch (error) {
+              console.log(`Error during cleanup: ${error.message}`);
+            }

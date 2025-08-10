@@ -1,0 +1,214 @@
+name: Preview Deployment
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  packages: write
+  pull-requests: write
+  deployments: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME_DEMO: ${{ github.repository }}/demo
+  IMAGE_NAME_THEME: ${{ github.repository }}/theme-demo
+
+jobs:
+  # Build and deploy preview
+  preview-deploy:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    environment:
+      name: preview-pr-${{ github.event.number }}
+      url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.number }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: venntier-design-system/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd venntier-design-system
+          npm ci
+
+      - name: Build demo with PR base href
+        run: |
+          cd venntier-design-system
+          # Build with custom base href for PR preview
+          npx ng build demo --configuration=production --base-href="/vt_design_system_3/pr-${{ github.event.number }}/"
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Create preview directory structure
+        run: |
+          mkdir -p preview-site/pr-${{ github.event.number }}
+          cp -r venntier-design-system/dist/demo/browser/* preview-site/pr-${{ github.event.number }}/
+          
+          # Create index.html that redirects to the PR
+          cat > preview-site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Preview Deployments</title>
+            <meta charset="utf-8">
+            <style>
+              body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 40px; }
+              .pr-link { display: block; padding: 10px; margin: 10px 0; background: #f6f8fa; border-radius: 6px; text-decoration: none; color: #24292f; }
+              .pr-link:hover { background: #eaeef2; }
+            </style>
+          </head>
+          <body>
+            <h1>Preview Deployments</h1>
+            <p>Available preview deployments:</p>
+            <a href="./pr-${{ github.event.number }}/" class="pr-link">
+              PR #${{ github.event.number }}: ${{ github.event.pull_request.title }}
+            </a>
+          </body>
+          </html>
+          EOF
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./preview-site
+          destination_dir: .
+          keep_files: true
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push preview container
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: venntier-design-system/Dockerfile
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_DEMO }}:pr-${{ github.event.number }}
+          labels: |
+            org.opencontainers.image.title=Venntier Design System Demo (Preview)
+            org.opencontainers.image.description=Preview deployment for PR #${{ github.event.number }}
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.version=pr-${{ github.event.number }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Comment PR with preview links
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.issue.number;
+            const repoName = context.repo.repo;
+            const owner = context.repo.owner;
+            
+            const previewUrl = `https://${owner}.github.io/${repoName}/pr-${prNumber}/`;
+            const containerImage = `ghcr.io/${owner}/${repoName}/demo:pr-${prNumber}`;
+            
+            const comment = `## 🚀 Preview Deployment Ready!
+            
+            Your changes have been deployed to a preview environment:
+            
+            ### 📱 Live Preview
+            🔗 **[View Demo App](${previewUrl})**
+            
+            ### 🐳 Container Image
+            \`\`\`bash
+            docker pull ${containerImage}
+            docker run -p 8080:80 ${containerImage}
+            \`\`\`
+            
+            ### 📊 Deployment Info
+            - **Commit**: \`${context.sha.substring(0, 7)}\`
+            - **Environment**: \`preview-pr-${prNumber}\`
+            - **Updated**: ${new Date().toISOString()}
+            
+            > This preview will be automatically cleaned up when the PR is closed.`;
+            
+            // Check if we already commented
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            
+            const existingComment = comments.find(comment => 
+              comment.user.login === 'github-actions[bot]' && 
+              comment.body.includes('🚀 Preview Deployment Ready!')
+            );
+            
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body: comment
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: comment
+              });
+            }
+
+  # Cleanup preview when PR is closed
+  preview-cleanup:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete preview environment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.issue.number;
+            
+            // Delete the environment
+            try {
+              await github.rest.repos.deleteAnEnvironment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                environment_name: `preview-pr-${prNumber}`
+              });
+              console.log(`Deleted environment: preview-pr-${prNumber}`);
+            } catch (error) {
+              console.log(`Environment preview-pr-${prNumber} may not exist or already deleted`);
+            }
+
+      - name: Comment PR cleanup
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.issue.number;
+            
+            const comment = `## 🧹 Preview Cleanup Complete
+            
+            The preview deployment for this PR has been cleaned up:
+            - Preview environment deleted
+            - Container images will be cleaned up automatically
+            
+            Thank you for your contribution! 🎉`;
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: comment
+            });

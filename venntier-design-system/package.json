@@ -26,7 +26,11 @@
     "lint:scss": "stylelint \"**/*.scss\" --ignore-path .gitignore",
     "lint:all": "npm run lint:ts && npm run lint:scss",
     "format": "prettier --write \"**/*.{ts,html,scss,json,md}\" --ignore-path .gitignore",
-    "format:check": "prettier --check \"**/*.{ts,html,scss,json,md}\" --ignore-path .gitignore"
+    "format:check": "prettier --check \"**/*.{ts,html,scss,json,md}\" --ignore-path .gitignore",
+    "docker:build": "docker build -f Dockerfile -t venntier-demo:local .",
+    "docker:run": "docker run -p 8080:80 venntier-demo:local",
+    "docker:dev": "npm run build && npm run docker:build && npm run docker:run",
+    "docker:clean": "docker rmi venntier-demo:local 2>/dev/null || true"
   },
   "lint-staged": {
     "*.{ts,html}": [
