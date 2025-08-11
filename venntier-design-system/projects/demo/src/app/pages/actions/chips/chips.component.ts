@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { ExampleViewerComponent } from '../../../shared/components/example-viewer/example-viewer.component';
 import { MD3_DOCS } from '../../../shared/constants/documentation-links';
@@ -29,17 +30,46 @@ interface Chip {
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     PageHeaderComponent,
     ExampleViewerComponent,
   ],
   template: `
-    <div class="demo-page">
+    <div class="demo-page" [ngClass]="selectedDensity() === 'default' ? '' : selectedDensity()">
       <demo-page-header
         title="Chips"
         description="Chips help people enter information, make selections, filter content, or trigger actions."
         [links]="resources"
       >
       </demo-page-header>
+
+      <!-- Density Selector for Testing -->
+      <demo-example-viewer title="Density Selector">
+        <div class="density-selector">
+          <mat-form-field>
+            <mat-label>Select Density</mat-label>
+            <mat-select
+              [value]="selectedDensity()"
+              (selectionChange)="onDensityChange($event.value)"
+              panelWidth="auto"
+            >
+              @for (option of densityOptions; track option.value) {
+                <mat-option [value]="option.value">
+                  {{ option.label }} - {{ option.description }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <p class="density-info">
+            Current density: <strong>{{ selectedDensity() }}</strong>
+            <br />
+            <small
+              >This density will be applied to all chips below to test the MD3 density
+              variations.</small
+            >
+          </p>
+        </div>
+      </demo-example-viewer>
 
       <section class="demo-section">
         <h2>Assist Chips</h2>
@@ -283,6 +313,20 @@ interface Chip {
 export class ChipsComponent {
   readonly resources = [{ label: 'M3 Chips Guidelines', url: MD3_DOCS.CHIPS }];
 
+  // Density selector for testing MD3 density variations
+  selectedDensity = signal('default');
+
+  readonly densityOptions = [
+    { value: 'dense', label: 'Dense (-3) - Most compact', description: 'MD3 highest density' },
+    { value: 'compact', label: 'Compact (-2) - More compact', description: 'MD3 high density' },
+    {
+      value: 'standard',
+      label: 'Standard (-1) - Slightly compact',
+      description: 'MD3 medium density',
+    },
+    { value: 'default', label: 'Default (0) - Comfortable', description: 'MD3 default density' },
+  ];
+
   private _categoryFilters = signal<Chip[]>([
     { id: '1', label: 'Electronics', selected: false },
     { id: '2', label: 'Clothing', selected: true },
@@ -500,5 +544,9 @@ export class ChipsComponent {
 
   removeSkill(id: string) {
     this._skills.update((skills) => skills.filter((skill) => skill.id !== id));
+  }
+
+  onDensityChange(density: string): void {
+    this.selectedDensity.set(density);
   }
 }
