@@ -25,14 +25,13 @@
   }
 }
 
+// Icon button sizing is now handled by mat.icon-button-overrides() in the design system
+// These custom sizes are no longer needed
+
 .icon-button-raised,
 .icon-button-stroked,
 .icon-button-flat {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  padding: 0;
-
+  // Only layout-specific styling remains
   mat-icon {
     margin: 0;
   }
@@ -144,20 +143,8 @@
   }
 }
 
-// Hover and focus states
-button[mat-icon-button] {
-  transition: background-color var(--md-sys-motion-duration-short2, 200ms)
-    var(--md-sys-motion-easing-standard, ease);
-
-  &:hover:not(:disabled) {
-    background-color: var(--md-sys-color-surface-variant);
-  }
-
-  &:focus {
-    outline: 2px solid var(--md-sys-color-primary);
-    outline-offset: 2px;
-  }
-}
+// NOTE: Hover and focus states are now handled by mat.icon-button-overrides() in the design system
+// Removed conflicting custom CSS to let overrides manage the styling
 
 // Responsive adjustments
 @media (width <= 768px) {

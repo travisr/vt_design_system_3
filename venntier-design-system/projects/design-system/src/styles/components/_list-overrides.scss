@@ -1,55 +1,21 @@
-// List component overrides using Material Design 3 tokens
+// List Component Overrides - MD3 Compliant
+// Primary styling handled by mat.list-overrides() in _core-refined.scss
 
-// Define list item token overrides using CSS custom properties
 @mixin vt-list-overrides() {
-  // Override MDC list tokens directly
-  .mat-mdc-list-item {
-    // Set MDC tokens for list items
-    --mdc-list-list-item-container-color: transparent;
-    --mdc-list-list-item-container-shape: var(--md-sys-shape-corner-small);
-    --mdc-list-list-item-container-height: var(--md-sys-spacing-8);
-    --mdc-list-list-item-label-text-size: var(--md-sys-typescale-body-medium-size);
-    --mdc-list-list-item-label-text-line-height: var(--md-sys-spacing-8);
-    --mdc-list-list-item-label-text-weight: var(--md-sys-typescale-body-medium-weight);
-    --mdc-list-list-item-leading-icon-size: var(--md-sys-spacing-4);
-    --mdc-list-list-item-trailing-icon-size: var(--md-sys-spacing-4);
-
-    // Hover state
-    --mdc-list-list-item-hover-state-layer-color: var(--md-sys-color-hover);
-    --mdc-list-list-item-hover-state-layer-opacity: 1;
-    --mdc-list-list-item-hover-label-text-color: var(--md-sys-color-on-surface-variant);
-    --mdc-list-list-item-hover-leading-icon-color: var(--md-sys-color-on-surface-variant);
-
-    // Focus state
-    --mdc-list-list-item-focus-state-layer-color: transparent;
-    --mdc-list-list-item-focus-state-layer-opacity: 0;
-
-    // Selected state
-    --mdc-list-list-item-selected-container-color: var(--md-sys-color-selected);
-
-    // Disabled state
-    --mdc-list-list-item-disabled-state-layer-opacity: 0.38;
-    --mdc-list-list-item-disabled-label-text-opacity: 0.38;
-  }
-
-  // Additional custom nav list styles
+  // Custom active/selected state styling for navigation
+  // These specific properties are not available as tokens in mat.list-overrides()
   .mat-mdc-nav-list {
-    // Custom class for nav items
-    .vt-nav-item {
-      margin: calc(var(--md-sys-spacing-1) / 2) var(--md-sys-spacing-2);
-      border-radius: var(--md-sys-shape-corner-small);
-
-      // Hover state using pseudo-class
-      &:hover:not(.vt-active) {
-        --mdc-list-list-item-container-color: var(--md-sys-color-hover);
+    a[mat-list-item].active,
+    .mat-mdc-list-item.active {
+      // Selected label text color (not available as token)
+      .mat-mdc-list-item-title {
+        color: var(--md-sys-color-primary);
+        font-weight: var(--md-sys-typescale-label-medium-weight);
       }
 
-      // Active state
-      &.vt-active {
-        --mdc-list-list-item-container-color: var(--md-sys-color-selected);
-        --mdc-list-list-item-label-text-color: var(--md-sys-color-primary);
-        --mdc-list-list-item-label-text-weight: 500;
-        --mdc-list-list-item-leading-icon-color: var(--md-sys-color-primary);
+      // Selected leading icon color (not available as token)
+      mat-icon {
+        color: var(--md-sys-color-primary);
       }
     }
   }

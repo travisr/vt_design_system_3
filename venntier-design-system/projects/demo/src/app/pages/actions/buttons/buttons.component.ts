@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { ExampleViewerComponent } from '../../../shared/components/example-viewer/example-viewer.component';
 import { MD3_DOCS } from '../../../shared/constants/documentation-links';
@@ -15,17 +17,52 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
+    MatFormFieldModule,
     PageHeaderComponent,
     ExampleViewerComponent,
   ],
   template: `
-    <div class="demo-page">
+    <div class="demo-page" [ngClass]="selectedDensity() === 'default' ? '' : selectedDensity()">
       <demo-page-header
         title="Buttons"
         description="Buttons help people take action, such as sending an email, sharing a document, or liking a comment."
         [mdLink]="docLinks.BUTTONS"
       >
       </demo-page-header>
+
+      <!-- Density Selector for Testing -->
+      <demo-example-viewer title="Density Selector">
+        <div class="density-selector">
+          <mat-form-field>
+            <mat-label>Select Density</mat-label>
+            <mat-select
+              [value]="selectedDensity()"
+              (selectionChange)="onDensityChange($event.value)"
+              panelWidth="auto"
+            >
+              @for (option of densityOptions; track option.value) {
+                <mat-option [value]="option.value">
+                  {{ option.label }} - {{ option.description }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <p class="density-info">
+            Current density: <strong>{{ selectedDensity() }}</strong>
+            <br />
+            <small
+              >This density will be applied to all buttons below to test the MD3 density
+              variations.</small
+            >
+            <br />
+            <small class="density-note">
+              <strong>Note:</strong> FABs (Floating Action Buttons) do not support density in MD3 -
+              they have fixed sizes (56dp standard, 40dp mini).
+            </small>
+          </p>
+        </div>
+      </demo-example-viewer>
 
       <!-- Button Variants -->
       <section class="demo-section">
@@ -129,6 +166,24 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 })
 export class ButtonsComponent {
   readonly docLinks = MD3_DOCS;
+
+  // Density selector for testing MD3 density variations
+  selectedDensity = signal('default');
+
+  readonly densityOptions = [
+    { value: 'dense', label: 'Dense (-3) - Most compact', description: 'MD3 highest density' },
+    { value: 'compact', label: 'Compact (-2) - More compact', description: 'MD3 high density' },
+    {
+      value: 'standard',
+      label: 'Standard (-1) - Slightly compact',
+      description: 'MD3 medium density',
+    },
+    { value: 'default', label: 'Default (0) - Comfortable', description: 'MD3 default density' },
+  ];
+
+  onDensityChange(density: string): void {
+    this.selectedDensity.set(density);
+  }
 
   variantsCode = {
     html: `<button mat-fab color="primary">

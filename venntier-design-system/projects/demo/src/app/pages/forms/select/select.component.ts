@@ -22,7 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
         </mat-card-header>
         <mat-card-content>
           <div class="form-grid">
-            <mat-form-field appearance="outline">
+            <mat-form-field>
               <mat-label>Country</mat-label>
               <mat-select [ngModel]="countryValue()" (ngModelChange)="updateCountryValue($event)">
                 <mat-option value="us">United States</mat-option>
@@ -32,7 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field>
               <mat-label>Language</mat-label>
               <mat-select [ngModel]="languageValue()" (ngModelChange)="updateLanguageValue($event)">
                 <mat-option value="en">English</mat-option>
@@ -42,7 +42,7 @@ import { MatSelectModule } from '@angular/material/select';
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field>
               <mat-label>Team Size</mat-label>
               <mat-select>
                 <mat-option value="1">1-10 employees</mat-option>

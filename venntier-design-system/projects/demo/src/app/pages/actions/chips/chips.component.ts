@@ -43,150 +43,178 @@ interface Chip {
 
       <section class="demo-section">
         <h2>Assist Chips</h2>
-        <p>Assist chips represent smart or automated actions that can span multiple apps.</p>
-        <div class="demo-example">
-          <div class="chip-demo">
-            <h4>Basic Assist Chips</h4>
-            <mat-chip-set>
-              <mat-chip>
-                <mat-icon matChipAvatar>schedule</mat-icon>
-                Set reminder
-              </mat-chip>
-              <mat-chip>
-                <mat-icon matChipAvatar>location_on</mat-icon>
-                Add location
-              </mat-chip>
-              <mat-chip>
-                <mat-icon matChipAvatar>person_add</mat-icon>
-                Invite friends
-              </mat-chip>
-              <mat-chip disabled>
-                <mat-icon matChipAvatar>cloud_off</mat-icon>
-                Offline
-              </mat-chip>
-            </mat-chip-set>
-          </div>
-        </div>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Assist Chips</mat-card-title>
+            <mat-card-subtitle
+              >Assist chips represent smart or automated actions that can span multiple
+              apps</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <div class="chip-demo">
+              <h4>Basic Assist Chips</h4>
+              <mat-chip-set>
+                <mat-chip>
+                  <mat-icon matChipAvatar>schedule</mat-icon>
+                  Set reminder
+                </mat-chip>
+                <mat-chip>
+                  <mat-icon matChipAvatar>location_on</mat-icon>
+                  Add location
+                </mat-chip>
+                <mat-chip>
+                  <mat-icon matChipAvatar>person_add</mat-icon>
+                  Invite friends
+                </mat-chip>
+                <mat-chip disabled>
+                  <mat-icon matChipAvatar>cloud_off</mat-icon>
+                  Offline
+                </mat-chip>
+              </mat-chip-set>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </section>
 
       <section class="demo-section">
         <h2>Filter Chips</h2>
-        <p>Filter chips use tags or descriptive words to filter content.</p>
-        <div class="demo-example">
-          <div class="chip-demo">
-            <h4>Category Filters</h4>
-            <mat-chip-set>
-              @for (filter of categoryFilters(); track filter.id) {
-                <mat-chip
-                  [class.mat-mdc-chip-selected]="filter.selected"
-                  (click)="toggleCategoryFilter(filter.id)"
-                >
-                  {{ filter.label }}
-                </mat-chip>
-              }
-            </mat-chip-set>
-            <p class="filter-result">Active filters: {{ getActiveCategoryFilters() }}</p>
-          </div>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Filter Chips</mat-card-title>
+            <mat-card-subtitle
+              >Filter chips use tags or descriptive words to filter content</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <div class="chip-demo">
+              <h4>Category Filters</h4>
+              <mat-chip-set>
+                @for (filter of categoryFilters(); track filter.id) {
+                  <mat-chip
+                    [class.mat-mdc-chip-selected]="filter.selected"
+                    (click)="toggleCategoryFilter(filter.id)"
+                  >
+                    {{ filter.label }}
+                  </mat-chip>
+                }
+              </mat-chip-set>
+              <p class="filter-result">Active filters: {{ getActiveCategoryFilters() }}</p>
+            </div>
 
-          <div class="chip-demo">
-            <h4>Price Range Filters</h4>
-            <mat-chip-set>
-              @for (price of priceFilters(); track price.id) {
-                <mat-chip
-                  [class.mat-mdc-chip-selected]="price.selected"
-                  (click)="togglePriceFilter(price.id)"
-                >
-                  {{ price.label }}
-                </mat-chip>
-              }
-            </mat-chip-set>
-          </div>
-        </div>
+            <div class="chip-demo">
+              <h4>Price Range Filters</h4>
+              <mat-chip-set>
+                @for (price of priceFilters(); track price.id) {
+                  <mat-chip
+                    [class.mat-mdc-chip-selected]="price.selected"
+                    (click)="togglePriceFilter(price.id)"
+                  >
+                    {{ price.label }}
+                  </mat-chip>
+                }
+              </mat-chip-set>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </section>
 
       <section class="demo-section">
         <h2>Input Chips</h2>
-        <p>Input chips represent discrete pieces of information entered by a user.</p>
-        <div class="demo-example">
-          <div class="chip-demo">
-            <h4>Tags</h4>
-            <mat-chip-set>
-              @for (tag of tags(); track tag.id) {
-                <mat-chip (removed)="removeTag(tag.id)" [removable]="tag.removable">
-                  {{ tag.label }}
-                  @if (tag.removable) {
-                    <mat-icon matChipRemove>cancel</mat-icon>
-                  }
-                </mat-chip>
-              }
-            </mat-chip-set>
-            <button mat-stroked-button (click)="addTag()" class="add-chip-button">
-              <mat-icon>add</mat-icon>
-              Add Tag
-            </button>
-          </div>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Input Chips</mat-card-title>
+            <mat-card-subtitle
+              >Input chips represent discrete pieces of information entered by a
+              user</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <div class="chip-demo">
+              <h4>Tags</h4>
+              <mat-chip-set>
+                @for (tag of tags(); track tag.id) {
+                  <mat-chip (removed)="removeTag(tag.id)" [removable]="tag.removable">
+                    {{ tag.label }}
+                    @if (tag.removable) {
+                      <mat-icon matChipRemove>cancel</mat-icon>
+                    }
+                  </mat-chip>
+                }
+              </mat-chip-set>
+              <button mat-stroked-button (click)="addTag()" class="add-chip-button">
+                <mat-icon>add</mat-icon>
+                Add Tag
+              </button>
+            </div>
 
-          <div class="chip-demo">
-            <h4>Email Recipients</h4>
-            <mat-chip-set>
-              @for (email of emailChips(); track email.id) {
-                <mat-chip (removed)="removeEmail(email.id)" [removable]="true">
-                  <mat-icon matChipAvatar>person</mat-icon>
-                  {{ email.label }}
-                  <mat-icon matChipRemove>cancel</mat-icon>
-                </mat-chip>
-              }
-            </mat-chip-set>
-            <mat-form-field appearance="outline" class="email-input">
-              <mat-label>Add recipient</mat-label>
-              <input
-                matInput
-                placeholder="Enter email address"
-                #emailInput
-                (keydown.enter)="addEmail(emailInput.value); emailInput.value = ''"
-              />
-            </mat-form-field>
-          </div>
-        </div>
+            <div class="chip-demo">
+              <h4>Email Recipients</h4>
+              <mat-chip-set>
+                @for (email of emailChips(); track email.id) {
+                  <mat-chip (removed)="removeEmail(email.id)" [removable]="true">
+                    <mat-icon matChipAvatar>person</mat-icon>
+                    {{ email.label }}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                  </mat-chip>
+                }
+              </mat-chip-set>
+              <mat-form-field appearance="outline" class="email-input">
+                <mat-label>Add recipient</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter email address"
+                  #emailInput
+                  (keydown.enter)="addEmail(emailInput.value); emailInput.value = ''"
+                />
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </section>
 
       <section class="demo-section">
         <h2>Suggestion Chips</h2>
-        <p>
-          Suggestion chips help narrow a user's intent by presenting dynamically generated
-          suggestions.
-        </p>
-        <div class="demo-example">
-          <div class="chip-demo">
-            <h4>Search Suggestions</h4>
-            <mat-chip-set>
-              @for (suggestion of searchSuggestions(); track suggestion.id) {
-                <mat-chip (click)="selectSuggestion(suggestion.id)">
-                  <mat-icon matChipAvatar>search</mat-icon>
-                  {{ suggestion.label }}
-                </mat-chip>
-              }
-            </mat-chip-set>
-          </div>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Suggestion Chips</mat-card-title>
+            <mat-card-subtitle>
+              Suggestion chips help narrow a user's intent by presenting dynamically generated
+              suggestions
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="chip-demo">
+              <h4>Search Suggestions</h4>
+              <mat-chip-set>
+                @for (suggestion of searchSuggestions(); track suggestion.id) {
+                  <mat-chip (click)="selectSuggestion(suggestion.id)">
+                    <mat-icon matChipAvatar>search</mat-icon>
+                    {{ suggestion.label }}
+                  </mat-chip>
+                }
+              </mat-chip-set>
+            </div>
 
-          <div class="chip-demo">
-            <h4>Quick Actions</h4>
-            <mat-chip-set>
-              <mat-chip (click)="quickAction('weather')">
-                <mat-icon matChipAvatar>wb_sunny</mat-icon>
-                Check weather
-              </mat-chip>
-              <mat-chip (click)="quickAction('calendar')">
-                <mat-icon matChipAvatar>today</mat-icon>
-                Today's schedule
-              </mat-chip>
-              <mat-chip (click)="quickAction('news')">
-                <mat-icon matChipAvatar>article</mat-icon>
-                Latest news
-              </mat-chip>
-            </mat-chip-set>
-          </div>
-        </div>
+            <div class="chip-demo">
+              <h4>Quick Actions</h4>
+              <mat-chip-set>
+                <mat-chip (click)="quickAction('weather')">
+                  <mat-icon matChipAvatar>wb_sunny</mat-icon>
+                  Check weather
+                </mat-chip>
+                <mat-chip (click)="quickAction('calendar')">
+                  <mat-icon matChipAvatar>today</mat-icon>
+                  Today's schedule
+                </mat-chip>
+                <mat-chip (click)="quickAction('news')">
+                  <mat-icon matChipAvatar>article</mat-icon>
+                  Latest news
+                </mat-chip>
+              </mat-chip-set>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </section>
 
       <section class="demo-section">

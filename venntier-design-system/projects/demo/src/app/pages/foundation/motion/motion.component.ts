@@ -29,83 +29,109 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
       <section class="demo-section">
         <h2>Easing Curves</h2>
-        <p>Material Design uses four main easing curves to create natural motion.</p>
-        <div class="demo-example">
-          <div class="easing-demo">
-            <div class="curve-example">
-              <h4>Standard (0.2, 0.0, 0, 1.0)</h4>
-              <div class="motion-box standard-easing">Standard</div>
-              <button mat-button (click)="animateBox('standard')">Animate</button>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Motion Easing</mat-card-title>
+            <mat-card-subtitle
+              >Material Design uses four main easing curves to create natural
+              motion</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <div class="easing-demo">
+              <div class="curve-example">
+                <h4>Standard (0.2, 0.0, 0, 1.0)</h4>
+                <div class="motion-box standard-easing">Standard</div>
+                <button mat-button (click)="animateBox('standard')">Animate</button>
+              </div>
+              <div class="curve-example">
+                <h4>Decelerate (0.0, 0.0, 0.2, 1.0)</h4>
+                <div class="motion-box decelerate-easing">Decelerate</div>
+                <button mat-button (click)="animateBox('decelerate')">Animate</button>
+              </div>
+              <div class="curve-example">
+                <h4>Accelerate (0.4, 0.0, 1.0, 1.0)</h4>
+                <div class="motion-box accelerate-easing">Accelerate</div>
+                <button mat-button (click)="animateBox('accelerate')">Animate</button>
+              </div>
+              <div class="curve-example">
+                <h4>Emphasized (0.2, 0.0, 0, 1.0)</h4>
+                <div class="motion-box emphasized-easing">Emphasized</div>
+                <button mat-button (click)="animateBox('emphasized')">Animate</button>
+              </div>
             </div>
-            <div class="curve-example">
-              <h4>Decelerate (0.0, 0.0, 0.2, 1.0)</h4>
-              <div class="motion-box decelerate-easing">Decelerate</div>
-              <button mat-button (click)="animateBox('decelerate')">Animate</button>
-            </div>
-            <div class="curve-example">
-              <h4>Accelerate (0.4, 0.0, 1.0, 1.0)</h4>
-              <div class="motion-box accelerate-easing">Accelerate</div>
-              <button mat-button (click)="animateBox('accelerate')">Animate</button>
-            </div>
-            <div class="curve-example">
-              <h4>Emphasized (0.2, 0.0, 0, 1.0)</h4>
-              <div class="motion-box emphasized-easing">Emphasized</div>
-              <button mat-button (click)="animateBox('emphasized')">Animate</button>
-            </div>
-          </div>
-        </div>
+          </mat-card-content>
+        </mat-card>
       </section>
 
       <section class="demo-section">
         <h2>Duration Scale</h2>
-        <p>Motion durations are based on a structured scale for consistency.</p>
-        <div class="demo-example">
-          <div class="duration-demo">
-            @for (duration of durations; track duration.value) {
-              <div class="duration-example">
-                <span class="duration-label">{{ duration.label }}</span>
-                <div class="motion-box duration-box" [style.animation-duration.ms]="duration.value">
-                  {{ duration.value }}ms
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Motion Duration</mat-card-title>
+            <mat-card-subtitle
+              >Motion durations are based on a structured scale for consistency</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <div class="duration-demo">
+              @for (duration of durations; track duration.value) {
+                <div class="duration-example">
+                  <span class="duration-label">{{ duration.label }}</span>
+                  <div
+                    class="motion-box duration-box"
+                    [style.animation-duration.ms]="duration.value"
+                  >
+                    {{ duration.value }}ms
+                  </div>
+                  <button mat-button (click)="animateDuration(duration.value)">Test</button>
                 </div>
-                <button mat-button (click)="animateDuration(duration.value)">Test</button>
-              </div>
-            }
-          </div>
-        </div>
+              }
+            </div>
+          </mat-card-content>
+        </mat-card>
       </section>
 
       <section class="demo-section">
         <h2>Common Animations</h2>
-        <p>Practical examples of motion patterns used in Material Design components.</p>
-        <div class="demo-example">
-          <div class="animation-examples">
-            <mat-card class="animation-card">
-              <h4>Fade In/Out</h4>
-              <div class="fade-demo" [class.visible]="fadeVisible">
-                <mat-icon>star</mat-icon>
-              </div>
-              <button mat-button (click)="toggleFade()">Toggle Fade</button>
-            </mat-card>
-
-            <mat-card class="animation-card">
-              <h4>Scale</h4>
-              <div class="scale-demo" [class.scaled]="scaleActive">
-                <mat-icon>favorite</mat-icon>
-              </div>
-              <button mat-button (click)="toggleScale()">Toggle Scale</button>
-            </mat-card>
-
-            <mat-card class="animation-card">
-              <h4>Slide</h4>
-              <div class="slide-container">
-                <div class="slide-demo" [class.slid]="slideActive">
-                  <mat-icon>arrow_forward</mat-icon>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Animation Patterns</mat-card-title>
+            <mat-card-subtitle
+              >Practical examples of motion patterns used in Material Design
+              components</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <div class="animation-examples">
+              <mat-card class="animation-card">
+                <h4>Fade In/Out</h4>
+                <div class="fade-demo" [class.visible]="fadeVisible">
+                  <mat-icon>star</mat-icon>
                 </div>
-              </div>
-              <button mat-button (click)="toggleSlide()">Toggle Slide</button>
-            </mat-card>
-          </div>
-        </div>
+                <button mat-button (click)="toggleFade()">Toggle Fade</button>
+              </mat-card>
+
+              <mat-card class="animation-card">
+                <h4>Scale</h4>
+                <div class="scale-demo" [class.scaled]="scaleActive">
+                  <mat-icon>favorite</mat-icon>
+                </div>
+                <button mat-button (click)="toggleScale()">Toggle Scale</button>
+              </mat-card>
+
+              <mat-card class="animation-card">
+                <h4>Slide</h4>
+                <div class="slide-container">
+                  <div class="slide-demo" [class.slid]="slideActive">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </div>
+                </div>
+                <button mat-button (click)="toggleSlide()">Toggle Slide</button>
+              </mat-card>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </section>
 
       <demo-example-viewer title="Motion Tokens" [examples]="motionExamples"> </demo-example-viewer>

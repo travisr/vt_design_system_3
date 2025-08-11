@@ -47,116 +47,13 @@
   }
 }
 
-// Custom chip styling
+// Chip styling is now handled by mat.chips-overrides() in the design system
+// Only layout-specific styling remains here
+
 mat-chip-set {
   display: flex;
   flex-wrap: wrap;
   gap: var(--md-sys-spacing-8);
-}
-
-mat-chip {
-  border-radius: var(--md-sys-shape-corner-small);
-  background-color: var(--md-sys-color-surface-variant);
-  color: var(--md-sys-color-on-surface-variant);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  font-size: var(--md-sys-typescale-body-medium-size, 14px);
-  height: 32px;
-  padding: 0 var(--md-sys-spacing-12);
-  transition: all 150ms ease;
-  cursor: pointer;
-
-  &:hover:not([disabled]) {
-    background-color: var(--md-sys-color-surface);
-    box-shadow: 0 1px 3px var(--md-sys-color-shadow);
-  }
-
-  &[disabled] {
-    opacity: 0.38;
-    cursor: not-allowed;
-  }
-
-  // Selected state for filter chips
-  &.mat-mdc-chip-selected {
-    background-color: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
-    border-color: var(--md-sys-color-secondary);
-
-    mat-icon {
-      color: var(--md-sys-color-on-secondary-container);
-    }
-  }
-
-  // Focus styles
-  &:focus {
-    outline: 2px solid var(--md-sys-color-primary);
-    outline-offset: 2px;
-  }
-
-  // Icon styling
-  mat-icon {
-    color: var(--md-sys-color-on-surface-variant);
-    font-size: var(--md-sys-spacing-18, 18px);
-    width: 18px;
-    height: 18px;
-    margin-right: var(--md-sys-spacing-4);
-
-    &[matChipAvatar] {
-      margin-right: var(--md-sys-spacing-8);
-      margin-left: -var(--md-sys-spacing-4);
-    }
-
-    &[matChipRemove] {
-      margin-left: var(--md-sys-spacing-4);
-      margin-right: -var(--md-sys-spacing-4);
-      cursor: pointer;
-      opacity: 0.7;
-      font-size: var(--md-sys-spacing-16, 16px);
-      width: 16px;
-      height: 16px;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
-
-  // Assist chip styling
-  &:has([matChipAvatar]) {
-    padding-left: var(--md-sys-spacing-8);
-  }
-}
-
-// Multi-select chip set
-mat-chip-set[multiple] {
-  mat-chip {
-    &.mat-mdc-chip-selected {
-      background-color: var(--md-sys-color-primary-container);
-      color: var(--md-sys-color-on-primary-container);
-      border-color: var(--md-sys-color-primary);
-
-      mat-icon {
-        color: var(--md-sys-color-on-primary-container);
-      }
-    }
-  }
-}
-
-// Suggestion chips styling
-.chip-demo:has([matChipAvatar]) {
-  mat-chip {
-    background-color: var(--md-sys-color-surface);
-    border-color: var(--md-sys-color-outline);
-
-    &:hover {
-      background-color: var(--md-sys-color-primary-container);
-      color: var(--md-sys-color-on-primary-container);
-      border-color: var(--md-sys-color-primary);
-
-      mat-icon {
-        color: var(--md-sys-color-on-primary-container);
-      }
-    }
-  }
 }
 
 // Responsive adjustments

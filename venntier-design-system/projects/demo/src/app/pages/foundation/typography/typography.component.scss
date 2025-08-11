@@ -1,10 +1,19 @@
-// Typography page specific styles
+// Typography page specific styles - MODERNIZED
+// Cards now get styling from mat.card-overrides() in _core-refined.scss
+
 .typography-sample {
   margin-bottom: var(--md-sys-spacing-24, 24px);
 
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+// Grid layout for typography cards
+.typography-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--md-sys-spacing-24, 24px);
 }
 
 .type-label {

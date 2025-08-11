@@ -78,7 +78,8 @@ body {
 }
 
 // OpenAI-style focus states - subtle shadows instead of outlines
-*:focus-visible {
+// Exclude input elements to avoid interfering with Material form fields
+*:focus-visible:not(input, textarea) {
   outline: none;
   box-shadow:
     0 0 0 2px var(--md-sys-color-surface),
@@ -86,12 +87,9 @@ body {
   border-radius: var(--md-sys-shape-corner-small);
 }
 
-// Specific focus states for interactive elements
+// Specific focus states for interactive elements (inputs removed for standard Material styling)
 button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
+a:focus-visible {
   outline: none;
   box-shadow:
     0 0 0 2px var(--md-sys-color-surface),

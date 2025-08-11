@@ -81,30 +81,27 @@
 // Cards & Containers
 // ============================================
 
-// Consistent card styling
-%demo-card {
+// UPDATED: Removed conflicting card styles - now handled by modernized card overrides
+// All mat-card styling is now handled by mat.card-overrides() in _core-refined.scss
+
+// Demo-specific card utilities (non-conflicting)
+%demo-card-spacing {
   margin-bottom: var(--md-sys-spacing-5);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  box-shadow: none;
-  background: var(--md-sys-color-surface);
 
   &:last-child {
     margin-bottom: 0;
   }
 }
 
-.demo-card {
+.demo-card-spacing {
   margin-bottom: var(--md-sys-spacing-5);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  box-shadow: none;
-  background: var(--md-sys-color-surface);
 
   &:last-child {
     margin-bottom: 0;
   }
 }
 
-// Card content padding
+// Demo content padding utility (for non-mat-card elements)
 .demo-card-content {
   padding: var(--md-sys-spacing-6);
 }

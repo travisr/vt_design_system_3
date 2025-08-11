@@ -4,13 +4,11 @@
 @use '@angular/material' as mat;
 
 @mixin vt-toolbar-theme() {
-  // Default toolbar styles
+  // Custom toolbar styling - only includes styling not covered by mat.toolbar-overrides()
   mat-toolbar,
   .mat-mdc-toolbar {
-    background: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface);
+    // Custom layout: Border and padding (not available as tokens)
     border-bottom: 1px solid var(--md-sys-color-outline-variant);
-    height: 64px; // Consistent height with sidenav header
     padding: 0 var(--md-sys-spacing-16);
     box-shadow: none;
 

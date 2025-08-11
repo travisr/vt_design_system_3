@@ -1,1 +1,6 @@
 // Buttons page specific styles (if needed)
+
+// Density selector uses default design system styling (fit-content from global overrides)
+.density-selector {
+  margin-bottom: var(--md-sys-spacing-16);
+}

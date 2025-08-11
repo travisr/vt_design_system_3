@@ -29,17 +29,8 @@
   }
 }
 
-.compact {
-  mat-button-toggle {
-    height: 32px;
-    line-height: 32px;
-
-    .mat-button-toggle-label-content {
-      padding: 0 8px;
-      font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    }
-  }
-}
+// Density variations are now handled by official Angular Material density mixins in the theme
+// See: venntier-design-system/projects/design-system/src/styles/themes/_core-refined.scss
 
 .use-case-card {
   padding: var(--md-sys-spacing-16);
@@ -68,6 +59,49 @@ mat-button-toggle-group {
 }
 
 mat-button-toggle {
+  // Hide ALL possible checkmark elements for clean OpenAI style
+  // Target MDC checkbox components that might be embedded
+  .mat-button-toggle-checkmark,
+  .mdc-button-toggle__checkmark,
+  .mat-pseudo-checkbox,
+  .mat-button-toggle-checked-indicator,
+  .mdc-checkbox,
+  .mdc-checkbox__checkmark,
+  .mdc-checkbox__checkmark-path,
+  .mdc-checkbox__background,
+  .mdc-checkbox__native-control,
+  .mat-mdc-checkbox,
+  .mat-mdc-checkbox-checkmark,
+  .mdc-evolution-chip__checkmark,
+  .mat-mdc-chip-checkmark,
+  .mat-icon[data-mat-icon-name='check'],
+  .mat-icon[data-mat-icon-name='done'] {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  // Hide any pseudo-elements that might be checkmarks
+  &::before,
+  &::after,
+  .mat-button-toggle-label-content::before,
+  .mat-button-toggle-label-content::after {
+    content: none;
+    display: none;
+  }
+
+  // Aggressive checkmark hiding - target any element that might contain checkmarks
+  * {
+    &[aria-label*='check'],
+    &[title*='check'],
+    &[data-icon*='check'] {
+      display: none;
+    }
+  }
+
   border: var(--md-sys-shape-border-width, 1px) solid transparent;
   background-color: var(--md-sys-color-surface);
   color: var(--md-sys-color-on-surface);
@@ -77,11 +111,23 @@ mat-button-toggle {
   }
 
   &.mat-button-toggle-checked {
-    background-color: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
+    background-color: var(--md-sys-color-selected); // OpenAI gray #e5e5e5
+    color: var(--md-sys-color-on-surface); // Black text
+
+    // Override any content that might be adding checkmarks
+    --mat-button-toggle-checkmark-content: '';
+    --mdc-button-toggle-checkmark-content: '';
+
+    // Remove any text content that might be checkmarks
+    .mat-button-toggle-label-content {
+      &::after {
+        content: none;
+        display: none;
+      }
+    }
 
     mat-icon {
-      color: var(--md-sys-color-on-secondary-container);
+      color: var(--md-sys-color-on-surface); // Black icons
     }
   }
 
@@ -109,12 +155,8 @@ mat-button-toggle {
   }
 }
 
-// Focus styles
-mat-button-toggle:focus {
-  outline: 2px solid var(--md-sys-color-primary);
-  outline-offset: -2px;
-  z-index: 1;
-}
+// NOTE: Focus styles removed to match clean OpenAI design approach
+// Consistent with icon button focus handling
 
 // Icon-only button toggles
 mat-button-toggle-group:has(mat-button-toggle mat-icon:only-child) {
@@ -125,15 +167,16 @@ mat-button-toggle-group:has(mat-button-toggle mat-icon:only-child) {
   }
 }
 
-// Multi-selection styling
-mat-button-toggle-group[multiple] {
-  mat-button-toggle.mat-button-toggle-checked {
-    background-color: var(--md-sys-color-primary-container);
-    color: var(--md-sys-color-on-primary-container);
+// Multi-selection styling - consistent with single selection
+// Use higher specificity to override Material Design defaults
+.segmented-demo mat-button-toggle-group[multiple] mat-button-toggle.mat-button-toggle-checked,
+mat-button-toggle-group[multiple]
+  mat-button-toggle.mat-button-toggle-checked.mat-button-toggle-checked {
+  background-color: var(--md-sys-color-selected); // OpenAI gray #e5e5e5
+  color: var(--md-sys-color-on-surface); // Black text
 
-    mat-icon {
-      color: var(--md-sys-color-on-primary-container);
-    }
+  mat-icon {
+    color: var(--md-sys-color-on-surface); // Black icons
   }
 }
 

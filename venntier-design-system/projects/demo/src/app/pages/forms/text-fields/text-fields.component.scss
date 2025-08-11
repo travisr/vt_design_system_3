@@ -1,0 +1,33 @@
+// Text Fields Demo Component Styles
+// Uses design system tokens for consistent spacing and layout
+
+// Density selector uses default design system styling (fit-content from global overrides)
+.density-selector {
+  margin-bottom: var(--md-sys-spacing-16);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--md-sys-spacing-20);
+  margin-bottom: var(--md-sys-spacing-16);
+}
+
+.full-width {
+  grid-column: 1 / -1;
+  max-width: 600px; // Limit textarea width for better UX
+}
+
+// Demo-specific layout removed - using standard Angular Material styling
+
+// Responsive adjustments
+@media (width <= 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: var(--md-sys-spacing-16);
+  }
+
+  .full-width {
+    max-width: 100%;
+  }
+}

@@ -1,11 +1,18 @@
 // Venntier Design System - Component Themes
 // Export all component-specific theme mixins
+// MODERNIZED APPROACH:
+// Most component styling is now handled by official Angular Material overrides
+// in _core-refined.scss using mat.button-overrides(), mat.card-overrides(), etc.
+// These files now only contain:
+// - Custom layout behaviors not available as tokens
+// - Utility classes and custom components
+// - Legacy compatibility mixins
 
-@forward 'button';
-@forward 'card';
-@forward 'input';
-@forward 'form-fields';
-@forward 'sidenav';
-@forward 'list-overrides';
-@forward 'toolbar';
-@forward 'icon';
+@forward 'button'; // Custom: button groups, loading states, focus, ripple disabling
+@forward 'card'; // Legacy compatibility only (mostly empty)
+@forward 'input'; // Notes only (functionality moved to overrides)
+@forward 'form-fields'; // Custom: label positioning, icon sizing, textarea
+@forward 'sidenav'; // Custom: navigation layout, responsive behavior
+@forward 'list-overrides'; // Custom: navigation spacing, active states
+@forward 'toolbar'; // Custom: border, padding (basic styling in overrides)
+@forward 'icon'; // Custom: Material Icons font configuration

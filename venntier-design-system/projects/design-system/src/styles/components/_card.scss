@@ -1,196 +1,25 @@
-// Card Component Overrides - OpenAI Style
-// 32px padding, flat design with borders, generous spacing
+// Card Component Overrides - MODERNIZED
+// Most card styling is now handled by mat.card-overrides() in _core-refined.scss
+// This file now only contains legacy compatibility and any future custom extensions
 
 @mixin vt-card-theme() {
-  // Base card styling - OpenAI approach
-  .mat-mdc-card {
-    --mdc-elevated-card-container-color: var(--md-sys-color-surface); // #ffffff
-    --mdc-elevated-card-container-elevation: 0; // No shadow, flat design
+  // LEGACY COMPATIBILITY: This mixin is kept for backward compatibility
+  // All card styling is now handled by the modern override approach in _core-refined.scss
 
-    background-color: var(--md-sys-color-surface);
-    border: 1px solid var(--md-sys-color-outline-variant); // #e5e5e5 subtle border
-    border-radius: var(--md-sys-shape-corner-medium); // 8px
-    padding: 32px; // OpenAI generous padding
-    transition: all var(--md-sys-motion-hover);
+  // The following styles are automatically applied via mat.card-overrides():
+  // - Flat design (no elevation)
+  // - 8px border radius
+  // - Surface colors and typography
+  // - Title and subtitle styling
 
-    // Remove Material's shadow
-    box-shadow: none;
+  // The following styles are applied via custom CSS in _core-refined.scss:
+  // - 32px padding
+  // - Border styling and hover states
+  // - Card sections, actions, footer spacing
+  // - Image handling
+  // - Card variants (compact, comfortable, borderless, interactive, selected)
+  // - Layout helpers (grid, list)
 
-    // Hover state (optional, subtle)
-    &:hover {
-      border-color: var(--md-sys-color-outline); // Slightly darker border on hover
-    }
-
-    // Card sections with proper spacing
-    .mat-mdc-card-header {
-      padding: 0;
-      margin-bottom: 24px; // Generous spacing between header and content
-
-      .mat-mdc-card-header-text {
-        margin: 0;
-      }
-
-      .mat-mdc-card-title {
-        font-size: var(--md-sys-typescale-headline-small-size);
-        font-weight: var(--md-sys-typescale-headline-small-weight);
-        line-height: var(--md-sys-typescale-headline-small-line-height);
-        color: var(--md-sys-color-on-surface);
-        margin-bottom: 8px;
-      }
-
-      .mat-mdc-card-subtitle {
-        font-size: var(--md-sys-typescale-body-medium-size);
-        font-weight: var(--md-sys-typescale-body-medium-weight);
-        color: var(--md-sys-color-on-surface-variant);
-        margin: 0;
-      }
-
-      .mat-mdc-card-avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: var(--md-sys-shape-corner-full);
-        margin-right: 16px;
-      }
-    }
-
-    .mat-mdc-card-content {
-      padding: 0;
-      font-size: var(--md-sys-typescale-body-large-size);
-      line-height: var(--md-sys-typescale-body-large-line-height);
-      color: var(--md-sys-color-on-surface);
-
-      // Spacing between content elements
-      > *:not(:last-child) {
-        margin-bottom: 16px;
-      }
-
-      // Paragraphs within content
-      p {
-        margin: 0 0 16px;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-
-    .mat-mdc-card-actions {
-      padding: 0;
-      margin-top: 24px; // Space before actions
-      display: flex;
-      gap: 8px;
-      align-items: center;
-
-      &.mat-mdc-card-actions-align-end {
-        justify-content: flex-end;
-      }
-
-      // Remove Material's default button margin
-      .mat-mdc-button,
-      .mat-mdc-raised-button,
-      .mat-mdc-outlined-button {
-        margin: 0;
-      }
-    }
-
-    .mat-mdc-card-footer {
-      padding: 0;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--md-sys-color-outline-variant);
-      font-size: var(--md-sys-typescale-body-small-size);
-      color: var(--md-sys-color-on-surface-variant);
-    }
-
-    // Card image handling
-    .mat-mdc-card-image {
-      margin: -32px -32px 32px; // Negative margin to reach edges
-      border-radius: var(--md-sys-shape-corner-medium) var(--md-sys-shape-corner-medium) 0 0;
-      width: calc(100% + 64px);
-      display: block;
-    }
-
-    // Small image variant
-    .mat-mdc-card-sm-image {
-      width: 80px;
-      height: 80px;
-      border-radius: var(--md-sys-shape-corner-small);
-    }
-
-    // Large image variant
-    .mat-mdc-card-lg-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: var(--md-sys-shape-corner-small);
-      margin-bottom: 16px;
-    }
-  }
-
-  // Card variants
-  .mat-mdc-card.vt-card--compact {
-    padding: 24px; // Slightly less padding for compact variant
-  }
-
-  .mat-mdc-card.vt-card--comfortable {
-    padding: 40px; // Even more generous padding
-  }
-
-  .mat-mdc-card.vt-card--borderless {
-    border: none;
-    background-color: transparent;
-    padding: 0;
-  }
-
-  .mat-mdc-card.vt-card--interactive {
-    cursor: pointer;
-
-    &:hover {
-      background-color: var(--md-sys-color-hover);
-      border-color: var(--md-sys-color-outline);
-    }
-
-    &:active {
-      background-color: var(--md-sys-color-selected);
-    }
-  }
-
-  .mat-mdc-card.vt-card--selected {
-    background-color: var(--md-sys-color-selected);
-    border-color: var(--md-sys-color-primary);
-  }
-
-  // Section spacing for multiple cards
-  .vt-card-section {
-    margin-bottom: 32px; // OpenAI generous section spacing
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  // Card grid layout helper
-  .vt-card-grid {
-    display: grid;
-    gap: 24px; // Consistent grid spacing
-
-    &.vt-card-grid--2 {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    &.vt-card-grid--3 {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    &.vt-card-grid--4 {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-  }
-
-  // Card list layout helper
-  .vt-card-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px; // Tighter spacing for list layouts
-  }
+  // This mixin is now essentially empty but maintained for compatibility.
+  // Remove this file entirely once all imports are updated to use the new approach.
 }
