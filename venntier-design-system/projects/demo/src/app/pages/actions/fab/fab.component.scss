@@ -80,11 +80,65 @@
 .extended-fabs {
   display: flex;
   flex-direction: column;
+  gap: var(--md-sys-spacing-24);
+  align-items: stretch;
+}
+
+.extended-fab-group {
+  display: flex;
+  flex-direction: column;
   gap: var(--md-sys-spacing-16);
-  align-items: flex-start;
+
+  h4 {
+    margin: 0;
+    font-size: var(--md-sys-typescale-title-medium-size, 16px);
+    font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+    color: var(--md-sys-color-on-surface);
+  }
+}
+
+.extended-fab-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-16);
+  align-items: center;
 
   button {
     min-width: 160px;
+    flex: 0 0 auto;
+  }
+}
+
+// Guidelines section styling
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--md-sys-spacing-24);
+}
+
+.guideline-card {
+  .mat-mdc-card-header {
+    padding-bottom: var(--md-sys-spacing-8);
+  }
+
+  .mat-mdc-card-title {
+    font-size: var(--md-sys-typescale-title-medium-size, 16px);
+    font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: var(--md-sys-spacing-20);
+
+    li {
+      margin-bottom: var(--md-sys-spacing-8);
+      font-size: var(--md-sys-typescale-body-medium-size, 14px);
+      line-height: 1.4;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
@@ -165,8 +219,18 @@ button[disabled] mat-icon {
     gap: var(--md-sys-spacing-16);
   }
 
-  .extended-fabs button {
-    min-width: 140px;
+  .extended-fab-row {
+    flex-direction: column;
+    align-items: stretch;
+
+    button {
+      min-width: 140px;
+      width: 100%;
+    }
+  }
+
+  .guidelines-grid {
+    grid-template-columns: 1fr;
   }
 
   .positioning-demo {

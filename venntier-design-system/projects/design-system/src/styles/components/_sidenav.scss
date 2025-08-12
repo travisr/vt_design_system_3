@@ -1,5 +1,7 @@
 // Venntier Design System - Sidenav Theme
 // OpenAI-inspired sidenav styling for Angular Material
+// NOTE: Basic container styling is now handled by mat.sidenav-overrides() in core theme
+// This file contains only custom layout behaviors and utility classes not available as tokens
 // Customizable CSS Variables:
 // --vt-sidenav-width: Standard width (default: 240px)
 // --vt-sidenav-expanded-width: Expanded width (default: 280px)
@@ -11,11 +13,14 @@
 @use '@angular/material' as mat;
 
 @mixin vt-sidenav-theme() {
-  // Base sidenav container styles
+  // Custom sidenav styling - only includes styling not covered by mat.sidenav-overrides()
+  // NOTE: Basic container styling is now handled by mat.sidenav-overrides() in core theme
+
+  // Base sidenav container styles - only custom properties not available as tokens
   mat-sidenav,
   .mat-drawer.mat-sidenav,
   .mat-sidenav {
-    background: var(--md-sys-color-surface-container-low);
+    // Custom layout: Border and border-radius (not available as tokens)
     border-right: 1px solid var(--md-sys-color-outline-variant);
     border-radius: 0; // Remove rounded corners
 

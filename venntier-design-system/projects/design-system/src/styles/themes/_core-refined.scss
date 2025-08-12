@@ -406,8 +406,10 @@
       }
     }
 
-    // MENU - Same pattern as sidenav but with white background
+    // MENU - Custom styling not covered by mat.menu-overrides()
+    // NOTE: Basic menu styling is now handled by mat.menu-overrides() below
     .mat-mdc-menu-panel {
+      // Custom layout: Border, padding, shadow, and sizing (not available as tokens)
       --mat-menu-container-color: var(--md-sys-color-surface);
       --mat-menu-container-shape: var(--md-sys-shape-corner-small);
       --mat-menu-item-label-text-color: var(--md-sys-color-on-surface-variant);
@@ -572,13 +574,12 @@
 
       .mat-mdc-header-row {
         background-color: var(--md-sys-color-surface-variant);
-
-        // Height controlled by Angular Material density system - removed fixed height
+        height: 48px;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
       }
 
       .mat-mdc-row {
-        // Height controlled by Angular Material density system - removed fixed height
+        height: 52px;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
 
         &:hover {
@@ -783,6 +784,39 @@
     }
   }
 
+  // Extended FAB specific customizations
+  .mat-mdc-extended-fab {
+    // Force flat design - override any elevation shadows
+    box-shadow: none;
+
+    // Ensure no elevation on all states
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: none;
+    }
+
+    // Extended FAB text styling - ensure proper typography
+    --mdc-extended-fab-label-text-font: 'Inter';
+    --mdc-extended-fab-label-text-size: 14px;
+    --mdc-extended-fab-label-text-weight: 500;
+    --mdc-extended-fab-label-text-tracking: 0.01em;
+
+    // Ensure proper icon and text contrast
+    mat-icon {
+      color: var(--md-sys-color-on-tertiary);
+    }
+
+    .mdc-fab__label {
+      color: var(--md-sys-color-on-tertiary);
+    }
+
+    // Proper spacing between icon and text
+    .mdc-fab__icon {
+      margin-inline-end: 8px;
+    }
+  }
+
   // Card overrides - replaces most of _card.scss
   @include mat.card-overrides(
     (
@@ -974,6 +1008,37 @@
   )
 );
 
+// Sidenav overrides - replaces most of _sidenav.scss
+@include mat.sidenav-overrides(
+  (
+    // Container styling - OpenAI clean design
+    container-background-color: var(--md-sys-color-surface-container-low),
+    container-text-color: var(--md-sys-color-on-surface),
+    // Content styling
+    content-background-color: var(--md-sys-color-surface),
+    content-text-color: var(--md-sys-color-on-surface)
+  )
+);
+
+// Menu overrides - replaces most menu styling above
+@include mat.menu-overrides(
+  (
+    // Container styling - OpenAI clean design
+    container-color: var(--md-sys-color-surface),
+    container-shape: var(--md-sys-shape-corner-small),
+    // Item styling
+    item-label-text-color: var(--md-sys-color-on-surface-variant),
+    item-label-text-font: 'Inter',
+    item-label-text-size: var(--md-sys-typescale-body-medium-size),
+    item-label-text-weight: var(--md-sys-typescale-body-medium-weight),
+    // Hover states
+    item-hover-state-layer-color: var(--md-sys-color-hover),
+    // Icon styling
+    item-icon-color: var(--md-sys-color-on-surface-variant),
+    item-icon-size: 16px
+  )
+);
+
 // Custom card CSS for properties not available as tokens
 .mat-mdc-card {
   // OpenAI styling - 32px padding, borders, hover states
@@ -1143,4 +1208,15 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+// MD3 Filled Tonal Button Implementation
+// mat-flat-button without color attribute becomes filled-tonal variant
+.mat-mdc-unelevated-button:not([color]) {
+  --mdc-filled-button-container-color: var(--md-sys-color-secondary-container);
+  --mdc-filled-button-label-text-color: var(--md-sys-color-on-secondary-container);
+  --mdc-filled-button-state-layer-color: var(--md-sys-color-on-secondary-container);
+  --mdc-filled-button-hover-state-layer-opacity: 0.08;
+  --mdc-filled-button-pressed-state-layer-opacity: 0.12;
+  --mdc-filled-button-focus-state-layer-opacity: 0.12;
 }
