@@ -572,12 +572,13 @@
 
       .mat-mdc-header-row {
         background-color: var(--md-sys-color-surface-variant);
-        height: 48px;
+
+        // Height controlled by Angular Material density system - removed fixed height
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
       }
 
       .mat-mdc-row {
-        height: 52px;
+        // Height controlled by Angular Material density system - removed fixed height
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
 
         &:hover {
@@ -898,7 +899,18 @@
     // Container styling
     list-item-container-color: transparent,
     list-item-container-shape: var(--md-sys-shape-corner-small),
-    // Height controlled by density mixins - removed fixed height for density support
+    // More compact heights to match sidenav style (sidenav uses 32px)
+    list-item-one-line-container-height: 32px,
+    // Matches sidenav height exactly
+    list-item-two-line-container-height: 48px,
+    // Compact for two-line content
+    list-item-three-line-container-height: 64px,
+    // Compact for three-line content
+    // More compact icon spacing to match sidenav style
+    list-item-leading-icon-start-space: 4px,
+    // Reduced from 16px to match sidenav
+    list-item-leading-icon-end-space: 4px,
+    // Reduced from 16px to match sidenav
     // Label text styling
     list-item-label-text-color: var(--md-sys-color-on-surface-variant),
     list-item-label-text-font: 'Inter',

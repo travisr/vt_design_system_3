@@ -144,7 +144,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/data-display/lists/lists.component').then((m) => m.ListsComponent),
       },
-      // { path: 'tables', loadComponent: () => import('./pages/data-display/tables/tables.component').then(m => m.TablesComponent) },
+      {
+        path: 'tables',
+        loadComponent: () =>
+          import('./pages/data-display/tables/tables.component').then((m) => m.TablesComponent),
+      },
       // { path: 'dividers', loadComponent: () => import('./pages/data-display/dividers/dividers.component').then(m => m.DividersComponent) },
     ],
   },

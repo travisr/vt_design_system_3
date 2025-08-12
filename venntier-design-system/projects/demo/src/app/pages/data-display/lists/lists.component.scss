@@ -65,6 +65,22 @@
     gap: 4px;
   }
 
+  // Contact actions styling (same pattern as file actions)
+  .contact-actions {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: flex-end; // Right-align all actions
+    min-width: 48px; // Ensure consistent width for alignment
+
+    // Ensure badges and buttons have consistent positioning
+    > * {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
   // Timestamp styling
   .timestamp {
     font-size: 12px;
@@ -81,20 +97,203 @@
     color: var(--md-sys-color-on-surface-variant);
   }
 
-  // Density variations using MD3 density mixins
+  // Compact list styling following sidenav approach exactly
+  // Copy the exact approach used in sidenav for consistent spacing
+  mat-list,
+  mat-nav-list,
+  mat-selection-list {
+    // Ensure proper container width
+    width: 100%;
+    max-width: 100%;
+
+    .mat-mdc-list-item {
+      height: 40px; // Slightly taller to prevent text cutoff
+      min-height: 40px;
+      width: 100%; // Ensure full width
+      max-width: 100%;
+      overflow: visible; // Allow content to be visible
+
+      // Icon styling - copy sidenav approach exactly
+      .mat-icon,
+      mat-icon {
+        margin-right: 10px; // Exact same as sidenav
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    // Two-line and three-line items need more height for content
+    .mat-mdc-list-item.mdc-list-item--with-two-lines {
+      height: 64px; // Increased height to accommodate trailing actions
+      min-height: 64px;
+
+      // Use higher specificity to override Angular Material's styles
+      &.mat-mdc-list-item.mdc-list-item--with-two-lines {
+        .mat-mdc-list-item-content {
+          display: flex;
+          align-items: flex-start; // Align to top instead of center
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+          padding-top: 8px; // Add some top padding for better alignment
+        }
+
+        // Ensure text content doesn't take full width
+        .mat-mdc-list-item-unscoped-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start; // Align text to top
+        }
+
+        // Align trailing actions with the first line of text
+        .mat-mdc-list-item-meta {
+          flex-shrink: 0;
+          margin-left: auto;
+          align-self: flex-start; // Align to top (first line)
+          margin-top: 0; // Remove any top margin
+          line-height: 1.5; // Match text line height
+        }
+      }
+    }
+
+    .mat-mdc-list-item.mdc-list-item--with-three-lines {
+      height: 80px; // Increased height for three lines with actions
+      min-height: 80px;
+
+      // Use higher specificity to override Angular Material's styles
+      &.mat-mdc-list-item.mdc-list-item--with-three-lines {
+        .mat-mdc-list-item-content {
+          display: flex;
+          align-items: flex-start; // Align to top instead of center
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+          padding-top: 8px; // Add some top padding for better alignment
+        }
+
+        .mat-mdc-list-item-unscoped-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start; // Align text to top
+        }
+
+        // Align trailing actions with the first line of text
+        .mat-mdc-list-item-meta {
+          flex-shrink: 0;
+          margin-left: auto;
+          align-self: flex-start; // Align to top (first line)
+          margin-top: 0; // Remove any top margin
+          line-height: 1.5; // Match text line height
+        }
+      }
+    }
+  }
+
+  // Density variations using direct CSS approach (following sidenav pattern)
   &.dense {
-    @include mat.all-component-densities(-3);
+    mat-list,
+    mat-nav-list,
+    mat-selection-list {
+      .mat-mdc-list-item {
+        height: 32px; // Sidenav height for dense
+        min-height: 32px;
+
+        .mat-icon,
+        mat-icon {
+          margin-right: 8px; // Even tighter for dense
+        }
+      }
+
+      .mat-mdc-list-item.mdc-list-item--with-two-lines {
+        height: 56px; // Adequate for two lines with actions
+        min-height: 56px;
+
+        [matListItemMeta] {
+          align-self: center;
+        }
+      }
+
+      .mat-mdc-list-item.mdc-list-item--with-three-lines {
+        height: 72px; // Adequate for three lines with actions
+        min-height: 72px;
+
+        [matListItemMeta] {
+          align-self: center;
+        }
+      }
+    }
   }
 
   &.compact {
-    @include mat.all-component-densities(-2);
+    mat-list,
+    mat-nav-list,
+    mat-selection-list {
+      .mat-mdc-list-item {
+        height: 36px; // Slightly more compact than default
+        min-height: 36px;
+
+        .mat-icon,
+        mat-icon {
+          margin-right: 9px; // Slightly tighter
+        }
+      }
+
+      .mat-mdc-list-item.mdc-list-item--with-two-lines {
+        height: 60px; // Adequate for two lines with actions
+        min-height: 60px;
+
+        [matListItemMeta] {
+          align-self: center;
+        }
+      }
+
+      .mat-mdc-list-item.mdc-list-item--with-three-lines {
+        height: 76px; // Adequate for three lines with actions
+        min-height: 76px;
+
+        [matListItemMeta] {
+          align-self: center;
+        }
+      }
+    }
   }
 
   &.standard {
-    @include mat.all-component-densities(-1);
-  }
+    mat-list,
+    mat-nav-list,
+    mat-selection-list {
+      .mat-mdc-list-item {
+        height: 38px; // Slightly less compact
+        min-height: 38px;
 
-  // Default density (0) is applied by default, no mixin needed
+        .mat-icon,
+        mat-icon {
+          margin-right: 9px; // Slightly tighter
+        }
+      }
+
+      .mat-mdc-list-item.mdc-list-item--with-two-lines {
+        height: 62px; // Adequate for two lines with actions
+        min-height: 62px;
+
+        [matListItemMeta] {
+          align-self: center;
+        }
+      }
+
+      .mat-mdc-list-item.mdc-list-item--with-three-lines {
+        height: 78px; // Adequate for three lines with actions
+        min-height: 78px;
+
+        [matListItemMeta] {
+          align-self: center;
+        }
+      }
+    }
+  }
 }
 
 // Responsive design

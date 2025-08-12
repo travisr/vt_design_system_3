@@ -19,6 +19,7 @@ export const MD3_DOCS = {
   SEGMENTED_BUTTONS: 'https://m3.material.io/components/segmented-buttons',
   TEXT_FIELDS: 'https://m3.material.io/components/text-fields',
   LISTS: 'https://m3.material.io/components/lists',
+  TABLES: 'https://m3.material.io/components/data-tables',
 };
 
 export const EXTERNAL_RESOURCES = {

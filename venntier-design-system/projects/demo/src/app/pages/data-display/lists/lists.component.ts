@@ -171,15 +171,17 @@ interface ListItem {
                   </div>
                   <span matListItemTitle>{{ item.title }}</span>
                   <span matListItemLine>{{ item.subtitle }}</span>
-                  @if (item.badge) {
-                    <span matListItemMeta matBadge="{{ item.badge }}" matBadgeColor="accent">
-                      <mat-icon>message</mat-icon>
-                    </span>
-                  } @else {
-                    <button mat-icon-button matListItemMeta (click)="onItemAction(item.id, 'call')">
-                      <mat-icon>call</mat-icon>
-                    </button>
-                  }
+                  <div matListItemMeta class="contact-actions">
+                    @if (item.badge) {
+                      <span matBadge="{{ item.badge }}" matBadgeColor="accent">
+                        <mat-icon>message</mat-icon>
+                      </span>
+                    } @else {
+                      <button mat-icon-button (click)="onItemAction(item.id, 'call')">
+                        <mat-icon>call</mat-icon>
+                      </button>
+                    }
+                  </div>
                 </mat-list-item>
               }
             </mat-list>
@@ -317,7 +319,11 @@ export class ListsComponent {
       label: 'Standard (-1) - Slightly compact',
       description: 'MD3 medium density',
     },
-    { value: 'default', label: 'Default (0) - Comfortable', description: 'MD3 default density' },
+    {
+      value: 'default',
+      label: 'Default (0) - Sidenav style',
+      description: 'Matches sidenav spacing (32px height)',
+    },
   ];
 
   // Basic single line items
@@ -469,8 +475,8 @@ export class ListsComponent {
     this.selectedDensity.set(density);
   }
 
-  onItemAction(itemId: string, action: string): void {
-    console.log(`Action "${action}" on item "${itemId}"`);
+  onItemAction(_itemId: string, _action: string): void {
+    // Handle item actions - could show snackbar or perform action
   }
 
   onNavItemClick(itemId: string): void {

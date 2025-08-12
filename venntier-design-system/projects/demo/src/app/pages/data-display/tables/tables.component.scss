@@ -1,0 +1,240 @@
+@use '@angular/material' as mat;
+
+.demo-page {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .density-selector {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    mat-form-field {
+      width: 450px; // Consistent with other demo pages
+    }
+
+    .density-info {
+      margin: 0;
+      color: var(--md-sys-color-on-surface-variant);
+
+      small {
+        color: var(--md-sys-color-on-surface-variant);
+        opacity: 0.7;
+      }
+    }
+  }
+
+  demo-example-viewer {
+    margin-bottom: 32px;
+
+    mat-card {
+      margin-bottom: 16px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Table styling - follows MD3 best practices
+  // Let Angular Material density tokens control padding and heights
+  .demo-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    // Header styling - minimal overrides to avoid conflicts with density
+    .mat-mdc-header-row {
+      background-color: var(--md-sys-color-surface-variant);
+
+      .mat-mdc-header-cell {
+        color: var(--md-sys-color-on-surface-variant);
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+
+        // Removed fixed padding - let density tokens control this
+      }
+    }
+
+    // Row styling - minimal overrides to avoid conflicts with density
+    .mat-mdc-row {
+      &:hover {
+        background-color: var(--md-sys-color-surface-container-lowest);
+      }
+
+      .mat-mdc-cell {
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        color: var(--md-sys-color-on-surface);
+
+        // Removed fixed padding - let density tokens control this
+      }
+    }
+
+    // Remove last row border
+    .mat-mdc-row:last-child .mat-mdc-cell {
+      border-bottom: none;
+    }
+  }
+
+  // Table actions bar
+  .table-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--md-sys-spacing-16);
+    padding: var(--md-sys-spacing-8) 0;
+
+    .selection-info {
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: var(--md-sys-typescale-body-small-size);
+    }
+
+    .bulk-actions {
+      display: flex;
+      gap: var(--md-sys-spacing-8);
+    }
+  }
+
+  // Status chip styling
+  .status-active {
+    background-color: var(--md-sys-color-tertiary-container);
+    color: var(--md-sys-color-on-tertiary-container);
+  }
+
+  .status-inactive {
+    background-color: var(--md-sys-color-error-container);
+    color: var(--md-sys-color-on-error-container);
+  }
+
+  .status-pending {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+  }
+
+  // Density is handled globally by the design system using Angular Material's
+  // mat.all-component-densities() mixin in _core-refined.scss
+  // No component-specific density styles needed - the global system handles all components
+
+  // Responsive design
+  @media (width <= 768px) {
+    padding: 16px;
+
+    .density-selector {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
+    .demo-table {
+      font-size: var(--md-sys-typescale-body-small-size);
+
+      // Removed fixed padding - let density tokens control this on mobile too
+    }
+
+    // Density is handled by Angular Material's density system automatically
+
+    .table-actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--md-sys-spacing-12);
+
+      .bulk-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  // High contrast mode support
+  @media (prefers-contrast: high) {
+    .demo-table {
+      .mat-mdc-header-row .mat-mdc-header-cell,
+      .mat-mdc-row .mat-mdc-cell {
+        border-bottom-width: 2px;
+      }
+    }
+
+    .status-active,
+    .status-inactive,
+    .status-pending {
+      border: 1px solid currentColor;
+    }
+  }
+
+  // Print styles
+  @media print {
+    .density-selector,
+    .table-actions,
+    .mat-mdc-cell:has(mat-checkbox),
+    .mat-mdc-cell:has(button) {
+      display: none;
+    }
+
+    .demo-table {
+      .mat-mdc-header-cell,
+      .mat-mdc-cell {
+        border: 1px solid #000;
+        padding: 8px;
+      }
+    }
+  }
+}
+
+// Table styling is handled by mat.table-overrides() in the design system
+// Only layout-specific styling remains here
+
+// Animation for row selection
+.mat-mdc-row {
+  transition: background-color var(--md-sys-motion-hover);
+}
+
+// Checkbox alignment in table cells
+.mat-mdc-cell mat-checkbox,
+.mat-mdc-header-cell mat-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Action button spacing
+.mat-mdc-cell button + button {
+  margin-left: var(--md-sys-spacing-4);
+}
+
+// Sort header styling
+.mat-sort-header-arrow {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+// Loading state (for future enhancement)
+.table-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--md-sys-spacing-48);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+// Empty state (for future enhancement)
+.table-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--md-sys-spacing-48);
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: center;
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--md-sys-spacing-16);
+    opacity: 0.5;
+  }
+}
