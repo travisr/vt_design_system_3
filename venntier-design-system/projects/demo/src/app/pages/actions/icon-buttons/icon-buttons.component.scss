@@ -1,91 +1,17 @@
-.button-group {
-  display: flex;
-  align-items: center;
-  gap: var(--md-sys-spacing-8);
-  flex-wrap: wrap;
-}
+// Icon Buttons Demo Styles - MD3 Compliant
+// Uses demo utility classes and MD3 design tokens
 
-.variant-demo {
-  display: flex;
-  align-items: center;
-  gap: var(--md-sys-spacing-32);
-  flex-wrap: wrap;
-}
+// Active state for toggle buttons - follows MD3 state layer pattern
+button.active {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
 
-.variant-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--md-sys-spacing-12);
-
-  h4 {
-    margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
-  }
-}
-
-// Icon button sizing is now handled by mat.icon-button-overrides() in the design system
-// These custom sizes are no longer needed
-
-.icon-button-raised,
-.icon-button-stroked,
-.icon-button-flat {
-  // Only layout-specific styling remains
   mat-icon {
-    margin: 0;
-  }
-}
-
-.toggle-demo {
-  display: flex;
-  align-items: center;
-  gap: var(--md-sys-spacing-32);
-  flex-wrap: wrap;
-}
-
-.toggle-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--md-sys-spacing-12);
-
-  h4 {
-    margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
-  }
-
-  button.active {
-    background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
-
-    mat-icon {
-      color: var(--md-sys-color-on-secondary-container);
-    }
   }
 }
 
-.states-demo {
-  display: flex;
-  align-items: center;
-  gap: var(--md-sys-spacing-32);
-  flex-wrap: wrap;
-}
-
-.state-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--md-sys-spacing-12);
-
-  h4 {
-    margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
-  }
-}
-
+// Loading animation for interactive states
 .spinning {
   animation: spin 1s linear infinite;
 }
@@ -100,62 +26,151 @@
   }
 }
 
-.color-demo {
-  display: flex;
-  align-items: center;
-  gap: var(--md-sys-spacing-32);
-  flex-wrap: wrap;
-}
-
-.color-group {
+// Toolbar group styling for icon button groups
+.demo-toolbar-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--md-sys-spacing-12);
+  gap: var(--md-sys-spacing-8);
 
-  h4 {
+  .demo-group-title {
     margin: 0;
     font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-weight: var(--md-sys-typescale-body-medium-weight, 400);
+    color: var(--md-sys-color-on-surface);
   }
 }
 
-.group-demo {
-  .button-toolbar {
-    display: flex;
-    flex-direction: column;
-    gap: var(--md-sys-spacing-24);
+// Usage guidelines styling
+.demo-guidelines {
+  margin-top: var(--md-sys-spacing-16);
+}
+
+.demo-do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--md-sys-spacing-24);
+
+  @media (width <= 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--md-sys-spacing-16);
+  }
+}
+
+.demo-do,
+.demo-dont {
+  padding: var(--md-sys-spacing-16);
+  border-radius: var(--md-sys-shape-corner-medium);
+  border: 1px solid var(--md-sys-color-outline-variant);
+
+  h3 {
+    margin: 0 0 var(--md-sys-spacing-12) 0;
+    font-size: var(--md-sys-typescale-title-medium-size, 16px);
+    font-weight: var(--md-sys-typescale-title-medium-weight, 500);
   }
 
-  .button-section {
-    h4 {
-      margin: 0 0 var(--md-sys-spacing-8) 0;
+  ul {
+    margin: 0;
+    padding-left: var(--md-sys-spacing-20);
+
+    li {
+      margin-bottom: var(--md-sys-spacing-8);
       font-size: var(--md-sys-typescale-body-medium-size, 14px);
-      color: var(--md-sys-color-on-surface);
-    }
-
-    .button-group {
-      padding: var(--md-sys-spacing-8);
-      background-color: var(--md-sys-color-surface-variant);
-      border-radius: var(--md-sys-shape-corner-small);
-      border: 1px solid var(--md-sys-color-outline-variant);
+      line-height: var(--md-sys-typescale-body-medium-line-height, 20px);
     }
   }
 }
 
-// NOTE: Hover and focus states are now handled by mat.icon-button-overrides() in the design system
-// Removed conflicting custom CSS to let overrides manage the styling
+.demo-do {
+  background-color: var(--md-sys-color-tertiary-container);
+  border-color: var(--md-sys-color-tertiary);
 
-// Responsive adjustments
-@media (width <= 768px) {
-  .variant-demo,
-  .toggle-demo,
-  .states-demo,
-  .color-demo {
-    gap: var(--md-sys-spacing-16);
+  h3 {
+    color: var(--md-sys-color-on-tertiary-container);
   }
 
-  .group-demo .button-toolbar {
-    gap: var(--md-sys-spacing-16);
+  ul li {
+    color: var(--md-sys-color-on-tertiary-container);
   }
 }
+
+.demo-dont {
+  background-color: var(--md-sys-color-error-container);
+  border-color: var(--md-sys-color-error);
+
+  h3 {
+    color: var(--md-sys-color-on-error-container);
+  }
+
+  ul li {
+    color: var(--md-sys-color-on-error-container);
+  }
+}
+
+// Icon button variants - MD3 style implementations
+.demo-icon-button-filled {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+}
+
+// Tonal Icon Button - using mat-icon-button for perfect circular alignment
+.demo-icon-button-tonal {
+  // MD3 Tonal Icon Button - add background to standard icon button
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+
+  // Icon color
+  mat-icon {
+    color: var(--md-sys-color-on-secondary-container);
+  }
+
+  // Hover state
+  &:hover {
+    background-color: var(--md-sys-color-secondary-container);
+  }
+
+  // Disabled state
+  &:disabled {
+    background-color: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+
+    mat-icon {
+      color: var(--md-sys-color-on-surface-variant);
+    }
+  }
+}
+
+// Outlined Icon Button - using mat-icon-button for perfect circular alignment
+.demo-icon-button-outlined {
+  // MD3 Outlined Icon Button - add border to standard icon button
+  border: 1px solid var(--md-sys-color-outline);
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface);
+
+  // Icon color
+  mat-icon {
+    color: var(--md-sys-color-on-surface);
+  }
+
+  // Disabled state
+  &:disabled {
+    border-color: var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface-variant);
+
+    mat-icon {
+      color: var(--md-sys-color-on-surface-variant);
+    }
+  }
+}
+
+// Icon button densities are handled globally by Angular Material density mixins
+// in the design system theme (_core-refined.scss):
+// .compact { @include mat.all-component-densities(-2); }
+// .dense { @include mat.all-component-densities(-3); }
+// No component-specific density CSS needed - the global system handles all components
+
+// NOTE: All other styling is handled by:
+// 1. Demo utility classes (demo-flex, demo-label, etc.) from shared styles
+// 2. mat.icon-button-overrides() in the design system theme
+// 3. MD3 design tokens for consistent spacing, colors, and typography

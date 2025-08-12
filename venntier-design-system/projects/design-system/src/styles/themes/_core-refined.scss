@@ -131,13 +131,36 @@
       // Disable touch target display which might be causing the outline
       touch-target-display: none,
 
-      // Icon colors - MD3 best practice: use on-surface for primary icon color
-      icon-color: var(--md-sys-color-on-surface),
       // Disabled state - use proper disabled color token
       disabled-icon-color: var(--md-sys-color-on-surface-variant),
       disabled-state-layer-color: var(--md-sys-color-on-surface-variant)
     )
   );
+
+  // Icon button color variants - using correct MDC CSS custom properties
+  .mat-mdc-icon-button {
+    // Default color - inherit from theme
+    --mdc-icon-button-icon-color: var(--md-sys-color-on-surface);
+    --mat-icon-button-state-layer-color: var(--md-sys-color-on-surface);
+
+    // Primary color (green)
+    &.mat-primary {
+      --mdc-icon-button-icon-color: var(--md-sys-color-tertiary);
+      --mat-icon-button-state-layer-color: var(--md-sys-color-tertiary);
+    }
+
+    // Accent color
+    &.mat-accent {
+      --mdc-icon-button-icon-color: var(--md-sys-color-secondary);
+      --mat-icon-button-state-layer-color: var(--md-sys-color-secondary);
+    }
+
+    // Warn color
+    &.mat-warn {
+      --mdc-icon-button-icon-color: var(--md-sys-color-error);
+      --mat-icon-button-state-layer-color: var(--md-sys-color-error);
+    }
+  }
 
   // NOTE: Select panel styling is now handled by mat.select-overrides() below
 
@@ -717,11 +740,21 @@
 
   // MD3 density classes - only negative values and 0 are supported
   .dense {
-    @include mat.all-component-densities(-3);
+    @include mat.all-component-densities(-4);
+    @include mat.icon-button-overrides(
+      (
+        icon-size: 18px,
+      )
+    );
   }
 
   .compact {
     @include mat.all-component-densities(-2);
+    @include mat.icon-button-overrides(
+      (
+        icon-size: 20px,
+      )
+    );
   }
 
   .standard {
