@@ -1,0 +1,173 @@
+// Badges Demo Page Styles
+// Uses design system tokens and follows OpenAI-inspired design
+
+.demo-page {
+  // Badge variants layout
+  .badge-variants {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .variant-group {
+      h4 {
+        margin: 0 0 12px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      .mat-button-toggle-group {
+        border: 1px solid var(--md-sys-color-outline-variant);
+        border-radius: 8px;
+        overflow: hidden;
+
+        .mat-button-toggle {
+          border: none;
+          border-right: 1px solid var(--md-sys-color-outline-variant);
+
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+    }
+  }
+
+  // Badge types layout
+  .badge-types {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .type-group {
+      h4 {
+        margin: 0 0 12px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      .badge-examples {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+
+        span {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        mat-icon {
+          font-size: 24px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  // Badge positions layout
+  .badge-positions {
+    .position-group {
+      h4 {
+        margin: 0 0 12px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      .position-examples {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+
+        span {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px;
+        }
+
+        mat-icon {
+          font-size: 24px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  // Badge states layout
+  .badge-states {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .state-group {
+      h4 {
+        margin: 0 0 12px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      .button-examples,
+      .disabled-examples {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+    }
+  }
+
+  // Density selector styling
+  .density-selector {
+    mat-form-field {
+      width: 450px; // Consistent with other demo pages
+    }
+  }
+}
+
+// Density variations
+.demo-page.compact {
+  .badge-variants,
+  .badge-types,
+  .badge-positions,
+  .badge-states {
+    gap: 16px;
+
+    .variant-group,
+    .type-group,
+    .position-group,
+    .state-group {
+      .badge-examples,
+      .position-examples,
+      .button-examples,
+      .disabled-examples {
+        gap: 16px;
+      }
+    }
+  }
+}
+
+.demo-page.dense {
+  .badge-variants,
+  .badge-types,
+  .badge-positions,
+  .badge-states {
+    gap: 12px;
+
+    .variant-group,
+    .type-group,
+    .position-group,
+    .state-group {
+      .badge-examples,
+      .position-examples,
+      .button-examples,
+      .disabled-examples {
+        gap: 12px;
+      }
+    }
+  }
+}

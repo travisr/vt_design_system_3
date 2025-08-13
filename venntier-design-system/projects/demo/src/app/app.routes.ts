@@ -126,7 +126,18 @@ export const routes: Routes = [
   {
     path: 'communication',
     children: [
-      // { path: 'badges', loadComponent: () => import('./pages/communication/badges/badges.component').then(m => m.BadgesComponent) },
+      {
+        path: 'badges',
+        loadComponent: () =>
+          import('./pages/communication/badges/badges.component').then((m) => m.BadgesComponent),
+      },
+      {
+        path: 'progress-indicators',
+        loadComponent: () =>
+          import('./pages/communication/progress-indicators/progress-indicators.component').then(
+            (m) => m.ProgressIndicatorsComponent,
+          ),
+      },
       // { path: 'snackbar', loadComponent: () => import('./pages/communication/snackbar/snackbar.component').then(m => m.SnackbarComponent) },
       // { path: 'tooltips', loadComponent: () => import('./pages/communication/tooltips/tooltips.component').then(m => m.TooltipsComponent) },
       // { path: 'dialogs', loadComponent: () => import('./pages/communication/dialogs/dialogs.component').then(m => m.DialogsComponent) },
@@ -144,11 +155,7 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/data-display/lists/lists.component').then((m) => m.ListsComponent),
       },
-      {
-        path: 'tables',
-        loadComponent: () =>
-          import('./pages/data-display/tables/tables.component').then((m) => m.TablesComponent),
-      },
+      // { path: 'tables', loadComponent: () => import('./pages/data-display/tables/tables.component').then(m => m.TablesComponent) },
       // { path: 'dividers', loadComponent: () => import('./pages/data-display/dividers/dividers.component').then(m => m.DividersComponent) },
     ],
   },

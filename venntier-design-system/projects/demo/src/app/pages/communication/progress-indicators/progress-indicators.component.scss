@@ -1,0 +1,175 @@
+// Progress Indicators Demo Page Styles
+// Uses design system tokens and follows OpenAI-inspired design
+
+.demo-page {
+  // Progress variants layout
+  .progress-variants {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .variant-group {
+      h4 {
+        margin: 0 0 16px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      .progress-examples {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .progress-item {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          width: 100%;
+          max-width: 400px;
+
+          span {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--md-sys-color-on-surface-variant);
+          }
+
+          mat-progress-bar {
+            height: 4px;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+  }
+
+  // Spinner variants layout
+  .spinner-variants {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .variant-group {
+      h4 {
+        margin: 0 0 16px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      .spinner-examples {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: center;
+
+        .spinner-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+
+          span {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--md-sys-color-on-surface-variant);
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  // Controls section layout
+  .controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .control-group {
+      h4 {
+        margin: 0 0 16px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      mat-slider {
+        width: 300px;
+      }
+
+      p {
+        margin: 8px 0 0;
+        font-size: 12px;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      .button-controls {
+        display: flex;
+        gap: 12px;
+      }
+    }
+  }
+
+  // Density selector styling
+  .density-selector {
+    mat-form-field {
+      width: 450px; // Consistent with other demo pages
+    }
+  }
+}
+
+// Density variations
+.demo-page.compact {
+  .progress-variants,
+  .spinner-variants,
+  .controls-section {
+    gap: 24px;
+
+    .variant-group {
+      .progress-examples,
+      .spinner-examples {
+        gap: 12px;
+      }
+
+      .progress-examples .progress-item {
+        gap: 6px;
+      }
+
+      .spinner-examples .spinner-item {
+        gap: 8px;
+      }
+    }
+
+    .control-group {
+      gap: 16px;
+    }
+  }
+}
+
+.demo-page.dense {
+  .progress-variants,
+  .spinner-variants,
+  .controls-section {
+    gap: 16px;
+
+    .variant-group {
+      .progress-examples,
+      .spinner-examples {
+        gap: 8px;
+      }
+
+      .progress-examples .progress-item {
+        gap: 4px;
+      }
+
+      .spinner-examples .spinner-item {
+        gap: 6px;
+      }
+    }
+
+    .control-group {
+      gap: 12px;
+    }
+  }
+}

@@ -17,6 +17,8 @@ export const MD3_DOCS = {
   FAB: 'https://m3.material.io/components/floating-action-button',
   ICON_BUTTONS: 'https://m3.material.io/components/icon-buttons',
   SEGMENTED_BUTTONS: 'https://m3.material.io/components/segmented-buttons',
+  BADGES: 'https://m3.material.io/components/badges',
+  PROGRESS_INDICATORS: 'https://m3.material.io/components/progress-indicators',
   TEXT_FIELDS: 'https://m3.material.io/components/text-fields',
   SELECT: 'https://m3.material.io/components/menus',
   LISTS: 'https://m3.material.io/components/lists',

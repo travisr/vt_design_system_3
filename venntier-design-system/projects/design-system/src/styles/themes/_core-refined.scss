@@ -1142,6 +1142,43 @@
   )
 );
 
+// Badge overrides - OpenAI clean design
+@include mat.badge-overrides(
+  (
+    // Background colors using MD3 tokens
+    background-color: var(--md-sys-color-error),
+    text-color: var(--md-sys-color-on-error),
+    // Typography
+    text-font: 'Inter',
+    text-size: 12px,
+    text-weight: 500,
+    // Shape and sizing
+    container-shape: var(--md-sys-shape-corner-full),
+    // Disabled state
+    disabled-state-background-color: var(--md-sys-color-surface-container-high),
+    disabled-state-text-color: var(--md-sys-color-on-surface-variant)
+  )
+);
+
+// Progress bar overrides - OpenAI clean design
+@include mat.progress-bar-overrides(
+  (
+    // Track styling
+    track-color: var(--md-sys-color-surface-container-high),
+    track-height: 4px,
+    // Active bar styling
+    active-indicator-color: var(--md-sys-color-primary)
+  )
+);
+
+// Progress spinner overrides - OpenAI clean design
+@include mat.progress-spinner-overrides(
+  (
+    // Spinner styling
+    active-indicator-color: var(--md-sys-color-primary)
+  )
+);
+
 // Custom card CSS for properties not available as tokens
 .mat-mdc-card {
   // OpenAI styling - 32px padding, borders, hover states
