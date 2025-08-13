@@ -582,9 +582,9 @@ export class IconButtonsComponent {
   padding: 0;
 
   // MD3 Tonal Icon Button colors
-  --mdc-filled-button-container-color: var(--mat-sys-color-secondary-container);
-  --mdc-filled-button-label-text-color: var(--mat-sys-color-on-secondary-container);
-  --mdc-filled-button-state-layer-color: var(--mat-sys-color-on-secondary-container);
+  --mat-button-filled-container-color: var(--mat-sys-color-secondary-container);
+  --mat-button-filled-label-text-color: var(--mat-sys-color-on-secondary-container);
+  --mat-button-filled-state-layer-color: var(--mat-sys-color-on-secondary-container);
 
   mat-icon {
     color: var(--mat-sys-color-on-secondary-container);
@@ -621,11 +621,11 @@ export class IconButtonsComponent {
   padding: 0;
 
   // MD3 Tonal Icon Button colors
-  --mdc-filled-button-container-color: var(--mat-sys-color-secondary-container);
-  --mdc-filled-button-label-text-color: var(--mat-sys-color-on-secondary-container);
-  --mdc-filled-button-state-layer-color: var(--mat-sys-color-on-secondary-container);
-  --mdc-filled-button-hover-state-layer-opacity: 0.08;
-  --mdc-filled-button-pressed-state-layer-opacity: 0.12;
+  --mat-button-filled-container-color: var(--mat-sys-color-secondary-container);
+  --mat-button-filled-label-text-color: var(--mat-sys-color-on-secondary-container);
+  --mat-button-filled-state-layer-color: var(--mat-sys-color-on-secondary-container);
+  --mat-button-filled-hover-state-layer-opacity: 0.08;
+  --mat-button-filled-pressed-state-layer-opacity: 0.12;
 
   mat-icon {
     color: var(--mat-sys-color-on-secondary-container);

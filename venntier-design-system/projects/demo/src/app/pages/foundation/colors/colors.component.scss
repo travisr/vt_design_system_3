@@ -331,9 +331,9 @@
 }
 
 // CRITICAL FIX: Tertiary button text color - use proper MDC CSS variable
-// Based on MD3 best practices, use --mdc-filled-button-label-text-color
+// Based on MD3 best practices, use --mat-button-filled-label-text-color
 .mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary {
-  --mdc-filled-button-label-text-color: var(--mat-sys-on-tertiary);
+  --mat-button-filled-label-text-color: var(--mat-sys-on-tertiary);
 
   // Force the label to use white color with maximum specificity
   // This overrides the global "p, span, div, a, li, td, th" rule

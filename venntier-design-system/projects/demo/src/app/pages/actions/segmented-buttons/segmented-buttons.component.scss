@@ -97,7 +97,6 @@
   // Remove checkmark content from checked state
   &.mat-button-toggle-checked {
     --mat-button-toggle-checkmark-content: '';
-    --mdc-button-toggle-checkmark-content: '';
 
     .mat-button-toggle-label-content::after {
       content: none;

@@ -14,6 +14,12 @@
 // Include Material core styles (only once)
 @include mat.core;
 
+// Include Material elevation classes (for utility usage)
+@include mat.elevation-classes;
+
+// Include Material app background (for body styling)
+@include mat.app-background;
+
 // Apply base Material theme structure (only once)
 @include core.vt-material-base-theme;
 

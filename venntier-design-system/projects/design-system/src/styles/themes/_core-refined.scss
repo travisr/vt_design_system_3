@@ -18,6 +18,7 @@
         color: (
           // Removed theme-type to enable automatic light/dark switching
           use-system-variables: true,
+          system-variables-prefix: sys,
           // Use custom palettes that work with light-dark() function
           primary: mat.$violet-palette,
           tertiary: mat.$orange-palette,
@@ -26,6 +27,7 @@
           brand-family: 'Inter',
           plain-family: 'Inter',
           use-system-variables: true,
+          system-variables-prefix: sys,
         ),
         density: 0,
       )
@@ -262,7 +264,7 @@
 @mixin vt-component-overrides-refined() {
   // Global refinements - use CSS custom properties instead of !important
   :root {
-    --mdc-elevation-box-shadow-for-gss: none;
+    --mat-elevation-box-shadow-for-gss: none;
     --vt-surface-background: var(--mat-sys-surface);
     --vt-on-surface-text: var(--mat-sys-on-surface);
   }
@@ -296,24 +298,24 @@
   // Icon button color variants - using correct MDC CSS custom properties
   .mat-mdc-icon-button {
     // Default color - inherit from theme
-    --mdc-icon-button-icon-color: var(--mat-sys-on-surface);
+    --mat-icon-button-icon-color: var(--mat-sys-on-surface);
     --mat-icon-button-state-layer-color: var(--mat-sys-on-surface);
 
     // Primary color (green)
     &.mat-primary {
-      --mdc-icon-button-icon-color: var(--mat-sys-tertiary);
+      --mat-icon-button-icon-color: var(--mat-sys-tertiary);
       --mat-icon-button-state-layer-color: var(--mat-sys-tertiary);
     }
 
     // Accent color
     &.mat-accent {
-      --mdc-icon-button-icon-color: var(--mat-sys-secondary);
+      --mat-icon-button-icon-color: var(--mat-sys-secondary);
       --mat-icon-button-state-layer-color: var(--mat-sys-secondary);
     }
 
     // Warn color
     &.mat-warn {
-      --mdc-icon-button-icon-color: var(--mat-sys-error);
+      --mat-icon-button-icon-color: var(--mat-sys-error);
       --mat-icon-button-state-layer-color: var(--mat-sys-error);
     }
   }
@@ -344,10 +346,10 @@
     .mat-mdc-flat-button,
     .mat-mdc-stroked-button {
       // Heights controlled by density mixins - removed fixed heights for density support
-      --mdc-text-button-label-text-font: var(--mat-sys-label-large-font);
-      --mdc-text-button-label-text-size: var(--mat-sys-label-large-size);
-      --mdc-text-button-label-text-weight: var(--mat-sys-label-large-weight);
-      --mdc-text-button-label-text-tracking: var(--mat-sys-label-large-tracking);
+      --mat-button-text-label-text-font: var(--mat-sys-label-large-font);
+      --mat-button-text-label-text-size: var(--mat-sys-label-large-size);
+      --mat-button-text-label-text-weight: var(--mat-sys-label-large-weight);
+      --mat-button-text-label-text-tracking: var(--mat-sys-label-large-tracking);
 
       border-radius: var(--mat-sys-shape-corner-small, 6px);
       padding: 0 var(--mat-sys-spacing-20, 20px);
@@ -356,10 +358,9 @@
 
       // Disable ripples using CSS variables
       --mat-ripple-color: transparent;
-      --mdc-ripple-color: transparent;
-      --mdc-ripple-hover-opacity: 0;
-      --mdc-ripple-focus-opacity: 0;
-      --mdc-ripple-pressed-opacity: 0;
+      --mat-ripple-hover-opacity: 0;
+      --mat-ripple-focus-opacity: 0;
+      --mat-ripple-pressed-opacity: 0;
     }
 
     // NOTE: Icon button styling is now handled by mat.icon-button-overrides() above
@@ -368,8 +369,8 @@
 
     // CARDS - Use CSS custom properties and higher specificity
     .mat-mdc-card {
-      --mdc-elevated-card-container-color: var(--mat-sys-surface);
-      --mdc-elevated-card-container-shape: 8px;
+      --mat-card-elevated-container-color: var(--mat-sys-surface);
+      --mat-card-elevated-container-shape: 8px;
 
       border: 1px solid var(--mat-sys-outline-variant);
       border-radius: var(--mat-sys-shape-corner-medium, 8px);
@@ -496,10 +497,10 @@
     // Additional chips customizations not available through overrides
     .mat-mdc-chip {
       // Override MDC chip padding using CSS custom properties
-      --mdc-chip-leading-space: 8px; // Reduce left padding
-      --mdc-chip-trailing-space: 8px; // Reduce right padding
-      --mdc-chip-with-avatar-leading-space: 4px; // Tighter with avatar
-      --mdc-chip-with-trailing-icon-trailing-space: 4px; // Tighter with remove icon
+      --mat-chip-leading-space: 8px; // Reduce left padding
+      --mat-chip-trailing-space: 8px; // Reduce right padding
+      --mat-chip-with-avatar-leading-space: 4px; // Tighter with avatar
+      --mat-chip-with-trailing-icon-trailing-space: 4px; // Tighter with remove icon
     }
 
     // Hide checkmarks on filter chips for cleaner OpenAI style
@@ -555,11 +556,11 @@
 
       .mat-mdc-menu-item {
         // Use same dimensions as sidenav items
-        --mdc-list-list-item-container-height: var(--mat-sys-spacing-8);
-        --mdc-list-list-item-label-text-size: var(--mat-sys-body-medium-size);
-        --mdc-list-list-item-label-text-weight: var(--mat-sys-body-medium-weight);
-        --mdc-list-list-item-leading-icon-size: var(--mat-sys-spacing-4);
-        --mdc-list-list-item-trailing-icon-size: var(--mat-sys-spacing-4);
+        --mat-list-list-item-container-height: var(--mat-sys-spacing-8);
+        --mat-list-list-item-label-text-size: var(--mat-sys-body-medium-size);
+        --mat-list-list-item-label-text-weight: var(--mat-sys-body-medium-weight);
+        --mat-list-list-item-leading-icon-size: var(--mat-sys-spacing-4);
+        --mat-list-list-item-trailing-icon-size: var(--mat-sys-spacing-4);
 
         height: var(--mat-sys-spacing-8, 32px); // Same as sidenav
         padding: 0 var(--mat-sys-spacing-2, 8px); // Same as sidenav
@@ -659,22 +660,22 @@
 
     // PROGRESS - Using tertiary color
     .mat-mdc-progress-bar {
-      --mdc-linear-progress-active-indicator-color: var(--mat-sys-tertiary);
-      --mdc-linear-progress-track-color: var(--mat-sys-surface-container-high);
+      --mat-progress-bar-active-indicator-color: var(--mat-sys-tertiary);
+      --mat-progress-bar-track-color: var(--mat-sys-surface-container-high);
 
       height: var(--mat-sys-spacing-4, 4px);
       border-radius: var(--mat-sys-spacing-2, 2px);
     }
 
     .mat-mdc-progress-spinner {
-      --mdc-circular-progress-active-indicator-color: var(--mat-sys-tertiary);
+      --mat-progress-spinner-active-indicator-color: var(--mat-sys-tertiary);
     }
 
     // SNACKBAR - Dark container for contrast
     .mat-mdc-snack-bar-container {
-      --mdc-snackbar-container-color: var(--mat-sys-inverse-surface);
-      --mdc-snackbar-supporting-text-color: var(--mat-sys-inverse-on-surface);
-      --mdc-snackbar-container-shape: 8px;
+      --mat-snackbar-container-color: var(--mat-sys-inverse-surface);
+      --mat-snackbar-supporting-text-color: var(--mat-sys-inverse-on-surface);
+      --mat-snackbar-container-shape: 8px;
 
       border-radius: var(--mat-sys-shape-corner-medium, 8px);
 
@@ -685,8 +686,8 @@
 
     // DIALOG - Clean modal style
     .mat-mdc-dialog-container {
-      --mdc-dialog-container-color: var(--mat-sys-surface);
-      --mdc-dialog-container-shape: 12px;
+      --mat-dialog-container-color: var(--mat-sys-surface);
+      --mat-dialog-container-shape: 12px;
 
       border: 1px solid var(--mat-sys-outline-variant);
       border-radius: 12px;
@@ -740,9 +741,9 @@
 
     // TOOLTIP - Inverse colors for contrast
     .mat-mdc-tooltip {
-      --mdc-plain-tooltip-container-color: var(--mat-sys-inverse-surface);
-      --mdc-plain-tooltip-supporting-text-color: var(--mat-sys-inverse-on-surface);
-      --mdc-plain-tooltip-container-shape: 6px;
+      --mat-tooltip-container-color: var(--mat-sys-inverse-surface);
+      --mat-tooltip-supporting-text-color: var(--mat-sys-inverse-on-surface);
+      --mat-tooltip-container-shape: 6px;
 
       background-color: var(--mat-sys-inverse-surface);
       color: var(--mat-sys-inverse-on-surface);
@@ -845,11 +846,11 @@
   // MD3 BEST PRACTICE: Filled Tonal buttons should use secondary-container tokens for proper contrast
   // Use highly specific selector to override Angular Material defaults without !important
   .mat-mdc-button.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base {
-    --mdc-filled-button-container-color: var(--mat-sys-secondary-container);
-    --mdc-filled-button-label-text-color: var(--mat-sys-on-secondary-container);
-    --mdc-filled-button-hover-state-layer-color: var(--mat-sys-on-secondary-container);
-    --mdc-filled-button-focus-state-layer-color: var(--mat-sys-on-secondary-container);
-    --mdc-filled-button-pressed-state-layer-color: var(--mat-sys-on-secondary-container);
+    --mat-button-filled-container-color: var(--mat-sys-secondary-container);
+    --mat-button-filled-label-text-color: var(--mat-sys-on-secondary-container);
+    --mat-button-filled-hover-state-layer-color: var(--mat-sys-on-secondary-container);
+    --mat-button-filled-focus-state-layer-color: var(--mat-sys-on-secondary-container);
+    --mat-button-filled-pressed-state-layer-color: var(--mat-sys-on-secondary-container);
   }
 
   // TERTIARY BUTTONS - Handle mat-flat-button color="tertiary" using direct CSS properties
@@ -860,11 +861,11 @@
     border-color: var(--mat-sys-tertiary);
 
     // Override ALL MDC variables that control text color with higher specificity
-    --mdc-filled-button-container-color: var(--mat-sys-tertiary);
-    --mdc-filled-button-label-text-color: var(--mat-sys-on-tertiary);
-    --mdc-filled-button-hover-state-layer-color: var(--mat-sys-on-tertiary);
-    --mdc-filled-button-focus-state-layer-color: var(--mat-sys-on-tertiary);
-    --mdc-filled-button-pressed-state-layer-color: var(--mat-sys-on-tertiary);
+    --mat-button-filled-container-color: var(--mat-sys-tertiary);
+    --mat-button-filled-label-text-color: var(--mat-sys-on-tertiary);
+    --mat-button-filled-hover-state-layer-color: var(--mat-sys-on-tertiary);
+    --mat-button-filled-focus-state-layer-color: var(--mat-sys-on-tertiary);
+    --mat-button-filled-pressed-state-layer-color: var(--mat-sys-on-tertiary);
   }
 
   // TERTIARY BUTTON TEXT FIX - Separate rule with maximum specificity
@@ -1084,10 +1085,10 @@
     }
 
     // Extended FAB text styling - ensure proper typography
-    --mdc-extended-fab-label-text-font: 'Inter';
-    --mdc-extended-fab-label-text-size: 14px;
-    --mdc-extended-fab-label-text-weight: 500;
-    --mdc-extended-fab-label-text-tracking: 0.01em;
+    --mat-fab-extended-label-text-font: 'Inter';
+    --mat-fab-extended-label-text-size: 14px;
+    --mat-fab-extended-label-text-weight: 500;
+    --mat-fab-extended-label-text-tracking: 0.01em;
 
     // Ensure proper icon and text contrast
     mat-icon {
@@ -1316,21 +1317,21 @@
   min-width: var(--mat-sys-spacing-220, 220px);
   max-width: var(--mat-sys-spacing-220, 220px);
 
-  --mdc-drawer-container-color: var(--mat-sys-surface-container);
+  --mat-drawer-container-color: var(--mat-sys-surface-container);
 
   background-color: var(--mat-sys-surface-container);
 }
 
 // Ensure sidenav background is applied with higher specificity
 mat-sidenav.vt-sidenav-standard {
-  --mdc-drawer-container-color: var(--mat-sys-surface-container);
+  --mat-drawer-container-color: var(--mat-sys-surface-container);
 
   background-color: var(--mat-sys-surface-container);
 }
 
 // Also target the mat-sidenav element directly in case class isn't applied
 mat-sidenav {
-  --mdc-drawer-container-color: var(--mat-sys-surface-container);
+  --mat-drawer-container-color: var(--mat-sys-surface-container);
 
   background-color: var(--mat-sys-surface-container);
 }
@@ -1680,12 +1681,12 @@ mat-sidenav {
 // MD3 Filled Tonal Button Implementation
 // mat-flat-button without color attribute becomes filled-tonal variant
 .mat-mdc-unelevated-button:not([color]) {
-  --mdc-filled-button-container-color: var(--mat-sys-secondary-container);
-  --mdc-filled-button-label-text-color: var(--mat-sys-on-secondary-container);
-  --mdc-filled-button-state-layer-color: var(--mat-sys-on-secondary-container);
-  --mdc-filled-button-hover-state-layer-opacity: 0.08;
-  --mdc-filled-button-pressed-state-layer-opacity: 0.12;
-  --mdc-filled-button-focus-state-layer-opacity: 0.12;
+  --mat-button-filled-container-color: var(--mat-sys-secondary-container);
+  --mat-button-filled-label-text-color: var(--mat-sys-on-secondary-container);
+  --mat-button-filled-state-layer-color: var(--mat-sys-on-secondary-container);
+  --mat-button-filled-hover-state-layer-opacity: 0.08;
+  --mat-button-filled-pressed-state-layer-opacity: 0.12;
+  --mat-button-filled-focus-state-layer-opacity: 0.12;
 }
 
 // Density system implementation - MD3 best practices
