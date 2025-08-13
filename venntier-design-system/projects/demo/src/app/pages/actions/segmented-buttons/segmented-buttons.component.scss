@@ -1,3 +1,8 @@
+// Segmented Buttons Component - Layout and Structure Only
+// All theming is handled by mat.button-toggle-overrides() in the centralized theme
+// This file focuses only on layout, spacing, and structural styling
+
+// Demo page layout and structure
 .segmented-demo {
   display: flex;
   flex-direction: column;
@@ -29,9 +34,6 @@
   }
 }
 
-// Density variations are now handled by official Angular Material density mixins in the theme
-// See: venntier-design-system/projects/design-system/src/styles/themes/_core-refined.scss
-
 .use-case-card {
   padding: var(--md-sys-spacing-16);
   margin-bottom: var(--md-sys-spacing-16);
@@ -51,16 +53,15 @@
   }
 }
 
-// Custom styling for button toggles
-mat-button-toggle-group {
-  border-radius: var(--md-sys-shape-corner-medium);
-  border: 1px solid var(--md-sys-color-outline);
-  overflow: hidden;
-}
+// Component-specific layout and structure
+// All theming (colors, states, variants) is handled by mat.button-toggle-overrides() in the centralized theme
 
-mat-button-toggle {
-  // Hide ALL possible checkmark elements for clean OpenAI style
-  // Target MDC checkbox components that might be embedded
+// Checkmark removal for clean OpenAI-style appearance
+// Using high specificity selectors instead of !important
+.segmented-demo mat-button-toggle,
+.density-demo mat-button-toggle,
+.use-case-card mat-button-toggle {
+  // Hide all possible checkmark elements with high specificity
   .mat-button-toggle-checkmark,
   .mdc-button-toggle__checkmark,
   .mat-pseudo-checkbox,
@@ -93,54 +94,18 @@ mat-button-toggle {
     display: none;
   }
 
-  // Aggressive checkmark hiding - target any element that might contain checkmarks
-  * {
-    &[aria-label*='check'],
-    &[title*='check'],
-    &[data-icon*='check'] {
+  // Remove checkmark content from checked state
+  &.mat-button-toggle-checked {
+    --mat-button-toggle-checkmark-content: '';
+    --mdc-button-toggle-checkmark-content: '';
+
+    .mat-button-toggle-label-content::after {
+      content: none;
       display: none;
     }
   }
 
-  border: var(--md-sys-shape-border-width, 1px) solid transparent;
-  background-color: var(--md-sys-color-surface);
-  color: var(--md-sys-color-on-surface);
-
-  &:not(:last-child) {
-    border-right: 1px solid var(--md-sys-color-outline-variant);
-  }
-
-  &.mat-button-toggle-checked {
-    background-color: var(--md-sys-color-selected); // OpenAI gray #e5e5e5
-    color: var(--md-sys-color-on-surface); // Black text
-
-    // Override any content that might be adding checkmarks
-    --mat-button-toggle-checkmark-content: '';
-    --mdc-button-toggle-checkmark-content: '';
-
-    // Remove any text content that might be checkmarks
-    .mat-button-toggle-label-content {
-      &::after {
-        content: none;
-        display: none;
-      }
-    }
-
-    mat-icon {
-      color: var(--md-sys-color-on-surface); // Black icons
-    }
-  }
-
-  &:hover:not(.mat-button-toggle-disabled) {
-    background-color: var(--md-sys-color-surface-variant);
-  }
-
-  &.mat-button-toggle-disabled {
-    background-color: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface);
-    opacity: 0.38;
-  }
-
+  // Content layout and spacing
   .mat-button-toggle-label-content {
     display: flex;
     align-items: center;
@@ -155,10 +120,7 @@ mat-button-toggle {
   }
 }
 
-// NOTE: Focus styles removed to match clean OpenAI design approach
-// Consistent with icon button focus handling
-
-// Icon-only button toggles
+// Icon-only button toggles - enhanced padding for better touch targets
 mat-button-toggle-group:has(mat-button-toggle mat-icon:only-child) {
   mat-button-toggle .mat-button-toggle-label-content {
     padding: var(--md-sys-spacing-12);
@@ -167,29 +129,20 @@ mat-button-toggle-group:has(mat-button-toggle mat-icon:only-child) {
   }
 }
 
-// Multi-selection styling - consistent with single selection
-// Use higher specificity to override Material Design defaults
-.segmented-demo mat-button-toggle-group[multiple] mat-button-toggle.mat-button-toggle-checked,
-mat-button-toggle-group[multiple]
-  mat-button-toggle.mat-button-toggle-checked.mat-button-toggle-checked {
-  background-color: var(--md-sys-color-selected); // OpenAI gray #e5e5e5
-  color: var(--md-sys-color-on-surface); // Black text
-
-  mat-icon {
-    color: var(--md-sys-color-on-surface); // Black icons
-  }
-}
-
-// Responsive adjustments
+// Responsive adjustments for mobile devices
 @media (width <= 768px) {
-  mat-button-toggle .mat-button-toggle-label-content {
-    padding: var(--md-sys-spacing-6) var(--md-sys-spacing-8);
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
+  .segmented-demo mat-button-toggle,
+  .density-demo mat-button-toggle,
+  .use-case-card mat-button-toggle {
+    .mat-button-toggle-label-content {
+      padding: var(--md-sys-spacing-6) var(--md-sys-spacing-8);
+      font-size: var(--md-sys-typescale-body-medium-size, 14px);
 
-    mat-icon {
-      font-size: var(--md-sys-spacing-16, 16px);
-      width: 16px;
-      height: 16px;
+      mat-icon {
+        font-size: var(--md-sys-spacing-16, 16px);
+        width: 16px;
+        height: 16px;
+      }
     }
   }
 
@@ -198,13 +151,15 @@ mat-button-toggle-group[multiple]
   }
 }
 
-// High contrast mode support
+// High contrast mode support - enhanced borders for accessibility
 @media (prefers-contrast: high) {
-  mat-button-toggle-group {
+  .segmented-demo mat-button-toggle-group,
+  .density-demo mat-button-toggle-group,
+  .use-case-card mat-button-toggle-group {
     border-width: 2px;
-  }
 
-  mat-button-toggle:not(:last-child) {
-    border-right-width: 2px;
+    mat-button-toggle:not(:last-child) {
+      border-right-width: 2px;
+    }
   }
 }

@@ -714,29 +714,99 @@
     )
   );
 
-  // Button Toggle overrides using official Angular Material API
-  @include mat.button-toggle-overrides(
-    (
-      // Selected state styling - OpenAI clean design
-      selected-state-background-color: var(--md-sys-color-selected),
-      selected-state-text-color: var(--md-sys-color-on-surface),
-      // Unselected state styling (using correct token names from error message)
-      background-color: var(--md-sys-color-surface),
-      text-color: var(--md-sys-color-on-surface),
-      // Border and divider styling
-      divider-color: var(--md-sys-color-outline-variant),
-      // Shape
-      shape: var(--md-sys-shape-corner-medium),
-      // Typography
-      label-text-font: 'Inter',
-      label-text-size: var(--md-sys-typescale-body-large-size),
-      label-text-weight: 400
-    )
-  );
+  // MD3 Button Toggle Overrides - Comprehensive token-based theming
+  // Default styling - applied to all button toggles without variant classes
+  .mat-button-toggle-group:not(.primary-variant, .secondary-variant, .tertiary-variant) {
+    @include mat.button-toggle-overrides(
+      (
+        // Default OpenAI-style using selected token
+        selected-state-background-color: var(--md-sys-color-selected),
+        selected-state-text-color: var(--md-sys-color-on-surface),
+        background-color: var(--md-sys-color-surface),
+        text-color: var(--md-sys-color-on-surface),
+        divider-color: var(--md-sys-color-outline-variant),
+        shape: var(--md-sys-shape-corner-medium),
+        // Interactive state layers (using valid tokens only)
+        state-layer-color: var(--md-sys-color-on-surface),
+        hover-state-layer-opacity: var(--md-sys-hover-state-layer-opacity),
+        focus-state-layer-opacity: var(--md-sys-focus-state-layer-opacity),
+        // Disabled states
+        disabled-state-background-color: var(--md-sys-color-surface),
+        disabled-state-text-color: var(--md-sys-color-on-surface),
+        disabled-selected-state-background-color: var(--md-sys-color-selected),
+        disabled-selected-state-text-color: var(--md-sys-color-on-surface)
+      )
+    );
+  }
 
-  // Global density configuration using official Angular Material API
-  // MD3 density scale: 0 is default/comfortable, negative values are more compact
-  @include mat.all-component-densities(0);
+  // Primary color variant - using primary container tokens
+  .primary-variant {
+    @include mat.button-toggle-overrides(
+      (
+        selected-state-background-color: var(--md-sys-color-primary-container),
+        selected-state-text-color: var(--md-sys-color-on-primary-container),
+        background-color: var(--md-sys-color-surface),
+        text-color: var(--md-sys-color-primary),
+        divider-color: var(--md-sys-color-outline-variant),
+        shape: var(--md-sys-shape-corner-medium),
+        // Interactive state layers (using valid tokens only)
+        state-layer-color: var(--md-sys-color-primary),
+        hover-state-layer-opacity: var(--md-sys-hover-state-layer-opacity),
+        focus-state-layer-opacity: var(--md-sys-focus-state-layer-opacity),
+        // Disabled states
+        disabled-state-background-color: var(--md-sys-color-surface),
+        disabled-state-text-color: var(--md-sys-color-on-surface),
+        disabled-selected-state-background-color: var(--md-sys-color-primary-container),
+        disabled-selected-state-text-color: var(--md-sys-color-on-primary-container),
+      )
+    );
+  }
+
+  // Secondary color variant - using secondary container tokens
+  .secondary-variant {
+    @include mat.button-toggle-overrides(
+      (
+        selected-state-background-color: var(--md-sys-color-secondary-container),
+        selected-state-text-color: var(--md-sys-color-on-secondary-container),
+        background-color: var(--md-sys-color-surface),
+        text-color: var(--md-sys-color-secondary),
+        divider-color: var(--md-sys-color-outline-variant),
+        shape: var(--md-sys-shape-corner-medium),
+        // Interactive state layers (using valid tokens only)
+        state-layer-color: var(--md-sys-color-secondary),
+        hover-state-layer-opacity: var(--md-sys-hover-state-layer-opacity),
+        focus-state-layer-opacity: var(--md-sys-focus-state-layer-opacity),
+        // Disabled states
+        disabled-state-background-color: var(--md-sys-color-surface),
+        disabled-state-text-color: var(--md-sys-color-on-surface),
+        disabled-selected-state-background-color: var(--md-sys-color-secondary-container),
+        disabled-selected-state-text-color: var(--md-sys-color-on-secondary-container),
+      )
+    );
+  }
+
+  // Tertiary color variant - using tertiary container tokens
+  .tertiary-variant {
+    @include mat.button-toggle-overrides(
+      (
+        selected-state-background-color: var(--md-sys-color-tertiary-container),
+        selected-state-text-color: var(--md-sys-color-on-tertiary-container),
+        background-color: var(--md-sys-color-surface),
+        text-color: var(--md-sys-color-tertiary),
+        divider-color: var(--md-sys-color-outline-variant),
+        shape: var(--md-sys-shape-corner-medium),
+        // Interactive state layers (using valid tokens only)
+        state-layer-color: var(--md-sys-color-tertiary),
+        hover-state-layer-opacity: var(--md-sys-hover-state-layer-opacity),
+        focus-state-layer-opacity: var(--md-sys-focus-state-layer-opacity),
+        // Disabled states
+        disabled-state-background-color: var(--md-sys-color-surface),
+        disabled-state-text-color: var(--md-sys-color-on-surface),
+        disabled-selected-state-background-color: var(--md-sys-color-tertiary-container),
+        disabled-selected-state-text-color: var(--md-sys-color-on-tertiary-container),
+      )
+    );
+  }
 
   // MD3 density classes - only negative values and 0 are supported
   .dense {

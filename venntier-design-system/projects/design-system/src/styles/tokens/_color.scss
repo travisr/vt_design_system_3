@@ -4,8 +4,8 @@
 // Using CSS custom properties for runtime theming
 
 // Core palette values
-$_black: #000;
-$_white: #fff;
+$_black: #000000;
+$_white: #ffffff;
 $_green: #10a37f;
 $_purple: #8b5cf6;
 
@@ -23,7 +23,7 @@ $_gray-175: #ececf1; // OpenAI hover state (exact match)
 $_gray-150: #f7f7f8; // OpenAI sidenav background (exact match)
 $_gray-100: #f9f9f9; // OpenAI input background
 $_gray-50: #fafafa; // OpenAI body background
-$_gray-25: #fff; // OpenAI card surface
+$_gray-25: #ffffff; // OpenAI card surface
 
 // Light theme tokens
 :root {
@@ -42,8 +42,8 @@ $_gray-25: #fff; // OpenAI card surface
   // Tertiary (green for CTAs only)
   --md-sys-color-tertiary: #{$_green};
   --md-sys-color-on-tertiary: #{$_white};
-  --md-sys-color-tertiary-container: #d4f4ec;
-  --md-sys-color-on-tertiary-container: #005038;
+  --md-sys-color-tertiary-container: #{$_green};
+  --md-sys-color-on-tertiary-container: #{$_white};
 
   // Error
   --md-sys-color-error: #dc2626;
@@ -90,6 +90,11 @@ $_gray-25: #fff; // OpenAI card surface
   --md-sys-color-pressed: #{$_gray-200}; // #e5e5e5
   --md-sys-color-disabled: #{$_gray-400}; // #9ca3af
 
+  // MD3 State layer opacity tokens
+  --md-sys-hover-state-layer-opacity: 0.08;
+  --md-sys-focus-state-layer-opacity: 0.12;
+  --md-sys-pressed-state-layer-opacity: 0.12;
+
   // Additional surface properties
   --md-sys-color-surface-dim: #{$_gray-50}; // #fafafa body
   --md-sys-color-surface-bright: #{$_gray-25}; // #ffffff cards
@@ -118,8 +123,8 @@ $_gray-25: #fff; // OpenAI card surface
   // Tertiary (green for CTAs)
   --md-sys-color-tertiary: #{$_green};
   --md-sys-color-on-tertiary: #{$_white};
-  --md-sys-color-tertiary-container: #00442e;
-  --md-sys-color-on-tertiary-container: #a2f5da;
+  --md-sys-color-tertiary-container: #{$_green};
+  --md-sys-color-on-tertiary-container: #{$_white};
 
   // Error
   --md-sys-color-error: #ef4444;
@@ -164,6 +169,11 @@ $_gray-25: #fff; // OpenAI card surface
   --md-sys-color-selected: #{$_gray-700};
   --md-sys-color-focus-ring: #{$_gray-500};
   --md-sys-color-pressed: #{$_gray-600};
+
+  // MD3 State layer opacity tokens (same values for dark theme)
+  --md-sys-hover-state-layer-opacity: 0.08;
+  --md-sys-focus-state-layer-opacity: 0.12;
+  --md-sys-pressed-state-layer-opacity: 0.12;
 
   // Data visualization
   --md-sys-color-data-primary: #{$_purple};

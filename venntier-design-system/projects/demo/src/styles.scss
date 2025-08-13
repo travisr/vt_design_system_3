@@ -2,6 +2,7 @@
 @use '../../design-system/src/styles/venntier-theme';
 @use 'demo-utilities';
 @use 'app/shared/styles/demo-shared';
+@use '@angular/material' as mat;
 
 /* Font imports are now handled in angular.json to avoid Sass deprecation warnings */
 
@@ -70,3 +71,6 @@ mat-icon {
 // Custom navigation spacing and active states are handled by vt-list-overrides() mixin
 
 // Demo layout styles - design system handles all component styling
+
+// Segmented button color variants are now handled by the design system
+// using high-specificity CSS selectors in _core-refined.scss
