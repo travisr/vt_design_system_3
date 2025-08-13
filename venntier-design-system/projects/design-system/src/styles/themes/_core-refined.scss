@@ -60,12 +60,12 @@
         // Surface container hierarchy - auto light/dark with OpenAI-style contrast
         surface-container-lowest: light-dark(#{tokens.$white}, #{tokens.$gray-950}),
         // Pure white/black - cards, dialogs
-        surface-container-low: light-dark(#{tokens.$gray-50}, #{tokens.$gray-900}),
-        // Very subtle elevation
-        surface-container: light-dark(#{tokens.$gray-150}, #{tokens.$gray-800}),
-        // Standard elevation - input fields, navigation
+        surface-container-low: light-dark(#{tokens.$gray-150}, #{tokens.$gray-900}),
+        // OpenAI sidenav background - very light gray
+        surface-container: light-dark(#{tokens.$gray-175}, #{tokens.$gray-800}),
+        // OpenAI hover state - slightly darker than sidenav
         surface-container-high: light-dark(#{tokens.$gray-200}, #{tokens.$gray-700}),
-        // Higher elevation - selected states
+        // OpenAI active/selected state - darker than hover
         surface-container-highest: light-dark(#{tokens.$gray-300}, #{tokens.$gray-600}),
         // Highest elevation - elevated elements
         // Utility colors - auto light/dark
@@ -73,6 +73,11 @@
         outline-variant: light-dark(#{tokens.$gray-200}, #{tokens.$gray-800}),
         error: #{tokens.$red-500},
         on-error: #{tokens.$white},
+        // Custom OpenAI-style interaction tokens
+        hover: light-dark(#{tokens.$gray-175}, #{tokens.$gray-700}),
+        // OpenAI hover state
+        selected: light-dark(#{tokens.$gray-200}, #{tokens.$gray-600}),
+        // OpenAI active/selected state
         error-container: light-dark(#{tokens.$red-50}, #{tokens.$red-900}),
         on-error-container: light-dark(#{tokens.$red-600}, #{tokens.$red-100}),
         background: light-dark(#{tokens.$white}, #{tokens.$gray-900}),
@@ -1224,7 +1229,8 @@
   (
     // Container styling
     list-item-container-color: transparent,
-    list-item-container-shape: 8px,
+    list-item-container-shape: 0,
+    // Remove border-radius from sidenav container
     // More compact heights to match sidenav style (sidenav uses 32px)
     list-item-one-line-container-height: 32px,
     // Matches sidenav height exactly
@@ -1303,9 +1309,11 @@
 // Sidenav overrides - MD3 token-based styling using correct Angular Material token format
 @include mat.sidenav-overrides(
   (
-    // Container styling - using proper Angular Material system token for navigation areas
-    container-background-color: var(--mat-sys-surface-container),
+    // Container styling - using OpenAI-style surface token for navigation areas
+    container-background-color: var(--mat-sys-surface-container-low),
     container-text-color: var(--mat-sys-on-surface),
+    container-shape: 0,
+    // Remove border-radius from sidenav container
     // Content styling - main content area uses surface
     content-background-color: var(--mat-sys-surface),
     content-text-color: var(--mat-sys-on-surface)
@@ -1315,29 +1323,62 @@
 // Remove Angular Material list overrides - they're causing conflicts
 // We'll use direct CSS styling instead for better control
 
-// Sidenav width and background - as per PRD specifications
+// Sidenav width and background - OpenAI style using proper tokens
 .vt-sidenav-standard {
   width: var(--mat-sys-spacing-220, 220px);
   min-width: var(--mat-sys-spacing-220, 220px);
   max-width: var(--mat-sys-spacing-220, 220px);
 
-  --mat-drawer-container-color: var(--mat-sys-surface-container);
+  // Use proper surface-container-low token for OpenAI sidenav background
+  background-color: var(--mat-sys-surface-container-low);
 
-  background-color: var(--mat-sys-surface-container);
+  // CRITICAL: Remove border-radius from sidenav container
+  border-radius: 0;
+
+  // Remove scrollbars completely - OpenAI style has no visible scrollbars
+  overflow: hidden;
 }
 
 // Ensure sidenav background is applied with higher specificity
 mat-sidenav.vt-sidenav-standard {
-  --mat-drawer-container-color: var(--mat-sys-surface-container);
+  --mat-drawer-container-color: var(--mat-sys-surface-container-low);
 
-  background-color: var(--mat-sys-surface-container);
+  background-color: var(--mat-sys-surface-container-low);
+
+  // CRITICAL: Remove border-radius with high specificity
+  border-radius: 0;
+
+  // Ensure no scrollbars on the Material Design sidenav element itself
+  overflow: hidden;
+
+  // CRITICAL: Hide scrollbar on the inner container that's causing the issue
+  .mat-drawer-inner-container {
+    overflow: hidden;
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE/Edge
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome/Safari/Opera
+    }
+  }
 }
 
 // Also target the mat-sidenav element directly in case class isn't applied
 mat-sidenav {
-  --mat-drawer-container-color: var(--mat-sys-surface-container);
+  --mat-drawer-container-color: var(--mat-sys-surface-container-low);
 
-  background-color: var(--mat-sys-surface-container);
+  background-color: var(--mat-sys-surface-container-low);
+
+  // Also hide scrollbars on any mat-sidenav
+  .mat-drawer-inner-container {
+    overflow: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 // Clean navigation item styling - OpenAI inspired
@@ -1348,11 +1389,13 @@ mat-sidenav {
   text-decoration: none;
   position: relative;
 
-  // Layout - proper spacing from sidenav edges
-  padding: var(--mat-sys-spacing-8, 8px) var(--mat-sys-spacing-12, 12px); // PRD specification
-  margin: var(--mat-sys-spacing-2, 2px) var(--mat-sys-spacing-8, 8px); // Creates proper padding from sidenav edges
-  border-radius: var(--mat-sys-shape-corner-small, 6px); // PRD specification
-  min-height: var(--mat-sys-spacing-36, 36px); // PRD specification
+  // Layout - compact OpenAI-style with proper spacing
+  padding: 6px var(--mat-sys-spacing-8, 8px); // Compact padding with 8px token on sides
+  margin: 0; // No horizontal margin - container has padding for shading space
+  margin-bottom: var(--mat-sys-spacing-4, 4px); // 4px bottom spacing between items
+  border-radius: 6px; // OpenAI style - 6px rounded corners
+  min-height: auto; // Remove height constraints to let padding control size
+  height: auto; // Remove height constraints
 
   // Default state - no background, gray text (like OpenAI)
   background-color: transparent;
@@ -1380,20 +1423,23 @@ mat-sidenav {
     font-weight: 400; // Normal weight by default
   }
 
-  // Hover state - light background (like OpenAI) - but not for active items
+  // Hover state - using proper hover token (OpenAI style) - but not for active items
   // Use higher specificity to override Angular Material
   &:hover:not(.active) {
-    background-color: #f0f0f0; // Light gray hover background
-    color: #4a4a4a; // Slightly darker text on hover
+    background-color: var(--mat-sys-hover); // OpenAI hover state using proper token
+    color: var(--mat-sys-on-surface); // Proper text color on hover
   }
 
   // Remove the problematic selector that was making all items active
   // We'll add a separate rule for only .active items below
 
-  // Focus state for accessibility
-  &:focus {
-    outline: 2px solid #06c;
-    outline-offset: -2px;
+  // Remove focus outline - OpenAI style has no focus indicators
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    outline: none;
+    border: none;
+    box-shadow: none;
   }
 
   // Disable Material's ripple effects and state layers that might interfere
@@ -1413,10 +1459,10 @@ mat-sidenav {
   }
 }
 
-// Selected/active state - ONLY for items with .active class (like OpenAI "Fine-tuning")
+// Selected/active state - ONLY for items with .active class (using proper tokens)
 .vt-sidenav-standard mat-nav-list a[mat-list-item].active {
-  background-color: #e8e8e8; // Darker gray background for selected
-  color: #2d2d2d; // Much darker text for selected
+  background-color: var(--mat-sys-selected); // OpenAI selected state using proper token
+  color: var(--mat-sys-on-surface); // Proper text color for selected
   font-weight: 500; // Semi-bold for selected
 
   span {
@@ -1430,30 +1476,35 @@ mat-sidenav {
 
   // No hover effect on active items - keep same styling
   &:hover {
-    background-color: #e8e8e8; // Keep same background on hover
-    color: #2d2d2d; // Keep same text color on hover
+    background-color: var(--mat-sys-selected); // Keep same background on hover
+    color: var(--mat-sys-on-surface); // Keep same text color on hover
   }
 }
 
 // Higher specificity hover rule to override Angular Material
 .vt-sidenav-standard mat-nav-list a[mat-list-item].mat-mdc-list-item:hover:not(.active) {
-  background-color: #f0f0f0; // Light gray hover background
-  color: #4a4a4a; // Slightly darker text on hover
+  background-color: var(--mat-sys-hover); // OpenAI hover state using proper token
+  color: var(--mat-sys-on-surface); // Proper text color on hover
 
   span {
-    color: #4a4a4a; // Ensure text color is applied
+    color: var(--mat-sys-on-surface); // Ensure text color is applied
   }
 
   mat-icon {
-    color: #4a4a4a; // Ensure icon color is applied
+    color: var(--mat-sys-on-surface); // Ensure icon color is applied
   }
 }
 
 .vt-sidenav-header {
-  // PRD specification: padding 16px 8px, but adjust for better visual balance
-  padding: var(--mat-sys-spacing-16, 16px) var(--mat-sys-spacing-12, 12px);
+  // Match toolbar height exactly: 64px = 8 × 8px foundation
+  height: var(--mat-sys-spacing-64, 64px);
+  padding: 0 var(--mat-sys-spacing-16, 16px);
   border-bottom: 1px solid var(--mat-sys-outline-variant);
-  margin-bottom: 16px;
+  margin-bottom: var(--mat-sys-spacing-16, 16px);
+
+  // Center content vertically within the 64px height
+  display: flex;
+  align-items: center;
 }
 
 .vt-sidenav-logo {
@@ -1469,13 +1520,18 @@ mat-sidenav {
   }
 }
 
-.vt-sidenav-content {
-  // No horizontal padding - let individual items handle their own spacing
-  padding: 0;
+// Target the navigation content container with higher specificity
+mat-sidenav.vt-sidenav-standard .vt-sidenav-content,
+.vt-sidenav-standard .vt-sidenav-content {
+  // Add horizontal padding to create space around the shading
+  padding: 0 var(--mat-sys-spacing-8, 8px);
+
+  // Ensure content doesn't scroll - OpenAI style
+  overflow: hidden;
 }
 
 .vt-nav-section {
-  margin-bottom: 24px; // PRD specification: 24px section spacing
+  margin-bottom: 8px; // Reduced spacing between sections for tighter OpenAI look
 }
 
 .vt-nav-section-title {
@@ -1485,8 +1541,8 @@ mat-sidenav {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #6e6e80; // PRD color specification
-  padding: var(--mat-sys-spacing-8, 8px) var(--mat-sys-spacing-12, 12px); // PRD padding specification
-  margin-bottom: var(--mat-sys-spacing-4, 4px); // PRD margin specification
+  padding: 8px 12px; // Consistent with navigation items
+  margin-bottom: 6px; // Increased space between title and items for better separation
 }
 
 // Menu overrides - replaces most menu styling above

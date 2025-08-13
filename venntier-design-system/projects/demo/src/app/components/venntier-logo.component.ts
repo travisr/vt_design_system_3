@@ -75,7 +75,7 @@ import { CommonModule } from '@angular/common';
 })
 export class VenntierLogoComponent {
   @Input() size: number = 32;
-  @Input() circleColor: string = 'white';
+  @Input() circleColor: string = 'transparent';
   @Input() borderColor: string = '#2d2d2d';
   @Input() intersectionColor: string = '#4a4a4a';
   @Input() strokeWidth: number = 1.5;
