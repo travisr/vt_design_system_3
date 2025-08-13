@@ -80,6 +80,10 @@
       )
     );
 
+    // MD3 TYPOGRAPHY: The typography system is handled by the mat.theme() configuration above
+    // Angular Material 20 automatically generates --mat-sys-* typography tokens
+    // Custom typography scales are defined in tokens/_typescale.scss for reference
+
     // MD3 COMPLIANT: Custom tokens that Angular Material doesn't auto-generate
     // These extend the MD3 system with design system specific tokens
 
@@ -265,8 +269,8 @@
   // Global refinements - use CSS custom properties instead of !important
   :root {
     --mat-elevation-box-shadow-for-gss: none;
-    --vt-surface-background: var(--mat-sys-surface);
-    --vt-on-surface-text: var(--mat-sys-on-surface);
+
+    // Removed custom --vt-* tokens in favor of direct --mat-sys-* usage
   }
 
   // Icon button overrides - using official Angular Material API
@@ -324,9 +328,9 @@
 
   // Wrap all component overrides in a single .vt-theme class for higher specificity
   .vt-theme {
-    // Body styles with proper CSS custom property usage
-    background: var(--vt-surface-background);
-    color: var(--vt-on-surface-text);
+    // Body styles using MD3 system tokens directly
+    background: var(--mat-sys-surface);
+    color: var(--mat-sys-on-surface);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
