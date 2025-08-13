@@ -509,8 +509,8 @@ export class IconButtonsComponent {
   min-width: 48px;
   border-radius: 50%;
   padding: 0;
-  background-color: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
+  background-color: var(--mat-sys-color-secondary-container);
+  color: var(--mat-sys-color-on-secondary-container);
 }
 
 .demo-icon-button-outlined {
@@ -582,12 +582,12 @@ export class IconButtonsComponent {
   padding: 0;
 
   // MD3 Tonal Icon Button colors
-  --mdc-filled-button-container-color: var(--md-sys-color-secondary-container);
-  --mdc-filled-button-label-text-color: var(--md-sys-color-on-secondary-container);
-  --mdc-filled-button-state-layer-color: var(--md-sys-color-on-secondary-container);
+  --mdc-filled-button-container-color: var(--mat-sys-color-secondary-container);
+  --mdc-filled-button-label-text-color: var(--mat-sys-color-on-secondary-container);
+  --mdc-filled-button-state-layer-color: var(--mat-sys-color-on-secondary-container);
 
   mat-icon {
-    color: var(--md-sys-color-on-secondary-container);
+    color: var(--mat-sys-color-on-secondary-container);
   }
 }
 
@@ -621,14 +621,14 @@ export class IconButtonsComponent {
   padding: 0;
 
   // MD3 Tonal Icon Button colors
-  --mdc-filled-button-container-color: var(--md-sys-color-secondary-container);
-  --mdc-filled-button-label-text-color: var(--md-sys-color-on-secondary-container);
-  --mdc-filled-button-state-layer-color: var(--md-sys-color-on-secondary-container);
+  --mdc-filled-button-container-color: var(--mat-sys-color-secondary-container);
+  --mdc-filled-button-label-text-color: var(--mat-sys-color-on-secondary-container);
+  --mdc-filled-button-state-layer-color: var(--mat-sys-color-on-secondary-container);
   --mdc-filled-button-hover-state-layer-opacity: 0.08;
   --mdc-filled-button-pressed-state-layer-opacity: 0.12;
 
   mat-icon {
-    color: var(--md-sys-color-on-secondary-container);
+    color: var(--mat-sys-color-on-secondary-container);
   }
 }`,
   };
@@ -754,7 +754,7 @@ toggleFavorite() {
     scss: `.demo-toolbar-group {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-8);
+  gap: var(--mat-sys-spacing-8);
 }`,
   };
 

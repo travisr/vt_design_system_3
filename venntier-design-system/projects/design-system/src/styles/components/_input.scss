@@ -9,22 +9,22 @@
 
   // Custom styling: Autocomplete panel (not covered by select overrides)
   .mat-mdc-autocomplete-panel {
-    background-color: var(--md-sys-color-surface);
-    border: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: var(--md-sys-shape-corner-small);
-    box-shadow: var(--md-sys-shadow);
-    margin-top: 4px;
+    background-color: var(--mat-sys-color-surface);
+    border: 1px solid var(--mat-sys-color-outline-variant);
+    border-radius: var(--mat-sys-shape-corner-small);
+    box-shadow: var(--mat-sys-shadow);
+    margin-top: var(--mat-sys-spacing-4, 4px);
 
     .mat-mdc-option {
-      height: 40px;
-      padding: 8px 16px;
+      height: var(--mat-sys-spacing-40, 40px);
+      padding: var(--mat-sys-spacing-8, 8px) var(--mat-sys-spacing-16, 16px);
 
       &:hover {
-        background-color: var(--md-sys-color-hover);
+        background-color: var(--mat-sys-color-hover);
       }
 
       &.mat-mdc-option-active {
-        background-color: var(--md-sys-color-selected);
+        background-color: var(--mat-sys-color-selected);
       }
     }
   }
@@ -38,15 +38,15 @@
   // Helper class for standalone labels
   .vt-input-label {
     display: block;
-    font-size: var(--md-sys-typescale-label-large-size);
-    font-weight: var(--md-sys-typescale-label-large-weight);
-    color: var(--md-sys-color-on-surface);
-    margin-bottom: 6px;
+    font-size: var(--mat-sys-typescale-label-large-size);
+    font-weight: var(--mat-sys-typescale-label-large-weight);
+    color: var(--mat-sys-color-on-surface);
+    margin-bottom: var(--mat-sys-spacing-6, 6px);
   }
 
   // Helper class for form groups
   .vt-form-group {
-    margin-bottom: 24px;
+    margin-bottom: var(--mat-sys-spacing-24, 24px);
 
     &:last-child {
       margin-bottom: 0;

@@ -1,107 +1,83 @@
-// M3 System Shape Tokens - Minimal rounded corners
+@use 'sass:map';
+
+// ============================================================================
+// SHAPE REFERENCE TOKENS - Raw radius values (single source of truth)
+// ============================================================================
+// Minimal rounded corners for clean OpenAI aesthetic
 
 // Base radius values
-$_radius-none: 0;
-$_radius-xs: 2px;
-$_radius-sm: 4px;
-$_radius-md: 6px;
-$_radius-lg: 8px;
-$_radius-xl: 12px;
-$_radius-2xl: 16px;
-$_radius-3xl: 24px;
-$_radius-full: 9999px;
+$radius-none: 0;
+$radius-xs: 2px;
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 8px;
+$radius-xl: 12px;
+$radius-2xl: 16px;
+$radius-3xl: 24px;
+$radius-full: 9999px;
 
-// Shape scale tokens
-:root {
-  // Corner radius tokens
-  --md-sys-shape-corner-none: #{$_radius-none};
-  --md-sys-shape-corner-extra-small: #{$_radius-xs};
-  --md-sys-shape-corner-small: #{$_radius-sm};
-  --md-sys-shape-corner-medium: #{$_radius-md};
-  --md-sys-shape-corner-large: #{$_radius-lg};
-  --md-sys-shape-corner-extra-large: #{$_radius-xl};
-  --md-sys-shape-corner-full: #{$_radius-full};
+// ============================================================================
+// SEMANTIC SHAPE MAPPINGS (for Angular Material theming API)
+// ============================================================================
+// These map our reference tokens to semantic roles that Angular Material understands
 
-  // Component-specific shapes (from PRD)
-  --md-sys-shape-button: var(--md-sys-shape-corner-medium); // 6px
-  --md-sys-shape-card: var(--md-sys-shape-corner-large); // 8px
-  --md-sys-shape-dialog: var(--md-sys-shape-corner-extra-large); // 12px
-  --md-sys-shape-chip: var(--md-sys-shape-corner-full); // pill
-  --md-sys-shape-input: var(--md-sys-shape-corner-medium); // 6px
-  --md-sys-shape-container: var(--md-sys-shape-corner-large); // 8px
-  --md-sys-shape-tooltip: var(--md-sys-shape-corner-small); // 4px
-  --md-sys-shape-menu: var(--md-sys-shape-corner-medium); // 6px
-  --md-sys-shape-badge: var(--md-sys-shape-corner-full); // pill
-  --md-sys-shape-snackbar: var(--md-sys-shape-corner-small); // 4px
+// Shape mappings for components
+$component-shapes: (
+  // Corner radius mappings
+  corner-none: $radius-none,
+  corner-extra-small: $radius-xs,
+  corner-small: $radius-sm,
+  corner-medium: $radius-md,
+  corner-large: $radius-lg,
+  corner-extra-large: $radius-xl,
+  corner-full: $radius-full
+);
 
-  // Special shapes
-  --md-sys-shape-corner-top: var(--md-sys-shape-corner-large) var(--md-sys-shape-corner-large) 0 0;
-  --md-sys-shape-corner-bottom: 0 0 var(--md-sys-shape-corner-large)
-    var(--md-sys-shape-corner-large);
-  --md-sys-shape-corner-left: var(--md-sys-shape-corner-large) 0 0 var(--md-sys-shape-corner-large);
-  --md-sys-shape-corner-right: 0 var(--md-sys-shape-corner-large) var(--md-sys-shape-corner-large) 0;
-}
+// Component-specific shape mappings
+$component-specific-shapes: (
+  // Component shapes (from design requirements)
+  button: $radius-md,
+  // 6px
+  card: $radius-lg,
+  // 8px
+  dialog: $radius-xl,
+  // 12px
+  chip: $radius-full,
+  // pill
+  input: $radius-md,
+  // 6px
+  container: $radius-lg,
+  // 8px
+  tooltip: $radius-sm,
+  // 4px
+  menu: $radius-md,
+  // 6px
+  badge: $radius-full,
+  // pill
+  snackbar: $radius-sm // 4px
+);
 
-// Shape function
-@function shape($name) {
-  @return var(--md-sys-shape-#{$name});
-}
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
 
-// Shape mixins
-@mixin shape($radius-name) {
-  border-radius: var(--md-sys-shape-#{$radius-name});
-}
+// Get a shape reference token value
+@function get-shape($name) {
+  $shape-map: (
+    'none': $radius-none,
+    'xs': $radius-xs,
+    'sm': $radius-sm,
+    'md': $radius-md,
+    'lg': $radius-lg,
+    'xl': $radius-xl,
+    '2xl': $radius-2xl,
+    '3xl': $radius-3xl,
+    'full': $radius-full,
+  );
 
-@mixin shape-corner($corner) {
-  border-radius: var(--md-sys-shape-corner-#{$corner});
-}
-
-// Component shape mixins
-@mixin button-shape() {
-  border-radius: var(--md-sys-shape-button);
-}
-
-@mixin card-shape() {
-  border-radius: var(--md-sys-shape-card);
-}
-
-@mixin dialog-shape() {
-  border-radius: var(--md-sys-shape-dialog);
-}
-
-@mixin chip-shape() {
-  border-radius: var(--md-sys-shape-chip);
-}
-
-@mixin input-shape() {
-  border-radius: var(--md-sys-shape-input);
-}
-
-// Utility classes
-.vt-shape-none {
-  border-radius: var(--md-sys-shape-corner-none);
-}
-
-.vt-shape-xs {
-  border-radius: var(--md-sys-shape-corner-extra-small);
-}
-
-.vt-shape-sm {
-  border-radius: var(--md-sys-shape-corner-small);
-}
-
-.vt-shape-md {
-  border-radius: var(--md-sys-shape-corner-medium);
-}
-
-.vt-shape-lg {
-  border-radius: var(--md-sys-shape-corner-large);
-}
-
-.vt-shape-xl {
-  border-radius: var(--md-sys-shape-corner-extra-large);
-}
-
-.vt-shape-full {
-  border-radius: var(--md-sys-shape-corner-full);
+  @if map.has-key($shape-map, $name) {
+    @return map.get($shape-map, $name);
+  } @else {
+    @error "Shape '#{$name}' not found in shape map.";
+  }
 }

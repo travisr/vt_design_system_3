@@ -1,139 +1,139 @@
 // Color page specific styles
 .color-grid {
   display: grid;
-  gap: var(--md-sys-spacing-24, 24px);
+  gap: var(--mat-sys-spacing-24, 24px);
 }
 
 .color-group-title {
-  font-size: var(--md-sys-typescale-title-medium-size, 18px);
-  font-weight: var(--md-sys-typescale-title-medium-weight, 450);
-  color: var(--md-sys-color-on-surface);
-  margin-bottom: var(--md-sys-spacing-16, 16px);
+  font-size: var(--mat-sys-title-medium-size, 18px);
+  font-weight: var(--mat-sys-title-medium-weight, 450);
+  color: var(--mat-sys-on-surface);
+  margin-bottom: var(--mat-sys-spacing-16, 16px);
 }
 
 .color-swatches {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--md-sys-spacing-16, 16px);
+  gap: var(--mat-sys-spacing-16, 16px);
 }
 
 .color-swatch {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-8, 8px);
+  gap: var(--mat-sys-spacing-8, 8px);
 }
 
 .swatch-preview {
   width: 100%;
   height: 80px;
-  border-radius: var(--md-sys-shape-corner-small, 8px);
-  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--mat-sys-corner-small, 8px);
+  border: 1px solid var(--mat-sys-outline-variant);
 
   // Specific token-based swatches
   &.swatch-primary {
-    background: var(--md-sys-color-primary);
+    background: var(--mat-sys-primary);
   }
 
   &.swatch-on-primary {
-    background: var(--md-sys-color-on-primary);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-on-primary);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-tertiary {
-    background: var(--md-sys-color-tertiary);
+    background: var(--mat-sys-tertiary);
   }
 
   &.swatch-data-primary {
-    background: var(--md-sys-color-data-primary);
+    background: var(--mat-sys-data-primary);
   }
 
   &.swatch-background {
-    background: var(--md-sys-color-background);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-background);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-surface {
-    background: var(--md-sys-color-surface);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-surface);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-surface-variant {
-    background: var(--md-sys-color-surface-variant);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-surface-variant);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-surface-container-low {
-    background: var(--md-sys-color-surface-container-low);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-surface-container-low);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-surface-container {
-    background: var(--md-sys-color-surface-container);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-surface-container);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-surface-container-high {
-    background: var(--md-sys-color-surface-container-high);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-surface-container-high);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-surface-container-highest {
-    background: var(--md-sys-color-surface-container-highest);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-surface-container-highest);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-hover {
-    background: var(--md-sys-color-hover);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-hover);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-selected {
-    background: var(--md-sys-color-selected);
-    border-color: var(--md-sys-color-outline);
+    background: var(--mat-sys-selected);
+    border-color: var(--mat-sys-outline);
   }
 
   &.swatch-focus-ring {
-    background: var(--md-sys-color-focus-ring);
+    background: var(--mat-sys-focus-ring);
   }
 
   &.swatch-disabled {
-    background: var(--md-sys-color-disabled);
+    background: var(--mat-sys-disabled);
   }
 
   &.swatch-outline {
-    background: var(--md-sys-color-outline);
+    background: var(--mat-sys-outline);
   }
 
   &.swatch-outline-variant {
-    background: var(--md-sys-color-outline-variant);
+    background: var(--mat-sys-outline-variant);
   }
 }
 
 .swatch-info {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-2, 2px);
+  gap: var(--mat-sys-spacing-2, 2px);
 }
 
 .swatch-name {
-  font-size: var(--md-sys-typescale-body-medium-size, 14px);
-  font-weight: var(--md-sys-typescale-body-medium-weight, 500);
-  color: var(--md-sys-color-on-surface);
+  font-size: var(--mat-sys-body-medium-size, 14px);
+  font-weight: var(--mat-sys-body-medium-weight, 500);
+  color: var(--mat-sys-on-surface);
 }
 
 .swatch-value {
-  font-size: var(--md-sys-typescale-label-small-size, 12px);
-  font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
+  font-size: var(--mat-sys-label-small-size, 12px);
+  font-family: var(--mat-sys-body-small-font, 'Inter', sans-serif);
   color: var(
-    --md-sys-color-on-surface
+    --mat-sys-on-surface
   ); /* Changed: was on-surface-variant token, now on-surface token for better contrast */
 }
 
 .swatch-token {
-  font-size: var(--md-sys-typescale-label-small-size, 11px);
-  font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
+  font-size: var(--mat-sys-label-small-size, 11px);
+  font-family: var(--mat-sys-body-small-font, 'Inter', sans-serif);
   color: var(
-    --md-sys-color-on-surface-variant
+    --mat-sys-on-surface-variant
   ); /* Changed: was outline token, now on-surface-variant token for better contrast */
 }
 
@@ -141,68 +141,68 @@
 .gray-scale-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: var(--md-sys-spacing-12, 12px);
+  gap: var(--mat-sys-spacing-12, 12px);
 }
 
 .gray-swatch {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-8, 8px);
+  gap: var(--mat-sys-spacing-8, 8px);
 }
 
 .gray-preview {
   width: 100%;
   height: 60px;
-  border-radius: var(--md-sys-shape-corner-small, 6px);
-  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--mat-sys-corner-small, 6px);
+  border: 1px solid var(--mat-sys-outline-variant);
 }
 
 .gray-info {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-2, 2px);
+  gap: var(--mat-sys-spacing-2, 2px);
   padding: 0 4px;
 }
 
 .gray-name {
-  font-size: var(--md-sys-typescale-label-medium-size, 12px);
-  font-weight: var(--md-sys-typescale-label-medium-weight, 500);
-  color: var(--md-sys-color-on-surface);
+  font-size: var(--mat-sys-label-medium-size, 12px);
+  font-weight: var(--mat-sys-label-medium-weight, 500);
+  color: var(--mat-sys-on-surface);
 }
 
 .gray-value {
-  font-size: var(--md-sys-typescale-label-small-size, 11px);
-  font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
+  font-size: var(--mat-sys-label-small-size, 11px);
+  font-family: var(--mat-sys-body-small-font, 'Inter', sans-serif);
   color: var(
-    --md-sys-color-on-surface
+    --mat-sys-on-surface
   ); /* Changed: was on-surface-variant token, now on-surface token for better contrast */
 }
 
 .gray-usage {
-  font-size: var(--md-sys-typescale-label-small-size, 11px);
+  font-size: var(--mat-sys-label-small-size, 11px);
   color: var(
-    --md-sys-color-on-surface-variant
+    --mat-sys-on-surface-variant
   ); /* Changed: was outline token, now on-surface-variant token for better contrast */
 }
 
 // Interactive states demo
 .states-demo {
-  padding: var(--md-sys-spacing-16, 16px);
-  background: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-sys-shape-corner-small, 8px);
+  padding: var(--mat-sys-spacing-16, 16px);
+  background: var(--mat-sys-surface-container-low);
+  border-radius: var(--mat-sys-corner-small, 8px);
 
   // Simulated state classes - higher specificity instead of !important
   .state-hover {
-    background: var(--md-sys-color-hover);
+    background: var(--mat-sys-hover);
   }
 
   .state-selected {
-    background: var(--md-sys-color-selected);
-    color: var(--md-sys-color-on-surface);
+    background: var(--mat-sys-selected);
+    color: var(--mat-sys-on-surface);
   }
 
   .state-focus {
-    outline: 2px solid var(--md-sys-color-focus-ring);
+    outline: 2px solid var(--mat-sys-focus-ring);
     outline-offset: 2px;
   }
 }
@@ -210,21 +210,21 @@
 .state-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: var(--md-sys-spacing-16, 16px);
+  gap: var(--mat-sys-spacing-16, 16px);
 }
 
 .state-example {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-sys-spacing-8, 8px);
+  gap: var(--mat-sys-spacing-8, 8px);
   text-align: center;
 }
 
 .state-label {
-  font-size: var(--md-sys-typescale-label-small-size, 11px);
+  font-size: var(--mat-sys-label-small-size, 11px);
   color: var(
-    --md-sys-color-on-surface-variant
+    --mat-sys-on-surface-variant
   ); /* This is fine - on-surface-variant token has adequate contrast 5.7:1 */
 }
 
@@ -232,19 +232,19 @@
 .usage-examples {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-32, 32px);
+  gap: var(--mat-sys-spacing-32, 32px);
 }
 
 .usage-section {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-16, 16px);
+  gap: var(--mat-sys-spacing-16, 16px);
 }
 
 .usage-title {
-  font-size: var(--md-sys-typescale-title-small-size, 16px);
-  font-weight: var(--md-sys-typescale-title-small-weight, 450);
-  color: var(--md-sys-color-on-surface);
+  font-size: var(--mat-sys-title-small-size, 16px);
+  font-weight: var(--mat-sys-title-small-weight, 450);
+  color: var(--mat-sys-on-surface);
   margin: 0;
 }
 
@@ -254,104 +254,116 @@
 
 .hierarchy-level {
   position: relative;
-  border-radius: var(--md-sys-shape-corner-small, 6px);
-  padding: var(--md-sys-spacing-24, 24px);
-  margin-bottom: var(--md-sys-spacing-16, 16px);
+  border-radius: var(--mat-sys-corner-small, 6px);
+  padding: var(--mat-sys-spacing-24, 24px);
+  margin-bottom: var(--mat-sys-spacing-16, 16px);
 
   &.hierarchy-background {
-    background: var(--md-sys-color-background);
-    border: 1px solid var(--md-sys-color-outline-variant);
+    background: var(--mat-sys-background);
+    border: 1px solid var(--mat-sys-outline-variant);
   }
 
   &.hierarchy-surface {
-    background: var(--md-sys-color-surface);
-    border: 1px solid var(--md-sys-color-outline-variant);
+    background: var(--mat-sys-surface);
+    border: 1px solid var(--mat-sys-outline-variant);
   }
 
   &.hierarchy-surface-variant {
-    background: var(--md-sys-color-surface-variant);
-    border: 1px solid var(--md-sys-color-outline-variant);
+    background: var(--mat-sys-surface-variant);
+    border: 1px solid var(--mat-sys-outline-variant);
   }
 }
 
 .hierarchy-label {
-  font-size: var(--md-sys-typescale-label-medium-size, 12px);
+  font-size: var(--mat-sys-label-medium-size, 12px);
   color: var(
-    --md-sys-color-on-surface-variant
+    --mat-sys-on-surface-variant
   ); /* This is fine - on-surface-variant token has adequate contrast 5.7:1 */
 }
 
 .text-examples {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-8, 8px);
+  gap: var(--mat-sys-spacing-8, 8px);
 
   p {
     margin: 0;
-    padding: var(--md-sys-spacing-8, 8px);
+    padding: var(--mat-sys-spacing-8, 8px);
 
     &.text-on-surface-primary {
-      color: var(--md-sys-color-on-surface);
-      font-weight: var(--md-sys-typescale-title-medium-weight, 600);
+      color: var(--mat-sys-on-surface);
+      font-weight: var(--mat-sys-title-medium-weight, 600);
     }
 
     &.text-on-surface {
-      color: var(--md-sys-color-on-surface);
-      font-weight: var(--md-sys-typescale-body-medium-weight, 400);
+      color: var(--mat-sys-on-surface);
+      font-weight: var(--mat-sys-body-medium-weight, 400);
     }
 
     &.text-on-surface-variant {
-      color: var(--md-sys-color-on-surface-variant);
-      font-weight: var(--md-sys-typescale-body-medium-weight, 400);
+      color: var(--mat-sys-on-surface-variant);
+      font-weight: var(--mat-sys-body-medium-weight, 400);
     }
 
     &.text-disabled {
-      color: var(--md-sys-color-disabled);
-      font-weight: var(--md-sys-typescale-body-medium-weight, 400);
+      color: var(--mat-sys-disabled);
+      font-weight: var(--mat-sys-body-medium-weight, 400);
     }
   }
 }
 
 .interactive-examples {
   display: flex;
-  gap: var(--md-sys-spacing-16, 16px);
+  gap: var(--mat-sys-spacing-16, 16px);
   flex-wrap: wrap;
   align-items: center;
 }
 
 .demo-btn {
   &.demo-btn--hover {
-    background: var(--md-sys-color-hover);
+    background: var(--mat-sys-hover);
   }
 
   &.demo-btn--selected {
-    background: var(--md-sys-color-selected);
-    color: var(--md-sys-color-on-surface);
+    background: var(--mat-sys-selected);
+    color: var(--mat-sys-on-surface);
+  }
+}
+
+// CRITICAL FIX: Tertiary button text color - use proper MDC CSS variable
+// Based on MD3 best practices, use --mdc-filled-button-label-text-color
+.mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary {
+  --mdc-filled-button-label-text-color: var(--mat-sys-on-tertiary);
+
+  // Force the label to use white color with maximum specificity
+  // This overrides the global "p, span, div, a, li, td, th" rule
+  &.demo-btn.mat-mdc-button-base .mdc-button__label {
+    color: white;
   }
 }
 
 .border-examples {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-8, 8px);
+  gap: var(--mat-sys-spacing-8, 8px);
 }
 
 .border-example {
-  border-radius: var(--md-sys-shape-corner-small, 6px);
-  background: var(--md-sys-color-surface);
-  padding: var(--md-sys-spacing-16, 16px);
-  margin-bottom: var(--md-sys-spacing-8, 8px);
+  border-radius: var(--mat-sys-corner-small, 6px);
+  background: var(--mat-sys-surface);
+  padding: var(--mat-sys-spacing-16, 16px);
+  margin-bottom: var(--mat-sys-spacing-8, 8px);
 
   &--standard {
-    border: 1px solid var(--md-sys-color-outline);
+    border: 1px solid var(--mat-sys-outline);
   }
 
   &--subtle {
-    border: 1px solid var(--md-sys-color-outline-variant);
+    border: 1px solid var(--mat-sys-outline-variant);
   }
 
   &--focus {
-    border: 2px solid var(--md-sys-color-primary);
+    border: 2px solid var(--mat-sys-primary);
   }
 }
 
@@ -359,30 +371,30 @@
 .code-examples {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--md-sys-spacing-24, 24px);
+  gap: var(--mat-sys-spacing-24, 24px);
 }
 
 .code-block {
   h4 {
-    font-size: var(--md-sys-typescale-title-small-size, 14px);
-    font-weight: var(--md-sys-typescale-title-small-weight, 450);
-    color: var(--md-sys-color-on-surface);
-    margin: 0 0 var(--md-sys-spacing-12, 12px) 0;
+    font-size: var(--mat-sys-title-small-size, 14px);
+    font-weight: var(--mat-sys-title-small-weight, 450);
+    color: var(--mat-sys-on-surface);
+    margin: 0 0 var(--mat-sys-spacing-12, 12px) 0;
   }
 
   pre {
-    background: var(--md-sys-color-surface-container-low);
-    border: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: var(--md-sys-shape-corner-small, 6px);
-    padding: var(--md-sys-spacing-16, 16px);
+    background: var(--mat-sys-surface-container-low);
+    border: 1px solid var(--mat-sys-outline-variant);
+    border-radius: var(--mat-sys-corner-small, 6px);
+    padding: var(--mat-sys-spacing-16, 16px);
     overflow-x: auto;
     margin: 0;
 
     code {
-      font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
-      font-size: var(--md-sys-typescale-body-small-size, 12px);
+      font-family: var(--mat-sys-body-small-font, 'Inter', sans-serif);
+      font-size: var(--mat-sys-body-small-size, 12px);
       line-height: 1.5;
-      color: var(--md-sys-color-on-surface);
+      color: var(--mat-sys-on-surface);
     }
   }
 }

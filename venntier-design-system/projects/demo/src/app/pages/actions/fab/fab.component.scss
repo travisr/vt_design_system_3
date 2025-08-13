@@ -1,7 +1,7 @@
 .fab-variants {
   display: flex;
   align-items: center;
-  gap: var(--md-sys-spacing-32);
+  gap: var(--mat-sys-spacing-32);
   flex-wrap: wrap;
 }
 
@@ -9,19 +9,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-sys-spacing-12);
+  gap: var(--mat-sys-spacing-12);
 
   h4 {
     margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-color-on-surface-variant);
   }
 }
 
 .fab-colors {
   display: flex;
   align-items: center;
-  gap: var(--md-sys-spacing-32);
+  gap: var(--mat-sys-spacing-32);
   flex-wrap: wrap;
 }
 
@@ -29,19 +29,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-sys-spacing-12);
+  gap: var(--mat-sys-spacing-12);
 
   h4 {
     margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-color-on-surface-variant);
   }
 }
 
 .fab-states {
   display: flex;
   align-items: center;
-  gap: var(--md-sys-spacing-32);
+  gap: var(--mat-sys-spacing-32);
   flex-wrap: wrap;
 }
 
@@ -49,30 +49,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-sys-spacing-12);
+  gap: var(--mat-sys-spacing-12);
 
   h4 {
     margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-color-on-surface-variant);
   }
 }
 
 .common-fabs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-24);
 }
 
 .fab-example {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-sys-spacing-12);
+  gap: var(--mat-sys-spacing-12);
 
   span {
-    font-size: var(--md-sys-typescale-label-medium-size, 12px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-label-medium-size, 12px);
+    color: var(--mat-sys-color-on-surface-variant);
     text-align: center;
   }
 }
@@ -80,27 +80,27 @@
 .extended-fabs {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-24);
   align-items: stretch;
 }
 
 .extended-fab-group {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-16);
+  gap: var(--mat-sys-spacing-16);
 
   h4 {
     margin: 0;
-    font-size: var(--md-sys-typescale-title-medium-size, 16px);
-    font-weight: var(--md-sys-typescale-title-medium-weight, 500);
-    color: var(--md-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-title-medium-size, 16px);
+    font-weight: var(--mat-sys-typescale-title-medium-weight, 500);
+    color: var(--mat-sys-color-on-surface);
   }
 }
 
 .extended-fab-row {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--md-sys-spacing-16);
+  gap: var(--mat-sys-spacing-16);
   align-items: center;
 
   button {
@@ -113,26 +113,26 @@
 .guidelines-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-24);
 }
 
 .guideline-card {
   .mat-mdc-card-header {
-    padding-bottom: var(--md-sys-spacing-8);
+    padding-bottom: var(--mat-sys-spacing-8);
   }
 
   .mat-mdc-card-title {
-    font-size: var(--md-sys-typescale-title-medium-size, 16px);
-    font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+    font-size: var(--mat-sys-typescale-title-medium-size, 16px);
+    font-weight: var(--mat-sys-typescale-title-medium-weight, 500);
   }
 
   ul {
     margin: 0;
-    padding-left: var(--md-sys-spacing-20);
+    padding-left: var(--mat-sys-spacing-20);
 
     li {
-      margin-bottom: var(--md-sys-spacing-8);
-      font-size: var(--md-sys-typescale-body-medium-size, 14px);
+      margin-bottom: var(--mat-sys-spacing-8);
+      font-size: var(--mat-sys-typescale-body-medium-size, 14px);
       line-height: 1.4;
 
       &:last-child {
@@ -145,24 +145,24 @@
 .positioning-demo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-24);
 }
 
 .layout-example {
-  padding: var(--md-sys-spacing-16);
+  padding: var(--mat-sys-spacing-16);
 
   h4 {
-    margin: 0 0 var(--md-sys-spacing-16) 0;
-    color: var(--md-sys-color-on-surface);
-    font-size: var(--md-sys-typescale-body-large-size, 16px);
+    margin: 0 0 var(--mat-sys-spacing-16) 0;
+    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-body-large-size, 16px);
   }
 }
 
 .layout-container {
   position: relative;
   height: 200px;
-  background: var(--md-sys-color-surface-variant);
-  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--mat-sys-color-surface-variant);
+  border-radius: var(--mat-sys-shape-corner-medium);
   overflow: hidden;
 
   // FAB positioning within layout containers
@@ -181,13 +181,13 @@
 }
 
 .content-area {
-  padding: var(--md-sys-spacing-16);
+  padding: var(--mat-sys-spacing-16);
   height: 100%;
 
   p {
     margin: 0;
-    color: var(--md-sys-color-on-surface-variant);
-    font-style: var(--md-sys-typescale-body-small-font-style, italic);
+    color: var(--mat-sys-color-on-surface-variant);
+    font-style: var(--mat-sys-typescale-body-small-font-style, italic);
   }
 }
 
@@ -211,12 +211,12 @@ button[disabled] mat-icon {
   .fab-variants,
   .fab-colors,
   .fab-states {
-    gap: var(--md-sys-spacing-16);
+    gap: var(--mat-sys-spacing-16);
   }
 
   .common-fabs {
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: var(--md-sys-spacing-16);
+    gap: var(--mat-sys-spacing-16);
   }
 
   .extended-fab-row {

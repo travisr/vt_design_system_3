@@ -11,10 +11,10 @@
 %demo-section {
   max-width: 1200px;
   margin: 0 auto;
-  margin-bottom: var(--md-sys-spacing-32);
+  margin-bottom: var(--mat-sys-spacing-32);
 
   & + & {
-    margin-top: var(--md-sys-spacing-8);
+    margin-top: var(--mat-sys-spacing-8);
   }
 
   &:last-child {
@@ -25,10 +25,10 @@
 .demo-section {
   max-width: 1200px;
   margin: 0 auto;
-  margin-bottom: var(--md-sys-spacing-32);
+  margin-bottom: var(--mat-sys-spacing-32);
 
   & + & {
-    margin-top: var(--md-sys-spacing-8);
+    margin-top: var(--mat-sys-spacing-8);
   }
 
   &:last-child {
@@ -36,11 +36,11 @@
   }
 
   &--compact {
-    margin-bottom: var(--md-sys-spacing-16);
+    margin-bottom: var(--mat-sys-spacing-16);
   }
 
   &--spacious {
-    margin-bottom: var(--md-sys-spacing-48);
+    margin-bottom: var(--mat-sys-spacing-48);
   }
 
   &--no-margin {
@@ -50,30 +50,30 @@
 
 // Common section header styles
 %demo-section-title {
-  font-size: var(--md-sys-typescale-headline-medium-size);
-  font-weight: var(--md-sys-typescale-headline-medium-weight);
-  color: var(--md-sys-color-on-surface);
-  margin: 0 0 var(--md-sys-spacing-2) 0;
+  font-size: var(--mat-sys-typescale-headline-medium-size);
+  font-weight: var(--mat-sys-typescale-headline-medium-weight);
+  color: var(--mat-sys-color-on-surface);
+  margin: 0 0 var(--mat-sys-spacing-2) 0;
 }
 
 .demo-section-title {
-  font-size: var(--md-sys-typescale-headline-medium-size);
-  font-weight: var(--md-sys-typescale-headline-medium-weight);
-  color: var(--md-sys-color-on-surface);
-  margin: 0 0 var(--md-sys-spacing-2) 0;
+  font-size: var(--mat-sys-typescale-headline-medium-size);
+  font-weight: var(--mat-sys-typescale-headline-medium-weight);
+  color: var(--mat-sys-color-on-surface);
+  margin: 0 0 var(--mat-sys-spacing-2) 0;
 }
 
 %demo-section-description {
-  font-size: var(--md-sys-typescale-body-medium-size);
-  color: var(--md-sys-color-on-surface-variant);
-  margin: 0 0 var(--md-sys-spacing-6) 0;
+  font-size: var(--mat-sys-typescale-body-medium-size);
+  color: var(--mat-sys-color-on-surface-variant);
+  margin: 0 0 var(--mat-sys-spacing-6) 0;
   line-height: 1.5;
 }
 
 .demo-section-description {
-  font-size: var(--md-sys-typescale-body-medium-size);
-  color: var(--md-sys-color-on-surface-variant);
-  margin: 0 0 var(--md-sys-spacing-6) 0;
+  font-size: var(--mat-sys-typescale-body-medium-size);
+  color: var(--mat-sys-color-on-surface-variant);
+  margin: 0 0 var(--mat-sys-spacing-6) 0;
   line-height: 1.5;
 }
 
@@ -86,7 +86,7 @@
 
 // Demo-specific card utilities (non-conflicting)
 %demo-card-spacing {
-  margin-bottom: var(--md-sys-spacing-5);
+  margin-bottom: var(--mat-sys-spacing-5);
 
   &:last-child {
     margin-bottom: 0;
@@ -94,7 +94,7 @@
 }
 
 .demo-card-spacing {
-  margin-bottom: var(--md-sys-spacing-5);
+  margin-bottom: var(--mat-sys-spacing-5);
 
   &:last-child {
     margin-bottom: 0;
@@ -103,7 +103,7 @@
 
 // Demo content padding utility (for non-mat-card elements)
 .demo-card-content {
-  padding: var(--md-sys-spacing-6);
+  padding: var(--mat-sys-spacing-6);
 }
 
 // ============================================
@@ -113,12 +113,12 @@
 // Responsive grid for demos with enhanced variations
 %demo-grid {
   display: grid;
-  gap: var(--md-sys-spacing-16);
+  gap: var(--mat-sys-spacing-16);
 }
 
 .demo-grid {
   display: grid;
-  gap: var(--md-sys-spacing-16);
+  gap: var(--mat-sys-spacing-16);
 
   // Column variations
   &--2-col {
@@ -167,19 +167,19 @@
 
   // Gap variations
   &--gap-sm {
-    gap: var(--md-sys-spacing-8);
+    gap: var(--mat-sys-spacing-8);
   }
 
   &--gap-md {
-    gap: var(--md-sys-spacing-16);
+    gap: var(--mat-sys-spacing-16);
   }
 
   &--gap-lg {
-    gap: var(--md-sys-spacing-24);
+    gap: var(--mat-sys-spacing-24);
   }
 
   &--gap-xl {
-    gap: var(--md-sys-spacing-32);
+    gap: var(--mat-sys-spacing-32);
   }
 
   // Legacy class support (deprecated - use BEM modifiers above)
@@ -204,7 +204,7 @@
 %demo-form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--md-sys-spacing-5);
+  gap: var(--mat-sys-spacing-5);
 
   mat-form-field {
     width: 100%;
@@ -214,7 +214,7 @@
 .demo-form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--md-sys-spacing-5);
+  gap: var(--mat-sys-spacing-5);
 
   mat-form-field {
     width: 100%;
@@ -226,30 +226,30 @@
 // ============================================
 
 %demo-code-block {
-  margin: var(--md-sys-spacing-4) 0;
+  margin: var(--mat-sys-spacing-4) 0;
 
   h4 {
-    font-size: var(--md-sys-typescale-label-large-size);
-    font-weight: var(--md-sys-typescale-label-large-weight);
-    color: var(--md-sys-color-on-surface);
-    margin: 0 0 var(--md-sys-spacing-3) 0;
+    font-size: var(--mat-sys-typescale-label-large-size);
+    font-weight: var(--mat-sys-typescale-label-large-weight);
+    color: var(--mat-sys-color-on-surface);
+    margin: 0 0 var(--mat-sys-spacing-3) 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   pre {
-    background: var(--md-sys-color-surface-container);
-    border: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: var(--md-sys-shape-corner-medium);
-    padding: var(--md-sys-spacing-4);
+    background: var(--mat-sys-color-surface-container);
+    border: 1px solid var(--mat-sys-color-outline-variant);
+    border-radius: var(--mat-sys-shape-corner-medium);
+    padding: var(--mat-sys-spacing-4);
     margin: 0;
     overflow-x: auto;
 
     code {
-      font-family: var(--md-sys-typescale-code-font);
-      font-size: var(--md-sys-typescale-code-size);
+      font-family: var(--mat-sys-typescale-code-font);
+      font-size: var(--mat-sys-typescale-code-size);
       line-height: 1.6;
-      color: var(--md-sys-color-on-surface);
+      color: var(--mat-sys-color-on-surface);
       white-space: pre;
       background: none;
       padding: 0;
@@ -258,30 +258,30 @@
 }
 
 .demo-code-block {
-  margin: var(--md-sys-spacing-4) 0;
+  margin: var(--mat-sys-spacing-4) 0;
 
   h4 {
-    font-size: var(--md-sys-typescale-label-large-size);
-    font-weight: var(--md-sys-typescale-label-large-weight);
-    color: var(--md-sys-color-on-surface);
-    margin: 0 0 var(--md-sys-spacing-3) 0;
+    font-size: var(--mat-sys-typescale-label-large-size);
+    font-weight: var(--mat-sys-typescale-label-large-weight);
+    color: var(--mat-sys-color-on-surface);
+    margin: 0 0 var(--mat-sys-spacing-3) 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   pre {
-    background: var(--md-sys-color-surface-container);
-    border: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: var(--md-sys-shape-corner-medium);
-    padding: var(--md-sys-spacing-4);
+    background: var(--mat-sys-color-surface-container);
+    border: 1px solid var(--mat-sys-color-outline-variant);
+    border-radius: var(--mat-sys-shape-corner-medium);
+    padding: var(--mat-sys-spacing-4);
     margin: 0;
     overflow-x: auto;
 
     code {
-      font-family: var(--md-sys-typescale-code-font);
-      font-size: var(--md-sys-typescale-code-size);
+      font-family: var(--mat-sys-typescale-code-font);
+      font-size: var(--mat-sys-typescale-code-size);
       line-height: 1.6;
-      color: var(--md-sys-color-on-surface);
+      color: var(--mat-sys-color-on-surface);
       white-space: pre;
       background: none;
       padding: 0;
@@ -294,17 +294,17 @@
 // ============================================
 
 @mixin demo-hover-lift {
-  transition: all var(--md-sys-motion-hover);
+  transition: all var(--mat-sys-motion-hover);
   cursor: pointer;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--md-sys-color-shadow);
+    box-shadow: 0 4px 12px var(--mat-sys-color-shadow);
   }
 }
 
 @mixin demo-hover-scale {
-  transition: transform var(--md-sys-motion-hover);
+  transition: transform var(--mat-sys-motion-hover);
 
   &:hover {
     transform: scale(1.02);
@@ -316,25 +316,25 @@
 // ============================================
 
 .demo-label {
-  font-size: var(--md-sys-typescale-label-medium-size);
-  font-weight: var(--md-sys-typescale-label-medium-weight);
-  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-typescale-label-medium-size);
+  font-weight: var(--mat-sys-typescale-label-medium-weight);
+  color: var(--mat-sys-color-on-surface-variant);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: var(--md-sys-spacing-2);
+  margin-bottom: var(--mat-sys-spacing-2);
   display: block;
 }
 
 .demo-caption {
-  font-size: var(--md-sys-typescale-body-small-size);
-  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-typescale-body-small-size);
+  color: var(--mat-sys-color-on-surface-variant);
   opacity: 0.8;
-  margin-top: var(--md-sys-spacing-1);
+  margin-top: var(--mat-sys-spacing-1);
 }
 
 .demo-monospace {
-  font-family: var(--md-sys-typescale-code-font);
-  font-size: var(--md-sys-typescale-code-size);
+  font-family: var(--mat-sys-typescale-code-font);
+  font-size: var(--mat-sys-typescale-code-size);
 }
 
 // ============================================
@@ -343,7 +343,7 @@
 
 .demo-flex {
   display: flex;
-  gap: var(--md-sys-spacing-16);
+  gap: var(--mat-sys-spacing-16);
 
   &--column {
     flex-direction: column;
@@ -380,19 +380,19 @@
 
   // Gap variations
   &--gap-sm {
-    gap: var(--md-sys-spacing-8);
+    gap: var(--mat-sys-spacing-8);
   }
 
   &--gap-md {
-    gap: var(--md-sys-spacing-16);
+    gap: var(--mat-sys-spacing-16);
   }
 
   &--gap-lg {
-    gap: var(--md-sys-spacing-24);
+    gap: var(--mat-sys-spacing-24);
   }
 
   &--gap-xl {
-    gap: var(--md-sys-spacing-32);
+    gap: var(--mat-sys-spacing-32);
   }
 }
 
@@ -401,14 +401,14 @@
 // ============================================
 
 .demo-container {
-  padding: var(--md-sys-spacing-24);
+  padding: var(--mat-sys-spacing-24);
 
   &--compact {
-    padding: var(--md-sys-spacing-16);
+    padding: var(--mat-sys-spacing-16);
   }
 
   &--spacious {
-    padding: var(--md-sys-spacing-32);
+    padding: var(--mat-sys-spacing-32);
   }
 
   &--no-padding {
@@ -417,21 +417,21 @@
 
   // Directional padding
   &--padding-top {
-    padding-top: var(--md-sys-spacing-24);
+    padding-top: var(--mat-sys-spacing-24);
   }
 
   &--padding-bottom {
-    padding-bottom: var(--md-sys-spacing-24);
+    padding-bottom: var(--mat-sys-spacing-24);
   }
 
   &--padding-horizontal {
-    padding-left: var(--md-sys-spacing-24);
-    padding-right: var(--md-sys-spacing-24);
+    padding-left: var(--mat-sys-spacing-24);
+    padding-right: var(--mat-sys-spacing-24);
   }
 
   &--padding-vertical {
-    padding-top: var(--md-sys-spacing-24);
-    padding-bottom: var(--md-sys-spacing-24);
+    padding-top: var(--mat-sys-spacing-24);
+    padding-bottom: var(--mat-sys-spacing-24);
   }
 }
 
@@ -442,7 +442,7 @@
 .demo-component-group {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--md-sys-spacing-12);
+  gap: var(--mat-sys-spacing-12);
   align-items: center;
 
   &--column {
@@ -451,11 +451,11 @@
   }
 
   &--tight {
-    gap: var(--md-sys-spacing-8);
+    gap: var(--mat-sys-spacing-8);
   }
 
   &--loose {
-    gap: var(--md-sys-spacing-24);
+    gap: var(--mat-sys-spacing-24);
   }
 }
 
@@ -464,23 +464,23 @@
 // ============================================
 
 .demo-spacing-xs {
-  margin: var(--md-sys-spacing-2);
+  margin: var(--mat-sys-spacing-2);
 }
 
 .demo-spacing-sm {
-  margin: var(--md-sys-spacing-3);
+  margin: var(--mat-sys-spacing-3);
 }
 
 .demo-spacing-md {
-  margin: var(--md-sys-spacing-4);
+  margin: var(--mat-sys-spacing-4);
 }
 
 .demo-spacing-lg {
-  margin: var(--md-sys-spacing-6);
+  margin: var(--mat-sys-spacing-6);
 }
 
 .demo-spacing-xl {
-  margin: var(--md-sys-spacing-8);
+  margin: var(--mat-sys-spacing-8);
 }
 
 // ============================================

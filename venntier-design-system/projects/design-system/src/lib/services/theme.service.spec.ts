@@ -10,7 +10,7 @@ describe('VenntierThemeService', () => {
 
     // Reset document attributes and classes
     document.documentElement.removeAttribute('data-vt-theme');
-    document.documentElement.removeAttribute('data-md-sys-color-scheme');
+    document.documentElement.removeAttribute('data-mat-sys-color-scheme');
     document.documentElement.classList.remove('vt-theme-dark', 'vt-theme-light');
 
     TestBed.configureTestingModule({});
@@ -41,12 +41,12 @@ describe('VenntierThemeService', () => {
   it('should provide computed theme attributes', () => {
     const attrs = service.themeAttributes();
     expect(attrs['data-vt-theme']).toBe('light');
-    expect(attrs['data-md-sys-color-scheme']).toBe('light');
+    expect(attrs['data-mat-sys-color-scheme']).toBe('light');
 
     service.toggleTheme();
     const darkAttrs = service.themeAttributes();
     expect(darkAttrs['data-vt-theme']).toBe('dark');
-    expect(darkAttrs['data-md-sys-color-scheme']).toBe('dark');
+    expect(darkAttrs['data-mat-sys-color-scheme']).toBe('dark');
   });
 
   it('should toggle theme state', () => {
@@ -75,7 +75,7 @@ describe('VenntierThemeService', () => {
     // Use setTimeout to allow effect to run
     setTimeout(() => {
       expect(documentElement.getAttribute('data-vt-theme')).toBe('dark');
-      expect(documentElement.getAttribute('data-md-sys-color-scheme')).toBe('dark');
+      expect(documentElement.getAttribute('data-mat-sys-color-scheme')).toBe('dark');
       expect(documentElement.classList.contains('vt-theme-dark')).toBe(true);
       expect(documentElement.classList.contains('vt-theme-light')).toBe(false);
 
@@ -83,7 +83,7 @@ describe('VenntierThemeService', () => {
 
       setTimeout(() => {
         expect(documentElement.getAttribute('data-vt-theme')).toBe('light');
-        expect(documentElement.getAttribute('data-md-sys-color-scheme')).toBe('light');
+        expect(documentElement.getAttribute('data-mat-sys-color-scheme')).toBe('light');
         expect(documentElement.classList.contains('vt-theme-light')).toBe(true);
         expect(documentElement.classList.contains('vt-theme-dark')).toBe(false);
         done();

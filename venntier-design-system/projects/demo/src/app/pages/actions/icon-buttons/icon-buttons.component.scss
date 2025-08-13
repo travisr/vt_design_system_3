@@ -3,11 +3,11 @@
 
 // Active state for toggle buttons - follows MD3 state layer pattern
 button.active {
-  background-color: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
+  background-color: var(--mat-sys-color-secondary-container);
+  color: var(--mat-sys-color-on-secondary-container);
 
   mat-icon {
-    color: var(--md-sys-color-on-secondary-container);
+    color: var(--mat-sys-color-on-secondary-container);
   }
 }
 
@@ -30,79 +30,79 @@ button.active {
 .demo-toolbar-group {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-8);
+  gap: var(--mat-sys-spacing-8);
 
   .demo-group-title {
     margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    font-weight: var(--md-sys-typescale-body-medium-weight, 400);
-    color: var(--md-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    font-weight: var(--mat-sys-typescale-body-medium-weight, 400);
+    color: var(--mat-sys-color-on-surface);
   }
 }
 
 // Usage guidelines styling
 .demo-guidelines {
-  margin-top: var(--md-sys-spacing-16);
+  margin-top: var(--mat-sys-spacing-16);
 }
 
 .demo-do-dont {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-24);
 
   @media (width <= 768px) {
     grid-template-columns: 1fr;
-    gap: var(--md-sys-spacing-16);
+    gap: var(--mat-sys-spacing-16);
   }
 }
 
 .demo-do,
 .demo-dont {
-  padding: var(--md-sys-spacing-16);
-  border-radius: var(--md-sys-shape-corner-medium);
-  border: 1px solid var(--md-sys-color-outline-variant);
+  padding: var(--mat-sys-spacing-16);
+  border-radius: var(--mat-sys-shape-corner-medium);
+  border: 1px solid var(--mat-sys-color-outline-variant);
 
   h3 {
-    margin: 0 0 var(--md-sys-spacing-12) 0;
-    font-size: var(--md-sys-typescale-title-medium-size, 16px);
-    font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+    margin: 0 0 var(--mat-sys-spacing-12) 0;
+    font-size: var(--mat-sys-typescale-title-medium-size, 16px);
+    font-weight: var(--mat-sys-typescale-title-medium-weight, 500);
   }
 
   ul {
     margin: 0;
-    padding-left: var(--md-sys-spacing-20);
+    padding-left: var(--mat-sys-spacing-20);
 
     li {
-      margin-bottom: var(--md-sys-spacing-8);
-      font-size: var(--md-sys-typescale-body-medium-size, 14px);
-      line-height: var(--md-sys-typescale-body-medium-line-height, 20px);
+      margin-bottom: var(--mat-sys-spacing-8);
+      font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+      line-height: var(--mat-sys-typescale-body-medium-line-height, 20px);
     }
   }
 }
 
 .demo-do {
-  background-color: var(--md-sys-color-tertiary-container);
-  border-color: var(--md-sys-color-tertiary);
+  background-color: var(--mat-sys-color-tertiary-container);
+  border-color: var(--mat-sys-color-tertiary);
 
   h3 {
-    color: var(--md-sys-color-on-tertiary-container);
+    color: var(--mat-sys-color-on-tertiary-container);
   }
 
   ul li {
-    color: var(--md-sys-color-on-tertiary-container);
+    color: var(--mat-sys-color-on-tertiary-container);
   }
 }
 
 .demo-dont {
-  background-color: var(--md-sys-color-error-container);
-  border-color: var(--md-sys-color-error);
+  background-color: var(--mat-sys-color-error-container);
+  border-color: var(--mat-sys-color-error);
 
   h3 {
-    color: var(--md-sys-color-on-error-container);
+    color: var(--mat-sys-color-on-error-container);
   }
 
   ul li {
-    color: var(--md-sys-color-on-error-container);
+    color: var(--mat-sys-color-on-error-container);
   }
 }
 
@@ -117,26 +117,26 @@ button.active {
 // Tonal Icon Button - using mat-icon-button for perfect circular alignment
 .demo-icon-button-tonal {
   // MD3 Tonal Icon Button - add background to standard icon button
-  background-color: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
+  background-color: var(--mat-sys-color-secondary-container);
+  color: var(--mat-sys-color-on-secondary-container);
 
   // Icon color
   mat-icon {
-    color: var(--md-sys-color-on-secondary-container);
+    color: var(--mat-sys-color-on-secondary-container);
   }
 
   // Hover state
   &:hover {
-    background-color: var(--md-sys-color-secondary-container);
+    background-color: var(--mat-sys-color-secondary-container);
   }
 
   // Disabled state
   &:disabled {
-    background-color: var(--md-sys-color-surface-variant);
-    color: var(--md-sys-color-on-surface-variant);
+    background-color: var(--mat-sys-color-surface-variant);
+    color: var(--mat-sys-color-on-surface-variant);
 
     mat-icon {
-      color: var(--md-sys-color-on-surface-variant);
+      color: var(--mat-sys-color-on-surface-variant);
     }
   }
 }
@@ -144,22 +144,22 @@ button.active {
 // Outlined Icon Button - using mat-icon-button for perfect circular alignment
 .demo-icon-button-outlined {
   // MD3 Outlined Icon Button - add border to standard icon button
-  border: 1px solid var(--md-sys-color-outline);
+  border: 1px solid var(--mat-sys-color-outline);
   background-color: transparent;
-  color: var(--md-sys-color-on-surface);
+  color: var(--mat-sys-color-on-surface);
 
   // Icon color
   mat-icon {
-    color: var(--md-sys-color-on-surface);
+    color: var(--mat-sys-color-on-surface);
   }
 
   // Disabled state
   &:disabled {
-    border-color: var(--md-sys-color-outline-variant);
-    color: var(--md-sys-color-on-surface-variant);
+    border-color: var(--mat-sys-color-outline-variant);
+    color: var(--mat-sys-color-on-surface-variant);
 
     mat-icon {
-      color: var(--md-sys-color-on-surface-variant);
+      color: var(--mat-sys-color-on-surface-variant);
     }
   }
 }

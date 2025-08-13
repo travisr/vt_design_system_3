@@ -86,7 +86,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
           <div class="variant-group">
             <h4>Accent Color Scheme</h4>
-            <mat-button-toggle-group class="secondary-variant" value="option1">
+            <mat-button-toggle-group class="tertiary-variant" value="option1">
               <mat-button-toggle value="option1">
                 <span matBadge="99+" matBadgeColor="accent" matBadgePosition="after">Updates</span>
               </mat-button-toggle>
@@ -97,7 +97,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
           <div class="variant-group">
             <h4>Warn Color Scheme</h4>
-            <mat-button-toggle-group class="tertiary-variant" value="option1">
+            <mat-button-toggle-group class="secondary-variant" value="option1">
               <mat-button-toggle value="option1">
                 <span matBadge="!" matBadgeColor="warn" matBadgePosition="after">Alerts</span>
               </mat-button-toggle>

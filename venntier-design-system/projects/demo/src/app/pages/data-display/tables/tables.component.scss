@@ -1,15 +1,15 @@
 @use '@angular/material' as mat;
 
 .demo-page {
-  padding: 24px;
+  padding: var(--mat-sys-spacing-24, 24px);
   max-width: 1200px;
   margin: 0 auto;
 
   .density-selector {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: var(--mat-sys-spacing-16, 16px);
+    margin-bottom: var(--mat-sys-spacing-24, 24px);
 
     mat-form-field {
       width: 450px; // Consistent with other demo pages
@@ -17,20 +17,20 @@
 
     .density-info {
       margin: 0;
-      color: var(--md-sys-color-on-surface-variant);
+      color: var(--mat-sys-color-on-surface-variant);
 
       small {
-        color: var(--md-sys-color-on-surface-variant);
+        color: var(--mat-sys-color-on-surface-variant);
         opacity: 0.7;
       }
     }
   }
 
   demo-example-viewer {
-    margin-bottom: 32px;
+    margin-bottom: var(--mat-sys-spacing-32, 32px);
 
     mat-card {
-      margin-bottom: 16px;
+      margin-bottom: var(--mat-sys-spacing-16, 16px);
 
       &:last-child {
         margin-bottom: 0;
@@ -47,11 +47,11 @@
 
     // Header styling - minimal overrides to avoid conflicts with density
     .mat-mdc-header-row {
-      background-color: var(--md-sys-color-surface-variant);
+      background-color: var(--mat-sys-color-surface-variant);
 
       .mat-mdc-header-cell {
-        color: var(--md-sys-color-on-surface-variant);
-        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        color: var(--mat-sys-color-on-surface-variant);
+        border-bottom: 1px solid var(--mat-sys-color-outline-variant);
 
         // Removed fixed padding - let density tokens control this
       }
@@ -60,12 +60,12 @@
     // Row styling - minimal overrides to avoid conflicts with density
     .mat-mdc-row {
       &:hover {
-        background-color: var(--md-sys-color-surface-container-lowest);
+        background-color: var(--mat-sys-color-surface-container-lowest);
       }
 
       .mat-mdc-cell {
-        border-bottom: 1px solid var(--md-sys-color-outline-variant);
-        color: var(--md-sys-color-on-surface);
+        border-bottom: 1px solid var(--mat-sys-color-outline-variant);
+        color: var(--mat-sys-color-on-surface);
 
         // Removed fixed padding - let density tokens control this
       }
@@ -82,34 +82,34 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: var(--md-sys-spacing-16);
-    padding: var(--md-sys-spacing-8) 0;
+    margin-bottom: var(--mat-sys-spacing-16);
+    padding: var(--mat-sys-spacing-8) 0;
 
     .selection-info {
-      color: var(--md-sys-color-on-surface-variant);
-      font-size: var(--md-sys-typescale-body-small-size);
+      color: var(--mat-sys-color-on-surface-variant);
+      font-size: var(--mat-sys-typescale-body-small-size);
     }
 
     .bulk-actions {
       display: flex;
-      gap: var(--md-sys-spacing-8);
+      gap: var(--mat-sys-spacing-8);
     }
   }
 
   // Status chip styling
   .status-active {
-    background-color: var(--md-sys-color-tertiary-container);
-    color: var(--md-sys-color-on-tertiary-container);
+    background-color: var(--mat-sys-color-tertiary-container);
+    color: var(--mat-sys-color-on-tertiary-container);
   }
 
   .status-inactive {
-    background-color: var(--md-sys-color-error-container);
-    color: var(--md-sys-color-on-error-container);
+    background-color: var(--mat-sys-color-error-container);
+    color: var(--mat-sys-color-on-error-container);
   }
 
   .status-pending {
-    background-color: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
+    background-color: var(--mat-sys-color-secondary-container);
+    color: var(--mat-sys-color-on-secondary-container);
   }
 
   // Density is handled globally by the design system using Angular Material's
@@ -118,12 +118,12 @@
 
   // Responsive design
   @media (width <= 768px) {
-    padding: 16px;
+    padding: var(--mat-sys-spacing-16, 16px);
 
     .density-selector {
       flex-direction: column;
       align-items: flex-start;
-      gap: 12px;
+      gap: var(--mat-sys-spacing-12, 12px);
 
       mat-form-field {
         width: 100%;
@@ -131,7 +131,7 @@
     }
 
     .demo-table {
-      font-size: var(--md-sys-typescale-body-small-size);
+      font-size: var(--mat-sys-typescale-body-small-size);
 
       // Removed fixed padding - let density tokens control this on mobile too
     }
@@ -141,7 +141,7 @@
     .table-actions {
       flex-direction: column;
       align-items: flex-start;
-      gap: var(--md-sys-spacing-12);
+      gap: var(--mat-sys-spacing-12);
 
       .bulk-actions {
         width: 100%;
@@ -179,7 +179,7 @@
       .mat-mdc-header-cell,
       .mat-mdc-cell {
         border: 1px solid #000;
-        padding: 8px;
+        padding: var(--mat-sys-spacing-8, 8px);
       }
     }
   }
@@ -190,7 +190,7 @@
 
 // Animation for row selection
 .mat-mdc-row {
-  transition: background-color var(--md-sys-motion-hover);
+  transition: background-color var(--mat-sys-motion-hover);
 }
 
 // Checkbox alignment in table cells
@@ -203,12 +203,12 @@
 
 // Action button spacing
 .mat-mdc-cell button + button {
-  margin-left: var(--md-sys-spacing-4);
+  margin-left: var(--mat-sys-spacing-4);
 }
 
 // Sort header styling
 .mat-sort-header-arrow {
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--mat-sys-color-on-surface-variant);
 }
 
 // Loading state (for future enhancement)
@@ -216,8 +216,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--md-sys-spacing-48);
-  color: var(--md-sys-color-on-surface-variant);
+  padding: var(--mat-sys-spacing-48);
+  color: var(--mat-sys-color-on-surface-variant);
 }
 
 // Empty state (for future enhancement)
@@ -226,15 +226,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--md-sys-spacing-48);
-  color: var(--md-sys-color-on-surface-variant);
+  padding: var(--mat-sys-spacing-48);
+  color: var(--mat-sys-color-on-surface-variant);
   text-align: center;
 
   mat-icon {
-    font-size: 48px;
-    width: 48px;
-    height: 48px;
-    margin-bottom: var(--md-sys-spacing-16);
+    font-size: var(--mat-sys-spacing-48, 48px);
+    width: var(--mat-sys-spacing-48, 48px);
+    height: var(--mat-sys-spacing-48, 48px);
+    margin-bottom: var(--mat-sys-spacing-16);
     opacity: 0.5;
   }
 }

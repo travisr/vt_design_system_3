@@ -6,37 +6,37 @@
   .progress-variants {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: var(--mat-sys-spacing-32, 32px);
 
     .variant-group {
       h4 {
-        margin: 0 0 16px;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--md-sys-color-on-surface-variant);
+        margin: 0 0 var(--mat-sys-spacing-16, 16px);
+        font-size: var(--mat-sys-body-medium-size, 14px);
+        font-weight: var(--mat-sys-body-medium-weight, 500);
+        color: var(--mat-sys-on-surface-variant);
       }
 
       .progress-examples {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: var(--mat-sys-spacing-16, 16px);
 
         .progress-item {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: var(--mat-sys-spacing-8, 8px);
           width: 100%;
           max-width: 400px;
 
           span {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--md-sys-color-on-surface-variant);
+            font-size: var(--mat-sys-label-medium-size, 12px);
+            font-weight: var(--mat-sys-label-medium-weight, 500);
+            color: var(--mat-sys-on-surface-variant);
           }
 
           mat-progress-bar {
-            height: 4px;
-            border-radius: 2px;
+            height: var(--mat-sys-spacing-4, 4px);
+            border-radius: var(--mat-sys-spacing-2, 2px);
           }
         }
       }
@@ -47,32 +47,32 @@
   .spinner-variants {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: var(--mat-sys-spacing-32, 32px);
 
     .variant-group {
       h4 {
-        margin: 0 0 16px;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--md-sys-color-on-surface-variant);
+        margin: 0 0 var(--mat-sys-spacing-16, 16px);
+        font-size: var(--mat-sys-body-medium-size, 14px);
+        font-weight: var(--mat-sys-body-medium-weight, 500);
+        color: var(--mat-sys-on-surface-variant);
       }
 
       .spinner-examples {
         display: flex;
         flex-wrap: wrap;
-        gap: 24px;
+        gap: var(--mat-sys-spacing-24, 24px);
         align-items: center;
 
         .spinner-item {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 12px;
+          gap: var(--mat-sys-spacing-12, 12px);
 
           span {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--md-sys-color-on-surface-variant);
+            font-size: var(--mat-sys-label-medium-size, 12px);
+            font-weight: var(--mat-sys-label-medium-weight, 500);
+            color: var(--mat-sys-on-surface-variant);
             text-align: center;
           }
         }
@@ -84,14 +84,14 @@
   .controls-section {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--mat-sys-spacing-24, 24px);
 
     .control-group {
       h4 {
-        margin: 0 0 16px;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--md-sys-color-on-surface-variant);
+        margin: 0 0 var(--mat-sys-spacing-16, 16px);
+        font-size: var(--mat-sys-body-medium-size, 14px);
+        font-weight: var(--mat-sys-body-medium-weight, 500);
+        color: var(--mat-sys-on-surface-variant);
       }
 
       mat-slider {
@@ -99,14 +99,14 @@
       }
 
       p {
-        margin: 8px 0 0;
-        font-size: 12px;
-        color: var(--md-sys-color-on-surface-variant);
+        margin: var(--mat-sys-spacing-8, 8px) 0 0;
+        font-size: var(--mat-sys-label-medium-size, 12px);
+        color: var(--mat-sys-on-surface-variant);
       }
 
       .button-controls {
         display: flex;
-        gap: 12px;
+        gap: var(--mat-sys-spacing-12, 12px);
       }
     }
   }
@@ -124,25 +124,25 @@
   .progress-variants,
   .spinner-variants,
   .controls-section {
-    gap: 24px;
+    gap: var(--mat-sys-spacing-24, 24px);
 
     .variant-group {
       .progress-examples,
       .spinner-examples {
-        gap: 12px;
+        gap: var(--mat-sys-spacing-12, 12px);
       }
 
       .progress-examples .progress-item {
-        gap: 6px;
+        gap: var(--mat-sys-spacing-6, 6px);
       }
 
       .spinner-examples .spinner-item {
-        gap: 8px;
+        gap: var(--mat-sys-spacing-8, 8px);
       }
     }
 
     .control-group {
-      gap: 16px;
+      gap: var(--mat-sys-spacing-16, 16px);
     }
   }
 }
@@ -151,25 +151,25 @@
   .progress-variants,
   .spinner-variants,
   .controls-section {
-    gap: 16px;
+    gap: var(--mat-sys-spacing-16, 16px);
 
     .variant-group {
       .progress-examples,
       .spinner-examples {
-        gap: 8px;
+        gap: var(--mat-sys-spacing-8, 8px);
       }
 
       .progress-examples .progress-item {
-        gap: 4px;
+        gap: var(--mat-sys-spacing-4, 4px);
       }
 
       .spinner-examples .spinner-item {
-        gap: 6px;
+        gap: var(--mat-sys-spacing-6, 6px);
       }
     }
 
     .control-group {
-      gap: 12px;
+      gap: var(--mat-sys-spacing-12, 12px);
     }
   }
 }

@@ -1,32 +1,32 @@
 .chip-demo {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-12);
-  margin-bottom: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-12);
+  margin-bottom: var(--mat-sys-spacing-24);
 
   h4 {
     margin: 0;
-    font-size: var(--md-sys-typescale-body-large-size, 16px);
-    color: var(--md-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-body-large-size, 16px);
+    color: var(--mat-sys-color-on-surface);
   }
 }
 
 .filter-result {
-  margin-top: var(--md-sys-spacing-12);
-  padding: var(--md-sys-spacing-8);
-  background-color: var(--md-sys-color-surface-variant);
-  border-radius: var(--md-sys-shape-corner-small);
-  font-size: var(--md-sys-typescale-body-medium-size, 14px);
-  color: var(--md-sys-color-on-surface-variant);
+  margin-top: var(--mat-sys-spacing-12);
+  padding: var(--mat-sys-spacing-8);
+  background-color: var(--mat-sys-color-surface-variant);
+  border-radius: var(--mat-sys-shape-corner-small);
+  font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+  color: var(--mat-sys-color-on-surface-variant);
 }
 
 .add-chip-button {
-  margin-top: var(--md-sys-spacing-12);
+  margin-top: var(--mat-sys-spacing-12);
   align-self: flex-start;
 }
 
 .email-input {
-  margin-top: var(--md-sys-spacing-16);
+  margin-top: var(--mat-sys-spacing-16);
   width: 100%;
   max-width: 300px;
 }
@@ -34,16 +34,16 @@
 .variant-demo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--md-sys-spacing-16);
+  gap: var(--mat-sys-spacing-16);
 }
 
 .variant-card {
-  padding: var(--md-sys-spacing-16);
+  padding: var(--mat-sys-spacing-16);
 
   h4 {
-    margin: 0 0 var(--md-sys-spacing-16) 0;
-    color: var(--md-sys-color-on-surface);
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
+    margin: 0 0 var(--mat-sys-spacing-16) 0;
+    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
   }
 }
 
@@ -53,7 +53,7 @@
 mat-chip-set {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--md-sys-spacing-8);
+  gap: var(--mat-sys-spacing-8);
 }
 
 // Responsive adjustments
@@ -67,12 +67,12 @@ mat-chip-set {
   }
 
   mat-chip {
-    font-size: var(--md-sys-typescale-label-large-size, 13px);
+    font-size: var(--mat-sys-typescale-label-large-size, 13px);
     height: 28px;
-    padding: 0 var(--md-sys-spacing-8);
+    padding: 0 var(--mat-sys-spacing-8);
 
     mat-icon {
-      font-size: var(--md-sys-spacing-16, 16px);
+      font-size: var(--mat-sys-spacing-16, 16px);
       width: 16px;
       height: 16px;
     }

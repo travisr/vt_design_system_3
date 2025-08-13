@@ -311,15 +311,15 @@ export class IconsComponent {
       title: 'Icon Colors (SCSS)',
       language: 'scss',
       code: `.color-primary {
-  color: var(--md-sys-color-primary);
+  color: var(--mat-sys-color-primary);
 }
 
 .color-secondary {
-  color: var(--md-sys-color-secondary);
+  color: var(--mat-sys-color-secondary);
 }
 
 .color-error {
-  color: var(--md-sys-color-error);
+  color: var(--mat-sys-color-error);
 }`,
     },
     {

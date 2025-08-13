@@ -3,7 +3,7 @@
 
 .demo-container {
   height: 100vh;
-  background: var(--md-sys-color-surface);
+  background: var(--mat-sys-color-surface);
 
   // Ensure sidenav content has no padding/margin at top
   // Use the actual class selector for higher specificity
@@ -15,7 +15,7 @@
 
 // Main content area
 .demo-content {
-  background: var(--md-sys-color-surface);
+  background: var(--mat-sys-color-surface);
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -28,20 +28,20 @@
 }
 
 .demo-toolbar {
-  background: var(--md-sys-color-surface);
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  background: var(--mat-sys-color-surface);
+  border-bottom: 1px solid var(--mat-sys-color-outline-variant);
   height: 64px; // Match sidenav header height
   min-height: 64px; // Ensure consistent height
-  padding: 0 var(--md-sys-spacing-24, 24px);
+  padding: 0 var(--mat-sys-spacing-24, 24px);
   box-shadow: none;
   margin: 0; // Remove any default margins
   position: relative;
   top: 0; // Ensure it's flush to the top
 
   h1 {
-    font-size: var(--md-sys-typescale-title-large-size, 20px);
+    font-size: var(--mat-sys-typescale-title-large-size, 20px);
     font-weight: 600;
-    color: var(--md-sys-color-on-surface);
+    color: var(--mat-sys-color-on-surface);
     margin: 0;
   }
 
@@ -51,17 +51,17 @@
 
   button[mat-icon-button] {
     mat-icon {
-      color: var(--md-sys-color-on-surface-variant);
-      font-size: var(--md-sys-typescale-title-large-size, 20px);
+      color: var(--mat-sys-color-on-surface-variant);
+      font-size: var(--mat-sys-typescale-title-large-size, 20px);
     }
   }
 }
 
 .content-wrapper {
-  padding: var(--md-sys-spacing-24, 24px);
+  padding: var(--mat-sys-spacing-24, 24px);
   overflow-y: auto;
   flex: 1;
-  background: var(--md-sys-color-surface);
+  background: var(--mat-sys-color-surface);
 
   // Use shared demo utilities for consistent styling
   section {
@@ -85,8 +85,8 @@
 
 // Typography samples
 .typography-sample {
-  padding: var(--md-sys-spacing-20, 20px) 0;
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  padding: var(--mat-sys-spacing-20, 20px) 0;
+  border-bottom: 1px solid var(--mat-sys-color-outline-variant);
 
   &:last-child {
     border-bottom: none;
@@ -94,16 +94,16 @@
 
   .type-label {
     display: block;
-    font-size: var(--md-sys-typescale-label-medium-size, 12px);
-    color: var(--md-sys-color-on-surface-variant);
-    margin-bottom: var(--md-sys-spacing-8, 8px);
+    font-size: var(--mat-sys-typescale-label-medium-size, 12px);
+    color: var(--mat-sys-color-on-surface-variant);
+    margin-bottom: var(--mat-sys-spacing-8, 8px);
     font-weight: 400;
     letter-spacing: 0.02em;
   }
 
   p {
     margin: 0;
-    color: var(--md-sys-color-on-surface);
+    color: var(--mat-sys-color-on-surface);
   }
 }
 
@@ -123,7 +123,7 @@
 .choice-group {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-12, 12px);
+  gap: var(--mat-sys-spacing-12, 12px);
 
   mat-checkbox,
   mat-radio-button,
@@ -138,17 +138,17 @@
 // Colors demo styles
 .color-grid {
   .color-group {
-    margin-bottom: var(--md-sys-spacing-24, 24px);
+    margin-bottom: var(--mat-sys-spacing-24, 24px);
 
     &:last-child {
       margin-bottom: 0;
     }
 
     .color-group-title {
-      font-size: var(--md-sys-typescale-label-large-size, 14px);
+      font-size: var(--mat-sys-typescale-label-large-size, 14px);
       font-weight: 600;
-      color: var(--md-sys-color-on-surface);
-      margin: 0 0 var(--md-sys-spacing-16, 16px) 0;
+      color: var(--mat-sys-color-on-surface);
+      margin: 0 0 var(--mat-sys-spacing-16, 16px) 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -156,17 +156,17 @@
     .color-swatches {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: var(--md-sys-spacing-16, 16px);
+      gap: var(--mat-sys-spacing-16, 16px);
     }
 
     .color-swatch {
       display: flex;
       flex-direction: column;
-      gap: var(--md-sys-spacing-12, 12px);
+      gap: var(--mat-sys-spacing-12, 12px);
 
       .swatch-preview {
-        height: var(--md-sys-spacing-80, 80px);
-        border-radius: var(--md-sys-shape-corner-medium, 8px);
+        height: var(--mat-sys-spacing-80, 80px);
+        border-radius: var(--mat-sys-shape-corner-medium, 8px);
         transition: transform 0.2s ease;
 
         &:hover {
@@ -177,24 +177,24 @@
       .swatch-info {
         display: flex;
         flex-direction: column;
-        gap: var(--md-sys-spacing-4, 4px);
+        gap: var(--mat-sys-spacing-4, 4px);
 
         .swatch-name {
-          font-size: var(--md-sys-typescale-body-medium-size, 14px);
+          font-size: var(--mat-sys-typescale-body-medium-size, 14px);
           font-weight: 600;
-          color: var(--md-sys-color-on-surface);
+          color: var(--mat-sys-color-on-surface);
         }
 
         .swatch-value {
-          font-size: var(--md-sys-typescale-body-small-size, 13px);
-          font-family: var(--md-sys-typescale-code-font);
-          color: var(--md-sys-color-on-surface-variant);
+          font-size: var(--mat-sys-typescale-body-small-size, 13px);
+          font-family: var(--mat-sys-typescale-code-font);
+          color: var(--mat-sys-color-on-surface-variant);
         }
 
         .swatch-token {
-          font-size: var(--md-sys-typescale-label-small-size, 11px);
-          font-family: var(--md-sys-typescale-code-font);
-          color: var(--md-sys-color-on-surface-variant);
+          font-size: var(--mat-sys-typescale-label-small-size, 11px);
+          font-family: var(--mat-sys-typescale-code-font);
+          color: var(--mat-sys-color-on-surface-variant);
           opacity: 0.7;
         }
       }
@@ -206,45 +206,45 @@
 .gray-scale-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: var(--md-sys-spacing-20, 20px);
+  gap: var(--mat-sys-spacing-20, 20px);
 
   .gray-swatch {
     display: flex;
     flex-direction: column;
-    gap: var(--md-sys-spacing-8, 8px);
+    gap: var(--mat-sys-spacing-8, 8px);
 
     .gray-preview {
-      height: var(--md-sys-spacing-60, 60px);
-      border-radius: var(--md-sys-shape-corner-small, 6px);
+      height: var(--mat-sys-spacing-60, 60px);
+      border-radius: var(--mat-sys-shape-corner-small, 6px);
       transition: all 0.2s ease;
       cursor: pointer;
 
       &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px var(--md-sys-color-shadow);
+        box-shadow: 0 4px 12px var(--mat-sys-color-shadow);
       }
     }
 
     .gray-info {
       display: flex;
       flex-direction: column;
-      gap: var(--md-sys-spacing-2, 2px);
+      gap: var(--mat-sys-spacing-2, 2px);
 
       .gray-name {
-        font-size: var(--md-sys-typescale-label-medium-size, 12px);
+        font-size: var(--mat-sys-typescale-label-medium-size, 12px);
         font-weight: 600;
-        color: var(--md-sys-color-on-surface);
+        color: var(--mat-sys-color-on-surface);
       }
 
       .gray-value {
-        font-size: var(--md-sys-typescale-label-small-size, 11px);
-        font-family: var(--md-sys-typescale-code-font);
-        color: var(--md-sys-color-on-surface-variant);
+        font-size: var(--mat-sys-typescale-label-small-size, 11px);
+        font-family: var(--mat-sys-typescale-code-font);
+        color: var(--mat-sys-color-on-surface-variant);
       }
 
       .gray-usage {
-        font-size: var(--md-sys-typescale-label-small-size, 10px);
-        color: var(--md-sys-color-on-surface-variant);
+        font-size: var(--mat-sys-typescale-label-small-size, 10px);
+        color: var(--mat-sys-color-on-surface-variant);
         opacity: 0.8;
       }
     }
@@ -256,12 +256,12 @@
   .state-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: var(--md-sys-spacing-24, 24px);
+    gap: var(--mat-sys-spacing-24, 24px);
 
     .state-example {
       display: flex;
       flex-direction: column;
-      gap: var(--md-sys-spacing-12, 12px);
+      gap: var(--mat-sys-spacing-12, 12px);
       align-items: center;
 
       button {
@@ -270,32 +270,32 @@
         transition: all 0.2s ease;
 
         &.state-default {
-          background: var(--md-sys-color-surface);
-          border-color: var(--md-sys-color-outline);
+          background: var(--mat-sys-color-surface);
+          border-color: var(--mat-sys-color-outline);
         }
 
         &.state-hover {
-          background: var(--md-sys-color-hover);
-          border-color: var(--md-sys-color-outline);
-          color: var(--md-sys-color-on-surface);
+          background: var(--mat-sys-color-hover);
+          border-color: var(--mat-sys-color-outline);
+          color: var(--mat-sys-color-on-surface);
         }
 
         &.state-selected {
-          background: var(--md-sys-color-selected);
-          border-color: var(--md-sys-color-outline);
-          color: var(--md-sys-color-on-surface);
+          background: var(--mat-sys-color-selected);
+          border-color: var(--mat-sys-color-outline);
+          color: var(--mat-sys-color-on-surface);
         }
 
         &.state-focus {
-          background: var(--md-sys-color-surface);
-          border: 2px solid var(--md-sys-color-focus-ring);
-          padding: var(--md-sys-spacing-8, 8px) var(--md-sys-spacing-23, 23px); // Adjust for thicker border
+          background: var(--mat-sys-color-surface);
+          border: 2px solid var(--mat-sys-color-focus-ring);
+          padding: var(--mat-sys-spacing-8, 8px) var(--mat-sys-spacing-23, 23px); // Adjust for thicker border
         }
       }
 
       .state-label {
-        font-size: var(--md-sys-typescale-label-medium-size, 12px);
-        color: var(--md-sys-color-on-surface-variant);
+        font-size: var(--mat-sys-typescale-label-medium-size, 12px);
+        color: var(--mat-sys-color-on-surface-variant);
         text-align: center;
       }
     }
@@ -306,32 +306,32 @@
 .usage-examples {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-32, 32px);
+  gap: var(--mat-sys-spacing-32, 32px);
 
   .usage-section {
     .usage-title {
-      font-size: var(--md-sys-typescale-label-large-size, 14px);
+      font-size: var(--mat-sys-typescale-label-large-size, 14px);
       font-weight: 600;
-      color: var(--md-sys-color-on-surface);
-      margin: 0 0 var(--md-sys-spacing-16, 16px) 0;
+      color: var(--mat-sys-color-on-surface);
+      margin: 0 0 var(--mat-sys-spacing-16, 16px) 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .hierarchy-demo {
-      border-radius: var(--md-sys-shape-corner-medium, 8px);
+      border-radius: var(--mat-sys-shape-corner-medium, 8px);
       overflow: hidden;
 
       .hierarchy-level {
-        border-radius: var(--md-sys-shape-corner-small, 6px);
+        border-radius: var(--mat-sys-shape-corner-small, 6px);
         position: relative;
 
         .hierarchy-label {
-          font-size: var(--md-sys-typescale-label-medium-size, 12px);
+          font-size: var(--mat-sys-typescale-label-medium-size, 12px);
           font-weight: 500;
-          color: var(--md-sys-color-on-surface-variant);
+          color: var(--mat-sys-color-on-surface-variant);
           display: inline-block;
-          margin-bottom: var(--md-sys-spacing-8, 8px);
+          margin-bottom: var(--mat-sys-spacing-8, 8px);
         }
       }
     }
@@ -339,11 +339,11 @@
     .text-examples {
       display: flex;
       flex-direction: column;
-      gap: var(--md-sys-spacing-12, 12px);
+      gap: var(--mat-sys-spacing-12, 12px);
 
       p {
         margin: 0;
-        font-size: var(--md-sys-typescale-body-medium-size, 14px);
+        font-size: var(--mat-sys-typescale-body-medium-size, 14px);
         line-height: 1.5;
       }
     }
@@ -353,14 +353,14 @@
       flex-direction: column;
 
       .border-example {
-        border-radius: var(--md-sys-shape-corner-small, 6px);
-        font-size: var(--md-sys-typescale-body-small-size, 13px);
-        color: var(--md-sys-color-on-surface-variant);
-        background: var(--md-sys-color-surface);
+        border-radius: var(--mat-sys-shape-corner-small, 6px);
+        font-size: var(--mat-sys-typescale-body-small-size, 13px);
+        color: var(--mat-sys-color-on-surface-variant);
+        background: var(--mat-sys-color-surface);
         transition: all 0.2s ease;
 
         &:hover {
-          background: var(--md-sys-color-surface-container-low);
+          background: var(--mat-sys-color-surface-container-low);
         }
       }
     }

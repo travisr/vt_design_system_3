@@ -2,7 +2,7 @@
 .icon-styles {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-24);
 
   @media (width <= 768px) {
     grid-template-columns: 1fr;
@@ -11,38 +11,38 @@
 
 .style-group {
   h4 {
-    margin-bottom: var(--md-sys-spacing-16);
-    color: var(--md-sys-color-on-surface);
+    margin-bottom: var(--mat-sys-spacing-16);
+    color: var(--mat-sys-color-on-surface);
   }
 }
 
 .icon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: var(--md-sys-spacing-16);
+  gap: var(--mat-sys-spacing-16);
 }
 
 .icon-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-sys-spacing-8);
-  padding: var(--md-sys-spacing-12);
-  border-radius: var(--md-sys-shape-corner-small);
-  transition: background-color var(--md-sys-motion-duration-short2, 200ms)
-    var(--md-sys-motion-easing-standard, ease);
+  gap: var(--mat-sys-spacing-8);
+  padding: var(--mat-sys-spacing-12);
+  border-radius: var(--mat-sys-shape-corner-small);
+  transition: background-color var(--mat-sys-motion-duration-short2, 200ms)
+    var(--mat-sys-motion-easing-standard, ease);
 
   &:hover {
-    background-color: var(--md-sys-color-surface-variant);
+    background-color: var(--mat-sys-color-surface-variant);
   }
 
   mat-icon {
-    color: var(--md-sys-color-on-surface);
+    color: var(--mat-sys-color-on-surface);
   }
 
   span {
-    font-size: var(--md-sys-typescale-label-medium-size, 12px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-label-medium-size, 12px);
+    color: var(--mat-sys-color-on-surface-variant);
     text-align: center;
     word-break: break-all;
   }
@@ -51,32 +51,32 @@
 .size-demo {
   display: flex;
   align-items: center;
-  gap: var(--md-sys-spacing-32);
+  gap: var(--mat-sys-spacing-32);
   flex-wrap: wrap;
 
   // Icon size modifiers with mat-icon specificity
   .size-18 mat-icon {
-    font-size: var(--md-sys-spacing-18, 18px);
-    width: var(--md-sys-spacing-18, 18px);
-    height: var(--md-sys-spacing-18, 18px);
+    font-size: var(--mat-sys-spacing-18, 18px);
+    width: var(--mat-sys-spacing-18, 18px);
+    height: var(--mat-sys-spacing-18, 18px);
   }
 
   .size-24 mat-icon {
-    font-size: var(--md-sys-spacing-24, 24px);
-    width: var(--md-sys-spacing-24, 24px);
-    height: var(--md-sys-spacing-24, 24px);
+    font-size: var(--mat-sys-spacing-24, 24px);
+    width: var(--mat-sys-spacing-24, 24px);
+    height: var(--mat-sys-spacing-24, 24px);
   }
 
   .size-36 mat-icon {
-    font-size: var(--md-sys-spacing-36, 36px);
-    width: var(--md-sys-spacing-36, 36px);
-    height: var(--md-sys-spacing-36, 36px);
+    font-size: var(--mat-sys-spacing-36, 36px);
+    width: var(--mat-sys-spacing-36, 36px);
+    height: var(--mat-sys-spacing-36, 36px);
   }
 
   .size-48 mat-icon {
-    font-size: var(--md-sys-spacing-48, 48px);
-    width: var(--md-sys-spacing-48, 48px);
-    height: var(--md-sys-spacing-48, 48px);
+    font-size: var(--mat-sys-spacing-48, 48px);
+    width: var(--mat-sys-spacing-48, 48px);
+    height: var(--mat-sys-spacing-48, 48px);
   }
 }
 
@@ -84,44 +84,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-sys-spacing-12);
+  gap: var(--mat-sys-spacing-12);
 
   h4 {
     margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-color-on-surface-variant);
   }
 }
 
 .color-demo {
   display: flex;
   align-items: center;
-  gap: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-24);
   flex-wrap: wrap;
 
   // Icon color modifiers with mat-icon specificity
   .color-on-surface mat-icon {
-    color: var(--md-sys-color-on-surface);
+    color: var(--mat-sys-color-on-surface);
   }
 
   .color-primary mat-icon {
-    color: var(--md-sys-color-primary);
+    color: var(--mat-sys-color-primary);
   }
 
   .color-secondary mat-icon {
-    color: var(--md-sys-color-secondary);
+    color: var(--mat-sys-color-secondary);
   }
 
   .color-error mat-icon {
-    color: var(--md-sys-color-error);
+    color: var(--mat-sys-color-error);
   }
 
   .color-success mat-icon {
-    color: var(--md-sys-color-success, var(--md-sys-color-tertiary));
+    color: var(--mat-sys-color-success, var(--mat-sys-color-tertiary));
   }
 
   .color-warning mat-icon {
-    color: var(--md-sys-color-warning, var(--md-sys-color-error));
+    color: var(--mat-sys-color-warning, var(--mat-sys-color-error));
   }
 }
 
@@ -129,27 +129,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-sys-spacing-8);
+  gap: var(--mat-sys-spacing-8);
 
   h4 {
     margin: 0;
-    font-size: var(--md-sys-typescale-label-medium-size, 12px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-label-medium-size, 12px);
+    color: var(--mat-sys-color-on-surface-variant);
   }
 }
 
 .category-demo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--md-sys-spacing-16);
+  gap: var(--mat-sys-spacing-16);
 }
 
 .category-card {
-  padding: var(--md-sys-spacing-16);
+  padding: var(--mat-sys-spacing-16);
 
   h4 {
-    margin: 0 0 var(--md-sys-spacing-12) 0;
-    color: var(--md-sys-color-on-surface);
+    margin: 0 0 var(--mat-sys-spacing-12) 0;
+    color: var(--mat-sys-color-on-surface);
   }
 }
 
@@ -159,25 +159,25 @@
 .category-icons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--md-sys-spacing-12);
+  gap: var(--mat-sys-spacing-12);
 
   mat-icon {
-    font-family: var(--md-sys-typescale-icon-font, 'Material Icons'), sans-serif;
-    color: var(--md-sys-color-on-surface-variant);
+    font-family: var(--mat-sys-typescale-icon-font, 'Material Icons'), sans-serif;
+    color: var(--mat-sys-color-on-surface-variant);
     cursor: pointer;
 
     // Using margin instead of padding due to ligature rendering bug
-    margin: var(--md-sys-spacing-8);
-    border-radius: var(--md-sys-shape-corner-small);
+    margin: var(--mat-sys-spacing-8);
+    border-radius: var(--mat-sys-shape-corner-small);
     justify-self: center;
-    transition: background-color var(--md-sys-motion-duration-short2, 200ms)
-      var(--md-sys-motion-easing-standard, ease);
+    transition: background-color var(--mat-sys-motion-duration-short2, 200ms)
+      var(--mat-sys-motion-easing-standard, ease);
 
     &:hover {
-      background-color: var(--md-sys-color-surface-variant);
+      background-color: var(--mat-sys-color-surface-variant);
 
       // Box-shadow provides visual feedback similar to padding on hover
-      box-shadow: 0 0 0 var(--md-sys-spacing-8) var(--md-sys-color-surface-variant);
+      box-shadow: 0 0 0 var(--mat-sys-spacing-8) var(--mat-sys-color-surface-variant);
     }
   }
 }
@@ -185,24 +185,24 @@
 .interactive-demo {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-24);
 }
 
 .demo-group {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-12);
+  gap: var(--mat-sys-spacing-12);
 
   h4 {
     margin: 0;
-    color: var(--md-sys-color-on-surface);
-    font-size: var(--md-sys-typescale-body-large-size, 16px);
+    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-body-large-size, 16px);
   }
 
   > div {
     display: flex;
     align-items: center;
-    gap: var(--md-sys-spacing-12);
+    gap: var(--mat-sys-spacing-12);
     flex-wrap: wrap;
   }
 }

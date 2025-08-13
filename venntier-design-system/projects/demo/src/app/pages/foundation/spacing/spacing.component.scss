@@ -2,51 +2,51 @@
 .spacing-examples {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-12, 12px);
+  gap: var(--mat-sys-spacing-4, 4px);
 }
 
 .spacing-item {
   display: flex;
   align-items: center;
-  gap: var(--md-sys-spacing-16, 16px);
-  padding: var(--md-sys-spacing-12, 12px);
-  border-radius: var(--md-sys-shape-corner-small, 6px);
+  gap: var(--mat-sys-spacing-16, 16px);
+  padding: var(--mat-sys-spacing-8, 8px);
+  border-radius: var(--mat-sys-shape-corner-small, 6px);
 
   &:hover {
-    background: var(--md-sys-color-surface-container-low);
+    background: var(--mat-sys-color-surface-container-low);
   }
 }
 
 .spacing-visual {
   height: 32px;
-  border-radius: var(--md-sys-shape-corner-small, 4px);
+  border-radius: var(--mat-sys-shape-corner-small, 4px);
   flex-shrink: 0;
 }
 
 .spacing-info {
   display: grid;
   grid-template-columns: 80px 200px 1fr;
-  gap: var(--md-sys-spacing-16, 16px);
+  gap: var(--mat-sys-spacing-16, 16px);
   align-items: center;
   flex: 1;
 }
 
 .spacing-name {
-  font-size: var(--md-sys-typescale-body-medium-size, 14px);
-  font-weight: var(--md-sys-typescale-body-medium-weight, 500);
-  color: var(--md-sys-color-on-surface);
+  font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+  font-weight: var(--mat-sys-typescale-body-medium-weight, 500);
+  color: var(--mat-sys-color-on-surface);
 }
 
 .spacing-token {
-  font-size: var(--md-sys-typescale-label-small-size, 12px);
-  font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
-  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-typescale-label-small-size, 12px);
+  font-family: var(--mat-sys-typescale-body-small-font, 'Inter', sans-serif);
+  color: var(--mat-sys-color-on-surface-variant);
 }
 
 .spacing-usage {
-  font-size: var(--md-sys-typescale-body-small-size, 12px);
+  font-size: var(--mat-sys-typescale-body-small-size, 12px);
   color: var(
-    --md-sys-color-on-surface-variant
+    --mat-sys-color-on-surface-variant
   ); /* Changed: was outline token, now on-surface-variant token for better contrast */
 }
 
@@ -54,19 +54,19 @@
 .layout-examples {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-24, 24px);
+  gap: var(--mat-sys-spacing-24, 24px);
 }
 
 .layout-demo {
   h4 {
-    font-size: var(--md-sys-typescale-title-small-size, 14px);
-    font-weight: var(--md-sys-typescale-title-small-weight, 450);
-    color: var(--md-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-title-small-size, 14px);
+    font-weight: var(--mat-sys-typescale-title-small-weight, 450);
+    color: var(--mat-sys-color-on-surface);
   }
 
   p {
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-color-on-surface-variant);
   }
 }
 
@@ -74,37 +74,37 @@
 .grid-demo {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-24, 24px);
+  gap: var(--mat-sys-spacing-24, 24px);
 }
 
 // Code examples
 .code-examples {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-24, 24px);
+  gap: var(--mat-sys-spacing-24, 24px);
 }
 
 .code-block {
   h4 {
-    font-size: var(--md-sys-typescale-title-small-size, 14px);
-    font-weight: var(--md-sys-typescale-title-small-weight, 450);
-    color: var(--md-sys-color-on-surface);
-    margin: 0 0 var(--md-sys-spacing-12, 12px) 0;
+    font-size: var(--mat-sys-typescale-title-small-size, 14px);
+    font-weight: var(--mat-sys-typescale-title-small-weight, 450);
+    color: var(--mat-sys-color-on-surface);
+    margin: 0 0 var(--mat-sys-spacing-12, 12px) 0;
   }
 
   pre {
-    background: var(--md-sys-color-surface-container-low);
-    border: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: var(--md-sys-shape-corner-small, 6px);
-    padding: var(--md-sys-spacing-16, 16px);
+    background: var(--mat-sys-color-surface-container-low);
+    border: 1px solid var(--mat-sys-color-outline-variant);
+    border-radius: var(--mat-sys-shape-corner-small, 6px);
+    padding: var(--mat-sys-spacing-16, 16px);
     overflow-x: auto;
     margin: 0;
 
     code {
-      font-family: var(--md-sys-typescale-body-small-font, 'Inter', sans-serif);
-      font-size: var(--md-sys-typescale-body-small-size, 13px);
+      font-family: var(--mat-sys-typescale-body-small-font, 'Inter', sans-serif);
+      font-size: var(--mat-sys-typescale-body-small-size, 13px);
       line-height: 1.5;
-      color: var(--md-sys-color-on-surface);
+      color: var(--mat-sys-color-on-surface);
     }
   }
 }
@@ -113,10 +113,10 @@
 @media (width <= 768px) {
   .spacing-info {
     grid-template-columns: 1fr;
-    gap: var(--md-sys-spacing-4, 4px);
+    gap: var(--mat-sys-spacing-4, 4px);
   }
 
   .spacing-name {
-    font-weight: var(--md-sys-typescale-body-medium-weight, 500);
+    font-weight: var(--mat-sys-typescale-body-medium-weight, 500);
   }
 }

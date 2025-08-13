@@ -41,31 +41,31 @@ interface Link {
       .page-header {
         margin-bottom: 32px;
         padding-bottom: 24px;
-        border-bottom: 1px solid var(--md-sys-color-outline-variant, #e5e5e5);
+        border-bottom: 1px solid var(--mat-sys-color-outline-variant, #e5e5e5);
       }
 
       .page-title {
-        font-size: var(--md-sys-typescale-display-small-size, 36px);
-        font-weight: var(--md-sys-typescale-display-small-weight, 400);
-        line-height: var(--md-sys-typescale-display-small-line-height, 44px);
-        color: var(--md-sys-color-on-surface);
-        margin: 0 0 var(--md-sys-spacing-8, 8px) 0;
+        font-size: var(--mat-sys-typescale-display-small-size, 36px);
+        font-weight: var(--mat-sys-typescale-display-small-weight, 400);
+        line-height: var(--mat-sys-typescale-display-small-line-height, 44px);
+        color: var(--mat-sys-color-on-surface);
+        margin: 0 0 var(--mat-sys-spacing-8, 8px) 0;
       }
 
       .page-description {
-        font-size: var(--md-sys-typescale-body-large-size, 16px);
-        color: var(--md-sys-color-on-surface-variant);
-        margin: 0 0 var(--md-sys-spacing-16, 16px) 0;
+        font-size: var(--mat-sys-typescale-body-large-size, 16px);
+        color: var(--mat-sys-color-on-surface-variant);
+        margin: 0 0 var(--mat-sys-spacing-16, 16px) 0;
         max-width: 600px;
       }
 
       .page-link {
         display: inline-flex;
         align-items: center;
-        font-size: var(--md-sys-typescale-body-medium-size, 14px);
-        color: var(--md-sys-color-primary);
+        font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+        color: var(--mat-sys-color-primary);
         text-decoration: none;
-        margin-right: var(--md-sys-spacing-16, 16px);
+        margin-right: var(--mat-sys-spacing-16, 16px);
 
         &:hover {
           text-decoration: underline;
@@ -74,7 +74,7 @@ interface Link {
 
       .page-links {
         display: flex;
-        gap: var(--md-sys-spacing-16, 16px);
+        gap: var(--mat-sys-spacing-16, 16px);
         flex-wrap: wrap;
       }
     `,

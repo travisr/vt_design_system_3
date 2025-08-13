@@ -6,50 +6,50 @@
 .segmented-demo {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-12);
-  margin-bottom: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-12);
+  margin-bottom: var(--mat-sys-spacing-24);
 
   h4 {
     margin: 0;
-    font-size: var(--md-sys-typescale-body-large-size, 16px);
-    color: var(--md-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-body-large-size, 16px);
+    color: var(--mat-sys-color-on-surface);
   }
 }
 
 .density-demo {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-24);
+  gap: var(--mat-sys-spacing-24);
 }
 
 .density-example {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-12);
+  gap: var(--mat-sys-spacing-12);
 
   h4 {
     margin: 0;
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-color-on-surface-variant);
   }
 }
 
 .use-case-card {
-  padding: var(--md-sys-spacing-16);
-  margin-bottom: var(--md-sys-spacing-16);
+  padding: var(--mat-sys-spacing-16);
+  margin-bottom: var(--mat-sys-spacing-16);
 
   h4 {
-    margin: 0 0 var(--md-sys-spacing-16) 0;
-    color: var(--md-sys-color-on-surface);
+    margin: 0 0 var(--mat-sys-spacing-16) 0;
+    color: var(--mat-sys-color-on-surface);
   }
 
   .result {
-    margin: var(--md-sys-spacing-16) 0 0 0;
-    padding: var(--md-sys-spacing-8);
-    background-color: var(--md-sys-color-surface-variant);
-    border-radius: var(--md-sys-shape-corner-small);
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
+    margin: var(--mat-sys-spacing-16) 0 0 0;
+    padding: var(--mat-sys-spacing-8);
+    background-color: var(--mat-sys-color-surface-variant);
+    border-radius: var(--mat-sys-shape-corner-small);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-color-on-surface-variant);
   }
 }
 
@@ -109,11 +109,11 @@
   .mat-button-toggle-label-content {
     display: flex;
     align-items: center;
-    gap: var(--md-sys-spacing-8);
-    padding: var(--md-sys-spacing-8) var(--md-sys-spacing-12);
+    gap: var(--mat-sys-spacing-8);
+    padding: var(--mat-sys-spacing-8) var(--mat-sys-spacing-12);
 
     mat-icon {
-      font-size: var(--md-sys-spacing-18, 18px);
+      font-size: var(--mat-sys-spacing-18, 18px);
       width: 18px;
       height: 18px;
     }
@@ -123,7 +123,7 @@
 // Icon-only button toggles - enhanced padding for better touch targets
 mat-button-toggle-group:has(mat-button-toggle mat-icon:only-child) {
   mat-button-toggle .mat-button-toggle-label-content {
-    padding: var(--md-sys-spacing-12);
+    padding: var(--mat-sys-spacing-12);
     min-width: 40px;
     justify-content: center;
   }
@@ -135,11 +135,11 @@ mat-button-toggle-group:has(mat-button-toggle mat-icon:only-child) {
   .density-demo mat-button-toggle,
   .use-case-card mat-button-toggle {
     .mat-button-toggle-label-content {
-      padding: var(--md-sys-spacing-6) var(--md-sys-spacing-8);
-      font-size: var(--md-sys-typescale-body-medium-size, 14px);
+      padding: var(--mat-sys-spacing-6) var(--mat-sys-spacing-8);
+      font-size: var(--mat-sys-typescale-body-medium-size, 14px);
 
       mat-icon {
-        font-size: var(--md-sys-spacing-16, 16px);
+        font-size: var(--mat-sys-spacing-16, 16px);
         width: 16px;
         height: 16px;
       }
@@ -147,7 +147,7 @@ mat-button-toggle-group:has(mat-button-toggle mat-icon:only-child) {
   }
 
   .density-demo {
-    gap: var(--md-sys-spacing-16);
+    gap: var(--mat-sys-spacing-16);
   }
 }
 

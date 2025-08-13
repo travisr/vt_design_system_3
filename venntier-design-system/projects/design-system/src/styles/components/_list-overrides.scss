@@ -9,13 +9,13 @@
     .mat-mdc-list-item.active {
       // Selected label text color (not available as token)
       .mat-mdc-list-item-title {
-        color: var(--md-sys-color-primary);
-        font-weight: var(--md-sys-typescale-label-medium-weight);
+        color: var(--mat-sys-color-primary);
+        font-weight: var(--mat-sys-typescale-label-medium-weight);
       }
 
       // Selected leading icon color (not available as token)
       mat-icon {
-        color: var(--md-sys-color-primary);
+        color: var(--mat-sys-color-primary);
       }
     }
   }

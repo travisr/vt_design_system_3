@@ -2,76 +2,78 @@
 // Ensures proper font rendering with ligature support
 @use '../tokens' as tokens;
 
-// MD3-compliant icon font application
-// Using low-specificity selector without !important per MD3 best practices
-mat-icon {
-  font-family: 'Material Icons', sans-serif;
-  font-weight: normal;
-  font-style: normal;
-  font-size: var(--md-sys-spacing-24, 24px);
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
-}
+@mixin vt-icon-theme() {
+  // MD3-compliant icon font application
+  // Using low-specificity selector without !important per MD3 best practices
+  mat-icon {
+    font-family: 'Material Icons', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: var(--mat-sys-spacing-24, 24px);
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+  }
 
-// Size variants using MD3 spacing tokens
-mat-icon.size-18 {
-  font-size: var(--md-sys-spacing-18, 18px);
-  width: var(--md-sys-spacing-18, 18px);
-  height: var(--md-sys-spacing-18, 18px);
-}
+  // Size variants using MD3 spacing tokens
+  mat-icon.size-18 {
+    font-size: var(--mat-sys-spacing-18, 18px);
+    width: var(--mat-sys-spacing-18, 18px);
+    height: var(--mat-sys-spacing-18, 18px);
+  }
 
-mat-icon.size-24 {
-  font-size: var(--md-sys-spacing-24, 24px);
-  width: var(--md-sys-spacing-24, 24px);
-  height: var(--md-sys-spacing-24, 24px);
-}
+  mat-icon.size-24 {
+    font-size: var(--mat-sys-spacing-24, 24px);
+    width: var(--mat-sys-spacing-24, 24px);
+    height: var(--mat-sys-spacing-24, 24px);
+  }
 
-mat-icon.size-36 {
-  font-size: var(--md-sys-spacing-36, 36px);
-  width: var(--md-sys-spacing-36, 36px);
-  height: var(--md-sys-spacing-36, 36px);
-}
+  mat-icon.size-36 {
+    font-size: var(--mat-sys-spacing-36, 36px);
+    width: var(--mat-sys-spacing-36, 36px);
+    height: var(--mat-sys-spacing-36, 36px);
+  }
 
-mat-icon.size-48 {
-  font-size: var(--md-sys-spacing-48, 48px);
-  width: var(--md-sys-spacing-48, 48px);
-  height: var(--md-sys-spacing-48, 48px);
-}
+  mat-icon.size-48 {
+    font-size: var(--mat-sys-spacing-48, 48px);
+    width: var(--mat-sys-spacing-48, 48px);
+    height: var(--mat-sys-spacing-48, 48px);
+  }
 
-// Color variants using MD3 color tokens
-mat-icon.color-on-surface {
-  color: var(--md-sys-color-on-surface);
-}
+  // Color variants using MD3 color tokens
+  mat-icon.color-on-surface {
+    color: var(--mat-sys-color-on-surface);
+  }
 
-mat-icon.color-primary {
-  color: var(--md-sys-color-primary);
-}
+  mat-icon.color-primary {
+    color: var(--mat-sys-color-primary);
+  }
 
-mat-icon.color-secondary {
-  color: var(--md-sys-color-secondary);
-}
+  mat-icon.color-secondary {
+    color: var(--mat-sys-color-secondary);
+  }
 
-mat-icon.color-tertiary {
-  color: var(--md-sys-color-tertiary);
-}
+  mat-icon.color-tertiary {
+    color: var(--mat-sys-color-tertiary);
+  }
 
-mat-icon.color-error {
-  color: var(--md-sys-color-error);
-}
+  mat-icon.color-error {
+    color: var(--mat-sys-color-error);
+  }
 
-mat-icon.color-success {
-  color: var(--md-sys-color-success, #10a37f);
-}
+  mat-icon.color-success {
+    color: var(--mat-sys-color-success, #10a37f);
+  }
 
-mat-icon.color-warning {
-  color: var(--md-sys-color-warning, #f59e0b);
+  mat-icon.color-warning {
+    color: var(--mat-sys-color-warning, #f59e0b);
+  }
 }

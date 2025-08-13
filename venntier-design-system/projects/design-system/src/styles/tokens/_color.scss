@@ -1,198 +1,163 @@
 @use 'sass:map';
 
-// M3 System Color Tokens - OpenAI-inspired monochromatic palette
-// Using CSS custom properties for runtime theming
+// REFERENCE TOKENS - Raw design values (single source of truth)
+// These are the actual hex values, px sizes, etc. that define our design system
+// Angular Material will map these to system tokens via the theming API
 
-// Core palette values
-$_black: #000000;
-$_white: #ffffff;
-$_green: #10a37f;
-$_purple: #8b5cf6;
+// ============================================================================
+// COLOR REFERENCE TOKENS
+// ============================================================================
 
-// Refined OpenAI gray scale - softer, warmer
-$_gray-950: #0a0a0a;
-$_gray-900: #202123; // OpenAI dark
-$_gray-800: #353740; // OpenAI sidebar dark
-$_gray-700: #40414f; // OpenAI border dark
-$_gray-600: #565869; // OpenAI text secondary
-$_gray-500: #6e6e80; // OpenAI focus border
-$_gray-400: #9ca3af; // OpenAI disabled text
-$_gray-300: #d1d5db; // OpenAI standard border
-$_gray-200: #e5e5e5; // OpenAI active state (exact match)
-$_gray-175: #ececf1; // OpenAI hover state (exact match)
-$_gray-150: #f7f7f8; // OpenAI sidenav background (exact match)
-$_gray-100: #f9f9f9; // OpenAI input background
-$_gray-50: #fafafa; // OpenAI body background
-$_gray-25: #ffffff; // OpenAI card surface
+// Core brand colors
+$black: #000000;
+$white: #ffffff;
+$green: #10a37f; // OpenAI brand green
+$red: #ef4444; // Error/warn red
+$purple: #8b5cf6; // Accent purple
 
-// Light theme tokens
-:root {
-  // Primary (monochrome)
-  --md-sys-color-primary: #{$_black};
-  --md-sys-color-on-primary: #{$_white};
-  --md-sys-color-primary-container: #{$_gray-100};
-  --md-sys-color-on-primary-container: #{$_black};
+// OpenAI-inspired gray scale (refined, warmer)
+$gray-950: #0a0a0a; // Deepest dark
+$gray-900: #202123; // OpenAI dark mode background
+$gray-800: #353740; // OpenAI sidebar dark
+$gray-700: #40414f; // OpenAI border dark
+$gray-600: #565869; // OpenAI secondary text
+$gray-500: #6e6e80; // OpenAI focus border
+$gray-400: #9ca3af; // OpenAI disabled text
+$gray-300: #d1d5db; // OpenAI standard border
+$gray-200: #e5e5e5; // OpenAI active state (exact match)
+$gray-175: #ececf1; // OpenAI hover state (exact match)
+$gray-150: #f7f7f8; // OpenAI sidenav background (exact match)
+$gray-100: #f9f9f9; // OpenAI input background
+$gray-50: #fafafa; // OpenAI body background
+$gray-25: #fdfdfd; // Very light gray (not pure white)
 
-  // Secondary (also monochrome)
-  --md-sys-color-secondary: #{$_gray-700};
-  --md-sys-color-on-secondary: #{$_white};
-  --md-sys-color-secondary-container: #{$_gray-200};
-  --md-sys-color-on-secondary-container: #{$_gray-900};
+// Red scale for error/warn states
+$red-50: #fef2f2; // Light red container
+$red-100: #fee2e2; // Lighter red container
+$red-500: #ef4444; // Base red (same as $red)
+$red-600: #dc2626; // Darker red
+$red-900: #7f1d1d; // Dark red text
 
-  // Tertiary (green for CTAs only)
-  --md-sys-color-tertiary: #{$_green};
-  --md-sys-color-on-tertiary: #{$_white};
-  --md-sys-color-tertiary-container: #{$_green};
-  --md-sys-color-on-tertiary-container: #{$_white};
+// Green scale for success/tertiary states
+$green-50: #f0fdf4; // Light green container
+$green-100: #dcfce7; // Lighter green container
+$green-500: #10a37f; // Base green (same as $green)
 
-  // Error
-  --md-sys-color-error: #dc2626;
-  --md-sys-color-on-error: #{$_white};
-  --md-sys-color-error-container: #fef2f2;
-  --md-sys-color-on-error-container: #7f1d1d;
+// ============================================================================
+// SEMANTIC COLOR MAPPINGS (for Angular Material theming API)
+// ============================================================================
+// These map our reference tokens to semantic roles that Angular Material understands
+// Use these in mat.define-theme() calls, NOT as CSS custom properties
 
-  // Background - OpenAI body background
-  --md-sys-color-background: #{$_gray-50}; // #fafafa
-  --md-sys-color-on-background: #{$_gray-900};
+// Light theme semantic mappings
+$light-theme-colors: (
+  // Primary role (monochrome/neutral)
+  primary: $black,
+  on-primary: $white,
+  primary-container: $gray-100,
+  on-primary-container: $black,
 
-  // Surface - OpenAI hierarchy
-  --md-sys-color-surface: #{$_gray-25}; // #ffffff for cards
-  --md-sys-color-on-surface: #{$_gray-900};
-  --md-sys-color-surface-variant: #{$_gray-100}; // #f9f9f9 for inputs
-  --md-sys-color-on-surface-variant: #{$_gray-600};
+  // Secondary role (warn/error)
+  secondary: $red-500,
+  on-secondary: $white,
+  secondary-container: $red-50,
+  on-secondary-container: $red-600,
 
-  // Surface containers - OpenAI interaction states
-  --md-sys-color-surface-container-lowest: #{$_gray-25}; // #ffffff
-  --md-sys-color-surface-container-low: #{$_gray-150}; // #f7f7f8 hover
-  --md-sys-color-surface-container: #{$_gray-100}; // #f9f9f9 inputs
-  --md-sys-color-surface-container-high: #{$_gray-175}; // #ececf1 selected
-  --md-sys-color-surface-container-highest: #{$_gray-200}; // #e5e5e5
+  // Tertiary role (success/accent)
+  tertiary: $green-500,
+  on-tertiary: $white,
+  tertiary-container: $green-50,
+  on-tertiary-container: $green-500,
 
-  // Outline - OpenAI borders
-  --md-sys-color-outline: #{$_gray-300}; // #d1d5db standard border
-  --md-sys-color-outline-variant: #{$_gray-200}; // #e5e5e5 subtle border
+  // Surface hierarchy
+  surface: $white,
+  on-surface: $black,
+  surface-variant: $gray-50,
+  on-surface-variant: $gray-600,
 
-  // Inverse
-  --md-sys-color-inverse-surface: #{$_gray-900};
-  --md-sys-color-inverse-on-surface: #{$_gray-100};
-  --md-sys-color-inverse-primary: #{$_gray-100};
+  // Utility colors
+  outline: $gray-300,
+  outline-variant: $gray-200,
+  error: $red-500,
+  on-error: $white,
+  error-container: $red-50,
+  on-error-container: $red-600
+);
 
-  // Scrim
-  --md-sys-color-scrim: rgb(0 0 0 / 32%);
+// Dark theme semantic mappings
+$dark-theme-colors: (
+  // Primary role (inverted for dark mode)
+  primary: $white,
+  on-primary: $black,
+  primary-container: $gray-800,
+  on-primary-container: $gray-100,
 
-  // Shadow
-  --md-sys-color-shadow: rgb(0 0 0 / 8%);
+  // Secondary role (warn/error - same red)
+  secondary: $red-500,
+  on-secondary: $white,
+  secondary-container: $red-900,
+  on-secondary-container: $red-100,
 
-  // Interactive states - OpenAI patterns (exact matches)
-  --md-sys-color-hover: #{$_gray-175}; // #ececf1 - OpenAI hover
-  --md-sys-color-selected: #{$_gray-200}; // #e5e5e5 - OpenAI active
-  --md-sys-color-focus-ring: #{$_gray-500}; // #6e6e80
-  --md-sys-color-pressed: #{$_gray-200}; // #e5e5e5
-  --md-sys-color-disabled: #{$_gray-400}; // #9ca3af
+  // Tertiary role (success/accent - same green)
+  tertiary: $green-500,
+  on-tertiary: $white,
+  tertiary-container: $gray-800,
+  on-tertiary-container: $green-100,
 
-  // MD3 State layer opacity tokens
-  --md-sys-hover-state-layer-opacity: 0.08;
-  --md-sys-focus-state-layer-opacity: 0.12;
-  --md-sys-pressed-state-layer-opacity: 0.12;
+  // Surface hierarchy (dark)
+  surface: $gray-900,
+  on-surface: $white,
+  surface-variant: $gray-800,
+  on-surface-variant: $gray-400,
 
-  // Additional surface properties
-  --md-sys-color-surface-dim: #{$_gray-50}; // #fafafa body
-  --md-sys-color-surface-bright: #{$_gray-25}; // #ffffff cards
+  // Utility colors (dark)
+  outline: $gray-600,
+  outline-variant: $gray-700,
+  error: $red-500,
+  on-error: $white,
+  error-container: $red-900,
+  on-error-container: $red-100
+);
 
-  // Data visualization (purple)
-  --md-sys-color-data-primary: #{$_purple};
-  --md-sys-color-data-secondary: #a78bfa;
-  --md-sys-color-data-tertiary: #c4b5fd;
-}
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
 
-// Dark theme tokens
-[data-vt-theme='dark'],
-.vt-theme-dark {
-  // Primary (monochrome inverted)
-  --md-sys-color-primary: #{$_white};
-  --md-sys-color-on-primary: #{$_black};
-  --md-sys-color-primary-container: #{$_gray-800};
-  --md-sys-color-on-primary-container: #{$_gray-100};
+// Get a reference token value
+@function get-color($name) {
+  $color-map: (
+    'black': $black,
+    'white': $white,
+    'green': $green,
+    'red': $red,
+    'purple': $purple,
+    'gray-950': $gray-950,
+    'gray-900': $gray-900,
+    'gray-800': $gray-800,
+    'gray-700': $gray-700,
+    'gray-600': $gray-600,
+    'gray-500': $gray-500,
+    'gray-400': $gray-400,
+    'gray-300': $gray-300,
+    'gray-200': $gray-200,
+    'gray-175': $gray-175,
+    'gray-150': $gray-150,
+    'gray-100': $gray-100,
+    'gray-50': $gray-50,
+    'gray-25': $gray-25,
+    'red-50': $red-50,
+    'red-100': $red-100,
+    'red-500': $red-500,
+    'red-600': $red-600,
+    'red-900': $red-900,
+    'green-50': $green-50,
+    'green-100': $green-100,
+    'green-500': $green-500,
+  );
 
-  // Secondary
-  --md-sys-color-secondary: #{$_gray-400};
-  --md-sys-color-on-secondary: #{$_gray-900};
-  --md-sys-color-secondary-container: #{$_gray-700};
-  --md-sys-color-on-secondary-container: #{$_gray-100};
-
-  // Tertiary (green for CTAs)
-  --md-sys-color-tertiary: #{$_green};
-  --md-sys-color-on-tertiary: #{$_white};
-  --md-sys-color-tertiary-container: #{$_green};
-  --md-sys-color-on-tertiary-container: #{$_white};
-
-  // Error
-  --md-sys-color-error: #ef4444;
-  --md-sys-color-on-error: #{$_white};
-  --md-sys-color-error-container: #7f1d1d;
-  --md-sys-color-on-error-container: #fecaca;
-
-  // Background
-  --md-sys-color-background: #{$_gray-950};
-  --md-sys-color-on-background: #{$_gray-100};
-
-  // Surface
-  --md-sys-color-surface: #{$_gray-950};
-  --md-sys-color-on-surface: #{$_gray-100};
-  --md-sys-color-surface-variant: #{$_gray-800};
-  --md-sys-color-on-surface-variant: #{$_gray-300};
-
-  // Surface containers
-  --md-sys-color-surface-container-lowest: #{$_gray-950};
-  --md-sys-color-surface-container-low: #{$_gray-900};
-  --md-sys-color-surface-container: #{$_gray-800};
-  --md-sys-color-surface-container-high: #{$_gray-700};
-  --md-sys-color-surface-container-highest: #{$_gray-600};
-
-  // Outline
-  --md-sys-color-outline: #{$_gray-700};
-  --md-sys-color-outline-variant: #{$_gray-800};
-
-  // Inverse
-  --md-sys-color-inverse-surface: #{$_gray-100};
-  --md-sys-color-inverse-on-surface: #{$_gray-900};
-  --md-sys-color-inverse-primary: #{$_gray-800};
-
-  // Scrim
-  --md-sys-color-scrim: rgb(0 0 0 / 50%);
-
-  // Shadow
-  --md-sys-color-shadow: rgb(0 0 0 / 30%);
-
-  // Interactive states
-  --md-sys-color-hover: #{$_gray-800};
-  --md-sys-color-selected: #{$_gray-700};
-  --md-sys-color-focus-ring: #{$_gray-500};
-  --md-sys-color-pressed: #{$_gray-600};
-
-  // MD3 State layer opacity tokens (same values for dark theme)
-  --md-sys-hover-state-layer-opacity: 0.08;
-  --md-sys-focus-state-layer-opacity: 0.12;
-  --md-sys-pressed-state-layer-opacity: 0.12;
-
-  // Data visualization
-  --md-sys-color-data-primary: #{$_purple};
-  --md-sys-color-data-secondary: #8b5cf6;
-  --md-sys-color-data-tertiary: #7c3aed;
-}
-
-// Utility function to get color
-@function color($name) {
-  @return var(--md-sys-color-#{$name});
-}
-
-// Mixins for applying color schemes
-@mixin apply-light-colors() {
-  // Light colors are already defined in :root, so this is empty
-  // Kept for consistency with apply-dark-colors
-}
-
-@mixin apply-dark-colors() {
-  // Dark colors are already defined in the dark theme selectors above
-  // This mixin is just a placeholder since CSS custom properties handle it
+  @if map.has-key($color-map, $name) {
+    @return map.get($color-map, $name);
+  } @else {
+    @error "Color '#{$name}' not found in color map.";
+  }
 }

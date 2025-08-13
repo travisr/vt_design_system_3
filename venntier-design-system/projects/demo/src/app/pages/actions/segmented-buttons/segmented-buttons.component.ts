@@ -790,31 +790,31 @@ toggleFilter(filter: string, checked: boolean) {
     scss: `// Color variant overrides using MD3 tokens
 .primary-variant {
   @include mat.button-toggle-overrides((
-    selected-state-background-color: var(--md-sys-color-primary-container),
-    selected-state-text-color: var(--md-sys-color-on-primary-container),
-    background-color: var(--md-sys-color-surface),
-    text-color: var(--md-sys-color-primary),
-    divider-color: var(--md-sys-color-outline-variant),
+    selected-state-background-color: var(--mat-sys-color-primary-container),
+    selected-state-text-color: var(--mat-sys-color-on-primary-container),
+    background-color: var(--mat-sys-color-surface),
+    text-color: var(--mat-sys-color-primary),
+    divider-color: var(--mat-sys-color-outline-variant),
   ));
 }
 
 .secondary-variant {
   @include mat.button-toggle-overrides((
-    selected-state-background-color: var(--md-sys-color-secondary-container),
-    selected-state-text-color: var(--md-sys-color-on-secondary-container),
-    background-color: var(--md-sys-color-surface),
-    text-color: var(--md-sys-color-secondary),
-    divider-color: var(--md-sys-color-outline-variant),
+    selected-state-background-color: var(--mat-sys-color-secondary-container),
+    selected-state-text-color: var(--mat-sys-color-on-secondary-container),
+    background-color: var(--mat-sys-color-surface),
+    text-color: var(--mat-sys-color-secondary),
+    divider-color: var(--mat-sys-color-outline-variant),
   ));
 }
 
 .tertiary-variant {
   @include mat.button-toggle-overrides((
-    selected-state-background-color: var(--md-sys-color-tertiary-container),
-    selected-state-text-color: var(--md-sys-color-on-tertiary-container),
-    background-color: var(--md-sys-color-surface),
-    text-color: var(--md-sys-color-tertiary),
-    divider-color: var(--md-sys-color-outline-variant),
+    selected-state-background-color: var(--mat-sys-color-tertiary-container),
+    selected-state-text-color: var(--mat-sys-color-on-tertiary-container),
+    background-color: var(--mat-sys-color-surface),
+    text-color: var(--mat-sys-color-tertiary),
+    divider-color: var(--mat-sys-color-outline-variant),
   ));
 }`,
   };
@@ -838,26 +838,26 @@ toggleFilter(filter: string, checked: boolean) {
   transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    box-shadow: var(--md-sys-elevation-level1);
+    box-shadow: var(--mat-sys-elevation-level1);
   }
 
   &:focus-visible {
-    box-shadow: var(--md-sys-elevation-level1);
+    box-shadow: var(--mat-sys-elevation-level1);
   }
 
   &:active {
-    box-shadow: var(--md-sys-elevation-level0);
+    box-shadow: var(--mat-sys-elevation-level0);
   }
 
   &.mat-button-toggle-checked {
-    box-shadow: var(--md-sys-elevation-level1);
+    box-shadow: var(--mat-sys-elevation-level1);
 
     &:hover {
-      box-shadow: var(--md-sys-elevation-level2);
+      box-shadow: var(--mat-sys-elevation-level2);
     }
 
     &:active {
-      box-shadow: var(--md-sys-elevation-level1);
+      box-shadow: var(--mat-sys-elevation-level1);
     }
   }
 }`,

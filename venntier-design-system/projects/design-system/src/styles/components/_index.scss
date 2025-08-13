@@ -8,11 +8,9 @@
 // - Utility classes and custom components
 // - Legacy compatibility mixins
 
-@forward 'button'; // Custom: button groups, loading states, focus, ripple disabling
 @forward 'card'; // Legacy compatibility only (mostly empty)
 @forward 'input'; // Notes only (functionality moved to overrides)
 @forward 'form-fields'; // Custom: label positioning, icon sizing, textarea
-@forward 'sidenav'; // Custom: navigation layout, responsive behavior
 @forward 'list-overrides'; // Custom: navigation spacing, active states
 @forward 'toolbar'; // Custom: border, padding (basic styling in overrides)
 @forward 'icon'; // Custom: Material Icons font configuration

@@ -46,7 +46,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   </div>
                 </div>
                 <div class="elevation-info">
-                  <span class="elevation-token">--md-sys-elevation-{{ level.value }}</span>
+                  <span class="elevation-token">--mat-sys-elevation-{{ level.value }}</span>
                   <span class="elevation-usage">{{ level.usage }}</span>
                   <span class="elevation-shadow">{{ level.shadowValue }}</span>
                 </div>
@@ -184,22 +184,22 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <div class="code-block">
               <h4>CSS Variables</h4>
               <pre><code>.floating-menu &#123;
-  box-shadow: var(--md-sys-elevation-2);
-  background: var(--md-sys-color-surface);
-  border-radius: var(--md-sys-shape-corner-small);
+  box-shadow: var(--mat-sys-elevation-2);
+  background: var(--mat-sys-color-surface);
+  border-radius: var(--mat-sys-shape-corner-small);
 &#125;
 
 .modal-dialog &#123;
-  box-shadow: var(--md-sys-elevation-4);
-  background: var(--md-sys-color-surface);
+  box-shadow: var(--mat-sys-elevation-4);
+  background: var(--mat-sys-color-surface);
 &#125;
 
 .interactive-card &#123;
-  box-shadow: var(--md-sys-elevation-0);
+  box-shadow: var(--mat-sys-elevation-0);
   transition: box-shadow 200ms ease;
   
   &:hover &#123;
-    box-shadow: var(--md-sys-elevation-1);
+    box-shadow: var(--mat-sys-elevation-1);
   &#125;
 &#125;</code></pre>
             </div>

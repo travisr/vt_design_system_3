@@ -111,10 +111,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <div class="demo-flex demo-flex--column demo-flex--gap-sm">
               <span class="demo-label">Loading</span>
               <button mat-flat-button color="primary" disabled>
-                <mat-spinner
-                  diameter="20"
-                  style="display: inline-block; margin-right: 8px;"
-                ></mat-spinner>
+                <mat-spinner diameter="20" class="demo-loading-spinner"></mat-spinner>
                 Loading...
               </button>
             </div>

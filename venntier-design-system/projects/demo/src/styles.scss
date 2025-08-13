@@ -18,9 +18,9 @@ body {
   padding: 0;
 
   // Override Angular defaults with higher specificity
-  background-color: var(--md-sys-color-background);
-  color: var(--md-sys-color-on-background);
-  font-family: var(--md-sys-typescale-body-large-font);
+  background-color: var(--mat-sys-color-background);
+  color: var(--mat-sys-color-on-background);
+  font-family: var(--mat-sys-typescale-body-large-font);
 
   // Apply vt-theme styles directly instead of extending
   // The vt-theme class styles are defined in the design system
@@ -42,8 +42,8 @@ app-sidebar-demo {
 
 // Ensure body styles take precedence over Material defaults
 html body {
-  background-color: var(--md-sys-color-background);
-  color: var(--md-sys-color-on-background);
+  background-color: var(--mat-sys-color-background);
+  color: var(--mat-sys-color-on-background);
 }
 
 // Ensure Material Icons font is properly applied to mat-icon elements

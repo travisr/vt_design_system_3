@@ -4,46 +4,46 @@
 .elevation-scale {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--md-sys-spacing-24, 24px);
-  margin-bottom: var(--md-sys-spacing-32, 32px);
+  gap: var(--mat-sys-spacing-24, 24px);
+  margin-bottom: var(--mat-sys-spacing-32, 32px);
 }
 
 .elevation-item {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-16, 16px);
+  gap: var(--mat-sys-spacing-16, 16px);
 }
 
 .elevation-sample {
-  background: var(--md-sys-color-surface);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--md-sys-shape-corner-medium, 8px);
-  padding: var(--md-sys-spacing-24, 24px);
+  background: var(--mat-sys-color-surface);
+  border: 1px solid var(--mat-sys-color-outline-variant);
+  border-radius: var(--mat-sys-shape-corner-medium, 8px);
+  padding: var(--mat-sys-spacing-24, 24px);
   min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: box-shadow var(--md-sys-motion-duration-short, 200ms)
-    var(--md-sys-motion-easing-standard);
+  transition: box-shadow var(--mat-sys-motion-duration-short, 200ms)
+    var(--mat-sys-motion-easing-standard);
 }
 
 .elevation-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-sys-spacing-8, 8px);
+  gap: var(--mat-sys-spacing-8, 8px);
 }
 
 .elevation-level {
-  font-size: var(--md-sys-typescale-headline-small-size, 24px);
-  font-weight: var(--md-sys-typescale-headline-small-weight, 400);
-  color: var(--md-sys-color-on-surface);
+  font-size: var(--mat-sys-typescale-headline-small-size, 24px);
+  font-weight: var(--mat-sys-typescale-headline-small-weight, 400);
+  color: var(--mat-sys-color-on-surface);
 }
 
 .elevation-name {
-  font-size: var(--md-sys-typescale-body-medium-size, 14px);
-  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+  color: var(--mat-sys-color-on-surface-variant);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -51,25 +51,25 @@
 .elevation-info {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-4, 4px);
+  gap: var(--mat-sys-spacing-4, 4px);
 }
 
 .elevation-token {
-  font-size: var(--md-sys-typescale-label-medium-size, 12px);
+  font-size: var(--mat-sys-typescale-label-medium-size, 12px);
   font-family: Monaco, Menlo, 'Ubuntu Mono', monospace;
-  color: var(--md-sys-color-primary);
+  color: var(--mat-sys-color-primary);
   font-weight: 500;
 }
 
 .elevation-usage {
-  font-size: var(--md-sys-typescale-body-small-size, 12px);
-  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-typescale-body-small-size, 12px);
+  color: var(--mat-sys-color-on-surface-variant);
 }
 
 .elevation-shadow {
-  font-size: var(--md-sys-typescale-label-small-size, 11px);
+  font-size: var(--mat-sys-typescale-label-small-size, 11px);
   font-family: Monaco, Menlo, 'Ubuntu Mono', monospace;
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--mat-sys-color-on-surface-variant);
   opacity: 0.7;
 }
 
@@ -77,18 +77,18 @@
 .component-examples {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-32, 32px);
+  gap: var(--mat-sys-spacing-32, 32px);
 }
 
 .example-group {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-16, 16px);
+  gap: var(--mat-sys-spacing-16, 16px);
 
   h4 {
-    font-size: var(--md-sys-typescale-title-medium-size, 16px);
-    font-weight: var(--md-sys-typescale-title-medium-weight, 500);
-    color: var(--md-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-title-medium-size, 16px);
+    font-weight: var(--mat-sys-typescale-title-medium-weight, 500);
+    color: var(--mat-sys-color-on-surface);
     margin: 0;
   }
 }
@@ -96,10 +96,10 @@
 .example-demo {
   display: flex;
   align-items: center;
-  gap: var(--md-sys-spacing-16, 16px);
-  padding: var(--md-sys-spacing-24, 24px);
-  background: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-sys-shape-corner-small, 6px);
+  gap: var(--mat-sys-spacing-16, 16px);
+  padding: var(--mat-sys-spacing-24, 24px);
+  background: var(--mat-sys-color-surface-container-low);
+  border-radius: var(--mat-sys-shape-corner-small, 6px);
   min-height: 80px;
   overflow: visible;
   position: relative;
@@ -109,7 +109,7 @@
 .demo-modal-trigger {
   display: flex;
   align-items: center;
-  gap: var(--md-sys-spacing-8, 8px);
+  gap: var(--mat-sys-spacing-8, 8px);
 }
 
 // Demo-specific menu styling (overflow handling now in design system)
@@ -127,9 +127,9 @@
 }
 
 .modal-dialog {
-  background: var(--md-sys-color-surface);
-  border-radius: var(--md-sys-shape-corner-large, 12px);
-  box-shadow: var(--md-sys-elevation-4);
+  background: var(--mat-sys-color-surface);
+  border-radius: var(--mat-sys-shape-corner-large, 12px);
+  box-shadow: var(--mat-sys-elevation-4);
   max-width: 400px;
   width: 90%;
   max-height: 80vh;
@@ -141,23 +141,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--md-sys-spacing-24, 24px);
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  padding: var(--mat-sys-spacing-24, 24px);
+  border-bottom: 1px solid var(--mat-sys-color-outline-variant);
 
   h3 {
-    font-size: var(--md-sys-typescale-title-large-size, 22px);
-    font-weight: var(--md-sys-typescale-title-large-weight, 400);
-    color: var(--md-sys-color-on-surface);
+    font-size: var(--mat-sys-typescale-title-large-size, 22px);
+    font-weight: var(--mat-sys-typescale-title-large-weight, 400);
+    color: var(--mat-sys-color-on-surface);
     margin: 0;
   }
 }
 
 .modal-content {
-  padding: var(--md-sys-spacing-24, 24px);
+  padding: var(--mat-sys-spacing-24, 24px);
 
   p {
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-color-on-surface-variant);
     margin: 0;
     line-height: 1.5;
   }
@@ -166,14 +166,14 @@
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: var(--md-sys-spacing-8, 8px);
-  padding: var(--md-sys-spacing-16, 16px) var(--md-sys-spacing-24, 24px);
-  border-top: 1px solid var(--md-sys-color-outline-variant);
+  gap: var(--mat-sys-spacing-8, 8px);
+  padding: var(--mat-sys-spacing-16, 16px) var(--mat-sys-spacing-24, 24px);
+  border-top: 1px solid var(--mat-sys-color-outline-variant);
 }
 
 .example-note {
-  font-size: var(--md-sys-typescale-body-small-size, 12px);
-  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-typescale-body-small-size, 12px);
+  color: var(--mat-sys-color-on-surface-variant);
   font-style: italic;
 }
 
@@ -181,15 +181,15 @@
 .usage-guidelines {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--md-sys-spacing-32, 32px);
+  gap: var(--mat-sys-spacing-32, 32px);
 }
 
 .guideline-section {
   h4 {
-    font-size: var(--md-sys-typescale-title-medium-size, 16px);
-    font-weight: var(--md-sys-typescale-title-medium-weight, 500);
-    color: var(--md-sys-color-on-surface);
-    margin: 0 0 var(--md-sys-spacing-16, 16px) 0;
+    font-size: var(--mat-sys-typescale-title-medium-size, 16px);
+    font-weight: var(--mat-sys-typescale-title-medium-weight, 500);
+    color: var(--mat-sys-color-on-surface);
+    margin: 0 0 var(--mat-sys-spacing-16, 16px) 0;
   }
 
   ul {
@@ -198,24 +198,24 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--md-sys-spacing-12, 12px);
+    gap: var(--mat-sys-spacing-12, 12px);
   }
 
   li {
-    font-size: var(--md-sys-typescale-body-medium-size, 14px);
-    color: var(--md-sys-color-on-surface-variant);
-    padding-left: var(--md-sys-spacing-16, 16px);
+    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-color-on-surface-variant);
+    padding-left: var(--mat-sys-spacing-16, 16px);
     position: relative;
 
     &::before {
       content: '•';
-      color: var(--md-sys-color-primary);
+      color: var(--mat-sys-color-primary);
       position: absolute;
       left: 0;
     }
 
     strong {
-      color: var(--md-sys-color-on-surface);
+      color: var(--mat-sys-color-on-surface);
       font-weight: 500;
     }
   }
@@ -225,29 +225,29 @@
 .code-examples {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-24, 24px);
+  gap: var(--mat-sys-spacing-24, 24px);
 }
 
 .code-block {
   h4 {
-    font-size: var(--md-sys-typescale-title-small-size, 14px);
-    font-weight: var(--md-sys-typescale-title-small-weight, 500);
-    color: var(--md-sys-color-on-surface);
-    margin: 0 0 var(--md-sys-spacing-12, 12px) 0;
+    font-size: var(--mat-sys-typescale-title-small-size, 14px);
+    font-weight: var(--mat-sys-typescale-title-small-weight, 500);
+    color: var(--mat-sys-color-on-surface);
+    margin: 0 0 var(--mat-sys-spacing-12, 12px) 0;
   }
 
   pre {
-    background: var(--md-sys-color-surface-container-low);
-    border: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: var(--md-sys-shape-corner-small, 6px);
-    padding: var(--md-sys-spacing-16, 16px);
+    background: var(--mat-sys-color-surface-container-low);
+    border: 1px solid var(--mat-sys-color-outline-variant);
+    border-radius: var(--mat-sys-shape-corner-small, 6px);
+    padding: var(--mat-sys-spacing-16, 16px);
     margin: 0;
     overflow-x: auto;
 
     code {
       font-family: Monaco, Menlo, 'Ubuntu Mono', monospace;
-      font-size: var(--md-sys-typescale-body-small-size, 12px);
-      color: var(--md-sys-color-on-surface);
+      font-size: var(--mat-sys-typescale-body-small-size, 12px);
+      color: var(--mat-sys-color-on-surface);
       line-height: 1.5;
     }
   }
@@ -287,7 +287,7 @@
   }
 
   .modal-dialog {
-    margin: var(--md-sys-spacing-16, 16px);
+    margin: var(--mat-sys-spacing-16, 16px);
     width: calc(100% - 32px);
   }
 }

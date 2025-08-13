@@ -164,33 +164,33 @@ export class MotionComponent {
       title: 'SCSS Tokens',
       language: 'scss',
       code: `// Motion tokens
-$md-sys-motion-easing-standard: cubic-bezier(0.2, 0.0, 0, 1.0);
-$md-sys-motion-easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1.0);
-$md-sys-motion-easing-accelerate: cubic-bezier(0.4, 0.0, 1.0, 1.0);
-$md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1.0);
+$mat-sys-motion-easing-standard: cubic-bezier(0.2, 0.0, 0, 1.0);
+$mat-sys-motion-easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1.0);
+$mat-sys-motion-easing-accelerate: cubic-bezier(0.4, 0.0, 1.0, 1.0);
+$mat-sys-motion-easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1.0);
 
-$md-sys-motion-duration-short1: 50ms;
-$md-sys-motion-duration-short2: 100ms;
-$md-sys-motion-duration-short3: 150ms;
-$md-sys-motion-duration-short4: 200ms;
-$md-sys-motion-duration-medium1: 250ms;
-$md-sys-motion-duration-medium2: 300ms;
-$md-sys-motion-duration-medium3: 350ms;
-$md-sys-motion-duration-medium4: 400ms;
-$md-sys-motion-duration-long1: 450ms;
-$md-sys-motion-duration-long2: 500ms;`,
+$mat-sys-motion-duration-short1: 50ms;
+$mat-sys-motion-duration-short2: 100ms;
+$mat-sys-motion-duration-short3: 150ms;
+$mat-sys-motion-duration-short4: 200ms;
+$mat-sys-motion-duration-medium1: 250ms;
+$mat-sys-motion-duration-medium2: 300ms;
+$mat-sys-motion-duration-medium3: 350ms;
+$mat-sys-motion-duration-medium4: 400ms;
+$mat-sys-motion-duration-long1: 450ms;
+$mat-sys-motion-duration-long2: 500ms;`,
     },
     {
       title: 'CSS Usage',
       language: 'css',
       code: `.button {
-  transition: all var(--md-sys-motion-duration-short2)
-              var(--md-sys-motion-easing-standard);
+  transition: all var(--mat-sys-motion-duration-short2)
+              var(--mat-sys-motion-easing-standard);
 }
 
 .card {
-  animation: slide-in var(--md-sys-motion-duration-medium2)
-             var(--md-sys-motion-easing-decelerate);
+  animation: slide-in var(--mat-sys-motion-duration-medium2)
+             var(--mat-sys-motion-easing-decelerate);
 }
 
 @keyframes slide-in {

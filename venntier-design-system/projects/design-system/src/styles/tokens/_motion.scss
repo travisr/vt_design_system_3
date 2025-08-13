@@ -1,103 +1,103 @@
-// M3 System Motion Tokens - Smooth, subtle animations
+@use 'sass:map';
+
+// ============================================================================
+// MOTION REFERENCE TOKENS - Raw motion values (single source of truth)
+// ============================================================================
+// Smooth, subtle animations for OpenAI aesthetic
 
 // Duration scale
-$_duration-instant: 0ms;
-$_duration-shortest: 100ms;
-$_duration-short: 200ms;
-$_duration-medium: 300ms;
-$_duration-long: 400ms;
-$_duration-longer: 500ms;
-$_duration-longest: 600ms;
+$duration-instant: 0ms;
+$duration-shortest: 100ms;
+$duration-short: 200ms;
+$duration-medium: 300ms;
+$duration-long: 400ms;
+$duration-longer: 500ms;
+$duration-longest: 600ms;
 
 // Easing functions (Material Design standard)
-$_easing-standard: cubic-bezier(0.4, 0, 0.2, 1); // Standard curve
-$_easing-decelerate: cubic-bezier(0, 0, 0.2, 1); // Decelerate curve
-$_easing-accelerate: cubic-bezier(0.4, 0, 1, 1); // Accelerate curve
-$_easing-sharp: cubic-bezier(0.4, 0, 0.6, 1); // Sharp curve
-$_easing-emphasized: cubic-bezier(0.2, 0, 0, 1); // Emphasized
+$easing-standard: cubic-bezier(0.4, 0, 0.2, 1); // Standard curve
+$easing-decelerate: cubic-bezier(0, 0, 0.2, 1); // Decelerate curve
+$easing-accelerate: cubic-bezier(0.4, 0, 1, 1); // Accelerate curve
+$easing-sharp: cubic-bezier(0.4, 0, 0.6, 1); // Sharp curve
+$easing-emphasized: cubic-bezier(0.2, 0, 0, 1); // Emphasized
 
-// Motion tokens
-:root {
-  // Duration tokens
-  --md-sys-motion-duration-instant: #{$_duration-instant};
-  --md-sys-motion-duration-shortest: #{$_duration-shortest};
-  --md-sys-motion-duration-short: #{$_duration-short};
-  --md-sys-motion-duration-medium: #{$_duration-medium};
-  --md-sys-motion-duration-long: #{$_duration-long};
-  --md-sys-motion-duration-longer: #{$_duration-longer};
-  --md-sys-motion-duration-longest: #{$_duration-longest};
+// ============================================================================
+// SEMANTIC MOTION MAPPINGS (for Angular Material theming API)
+// ============================================================================
+// These map our reference tokens to semantic roles that Angular Material understands
 
-  // Easing tokens
-  --md-sys-motion-easing-standard: #{$_easing-standard};
-  --md-sys-motion-easing-decelerate: #{$_easing-decelerate};
-  --md-sys-motion-easing-accelerate: #{$_easing-accelerate};
-  --md-sys-motion-easing-sharp: #{$_easing-sharp};
-  --md-sys-motion-easing-emphasized: #{$_easing-emphasized};
-  --md-sys-motion-easing-linear: linear;
+// Motion mappings
+$motion-tokens: (
+  // Duration mappings
+  duration-instant: $duration-instant,
+  duration-shortest: $duration-shortest,
+  duration-short: $duration-short,
+  duration-medium: $duration-medium,
+  duration-long: $duration-long,
+  duration-longer: $duration-longer,
+  duration-longest: $duration-longest,
 
-  // Component-specific transitions
-  --md-sys-motion-button:
-    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
-    transform var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
-    box-shadow var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
-  --md-sys-motion-card:
-    transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard),
-    box-shadow var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
-  --md-sys-motion-input:
-    border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
-    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
-  --md-sys-motion-fade: opacity var(--md-sys-motion-duration-short)
-    var(--md-sys-motion-easing-standard);
-  --md-sys-motion-slide: transform var(--md-sys-motion-duration-medium)
-    var(--md-sys-motion-easing-decelerate);
-  --md-sys-motion-expand:
-    max-height var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard),
-    opacity var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+  // Easing mappings
+  easing-standard: $easing-standard,
+  easing-decelerate: $easing-decelerate,
+  easing-accelerate: $easing-accelerate,
+  easing-sharp: $easing-sharp,
+  easing-emphasized: $easing-emphasized,
+  easing-linear: linear
+);
 
-  // Hover transitions (faster for responsiveness)
-  --md-sys-motion-hover:
-    background-color var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
-    border-color var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
-    color var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard);
+// Component-specific motion mappings
+$component-motion: (
+  // Button transitions
+  button: (
+      background-color: $duration-short $easing-standard,
+      transform: $duration-shortest $easing-standard,
+      box-shadow: $duration-short $easing-standard,
+    ),
+  // Card transitions
+  card: (
+      transform: $duration-medium $easing-standard,
+      box-shadow: $duration-medium $easing-standard,
+    ),
+  // Input transitions
+  input: (
+      border-color: $duration-short $easing-standard,
+      background-color: $duration-short $easing-standard,
+    ),
+  // Common transitions
+  fade: (
+      opacity: $duration-short $easing-standard,
+    ),
+  slide: (
+    transform: $duration-medium $easing-decelerate,
+  ),
+  expand: (
+    max-height: $duration-medium $easing-standard,
+    opacity: $duration-short $easing-standard,
+  ),
+  // Interactive state transitions
+  hover: (
+      background-color: $duration-shortest $easing-standard,
+      border-color: $duration-shortest $easing-standard,
+      color: $duration-shortest $easing-standard,
+    ),
+  focus: (
+    outline: $duration-shortest $easing-standard,
+    box-shadow: $duration-shortest $easing-standard,
+  )
+);
 
-  // Focus transitions
-  --md-sys-motion-focus:
-    outline var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard),
-    box-shadow var(--md-sys-motion-duration-shortest) var(--md-sys-motion-easing-standard);
-}
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
 
-// Motion mixins
-@mixin motion($property: all, $duration: short, $easing: standard) {
-  transition: $property var(--md-sys-motion-duration-#{$duration})
-    var(--md-sys-motion-easing-#{$easing});
-}
-
-@mixin motion-button() {
-  transition: var(--md-sys-motion-button);
-}
-
-@mixin motion-card() {
-  transition: var(--md-sys-motion-card);
-}
-
-@mixin motion-input() {
-  transition: var(--md-sys-motion-input);
-}
-
-@mixin motion-fade() {
-  transition: var(--md-sys-motion-fade);
-}
-
-@mixin motion-slide() {
-  transition: var(--md-sys-motion-slide);
-}
-
-@mixin motion-hover() {
-  transition: var(--md-sys-motion-hover);
-}
-
-@mixin motion-focus() {
-  transition: var(--md-sys-motion-focus);
+// Get a motion reference token value
+@function get-motion($name) {
+  @if map.has-key($motion-tokens, $name) {
+    @return map.get($motion-tokens, $name);
+  } @else {
+    @error "Motion token '#{$name}' not found in motion map.";
+  }
 }
 
 // Animation keyframes
@@ -157,28 +157,4 @@ $_easing-emphasized: cubic-bezier(0.2, 0, 0, 1); // Emphasized
   }
 }
 
-// Utility classes
-// Note: Use higher specificity or data attributes instead of !important
-.vt-motion-none {
-  transition: none;
-
-  // Ensure this overrides Material's transitions through specificity
-  &,
-  &::before,
-  &::after,
-  & * {
-    transition: none;
-  }
-}
-
-.vt-motion-all {
-  @include motion(all, medium, standard);
-}
-
-.vt-motion-fade {
-  @include motion-fade;
-}
-
-.vt-motion-slide {
-  @include motion-slide;
-}
+// Animation keyframes are preserved for component usage

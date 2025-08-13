@@ -1,132 +1,88 @@
-// M3 System Spacing Tokens - 8px grid system
+@use 'sass:map';
+
+// ============================================================================
+// SPACING REFERENCE TOKENS - Raw spacing values (single source of truth)
+// ============================================================================
+// 8px grid system for consistent spacing
 
 // Base unit
-$_spacing-unit: 8px;
+$spacing-unit: 8px;
 
-// Spacing scale
-:root {
-  // Core spacing values (number = pixel value)
-  --md-sys-spacing-0: 0;
-  --md-sys-spacing-4: 4px;
-  --md-sys-spacing-8: 8px;
-  --md-sys-spacing-12: 12px;
-  --md-sys-spacing-16: 16px;
-  --md-sys-spacing-20: 20px;
-  --md-sys-spacing-24: 24px;
-  --md-sys-spacing-28: 28px;
-  --md-sys-spacing-32: 32px;
-  --md-sys-spacing-36: 36px;
-  --md-sys-spacing-40: 40px;
-  --md-sys-spacing-48: 48px;
-  --md-sys-spacing-56: 56px;
-  --md-sys-spacing-64: 64px;
-  --md-sys-spacing-80: 80px;
-  --md-sys-spacing-96: 96px;
-  --md-sys-spacing-112: 112px;
-  --md-sys-spacing-128: 128px;
+// Spacing scale (based on 8px grid)
+$spacing-0: 0;
+$spacing-4: 4px; // 0.5 * base unit
+$spacing-8: 8px; // 1 * base unit
+$spacing-12: 12px; // 1.5 * base unit
+$spacing-16: 16px; // 2 * base unit
+$spacing-20: 20px; // 2.5 * base unit
+$spacing-24: 24px; // 3 * base unit
+$spacing-28: 28px; // 3.5 * base unit
+$spacing-32: 32px; // 4 * base unit
+$spacing-36: 36px; // 4.5 * base unit
+$spacing-40: 40px; // 5 * base unit
+$spacing-48: 48px; // 6 * base unit
+$spacing-56: 56px; // 7 * base unit
+$spacing-64: 64px; // 8 * base unit
+$spacing-80: 80px; // 10 * base unit
+$spacing-96: 96px; // 12 * base unit
+$spacing-112: 112px; // 14 * base unit
+$spacing-128: 128px; // 16 * base unit
 
-  // Component-specific spacing (Refined for OpenAI)
-  --md-sys-spacing-card-padding: var(--md-sys-spacing-32); // 32px
-  --md-sys-spacing-button-padding-x: var(--md-sys-spacing-20); // 20px
-  --md-sys-spacing-button-padding-y: var(--md-sys-spacing-12); // 12px
-  --md-sys-spacing-input-padding-x: var(--md-sys-spacing-16); // 16px
-  --md-sys-spacing-input-padding-y: var(--md-sys-spacing-12); // 12px
-  --md-sys-spacing-section-gap: var(--md-sys-spacing-24); // 24px
-  --md-sys-spacing-list-gap: var(--md-sys-spacing-12); // 12px
-  --md-sys-spacing-inline-gap: var(--md-sys-spacing-8); // 8px
+// ============================================================================
+// SEMANTIC SPACING MAPPINGS (for Angular Material theming API)
+// ============================================================================
+// These map our reference tokens to semantic roles that Angular Material understands
 
+// Component-specific spacing mappings
+$component-spacing: (
+  // Card spacing
+  card-padding: $spacing-32,
+  // Button spacing
+  button-padding-x: $spacing-20,
+  button-padding-y: $spacing-12,
+  // Input spacing
+  input-padding-x: $spacing-16,
+  input-padding-y: $spacing-12,
   // Layout spacing
-  --md-sys-spacing-page-margin: var(--md-sys-spacing-24); // 24px
-  --md-sys-spacing-section-margin: var(--md-sys-spacing-32); // 32px
-  --md-sys-spacing-container-padding: var(--md-sys-spacing-16); // 16px
+  section-gap: $spacing-24,
+  list-gap: $spacing-12,
+  inline-gap: $spacing-8,
+  // Page layout
+  page-margin: $spacing-24,
+  section-margin: $spacing-32,
+  container-padding: $spacing-16
+);
 
-  // Responsive spacing
-  @media (width >= 768px) {
-    --md-sys-spacing-page-margin: var(--md-sys-spacing-32); // 32px
-    --md-sys-spacing-section-margin: var(--md-sys-spacing-48); // 48px
-    --md-sys-spacing-container-padding: var(--md-sys-spacing-24); // 24px
-  }
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
 
-  @media (width >= 1280px) {
-    --md-sys-spacing-page-margin: var(--md-sys-spacing-48); // 48px
-    --md-sys-spacing-section-margin: var(--md-sys-spacing-64); // 64px
-    --md-sys-spacing-container-padding: var(--md-sys-spacing-32); // 32px
-  }
-}
+// Get a spacing reference token value
+@function get-spacing($name) {
+  $spacing-map: (
+    '0': $spacing-0,
+    '4': $spacing-4,
+    '8': $spacing-8,
+    '12': $spacing-12,
+    '16': $spacing-16,
+    '20': $spacing-20,
+    '24': $spacing-24,
+    '28': $spacing-28,
+    '32': $spacing-32,
+    '36': $spacing-36,
+    '40': $spacing-40,
+    '48': $spacing-48,
+    '56': $spacing-56,
+    '64': $spacing-64,
+    '80': $spacing-80,
+    '96': $spacing-96,
+    '112': $spacing-112,
+    '128': $spacing-128,
+  );
 
-// Spacing function
-@function spacing($multiplier) {
-  @return var(--md-sys-spacing-#{$multiplier});
-}
-
-// Spacing mixins
-@mixin spacing($property, $value) {
-  #{$property}: var(--md-sys-spacing-#{$value});
-}
-
-@mixin padding($value) {
-  padding: var(--md-sys-spacing-#{$value});
-}
-
-@mixin padding-x($value) {
-  padding-left: var(--md-sys-spacing-#{$value});
-  padding-right: var(--md-sys-spacing-#{$value});
-}
-
-@mixin padding-y($value) {
-  padding-top: var(--md-sys-spacing-#{$value});
-  padding-bottom: var(--md-sys-spacing-#{$value});
-}
-
-@mixin margin($value) {
-  margin: var(--md-sys-spacing-#{$value});
-}
-
-@mixin margin-x($value) {
-  margin-left: var(--md-sys-spacing-#{$value});
-  margin-right: var(--md-sys-spacing-#{$value});
-}
-
-@mixin margin-y($value) {
-  margin-top: var(--md-sys-spacing-#{$value});
-  margin-bottom: var(--md-sys-spacing-#{$value});
-}
-
-@mixin gap($value) {
-  gap: var(--md-sys-spacing-#{$value});
-}
-
-// Utility classes
-@each $size in (0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 80, 96, 112, 128) {
-  .vt-spacing-#{$size} {
-    @include spacing(margin, $size);
-  }
-
-  .vt-p-#{$size} {
-    @include padding($size);
-  }
-
-  .vt-px-#{$size} {
-    @include padding-x($size);
-  }
-
-  .vt-py-#{$size} {
-    @include padding-y($size);
-  }
-
-  .vt-m-#{$size} {
-    @include margin($size);
-  }
-
-  .vt-mx-#{$size} {
-    @include margin-x($size);
-  }
-
-  .vt-my-#{$size} {
-    @include margin-y($size);
-  }
-
-  .vt-gap-#{$size} {
-    @include gap($size);
+  @if map.has-key($spacing-map, $name) {
+    @return map.get($spacing-map, $name);
+  } @else {
+    @error "Spacing '#{$name}' not found in spacing map.";
   }
 }

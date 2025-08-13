@@ -14,7 +14,7 @@ export class VenntierThemeService {
 
   readonly themeAttributes = computed(() => ({
     'data-vt-theme': this.isDarkMode() ? 'dark' : 'light',
-    'data-md-sys-color-scheme': this.isDarkMode() ? 'dark' : 'light',
+    // Note: data-mat-sys-color-scheme is now handled automatically by color-scheme CSS property
   }));
 
   constructor() {
@@ -44,11 +44,16 @@ export class VenntierThemeService {
   private applyThemeToDOM(isDark: boolean): void {
     const root = document.documentElement;
 
-    // Set multiple attributes for better integration
-    root.setAttribute('data-vt-theme', isDark ? 'dark' : 'light');
-    root.setAttribute('data-md-sys-color-scheme', isDark ? 'dark' : 'light');
+    // MD3 BEST PRACTICE: Use color-scheme CSS property for automatic theme switching
+    // Set color-scheme to let the browser handle light-dark() function resolution
+    root.style.colorScheme = isDark ? 'dark' : 'light';
 
-    // Add/remove class for CSS targeting
+    // Keep data-vt-theme for application-specific logic
+    root.setAttribute('data-vt-theme', isDark ? 'dark' : 'light');
+
+    // Remove manual data-mat-sys-color-scheme - let color-scheme handle this automatically
+
+    // Add/remove class for CSS targeting (for backwards compatibility)
     if (isDark) {
       root.classList.add('vt-theme-dark');
       root.classList.remove('vt-theme-light');

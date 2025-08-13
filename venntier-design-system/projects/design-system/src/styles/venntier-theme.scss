@@ -17,12 +17,8 @@
 // Apply base Material theme structure (only once)
 @include core.vt-material-base-theme;
 
-// Apply light theme colors by default
-@include core.vt-material-colors('light');
-
 // Apply component themes AFTER Material themes to override
-// Apply button overrides globally
-@include components.vt-button-theme;
+// NOTE: Most component styling is now handled by mat.component-overrides() in _core-refined.scss
 
 // Apply card overrides globally
 @include components.vt-card-theme;
@@ -36,41 +32,88 @@
 // Apply list overrides globally
 @include components.vt-list-overrides;
 
-// Wrap sidenav in body.vt-theme for specificity
-body.vt-theme {
-  @include components.vt-sidenav-theme;
-}
-
 // Apply toolbar theme globally
 @include components.vt-toolbar-theme;
 
-// Global styles
+// Apply icon theme globally
+@include components.vt-icon-theme;
+
+// Global styles - use our custom theme tokens
 :root {
-  font-family: var(--md-sys-typescale-body-large-font);
-  font-size: var(--md-sys-typescale-body-large-size);
-  line-height: var(--md-sys-typescale-body-large-line-height);
-  color: var(--md-sys-color-on-background);
-  background-color: var(--md-sys-color-background);
+  font-family: var(--mat-sys-body-large-font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--mat-sys-on-surface);
+  background-color: var(--mat-sys-surface);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Dark theme support - only apply color changes, not full theme
-[data-vt-theme='dark'],
-.vt-theme-dark {
-  // Only apply color changes for dark mode
-  @include core.vt-material-colors('dark');
+// MD3 AUTOMATIC DARK THEME: No manual dark theme selectors needed
+// Dark mode is now handled automatically via color-scheme: light dark
+// and light-dark() functions in the theme tokens
+
+// Base resets - CRITICAL: Fix serif font fallback issue
+html,
+body {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
-// Base resets
 * {
   box-sizing: border-box;
+  font-family: inherit;
+}
+
+// CRITICAL: Preserve Material Icons font
+mat-icon,
+.material-icons,
+.material-icons-outlined,
+.material-icons-round,
+.material-icons-sharp,
+.material-icons-two-tone {
+  font-family: 'Material Icons', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   padding: 0;
+  font-family: var(--mat-sys-body-large-font);
+  color: var(--mat-sys-on-surface);
+  background-color: var(--mat-sys-surface);
 }
+
+// Ensure all text elements use our custom fonts and colors
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--mat-sys-headline-large-font);
+  color: var(--mat-sys-on-surface);
+  margin: 0;
+}
+
+p,
+span,
+div,
+a,
+li,
+td,
+th {
+  font-family: var(--mat-sys-body-large-font);
+  color: var(--mat-sys-on-surface);
+}
+
+// Links are handled further down in the file
 
 // Remove default focus outlines in favor of custom ones
 *:focus {
@@ -82,9 +125,9 @@ body {
 *:focus-visible:not(input, textarea) {
   outline: none;
   box-shadow:
-    0 0 0 2px var(--md-sys-color-surface),
-    0 0 0 4px var(--md-sys-color-focus-ring);
-  border-radius: var(--md-sys-shape-corner-small);
+    0 0 0 2px var(--mat-sys-surface),
+    0 0 0 4px var(--mat-sys-focus-ring);
+  border-radius: var(--mat-sys-shape-corner-small);
 }
 
 // Specific focus states for interactive elements (inputs removed for standard Material styling)
@@ -92,19 +135,16 @@ button:focus-visible,
 a:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 2px var(--md-sys-color-surface),
-    0 0 0 3px var(--md-sys-color-focus-ring);
+    0 0 0 2px var(--mat-sys-surface),
+    0 0 0 3px var(--mat-sys-focus-ring);
 }
 
-// Smooth scrolling
-html {
-  scroll-behavior: smooth;
-}
+// Smooth scrolling is now handled in the consolidated html rule above
 
 // Selection colors
 ::selection {
-  background-color: var(--md-sys-color-selected);
-  color: var(--md-sys-color-on-surface);
+  background-color: var(--mat-sys-selected);
+  color: var(--mat-sys-on-surface);
 }
 
 // Scrollbar styling (webkit browsers)
@@ -114,52 +154,53 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--md-sys-color-surface);
+  background: var(--mat-sys-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--md-sys-color-outline);
-  border-radius: var(--md-sys-shape-corner-full);
+  background: var(--mat-sys-outline);
+  border-radius: var(--mat-sys-shape-corner-full);
 
   &:hover {
-    background: var(--md-sys-color-on-surface-variant);
+    background: var(--mat-sys-on-surface-variant);
   }
 }
 
-// Links
+// Links - updated to use our custom theme tokens
 a {
-  color: var(--md-sys-color-primary);
+  color: var(--mat-sys-primary);
   text-decoration: none;
-  transition: var(--md-sys-motion-hover);
+  transition: color 0.2s ease;
 
   &:hover {
+    color: var(--mat-sys-tertiary);
     text-decoration: underline;
   }
 
   &:focus-visible {
     outline: none;
     box-shadow:
-      0 0 0 2px var(--md-sys-color-surface),
-      0 0 0 3px var(--md-sys-color-focus-ring);
-    border-radius: var(--md-sys-shape-corner-small);
+      0 0 0 2px var(--mat-sys-surface),
+      0 0 0 3px var(--mat-sys-primary);
+    border-radius: 4px;
   }
 }
 
 // Code blocks
 code {
-  font-family: var(--md-sys-typescale-code-font);
-  font-size: var(--md-sys-typescale-code-size);
-  background-color: var(--md-sys-color-surface-variant);
+  font-family: var(--mat-sys-code-font);
+  font-size: var(--mat-sys-code-size);
+  background-color: var(--mat-sys-surface-variant);
   padding: 2px 6px;
-  border-radius: var(--md-sys-shape-corner-small);
+  border-radius: var(--mat-sys-shape-corner-small);
 }
 
 pre {
-  font-family: var(--md-sys-typescale-code-font);
-  font-size: var(--md-sys-typescale-code-size);
-  background-color: var(--md-sys-color-surface-variant);
-  padding: var(--md-sys-spacing-4);
-  border-radius: var(--md-sys-shape-corner-medium);
+  font-family: var(--mat-sys-code-font);
+  font-size: var(--mat-sys-code-size);
+  background-color: var(--mat-sys-surface-variant);
+  padding: var(--mat-sys-spacing-4);
+  border-radius: var(--mat-sys-shape-corner-medium);
   overflow-x: auto;
 
   code {

@@ -2,5 +2,11 @@
 
 // Density selector uses default design system styling (fit-content from global overrides)
 .density-selector {
-  margin-bottom: var(--md-sys-spacing-16);
+  margin-bottom: var(--mat-sys-spacing-16);
+}
+
+// Loading spinner in buttons - replaces inline styles
+.demo-loading-spinner {
+  display: inline-block;
+  margin-right: var(--mat-sys-spacing-2, 8px);
 }

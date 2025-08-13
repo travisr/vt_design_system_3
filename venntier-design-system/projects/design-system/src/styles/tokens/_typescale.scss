@@ -1,173 +1,226 @@
-// M3 System Typography Tokens - Inter-based type scale
+@use 'sass:map';
+
+// ============================================================================
+// TYPOGRAPHY REFERENCE TOKENS - Raw typography values (single source of truth)
+// ============================================================================
+// Inter-based type scale for OpenAI-inspired design
 
 // Font families
-$_font-brand:
+$font-brand:
   'Inter',
   -apple-system,
   blinkmacsystemfont,
   'Segoe UI',
   'Roboto',
   sans-serif;
-$_font-plain:
+$font-plain:
   'Inter',
   -apple-system,
   blinkmacsystemfont,
   'Segoe UI',
   'Roboto',
   sans-serif;
-$_font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+$font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
 
 // Base size and scale
-$_base-size: 16px;
-$_scale-ratio: 1.125; // Minor second for tighter scale
+$base-size: 16px;
+$scale-ratio: 1.125; // Minor second for tighter scale
 
 // Font weights - OpenAI lighter approach
-$_weight-thin: 200; // Display text
-$_weight-light: 300; // Large headings
-$_weight-regular: 400; // Body text, normal state
-$_weight-medium: 450; // Labels, buttons (slightly heavier than body)
-$_weight-semibold: 500; // Emphasis (rarely used)
-$_weight-bold: 600; // Strong emphasis (very rarely used)
+$weight-thin: 200; // Display text
+$weight-light: 300; // Large headings
+$weight-regular: 400; // Body text, normal state
+$weight-medium: 450; // Labels, buttons (slightly heavier than body)
+$weight-semibold: 500; // Emphasis (rarely used)
+$weight-bold: 600; // Strong emphasis (very rarely used)
 
 // Line heights - More breathing room
-$_line-height-tight: 1.3;
-$_line-height-normal: 1.6;
-$_line-height-relaxed: 1.7;
-$_line-height-loose: 1.8;
+$line-height-tight: 1.3;
+$line-height-normal: 1.6;
+$line-height-relaxed: 1.7;
+$line-height-loose: 1.8;
 
 // Letter spacing
-$_tracking-tighter: -0.02em;
-$_tracking-tight: -0.01em;
-$_tracking-normal: 0;
-$_tracking-wide: 0.01em;
-$_tracking-wider: 0.02em;
+$tracking-tighter: -0.02em;
+$tracking-tight: -0.01em;
+$tracking-normal: 0;
+$tracking-wide: 0.01em;
+$tracking-wider: 0.02em;
 
-// M3 Type scale tokens
-:root {
+// ============================================================================
+// SEMANTIC TYPOGRAPHY MAPPINGS (for Angular Material theming API)
+// ============================================================================
+// These map our reference tokens to semantic roles that Angular Material understands
+
+// Typography scale mappings
+$typography-scales: (
   // Display styles
-  --md-sys-typescale-display-large-font: #{$_font-brand};
-  --md-sys-typescale-display-large-size: 3.5rem; // 56px
-  --md-sys-typescale-display-large-weight: #{$_weight-light}; // 300 for OpenAI
-  --md-sys-typescale-display-large-line-height: #{$_line-height-tight};
-  --md-sys-typescale-display-large-tracking: #{$_tracking-tighter};
-  --md-sys-typescale-display-medium-font: #{$_font-brand};
-  --md-sys-typescale-display-medium-size: 2.75rem; // 44px
-  --md-sys-typescale-display-medium-weight: #{$_weight-light}; // 300 for OpenAI
-  --md-sys-typescale-display-medium-line-height: #{$_line-height-tight};
-  --md-sys-typescale-display-medium-tracking: #{$_tracking-tight};
-  --md-sys-typescale-display-small-font: #{$_font-brand};
-  --md-sys-typescale-display-small-size: 2.25rem; // 36px
-  --md-sys-typescale-display-small-weight: #{$_weight-regular}; // 400 for OpenAI
-  --md-sys-typescale-display-small-line-height: #{$_line-height-tight};
-  --md-sys-typescale-display-small-tracking: #{$_tracking-tight};
+  display-large: (
+      font: $font-brand,
+      size: 3.5rem,
+      // 56px
+      weight: $weight-light,
+      // 300 for OpenAI
+      line-height: $line-height-tight,
+      tracking: $tracking-tighter,
+    ),
+  display-medium: (
+    font: $font-brand,
+    size: 2.75rem,
+    // 44px
+    weight: $weight-light,
+    // 300 for OpenAI
+    line-height: $line-height-tight,
+    tracking: $tracking-tight,
+  ),
+  display-small: (
+    font: $font-brand,
+    size: 2.25rem,
+    // 36px
+    weight: $weight-regular,
+    // 400 for OpenAI
+    line-height: $line-height-tight,
+    tracking: $tracking-tight,
+  ),
 
   // Headline styles
-  --md-sys-typescale-headline-large-font: #{$_font-brand};
-  --md-sys-typescale-headline-large-size: 2rem; // 32px
-  --md-sys-typescale-headline-large-weight: #{$_weight-regular}; // 400 for OpenAI
-  --md-sys-typescale-headline-large-line-height: #{$_line-height-normal};
-  --md-sys-typescale-headline-large-tracking: #{$_tracking-normal};
-  --md-sys-typescale-headline-medium-font: #{$_font-brand};
-  --md-sys-typescale-headline-medium-size: 1.75rem; // 28px
-  --md-sys-typescale-headline-medium-weight: #{$_weight-regular}; // 400 for OpenAI
-  --md-sys-typescale-headline-medium-line-height: #{$_line-height-normal};
-  --md-sys-typescale-headline-medium-tracking: #{$_tracking-normal};
-  --md-sys-typescale-headline-small-font: #{$_font-brand};
-  --md-sys-typescale-headline-small-size: 1.5rem; // 24px
-  --md-sys-typescale-headline-small-weight: #{$_weight-medium}; // 450 for OpenAI
-  --md-sys-typescale-headline-small-line-height: #{$_line-height-normal};
-  --md-sys-typescale-headline-small-tracking: #{$_tracking-normal};
+  headline-large: (
+      font: $font-brand,
+      size: 2rem,
+      // 32px
+      weight: $weight-regular,
+      // 400 for OpenAI
+      line-height: $line-height-normal,
+      tracking: $tracking-normal,
+    ),
+  headline-medium: (
+    font: $font-brand,
+    size: 1.75rem,
+    // 28px
+    weight: $weight-regular,
+    // 400 for OpenAI
+    line-height: $line-height-normal,
+    tracking: $tracking-normal,
+  ),
+  headline-small: (
+    font: $font-brand,
+    size: 1.5rem,
+    // 24px
+    weight: $weight-medium,
+    // 450 for OpenAI
+    line-height: $line-height-normal,
+    tracking: $tracking-normal,
+  ),
 
   // Title styles
-  --md-sys-typescale-title-large-font: #{$_font-brand};
-  --md-sys-typescale-title-large-size: 1.375rem; // 22px
-  --md-sys-typescale-title-large-weight: #{$_weight-regular}; // 400 for OpenAI
-  --md-sys-typescale-title-large-line-height: #{$_line-height-normal};
-  --md-sys-typescale-title-large-tracking: #{$_tracking-normal};
-  --md-sys-typescale-title-medium-font: #{$_font-plain};
-  --md-sys-typescale-title-medium-size: 1.125rem; // 18px
-  --md-sys-typescale-title-medium-weight: #{$_weight-medium}; // 450 for OpenAI
-  --md-sys-typescale-title-medium-line-height: #{$_line-height-relaxed};
-  --md-sys-typescale-title-medium-tracking: #{$_tracking-wide};
-  --md-sys-typescale-title-small-font: #{$_font-plain};
-  --md-sys-typescale-title-small-size: 1rem; // 16px
-  --md-sys-typescale-title-small-weight: #{$_weight-medium}; // 450 for OpenAI
-  --md-sys-typescale-title-small-line-height: #{$_line-height-relaxed};
-  --md-sys-typescale-title-small-tracking: #{$_tracking-wide};
+  title-large: (
+      font: $font-brand,
+      size: 1.375rem,
+      // 22px
+      weight: $weight-regular,
+      // 400 for OpenAI
+      line-height: $line-height-normal,
+      tracking: $tracking-normal,
+    ),
+  title-medium: (
+    font: $font-plain,
+    size: 1.125rem,
+    // 18px
+    weight: $weight-medium,
+    // 450 for OpenAI
+    line-height: $line-height-relaxed,
+    tracking: $tracking-wide,
+  ),
+  title-small: (
+    font: $font-plain,
+    size: 1rem,
+    // 16px
+    weight: $weight-medium,
+    // 450 for OpenAI
+    line-height: $line-height-relaxed,
+    tracking: $tracking-wide,
+  ),
 
   // Body styles
-  --md-sys-typescale-body-large-font: #{$_font-plain};
-  --md-sys-typescale-body-large-size: 1rem; // 16px
-  --md-sys-typescale-body-large-weight: #{$_weight-regular};
-  --md-sys-typescale-body-large-line-height: #{$_line-height-relaxed};
-  --md-sys-typescale-body-large-tracking: #{$_tracking-normal};
-  --md-sys-typescale-body-medium-font: #{$_font-plain};
-  --md-sys-typescale-body-medium-size: 0.875rem; // 14px
-  --md-sys-typescale-body-medium-weight: #{$_weight-regular};
-  --md-sys-typescale-body-medium-line-height: #{$_line-height-relaxed};
-  --md-sys-typescale-body-medium-tracking: #{$_tracking-normal};
-  --md-sys-typescale-body-small-font: #{$_font-plain};
-  --md-sys-typescale-body-small-size: 0.75rem; // 12px
-  --md-sys-typescale-body-small-weight: #{$_weight-regular};
-  --md-sys-typescale-body-small-line-height: #{$_line-height-loose};
-  --md-sys-typescale-body-small-tracking: #{$_tracking-wide};
+  body-large: (
+      font: $font-plain,
+      size: 1rem,
+      // 16px
+      weight: $weight-regular,
+      line-height: $line-height-relaxed,
+      tracking: $tracking-normal,
+    ),
+  body-medium: (
+    font: $font-plain,
+    size: 0.875rem,
+    // 14px
+    weight: $weight-regular,
+    line-height: $line-height-relaxed,
+    tracking: $tracking-normal,
+  ),
+  body-small: (
+    font: $font-plain,
+    size: 0.75rem,
+    // 12px
+    weight: $weight-regular,
+    line-height: $line-height-loose,
+    tracking: $tracking-wide,
+  ),
 
   // Label styles
-  --md-sys-typescale-label-large-font: #{$_font-plain};
-  --md-sys-typescale-label-large-size: 0.875rem; // 14px
-  --md-sys-typescale-label-large-weight: #{$_weight-medium}; // 450 for OpenAI
-  --md-sys-typescale-label-large-line-height: #{$_line-height-normal};
-  --md-sys-typescale-label-large-tracking: #{$_tracking-wide};
-  --md-sys-typescale-label-medium-font: #{$_font-plain};
-  --md-sys-typescale-label-medium-size: 0.75rem; // 12px
-  --md-sys-typescale-label-medium-weight: #{$_weight-medium}; // 450 for OpenAI
-  --md-sys-typescale-label-medium-line-height: #{$_line-height-normal};
-  --md-sys-typescale-label-medium-tracking: #{$_tracking-wider};
-  --md-sys-typescale-label-small-font: #{$_font-plain};
-  --md-sys-typescale-label-small-size: 0.6875rem; // 11px
-  --md-sys-typescale-label-small-weight: #{$_weight-medium}; // 450 for OpenAI
-  --md-sys-typescale-label-small-line-height: #{$_line-height-normal};
-  --md-sys-typescale-label-small-tracking: #{$_tracking-wider};
+  label-large: (
+      font: $font-plain,
+      size: 0.875rem,
+      // 14px
+      weight: $weight-medium,
+      // 450 for OpenAI
+      line-height: $line-height-normal,
+      tracking: $tracking-wide,
+    ),
+  label-medium: (
+    font: $font-plain,
+    size: 0.75rem,
+    // 12px
+    weight: $weight-medium,
+    // 450 for OpenAI
+    line-height: $line-height-normal,
+    tracking: $tracking-wider,
+  ),
+  label-small: (
+    font: $font-plain,
+    size: 0.6875rem,
+    // 11px
+    weight: $weight-medium,
+    // 450 for OpenAI
+    line-height: $line-height-normal,
+    tracking: $tracking-wider,
+  ),
 
   // Code/mono styles (custom addition)
-  --md-sys-typescale-code-font: #{$_font-mono};
-  --md-sys-typescale-code-size: 0.875rem; // 14px
-  --md-sys-typescale-code-weight: #{$_weight-regular};
-  --md-sys-typescale-code-line-height: #{$_line-height-relaxed};
-  --md-sys-typescale-code-tracking: #{$_tracking-normal};
-}
+  code: (
+      font: $font-mono,
+      size: 0.875rem,
+      // 14px
+      weight: $weight-regular,
+      line-height: $line-height-relaxed,
+      tracking: $tracking-normal,
+    )
+);
 
-// Typography mixins
-@mixin typescale($scale) {
-  font-family: var(--md-sys-typescale-#{$scale}-font);
-  font-size: var(--md-sys-typescale-#{$scale}-size);
-  font-weight: var(--md-sys-typescale-#{$scale}-weight);
-  line-height: var(--md-sys-typescale-#{$scale}-line-height);
-  letter-spacing: var(--md-sys-typescale-#{$scale}-tracking);
-}
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
 
-// Utility classes
-@each $scale
-  in (
-    display-large,
-    display-medium,
-    display-small,
-    headline-large,
-    headline-medium,
-    headline-small,
-    title-large,
-    title-medium,
-    title-small,
-    body-large,
-    body-medium,
-    body-small,
-    label-large,
-    label-medium,
-    label-small,
-    code
-  )
-{
-  .vt-typescale-#{$scale} {
-    @include typescale($scale);
+// Get a typography reference token value
+@function get-typography($scale, $property) {
+  @if map.has-key($typography-scales, $scale) {
+    $scale-map: map.get($typography-scales, $scale);
+    @if map.has-key($scale-map, $property) {
+      @return map.get($scale-map, $property);
+    } @else {
+      @error "Property '#{$property}' not found in typography scale '#{$scale}'.";
+    }
+  } @else {
+    @error "Typography scale '#{$scale}' not found.";
   }
 }

@@ -23,11 +23,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
       <mat-card>
         <mat-card-header>
           <mat-card-title>Material Design 3 Color Tokens</mat-card-title>
-          <mat-card-subtitle>
-            Design system colors using CSS custom properties. Standard MD3 tokens use
-            <code>--mat-sys-*</code> format, while our custom extensions use
-            <code>--mat-sys-*</code> format.
-          </mat-card-subtitle>
+          <mat-card-subtitle>Design system colors using CSS custom properties</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <div class="color-grid">
@@ -63,7 +59,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   <div class="swatch-info">
                     <span class="swatch-name">Data Primary</span>
                     <span class="swatch-token">--mat-sys-data-primary</span>
-                    <span class="swatch-usage">Data visualization (custom extension)</span>
+                    <span class="swatch-usage">Data visualization</span>
                   </div>
                 </div>
               </div>
@@ -118,7 +114,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   <div class="swatch-preview swatch-surface-container-low"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Container Low</span>
-                    <span class="swatch-token">--mat-sys-surface-container-low</span>
+                    <span class="swatch-token">--md-sys-color-surface-container-low</span>
                     <span class="swatch-usage">Hover states</span>
                   </div>
                 </div>
@@ -126,7 +122,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   <div class="swatch-preview swatch-surface-container"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Container</span>
-                    <span class="swatch-token">--mat-sys-surface-container</span>
+                    <span class="swatch-token">--md-sys-color-surface-container</span>
                     <span class="swatch-usage">Input fields</span>
                   </div>
                 </div>
@@ -134,7 +130,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   <div class="swatch-preview swatch-surface-container-high"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Container High</span>
-                    <span class="swatch-token">--mat-sys-surface-container-high</span>
+                    <span class="swatch-token">--md-sys-color-surface-container-high</span>
                     <span class="swatch-usage">Selected states</span>
                   </div>
                 </div>
@@ -142,7 +138,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   <div class="swatch-preview swatch-surface-container-highest"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Container Highest</span>
-                    <span class="swatch-token">--mat-sys-surface-container-highest</span>
+                    <span class="swatch-token">--md-sys-color-surface-container-highest</span>
                     <span class="swatch-usage">Elevated elements</span>
                   </div>
                 </div>
@@ -169,32 +165,32 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   <div class="swatch-preview swatch-hover"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Hover</span>
-                    <span class="swatch-token">--mat-sys-hover</span>
-                    <span class="swatch-usage">Element hover backgrounds (custom extension)</span>
+                    <span class="swatch-token">--md-sys-color-hover</span>
+                    <span class="swatch-usage">Element hover backgrounds</span>
                   </div>
                 </div>
                 <div class="color-swatch">
                   <div class="swatch-preview swatch-selected"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Selected</span>
-                    <span class="swatch-token">--mat-sys-selected</span>
-                    <span class="swatch-usage">Active/selected items (custom extension)</span>
+                    <span class="swatch-token">--md-sys-color-selected</span>
+                    <span class="swatch-usage">Active/selected items</span>
                   </div>
                 </div>
                 <div class="color-swatch">
                   <div class="swatch-preview swatch-focus-ring"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Focus Ring</span>
-                    <span class="swatch-token">--mat-sys-focus-ring</span>
-                    <span class="swatch-usage">Focus outlines (custom extension)</span>
+                    <span class="swatch-token">--md-sys-color-focus-ring</span>
+                    <span class="swatch-usage">Focus outlines</span>
                   </div>
                 </div>
                 <div class="color-swatch">
                   <div class="swatch-preview swatch-disabled"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Disabled</span>
-                    <span class="swatch-token">--mat-sys-disabled</span>
-                    <span class="swatch-usage">Disabled text/elements (custom extension)</span>
+                    <span class="swatch-token">--md-sys-color-disabled</span>
+                    <span class="swatch-usage">Disabled text/elements</span>
                   </div>
                 </div>
               </div>
@@ -206,7 +202,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   <div class="swatch-preview swatch-outline"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Outline</span>
-                    <span class="swatch-token">--mat-sys-outline</span>
+                    <span class="swatch-token">--md-sys-color-outline</span>
                     <span class="swatch-usage">Standard borders</span>
                   </div>
                 </div>
@@ -214,7 +210,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                   <div class="swatch-preview swatch-outline-variant"></div>
                   <div class="swatch-info">
                     <span class="swatch-name">Outline Variant</span>
-                    <span class="swatch-token">--mat-sys-outline-variant</span>
+                    <span class="swatch-token">--md-sys-color-outline-variant</span>
                     <span class="swatch-usage">Subtle borders</span>
                   </div>
                 </div>
@@ -236,12 +232,12 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
               <h4 class="usage-title">Surface Hierarchy</h4>
               <div class="hierarchy-demo">
                 <div class="hierarchy-level hierarchy-background">
-                  <span class="hierarchy-label">Background (--mat-sys-background)</span>
+                  <span class="hierarchy-label">Background (--md-sys-color-background)</span>
                   <div class="hierarchy-level hierarchy-surface">
-                    <span class="hierarchy-label">Surface (--mat-sys-surface)</span>
+                    <span class="hierarchy-label">Surface (--md-sys-color-surface)</span>
                     <div class="hierarchy-level hierarchy-surface-variant">
                       <span class="hierarchy-label"
-                        >Surface Variant (--mat-sys-surface-variant)</span
+                        >Surface Variant (--md-sys-color-surface-variant)</span
                       >
                     </div>
                   </div>
@@ -252,12 +248,12 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <div class="usage-section">
               <h4 class="usage-title">Text on Surfaces</h4>
               <div class="text-examples">
-                <p class="text-on-surface-primary">Primary text using --mat-sys-on-surface</p>
-                <p class="text-on-surface">Body text using --mat-sys-on-surface</p>
+                <p class="text-on-surface-primary">Primary text using --md-sys-color-on-surface</p>
+                <p class="text-on-surface">Body text using --md-sys-color-on-surface</p>
                 <p class="text-on-surface-variant">
-                  Secondary text using --mat-sys-on-surface-variant
+                  Secondary text using --md-sys-color-on-surface-variant
                 </p>
-                <p class="text-disabled">Disabled text using --mat-sys-disabled</p>
+                <p class="text-disabled">Disabled text using --md-sys-color-disabled</p>
               </div>
             </div>
 
@@ -269,7 +265,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                 </button>
                 <button mat-stroked-button class="demo-btn demo-btn--hover">Hover State</button>
                 <button mat-stroked-button class="demo-btn demo-btn--selected">Selected</button>
-                <button mat-flat-button color="tertiary" class="demo-btn">Primary CTA</button>
+                <button mat-flat-button color="primary" class="demo-btn">Primary CTA</button>
               </div>
             </div>
           </div>
@@ -287,18 +283,18 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <div class="code-block">
               <h4>CSS Variables</h4>
               <pre><code>.my-component &#123;
-  background: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-  border: 1px solid var(--mat-sys-outline);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline);
 &#125;
 
 .my-component:hover &#123;
-  background: var(--mat-sys-hover);
+  background: var(--md-sys-color-hover);
 &#125;
 
 .primary-button &#123;
-  background: var(--mat-sys-tertiary);
-  color: var(--mat-sys-on-tertiary);
+  background: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
 &#125;</code></pre>
             </div>
 

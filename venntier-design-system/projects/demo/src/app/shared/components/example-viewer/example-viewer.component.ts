@@ -84,34 +84,34 @@ interface Example {
   styles: [
     `
       .example-viewer {
-        background: var(--md-sys-color-surface);
-        border: 1px solid var(--md-sys-color-outline-variant);
-        border-radius: var(--md-sys-shape-corner-medium, 12px);
-        margin-bottom: var(--md-sys-spacing-24, 24px);
+        background: var(--mat-sys-color-surface);
+        border: 1px solid var(--mat-sys-color-outline-variant);
+        border-radius: var(--mat-sys-shape-corner-medium, 12px);
+        margin-bottom: var(--mat-sys-spacing-24, 24px);
         overflow: hidden;
       }
 
       .example-title {
-        font-size: var(--md-sys-typescale-title-medium-size, 16px);
-        font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+        font-size: var(--mat-sys-typescale-title-medium-size, 16px);
+        font-weight: var(--mat-sys-typescale-title-medium-weight, 500);
         margin: 0;
-        padding: var(--md-sys-spacing-16, 16px);
-        border-bottom: 1px solid var(--md-sys-color-outline-variant);
-        background: var(--md-sys-color-surface-container-low);
+        padding: var(--mat-sys-spacing-16, 16px);
+        border-bottom: 1px solid var(--mat-sys-color-outline-variant);
+        background: var(--mat-sys-color-surface-container-low);
       }
 
       .example-content {
-        padding: var(--md-sys-spacing-24, 24px);
+        padding: var(--mat-sys-spacing-24, 24px);
       }
 
       .example-actions {
-        padding: var(--md-sys-spacing-8, 8px) var(--md-sys-spacing-16, 16px);
-        border-top: 1px solid var(--md-sys-color-outline-variant);
-        background: var(--md-sys-color-surface-container-low);
+        padding: var(--mat-sys-spacing-8, 8px) var(--mat-sys-spacing-16, 16px);
+        border-top: 1px solid var(--mat-sys-color-outline-variant);
+        background: var(--mat-sys-color-surface-container-low);
       }
 
       .example-code-tabs {
-        border-top: 1px solid var(--md-sys-color-outline-variant);
+        border-top: 1px solid var(--mat-sys-color-outline-variant);
       }
 
       // Use :host-context to style Material tab content
@@ -120,8 +120,8 @@ interface Example {
       }
 
       .demo-code {
-        background: var(--md-sys-color-surface-container-lowest);
-        padding: var(--md-sys-spacing-16, 16px);
+        background: var(--mat-sys-color-surface-container-lowest);
+        padding: var(--mat-sys-spacing-16, 16px);
         overflow-x: auto;
 
         pre {
@@ -132,7 +132,7 @@ interface Example {
         }
 
         code {
-          color: var(--md-sys-color-on-surface);
+          color: var(--mat-sys-color-on-surface);
         }
       }
     `,

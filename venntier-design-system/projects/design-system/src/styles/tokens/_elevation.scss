@@ -1,162 +1,83 @@
-// M3 System Elevation Tokens - OpenAI-inspired minimal shadows
+@use 'sass:map';
 
-// Base shadow values - very subtle for clean aesthetic
-$_shadow-color-light: rgba(0, 0, 0, 0.04);
-$_shadow-color-light-medium: rgba(0, 0, 0, 0.08);
-$_shadow-color-light-strong: rgba(0, 0, 0, 0.12);
-$_shadow-color-light-stronger: rgba(0, 0, 0, 0.16);
-$_shadow-color-light-strongest: rgba(0, 0, 0, 0.2);
+// ============================================================================
+// ELEVATION REFERENCE TOKENS - Raw shadow values (single source of truth)
+// ============================================================================
+// OpenAI-inspired minimal shadows for clean aesthetic
 
-// Dark mode shadow values - stronger for visibility
-$_shadow-color-dark: rgba(0, 0, 0, 0.2);
-$_shadow-color-dark-medium: rgba(0, 0, 0, 0.24);
-$_shadow-color-dark-strong: rgba(0, 0, 0, 0.28);
-$_shadow-color-dark-stronger: rgba(0, 0, 0, 0.32);
-$_shadow-color-dark-strongest: rgba(0, 0, 0, 0.36);
+// Light theme shadow values - very subtle
+$shadow-color-light: rgba(0, 0, 0, 0.04);
+$shadow-color-light-medium: rgba(0, 0, 0, 0.08);
+$shadow-color-light-strong: rgba(0, 0, 0, 0.12);
+$shadow-color-light-stronger: rgba(0, 0, 0, 0.16);
+$shadow-color-light-strongest: rgba(0, 0, 0, 0.2);
 
-// Elevation scale tokens - Light theme
-:root {
+// Dark theme shadow values - stronger for visibility
+$shadow-color-dark: rgba(0, 0, 0, 0.2);
+$shadow-color-dark-medium: rgba(0, 0, 0, 0.24);
+$shadow-color-dark-strong: rgba(0, 0, 0, 0.28);
+$shadow-color-dark-stronger: rgba(0, 0, 0, 0.32);
+$shadow-color-dark-strongest: rgba(0, 0, 0, 0.36);
+
+// ============================================================================
+// SEMANTIC ELEVATION MAPPINGS (for Angular Material theming API)
+// ============================================================================
+// These map our reference tokens to semantic roles that Angular Material understands
+
+// Light theme elevation mappings
+$light-theme-elevations: (
   // Level 0: Flat design (default for cards, buttons)
-  --md-sys-elevation-0: none;
-
+  level-0: none,
   // Level 1: Subtle lift (hover states, selected items)
-  --md-sys-elevation-1: 0px 1px 2px #{$_shadow-color-light};
-
+  level-1: 0px 1px 2px #{$shadow-color-light},
   // Level 2: Floating elements (dropdowns, autocomplete)
-  --md-sys-elevation-2: 0px 2px 8px #{$_shadow-color-light-medium};
-
+  level-2: 0px 2px 8px #{$shadow-color-light-medium},
   // Level 3: Overlays (tooltips, small modals)
-  --md-sys-elevation-3: 0px 4px 12px #{$_shadow-color-light-strong};
-
+  level-3: 0px 4px 12px #{$shadow-color-light-strong},
   // Level 4: Modal dialogs
-  --md-sys-elevation-4: 0px 8px 24px #{$_shadow-color-light-stronger};
-
+  level-4: 0px 8px 24px #{$shadow-color-light-stronger},
   // Level 5: Full-screen overlays (rarely used)
-  --md-sys-elevation-5: 0px 16px 32px #{$_shadow-color-light-strongest};
+  level-5: 0px 16px 32px #{$shadow-color-light-strongest}
+);
 
-  // Component-specific elevation tokens
-  --md-sys-elevation-card: var(--md-sys-elevation-0); // Flat by default
-  --md-sys-elevation-card-hover: var(--md-sys-elevation-1); // Subtle on hover
-  --md-sys-elevation-button: var(--md-sys-elevation-0); // Flat buttons
-  --md-sys-elevation-menu: var(--md-sys-elevation-2); // Floating menus
-  --md-sys-elevation-dialog: var(--md-sys-elevation-4); // Modal dialogs
-  --md-sys-elevation-tooltip: var(--md-sys-elevation-3); // Tooltips
-  --md-sys-elevation-fab: var(--md-sys-elevation-3); // Floating action buttons
-  --md-sys-elevation-snackbar: var(--md-sys-elevation-3); // Snackbars
-}
+// Dark theme elevation mappings
+$dark-theme-elevations: (
+  // Level 0: Flat design (default for cards, buttons)
+  level-0: none,
+  // Level 1: Subtle lift (hover states, selected items)
+  level-1: 0px 1px 2px #{$shadow-color-dark},
+  // Level 2: Floating elements (dropdowns, autocomplete)
+  level-2: 0px 2px 8px #{$shadow-color-dark-medium},
+  // Level 3: Overlays (tooltips, small modals)
+  level-3: 0px 4px 12px #{$shadow-color-dark-strong},
+  // Level 4: Modal dialogs
+  level-4: 0px 8px 24px #{$shadow-color-dark-stronger},
+  // Level 5: Full-screen overlays (rarely used)
+  level-5: 0px 16px 32px #{$shadow-color-dark-strongest}
+);
 
-// Dark theme elevation overrides
-[data-theme='dark'] {
-  --md-sys-elevation-1: 0px 1px 2px #{$_shadow-color-dark};
-  --md-sys-elevation-2: 0px 2px 8px #{$_shadow-color-dark-medium};
-  --md-sys-elevation-3: 0px 4px 12px #{$_shadow-color-dark-strong};
-  --md-sys-elevation-4: 0px 8px 24px #{$_shadow-color-dark-stronger};
-  --md-sys-elevation-5: 0px 16px 32px #{$_shadow-color-dark-strongest};
-}
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
 
-// Alternative dark theme selector support
-.vt-theme-dark {
-  --md-sys-elevation-1: 0px 1px 2px #{$_shadow-color-dark};
-  --md-sys-elevation-2: 0px 2px 8px #{$_shadow-color-dark-medium};
-  --md-sys-elevation-3: 0px 4px 12px #{$_shadow-color-dark-strong};
-  --md-sys-elevation-4: 0px 8px 24px #{$_shadow-color-dark-stronger};
-  --md-sys-elevation-5: 0px 16px 32px #{$_shadow-color-dark-strongest};
-}
+// Get an elevation reference token value
+@function get-elevation($name) {
+  $elevation-map: (
+    'shadow-color-light': $shadow-color-light,
+    'shadow-color-light-medium': $shadow-color-light-medium,
+    'shadow-color-light-strong': $shadow-color-light-strong,
+    'shadow-color-light-stronger': $shadow-color-light-stronger,
+    'shadow-color-light-strongest': $shadow-color-light-strongest,
+    'shadow-color-dark': $shadow-color-dark,
+    'shadow-color-dark-medium': $shadow-color-dark-medium,
+    'shadow-color-dark-strong': $shadow-color-dark-strong,
+    'shadow-color-dark-stronger': $shadow-color-dark-stronger,
+    'shadow-color-dark-strongest': $shadow-color-dark-strongest,
+  );
 
-// Elevation utility function
-@function elevation($level) {
-  @return var(--md-sys-elevation-#{$level});
-}
-
-// Elevation mixins
-@mixin elevation($level) {
-  box-shadow: var(--md-sys-elevation-#{$level});
-}
-
-@mixin elevation-card() {
-  box-shadow: var(--md-sys-elevation-card);
-}
-
-@mixin elevation-card-hover() {
-  box-shadow: var(--md-sys-elevation-card-hover);
-}
-
-@mixin elevation-menu() {
-  box-shadow: var(--md-sys-elevation-menu);
-}
-
-@mixin elevation-dialog() {
-  box-shadow: var(--md-sys-elevation-dialog);
-}
-
-@mixin elevation-tooltip() {
-  box-shadow: var(--md-sys-elevation-tooltip);
-}
-
-@mixin elevation-fab() {
-  box-shadow: var(--md-sys-elevation-fab);
-}
-
-// Elevation utility classes
-.vt-elevation-0 {
-  box-shadow: var(--md-sys-elevation-0);
-}
-
-.vt-elevation-1 {
-  box-shadow: var(--md-sys-elevation-1);
-}
-
-.vt-elevation-2 {
-  box-shadow: var(--md-sys-elevation-2);
-}
-
-.vt-elevation-3 {
-  box-shadow: var(--md-sys-elevation-3);
-}
-
-.vt-elevation-4 {
-  box-shadow: var(--md-sys-elevation-4);
-}
-
-.vt-elevation-5 {
-  box-shadow: var(--md-sys-elevation-5);
-}
-
-// Interactive elevation states
-.vt-elevation-interactive {
-  box-shadow: var(--md-sys-elevation-0);
-  transition: box-shadow var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
-
-  &:hover {
-    box-shadow: var(--md-sys-elevation-1);
+  @if map.has-key($elevation-map, $name) {
+    @return map.get($elevation-map, $name);
+  } @else {
+    @error "Elevation '#{$name}' not found in elevation map.";
   }
-
-  &:active {
-    box-shadow: var(--md-sys-elevation-0);
-  }
-}
-
-// Component-specific elevation classes
-.vt-elevation-card {
-  @include elevation-card();
-}
-
-.vt-elevation-card-hover {
-  @include elevation-card-hover();
-}
-
-.vt-elevation-menu {
-  @include elevation-menu();
-}
-
-.vt-elevation-dialog {
-  @include elevation-dialog();
-}
-
-.vt-elevation-tooltip {
-  @include elevation-tooltip();
-}
-
-.vt-elevation-fab {
-  @include elevation-fab();
 }
