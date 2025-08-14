@@ -338,7 +338,7 @@
   // Force the label to use white color with maximum specificity
   // This overrides the global "p, span, div, a, li, td, th" rule
   &.demo-btn.mat-mdc-button-base .mdc-button__label {
-    color: white;
+    color: var(--mat-sys-on-tertiary);
   }
 }
 

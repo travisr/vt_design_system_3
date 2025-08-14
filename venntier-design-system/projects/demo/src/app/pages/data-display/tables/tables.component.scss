@@ -178,7 +178,7 @@
     .demo-table {
       .mat-mdc-header-cell,
       .mat-mdc-cell {
-        border: 1px solid #000;
+        border: 1px solid var(--mat-sys-outline);
         padding: var(--mat-sys-spacing-8, 8px);
       }
     }
