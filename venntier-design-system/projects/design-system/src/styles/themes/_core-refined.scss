@@ -1385,9 +1385,10 @@ mat-sidenav.vt-sidenav-standard {
   // Ensure no scrollbars on the Material Design sidenav element itself
   overflow: hidden;
 
-  // CRITICAL: Hide scrollbar on the inner container that's causing the issue
+  // ENABLE SCROLLING: Allow vertical scrolling while hiding scrollbars
   .mat-drawer-inner-container {
-    overflow: hidden;
+    overflow-y: auto; // Enable vertical scrolling
+    overflow-x: hidden; // Prevent horizontal scrolling
     scrollbar-width: none; // Firefox
     -ms-overflow-style: none; // IE/Edge
 
@@ -1403,9 +1404,10 @@ mat-sidenav {
 
   background-color: var(--mat-sys-surface-container-low);
 
-  // Also hide scrollbars on any mat-sidenav
+  // Also enable scrolling on any mat-sidenav
   .mat-drawer-inner-container {
-    overflow: hidden;
+    overflow-y: auto; // Enable vertical scrolling
+    overflow-x: hidden; // Prevent horizontal scrolling
     scrollbar-width: none;
     -ms-overflow-style: none;
 
