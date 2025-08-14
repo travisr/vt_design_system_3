@@ -109,7 +109,7 @@ h6 {
 }
 
 p,
-span,
+span:not(.mdc-button__label),
 div,
 a,
 li,
