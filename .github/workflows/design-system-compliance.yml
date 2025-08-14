@@ -73,6 +73,18 @@ jobs:
           cd venntier-design-system
           npm run lint || true
 
+      - name: SCSS Token Compliance Check
+        run: |
+          cd venntier-design-system
+          echo "## 🎨 SCSS Token Compliance" >> $GITHUB_STEP_SUMMARY
+          if npm run lint:scss; then
+            echo "✅ All SCSS files use proper design system tokens" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Found hardcoded values that should use design system tokens" >> $GITHUB_STEP_SUMMARY
+            echo "Run \`npm run lint:scss\` locally to see specific violations" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
       - name: Type check
         run: |
           cd venntier-design-system

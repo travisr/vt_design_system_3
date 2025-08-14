@@ -41,7 +41,51 @@
       {
         "message": "Vendor prefixes are automatically added by the build process"
       }
-    ]
+    ],
+    "color-named": [
+      "never",
+      {
+        "message": "Use design system tokens instead of named colors (e.g., var(--mat-sys-on-surface) instead of 'white')"
+      }
+    ],
+    "color-no-hex": [
+      true,
+      {
+        "message": "Use design system tokens instead of hex colors (e.g., var(--mat-sys-primary) instead of '#000000')"
+      }
+    ],
+    "declaration-property-value-disallowed-list": {
+      "color": [
+        "/^(white|black|red|blue|green|yellow|orange|purple|pink|gray|grey)$/i",
+        "/^#/",
+        "/^rgb/",
+        "/^hsl/"
+      ],
+      "background": [
+        "/^(white|black|red|blue|green|yellow|orange|purple|pink|gray|grey)$/i",
+        "/^#/",
+        "/^rgb/",
+        "/^hsl/"
+      ],
+      "background-color": [
+        "/^(white|black|red|blue|green|yellow|orange|purple|pink|gray|grey)$/i",
+        "/^#/",
+        "/^rgb/",
+        "/^hsl/"
+      ],
+      "border-color": [
+        "/^(white|black|red|blue|green|yellow|orange|purple|pink|gray|grey)$/i",
+        "/^#/",
+        "/^rgb/",
+        "/^hsl/"
+      ],
+      "border": [
+        "/solid\\s+(white|black|red|blue|green|yellow|orange|purple|pink|gray|grey)$/i",
+        "/solid\\s+#/",
+        "/solid\\s+rgb/",
+        "/solid\\s+hsl/"
+      ]
+    }
   },
   "ignoreFiles": [
     "node_modules/**",
@@ -49,6 +93,8 @@
     ".angular/**",
     "**/*.ts",
     "**/*.js",
-    "projects/design-system/src/styles/tokens/**/*.scss"
+    "projects/design-system/src/styles/tokens/**/*.scss",
+    "projects/design-system/src/styles/themes/**/*.scss",
+    "projects/design-system/src/styles/components/_icon.scss"
   ]
 }
