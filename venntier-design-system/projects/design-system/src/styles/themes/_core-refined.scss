@@ -792,97 +792,131 @@
 
 // Modern component overrides using official Angular Material APIs
 @mixin vt-modern-component-overrides() {
-  // Button overrides - MD3 COMPLIANT APPROACH using only valid tokens
-  // This replaces ALL conflicting button styles with proper MD3 tokens
-  @include mat.button-overrides(
-    (
-      // FILLED BUTTONS (mat-flat-button with color="primary") - Primary CTA
-      filled-container-color: var(--mat-sys-primary),
-      filled-label-text-color: var(--mat-sys-on-primary),
-      filled-state-layer-color: var(--mat-sys-on-primary),
-      filled-hover-state-layer-opacity: 0.08,
-      filled-pressed-state-layer-opacity: 0.12,
+  // ✅ ANGULAR 20 APPROACH: Use CSS custom properties directly instead of non-existent button-overrides mixin
+  // Based on Context7 research: Angular Material doesn't have mat.button-overrides() mixin
+  // Instead, we use CSS custom properties to override button tokens directly
 
-      // ELEVATED BUTTONS (mat-raised-button with color="primary") - Same as filled for consistency
-      protected-container-color: var(--mat-sys-primary),
-      protected-label-text-color: var(--mat-sys-on-primary),
-      protected-state-layer-color: var(--mat-sys-on-primary),
-      protected-hover-state-layer-opacity: 0.08,
-      protected-pressed-state-layer-opacity: 0.12,
-      protected-container-elevation-shadow: 1,
+  // FILLED BUTTONS (mat-flat-button with color="primary") - Primary CTA
+  .mat-mdc-button.mat-mdc-unelevated-button.mat-primary {
+    // ✅ ANGULAR 20 FIX: Use correct Material Web Component tokens
+    --md-filled-button-container-color: var(--mat-sys-primary);
+    --md-filled-button-label-text-color: var(--mat-sys-on-primary);
+    --md-filled-button-hover-state-layer-color: var(--mat-sys-on-primary);
+    --md-filled-button-focus-state-layer-color: var(--mat-sys-on-primary);
+    --md-filled-button-pressed-state-layer-color: var(--mat-sys-on-primary);
+    --md-filled-button-hover-state-layer-opacity: 0.08;
+    --md-filled-button-pressed-state-layer-opacity: 0.12;
 
-      // OUTLINED BUTTONS (mat-stroked-button) - Secondary actions
-      outlined-outline-color: var(--mat-sys-outline),
-      outlined-label-text-color: var(--mat-sys-on-surface),
-      outlined-state-layer-color: var(--mat-sys-on-surface),
-      outlined-hover-state-layer-opacity: 0.08,
-      outlined-pressed-state-layer-opacity: 0.12,
-      outlined-outline-width: 1px,
-
-      // TEXT BUTTONS (mat-button) - Tertiary actions
-      text-label-text-color: var(--mat-sys-on-surface-variant),
-      text-state-layer-color: var(--mat-sys-on-surface),
-      text-hover-state-layer-opacity: 0.08,
-      text-pressed-state-layer-opacity: 0.12,
-
-      // DISABLED STATES - Consistent across all button types
-      filled-disabled-container-color: var(--mat-sys-surface-variant),
-      filled-disabled-label-text-color: var(--mat-sys-on-surface-variant),
-      protected-disabled-container-color: var(--mat-sys-surface-variant),
-      protected-disabled-label-text-color: var(--mat-sys-on-surface-variant),
-      outlined-disabled-outline-color: var(--mat-sys-outline-variant),
-      outlined-disabled-label-text-color: var(--mat-sys-on-surface-variant),
-      text-disabled-label-text-color: var(--mat-sys-on-surface-variant),
-      // SHARED PROPERTIES - Consistent across all button types
-      filled-container-shape: 6px,
-      protected-container-shape: 6px,
-      outlined-container-shape: 6px,
-      text-container-shape: 6px,
-
-      // Typography - OpenAI style with Inter font
-      filled-label-text-weight: 450,
-      protected-label-text-weight: 450,
-      outlined-label-text-weight: 450,
-      text-label-text-weight: 450,
-      filled-label-text-font: 'Inter',
-      protected-label-text-font: 'Inter',
-      outlined-label-text-font: 'Inter',
-      text-label-text-font: 'Inter'
-    )
-  );
-
-  // TONAL BUTTONS - Handle mat-flat-button without color attribute using CSS custom properties
-  // MD3 BEST PRACTICE: Filled Tonal buttons should use secondary-container tokens for proper contrast
-  // Use highly specific selector to override Angular Material defaults without !important
-  .mat-mdc-button.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base {
-    --mat-button-filled-container-color: var(--mat-sys-secondary-container);
-    --mat-button-filled-label-text-color: var(--mat-sys-on-secondary-container);
-    --mat-button-filled-hover-state-layer-color: var(--mat-sys-on-secondary-container);
-    --mat-button-filled-focus-state-layer-color: var(--mat-sys-on-secondary-container);
-    --mat-button-filled-pressed-state-layer-color: var(--mat-sys-on-secondary-container);
+    // ✅ CRITICAL FIX: Ensure label inherits the correct text color with high specificity
+    &.mat-mdc-unelevated-button.mat-primary .mdc-button__label {
+      color: var(--mat-sys-on-primary);
+    }
   }
 
-  // TERTIARY BUTTONS - Handle mat-flat-button color="tertiary" using direct CSS properties
-  // Angular Material doesn't have filled-tertiary-* override tokens, so we use direct CSS
+  // ELEVATED BUTTONS (mat-raised-button with color="primary") - Same as filled for consistency
+  .mat-mdc-button.mat-mdc-raised-button.mat-primary {
+    --md-elevated-button-container-color: var(--mat-sys-primary);
+    --md-elevated-button-label-text-color: var(--mat-sys-on-primary);
+    --md-elevated-button-hover-state-layer-color: var(--mat-sys-on-primary);
+    --md-elevated-button-focus-state-layer-color: var(--mat-sys-on-primary);
+    --md-elevated-button-pressed-state-layer-color: var(--mat-sys-on-primary);
+    --md-elevated-button-hover-state-layer-opacity: 0.08;
+    --md-elevated-button-pressed-state-layer-opacity: 0.12;
+
+    // ✅ CRITICAL FIX: Ensure label inherits the correct text color with high specificity
+    &.mat-mdc-raised-button.mat-primary .mdc-button__label {
+      color: var(--mat-sys-on-primary);
+    }
+  }
+
+  // OUTLINED BUTTONS (mat-stroked-button) - Secondary actions
+  .mat-mdc-button.mat-mdc-outlined-button {
+    --md-outlined-button-outline-color: var(--mat-sys-outline);
+    --md-outlined-button-label-text-color: var(--mat-sys-on-surface);
+    --md-outlined-button-hover-state-layer-color: var(--mat-sys-on-surface);
+    --md-outlined-button-focus-state-layer-color: var(--mat-sys-on-surface);
+    --md-outlined-button-pressed-state-layer-color: var(--mat-sys-on-surface);
+    --md-outlined-button-hover-state-layer-opacity: 0.08;
+    --md-outlined-button-pressed-state-layer-opacity: 0.12;
+    --md-outlined-button-outline-width: 1px;
+  }
+
+  // TEXT BUTTONS (mat-button) - Tertiary actions
+  .mat-mdc-button.mat-mdc-button {
+    --md-text-button-label-text-color: var(--mat-sys-on-surface-variant);
+    --md-text-button-hover-state-layer-color: var(--mat-sys-on-surface);
+    --md-text-button-focus-state-layer-color: var(--mat-sys-on-surface);
+    --md-text-button-pressed-state-layer-color: var(--mat-sys-on-surface);
+    --md-text-button-hover-state-layer-opacity: 0.08;
+    --md-text-button-pressed-state-layer-opacity: 0.12;
+  }
+
+  // DISABLED STATES - Apply to all button types
+  .mat-mdc-button:disabled,
+  .mat-mdc-button.mat-mdc-button-disabled {
+    --md-filled-button-disabled-container-color: var(--mat-sys-surface-variant);
+    --md-filled-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
+    --md-elevated-button-disabled-container-color: var(--mat-sys-surface-variant);
+    --md-elevated-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
+    --md-outlined-button-disabled-outline-color: var(--mat-sys-outline-variant);
+    --md-outlined-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
+    --md-text-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
+  }
+
+  // SHARED PROPERTIES - Apply to all button types
+  .mat-mdc-button {
+    --md-filled-button-container-shape: 6px;
+    --md-elevated-button-container-shape: 6px;
+    --md-outlined-button-container-shape: 6px;
+    --md-text-button-container-shape: 6px;
+
+    // Typography - OpenAI style with Inter font
+    --md-filled-button-label-text-weight: 450;
+    --md-elevated-button-label-text-weight: 450;
+    --md-outlined-button-label-text-weight: 450;
+    --md-text-button-label-text-weight: 450;
+    --md-filled-button-label-text-font: 'Inter';
+    --md-elevated-button-label-text-font: 'Inter';
+    --md-outlined-button-label-text-font: 'Inter';
+    --md-text-button-label-text-font: 'Inter';
+  }
+
+  // TONAL BUTTONS - Handle mat-flat-button without color attribute using CSS custom properties
+  // ✅ ANGULAR 20 BEST PRACTICE: Filled Tonal buttons should use secondary-container tokens for proper contrast
+  // Use highly specific selector to override Angular Material defaults without !important
+  .mat-mdc-button.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base {
+    // ✅ CRITICAL FIX: Use correct Material Web Component tokens for tonal buttons
+    --md-filled-tonal-button-container-color: var(--mat-sys-secondary-container);
+    --md-filled-tonal-button-label-text-color: var(--mat-sys-on-secondary-container);
+    --md-filled-tonal-button-hover-state-layer-color: var(--mat-sys-on-secondary-container);
+    --md-filled-tonal-button-focus-state-layer-color: var(--mat-sys-on-secondary-container);
+    --md-filled-tonal-button-pressed-state-layer-color: var(--mat-sys-on-secondary-container);
+  }
+
+  // TERTIARY BUTTONS - Handle mat-flat-button color="tertiary" using Angular 20 best practices
+  // ✅ ANGULAR 20 APPROACH: Use CSS custom properties with proper token pairs
   .mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary {
+    // ✅ CRITICAL FIX: Use correct Material Web Component tokens for filled buttons
+    --md-filled-button-container-color: var(--mat-sys-tertiary);
+    --md-filled-button-label-text-color: var(--mat-sys-on-tertiary);
+    --md-filled-button-hover-state-layer-color: var(--mat-sys-on-tertiary);
+    --md-filled-button-focus-state-layer-color: var(--mat-sys-on-tertiary);
+    --md-filled-button-pressed-state-layer-color: var(--mat-sys-on-tertiary);
+
+    // ✅ BACKUP: Direct CSS properties for maximum compatibility
     background-color: var(--mat-sys-tertiary);
     color: var(--mat-sys-on-tertiary);
     border-color: var(--mat-sys-tertiary);
 
-    // Override ALL MDC variables that control text color with higher specificity
-    --mat-button-filled-container-color: var(--mat-sys-tertiary);
-    --mat-button-filled-label-text-color: var(--mat-sys-on-tertiary);
-    --mat-button-filled-hover-state-layer-color: var(--mat-sys-on-tertiary);
-    --mat-button-filled-focus-state-layer-color: var(--mat-sys-on-tertiary);
-    --mat-button-filled-pressed-state-layer-color: var(--mat-sys-on-tertiary);
+    // ✅ CRITICAL FIX: Ensure label inherits the correct text color with high specificity
+    &.mat-mdc-unelevated-button.mat-tertiary .mdc-button__label {
+      color: var(--mat-sys-on-tertiary);
+    }
   }
 
-  // TERTIARY BUTTON TEXT FIX - Separate rule with maximum specificity
-  .mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary.mat-mdc-button-base .mdc-button__label {
-    color: var(--mat-sys-on-tertiary);
-  }
-
-  .mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary.mat-mdc-button-base span {
+  // ✅ ANGULAR 20 BEST PRACTICE: Ensure text color inheritance for all text elements
+  .mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary .mdc-button__label,
+  .mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary span {
     color: var(--mat-sys-on-tertiary);
   }
 
@@ -1795,8 +1829,4 @@ mat-sidenav.vt-sidenav-standard .vt-sidenav-content,
   @include vt-density-overrides(1);
 }
 
-// CRITICAL FIX: Tertiary button text color - must be at the end for maximum specificity
-.mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary.mat-mdc-button-base.demo-btn
-  .mdc-button__label {
-  color: var(--mat-sys-on-tertiary);
-}
+// Button text colors are now properly handled by excluding .mdc-button__label from global span rule
