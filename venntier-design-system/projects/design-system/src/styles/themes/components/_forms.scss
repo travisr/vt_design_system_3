@@ -157,7 +157,7 @@
 
       // Selected state for flat chips
       flat-selected-outline-width: 1px,
-      selected-label-text-color: var(--mat-sys-on-surface),
+      selected-label-text-color: var(--mat-sys-on-primary),
       // Icon styling
       with-icon-icon-color: var(--mat-sys-on-surface-variant),
       with-icon-selected-icon-color: var(--mat-sys-on-surface),
@@ -198,9 +198,9 @@
     // Override selected state with OpenAI gray colors
     &.mat-mdc-chip-selected,
     &[aria-selected='true'] {
-      background-color: var(--mat-sys-primary); // #e8e8ea OpenAI gray
-      border-color: var(--mat-sys-outline); // #d1d5db standard border
-      color: var(--mat-sys-on-surface); // Black text
+      background-color: var(--mat-sys-primary);
+      border-color: var(--mat-sys-outline);
+      color: var(--mat-sys-on-primary);
 
       // Ensure icons also use the correct color
       mat-icon {

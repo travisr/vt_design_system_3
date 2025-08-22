@@ -96,14 +96,21 @@
     --mat-sys-data-primary: #7c3aed;
     --mat-sys-on-data-primary: #ffffff;
 
+    // Semantic layout tokens
+    --mat-sys-sidenav-width: 220px;
+
     // OpenAI-style border colors (light theme)
     --mat-sys-border-subtle: #e5e7eb;
     --mat-sys-border-default: #e5e7eb;
     --mat-sys-border-prominent: #d1d5db;
 
+    // Navigation surface (light theme)
+    --mat-sys-surface-container-nav: #f7f7f8;
+
     // Interaction states - OpenAI-style (light theme)
-    --mat-sys-hover: #f9fafb;
-    --mat-sys-selected: #f3f4f6;
+    // Ensure hover is light gray and selected slightly darker
+    --mat-sys-hover: #f0f0f3; // between #f7f7f8 (nav bg) and #e5e5e5 (selected)
+    --mat-sys-selected: #e5e5e5;
     --mat-sys-focus-ring: #10a37f;
     --mat-sys-disabled: #9ca3af;
 
@@ -135,10 +142,14 @@
     --mat-sys-border-prominent: #565869;
 
     // Interaction states - OpenAI-style (dark theme)
-    --mat-sys-hover: #2a2a2a;
-    --mat-sys-selected: #353740;
+    // Ensure selected is darker than hover per requirements
+    --mat-sys-hover: #353740;
+    --mat-sys-selected: #2a2a2a;
     --mat-sys-focus-ring: #10a37f;
     --mat-sys-disabled: #6b7280;
+
+    // Navigation surface (dark theme)
+    --mat-sys-surface-container-nav: #353740;
 
     // Form control colors (dark theme)
     --mat-sys-input-background: #353740;
@@ -179,18 +190,18 @@
 // ============================================================================
 @mixin vt-essential-overrides() {
   // OpenAI-style subtle elevations - barely visible but creates depth
-  .mat-elevation-z1,
-  .mat-elevation-z2,
-  .mat-elevation-z3,
-  .mat-elevation-z4,
-  .mat-elevation-z6,
-  .mat-elevation-z8,
-  .mat-elevation-z12,
-  .mat-elevation-z16,
-  .mat-elevation-z24 {
+  .vt-theme .mat-elevation-z1,
+  .vt-theme .mat-elevation-z2,
+  .vt-theme .mat-elevation-z3,
+  .vt-theme .mat-elevation-z4,
+  .vt-theme .mat-elevation-z6,
+  .vt-theme .mat-elevation-z8,
+  .vt-theme .mat-elevation-z12,
+  .vt-theme .mat-elevation-z16,
+  .vt-theme .mat-elevation-z24 {
     box-shadow:
       0 1px 2px 0 rgba(0, 0, 0, 0.05),
-      0 1px 3px 0 rgba(0, 0, 0, 0.03) !important;
+      0 1px 3px 0 rgba(0, 0, 0, 0.03);
   }
 
   // Critical button overrides

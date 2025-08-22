@@ -8,14 +8,15 @@
     a[mat-list-item].active,
     .mat-mdc-list-item.active {
       // Selected label text color (not available as token)
+      // Use on-surface because selected background is a gray surface token
       .mat-mdc-list-item-title {
-        color: var(--mat-sys-primary);
+        color: var(--mat-sys-on-surface);
         font-weight: var(--mat-sys-label-medium-weight);
       }
 
       // Selected leading icon color (not available as token)
       mat-icon {
-        color: var(--mat-sys-primary);
+        color: var(--mat-sys-on-surface);
       }
     }
   }

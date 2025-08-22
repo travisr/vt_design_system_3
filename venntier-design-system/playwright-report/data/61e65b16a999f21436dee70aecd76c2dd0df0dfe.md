@@ -1,0 +1,141 @@
+# Page snapshot
+
+```yaml
+- navigation "Main navigation":
+    - img "Venntier logo"
+    - text: Venntier Foundation
+    - navigation:
+        - link "Typography":
+            - /url: /foundation/typography
+        - link "Colors & Themes":
+            - /url: /foundation/colors
+        - link "Spacing & Layout":
+            - /url: /foundation/spacing
+        - link "Elevation & Depth":
+            - /url: /foundation/elevation
+        - link "Motion":
+            - /url: /foundation/motion
+        - link "Icons":
+            - /url: /foundation/icons
+    - text: Actions
+    - navigation:
+        - link "Buttons":
+            - /url: /actions/buttons
+        - link "FAB":
+            - /url: /actions/fab
+        - link "Icon Buttons":
+            - /url: /actions/icon-buttons
+        - link "Segmented Buttons":
+            - /url: /actions/segmented-buttons
+        - link "Chips":
+            - /url: /actions/chips
+    - text: Forms & Inputs
+    - navigation:
+        - link "Text Fields":
+            - /url: /forms/text-fields
+        - link "Select":
+            - /url: /forms/select
+        - link "Checkboxes":
+            - /url: /forms/checkboxes
+        - link "Radio Buttons":
+            - /url: /forms/radio-buttons
+        - link "Switches":
+            - /url: /forms/switches
+        - link "Sliders":
+            - /url: /forms/sliders
+        - link "Date & Time":
+            - /url: /forms/date-time
+    - text: Navigation
+    - navigation:
+        - link "Navigation Bar":
+            - /url: /navigation/navbar
+        - link "Navigation Rail":
+            - /url: /navigation/rail
+        - link "Navigation Drawer":
+            - /url: /navigation/drawer
+        - link "Tabs":
+            - /url: /navigation/tabs
+        - link "Top App Bar":
+            - /url: /navigation/app-bar
+    - text: Communication
+    - navigation:
+        - link "Badges":
+            - /url: /communication/badges
+        - link "Snackbar":
+            - /url: /communication/snackbar
+        - link "Tooltips":
+            - /url: /communication/tooltips
+        - link "Dialogs":
+            - /url: /communication/dialogs
+        - link "Sheets":
+            - /url: /communication/sheets
+    - text: Data Display
+    - navigation:
+        - link "Cards":
+            - /url: /data-display/cards
+        - link "Lists":
+            - /url: /data-display/lists
+        - link "Tables":
+            - /url: /data-display/tables
+        - link "Dividers":
+            - /url: /data-display/dividers
+    - text: Feedback
+    - navigation:
+        - link "Progress":
+            - /url: /feedback/progress
+        - link "Skeleton":
+            - /url: /feedback/skeleton
+        - link "Loading":
+            - /url: /feedback/loading
+        - link "Empty States":
+            - /url: /feedback/empty
+    - text: Layout
+    - navigation:
+        - link "Grid System":
+            - /url: /layout/grid
+        - link "Responsive":
+            - /url: /layout/responsive
+        - link "Expansion Panels":
+            - /url: /layout/expansion
+- banner:
+    - heading "Venntier Design System" [level=1]
+    - button "Toggle dark mode"
+- main:
+    - heading "Typography" [level=1]
+    - paragraph: The Venntier Design System uses Inter as its primary typeface with a refined type scale for optimal readability.
+    - link "View Material Design Docs →":
+        - /url: https://m3.material.io/styles/typography
+    - heading "Display Styles" [level=2]
+    - text: Display Typography Large, attention-grabbing text for hero sections and major headings Display Large · 56px · 200
+    - paragraph: Build amazing products
+    - text: Display Medium · 44px · 200
+    - paragraph: Build amazing products
+    - text: Display Small · 36px · 300
+    - paragraph: Build amazing products
+    - heading "Headline Styles" [level=2]
+    - text: Headline Typography Section headers and page titles for content hierarchy Headline Large · 32px · 450
+    - paragraph: Create powerful interfaces
+    - text: Headline Medium · 28px · 450
+    - paragraph: Create powerful interfaces
+    - text: Headline Small · 24px · 400
+    - paragraph: Create powerful interfaces
+    - heading "Body & Label Styles" [level=2]
+    - text: Title Typography For section headers and emphasis Title Large · 22px · 450
+    - paragraph: Section titles and emphasis
+    - text: Title Medium · 18px · 450
+    - paragraph: Subsection headers
+    - text: Title Small · 16px · 450
+    - paragraph: Card titles and labels
+    - text: Body Typography For main content and readable text Body Large · 16px · 400
+    - paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    - text: Body Medium · 14px · 400
+    - paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    - text: Body Small · 12px · 400
+    - paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    - text: Label Typography For buttons, form labels, and UI elements Label Large · 14px · 450
+    - paragraph: BUTTON TEXT
+    - text: Label Medium · 12px · 450
+    - paragraph: SMALL BUTTON
+    - text: Label Small · 11px · 450
+    - paragraph: CAPTION TEXT
+```

@@ -23,9 +23,9 @@
 // Apply bulletproof core theme (minimal, stable foundation)
 @include core.vt-theme-bulletproof;
 
-// Apply safe extensions (OpenAI styling, enhanced components)
-// NOTE: This can be safely disabled by commenting out the line below
-@include extensions.vt-safe-extensions;
+// Apply safe extensions (OpenAI styling, enhanced components) - consolidated into core
+// Note: Redundant color/density variants removed here to avoid duplication
+// @include extensions.vt-safe-extensions;
 
 // ============================================================================
 // ANGULAR MATERIAL 20 COMPONENT OVERRIDES
@@ -114,19 +114,8 @@ html {
   // They complement the Angular Material 20 component override mixins above
   // This hybrid approach ensures both Angular Material 20 compliance AND test compatibility
 
-  // Button component tokens (12 required tokens for foundation tests)
-  --mat-filled-button-container-color: var(--mat-sys-primary);
-  --mat-filled-button-label-text-color: var(--mat-sys-on-primary);
-  --mat-filled-button-disabled-container-color: var(--mat-sys-surface-variant);
-  --mat-filled-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
-  --mat-outlined-button-outline-color: var(--mat-sys-outline);
-  --mat-outlined-button-label-text-color: var(--mat-sys-on-surface);
-  --mat-outlined-button-disabled-outline-color: var(--mat-sys-outline-variant);
-  --mat-text-button-label-text-color: var(--mat-sys-on-surface);
-  --mat-text-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
-  --mat-fab-container-color: var(--mat-sys-primary-container);
-  --mat-fab-foreground-color: var(--mat-sys-on-primary-container);
-  --mat-fab-disabled-container-color: var(--mat-sys-surface-variant);
+  /* Removed manual component CSS variable backfills in favor of official
+     Angular Material component override mixins (mat.*-overrides). */
 }
 
 // MD3 AUTOMATIC DARK THEME: No manual dark theme selectors needed

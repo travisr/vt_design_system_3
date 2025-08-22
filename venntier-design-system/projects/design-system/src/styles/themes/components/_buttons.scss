@@ -55,7 +55,7 @@
     (
       // Selected state styling - OpenAI clean design
       selected-state-background-color: var(--mat-sys-primary),
-      selected-state-text-color: var(--mat-sys-on-surface),
+      selected-state-text-color: var(--mat-sys-on-primary),
       // Unselected state styling (using correct token names from error message)
       background-color: var(--mat-sys-surface),
       text-color: var(--mat-sys-on-surface),

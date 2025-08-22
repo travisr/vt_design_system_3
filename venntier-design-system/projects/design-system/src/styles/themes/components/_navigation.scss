@@ -12,12 +12,12 @@
 
   // Sidenav container - OpenAI style
   .vt-sidenav-standard {
-    width: var(--mat-sys-spacing-220, 220px);
-    min-width: var(--mat-sys-spacing-220, 220px);
-    max-width: var(--mat-sys-spacing-220, 220px);
+    width: var(--mat-sys-sidenav-width);
+    min-width: var(--mat-sys-sidenav-width);
+    max-width: var(--mat-sys-sidenav-width);
 
-    // Use proper surface-container-low token for OpenAI sidenav background
-    background-color: var(--mat-sys-surface-container-low);
+    // Use dedicated nav token for sidenav background
+    background-color: var(--mat-sys-surface-container-nav);
 
     // CRITICAL: Remove border-radius from sidenav container
     border-radius: 0;
@@ -28,9 +28,9 @@
 
   // Ensure sidenav background is applied with higher specificity
   mat-sidenav.vt-sidenav-standard {
-    --mat-drawer-container-color: var(--mat-sys-surface-container-low);
+    --mat-drawer-container-color: var(--mat-sys-surface-container-nav);
 
-    background-color: var(--mat-sys-surface-container-low);
+    background-color: var(--mat-sys-surface-container-nav);
 
     // CRITICAL: Remove border-radius with high specificity
     border-radius: 0;
@@ -52,9 +52,9 @@
 
   // Also target the mat-sidenav element directly in case class isn't applied
   mat-sidenav {
-    --mat-drawer-container-color: var(--mat-sys-surface-container-low);
+    --mat-drawer-container-color: var(--mat-sys-surface-container-nav);
 
-    background-color: var(--mat-sys-surface-container-low);
+    background-color: var(--mat-sys-surface-container-nav);
 
     // Also hide scrollbars on any mat-sidenav
     .mat-drawer-inner-container {
@@ -170,11 +170,8 @@
     // Hover state - using proper hover token (OpenAI style) - but not for active items
     // Use higher specificity to override Angular Material
     &:hover:not(.active) {
-      background-color: var(
-        --mat-sys-surface-container-low
-      ); // OpenAI hover state using proper token
-
-      color: var(--mat-sys-on-surface); // Proper text color on hover
+      background-color: var(--mat-sys-hover);
+      color: var(--mat-sys-on-surface);
     }
 
     // Remove focus outline - OpenAI style has no focus indicators
@@ -205,11 +202,8 @@
 
   // Selected/active state - ONLY for items with .active class (using proper tokens)
   .vt-sidenav-standard mat-nav-list a[mat-list-item].active {
-    background-color: var(
-      --mat-sys-surface-container-high
-    ); // OpenAI selected state using proper token
-
-    color: var(--mat-sys-on-surface); // Proper text color for selected
+    background-color: var(--mat-sys-selected);
+    color: var(--mat-sys-on-surface);
     font-weight: 500; // Semi-bold for selected
 
     span {
@@ -230,11 +224,11 @@
 
   // Higher specificity hover rule to override Angular Material
   .vt-sidenav-standard mat-nav-list a[mat-list-item].mat-mdc-list-item:hover:not(.active) {
-    background-color: var(--mat-sys-surface-container-low); // OpenAI hover state using proper token
-    color: var(--mat-sys-on-surface); // Proper text color on hover
+    background-color: var(--mat-sys-hover);
+    color: var(--mat-sys-on-surface);
 
     span {
-      color: var(--mat-sys-on-surface); // Ensure text color is applied
+      color: var(--mat-sys-on-surface);
     }
 
     mat-icon {

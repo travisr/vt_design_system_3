@@ -55,8 +55,8 @@ describe('Design System Architecture - STRUCTURAL VALIDATION', () => {
       }
 
       if (matTokens.length > 0) {
-        console.log(`Found ${matTokens.length} Angular Material 20 tokens. Migration complete!`);
-        console.log('Sample mat-sys tokens:', matTokens.slice(0, 5));
+        console.warn(`Found ${matTokens.length} Angular Material 20 tokens. Migration complete!`);
+        console.warn('Sample mat-sys tokens:', matTokens.slice(0, 5));
       }
 
       // Expect Angular Material 20 tokens to be present
@@ -337,7 +337,7 @@ describe('Design System Architecture - STRUCTURAL VALIDATION', () => {
 
       if (matTokens > 0) {
         score += 15; // Full points for Angular Material 20 compliance
-        console.log(`Angular Material 20 Compliance: ${matTokens} mat-sys tokens found`);
+        console.warn(`Angular Material 20 Compliance: ${matTokens} mat-sys tokens found`);
       }
 
       // Accessibility basics (10 points)
@@ -366,7 +366,7 @@ describe('Design System Architecture - STRUCTURAL VALIDATION', () => {
       console.warn(`Token Coverage: ${tokenCount} tokens`);
       console.warn(`Color Completeness: ${definedColors.length}/${requiredColors.length}`);
       console.warn(`Typography Scale: ${definedTypography.length}/${typographyTokens.length}`);
-      console.log(`Angular Material 20 Compliance: ${matTokens} mat-sys tokens found`);
+      console.warn(`Angular Material 20 Compliance: ${matTokens} mat-sys tokens found`);
       console.warn(`Accessibility: ${accessiblePairs}/${contrastPairs.length} contrast pairs`);
       console.warn('==================================');
 

@@ -1,0 +1,236 @@
+{
+  "config": {
+    "configFile": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/playwright.config.ts",
+    "rootDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      ["html", null],
+      [
+        "json",
+        {
+          "outputFile": "test-results/visual-test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Microsoft Edge",
+        "name": "Microsoft Edge",
+        "testDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Google Chrome",
+        "name": "Google Chrome",
+        "testDir": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.54.2",
+    "workers": 7,
+    "webServer": {
+      "command": "npm run start",
+      "url": "http://localhost:4200",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "sidenav-quick.spec.ts",
+      "file": "sidenav-quick.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Sidenav quick check on home page",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 243,
+                  "error": {
+                    "message": "Error: expect: Property 'toHaveCountGreaterThan' not found.",
+                    "stack": "Error: expect: Property 'toHaveCountGreaterThan' not found.\n    at /Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual/sidenav-quick.spec.ts:27:22",
+                    "location": {
+                      "file": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual/sidenav-quick.spec.ts",
+                      "column": 22,
+                      "line": 27
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   \u001b[36mconst\u001b[39m items \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.vt-sidenav-standard mat-nav-list a[mat-list-item]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m expect(items)\u001b[33m.\u001b[39mtoHaveCountGreaterThan(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m\n \u001b[90m 29 |\u001b[39m   \u001b[36mconst\u001b[39m first \u001b[33m=\u001b[39m items\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m   \u001b[36mconst\u001b[39m second \u001b[33m=\u001b[39m items\u001b[33m.\u001b[39mnth(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual/sidenav-quick.spec.ts",
+                        "column": 22,
+                        "line": 27
+                      },
+                      "message": "Error: expect: Property 'toHaveCountGreaterThan' not found.\n\n\u001b[0m \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   \u001b[36mconst\u001b[39m items \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.vt-sidenav-standard mat-nav-list a[mat-list-item]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m expect(items)\u001b[33m.\u001b[39mtoHaveCountGreaterThan(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m\n \u001b[90m 29 |\u001b[39m   \u001b[36mconst\u001b[39m first \u001b[33m=\u001b[39m items\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m   \u001b[36mconst\u001b[39m second \u001b[33m=\u001b[39m items\u001b[33m.\u001b[39mnth(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual/sidenav-quick.spec.ts:27:22\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-08-22T18:06:49.713Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual/sidenav-quick-Sidenav-quick-check-on-home-page-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual/sidenav-quick-Sidenav-quick-check-on-home-page-chromium/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/test-results/visual/sidenav-quick-Sidenav-quick-check-on-home-page-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/travisrichardson/Documents/DevProjects/venntier/Code/experiments/vt_design_system_3/venntier-design-system/tests/visual/sidenav-quick.spec.ts",
+                    "column": 22,
+                    "line": 27
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b188dc610232e67e81a-cbf4d3e2c0f77b5317ed",
+          "file": "sidenav-quick.spec.ts",
+          "line": 19,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-22T18:06:45.958Z",
+    "duration": 4115.313,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
