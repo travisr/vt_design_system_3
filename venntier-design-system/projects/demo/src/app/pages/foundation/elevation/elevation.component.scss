@@ -15,8 +15,8 @@
 }
 
 .elevation-sample {
-  background: var(--mat-sys-color-surface);
-  border: 1px solid var(--mat-sys-color-outline-variant);
+  background: var(--mat-sys-surface);
+  border: 1px solid var(--mat-sys-outline-variant);
   border-radius: var(--mat-sys-shape-corner-medium, 8px);
   padding: var(--mat-sys-spacing-24, 24px);
   min-height: 120px;
@@ -36,14 +36,14 @@
 }
 
 .elevation-level {
-  font-size: var(--mat-sys-typescale-headline-small-size, 24px);
-  font-weight: var(--mat-sys-typescale-headline-small-weight, 400);
-  color: var(--mat-sys-color-on-surface);
+  font-size: var(--mat-sys-headline-small-size, 24px);
+  font-weight: var(--mat-sys-headline-small-weight, 400);
+  color: var(--mat-sys-on-surface);
 }
 
 .elevation-name {
-  font-size: var(--mat-sys-typescale-body-medium-size, 14px);
-  color: var(--mat-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-body-medium-size, 14px);
+  color: var(--mat-sys-on-surface-variant);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -55,21 +55,21 @@
 }
 
 .elevation-token {
-  font-size: var(--mat-sys-typescale-label-medium-size, 12px);
+  font-size: var(--mat-sys-label-medium-size, 12px);
   font-family: Monaco, Menlo, 'Ubuntu Mono', monospace;
-  color: var(--mat-sys-color-primary);
+  color: var(--mat-sys-primary);
   font-weight: 500;
 }
 
 .elevation-usage {
-  font-size: var(--mat-sys-typescale-body-small-size, 12px);
-  color: var(--mat-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-body-small-size, 12px);
+  color: var(--mat-sys-on-surface-variant);
 }
 
 .elevation-shadow {
-  font-size: var(--mat-sys-typescale-label-small-size, 11px);
+  font-size: var(--mat-sys-label-small-size, 11px);
   font-family: Monaco, Menlo, 'Ubuntu Mono', monospace;
-  color: var(--mat-sys-color-on-surface-variant);
+  color: var(--mat-sys-on-surface-variant);
   opacity: 0.7;
 }
 
@@ -86,9 +86,9 @@
   gap: var(--mat-sys-spacing-16, 16px);
 
   h4 {
-    font-size: var(--mat-sys-typescale-title-medium-size, 16px);
-    font-weight: var(--mat-sys-typescale-title-medium-weight, 500);
-    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-title-medium-size, 16px);
+    font-weight: var(--mat-sys-title-medium-weight, 500);
+    color: var(--mat-sys-on-surface);
     margin: 0;
   }
 }
@@ -98,7 +98,7 @@
   align-items: center;
   gap: var(--mat-sys-spacing-16, 16px);
   padding: var(--mat-sys-spacing-24, 24px);
-  background: var(--mat-sys-color-surface-container-low);
+  background: var(--mat-sys-surface-container-low);
   border-radius: var(--mat-sys-shape-corner-small, 6px);
   min-height: 80px;
   overflow: visible;
@@ -127,7 +127,7 @@
 }
 
 .modal-dialog {
-  background: var(--mat-sys-color-surface);
+  background: var(--mat-sys-surface);
   border-radius: var(--mat-sys-shape-corner-large, 12px);
   box-shadow: var(--mat-sys-elevation-4);
   max-width: 400px;
@@ -142,12 +142,12 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--mat-sys-spacing-24, 24px);
-  border-bottom: 1px solid var(--mat-sys-color-outline-variant);
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
 
   h3 {
-    font-size: var(--mat-sys-typescale-title-large-size, 22px);
-    font-weight: var(--mat-sys-typescale-title-large-weight, 400);
-    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-title-large-size, 22px);
+    font-weight: var(--mat-sys-title-large-weight, 400);
+    color: var(--mat-sys-on-surface);
     margin: 0;
   }
 }
@@ -156,8 +156,8 @@
   padding: var(--mat-sys-spacing-24, 24px);
 
   p {
-    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
-    color: var(--mat-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-body-medium-size, 14px);
+    color: var(--mat-sys-on-surface-variant);
     margin: 0;
     line-height: 1.5;
   }
@@ -168,12 +168,12 @@
   justify-content: flex-end;
   gap: var(--mat-sys-spacing-8, 8px);
   padding: var(--mat-sys-spacing-16, 16px) var(--mat-sys-spacing-24, 24px);
-  border-top: 1px solid var(--mat-sys-color-outline-variant);
+  border-top: 1px solid var(--mat-sys-outline-variant);
 }
 
 .example-note {
-  font-size: var(--mat-sys-typescale-body-small-size, 12px);
-  color: var(--mat-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-body-small-size, 12px);
+  color: var(--mat-sys-on-surface-variant);
   font-style: italic;
 }
 
@@ -186,9 +186,9 @@
 
 .guideline-section {
   h4 {
-    font-size: var(--mat-sys-typescale-title-medium-size, 16px);
-    font-weight: var(--mat-sys-typescale-title-medium-weight, 500);
-    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-title-medium-size, 16px);
+    font-weight: var(--mat-sys-title-medium-weight, 500);
+    color: var(--mat-sys-on-surface);
     margin: 0 0 var(--mat-sys-spacing-16, 16px) 0;
   }
 
@@ -202,20 +202,20 @@
   }
 
   li {
-    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
-    color: var(--mat-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-body-medium-size, 14px);
+    color: var(--mat-sys-on-surface-variant);
     padding-left: var(--mat-sys-spacing-16, 16px);
     position: relative;
 
     &::before {
       content: '•';
-      color: var(--mat-sys-color-primary);
+      color: var(--mat-sys-primary);
       position: absolute;
       left: 0;
     }
 
     strong {
-      color: var(--mat-sys-color-on-surface);
+      color: var(--mat-sys-on-surface);
       font-weight: 500;
     }
   }
@@ -230,15 +230,15 @@
 
 .code-block {
   h4 {
-    font-size: var(--mat-sys-typescale-title-small-size, 14px);
-    font-weight: var(--mat-sys-typescale-title-small-weight, 500);
-    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-title-small-size, 14px);
+    font-weight: var(--mat-sys-title-small-weight, 500);
+    color: var(--mat-sys-on-surface);
     margin: 0 0 var(--mat-sys-spacing-12, 12px) 0;
   }
 
   pre {
-    background: var(--mat-sys-color-surface-container-low);
-    border: 1px solid var(--mat-sys-color-outline-variant);
+    background: var(--mat-sys-surface-container-low);
+    border: 1px solid var(--mat-sys-outline-variant);
     border-radius: var(--mat-sys-shape-corner-small, 6px);
     padding: var(--mat-sys-spacing-16, 16px);
     margin: 0;
@@ -246,8 +246,8 @@
 
     code {
       font-family: Monaco, Menlo, 'Ubuntu Mono', monospace;
-      font-size: var(--mat-sys-typescale-body-small-size, 12px);
-      color: var(--mat-sys-color-on-surface);
+      font-size: var(--mat-sys-body-small-size, 12px);
+      color: var(--mat-sys-on-surface);
       line-height: 1.5;
     }
   }

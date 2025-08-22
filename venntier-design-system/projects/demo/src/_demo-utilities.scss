@@ -50,29 +50,29 @@
 
 // Common section header styles
 %demo-section-title {
-  font-size: var(--mat-sys-typescale-headline-medium-size);
-  font-weight: var(--mat-sys-typescale-headline-medium-weight);
-  color: var(--mat-sys-color-on-surface);
+  font-size: var(--mat-sys-headline-medium-size);
+  font-weight: var(--mat-sys-headline-medium-weight);
+  color: var(--mat-sys-on-surface);
   margin: 0 0 var(--mat-sys-spacing-2) 0;
 }
 
 .demo-section-title {
-  font-size: var(--mat-sys-typescale-headline-medium-size);
-  font-weight: var(--mat-sys-typescale-headline-medium-weight);
-  color: var(--mat-sys-color-on-surface);
+  font-size: var(--mat-sys-headline-medium-size);
+  font-weight: var(--mat-sys-headline-medium-weight);
+  color: var(--mat-sys-on-surface);
   margin: 0 0 var(--mat-sys-spacing-2) 0;
 }
 
 %demo-section-description {
-  font-size: var(--mat-sys-typescale-body-medium-size);
-  color: var(--mat-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-body-medium-size);
+  color: var(--mat-sys-on-surface-variant);
   margin: 0 0 var(--mat-sys-spacing-6) 0;
   line-height: 1.5;
 }
 
 .demo-section-description {
-  font-size: var(--mat-sys-typescale-body-medium-size);
-  color: var(--mat-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-body-medium-size);
+  color: var(--mat-sys-on-surface-variant);
   margin: 0 0 var(--mat-sys-spacing-6) 0;
   line-height: 1.5;
 }
@@ -84,9 +84,9 @@
 // UPDATED: Removed conflicting card styles - now handled by modernized card overrides
 // All mat-card styling is now handled by mat.card-overrides() in _core-refined.scss
 
-// Demo-specific card utilities (non-conflicting)
+// Demo-specific card utilities (non-conflicting) - 8px-aligned
 %demo-card-spacing {
-  margin-bottom: var(--mat-sys-spacing-5);
+  margin-bottom: var(--mat-sys-spacing-24, 24px);
 
   &:last-child {
     margin-bottom: 0;
@@ -94,16 +94,16 @@
 }
 
 .demo-card-spacing {
-  margin-bottom: var(--mat-sys-spacing-5);
+  margin-bottom: var(--mat-sys-spacing-24, 24px);
 
   &:last-child {
     margin-bottom: 0;
   }
 }
 
-// Demo content padding utility (for non-mat-card elements)
+// Demo content padding utility (for non-mat-card elements) - 8px-aligned
 .demo-card-content {
-  padding: var(--mat-sys-spacing-6);
+  padding: var(--mat-sys-spacing-32, 32px);
 }
 
 // ============================================
@@ -229,27 +229,27 @@
   margin: var(--mat-sys-spacing-4) 0;
 
   h4 {
-    font-size: var(--mat-sys-typescale-label-large-size);
-    font-weight: var(--mat-sys-typescale-label-large-weight);
-    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-label-large-size);
+    font-weight: var(--mat-sys-label-large-weight);
+    color: var(--mat-sys-on-surface);
     margin: 0 0 var(--mat-sys-spacing-3) 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   pre {
-    background: var(--mat-sys-color-surface-container);
-    border: 1px solid var(--mat-sys-color-outline-variant);
+    background: var(--mat-sys-surface-container);
+    border: 1px solid var(--mat-sys-outline-variant);
     border-radius: var(--mat-sys-shape-corner-medium);
     padding: var(--mat-sys-spacing-4);
     margin: 0;
     overflow-x: auto;
 
     code {
-      font-family: var(--mat-sys-typescale-code-font);
-      font-size: var(--mat-sys-typescale-code-size);
+      font-family: var(--mat-sys-code-font);
+      font-size: var(--mat-sys-code-size);
       line-height: 1.6;
-      color: var(--mat-sys-color-on-surface);
+      color: var(--mat-sys-on-surface);
       white-space: pre;
       background: none;
       padding: 0;
@@ -261,27 +261,27 @@
   margin: var(--mat-sys-spacing-4) 0;
 
   h4 {
-    font-size: var(--mat-sys-typescale-label-large-size);
-    font-weight: var(--mat-sys-typescale-label-large-weight);
-    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-label-large-size);
+    font-weight: var(--mat-sys-label-large-weight);
+    color: var(--mat-sys-on-surface);
     margin: 0 0 var(--mat-sys-spacing-3) 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   pre {
-    background: var(--mat-sys-color-surface-container);
-    border: 1px solid var(--mat-sys-color-outline-variant);
+    background: var(--mat-sys-surface-container);
+    border: 1px solid var(--mat-sys-outline-variant);
     border-radius: var(--mat-sys-shape-corner-medium);
     padding: var(--mat-sys-spacing-4);
     margin: 0;
     overflow-x: auto;
 
     code {
-      font-family: var(--mat-sys-typescale-code-font);
-      font-size: var(--mat-sys-typescale-code-size);
+      font-family: var(--mat-sys-code-font);
+      font-size: var(--mat-sys-code-size);
       line-height: 1.6;
-      color: var(--mat-sys-color-on-surface);
+      color: var(--mat-sys-on-surface);
       white-space: pre;
       background: none;
       padding: 0;
@@ -299,7 +299,7 @@
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--mat-sys-color-shadow);
+    box-shadow: 0 4px 12px var(--mat-sys-shadow);
   }
 }
 
@@ -316,9 +316,9 @@
 // ============================================
 
 .demo-label {
-  font-size: var(--mat-sys-typescale-label-medium-size);
-  font-weight: var(--mat-sys-typescale-label-medium-weight);
-  color: var(--mat-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-label-medium-size);
+  font-weight: var(--mat-sys-label-medium-weight);
+  color: var(--mat-sys-on-surface-variant);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: var(--mat-sys-spacing-2);
@@ -326,15 +326,15 @@
 }
 
 .demo-caption {
-  font-size: var(--mat-sys-typescale-body-small-size);
-  color: var(--mat-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-body-small-size);
+  color: var(--mat-sys-on-surface-variant);
   opacity: 0.8;
   margin-top: var(--mat-sys-spacing-1);
 }
 
 .demo-monospace {
-  font-family: var(--mat-sys-typescale-code-font);
-  font-size: var(--mat-sys-typescale-code-size);
+  font-family: var(--mat-sys-code-font);
+  font-size: var(--mat-sys-code-size);
 }
 
 // ============================================

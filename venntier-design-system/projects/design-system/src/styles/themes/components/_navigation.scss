@@ -1,0 +1,389 @@
+// ============================================================================
+// NAVIGATION COMPONENTS
+// ============================================================================
+// Sidenav, menu, toolbar, and navigation-related styling
+
+@use '@angular/material' as mat;
+
+@mixin vt-navigation-overrides() {
+  // ============================================================================
+  // SIDENAV STYLING
+  // ============================================================================
+
+  // Sidenav container - OpenAI style
+  .vt-sidenav-standard {
+    width: var(--mat-sys-spacing-220, 220px);
+    min-width: var(--mat-sys-spacing-220, 220px);
+    max-width: var(--mat-sys-spacing-220, 220px);
+
+    // Use proper surface-container-low token for OpenAI sidenav background
+    background-color: var(--mat-sys-surface-container-low);
+
+    // CRITICAL: Remove border-radius from sidenav container
+    border-radius: 0;
+
+    // Remove scrollbars completely - OpenAI style has no visible scrollbars
+    overflow: hidden;
+  }
+
+  // Ensure sidenav background is applied with higher specificity
+  mat-sidenav.vt-sidenav-standard {
+    --mat-drawer-container-color: var(--mat-sys-surface-container-low);
+
+    background-color: var(--mat-sys-surface-container-low);
+
+    // CRITICAL: Remove border-radius with high specificity
+    border-radius: 0;
+
+    // Ensure no scrollbars on the Material Design sidenav element itself
+    overflow: hidden;
+
+    // CRITICAL: Hide scrollbar on the inner container that's causing the issue
+    .mat-drawer-inner-container {
+      overflow: hidden;
+      scrollbar-width: none; // Firefox
+      -ms-overflow-style: none; // IE/Edge
+
+      &::-webkit-scrollbar {
+        display: none; // Chrome/Safari/Opera
+      }
+    }
+  }
+
+  // Also target the mat-sidenav element directly in case class isn't applied
+  mat-sidenav {
+    --mat-drawer-container-color: var(--mat-sys-surface-container-low);
+
+    background-color: var(--mat-sys-surface-container-low);
+
+    // Also hide scrollbars on any mat-sidenav
+    .mat-drawer-inner-container {
+      overflow: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  // Sidenav header area (logo/brand) - OpenAI style
+  .vt-sidenav-header {
+    // Match toolbar height exactly: 64px = 8 × 8px foundation
+    height: var(--mat-sys-spacing-64, 64px);
+    padding: 0 var(--mat-sys-spacing-16, 16px);
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+    margin-bottom: var(--mat-sys-spacing-16, 16px);
+
+    // Center content vertically within the 64px height
+    display: flex;
+    align-items: center;
+  }
+
+  // Logo styling - OpenAI style
+  .vt-sidenav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px; // Proper spacing between logo and text
+
+    span {
+      font-size: var(--mat-sys-title-medium-size, 16px); // Proper branding size
+      font-weight: var(--mat-sys-title-medium-weight, 600); // Semi-bold for branding
+      color: var(--mat-sys-on-surface);
+      line-height: 1.2; // Tight line height for branding
+    }
+
+    app-venntier-logo {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  // Target the navigation content container with higher specificity
+  mat-sidenav.vt-sidenav-standard .vt-sidenav-content,
+  .vt-sidenav-standard .vt-sidenav-content {
+    // Add horizontal padding to create space around the shading
+    padding: 0 var(--mat-sys-spacing-8, 8px);
+
+    // Ensure content doesn't scroll - OpenAI style
+    overflow: hidden;
+  }
+
+  .vt-nav-section {
+    margin-bottom: 8px; // Reduced spacing between sections for tighter OpenAI look
+  }
+
+  .vt-nav-section-title {
+    // PRD specifications: 11px, 600 weight, uppercase, 0.5px letter-spacing
+    font-size: var(--mat-sys-label-small-size, 11px);
+    font-weight: var(--mat-sys-label-small-weight, 600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--mat-sys-on-surface-variant); // Use proper token for muted text
+    padding: 8px 12px; // Consistent with navigation items
+    margin-bottom: 6px; // Increased space between title and items for better separation
+  }
+
+  // Clean navigation item styling - OpenAI inspired
+  .vt-sidenav-standard mat-nav-list a[mat-list-item] {
+    // Reset Material Design defaults and set base layout
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+
+    // Layout - compact OpenAI-style with proper spacing
+    padding: 6px var(--mat-sys-spacing-8, 8px); // Compact padding with 8px token on sides
+    margin: 0; // No horizontal margin - container has padding for shading space
+    margin-bottom: var(--mat-sys-spacing-4, 4px); // 4px bottom spacing between items
+    border-radius: 6px; // OpenAI style - 6px rounded corners
+    min-height: auto; // Remove height constraints to let padding control size
+    height: auto; // Remove height constraints
+
+    // Default state - no background, gray text (like OpenAI)
+    background-color: transparent;
+    color: var(--mat-sys-on-surface-variant); // Muted color for default text
+    font-size: var(--mat-sys-body-medium-size, 14px);
+    line-height: var(--mat-sys-body-medium-line-height, 20px);
+    transition: all 0.15s ease;
+
+    // Icon styling
+    mat-icon {
+      font-size: var(--mat-sys-spacing-16, 16px);
+      width: var(--mat-sys-spacing-16, 16px);
+      height: var(--mat-sys-spacing-16, 16px);
+      line-height: var(--mat-sys-spacing-16, 16px);
+      margin-right: var(--mat-sys-spacing-12, 12px);
+      color: inherit;
+      flex-shrink: 0;
+    }
+
+    // Text styling
+    span {
+      font-size: var(--mat-sys-body-medium-size, 14px);
+      line-height: var(--mat-sys-body-medium-line-height, 20px);
+      color: inherit;
+      font-weight: 400; // Normal weight by default
+    }
+
+    // Hover state - using proper hover token (OpenAI style) - but not for active items
+    // Use higher specificity to override Angular Material
+    &:hover:not(.active) {
+      background-color: var(
+        --mat-sys-surface-container-low
+      ); // OpenAI hover state using proper token
+
+      color: var(--mat-sys-on-surface); // Proper text color on hover
+    }
+
+    // Remove focus outline - OpenAI style has no focus indicators
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      outline: none;
+      border: none;
+      box-shadow: none;
+    }
+
+    // Disable Material's ripple effects and state layers that might interfere
+    &::before,
+    &::after {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .mat-ripple {
+      display: none;
+    }
+
+    .mat-mdc-focus-indicator {
+      display: none;
+    }
+  }
+
+  // Selected/active state - ONLY for items with .active class (using proper tokens)
+  .vt-sidenav-standard mat-nav-list a[mat-list-item].active {
+    background-color: var(
+      --mat-sys-surface-container-high
+    ); // OpenAI selected state using proper token
+
+    color: var(--mat-sys-on-surface); // Proper text color for selected
+    font-weight: 500; // Semi-bold for selected
+
+    span {
+      font-weight: 500;
+      color: inherit;
+    }
+
+    mat-icon {
+      color: inherit;
+    }
+
+    // No hover effect on active items - keep same styling
+    &:hover {
+      background-color: var(--mat-sys-surface-container-high); // Keep same background on hover
+      color: var(--mat-sys-on-surface); // Keep same text color on hover
+    }
+  }
+
+  // Higher specificity hover rule to override Angular Material
+  .vt-sidenav-standard mat-nav-list a[mat-list-item].mat-mdc-list-item:hover:not(.active) {
+    background-color: var(--mat-sys-surface-container-low); // OpenAI hover state using proper token
+    color: var(--mat-sys-on-surface); // Proper text color on hover
+
+    span {
+      color: var(--mat-sys-on-surface); // Ensure text color is applied
+    }
+
+    mat-icon {
+      color: var(--mat-sys-on-surface); // Ensure icon color is applied
+    }
+  }
+
+  // ============================================================================
+  // MENU STYLING
+  // ============================================================================
+
+  // Menu - Same pattern as sidenav but with white background
+  .mat-mdc-menu-panel {
+    --mat-menu-container-color: var(--mat-sys-surface);
+    --mat-menu-container-shape: var(--mat-sys-shape-corner-small);
+    --mat-menu-item-label-text-color: var(--mat-sys-on-surface-variant);
+    --mat-menu-item-hover-state-layer-color: transparent;
+
+    border: 1px solid var(--mat-sys-outline-variant);
+    border-radius: var(--mat-sys-shape-corner-small);
+    background-color: var(--mat-sys-surface); // White background
+    padding: var(--mat-sys-spacing-1, 4px) var(--mat-sys-spacing-2, 8px); // Add horizontal padding like sidenav
+    box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
+    min-width: 180px;
+    max-width: 280px;
+    overflow: hidden;
+
+    .mat-mdc-menu-item {
+      // Use same dimensions as sidenav items
+      --mdc-list-list-item-container-height: var(--mat-sys-spacing-8);
+      --mdc-list-list-item-label-text-size: var(--mat-sys-body-medium-size);
+      --mdc-list-list-item-label-text-weight: var(--mat-sys-body-medium-weight);
+      --mdc-list-list-item-leading-icon-size: var(--mat-sys-spacing-4);
+      --mdc-list-list-item-trailing-icon-size: var(--mat-sys-spacing-4);
+
+      height: var(--mat-sys-spacing-8, 32px); // Same as sidenav
+      padding: 0 var(--mat-sys-spacing-2, 8px); // Same as sidenav
+      margin: calc(var(--mat-sys-spacing-1) / 2) 0; // Exact same as sidenav - very tight
+      border-radius: var(--mat-sys-shape-corner-small); // Same as sidenav
+      color: var(--mat-sys-on-surface-variant); // Same as sidenav
+      font-size: var(--mat-sys-body-medium-size);
+      font-weight: var(--mat-sys-body-medium-weight);
+      transition: background-color var(--mat-sys-motion-hover);
+
+      // Disable Material's state layer
+      &::before {
+        opacity: 0;
+      }
+
+      // Custom hover state - same as sidenav but more contained
+      &:hover:not([disabled]),
+      &.mat-mdc-menu-item-highlighted {
+        background-color: var(--mat-sys-surface-variant);
+        color: var(--mat-sys-on-surface-variant);
+      }
+
+      // Icon styling - same as sidenav
+      mat-icon {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+        color: var(--mat-sys-on-surface-variant);
+        transition: color var(--mat-sys-motion-hover);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      // Text content - combined styling with overflow handling
+      .mat-mdc-menu-item-text {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        color: inherit;
+        font-size: var(--mat-sys-body-medium-size);
+        line-height: var(--mat-sys-body-medium-line-height);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      // Trailing icon (chevron, etc.)
+      .mat-mdc-menu-item-submenu-trigger-icon {
+        font-size: var(--mat-sys-spacing-4, 16px);
+        width: var(--mat-sys-spacing-4, 16px);
+        height: var(--mat-sys-spacing-4, 16px);
+        color: var(--mat-sys-on-surface-variant);
+      }
+
+      // Disabled state
+      &[disabled] {
+        opacity: 0.38;
+        cursor: not-allowed;
+
+        mat-icon {
+          opacity: 0.38;
+        }
+      }
+
+      // Destructive actions (like delete) - keep error styling
+      &.mat-warn,
+      &[color='warn'] {
+        color: var(--mat-sys-error);
+
+        mat-icon {
+          color: var(--mat-sys-error);
+        }
+
+        &:hover {
+          background-color: var(--mat-sys-error-container);
+          color: var(--mat-sys-on-error-container);
+
+          mat-icon {
+            color: var(--mat-sys-on-error-container);
+          }
+        }
+      }
+    }
+
+    // Menu dividers
+    .mat-mdc-menu-item-divider,
+    hr {
+      border-top: 1px solid var(--mat-sys-outline-variant);
+      margin: var(--mat-sys-spacing-4, 4px) 0;
+      border-bottom: none;
+      border-left: none;
+      border-right: none;
+    }
+  }
+
+  // ============================================================================
+  // TOOLBAR STYLING
+  // ============================================================================
+
+  // TOOLBAR - Clean style with CSS custom properties
+  .mat-toolbar {
+    --mat-toolbar-background-color: var(--mat-sys-surface);
+    --mat-toolbar-title-text-color: var(--mat-sys-on-surface);
+
+    background-color: var(--mat-sys-surface);
+    color: var(--mat-sys-on-surface);
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+    height: 56px;
+    padding: 0 32px;
+    font-weight: 400;
+
+    &.mat-primary {
+      background-color: var(--mat-sys-surface);
+    }
+  }
+}

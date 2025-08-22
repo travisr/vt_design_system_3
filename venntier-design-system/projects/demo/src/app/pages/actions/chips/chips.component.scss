@@ -6,18 +6,18 @@
 
   h4 {
     margin: 0;
-    font-size: var(--mat-sys-typescale-body-large-size, 16px);
-    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-body-large-size, 16px);
+    color: var(--mat-sys-on-surface);
   }
 }
 
 .filter-result {
   margin-top: var(--mat-sys-spacing-12);
   padding: var(--mat-sys-spacing-8);
-  background-color: var(--mat-sys-color-surface-variant);
+  background-color: var(--mat-sys-surface-variant);
   border-radius: var(--mat-sys-shape-corner-small);
-  font-size: var(--mat-sys-typescale-body-medium-size, 14px);
-  color: var(--mat-sys-color-on-surface-variant);
+  font-size: var(--mat-sys-body-medium-size, 14px);
+  color: var(--mat-sys-on-surface-variant);
 }
 
 .add-chip-button {
@@ -42,8 +42,8 @@
 
   h4 {
     margin: 0 0 var(--mat-sys-spacing-16) 0;
-    color: var(--mat-sys-color-on-surface);
-    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+    color: var(--mat-sys-on-surface);
+    font-size: var(--mat-sys-body-medium-size, 14px);
   }
 }
 
@@ -67,7 +67,7 @@ mat-chip-set {
   }
 
   mat-chip {
-    font-size: var(--mat-sys-typescale-label-large-size, 13px);
+    font-size: var(--mat-sys-label-large-size, 13px);
     height: 28px;
     padding: 0 var(--mat-sys-spacing-8);
 

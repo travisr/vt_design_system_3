@@ -9,8 +9,8 @@
 
   // Custom styling: Autocomplete panel (not covered by select overrides)
   .mat-mdc-autocomplete-panel {
-    background-color: var(--mat-sys-color-surface);
-    border: 1px solid var(--mat-sys-color-outline-variant);
+    background-color: var(--mat-sys-surface);
+    border: 1px solid var(--mat-sys-outline-variant);
     border-radius: var(--mat-sys-shape-corner-small);
     box-shadow: var(--mat-sys-shadow);
     margin-top: var(--mat-sys-spacing-4, 4px);
@@ -20,11 +20,11 @@
       padding: var(--mat-sys-spacing-8, 8px) var(--mat-sys-spacing-16, 16px);
 
       &:hover {
-        background-color: var(--mat-sys-color-hover);
+        background-color: var(--mat-sys-surface-variant);
       }
 
       &.mat-mdc-option-active {
-        background-color: var(--mat-sys-color-selected);
+        background-color: var(--mat-sys-primary);
       }
     }
   }
@@ -38,9 +38,9 @@
   // Helper class for standalone labels
   .vt-input-label {
     display: block;
-    font-size: var(--mat-sys-typescale-label-large-size);
-    font-weight: var(--mat-sys-typescale-label-large-weight);
-    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-label-large-size);
+    font-weight: var(--mat-sys-label-large-weight);
+    color: var(--mat-sys-on-surface);
     margin-bottom: var(--mat-sys-spacing-6, 6px);
   }
 

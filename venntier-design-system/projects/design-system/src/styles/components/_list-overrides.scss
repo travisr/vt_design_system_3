@@ -1,4 +1,4 @@
-// List Component Overrides - MD3 Compliant
+// List Component Overrides - Angular Material 20 Compliant
 // Primary styling handled by mat.list-overrides() in _core-refined.scss
 
 @mixin vt-list-overrides() {
@@ -9,13 +9,13 @@
     .mat-mdc-list-item.active {
       // Selected label text color (not available as token)
       .mat-mdc-list-item-title {
-        color: var(--mat-sys-color-primary);
-        font-weight: var(--mat-sys-typescale-label-medium-weight);
+        color: var(--mat-sys-primary);
+        font-weight: var(--mat-sys-label-medium-weight);
       }
 
       // Selected leading icon color (not available as token)
       mat-icon {
-        color: var(--mat-sys-color-primary);
+        color: var(--mat-sys-primary);
       }
     }
   }

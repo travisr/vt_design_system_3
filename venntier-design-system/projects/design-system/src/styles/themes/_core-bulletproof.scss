@@ -1,0 +1,211 @@
+// ============================================================================
+// BULLETPROOF CORE THEME - DO NOT MODIFY
+// ============================================================================
+// This file contains the minimal, stable foundation that should NEVER break
+// All customizations should go in extension files, not here
+// Last known working state: 2025-08-15
+
+@use '@angular/material' as mat;
+
+// ============================================================================
+// CORE THEME MIXIN - FOUNDATION ELEMENTS INCLUDED
+// ============================================================================
+@mixin vt-bulletproof-core() {
+  // Angular Material theme with OpenAI foundation colors
+  html {
+    // Enable automatic light/dark theme switching based on system preference
+    color-scheme: light dark;
+
+    @include mat.theme(
+      (
+        color: (
+          theme-type: light,
+          use-system-variables: true,
+        ),
+        typography: (
+          use-system-variables: true,
+          plain-family: 'Inter, system-ui, -apple-system, sans-serif',
+          brand-family: 'Inter, system-ui, -apple-system, sans-serif',
+          bold-weight: 600,
+          medium-weight: 450,
+          regular-weight: 400,
+        ),
+        density: 0,
+      )
+    );
+
+    // FOUNDATION: OpenAI-authentic light theme color system
+    @include mat.theme-overrides(
+      (
+        primary: #1a1a1a,
+        on-primary: #ffffff,
+        secondary: #6b7280,
+        on-secondary: #ffffff,
+        tertiary: #10a37f,
+        on-tertiary: #ffffff,
+        outline: #d1d5db,
+        outline-variant: #e5e7eb,
+        background: #ffffff,
+        surface: #ffffff,
+        on-surface: #1a1a1a,
+        surface-variant: #fafafa,
+        on-surface-variant: #565869,
+        surface-container-lowest: #ffffff,
+        surface-container-low: #ffffff,
+        surface-container: #ffffff,
+        surface-container-high: #f9f9f9,
+        surface-container-highest: #f7f7f8,
+      )
+    );
+  }
+
+  // DARK THEME: Apply when dark mode is active (manual toggle or system preference)
+  [data-vt-theme='dark'],
+  .vt-theme-dark,
+  html[style*='color-scheme: dark'] {
+    color-scheme: dark;
+
+    @include mat.theme-overrides(
+      (
+        // Dark theme system-level token overrides - OpenAI authentic
+        primary: #ffffff,
+        on-primary: #1a1a1a,
+        secondary: #6b7280,
+        on-secondary: #ffffff,
+        tertiary: #10a37f,
+        on-tertiary: #ffffff,
+        outline: #3a3a3a,
+        outline-variant: #2a2a2a,
+        background: #202123,
+        surface: #202123,
+        on-surface: #ffffff,
+        on-surface-variant: #d1d5db,
+        // Improved surface hierarchy for better visual depth
+        surface-container-lowest: #171717,
+        surface-container-low: #353740,
+        surface-container: #2d2d30,
+        surface-container-high: #40414f,
+        surface-container-highest: #4a4a4a
+      )
+    );
+  }
+
+  // FOUNDATION: Custom tokens for OpenAI-style interactions
+  :root {
+    // Data visualization color - refined purple for better contrast with green
+    --mat-sys-data-primary: #7c3aed;
+    --mat-sys-on-data-primary: #ffffff;
+
+    // OpenAI-style border colors (light theme)
+    --mat-sys-border-subtle: #e5e7eb;
+    --mat-sys-border-default: #e5e7eb;
+    --mat-sys-border-prominent: #d1d5db;
+
+    // Interaction states - OpenAI-style (light theme)
+    --mat-sys-hover: #f9fafb;
+    --mat-sys-selected: #f3f4f6;
+    --mat-sys-focus-ring: #10a37f;
+    --mat-sys-disabled: #9ca3af;
+
+    // Form control colors (light theme)
+    --mat-sys-input-background: #ffffff;
+    --mat-sys-input-border: #d1d5db;
+    --mat-sys-input-border-focus: #10a37f;
+    --mat-sys-input-placeholder: #9ca3af;
+
+    // OpenAI-style elevation tokens (light theme)
+    --mat-sys-elevation-0: none;
+    --mat-sys-elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+    --mat-sys-elevation-2: 0 2px 4px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --mat-sys-elevation-3: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    --mat-sys-elevation-4: 0 8px 16px 0 rgba(0, 0, 0, 0.16), 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  // DARK THEME: Custom tokens for dark mode
+  [data-vt-theme='dark'],
+  .vt-theme-dark,
+  html[style*='color-scheme: dark'] {
+    // Data visualization color - same purple works in dark mode
+    --mat-sys-data-primary: #7c3aed;
+    --mat-sys-on-data-primary: #ffffff;
+
+    // OpenAI-style border colors (dark theme)
+    --mat-sys-border-subtle: #3a3a3a;
+    --mat-sys-border-default: #4a4a4a;
+    --mat-sys-border-prominent: #565869;
+
+    // Interaction states - OpenAI-style (dark theme)
+    --mat-sys-hover: #2a2a2a;
+    --mat-sys-selected: #353740;
+    --mat-sys-focus-ring: #10a37f;
+    --mat-sys-disabled: #6b7280;
+
+    // Form control colors (dark theme)
+    --mat-sys-input-background: #353740;
+    --mat-sys-input-border: #4a4a4a;
+    --mat-sys-input-border-focus: #10a37f;
+    --mat-sys-input-placeholder: #6b7280;
+
+    // OpenAI-style elevation tokens (dark theme) - slightly stronger for visibility
+    --mat-sys-elevation-0: none;
+    --mat-sys-elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+    --mat-sys-elevation-2: 0 2px 4px 0 rgba(0, 0, 0, 0.24), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    --mat-sys-elevation-3: 0 4px 8px 0 rgba(0, 0, 0, 0.28), 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+    --mat-sys-elevation-4: 0 8px 16px 0 rgba(0, 0, 0, 0.32), 0 4px 8px 0 rgba(0, 0, 0, 0.28);
+
+    // OpenAI-style card defaults - flat design with subtle borders
+    --mat-card-default-appearance: outlined;
+
+    // 8px-aligned spacing tokens (CSS custom properties)
+    --mat-sys-spacing-0: 0;
+    --mat-sys-spacing-4: 4px;
+    --mat-sys-spacing-8: 8px;
+    --mat-sys-spacing-12: 12px;
+    --mat-sys-spacing-16: 16px;
+    --mat-sys-spacing-24: 24px;
+    --mat-sys-spacing-32: 32px;
+    --mat-sys-spacing-40: 40px;
+    --mat-sys-spacing-48: 48px;
+    --mat-sys-spacing-56: 56px;
+    --mat-sys-spacing-64: 64px;
+    --mat-sys-spacing-80: 80px;
+    --mat-sys-spacing-96: 96px;
+    --mat-sys-spacing-128: 128px;
+  }
+}
+
+// ============================================================================
+// ESSENTIAL OVERRIDES - MINIMAL SET ONLY
+// ============================================================================
+@mixin vt-essential-overrides() {
+  // OpenAI-style subtle elevations - barely visible but creates depth
+  .mat-elevation-z1,
+  .mat-elevation-z2,
+  .mat-elevation-z3,
+  .mat-elevation-z4,
+  .mat-elevation-z6,
+  .mat-elevation-z8,
+  .mat-elevation-z12,
+  .mat-elevation-z16,
+  .mat-elevation-z24 {
+    box-shadow:
+      0 1px 2px 0 rgba(0, 0, 0, 0.05),
+      0 1px 3px 0 rgba(0, 0, 0, 0.03) !important;
+  }
+
+  // Critical button overrides
+  @include mat.button-overrides(
+    (
+      filled-container-color: var(--mat-sys-tertiary),
+      filled-label-text-color: var(--mat-sys-on-tertiary),
+    )
+  );
+}
+
+// ============================================================================
+// MAIN BULLETPROOF MIXIN
+// ============================================================================
+@mixin vt-theme-bulletproof() {
+  @include vt-bulletproof-core;
+  @include vt-essential-overrides;
+}

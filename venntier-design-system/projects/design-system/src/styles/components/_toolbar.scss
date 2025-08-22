@@ -32,8 +32,8 @@
     h2,
     h3 {
       margin: 0;
-      font-size: var(--mat-sys-typescale-title-large-size, 22px);
-      font-weight: var(--mat-sys-typescale-title-large-weight, 400);
+      font-size: var(--mat-sys-title-large-size, 22px);
+      font-weight: var(--mat-sys-title-large-weight, 400);
       line-height: 1.2;
     }
 
@@ -138,7 +138,7 @@
   [data-vt-theme='dark'] .mat-toolbar,
   .vt-theme-dark mat-toolbar,
   .vt-theme-dark .mat-toolbar {
-    background: var(--mat-sys-color-surface);
-    border-bottom-color: var(--mat-sys-color-outline-variant);
+    background: var(--mat-sys-surface);
+    border-bottom-color: var(--mat-sys-outline-variant);
   }
 }

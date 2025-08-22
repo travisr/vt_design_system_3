@@ -1,0 +1,92 @@
+// ============================================================================
+// GLOBAL OVERRIDES
+// ============================================================================
+// Global styles and overrides that don't fit into specific components
+
+@mixin vt-global-overrides() {
+  // Global refinements - use CSS custom properties instead of !important
+  :root {
+    --mdc-elevation-box-shadow-for-gss: none;
+    --vt-surface-background: var(--mat-sys-surface);
+    --vt-on-surface-text: var(--mat-sys-on-surface);
+  }
+
+  // Wrap all component overrides in a single .vt-theme class for higher specificity
+  .vt-theme {
+    // Body styles with proper CSS custom property usage
+    background: var(--vt-surface-background);
+    color: var(--vt-on-surface-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    // Remove shadows using higher specificity
+    [class*='mat-elevation-z'],
+    [class*='mat-mdc-elevation'],
+    .mat-mdc-card,
+    .mat-mdc-menu-panel,
+    .mat-mdc-dialog-container {
+      box-shadow: none;
+    }
+
+    // TYPOGRAPHY - Using M3 typescale tokens
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--mat-sys-on-surface);
+      margin-top: 0;
+    }
+
+    h1 {
+      font: var(--mat-sys-headline-large-font);
+      font-size: var(--mat-sys-headline-large-size);
+      font-weight: var(--mat-sys-headline-large-weight);
+      line-height: var(--mat-sys-headline-large-line-height);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font: var(--mat-sys-headline-medium-font);
+      font-size: var(--mat-sys-headline-medium-size);
+      font-weight: var(--mat-sys-headline-medium-weight);
+      line-height: var(--mat-sys-headline-medium-line-height);
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font: var(--mat-sys-headline-small-font);
+      font-size: var(--mat-sys-headline-small-size);
+      font-weight: var(--mat-sys-headline-small-weight);
+      line-height: var(--mat-sys-headline-small-line-height);
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: var(--mat-sys-on-surface-variant);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    // ICON refinements - size only, let component overrides handle colors per MD3
+    .mat-icon,
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+
+      // Removed global color override - let component-specific overrides handle colors per MD3
+
+      &.mat-icon-button mat-icon {
+        font-size: 20px;
+      }
+    }
+
+    // Selection
+    ::selection {
+      background-color: var(--mat-sys-tertiary-container);
+      color: var(--mat-sys-on-tertiary-container);
+    }
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "path": "dist/design-system/**/*.js",
+    "maxSize": "150 kB",
+    "compression": "gzip"
+  },
+  {
+    "path": "dist/design-system/**/*.css",
+    "maxSize": "50 kB",
+    "compression": "gzip"
+  },
+  {
+    "path": "dist/demo/**/*.js",
+    "maxSize": "500 kB",
+    "compression": "gzip"
+  },
+  {
+    "path": "dist/demo/**/*.css",
+    "maxSize": "100 kB",
+    "compression": "gzip"
+  }
+]

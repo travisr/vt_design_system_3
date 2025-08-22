@@ -1,0 +1,304 @@
+// ============================================================================
+// LAYOUT UTILITIES
+// ============================================================================
+// Comprehensive utility classes for common layout patterns using design system tokens
+
+// ============================================================================
+// FLEX UTILITIES
+// ============================================================================
+
+.flex-spacer {
+  flex: 1;
+}
+
+.demo-flex {
+  display: flex;
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  &--nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--row {
+    flex-direction: row;
+  }
+
+  // Gap utilities using design system tokens
+  &--gap-xs {
+    gap: var(--mat-sys-spacing-4, 4px);
+  }
+
+  &--gap-sm {
+    gap: var(--mat-sys-spacing-8, 8px);
+  }
+
+  &--gap-md {
+    gap: var(--mat-sys-spacing-16, 16px);
+  }
+
+  &--gap-lg {
+    gap: var(--mat-sys-spacing-24, 24px);
+  }
+
+  &--gap-xl {
+    gap: var(--mat-sys-spacing-32, 32px);
+  }
+
+  // Alignment utilities
+  &--align-start {
+    align-items: flex-start;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &--align-end {
+    align-items: flex-end;
+  }
+
+  &--align-stretch {
+    align-items: stretch;
+  }
+
+  &--justify-start {
+    justify-content: flex-start;
+  }
+
+  &--justify-center {
+    justify-content: center;
+  }
+
+  &--justify-end {
+    justify-content: flex-end;
+  }
+
+  &--justify-between {
+    justify-content: space-between;
+  }
+
+  &--justify-around {
+    justify-content: space-around;
+  }
+
+  &--justify-evenly {
+    justify-content: space-evenly;
+  }
+}
+
+// ============================================================================
+// SPACING UTILITIES
+// ============================================================================
+
+// Margin utilities
+.m-0 {
+  margin: 0;
+}
+
+.m-xs {
+  margin: var(--mat-sys-spacing-4, 4px);
+}
+
+.m-sm {
+  margin: var(--mat-sys-spacing-8, 8px);
+}
+
+.m-md {
+  margin: var(--mat-sys-spacing-16, 16px);
+}
+
+.m-lg {
+  margin: var(--mat-sys-spacing-24, 24px);
+}
+
+.m-xl {
+  margin: var(--mat-sys-spacing-32, 32px);
+}
+
+// Margin top
+.mt-0 {
+  margin-top: 0;
+}
+
+.mt-xs {
+  margin-top: var(--mat-sys-spacing-4, 4px);
+}
+
+.mt-sm {
+  margin-top: var(--mat-sys-spacing-8, 8px);
+}
+
+.mt-md {
+  margin-top: var(--mat-sys-spacing-16, 16px);
+}
+
+.mt-lg {
+  margin-top: var(--mat-sys-spacing-24, 24px);
+}
+
+.mt-xl {
+  margin-top: var(--mat-sys-spacing-32, 32px);
+}
+
+// Margin bottom
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-xs {
+  margin-bottom: var(--mat-sys-spacing-4, 4px);
+}
+
+.mb-sm {
+  margin-bottom: var(--mat-sys-spacing-8, 8px);
+}
+
+.mb-md {
+  margin-bottom: var(--mat-sys-spacing-16, 16px);
+}
+
+.mb-lg {
+  margin-bottom: var(--mat-sys-spacing-24, 24px);
+}
+
+.mb-xl {
+  margin-bottom: var(--mat-sys-spacing-32, 32px);
+}
+
+// Padding utilities
+.p-0 {
+  padding: 0;
+}
+
+.p-xs {
+  padding: var(--mat-sys-spacing-4, 4px);
+}
+
+.p-sm {
+  padding: var(--mat-sys-spacing-8, 8px);
+}
+
+.p-md {
+  padding: var(--mat-sys-spacing-16, 16px);
+}
+
+.p-lg {
+  padding: var(--mat-sys-spacing-24, 24px);
+}
+
+.p-xl {
+  padding: var(--mat-sys-spacing-32, 32px);
+}
+
+// ============================================================================
+// RESPONSIVE UTILITIES
+// ============================================================================
+
+@media (width <= 840px) {
+  .demo-flex {
+    &--mobile-column {
+      flex-direction: column;
+    }
+
+    &--mobile-wrap {
+      flex-wrap: wrap;
+    }
+
+    &--mobile-gap-sm {
+      gap: var(--mat-sys-spacing-8, 8px);
+    }
+  }
+
+  // Responsive spacing
+  .p-lg {
+    padding: var(--mat-sys-spacing-16, 16px);
+  }
+
+  .m-lg {
+    margin: var(--mat-sys-spacing-16, 16px);
+  }
+}
+
+// ============================================================================
+// GRID UTILITIES
+// ============================================================================
+
+.demo-grid {
+  display: grid;
+
+  &--cols-1 {
+    grid-template-columns: 1fr;
+  }
+
+  &--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--cols-auto {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  &--gap-sm {
+    gap: var(--mat-sys-spacing-8, 8px);
+  }
+
+  &--gap-md {
+    gap: var(--mat-sys-spacing-16, 16px);
+  }
+
+  &--gap-lg {
+    gap: var(--mat-sys-spacing-24, 24px);
+  }
+}
+
+// ============================================================================
+// COMMON LAYOUT PATTERNS
+// ============================================================================
+
+.demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--mat-sys-spacing-24, 24px);
+
+  @media (width <= 840px) {
+    padding: var(--mat-sys-spacing-16, 16px);
+  }
+}
+
+.demo-section {
+  margin-bottom: var(--mat-sys-spacing-32, 32px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.demo-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--mat-sys-spacing-24, 24px);
+
+  @media (width <= 840px) {
+    grid-template-columns: 1fr;
+    gap: var(--mat-sys-spacing-16, 16px);
+  }
+}
+
+// ============================================================================
+// TEXT UTILITIES
+// ============================================================================
+
+.code-text {
+  font-family: 'Courier New', Monaco, Menlo, monospace;
+}

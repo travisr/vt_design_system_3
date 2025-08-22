@@ -1,0 +1,59 @@
+// ============================================================================
+// FEEDBACK COMPONENTS
+// ============================================================================
+// Progress indicators, snackbars, tooltips, and feedback-related styling
+
+@use '@angular/material' as mat;
+
+@mixin vt-feedback-overrides() {
+  // ============================================================================
+  // PROGRESS INDICATORS
+  // ============================================================================
+
+  // PROGRESS - Using tertiary color
+  .mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: var(--mat-sys-tertiary);
+    --mdc-linear-progress-track-color: var(--mat-sys-surface-container-high);
+
+    height: 4px;
+    border-radius: 2px;
+  }
+
+  .mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: var(--mat-sys-tertiary);
+  }
+
+  // ============================================================================
+  // SNACKBAR STYLING
+  // ============================================================================
+
+  // SNACKBAR - Dark container for contrast
+  .mat-mdc-snack-bar-container {
+    --mdc-snackbar-container-color: var(--mat-sys-inverse-surface);
+    --mdc-snackbar-supporting-text-color: var(--mat-sys-inverse-on-surface);
+    --mdc-snackbar-container-shape: 8px;
+
+    border-radius: 8px;
+
+    .mat-mdc-snack-bar-action {
+      color: var(--mat-sys-tertiary);
+    }
+  }
+
+  // ============================================================================
+  // TOOLTIP STYLING
+  // ============================================================================
+
+  // TOOLTIP - Inverse colors for contrast
+  .mat-mdc-tooltip {
+    --mdc-plain-tooltip-container-color: var(--mat-sys-inverse-surface);
+    --mdc-plain-tooltip-supporting-text-color: var(--mat-sys-inverse-on-surface);
+    --mdc-plain-tooltip-container-shape: 6px;
+
+    background-color: var(--mat-sys-inverse-surface);
+    color: var(--mat-sys-inverse-on-surface);
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+}

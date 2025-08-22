@@ -5,12 +5,12 @@
 // ============================================================================
 // OpenAI-inspired minimal shadows for clean aesthetic
 
-// Light theme shadow values - very subtle
-$shadow-color-light: rgba(0, 0, 0, 0.04);
-$shadow-color-light-medium: rgba(0, 0, 0, 0.08);
-$shadow-color-light-strong: rgba(0, 0, 0, 0.12);
-$shadow-color-light-stronger: rgba(0, 0, 0, 0.16);
-$shadow-color-light-strongest: rgba(0, 0, 0, 0.2);
+// Light theme shadow values - OpenAI-style ultra-subtle
+$shadow-color-light: rgba(0, 0, 0, 0.03);
+$shadow-color-light-medium: rgba(0, 0, 0, 0.05);
+$shadow-color-light-strong: rgba(0, 0, 0, 0.08);
+$shadow-color-light-stronger: rgba(0, 0, 0, 0.12);
+$shadow-color-light-strongest: rgba(0, 0, 0, 0.16);
 
 // Dark theme shadow values - stronger for visibility
 $shadow-color-dark: rgba(0, 0, 0, 0.2);
@@ -24,20 +24,26 @@ $shadow-color-dark-strongest: rgba(0, 0, 0, 0.36);
 // ============================================================================
 // These map our reference tokens to semantic roles that Angular Material understands
 
-// Light theme elevation mappings
+// Light theme elevation mappings - OpenAI-style subtle shadows
 $light-theme-elevations: (
   // Level 0: Flat design (default for cards, buttons)
   level-0: none,
-  // Level 1: Subtle lift (hover states, selected items)
-  level-1: 0px 1px 2px #{$shadow-color-light},
+  // Level 1: OpenAI card-style subtle lift - barely visible but creates depth
+  level-1: (0px 1px 2px #{$shadow-color-light-medium}, 0px 1px 3px #{$shadow-color-light}),
   // Level 2: Floating elements (dropdowns, autocomplete)
-  level-2: 0px 2px 8px #{$shadow-color-light-medium},
+  level-2: (0px 2px 4px #{$shadow-color-light-strong}, 0px 1px 2px #{$shadow-color-light-medium}),
   // Level 3: Overlays (tooltips, small modals)
-  level-3: 0px 4px 12px #{$shadow-color-light-strong},
+  level-3: (0px 4px 8px #{$shadow-color-light-stronger}, 0px 2px 4px #{$shadow-color-light-strong}),
   // Level 4: Modal dialogs
-  level-4: 0px 8px 24px #{$shadow-color-light-stronger},
+  level-4: (
+      0px 8px 16px #{$shadow-color-light-strongest},
+      0px 4px 8px #{$shadow-color-light-stronger}
+    ),
   // Level 5: Full-screen overlays (rarely used)
-  level-5: 0px 16px 32px #{$shadow-color-light-strongest}
+  level-5: (
+      0px 16px 24px #{$shadow-color-light-strongest},
+      0px 8px 16px #{$shadow-color-light-stronger}
+    )
 );
 
 // Dark theme elevation mappings

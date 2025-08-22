@@ -1,153 +1,107 @@
-// Badges Demo Page Styles
-// Uses design system tokens and follows OpenAI-inspired design
-
+// Badges Demo Page Styles - Optimized
 .demo-page {
-  // Badge variants layout
-  .badge-variants {
+  // Common group heading styles
+  %group-heading {
+    margin: 0 0 var(--mat-sys-spacing-12, 12px);
+    font-size: var(--mat-sys-body-medium-size, 14px);
+    font-weight: var(--mat-sys-body-medium-weight, 500);
+    color: var(--mat-sys-on-surface-variant);
+  }
+
+  // Common layout styles
+  %section-layout {
     display: flex;
     flex-direction: column;
     gap: var(--mat-sys-spacing-24, 24px);
-
-    .variant-group {
-      h4 {
-        margin: 0 0 var(--mat-sys-spacing-12, 12px);
-        font-size: var(--mat-sys-body-medium-size, 14px);
-        font-weight: var(--mat-sys-body-medium-weight, 500);
-        color: var(--mat-sys-color-on-surface-variant);
-      }
-
-      .mat-button-toggle-group {
-        border: 1px solid var(--mat-sys-color-outline-variant);
-        border-radius: var(--mat-sys-spacing-8, 8px);
-        overflow: hidden;
-
-        .mat-button-toggle {
-          border: none;
-          border-right: 1px solid var(--mat-sys-color-outline-variant);
-
-          &:last-child {
-            border-right: none;
-          }
-        }
-      }
-    }
   }
 
-  // Badge types layout
-  .badge-types {
+  // Common example container styles
+  %example-container {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: var(--mat-sys-spacing-24, 24px);
-
-    .type-group {
-      h4 {
-        margin: 0 0 var(--mat-sys-spacing-12, 12px);
-        font-size: var(--mat-sys-body-medium-size, 14px);
-        font-weight: var(--mat-sys-body-medium-weight, 500);
-        color: var(--mat-sys-color-on-surface-variant);
-      }
-
-      .badge-examples {
-        display: flex;
-        gap: var(--mat-sys-spacing-24, 24px);
-        align-items: center;
-
-        span {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        mat-icon {
-          font-size: var(--mat-sys-spacing-24, 24px);
-          width: var(--mat-sys-spacing-24, 24px);
-          height: var(--mat-sys-spacing-24, 24px);
-        }
-      }
-    }
   }
 
-  // Badge positions layout
-  .badge-positions {
-    .position-group {
-      h4 {
-        margin: 0 0 var(--mat-sys-spacing-12, 12px);
-        font-size: var(--mat-sys-body-medium-size, 14px);
-        font-weight: var(--mat-sys-body-medium-weight, 500);
-        color: var(--mat-sys-color-on-surface-variant);
-      }
-
-      .position-examples {
-        display: flex;
-        gap: var(--mat-sys-spacing-32, 32px);
-        align-items: center;
-
-        span {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: var(--mat-sys-spacing-8, 8px);
-        }
-
-        mat-icon {
-          font-size: var(--mat-sys-spacing-24, 24px);
-          width: var(--mat-sys-spacing-24, 24px);
-          height: var(--mat-sys-spacing-24, 24px);
-        }
-      }
-    }
+  // Common icon styles
+  %icon-styles {
+    font-size: var(--mat-sys-spacing-24, 24px);
+    width: var(--mat-sys-spacing-24, 24px);
+    height: var(--mat-sys-spacing-24, 24px);
   }
 
-  // Badge states layout
+  .badge-variants,
+  .badge-types,
   .badge-states {
+    @extend %section-layout;
+  }
+
+  .variant-group,
+  .type-group,
+  .position-group,
+  .state-group {
+    h4 {
+      @extend %group-heading;
+    }
+  }
+
+  .badge-examples,
+  .position-examples {
+    @extend %example-container;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    mat-icon {
+      @extend %icon-styles;
+    }
+  }
+
+  .position-examples {
+    gap: var(--mat-sys-spacing-32, 32px);
+
+    span {
+      padding: var(--mat-sys-spacing-8, 8px);
+    }
+  }
+
+  .button-examples,
+  .disabled-examples {
     display: flex;
-    flex-direction: column;
-    gap: var(--mat-sys-spacing-24, 24px);
+    gap: var(--mat-sys-spacing-16, 16px);
+    align-items: center;
+  }
 
-    .state-group {
-      h4 {
-        margin: 0 0 var(--mat-sys-spacing-12, 12px);
-        font-size: var(--mat-sys-body-medium-size, 14px);
-        font-weight: var(--mat-sys-body-medium-weight, 500);
-        color: var(--mat-sys-color-on-surface-variant);
-      }
+  .mat-button-toggle-group {
+    border: 1px solid var(--mat-sys-outline-variant);
+    border-radius: var(--mat-sys-spacing-8, 8px);
+    overflow: hidden;
 
-      .button-examples,
-      .disabled-examples {
-        display: flex;
-        gap: var(--mat-sys-spacing-16, 16px);
-        align-items: center;
+    .mat-button-toggle {
+      border: none;
+      border-right: 1px solid var(--mat-sys-outline-variant);
+
+      &:last-child {
+        border-right: none;
       }
     }
   }
 
-  // Density selector styling
-  .density-selector {
-    mat-form-field {
-      width: 450px; // Consistent with other demo pages
-    }
+  .density-selector mat-form-field {
+    width: 450px;
   }
 }
 
-// Density variations
-.demo-page.compact {
+// Density variations - Minimal
+.demo-page.compact,
+.demo-page.dense {
   .badge-variants,
   .badge-types,
   .badge-positions,
   .badge-states {
     gap: var(--mat-sys-spacing-16, 16px);
-
-    .variant-group,
-    .type-group,
-    .position-group,
-    .state-group {
-      .badge-examples,
-      .position-examples,
-      .button-examples,
-      .disabled-examples {
-        gap: var(--mat-sys-spacing-16, 16px);
-      }
-    }
   }
 }
 
@@ -157,17 +111,5 @@
   .badge-positions,
   .badge-states {
     gap: var(--mat-sys-spacing-12, 12px);
-
-    .variant-group,
-    .type-group,
-    .position-group,
-    .state-group {
-      .badge-examples,
-      .position-examples,
-      .button-examples,
-      .disabled-examples {
-        gap: var(--mat-sys-spacing-12, 12px);
-      }
-    }
   }
 }

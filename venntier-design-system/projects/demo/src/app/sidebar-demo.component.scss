@@ -3,7 +3,7 @@
 
 .demo-container {
   height: 100vh;
-  background: var(--mat-sys-color-surface);
+  background: var(--mat-sys-surface);
 
   // Ensure sidenav content has no padding/margin at top
   // Use the actual class selector for higher specificity
@@ -15,7 +15,7 @@
 
 // Main content area
 .demo-content {
-  background: var(--mat-sys-color-surface);
+  background: var(--mat-sys-surface);
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -28,8 +28,8 @@
 }
 
 .demo-toolbar {
-  background: var(--mat-sys-color-surface);
-  border-bottom: 1px solid var(--mat-sys-color-outline-variant);
+  background: var(--mat-sys-surface);
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
   height: 64px; // Match sidenav header height
   min-height: 64px; // Ensure consistent height
   padding: 0 var(--mat-sys-spacing-24, 24px);
@@ -39,9 +39,9 @@
   top: 0; // Ensure it's flush to the top
 
   h1 {
-    font-size: var(--mat-sys-typescale-title-large-size, 20px);
+    font-size: var(--mat-sys-title-large-size, 20px);
     font-weight: 600;
-    color: var(--mat-sys-color-on-surface);
+    color: var(--mat-sys-on-surface);
     margin: 0;
   }
 
@@ -51,42 +51,48 @@
 
   button[mat-icon-button] {
     mat-icon {
-      color: var(--mat-sys-color-on-surface-variant);
-      font-size: var(--mat-sys-typescale-title-large-size, 20px);
+      color: var(--mat-sys-on-surface-variant);
+      font-size: var(--mat-sys-title-large-size, 20px);
     }
   }
 }
 
 .content-wrapper {
-  padding: var(--mat-sys-spacing-24, 24px);
   overflow-y: auto;
   flex: 1;
-  background: var(--mat-sys-color-surface);
+  background: var(--mat-sys-surface);
 
-  // Use shared demo utilities for consistent styling
-  section {
-    @extend %demo-section;
-  }
+  // OpenAI-style: Create a centered page container within the content area
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--mat-sys-spacing-24, 24px);
 
-  .section-title {
-    @extend %demo-section-title;
-  }
+    // Use shared demo utilities for consistent styling
+    section {
+      @extend %demo-section;
+    }
 
-  .section-description {
-    @extend %demo-section-description;
-  }
+    .section-title {
+      @extend %demo-section-title;
+    }
 
-  mat-card {
-    @extend %demo-card;
+    .section-description {
+      @extend %demo-section-description;
+    }
 
-    box-shadow: none; // Follow MD3 flat design
+    mat-card {
+      @extend %demo-card;
+
+      box-shadow: none; // Follow MD3 flat design
+    }
   }
 }
 
-// Typography samples
+// Typography samples - OpenAI-like generous spacing
 .typography-sample {
-  padding: var(--mat-sys-spacing-20, 20px) 0;
-  border-bottom: 1px solid var(--mat-sys-color-outline-variant);
+  padding: var(--mat-sys-spacing-32, 32px) 0; // Much more generous padding
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
 
   &:last-child {
     border-bottom: none;
@@ -94,16 +100,64 @@
 
   .type-label {
     display: block;
-    font-size: var(--mat-sys-typescale-label-medium-size, 12px);
-    color: var(--mat-sys-color-on-surface-variant);
-    margin-bottom: var(--mat-sys-spacing-8, 8px);
-    font-weight: 400;
-    letter-spacing: 0.02em;
+    font-size: var(--mat-sys-label-small-size, 11px);
+    color: var(--mat-sys-on-surface-variant);
+    margin-bottom: var(--mat-sys-spacing-16, 16px); // More space between label and text
+    font-weight: var(--mat-sys-label-small-weight, 500);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
   }
 
   p {
     margin: 0;
-    color: var(--mat-sys-color-on-surface);
+    color: var(--mat-sys-on-surface);
+    line-height: 1.4; // Ensure consistent line height
+  }
+
+  // Specific spacing adjustments for different typography scales - much more generous
+  &:has(.mat-display-large) {
+    padding: var(--mat-sys-spacing-40, 40px) 0; // Extra generous for large display
+
+    p {
+      line-height: 1.1; // Tighter for large display text
+    }
+  }
+
+  &:has(.mat-display-medium) {
+    padding: var(--mat-sys-spacing-36, 36px) 0; // Generous for medium display
+
+    p {
+      line-height: 1.15; // Tighter for medium display text
+    }
+  }
+
+  &:has(.mat-headline-large) {
+    padding: var(--mat-sys-spacing-32, 32px) 0; // More space for headlines
+
+    p {
+      line-height: 1.2; // Tighter for headlines
+    }
+  }
+
+  &:has(.mat-body-large),
+  &:has(.mat-body-medium),
+  &:has(.mat-body-small) {
+    padding: var(--mat-sys-spacing-28, 28px) 0; // More space for body text
+
+    p {
+      line-height: 1.5; // Standard for body text
+    }
+  }
+
+  &:has(.mat-label-large),
+  &:has(.mat-label-medium),
+  &:has(.mat-label-small) {
+    padding: var(--mat-sys-spacing-24, 24px) 0; // More space even for labels
+
+    p {
+      line-height: 1.3; // Compact for labels
+    }
   }
 }
 
@@ -145,9 +199,9 @@
     }
 
     .color-group-title {
-      font-size: var(--mat-sys-typescale-label-large-size, 14px);
+      font-size: var(--mat-sys-label-large-size, 14px);
       font-weight: 600;
-      color: var(--mat-sys-color-on-surface);
+      color: var(--mat-sys-on-surface);
       margin: 0 0 var(--mat-sys-spacing-16, 16px) 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -180,21 +234,21 @@
         gap: var(--mat-sys-spacing-4, 4px);
 
         .swatch-name {
-          font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+          font-size: var(--mat-sys-body-medium-size, 14px);
           font-weight: 600;
-          color: var(--mat-sys-color-on-surface);
+          color: var(--mat-sys-on-surface);
         }
 
         .swatch-value {
-          font-size: var(--mat-sys-typescale-body-small-size, 13px);
-          font-family: var(--mat-sys-typescale-code-font);
-          color: var(--mat-sys-color-on-surface-variant);
+          font-size: var(--mat-sys-body-small-size, 13px);
+          font-family: var(--mat-sys-code-font);
+          color: var(--mat-sys-on-surface-variant);
         }
 
         .swatch-token {
-          font-size: var(--mat-sys-typescale-label-small-size, 11px);
-          font-family: var(--mat-sys-typescale-code-font);
-          color: var(--mat-sys-color-on-surface-variant);
+          font-size: var(--mat-sys-label-small-size, 11px);
+          font-family: var(--mat-sys-code-font);
+          color: var(--mat-sys-on-surface-variant);
           opacity: 0.7;
         }
       }
@@ -221,7 +275,7 @@
 
       &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px var(--mat-sys-color-shadow);
+        box-shadow: 0 4px 12px var(--mat-sys-shadow);
       }
     }
 
@@ -231,20 +285,20 @@
       gap: var(--mat-sys-spacing-2, 2px);
 
       .gray-name {
-        font-size: var(--mat-sys-typescale-label-medium-size, 12px);
+        font-size: var(--mat-sys-label-medium-size, 12px);
         font-weight: 600;
-        color: var(--mat-sys-color-on-surface);
+        color: var(--mat-sys-on-surface);
       }
 
       .gray-value {
-        font-size: var(--mat-sys-typescale-label-small-size, 11px);
-        font-family: var(--mat-sys-typescale-code-font);
-        color: var(--mat-sys-color-on-surface-variant);
+        font-size: var(--mat-sys-label-small-size, 11px);
+        font-family: var(--mat-sys-code-font);
+        color: var(--mat-sys-on-surface-variant);
       }
 
       .gray-usage {
-        font-size: var(--mat-sys-typescale-label-small-size, 10px);
-        color: var(--mat-sys-color-on-surface-variant);
+        font-size: var(--mat-sys-label-small-size, 10px);
+        color: var(--mat-sys-on-surface-variant);
         opacity: 0.8;
       }
     }
@@ -270,32 +324,32 @@
         transition: all 0.2s ease;
 
         &.state-default {
-          background: var(--mat-sys-color-surface);
-          border-color: var(--mat-sys-color-outline);
+          background: var(--mat-sys-surface);
+          border-color: var(--mat-sys-outline);
         }
 
         &.state-hover {
-          background: var(--mat-sys-color-hover);
-          border-color: var(--mat-sys-color-outline);
-          color: var(--mat-sys-color-on-surface);
+          background: var(--mat-sys-surface-variant);
+          border-color: var(--mat-sys-outline);
+          color: var(--mat-sys-on-surface);
         }
 
         &.state-selected {
-          background: var(--mat-sys-color-selected);
-          border-color: var(--mat-sys-color-outline);
-          color: var(--mat-sys-color-on-surface);
+          background: var(--mat-sys-primary);
+          border-color: var(--mat-sys-outline);
+          color: var(--mat-sys-on-surface);
         }
 
         &.state-focus {
-          background: var(--mat-sys-color-surface);
-          border: 2px solid var(--mat-sys-color-focus-ring);
+          background: var(--mat-sys-surface);
+          border: 2px solid var(--mat-sys-outline);
           padding: var(--mat-sys-spacing-8, 8px) var(--mat-sys-spacing-23, 23px); // Adjust for thicker border
         }
       }
 
       .state-label {
-        font-size: var(--mat-sys-typescale-label-medium-size, 12px);
-        color: var(--mat-sys-color-on-surface-variant);
+        font-size: var(--mat-sys-label-medium-size, 12px);
+        color: var(--mat-sys-on-surface-variant);
         text-align: center;
       }
     }
@@ -310,9 +364,9 @@
 
   .usage-section {
     .usage-title {
-      font-size: var(--mat-sys-typescale-label-large-size, 14px);
+      font-size: var(--mat-sys-label-large-size, 14px);
       font-weight: 600;
-      color: var(--mat-sys-color-on-surface);
+      color: var(--mat-sys-on-surface);
       margin: 0 0 var(--mat-sys-spacing-16, 16px) 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -327,9 +381,9 @@
         position: relative;
 
         .hierarchy-label {
-          font-size: var(--mat-sys-typescale-label-medium-size, 12px);
+          font-size: var(--mat-sys-label-medium-size, 12px);
           font-weight: 500;
-          color: var(--mat-sys-color-on-surface-variant);
+          color: var(--mat-sys-on-surface-variant);
           display: inline-block;
           margin-bottom: var(--mat-sys-spacing-8, 8px);
         }
@@ -343,7 +397,7 @@
 
       p {
         margin: 0;
-        font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+        font-size: var(--mat-sys-body-medium-size, 14px);
         line-height: 1.5;
       }
     }
@@ -354,13 +408,13 @@
 
       .border-example {
         border-radius: var(--mat-sys-shape-corner-small, 6px);
-        font-size: var(--mat-sys-typescale-body-small-size, 13px);
-        color: var(--mat-sys-color-on-surface-variant);
-        background: var(--mat-sys-color-surface);
+        font-size: var(--mat-sys-body-small-size, 13px);
+        color: var(--mat-sys-on-surface-variant);
+        background: var(--mat-sys-surface);
         transition: all 0.2s ease;
 
         &:hover {
-          background: var(--mat-sys-color-surface-container-low);
+          background: var(--mat-sys-surface-container-low);
         }
       }
     }

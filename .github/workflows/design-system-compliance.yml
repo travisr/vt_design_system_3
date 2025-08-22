@@ -31,6 +31,34 @@ jobs:
           cd venntier-design-system
           npm run build:lib
 
+      - name: Run unit tests
+        run: |
+          cd venntier-design-system
+          npm run test:ci
+
+      - name: Run visual regression tests
+        run: |
+          cd venntier-design-system
+          npx playwright install --with-deps
+          npm run test:visual
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            venntier-design-system/coverage/
+            venntier-design-system/test-results/
+            venntier-design-system/playwright-report/
+
+      - name: Upload coverage to Codecov
+        if: always()
+        uses: codecov/codecov-action@v4
+        with:
+          directory: venntier-design-system/coverage/
+          fail_ci_if_error: true
+
       - name: Run Angular 19+ compliance audit
         id: ng-audit
         run: |

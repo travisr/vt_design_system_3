@@ -8,9 +8,8 @@
 // - Utility classes and custom components
 // - Legacy compatibility mixins
 
-@forward 'card'; // Legacy compatibility only (mostly empty)
+@forward '../themes/components/navigation'; // OpenAI-style sidenav and navigation
 @forward 'input'; // Notes only (functionality moved to overrides)
-@forward 'form-fields'; // Custom: label positioning, icon sizing, textarea
 @forward 'list-overrides'; // Custom: navigation spacing, active states
 @forward 'toolbar'; // Custom: border, padding (basic styling in overrides)
 @forward 'icon'; // Custom: Material Icons font configuration

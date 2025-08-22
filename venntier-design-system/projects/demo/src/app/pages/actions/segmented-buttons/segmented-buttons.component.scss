@@ -11,8 +11,8 @@
 
   h4 {
     margin: 0;
-    font-size: var(--mat-sys-typescale-body-large-size, 16px);
-    color: var(--mat-sys-color-on-surface);
+    font-size: var(--mat-sys-body-large-size, 16px);
+    color: var(--mat-sys-on-surface);
   }
 }
 
@@ -29,8 +29,8 @@
 
   h4 {
     margin: 0;
-    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
-    color: var(--mat-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-body-medium-size, 14px);
+    color: var(--mat-sys-on-surface-variant);
   }
 }
 
@@ -40,16 +40,16 @@
 
   h4 {
     margin: 0 0 var(--mat-sys-spacing-16) 0;
-    color: var(--mat-sys-color-on-surface);
+    color: var(--mat-sys-on-surface);
   }
 
   .result {
     margin: var(--mat-sys-spacing-16) 0 0 0;
     padding: var(--mat-sys-spacing-8);
-    background-color: var(--mat-sys-color-surface-variant);
+    background-color: var(--mat-sys-surface-variant);
     border-radius: var(--mat-sys-shape-corner-small);
-    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
-    color: var(--mat-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-body-medium-size, 14px);
+    color: var(--mat-sys-on-surface-variant);
   }
 }
 
@@ -135,7 +135,7 @@ mat-button-toggle-group:has(mat-button-toggle mat-icon:only-child) {
   .use-case-card mat-button-toggle {
     .mat-button-toggle-label-content {
       padding: var(--mat-sys-spacing-6) var(--mat-sys-spacing-8);
-      font-size: var(--mat-sys-typescale-body-medium-size, 14px);
+      font-size: var(--mat-sys-body-medium-size, 14px);
 
       mat-icon {
         font-size: var(--mat-sys-spacing-16, 16px);

@@ -17,10 +17,10 @@
 
     .density-info {
       margin: 0;
-      color: var(--mat-sys-color-on-surface-variant);
+      color: var(--mat-sys-on-surface-variant);
 
       small {
-        color: var(--mat-sys-color-on-surface-variant);
+        color: var(--mat-sys-on-surface-variant);
         opacity: 0.7;
       }
     }
@@ -47,11 +47,11 @@
 
     // Header styling - minimal overrides to avoid conflicts with density
     .mat-mdc-header-row {
-      background-color: var(--mat-sys-color-surface-variant);
+      background-color: var(--mat-sys-surface-variant);
 
       .mat-mdc-header-cell {
-        color: var(--mat-sys-color-on-surface-variant);
-        border-bottom: 1px solid var(--mat-sys-color-outline-variant);
+        color: var(--mat-sys-on-surface-variant);
+        border-bottom: 1px solid var(--mat-sys-outline-variant);
 
         // Removed fixed padding - let density tokens control this
       }
@@ -60,12 +60,12 @@
     // Row styling - minimal overrides to avoid conflicts with density
     .mat-mdc-row {
       &:hover {
-        background-color: var(--mat-sys-color-surface-container-lowest);
+        background-color: var(--mat-sys-surface-container-lowest);
       }
 
       .mat-mdc-cell {
-        border-bottom: 1px solid var(--mat-sys-color-outline-variant);
-        color: var(--mat-sys-color-on-surface);
+        border-bottom: 1px solid var(--mat-sys-outline-variant);
+        color: var(--mat-sys-on-surface);
 
         // Removed fixed padding - let density tokens control this
       }
@@ -86,8 +86,8 @@
     padding: var(--mat-sys-spacing-8) 0;
 
     .selection-info {
-      color: var(--mat-sys-color-on-surface-variant);
-      font-size: var(--mat-sys-typescale-body-small-size);
+      color: var(--mat-sys-on-surface-variant);
+      font-size: var(--mat-sys-body-small-size);
     }
 
     .bulk-actions {
@@ -98,18 +98,18 @@
 
   // Status chip styling
   .status-active {
-    background-color: var(--mat-sys-color-tertiary-container);
-    color: var(--mat-sys-color-on-tertiary-container);
+    background-color: var(--mat-sys-tertiary-container);
+    color: var(--mat-sys-on-tertiary-container);
   }
 
   .status-inactive {
-    background-color: var(--mat-sys-color-error-container);
-    color: var(--mat-sys-color-on-error-container);
+    background-color: var(--mat-sys-error-container);
+    color: var(--mat-sys-on-error-container);
   }
 
   .status-pending {
-    background-color: var(--mat-sys-color-secondary-container);
-    color: var(--mat-sys-color-on-secondary-container);
+    background-color: var(--mat-sys-secondary-container);
+    color: var(--mat-sys-on-secondary-container);
   }
 
   // Density is handled globally by the design system using Angular Material's
@@ -131,7 +131,7 @@
     }
 
     .demo-table {
-      font-size: var(--mat-sys-typescale-body-small-size);
+      font-size: var(--mat-sys-body-small-size);
 
       // Removed fixed padding - let density tokens control this on mobile too
     }
@@ -208,7 +208,7 @@
 
 // Sort header styling
 .mat-sort-header-arrow {
-  color: var(--mat-sys-color-on-surface-variant);
+  color: var(--mat-sys-on-surface-variant);
 }
 
 // Loading state (for future enhancement)
@@ -217,7 +217,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--mat-sys-spacing-48);
-  color: var(--mat-sys-color-on-surface-variant);
+  color: var(--mat-sys-on-surface-variant);
 }
 
 // Empty state (for future enhancement)
@@ -227,7 +227,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--mat-sys-spacing-48);
-  color: var(--mat-sys-color-on-surface-variant);
+  color: var(--mat-sys-on-surface-variant);
   text-align: center;
 
   mat-icon {

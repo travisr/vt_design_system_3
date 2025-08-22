@@ -1,0 +1,95 @@
+// ============================================================================
+// SAFE EXTENSIONS - MODIFY FREELY
+// ============================================================================
+// This file contains customizations that can be safely modified without
+// breaking the core theme. If something breaks here, the core still works.
+// RULE: Never import this file directly - always import through main theme
+
+@use '@angular/material' as mat;
+
+// ============================================================================
+// OPENAI-STYLE CUSTOMIZATIONS (SAFE TO MODIFY)
+// ============================================================================
+
+@mixin vt-venntier-colors() {
+  // OpenAI-authentic color system extensions - matches bulletproof core
+  @include mat.theme-overrides(
+    (
+      primary: #1a1a1a,
+      on-primary: #ffffff,
+      secondary: #6b7280,
+      on-secondary: #ffffff,
+      tertiary: #10a37f,
+      on-tertiary: #ffffff,
+      outline: #e5e7eb,
+      outline-variant: #d1d5db,
+      background: #ffffff,
+      surface: #ffffff,
+      on-surface: #1a1a1a,
+      surface-variant: #fafafa,
+      on-surface-variant: #565869,
+      surface-container-lowest: #ffffff,
+      surface-container-low: #ffffff,
+      surface-container: #ffffff,
+      surface-container-high: #f9f9f9,
+      surface-container-highest: #f7f7f8,
+    )
+  );
+}
+
+@mixin vt-enhanced-components() {
+  // Enhanced component styling - safe to modify
+
+  // Enhanced buttons
+  @include mat.button-overrides(
+    (
+      filled-container-color: var(--mat-sys-tertiary),
+      filled-label-text-color: var(--mat-sys-on-tertiary),
+    )
+  );
+
+  // Enhanced FABs
+  @include mat.fab-overrides(
+    (
+      container-color: var(--mat-sys-tertiary),
+      foreground-color: var(--mat-sys-on-tertiary),
+    )
+  );
+
+  // Enhanced form fields (using valid tokens only)
+  @include mat.form-field-overrides(
+    (
+      container-color: var(--mat-sys-surface-container-low),
+      label-text-color: var(--mat-sys-on-surface-variant),
+    )
+  );
+}
+
+@mixin vt-density-variants() {
+  // Density customizations - safe to modify
+  .vt-dense {
+    @include mat.theme(
+      (
+        density: -2,
+      )
+    );
+  }
+
+  .vt-compact {
+    @include mat.theme(
+      (
+        density: -1,
+      )
+    );
+  }
+}
+
+// ============================================================================
+// MAIN EXTENSIONS MIXIN
+// ============================================================================
+@mixin vt-safe-extensions() {
+  @include vt-venntier-colors;
+
+  // @include vt-enhanced-components; // DISABLED - fixing token issues
+  @include vt-density-variants;
+}

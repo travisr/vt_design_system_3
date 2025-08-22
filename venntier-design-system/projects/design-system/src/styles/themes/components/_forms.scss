@@ -1,0 +1,211 @@
+// ============================================================================
+// FORM COMPONENTS
+// ============================================================================
+// Form fields, inputs, checkboxes, radio buttons, selects, and form-related styling
+
+@use '@angular/material' as mat;
+
+@mixin vt-form-overrides() {
+  // ============================================================================
+  // FORM FIELD OVERRIDES
+  // ============================================================================
+
+  @include mat.form-field-overrides(
+    (
+      // Outlined text field styling
+      outlined-container-shape: 8px,
+      outlined-outline-width: 1px,
+      outlined-focus-outline-width: 2px
+    )
+  );
+
+  // Clean input styling to remove browser defaults (not available as override tokens)
+  .mat-mdc-form-field .mdc-text-field__input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  // ============================================================================
+  // SELECT OVERRIDES
+  // ============================================================================
+
+  @include mat.select-overrides(
+    (
+      // Panel (dropdown) styling
+      panel-background-color: var(--mat-sys-surface),
+      // Trigger (select field) styling
+      enabled-trigger-text-color: var(--mat-sys-on-surface),
+      disabled-trigger-text-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent),
+      placeholder-text-color: var(--mat-sys-on-surface-variant),
+      // Arrow styling
+      enabled-arrow-color: var(--mat-sys-on-surface-variant),
+      disabled-arrow-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent),
+      focused-arrow-color: var(--mat-sys-primary),
+      invalid-arrow-color: var(--mat-sys-error),
+      // Typography
+      trigger-text-font: 'Inter',
+      trigger-text-size: var(--mat-sys-body-large-size),
+      trigger-text-weight: var(--mat-sys-body-large-weight)
+    )
+  );
+
+  // ============================================================================
+  // CHECKBOX OVERRIDES
+  // ============================================================================
+
+  @include mat.checkbox-overrides(
+    (
+      // Selected state - using tertiary color for OpenAI style
+      selected-icon-color: var(--mat-sys-tertiary),
+      selected-checkmark-color: var(--mat-sys-on-tertiary),
+      // Unselected state
+      unselected-icon-color: var(--mat-sys-outline),
+      unselected-hover-icon-color: var(--mat-sys-outline),
+      // Label styling
+      label-text-color: var(--mat-sys-on-surface),
+      label-text-font: 'Inter',
+      label-text-size: var(--mat-sys-body-large-size),
+      label-text-weight: var(--mat-sys-body-large-weight),
+      // Disabled state
+      disabled-label-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent),
+      disabled-selected-icon-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent),
+      disabled-unselected-icon-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent)
+    )
+  );
+
+  // ============================================================================
+  // RADIO BUTTON OVERRIDES
+  // ============================================================================
+
+  @include mat.radio-overrides(
+    (
+      // Selected state - using tertiary color for OpenAI style
+      selected-icon-color: var(--mat-sys-tertiary),
+      // Unselected state
+      unselected-icon-color: var(--mat-sys-outline),
+      unselected-hover-icon-color: var(--mat-sys-outline),
+      // Label styling
+      label-text-color: var(--mat-sys-on-surface),
+      label-text-font: 'Inter',
+      label-text-size: var(--mat-sys-body-large-size),
+      label-text-weight: var(--mat-sys-body-large-weight),
+      // Disabled state
+      disabled-label-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent),
+      disabled-selected-icon-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent),
+      disabled-unselected-icon-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent),
+      // Ripple effects
+      checked-ripple-color: var(--mat-sys-tertiary),
+      ripple-color: var(--mat-sys-outline)
+    )
+  );
+
+  // ============================================================================
+  // SLIDE TOGGLE OVERRIDES
+  // ============================================================================
+
+  @include mat.slide-toggle-overrides(
+    (
+      // Selected state - using tertiary color for OpenAI style
+      selected-track-color: var(--mat-sys-tertiary),
+      selected-handle-color: var(--mat-sys-on-tertiary),
+      selected-hover-track-color: var(--mat-sys-tertiary),
+      // Unselected state
+      unselected-track-color: var(--mat-sys-outline-variant),
+      unselected-handle-color: var(--mat-sys-surface),
+      unselected-hover-track-color: var(--mat-sys-outline),
+      // Label styling
+      label-text-color: var(--mat-sys-on-surface),
+      label-text-font: 'Inter',
+      label-text-size: var(--mat-sys-body-large-size),
+      label-text-weight: var(--mat-sys-body-large-weight),
+      // Disabled state
+      disabled-selected-track-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent),
+      disabled-unselected-track-color: color-mix(
+          in srgb,
+          var(--mat-sys-on-surface) 38%,
+          transparent
+        ),
+      disabled-selected-handle-color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent),
+      disabled-unselected-handle-color: color-mix(
+          in srgb,
+          var(--mat-sys-on-surface) 38%,
+          transparent
+        )
+    )
+  );
+
+  // ============================================================================
+  // CHIPS OVERRIDES
+  // ============================================================================
+
+  @include mat.chips-overrides(
+    (
+      // Container styling - OpenAI flat style (outlined only)
+      container-shape-radius: 16px,
+      // Height controlled by density mixins - removed fixed height for density support
+      // Label styling
+      label-text-color: var(--mat-sys-on-surface-variant),
+      label-text-font: 'Inter',
+      label-text-size: 13px,
+      label-text-weight: 400,
+
+      // Outline styling - flat chips with border only
+      outline-color: var(--mat-sys-outline-variant),
+      outline-width: 1px,
+
+      // Selected state for flat chips
+      flat-selected-outline-width: 1px,
+      selected-label-text-color: var(--mat-sys-on-surface),
+      // Icon styling
+      with-icon-icon-color: var(--mat-sys-on-surface-variant),
+      with-icon-selected-icon-color: var(--mat-sys-on-surface),
+      // Disabled state
+      disabled-label-text-color: var(--mat-sys-on-surface-variant),
+      disabled-container-opacity: 0.38
+    )
+  );
+
+  // Additional chips customizations not available through overrides
+  .mat-mdc-chip {
+    // Override MDC chip padding using CSS custom properties
+    --mdc-chip-leading-space: 8px; // Reduce left padding
+    --mdc-chip-trailing-space: 8px; // Reduce right padding
+    --mdc-chip-with-avatar-leading-space: 4px; // Tighter with avatar
+    --mdc-chip-with-trailing-icon-trailing-space: 4px; // Tighter with remove icon
+  }
+
+  // Hide checkmarks on filter chips for cleaner OpenAI style
+  mat-chip-listbox mat-chip-option,
+  .mat-mdc-chip-option,
+  .mat-mdc-chip {
+    // Hide all possible checkmark elements with high specificity
+    .mdc-evolution-chip__checkmark,
+    .mat-mdc-chip-checkmark,
+    .mdc-chip__checkmark,
+    .mat-chip-trailing-icon.mat-chip-checkmark,
+    .mdc-evolution-chip__checkmark-svg,
+    .mdc-evolution-chip__checkmark-path {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    // Override selected state with OpenAI gray colors
+    &.mat-mdc-chip-selected,
+    &[aria-selected='true'] {
+      background-color: var(--mat-sys-primary); // #e8e8ea OpenAI gray
+      border-color: var(--mat-sys-outline); // #d1d5db standard border
+      color: var(--mat-sys-on-surface); // Black text
+
+      // Ensure icons also use the correct color
+      mat-icon {
+        color: var(--mat-sys-on-surface);
+      }
+    }
+  }
+}

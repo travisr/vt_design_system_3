@@ -1,0 +1,123 @@
+// ============================================================================
+// THEME SETUP
+// ============================================================================
+// Base Material Design 3 theme configuration using Angular Material 20 APIs
+
+@use '@angular/material' as mat;
+@use '../../tokens' as tokens;
+@use 'custom-tokens' as custom;
+
+// MODERNIZED: Define the base theme using mat.theme() with system-level overrides
+@mixin vt-material-base-theme() {
+  // Modern MD3 approach - single theme definition with system-level token overrides
+  html {
+    @include mat.theme(
+      (
+        color: (
+          theme-type: light,
+          use-system-variables: true,
+        ),
+        typography: (
+          use-system-variables: true,
+          plain-family: 'Inter, system-ui, -apple-system, sans-serif',
+          brand-family: 'Inter, system-ui, -apple-system, sans-serif',
+          bold-weight: 600,
+          medium-weight: 450,
+          regular-weight: 400,
+        ),
+      )
+    );
+
+    // Apply system token overrides using Angular Material 20 best practices
+    @include mat.theme-overrides(
+      (
+        // Color tokens
+        primary: #1a1a1a,
+        on-primary: #fff,
+        tertiary: #10a37f,
+        on-tertiary: #fff,
+        outline: #e5e7eb,
+        outline-variant: #d1d5db,
+        surface: #fff,
+        on-surface: #1a1a1a,
+        surface-variant: #fafafa,
+        on-surface-variant: #565869,
+        surface-container-lowest: #fff,
+        surface-container-low: #fff,
+        surface-container: #fff,
+        surface-container-high: #f9f9f9,
+        surface-container-highest: #f7f7f8,
+
+        // Typography tokens - OpenAI-like compact line heights
+        body-large-line-height: 1.6rem,
+        body-medium-line-height: 1.4rem,
+        body-small-line-height: 1.3rem,
+        headline-large-line-height: 2.6rem,
+        headline-medium-line-height: 2.2rem,
+        headline-small-line-height: 1.9rem,
+        title-large-line-height: 2.2rem,
+        title-medium-line-height: 1.8rem,
+        title-small-line-height: 1.6rem,
+        label-large-line-height: 1.4rem,
+        label-medium-line-height: 1.2rem,
+        label-small-line-height: 1.1rem
+      )
+    );
+  }
+
+  // Include custom color tokens
+  @include custom.vt-custom-color-tokens;
+}
+
+// MODERNIZED: Apply dark theme using mat.theme() with dark overrides
+@mixin vt-material-colors($theme-type: 'light') {
+  @if $theme-type == 'dark' {
+    // Modern dark theme approach
+    @include mat.theme(
+      (
+        color: (
+          theme-type: dark,
+          use-system-variables: true,
+        ),
+      ),
+      $overrides: (
+        // Dark theme system-level token overrides
+        primary: #ffffff,
+        // White for dark mode
+        on-primary: #000000,
+        // Black text on white
+        tertiary: #10a37f,
+        // Keep green for CTAs
+        on-tertiary: #ffffff,
+        // White text on green
+        surface: #202123,
+        // OpenAI dark mode background
+        on-surface: #ffffff,
+        // White text
+        surface-container: #202123,
+        // Dark backgrounds for cards, main content
+        surface-container-lowest: #0a0a0a,
+        // Deepest dark backgrounds
+        surface-container-low: #353740,
+        // OpenAI dark sidenav background (exact match)
+        surface-container-high: #40414f,
+        // Lighter dark backgrounds
+        outline: #4a4a4a,
+        // Dark borders
+        outline-variant: #3a3a3a,
+        // Darker borders
+        hover: #2a2a2a,
+        // Dark hover
+        selected: #3a3a3a,
+        // Dark selected
+      )
+    );
+
+    // Apply additional dark theme color tokens
+    @include tokens.apply-dark-colors;
+  } @else {
+    // Light theme colors are already applied in vt-material-base-theme
+    // Apply additional light theme color tokens
+    @include tokens.apply-light-colors;
+  }
+}

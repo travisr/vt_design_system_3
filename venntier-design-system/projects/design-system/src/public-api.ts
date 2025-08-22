@@ -8,6 +8,9 @@
 // Service exports
 export * from './lib/services/theme.service';
 
+// Configuration exports
+export * from './lib/config/card-config';
+
 // Type exports
 export type VenntierTheme = 'light' | 'dark';
 
@@ -53,11 +56,18 @@ export const VENNTIER_TOKENS = {
     outlineVariant: 'var(--mat-sys-outline-variant)',
   },
   spacing: {
+    none: 'var(--mat-sys-spacing-0)',
     xs: 'var(--mat-sys-spacing-4)',
     sm: 'var(--mat-sys-spacing-8)',
     md: 'var(--mat-sys-spacing-16)',
     lg: 'var(--mat-sys-spacing-24)',
     xl: 'var(--mat-sys-spacing-32)',
+    '2xl': 'var(--mat-sys-spacing-40)',
+    '3xl': 'var(--mat-sys-spacing-48)',
+    '4xl': 'var(--mat-sys-spacing-64)',
+    '5xl': 'var(--mat-sys-spacing-80)',
+    '6xl': 'var(--mat-sys-spacing-96)',
+    '7xl': 'var(--mat-sys-spacing-128)',
   },
   shape: {
     sm: 'var(--mat-sys-shape-corner-small)',
@@ -85,7 +95,8 @@ export const VENNTIER_TOKENS = {
  * Access design tokens:
  * .my-component {
  *   color: vt-tokens.color('primary');
- *   padding: vt-tokens.spacing(4);
+ *   padding: vt-tokens.spacing('lg'); // 24px (8px × 3)
+ *   margin: vt-tokens.spacing('md'); // 16px (8px × 2)
  *   border-radius: vt-tokens.shape('medium');
  * }
  */

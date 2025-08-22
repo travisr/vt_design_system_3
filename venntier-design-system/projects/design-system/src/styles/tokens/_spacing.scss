@@ -8,37 +8,34 @@
 // Base unit
 $spacing-unit: 8px;
 
-// Spacing scale (based on 8px grid)
+// Spacing scale (pure 8px grid - aligned with modern design systems)
 $spacing-0: 0;
-$spacing-4: 4px; // 0.5 * base unit
-$spacing-8: 8px; // 1 * base unit
-$spacing-12: 12px; // 1.5 * base unit
-$spacing-16: 16px; // 2 * base unit
-$spacing-20: 20px; // 2.5 * base unit
-$spacing-24: 24px; // 3 * base unit
-$spacing-28: 28px; // 3.5 * base unit
-$spacing-32: 32px; // 4 * base unit
-$spacing-36: 36px; // 4.5 * base unit
-$spacing-40: 40px; // 5 * base unit
-$spacing-48: 48px; // 6 * base unit
-$spacing-56: 56px; // 7 * base unit
-$spacing-64: 64px; // 8 * base unit
-$spacing-80: 80px; // 10 * base unit
-$spacing-96: 96px; // 12 * base unit
-$spacing-112: 112px; // 14 * base unit
-$spacing-128: 128px; // 16 * base unit
+$spacing-4: 4px; // 0.5 * base unit (fine adjustments)
+$spacing-8: 8px; // 1 * base unit (base)
+$spacing-12: 12px; // 1.5 * base unit (small)
+$spacing-16: 16px; // 2 * base unit (medium)
+$spacing-24: 24px; // 3 * base unit (large)
+$spacing-32: 32px; // 4 * base unit (extra large)
+$spacing-40: 40px; // 5 * base unit (section spacing)
+$spacing-48: 48px; // 6 * base unit (large sections)
+$spacing-56: 56px; // 7 * base unit (major spacing)
+$spacing-64: 64px; // 8 * base unit (huge spacing)
+$spacing-80: 80px; // 10 * base unit (page sections)
+$spacing-96: 96px; // 12 * base unit (major sections)
+$spacing-128: 128px; // 16 * base unit (page margins)
 
 // ============================================================================
 // SEMANTIC SPACING MAPPINGS (for Angular Material theming API)
 // ============================================================================
 // These map our reference tokens to semantic roles that Angular Material understands
 
-// Component-specific spacing mappings
+// Component-specific spacing mappings (8px-aligned)
 $component-spacing: (
   // Card spacing
   card-padding: $spacing-32,
-  // Button spacing
-  button-padding-x: $spacing-20,
+  // Button spacing (updated to 8px grid)
+  button-padding-x: $spacing-24,
+  // Changed from 20px to 24px
   button-padding-y: $spacing-12,
   // Input spacing
   input-padding-x: $spacing-16,
@@ -57,7 +54,7 @@ $component-spacing: (
 // UTILITY FUNCTIONS
 // ============================================================================
 
-// Get a spacing reference token value
+// Get a spacing reference token value (8px-aligned scale)
 @function get-spacing($name) {
   $spacing-map: (
     '0': $spacing-0,
@@ -65,18 +62,14 @@ $component-spacing: (
     '8': $spacing-8,
     '12': $spacing-12,
     '16': $spacing-16,
-    '20': $spacing-20,
     '24': $spacing-24,
-    '28': $spacing-28,
     '32': $spacing-32,
-    '36': $spacing-36,
     '40': $spacing-40,
     '48': $spacing-48,
     '56': $spacing-56,
     '64': $spacing-64,
     '80': $spacing-80,
     '96': $spacing-96,
-    '112': $spacing-112,
     '128': $spacing-128,
   );
 

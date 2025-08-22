@@ -1,1834 +1,319 @@
+// ============================================================================
+// VENNTIER DESIGN SYSTEM - CORE REFINED THEME V2
+// ============================================================================
+// Modular, maintainable theme architecture following SCSS best practices
+// Based on the 7-1 pattern with clear separation of concerns
+
 @use '@angular/material' as mat;
 @use '../tokens' as tokens;
 
-// PROPER M3 CUSTOM THEME APPROACH
-// Following Angular Material's recommended pattern:
-// 1. Use default Angular Material theme with system variables
-// 2. Override system tokens directly with our reference tokens
-// 3. This avoids palette creation complexity while achieving custom theming
+// Import all theme modules
+@use 'base' as base;
+@use 'components' as components;
+@use 'overrides' as overrides;
 
-@mixin vt-material-base-theme() {
-  html {
-    // MD3 BEST PRACTICE: Enable automatic light/dark theme switching
-    // Using color-scheme: light dark enables automatic theme switching based on user preferences
-    color-scheme: light dark;
+// ============================================================================
+// MAIN THEME MIXIN
+// ============================================================================
 
-    @include mat.theme(
-      (
-        color: (
-          // Removed theme-type to enable automatic light/dark switching
-          use-system-variables: true,
-          system-variables-prefix: sys,
-          // Use custom palettes that work with light-dark() function
-          primary: mat.$violet-palette,
-          tertiary: mat.$orange-palette,
-        ),
-        typography: (
-          brand-family: 'Inter',
-          plain-family: 'Inter',
-          use-system-variables: true,
-          system-variables-prefix: sys,
-        ),
-        density: 0,
-      )
-    );
+@mixin vt-theme-refined() {
+  // 1. Base theme setup (Material Design 3 configuration)
+  @include base.vt-material-base-theme;
 
-    // MD3 BEST PRACTICE: Use mat.theme-overrides() with light-dark() for automatic theme switching
-    // This creates tokens that automatically adapt to light/dark mode
-    @include mat.theme-overrides(
-      (
-        // Primary role (monochrome/neutral for OpenAI style) - auto light/dark
-        primary: light-dark(#{tokens.$black}, #{tokens.$white}),
-        on-primary: light-dark(#{tokens.$white}, #{tokens.$black}),
-        primary-container: light-dark(#{tokens.$gray-50}, #{tokens.$gray-700}),
-        on-primary-container: light-dark(#{tokens.$black}, #{tokens.$gray-50}),
-        // Secondary role (warn/error) - consistent across themes
-        secondary: #{tokens.$red-500},
-        on-secondary: #{tokens.$white},
-        secondary-container: light-dark(#{tokens.$red-50}, #{tokens.$red-900}),
-        on-secondary-container: light-dark(#{tokens.$red-600}, #{tokens.$red-100}),
-        // Tertiary role (success/accent) - consistent green with adaptive containers
-        tertiary: #{tokens.$green-500},
-        on-tertiary: #{tokens.$white},
-        tertiary-container: light-dark(#{tokens.$green-50}, #{tokens.$gray-700}),
-        on-tertiary-container: light-dark(#{tokens.$green-500}, #{tokens.$green-100}),
-        // Surface hierarchy - auto light/dark
-        surface: light-dark(#{tokens.$white}, #{tokens.$gray-900}),
-        on-surface: light-dark(#{tokens.$black}, #{tokens.$white}),
-        surface-variant: light-dark(#{tokens.$gray-50}, #{tokens.$gray-700}),
-        on-surface-variant: light-dark(#{tokens.$gray-600}, #{tokens.$gray-400}),
-        // Surface container hierarchy - auto light/dark with OpenAI-style contrast
-        surface-container-lowest: light-dark(#{tokens.$white}, #{tokens.$gray-950}),
-        // Pure white/black - cards, dialogs
-        surface-container-low: light-dark(#{tokens.$gray-150}, #{tokens.$gray-900}),
-        // OpenAI sidenav background - very light gray
-        surface-container: light-dark(#{tokens.$gray-175}, #{tokens.$gray-800}),
-        // OpenAI hover state - slightly darker than sidenav
-        surface-container-high: light-dark(#{tokens.$gray-200}, #{tokens.$gray-700}),
-        // OpenAI active/selected state - darker than hover
-        surface-container-highest: light-dark(#{tokens.$gray-300}, #{tokens.$gray-600}),
-        // Highest elevation - elevated elements
-        // Utility colors - auto light/dark
-        outline: light-dark(#{tokens.$gray-300}, #{tokens.$gray-600}),
-        outline-variant: light-dark(#{tokens.$gray-200}, #{tokens.$gray-800}),
-        error: #{tokens.$red-500},
-        on-error: #{tokens.$white},
-        // Custom OpenAI-style interaction tokens
-        hover: light-dark(#{tokens.$gray-175}, #{tokens.$gray-700}),
-        // OpenAI hover state
-        selected: light-dark(#{tokens.$gray-200}, #{tokens.$gray-600}),
-        // OpenAI active/selected state
-        error-container: light-dark(#{tokens.$red-50}, #{tokens.$red-900}),
-        on-error-container: light-dark(#{tokens.$red-600}, #{tokens.$red-100}),
-        background: light-dark(#{tokens.$white}, #{tokens.$gray-900}),
-        on-background: light-dark(#{tokens.$black}, #{tokens.$white})
-      )
-    );
+  // 2. Component overrides (buttons, forms, navigation, etc.)
+  @include components.vt-navigation-overrides;
+  @include components.vt-button-overrides;
+  @include components.vt-form-overrides;
+  @include components.vt-layout-overrides;
+  @include components.vt-feedback-overrides;
 
-    // MD3 TYPOGRAPHY: The typography system is handled by the mat.theme() configuration above
-    // Angular Material 20 automatically generates --mat-sys-* typography tokens
-    // Custom typography scales are defined in tokens/_typescale.scss for reference
+  // 3. Global overrides and utilities
+  @include overrides.vt-density-overrides;
+  @include overrides.vt-global-overrides;
 
-    // MD3 COMPLIANT: Custom tokens that Angular Material doesn't auto-generate
-    // These extend the MD3 system with design system specific tokens
-
-    // Custom interactive state tokens (OpenAI-style) - auto light/dark
-    --mat-sys-hover: light-dark(#{tokens.$gray-175}, #{tokens.$gray-800}); // OpenAI hover state
-    --mat-sys-selected: light-dark(
-      #{tokens.$gray-200},
-      #{tokens.$gray-700}
-    ); // OpenAI active/selected state
-
-    --mat-sys-disabled: light-dark(
-      #{tokens.$gray-400},
-      #{tokens.$gray-600}
-    ); // OpenAI disabled text
-
-    --mat-sys-focus-ring: #{tokens.$green-500}; // Focus indicator - consistent across themes
-
-    // Custom semantic tokens for demo app
-    --mat-sys-data-primary: #{tokens.$purple}; // For data visualization
-    --mat-sys-on-data-primary: #{tokens.$white}; // White text on purple
-    --mat-sys-success: var(--mat-sys-tertiary); // Use tertiary (green) for success
-    --mat-sys-warning: var(--mat-sys-error); // Use error color for warnings
-    --mat-sys-shadow: rgb(0 0 0 / 10%); // Standard shadow color
-
-    // MD3 COMPLIANT: Custom extension tokens that Angular Material doesn't auto-generate
-    // These follow MD3 naming conventions but extend beyond the standard system
-
-    // Spacing tokens (custom extension - Angular Material doesn't auto-generate spacing)
-    --mat-sys-spacing-2: 2px;
-    --mat-sys-spacing-4: 4px;
-    --mat-sys-spacing-6: 6px;
-    --mat-sys-spacing-8: 8px;
-    --mat-sys-spacing-12: 12px;
-    --mat-sys-spacing-16: 16px;
-    --mat-sys-spacing-18: 18px;
-    --mat-sys-spacing-20: 20px;
-    --mat-sys-spacing-24: 24px;
-    --mat-sys-spacing-28: 28px;
-    --mat-sys-spacing-32: 32px;
-    --mat-sys-spacing-36: 36px;
-    --mat-sys-spacing-40: 40px;
-    --mat-sys-spacing-48: 48px;
-    --mat-sys-spacing-56: 56px;
-    --mat-sys-spacing-64: 64px;
-    --mat-sys-spacing-72: 72px;
-    --mat-sys-spacing-80: 80px;
-    --mat-sys-spacing-96: 96px;
-    --mat-sys-spacing-112: 112px;
-    --mat-sys-spacing-128: 128px;
-
-    // Shape tokens (custom extension - Angular Material doesn't auto-generate all shape variants)
-    --mat-sys-shape-corner-small: 4px;
-    --mat-sys-shape-corner-medium: 8px;
-    --mat-sys-shape-corner-large: 12px;
-    --mat-sys-shape-corner-full: 50%;
-
-    // Motion tokens (custom extension)
-    --mat-sys-motion-duration-short: 200ms;
-    --mat-sys-motion-duration-short2: 250ms;
-    --mat-sys-motion-duration-medium2: 400ms;
-    --mat-sys-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
-    --mat-sys-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
-    --mat-sys-motion-hover: 150ms ease;
-
-    // Elevation tokens (custom extension)
-    --mat-sys-elevation-0: none;
-    --mat-sys-elevation-1: 0 1px 3px rgb(0 0 0 / 12%);
-    --mat-sys-elevation-2: 0 2px 6px rgb(0 0 0 / 16%);
-    --mat-sys-elevation-4: 0 4px 12px rgb(0 0 0 / 15%);
-
-    // Typography extension tokens (custom - for code and icons)
-    --mat-sys-code-font: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    --mat-sys-code-size: 0.875rem; // 14px
-    --mat-sys-icon-font: 'Material Icons';
-
-    // MD3 COMPLIANT: Typography tokens are auto-generated by Angular Material
-    // The system-variables-prefix: 'mat-sys' configuration above automatically creates:
-    // --mat-sys-display-large-font, --mat-sys-display-large-size, etc.
-    // We can override specific typography tokens if needed using mat.typography-overrides()
-    // but the individual font/size/weight/line-height tokens are auto-generated
-  }
-
-  @include vt-component-overrides-refined;
-
-  // Apply default density (0 = standard, -1 = dense, -2 = very dense)
-  @include vt-density-overrides(0);
-
-  // MD3 BEST PRACTICE: High contrast mode support
-  // Use prefers-contrast: more for users who need higher contrast
-  @media (prefers-contrast: more) {
-    @include vt-high-contrast-overrides;
-  }
+  // 4. Core sidenav and navigation styles (OpenAI-style)
+  @include vt-sidenav-core-styles;
 }
 
-// MD3 COMPLIANT: Automatic light/dark theme switching is now handled by light-dark() functions
-// The vt-material-colors mixin is no longer needed as all color tokens now automatically
-// adapt to the user's color-scheme preference via the light-dark() CSS function
+// ============================================================================
+// THEME VARIANTS
+// ============================================================================
 
-// MD3 BEST PRACTICE: High contrast mode overrides
-// Provides enhanced contrast for users who prefer higher contrast
-@mixin vt-high-contrast-overrides() {
-  // MD3 HIGH CONTRAST: Override color tokens for enhanced contrast
-  // Use more extreme color values for better accessibility
-  :root {
-    // Primary role - Maximum contrast (pure black/white)
-    --mat-sys-primary: light-dark(#000, #fff);
-    --mat-sys-on-primary: light-dark(#fff, #000);
-    --mat-sys-primary-container: light-dark(#f5f5f5, #1a1a1a);
-    --mat-sys-on-primary-container: light-dark(#000, #fff);
-
-    // Secondary role - Enhanced contrast for warn/error
-    --mat-sys-secondary: light-dark(#c00, #f44);
-    --mat-sys-on-secondary: #fff;
-    --mat-sys-secondary-container: light-dark(#ffebee, #4d0000);
-    --mat-sys-on-secondary-container: light-dark(#c00, #ffcdd2);
-
-    // Tertiary role - Enhanced contrast for success/accent
-    --mat-sys-tertiary: light-dark(#060, #0c0);
-    --mat-sys-on-tertiary: #fff;
-    --mat-sys-tertiary-container: light-dark(#e8f5e8, #030);
-    --mat-sys-on-tertiary-container: light-dark(#060, #a5d6a7);
-
-    // Surface hierarchy - Maximum contrast
-    --mat-sys-surface: light-dark(#fff, #000);
-    --mat-sys-on-surface: light-dark(#000, #fff);
-    --mat-sys-surface-variant: light-dark(#f0f0f0, #1a1a1a);
-    --mat-sys-on-surface-variant: light-dark(#333, #ccc);
-
-    // Outline - Enhanced visibility
-    --mat-sys-outline: light-dark(#666, #999);
-    --mat-sys-outline-variant: light-dark(#999, #666);
-
-    // Inverse colors - Swapped for high contrast
-    --mat-sys-inverse-surface: light-dark(#000, #fff);
-    --mat-sys-inverse-on-surface: light-dark(#fff, #000);
-    --mat-sys-inverse-primary: light-dark(#fff, #000);
-  }
-
-  // Enhanced border visibility for interactive elements
-  .mat-mdc-button,
-  .mat-mdc-unelevated-button,
-  .mat-mdc-raised-button,
-  .mat-mdc-outlined-button {
-    border-width: var(--mat-sys-spacing-2, 2px);
-    border-style: solid;
-    border-color: currentColor;
-  }
-
-  // Enhanced form field borders
-  .mat-mdc-form-field {
-    .mdc-notched-outline__leading,
-    .mdc-notched-outline__notch,
-    .mdc-notched-outline__trailing {
-      border-width: var(--mat-sys-spacing-2, 2px);
-    }
-  }
-
-  // Enhanced chip borders
-  .mat-mdc-chip {
-    border-width: var(--mat-sys-spacing-2, 2px);
-    border-style: solid;
-    border-color: currentColor;
-  }
-
-  // Enhanced table borders
-  .mat-mdc-table {
-    .mat-mdc-header-cell,
-    .mat-mdc-cell {
-      border-bottom-width: var(--mat-sys-spacing-2, 2px);
-    }
-  }
-
-  // Enhanced focus indicators
-  .mat-mdc-button:focus,
-  .mat-mdc-form-field:focus-within,
-  .mat-mdc-chip:focus {
-    outline: var(--mat-sys-spacing-3, 3px) solid currentColor;
-    outline-offset: var(--mat-sys-spacing-2, 2px);
-  }
+@mixin vt-theme-colors($theme-type: 'light') {
+  @include base.vt-material-colors($theme-type);
 }
 
-@mixin vt-component-overrides-refined() {
-  // Global refinements - use CSS custom properties instead of !important
-  :root {
-    --mat-elevation-box-shadow-for-gss: none;
+// ============================================================================
+// UTILITY MIXINS
+// ============================================================================
 
-    // Removed custom --vt-* tokens in favor of direct --mat-sys-* usage
-  }
+// Apply only navigation styles (for testing/debugging)
+@mixin vt-navigation-only() {
+  @include base.vt-custom-color-tokens;
+  @include components.vt-navigation-overrides;
+}
 
-  // Icon button overrides - using official Angular Material API
-  @include mat.icon-button-overrides(
+// Apply only button styles (for testing/debugging)
+@mixin vt-buttons-only() {
+  @include base.vt-custom-color-tokens;
+  @include components.vt-button-overrides;
+}
+
+// Apply only form styles (for testing/debugging)
+@mixin vt-forms-only() {
+  @include base.vt-custom-color-tokens;
+  @include components.vt-form-overrides;
+}
+
+// ============================================================================
+// CORE SIDENAV STYLES - OpenAI Style Navigation
+// ============================================================================
+
+@mixin vt-sidenav-core-styles() {
+  // FIRST: Override Angular Material list component defaults for compact spacing
+  @include mat.list-overrides(
     (
-      // Container styling - OpenAI 48px square
-      state-layer-size: 48px,
-      icon-size: 20px,
-
-      // State layer colors - clean OpenAI style
-      state-layer-color: var(--mat-sys-on-surface),
-      hover-state-layer-opacity: 0.08,
-      focus-state-layer-opacity: 0,
-      // Remove focus state layer
-      pressed-state-layer-opacity: 0.12,
-
-      // Disable ripples for clean design
-      ripple-color: transparent,
-
-      // Disable touch target display which might be causing the outline
-      touch-target-display: none,
-
-      // Disabled state - use proper disabled color token
-      disabled-icon-color: var(--mat-sys-on-surface-variant),
-      disabled-state-layer-color: var(--mat-sys-on-surface-variant)
+      // Override the default list item heights for compact sizing (OpenAI style)
+      list-item-one-line-container-height: var(--mat-sys-spacing-36, 36px),
+      // Token-based height for better OpenAI-style readability
+      list-item-two-line-container-height: var(--mat-sys-spacing-44, 44px),
+      // Token-based height for better readability
+      list-item-three-line-container-height: var(--mat-sys-spacing-52, 52px),
+      // Token-based height for better readability
+      // Typography overrides for tighter text using tokens
+      list-item-label-text-size: var(--mat-sys-body-medium-size, 14px),
+      list-item-label-text-line-height: var(--mat-sys-body-medium-line-height, 18px)
     )
   );
 
-  // Icon button color variants - using correct MDC CSS custom properties
-  .mat-mdc-icon-button {
-    // Default color - inherit from theme
-    --mat-icon-button-icon-color: var(--mat-sys-on-surface);
-    --mat-icon-button-state-layer-color: var(--mat-sys-on-surface);
+  // Sidenav overrides - MD3 token-based styling using correct Angular Material token format
+  @include mat.sidenav-overrides(
+    (
+      // Container styling - this is the sidenav drawer (navigation area)
+      // Use surface-container-low for OpenAI-style navigation background
+      container-background-color: var(--mat-sys-surface-container-low),
+      container-text-color: var(--mat-sys-on-surface),
+      container-shape: 0,
+      // Remove border-radius from sidenav container
+      // Content styling - this is the main content area (should be white)
+      content-background-color: var(--mat-sys-surface),
+      content-text-color: var(--mat-sys-on-surface)
+    )
+  );
 
-    // Primary color (green)
-    &.mat-primary {
-      --mat-icon-button-icon-color: var(--mat-sys-tertiary);
-      --mat-icon-button-state-layer-color: var(--mat-sys-tertiary);
-    }
+  // Sidenav width - OpenAI style using proper tokens
+  .vt-sidenav-standard {
+    width: var(--mat-sys-spacing-220, 220px);
+    min-width: var(--mat-sys-spacing-220, 220px);
+    max-width: var(--mat-sys-spacing-220, 220px);
 
-    // Accent color
-    &.mat-accent {
-      --mat-icon-button-icon-color: var(--mat-sys-secondary);
-      --mat-icon-button-state-layer-color: var(--mat-sys-secondary);
-    }
+    // Background handled by Angular Material overrides above - don't override here
 
-    // Warn color
-    &.mat-warn {
-      --mat-icon-button-icon-color: var(--mat-sys-error);
-      --mat-icon-button-state-layer-color: var(--mat-sys-error);
+    // CRITICAL: Remove border-radius from sidenav container
+    border-radius: 0;
+
+    // Remove scrollbars completely - OpenAI style has no visible scrollbars
+    overflow: hidden;
+  }
+
+  // Ensure sidenav styling is applied with higher specificity
+  mat-sidenav.vt-sidenav-standard {
+    // Background handled by Angular Material overrides - don't override here
+
+    // CRITICAL: Remove border-radius with high specificity
+    border-radius: 0;
+
+    // Ensure no scrollbars on the Material Design sidenav element itself
+    overflow: hidden;
+
+    // CRITICAL: Hide scrollbar on the inner container that's causing the issue
+    .mat-drawer-inner-container {
+      overflow-y: auto; // Allow vertical scrolling
+      scrollbar-width: none; // Firefox
+      -ms-overflow-style: none; // IE/Edge
+
+      &::-webkit-scrollbar {
+        display: none; // Chrome/Safari/Opera
+      }
     }
   }
 
-  // NOTE: Select panel styling is now handled by mat.select-overrides() below
+  // Also target the mat-sidenav element directly in case class isn't applied
+  mat-sidenav {
+    // Background handled by Angular Material overrides - don't override here
 
-  // Wrap all component overrides in a single .vt-theme class for higher specificity
-  .vt-theme {
-    // Body styles using MD3 system tokens directly
-    background: var(--mat-sys-surface);
-    color: var(--mat-sys-on-surface);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    // Also hide scrollbars on any mat-sidenav
+    .mat-drawer-inner-container {
+      overflow-y: auto; // Allow vertical scrolling
+      scrollbar-width: none;
+      -ms-overflow-style: none;
 
-    // Remove shadows using higher specificity
-    [class*='mat-elevation-z'],
-    [class*='mat-mdc-elevation'],
-    .mat-mdc-card,
-    .mat-mdc-menu-panel,
-    .mat-mdc-dialog-container {
-      box-shadow: none;
-    }
-
-    // BUTTONS - Use CSS custom properties and higher specificity
-    // Regular buttons (not icon buttons)
-    .mat-mdc-button,
-    .mat-mdc-raised-button,
-    .mat-mdc-flat-button,
-    .mat-mdc-stroked-button {
-      // Heights controlled by density mixins - removed fixed heights for density support
-      --mat-button-text-label-text-font: var(--mat-sys-label-large-font);
-      --mat-button-text-label-text-size: var(--mat-sys-label-large-size);
-      --mat-button-text-label-text-weight: var(--mat-sys-label-large-weight);
-      --mat-button-text-label-text-tracking: var(--mat-sys-label-large-tracking);
-
-      border-radius: var(--mat-sys-shape-corner-small, 6px);
-      padding: 0 var(--mat-sys-spacing-20, 20px);
-      transition: all var(--mat-sys-motion-duration-short, 0.15s) ease;
-      box-shadow: none;
-
-      // Disable ripples using CSS variables
-      --mat-ripple-color: transparent;
-      --mat-ripple-hover-opacity: 0;
-      --mat-ripple-focus-opacity: 0;
-      --mat-ripple-pressed-opacity: 0;
-    }
-
-    // NOTE: Icon button styling is now handled by mat.icon-button-overrides() above
-    // NOTE: ALL button styling is now handled by mat.button-overrides() in vt-modern-component-overrides()
-    // This ensures MD3 compliance and eliminates conflicts between override approaches
-
-    // CARDS - Use CSS custom properties and higher specificity
-    .mat-mdc-card {
-      --mat-card-elevated-container-color: var(--mat-sys-surface);
-      --mat-card-elevated-container-shape: 8px;
-
-      border: 1px solid var(--mat-sys-outline-variant);
-      border-radius: var(--mat-sys-shape-corner-medium, 8px);
-      padding: var(--mat-sys-spacing-24, 24px);
-      background-color: var(--mat-sys-surface);
-      margin-bottom: var(--mat-sys-spacing-24, 24px);
-
-      .mat-mdc-card-header {
-        padding: 0 0 20px;
-
-        .mat-mdc-card-title {
-          font-size: var(--mat-sys-title-medium-size, 16px);
-          font-weight: var(--mat-sys-title-medium-weight, 600);
-          color: var(--mat-sys-on-surface);
-          margin: 0;
-        }
-      }
-
-      .mat-mdc-card-content {
-        padding: 0;
-
-        > *:not(:last-child) {
-          margin-bottom: 16px;
-        }
-      }
-    }
-
-    // FORM FIELDS - No custom CSS, pure MD3 approach only
-
-    // NOTE: Select styling is now handled by mat.select-overrides() above
-
-    // TOOLBAR - Minimal styling to complement mat.toolbar-overrides()
-    .mat-toolbar {
-      border-bottom: 1px solid var(--mat-sys-outline-variant);
-      padding: 0 var(--mat-sys-spacing-24);
-      font-weight: 400;
-      box-shadow: none;
-
-      &.mat-primary {
-        background-color: var(--mat-sys-surface);
-      }
-    }
-
-    // TYPOGRAPHY - Using M3 typescale tokens
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: var(--mat-sys-on-surface);
-      margin-top: 0;
-    }
-
-    h1 {
-      font-family: var(--mat-sys-headline-large-font);
-      font-size: var(--mat-sys-headline-large-size);
-      font-weight: var(--mat-sys-headline-large-weight);
-      line-height: var(--mat-sys-headline-large-line-height);
-      letter-spacing: var(--mat-sys-headline-large-tracking);
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      font-family: var(--mat-sys-headline-medium-font);
-      font-size: var(--mat-sys-headline-medium-size);
-      font-weight: var(--mat-sys-headline-medium-weight);
-      line-height: var(--mat-sys-headline-medium-line-height);
-      letter-spacing: var(--mat-sys-headline-medium-tracking);
-      margin-bottom: 16px;
-    }
-
-    h3 {
-      font-family: var(--mat-sys-headline-small-font);
-      font-size: var(--mat-sys-headline-small-size);
-      font-weight: var(--mat-sys-headline-small-weight);
-      line-height: var(--mat-sys-headline-small-line-height);
-      letter-spacing: var(--mat-sys-headline-small-tracking);
-      margin-bottom: 12px;
-    }
-
-    p {
-      color: var(--mat-sys-on-surface-variant);
-      font-family: var(--mat-sys-body-large-font);
-      font-size: var(--mat-sys-body-large-size);
-      font-weight: var(--mat-sys-body-large-weight);
-      line-height: var(--mat-sys-body-large-line-height);
-      letter-spacing: var(--mat-sys-body-large-tracking);
-      margin-bottom: 12px;
-    }
-
-    // NOTE: Checkbox styling is now handled by mat.checkbox-overrides() above
-
-    // NOTE: Radio button styling is now handled by mat.radio-overrides() above
-
-    // Chips overrides - using official Angular Material API
-    @include mat.chips-overrides(
-      (
-        // Container styling - OpenAI flat style (outlined only)
-        container-shape-radius: 16px,
-        // Height controlled by density mixins - removed fixed height for density support
-        // Label styling
-        label-text-color: var(--mat-sys-on-surface-variant),
-        label-text-font: 'Inter',
-        label-text-size: 13px,
-        label-text-weight: 400,
-
-        // Outline styling - flat chips with border only
-        outline-color: var(--mat-sys-outline-variant),
-        outline-width: 1px,
-
-        // Selected state for flat chips
-        flat-selected-outline-width: 1px,
-        selected-label-text-color: var(--mat-sys-on-surface),
-        // Icon styling
-        with-icon-icon-color: var(--mat-sys-on-surface-variant),
-        with-icon-selected-icon-color: var(--mat-sys-on-surface),
-        // Disabled state
-        disabled-label-text-color: var(--mat-sys-on-surface-variant),
-        disabled-container-opacity: 0.38
-      )
-    );
-
-    // Additional chips customizations not available through overrides
-    .mat-mdc-chip {
-      // Override MDC chip padding using CSS custom properties
-      --mat-chip-leading-space: 8px; // Reduce left padding
-      --mat-chip-trailing-space: 8px; // Reduce right padding
-      --mat-chip-with-avatar-leading-space: 4px; // Tighter with avatar
-      --mat-chip-with-trailing-icon-trailing-space: 4px; // Tighter with remove icon
-    }
-
-    // Hide checkmarks on filter chips for cleaner OpenAI style
-    mat-chip-listbox mat-chip-option,
-    .mat-mdc-chip-option,
-    .mat-mdc-chip {
-      // Hide all possible checkmark elements with high specificity
-      .mdc-evolution-chip__checkmark,
-      .mat-mdc-chip-checkmark,
-      .mdc-chip__checkmark,
-      .mat-chip-trailing-icon.mat-chip-checkmark,
-      .mdc-evolution-chip__checkmark-svg,
-      .mdc-evolution-chip__checkmark-path {
+      &::-webkit-scrollbar {
         display: none;
-        visibility: hidden;
-        opacity: 0;
-        width: 0;
-        height: 0;
-        overflow: hidden;
-      }
-
-      // Override selected state with OpenAI gray colors
-      &.mat-mdc-chip-selected,
-      &[aria-selected='true'] {
-        background-color: var(--mat-sys-selected); // #e5e5e5 OpenAI gray
-        border-color: var(--mat-sys-outline); // #d1d5db standard border
-        color: var(--mat-sys-on-surface); // Black text
-
-        // Ensure icons also use the correct color
-        mat-icon {
-          color: var(--mat-sys-on-surface);
-        }
-      }
-    }
-
-    // MENU - Custom styling not covered by mat.menu-overrides()
-    // NOTE: Basic menu styling is now handled by mat.menu-overrides() below
-    .mat-mdc-menu-panel {
-      // Custom layout: Border, padding, shadow, and sizing (not available as tokens)
-      --mat-menu-container-color: var(--mat-sys-surface);
-      --mat-menu-container-shape: var(--mat-sys-shape-corner-small);
-      --mat-menu-item-label-text-color: var(--mat-sys-on-surface-variant);
-      --mat-menu-item-hover-state-layer-color: transparent;
-
-      border: 1px solid var(--mat-sys-outline-variant);
-      border-radius: var(--mat-sys-shape-corner-small);
-      background-color: var(--mat-sys-surface); // White background
-      padding: var(--mat-sys-spacing-1, 4px) var(--mat-sys-spacing-2, 8px); // Add horizontal padding like sidenav
-      box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
-      min-width: var(--mat-sys-spacing-180, 180px);
-      max-width: var(--mat-sys-spacing-280, 280px);
-      overflow: hidden;
-
-      .mat-mdc-menu-item {
-        // Use same dimensions as sidenav items
-        --mat-list-list-item-container-height: var(--mat-sys-spacing-8);
-        --mat-list-list-item-label-text-size: var(--mat-sys-body-medium-size);
-        --mat-list-list-item-label-text-weight: var(--mat-sys-body-medium-weight);
-        --mat-list-list-item-leading-icon-size: var(--mat-sys-spacing-4);
-        --mat-list-list-item-trailing-icon-size: var(--mat-sys-spacing-4);
-
-        height: var(--mat-sys-spacing-8, 32px); // Same as sidenav
-        padding: 0 var(--mat-sys-spacing-2, 8px); // Same as sidenav
-        margin: calc(var(--mat-sys-spacing-1) / 2) 0; // Exact same as sidenav - very tight
-        border-radius: var(--mat-sys-shape-corner-small); // Same as sidenav
-        color: var(--mat-sys-on-surface-variant); // Same as sidenav
-        font-size: var(--mat-sys-body-medium-size);
-        font-weight: var(--mat-sys-body-medium-weight);
-        transition: background-color var(--mat-sys-motion-hover);
-
-        // Disable Material's state layer
-        &::before {
-          opacity: 0;
-        }
-
-        // Custom hover state - same as sidenav but more contained
-        &:hover:not([disabled]),
-        &.mat-mdc-menu-item-highlighted {
-          background-color: var(--mat-sys-hover);
-          color: var(--mat-sys-on-surface-variant);
-        }
-
-        // Icon styling - same as sidenav
-        mat-icon {
-          font-size: var(--mat-sys-spacing-16, 16px);
-          width: var(--mat-sys-spacing-16, 16px);
-          height: var(--mat-sys-spacing-16, 16px);
-          margin-right: var(--mat-sys-spacing-10, 10px);
-          color: var(--mat-sys-on-surface-variant);
-          transition: color var(--mat-sys-motion-hover);
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        // Text content - combined styling with overflow handling
-        .mat-mdc-menu-item-text {
-          display: flex;
-          align-items: center;
-          flex: 1;
-          color: inherit;
-          font-size: var(--mat-sys-body-medium-size);
-          line-height: var(--mat-sys-body-medium-line-height);
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        // Trailing icon (chevron, etc.)
-        .mat-mdc-menu-item-submenu-trigger-icon {
-          font-size: var(--mat-sys-spacing-4, 16px);
-          width: var(--mat-sys-spacing-4, 16px);
-          height: var(--mat-sys-spacing-4, 16px);
-          color: var(--mat-sys-on-surface-variant);
-        }
-
-        // Disabled state
-        &[disabled] {
-          opacity: 0.38;
-          cursor: not-allowed;
-
-          mat-icon {
-            opacity: 0.38;
-          }
-        }
-
-        // Destructive actions (like delete) - keep error styling
-        &.mat-warn,
-        &[color='warn'] {
-          color: var(--mat-sys-error);
-
-          mat-icon {
-            color: var(--mat-sys-error);
-          }
-
-          &:hover {
-            background-color: var(--mat-sys-error-container);
-            color: var(--mat-sys-on-error-container);
-
-            mat-icon {
-              color: var(--mat-sys-on-error-container);
-            }
-          }
-        }
-      }
-
-      // Menu dividers
-      .mat-mdc-menu-item-divider,
-      hr {
-        border-top: 1px solid var(--mat-sys-outline-variant);
-        margin: var(--mat-sys-spacing-4, 4px) 0;
-        border-bottom: none;
-        border-left: none;
-        border-right: none;
-      }
-    }
-
-    // PROGRESS - Using tertiary color
-    .mat-mdc-progress-bar {
-      --mat-progress-bar-active-indicator-color: var(--mat-sys-tertiary);
-      --mat-progress-bar-track-color: var(--mat-sys-surface-container-high);
-
-      height: var(--mat-sys-spacing-4, 4px);
-      border-radius: var(--mat-sys-spacing-2, 2px);
-    }
-
-    .mat-mdc-progress-spinner {
-      --mat-progress-spinner-active-indicator-color: var(--mat-sys-tertiary);
-    }
-
-    // SNACKBAR - Dark container for contrast
-    .mat-mdc-snack-bar-container {
-      --mat-snackbar-container-color: var(--mat-sys-inverse-surface);
-      --mat-snackbar-supporting-text-color: var(--mat-sys-inverse-on-surface);
-      --mat-snackbar-container-shape: 8px;
-
-      border-radius: var(--mat-sys-shape-corner-medium, 8px);
-
-      .mat-mdc-snack-bar-action {
-        color: var(--mat-sys-tertiary);
-      }
-    }
-
-    // DIALOG - Clean modal style
-    .mat-mdc-dialog-container {
-      --mat-dialog-container-color: var(--mat-sys-surface);
-      --mat-dialog-container-shape: 12px;
-
-      border: 1px solid var(--mat-sys-outline-variant);
-      border-radius: 12px;
-      padding: 32px;
-      background-color: var(--mat-sys-surface);
-    }
-
-    // TABLE - Clean data presentation
-    table.mat-mdc-table {
-      border: 1px solid var(--mat-sys-outline-variant);
-      border-radius: var(--mat-sys-shape-corner-medium, 8px);
-      overflow: hidden;
-      background-color: var(--mat-sys-surface);
-
-      .mat-mdc-header-row {
-        background-color: var(--mat-sys-surface-variant);
-        height: var(--mat-sys-spacing-48, 48px);
-        border-bottom: 1px solid var(--mat-sys-outline-variant);
-      }
-
-      .mat-mdc-row {
-        height: var(--mat-sys-spacing-52, 52px);
-        border-bottom: 1px solid var(--mat-sys-outline-variant);
-
-        &:hover {
-          background-color: var(--mat-sys-hover);
-        }
-
-        &:last-child {
-          border-bottom: none;
-        }
-      }
-
-      .mat-mdc-cell,
-      .mat-mdc-header-cell {
-        font-size: var(--mat-sys-body-medium-size, 14px);
-        padding: 0 var(--mat-sys-spacing-16, 16px);
-      }
-
-      .mat-mdc-header-cell {
-        font-weight: 500;
-        color: var(--mat-sys-on-surface-variant);
-      }
-
-      .mat-mdc-cell {
-        color: var(--mat-sys-on-surface);
-      }
-    }
-
-    // NOTE: Slide toggle styling is now handled by mat.slide-toggle-overrides() above
-
-    // TOOLTIP - Inverse colors for contrast
-    .mat-mdc-tooltip {
-      --mat-tooltip-container-color: var(--mat-sys-inverse-surface);
-      --mat-tooltip-supporting-text-color: var(--mat-sys-inverse-on-surface);
-      --mat-tooltip-container-shape: 6px;
-
-      background-color: var(--mat-sys-inverse-surface);
-      color: var(--mat-sys-inverse-on-surface);
-      font-size: var(--mat-sys-label-small-size, 12px);
-      padding: var(--mat-sys-spacing-6, 6px) var(--mat-sys-spacing-10, 10px);
-      border-radius: var(--mat-sys-shape-corner-small, 6px);
-    }
-
-    // ICON refinements - size only, let component overrides handle colors per MD3
-    .mat-icon,
-    mat-icon {
-      font-size: var(--mat-sys-spacing-20, 20px);
-      width: var(--mat-sys-spacing-20, 20px);
-      height: var(--mat-sys-spacing-20, 20px);
-
-      // Removed global color override - let component-specific overrides handle colors per MD3
-
-      &.mat-icon-button mat-icon {
-        font-size: var(--mat-sys-spacing-20, 20px);
-      }
-    }
-
-    // NOTE: Focus states are now handled by component-specific overrides
-    // Removed global focus-visible to let overrides manage focus styling
-
-    // Selection - using primary container for OpenAI style
-    ::selection {
-      background-color: var(--mat-sys-primary-container);
-      color: var(--mat-sys-on-primary-container);
-    }
-  }
-
-  // MODERNIZED: Add official Angular Material component override mixins
-  // These replace the extensive custom CSS in component files
-  @include vt-modern-component-overrides;
-}
-
-// Modern component overrides using official Angular Material APIs
-@mixin vt-modern-component-overrides() {
-  // ✅ ANGULAR 20 APPROACH: Use CSS custom properties directly instead of non-existent button-overrides mixin
-  // Based on Context7 research: Angular Material doesn't have mat.button-overrides() mixin
-  // Instead, we use CSS custom properties to override button tokens directly
-
-  // FILLED BUTTONS (mat-flat-button with color="primary") - Primary CTA
-  .mat-mdc-button.mat-mdc-unelevated-button.mat-primary {
-    // ✅ ANGULAR 20 FIX: Use correct Material Web Component tokens
-    --md-filled-button-container-color: var(--mat-sys-primary);
-    --md-filled-button-label-text-color: var(--mat-sys-on-primary);
-    --md-filled-button-hover-state-layer-color: var(--mat-sys-on-primary);
-    --md-filled-button-focus-state-layer-color: var(--mat-sys-on-primary);
-    --md-filled-button-pressed-state-layer-color: var(--mat-sys-on-primary);
-    --md-filled-button-hover-state-layer-opacity: 0.08;
-    --md-filled-button-pressed-state-layer-opacity: 0.12;
-
-    // ✅ CRITICAL FIX: Ensure label inherits the correct text color with high specificity
-    &.mat-mdc-unelevated-button.mat-primary .mdc-button__label {
-      color: var(--mat-sys-on-primary);
-    }
-  }
-
-  // ELEVATED BUTTONS (mat-raised-button with color="primary") - Same as filled for consistency
-  .mat-mdc-button.mat-mdc-raised-button.mat-primary {
-    --md-elevated-button-container-color: var(--mat-sys-primary);
-    --md-elevated-button-label-text-color: var(--mat-sys-on-primary);
-    --md-elevated-button-hover-state-layer-color: var(--mat-sys-on-primary);
-    --md-elevated-button-focus-state-layer-color: var(--mat-sys-on-primary);
-    --md-elevated-button-pressed-state-layer-color: var(--mat-sys-on-primary);
-    --md-elevated-button-hover-state-layer-opacity: 0.08;
-    --md-elevated-button-pressed-state-layer-opacity: 0.12;
-
-    // ✅ CRITICAL FIX: Ensure label inherits the correct text color with high specificity
-    &.mat-mdc-raised-button.mat-primary .mdc-button__label {
-      color: var(--mat-sys-on-primary);
-    }
-  }
-
-  // OUTLINED BUTTONS (mat-stroked-button) - Secondary actions
-  .mat-mdc-button.mat-mdc-outlined-button {
-    --md-outlined-button-outline-color: var(--mat-sys-outline);
-    --md-outlined-button-label-text-color: var(--mat-sys-on-surface);
-    --md-outlined-button-hover-state-layer-color: var(--mat-sys-on-surface);
-    --md-outlined-button-focus-state-layer-color: var(--mat-sys-on-surface);
-    --md-outlined-button-pressed-state-layer-color: var(--mat-sys-on-surface);
-    --md-outlined-button-hover-state-layer-opacity: 0.08;
-    --md-outlined-button-pressed-state-layer-opacity: 0.12;
-    --md-outlined-button-outline-width: 1px;
-  }
-
-  // TEXT BUTTONS (mat-button) - Tertiary actions
-  .mat-mdc-button.mat-mdc-button {
-    --md-text-button-label-text-color: var(--mat-sys-on-surface-variant);
-    --md-text-button-hover-state-layer-color: var(--mat-sys-on-surface);
-    --md-text-button-focus-state-layer-color: var(--mat-sys-on-surface);
-    --md-text-button-pressed-state-layer-color: var(--mat-sys-on-surface);
-    --md-text-button-hover-state-layer-opacity: 0.08;
-    --md-text-button-pressed-state-layer-opacity: 0.12;
-  }
-
-  // DISABLED STATES - Apply to all button types
-  .mat-mdc-button:disabled,
-  .mat-mdc-button.mat-mdc-button-disabled {
-    --md-filled-button-disabled-container-color: var(--mat-sys-surface-variant);
-    --md-filled-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
-    --md-elevated-button-disabled-container-color: var(--mat-sys-surface-variant);
-    --md-elevated-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
-    --md-outlined-button-disabled-outline-color: var(--mat-sys-outline-variant);
-    --md-outlined-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
-    --md-text-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
-  }
-
-  // SHARED PROPERTIES - Apply to all button types
-  .mat-mdc-button {
-    --md-filled-button-container-shape: 6px;
-    --md-elevated-button-container-shape: 6px;
-    --md-outlined-button-container-shape: 6px;
-    --md-text-button-container-shape: 6px;
-
-    // Typography - OpenAI style with Inter font
-    --md-filled-button-label-text-weight: 450;
-    --md-elevated-button-label-text-weight: 450;
-    --md-outlined-button-label-text-weight: 450;
-    --md-text-button-label-text-weight: 450;
-    --md-filled-button-label-text-font: 'Inter';
-    --md-elevated-button-label-text-font: 'Inter';
-    --md-outlined-button-label-text-font: 'Inter';
-    --md-text-button-label-text-font: 'Inter';
-  }
-
-  // TONAL BUTTONS - Handle mat-flat-button without color attribute using CSS custom properties
-  // ✅ ANGULAR 20 BEST PRACTICE: Filled Tonal buttons should use secondary-container tokens for proper contrast
-  // Use highly specific selector to override Angular Material defaults without !important
-  .mat-mdc-button.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base {
-    // ✅ CRITICAL FIX: Use correct Material Web Component tokens for tonal buttons
-    --md-filled-tonal-button-container-color: var(--mat-sys-secondary-container);
-    --md-filled-tonal-button-label-text-color: var(--mat-sys-on-secondary-container);
-    --md-filled-tonal-button-hover-state-layer-color: var(--mat-sys-on-secondary-container);
-    --md-filled-tonal-button-focus-state-layer-color: var(--mat-sys-on-secondary-container);
-    --md-filled-tonal-button-pressed-state-layer-color: var(--mat-sys-on-secondary-container);
-  }
-
-  // TERTIARY BUTTONS - Handle mat-flat-button color="tertiary" using Angular 20 best practices
-  // ✅ ANGULAR 20 APPROACH: Use CSS custom properties with proper token pairs
-  .mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary {
-    // ✅ CRITICAL FIX: Use correct Material Web Component tokens for filled buttons
-    --md-filled-button-container-color: var(--mat-sys-tertiary);
-    --md-filled-button-label-text-color: var(--mat-sys-on-tertiary);
-    --md-filled-button-hover-state-layer-color: var(--mat-sys-on-tertiary);
-    --md-filled-button-focus-state-layer-color: var(--mat-sys-on-tertiary);
-    --md-filled-button-pressed-state-layer-color: var(--mat-sys-on-tertiary);
-
-    // ✅ BACKUP: Direct CSS properties for maximum compatibility
-    background-color: var(--mat-sys-tertiary);
-    color: var(--mat-sys-on-tertiary);
-    border-color: var(--mat-sys-tertiary);
-
-    // ✅ CRITICAL FIX: Ensure label inherits the correct text color with high specificity
-    &.mat-mdc-unelevated-button.mat-tertiary .mdc-button__label {
-      color: var(--mat-sys-on-tertiary);
-    }
-  }
-
-  // ✅ ANGULAR 20 BEST PRACTICE: Ensure text color inheritance for all text elements
-  .mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary .mdc-button__label,
-  .mat-mdc-button.mat-mdc-unelevated-button.mat-tertiary span {
-    color: var(--mat-sys-on-tertiary);
-  }
-
-  // Elevated button shadow - not available as override token
-  .mat-mdc-raised-button {
-    box-shadow:
-      0 1px 3px rgb(0 0 0 / 12%),
-      0 1px 2px rgb(0 0 0 / 24%);
-
-    &:hover {
-      box-shadow:
-        0 3px 6px rgb(0 0 0 / 16%),
-        0 3px 6px rgb(0 0 0 / 23%);
-    }
-
-    &:active {
-      box-shadow:
-        0 1px 3px rgb(0 0 0 / 12%),
-        0 1px 2px rgb(0 0 0 / 24%);
-    }
-  }
-
-  // MD3 Button Toggle Overrides - Comprehensive token-based theming
-  // Default styling - applied to all button toggles without variant classes
-  .mat-button-toggle-group:not(.primary-variant, .secondary-variant, .tertiary-variant) {
-    @include mat.button-toggle-overrides(
-      (
-        // Default OpenAI-style using selected token
-        selected-state-background-color: var(--mat-sys-selected),
-        selected-state-text-color: var(--mat-sys-on-surface),
-        background-color: var(--mat-sys-surface),
-        text-color: var(--mat-sys-on-surface),
-        divider-color: var(--mat-sys-outline-variant),
-        shape: var(--mat-sys-shape-corner-medium),
-        // Interactive state layers (using valid tokens only)
-        state-layer-color: var(--mat-sys-on-surface),
-        hover-state-layer-opacity: 0.08,
-        focus-state-layer-opacity: 0.12,
-        // Disabled states
-        disabled-state-background-color: var(--mat-sys-surface),
-        disabled-state-text-color: var(--mat-sys-on-surface),
-        disabled-selected-state-background-color: var(--mat-sys-selected),
-        disabled-selected-state-text-color: var(--mat-sys-on-surface)
-      )
-    );
-  }
-
-  // Primary color variant - using primary container tokens
-  .primary-variant {
-    @include mat.button-toggle-overrides(
-      (
-        selected-state-background-color: var(--mat-sys-primary-container),
-        selected-state-text-color: var(--mat-sys-on-primary-container),
-        background-color: var(--mat-sys-surface),
-        text-color: var(--mat-sys-primary),
-        divider-color: var(--mat-sys-outline-variant),
-        shape: var(--mat-sys-shape-corner-medium),
-        // Interactive state layers (using valid tokens only)
-        state-layer-color: var(--mat-sys-primary),
-        hover-state-layer-opacity: 0.08,
-        focus-state-layer-opacity: 0.12,
-        // Disabled states
-        disabled-state-background-color: var(--mat-sys-surface),
-        disabled-state-text-color: var(--mat-sys-on-surface),
-        disabled-selected-state-background-color: var(--mat-sys-primary-container),
-        disabled-selected-state-text-color: var(--mat-sys-on-primary-container),
-      )
-    );
-  }
-
-  // Secondary color variant - using secondary container tokens
-  .secondary-variant {
-    @include mat.button-toggle-overrides(
-      (
-        selected-state-background-color: var(--mat-sys-secondary-container),
-        selected-state-text-color: var(--mat-sys-on-secondary-container),
-        background-color: var(--mat-sys-surface),
-        text-color: var(--mat-sys-secondary),
-        divider-color: var(--mat-sys-outline-variant),
-        shape: var(--mat-sys-shape-corner-medium),
-        // Interactive state layers (using valid tokens only)
-        state-layer-color: var(--mat-sys-secondary),
-        hover-state-layer-opacity: 0.08,
-        focus-state-layer-opacity: 0.12,
-        // Disabled states
-        disabled-state-background-color: var(--mat-sys-surface),
-        disabled-state-text-color: var(--mat-sys-on-surface),
-        disabled-selected-state-background-color: var(--mat-sys-secondary-container),
-        disabled-selected-state-text-color: var(--mat-sys-on-secondary-container),
-      )
-    );
-  }
-
-  // Tertiary color variant - using tertiary container tokens
-  .tertiary-variant {
-    @include mat.button-toggle-overrides(
-      (
-        selected-state-background-color: var(--mat-sys-tertiary-container),
-        selected-state-text-color: var(--mat-sys-on-tertiary-container),
-        background-color: var(--mat-sys-surface),
-        text-color: var(--mat-sys-tertiary),
-        divider-color: var(--mat-sys-outline-variant),
-        shape: var(--mat-sys-shape-corner-medium),
-        // Interactive state layers (using valid tokens only)
-        state-layer-color: var(--mat-sys-tertiary),
-        hover-state-layer-opacity: 0.08,
-        focus-state-layer-opacity: 0.12,
-        // Disabled states
-        disabled-state-background-color: var(--mat-sys-surface),
-        disabled-state-text-color: var(--mat-sys-on-surface),
-        disabled-selected-state-background-color: var(--mat-sys-tertiary-container),
-        disabled-selected-state-text-color: var(--mat-sys-on-tertiary-container),
-      )
-    );
-  }
-
-  // MD3 density classes - only negative values and 0 are supported
-  .dense {
-    @include mat.all-component-densities(-4);
-    @include mat.icon-button-overrides(
-      (
-        icon-size: 18px,
-      )
-    );
-  }
-
-  .compact {
-    @include mat.all-component-densities(-2);
-    @include mat.icon-button-overrides(
-      (
-        icon-size: 20px,
-      )
-    );
-  }
-
-  .standard {
-    @include mat.all-component-densities(-1);
-  }
-
-  // Note: Positive density values (+1, +2) are not supported in MD3
-  // 0 is the maximum (most comfortable) density
-
-  // Density selector consistent width across all demo pages
-  .density-selector {
-    mat-form-field {
-      width: var(
-        --mat-sys-spacing-450,
-        450px
-      ); // Fixed width to show full option text on single line
-    }
-  }
-
-  // FAB (Floating Action Button) overrides using official Angular Material API
-  @include mat.fab-overrides(
-    (
-      // Container styling - OpenAI flat design with black primary color
-      container-color: var(--mat-sys-primary),
-      container-shape: 16px,
-      container-elevation-shadow: none,
-
-      // Flat design
-      // Icon styling
-      foreground-color: var(--mat-sys-on-primary),
-      // State layer styling
-      state-layer-color: var(--mat-sys-on-primary),
-      hover-state-layer-opacity: 0.08,
-      focus-state-layer-opacity: 0.12,
-      pressed-state-layer-opacity: 0.12,
-
-      // Disabled state
-      disabled-state-container-color: var(--mat-sys-surface-variant),
-      disabled-state-foreground-color: var(--mat-sys-on-surface-variant),
-      // Ripple disabled
-      ripple-color: transparent
-    )
-  );
-
-  // Additional FAB customizations not available through overrides
-  .mat-mdc-fab,
-  .mat-mdc-mini-fab {
-    // Force flat design - override any elevation shadows with higher specificity
-    box-shadow: none;
-
-    // Ensure no elevation on all states
-    &:hover,
-    &:focus,
-    &:active {
-      box-shadow: none;
-    }
-
-    // Ensure proper icon contrast - white icons on black background
-    // Using higher specificity instead of !important
-    &.mat-mdc-fab mat-icon,
-    &.mat-mdc-mini-fab mat-icon {
-      color: var(--mat-sys-on-primary);
-    }
-  }
-
-  // Extended FAB specific customizations
-  .mat-mdc-extended-fab {
-    // Force flat design - override any elevation shadows
-    box-shadow: none;
-
-    // Ensure no elevation on all states
-    &:hover,
-    &:focus,
-    &:active {
-      box-shadow: none;
-    }
-
-    // Extended FAB text styling - ensure proper typography
-    --mat-fab-extended-label-text-font: 'Inter';
-    --mat-fab-extended-label-text-size: 14px;
-    --mat-fab-extended-label-text-weight: 500;
-    --mat-fab-extended-label-text-tracking: 0.01em;
-
-    // Ensure proper icon and text contrast
-    mat-icon {
-      color: var(--mat-sys-on-primary);
-    }
-
-    .mdc-fab__label {
-      color: var(--mat-sys-on-primary);
-    }
-
-    // Proper spacing between icon and text
-    .mdc-fab__icon {
-      margin-inline-end: 8px;
-    }
-  }
-
-  // Card overrides - replaces most of _card.scss
-  @include mat.card-overrides(
-    (
-      // OpenAI flat design - no elevation
-      elevated-container-elevation: 0,
-      outlined-container-elevation: 0,
-
-      // Container styling
-      elevated-container-color: var(--mat-sys-surface),
-      outlined-container-color: var(--mat-sys-surface),
-      elevated-container-shape: 8px,
-      outlined-container-shape: 8px,
-      outlined-outline-width: 1px,
-      outlined-outline-color: var(--mat-sys-outline-variant),
-      // Typography tokens for card content
-      title-text-font: 'Inter',
-      title-text-size: var(--mat-sys-headline-small-size),
-      title-text-weight: var(--mat-sys-headline-small-weight),
-      title-text-line-height: var(--mat-sys-headline-small-line-height),
-      subtitle-text-color: var(--mat-sys-on-surface-variant),
-      subtitle-text-font: 'Inter',
-      subtitle-text-size: var(--mat-sys-body-medium-size),
-      subtitle-text-weight: var(--mat-sys-body-medium-weight)
-    )
-  );
-
-  // Form field overrides - using Angular Material 19 override system
-  @include mat.form-field-overrides(
-    (
-      // Outlined text field styling
-      outlined-container-shape: 8px,
-      outlined-outline-width: 1px,
-      outlined-focus-outline-width: 2px
-    )
-  );
-
-  // Clean input styling to remove browser defaults (not available as override tokens)
-  .mat-mdc-form-field .mdc-text-field__input {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background: transparent;
-  }
-
-  // Select overrides - replaces select styling in _input.scss and _form-fields.scss
-  @include mat.select-overrides(
-    (
-      // Panel (dropdown) styling
-      panel-background-color: var(--mat-sys-surface),
-      // Trigger (select field) styling
-      enabled-trigger-text-color: var(--mat-sys-on-surface),
-      disabled-trigger-text-color: var(--mat-sys-on-surface-variant),
-      placeholder-text-color: var(--mat-sys-on-surface-variant),
-      // Arrow styling
-      enabled-arrow-color: var(--mat-sys-on-surface-variant),
-      disabled-arrow-color: var(--mat-sys-on-surface-variant),
-      focused-arrow-color: var(--mat-sys-primary),
-      invalid-arrow-color: var(--mat-sys-error),
-      // Typography
-      trigger-text-font: 'Inter',
-      trigger-text-size: var(--mat-sys-body-large-size),
-      trigger-text-weight: var(--mat-sys-body-large-weight)
-    )
-  );
-}
-
-// Checkbox overrides - replaces checkbox styling in _input.scss
-@include mat.checkbox-overrides(
-  (
-    // Selected state - using tertiary color for OpenAI style
-    selected-icon-color: var(--mat-sys-tertiary),
-    selected-checkmark-color: var(--mat-sys-on-tertiary),
-    // Unselected state
-    unselected-icon-color: var(--mat-sys-outline),
-    unselected-hover-icon-color: var(--mat-sys-outline),
-    // Label styling
-    label-text-color: var(--mat-sys-on-surface),
-    label-text-font: 'Inter',
-    label-text-size: var(--mat-sys-body-large-size),
-    label-text-weight: var(--mat-sys-body-large-weight),
-    // Disabled state
-    disabled-label-color: var(--mat-sys-on-surface-variant),
-    disabled-selected-icon-color: var(--mat-sys-on-surface-variant),
-    disabled-unselected-icon-color: var(--mat-sys-on-surface-variant)
-  )
-);
-
-// Radio button overrides - replaces radio styling in _input.scss
-@include mat.radio-overrides(
-  (
-    // Selected state - using primary color for OpenAI style
-    selected-icon-color: var(--mat-sys-primary),
-    // Unselected state
-    unselected-icon-color: var(--mat-sys-outline),
-    unselected-hover-icon-color: var(--mat-sys-outline),
-    // Label styling
-    label-text-color: var(--mat-sys-on-surface),
-    label-text-font: 'Inter',
-    label-text-size: var(--mat-sys-body-large-size),
-    label-text-weight: var(--mat-sys-body-large-weight),
-    // Disabled state
-    disabled-label-color: var(--mat-sys-on-surface-variant),
-    disabled-selected-icon-color: var(--mat-sys-on-surface-variant),
-    disabled-unselected-icon-color: var(--mat-sys-on-surface-variant),
-    // Ripple effects
-    checked-ripple-color: var(--mat-sys-tertiary),
-    ripple-color: var(--mat-sys-outline)
-  )
-);
-
-// List overrides - replaces most of _list-overrides.scss
-@include mat.list-overrides(
-  (
-    // Container styling
-    list-item-container-color: transparent,
-    list-item-container-shape: 0,
-    // Remove border-radius from sidenav container
-    // More compact heights to match sidenav style (sidenav uses 32px)
-    list-item-one-line-container-height: 32px,
-    // Matches sidenav height exactly
-    list-item-two-line-container-height: 48px,
-    // Compact for two-line content
-    list-item-three-line-container-height: 64px,
-    // Compact for three-line content
-    // More compact icon spacing to match sidenav style
-    list-item-leading-icon-start-space: 4px,
-    // Reduced from 16px to match sidenav
-    list-item-leading-icon-end-space: 4px,
-    // Reduced from 16px to match sidenav
-    // Label text styling
-    list-item-label-text-color: var(--mat-sys-on-surface-variant),
-    list-item-label-text-font: 'Inter',
-    list-item-label-text-size: 14px,
-    list-item-label-text-weight: 400,
-
-    // Icon styling
-    list-item-leading-icon-color: var(--mat-sys-on-surface-variant),
-    list-item-trailing-icon-color: var(--mat-sys-on-surface-variant),
-    list-item-leading-icon-size: 16px,
-    list-item-trailing-icon-size: 16px,
-
-    // Hover state
-    list-item-hover-state-layer-color: var(--mat-sys-primary),
-    list-item-hover-label-text-color: var(--mat-sys-on-surface-variant),
-    list-item-hover-leading-icon-color: var(--mat-sys-on-surface-variant),
-    // Selected/Active state
-    list-item-selected-container-color: var(--mat-sys-primary-container),
-    list-item-selected-trailing-icon-color: var(--mat-sys-primary),
-    // Focus state
-    list-item-focus-state-layer-color: transparent,
-
-    // Disabled state
-    list-item-disabled-label-text-color: var(--mat-sys-on-surface-variant),
-    list-item-disabled-leading-icon-color: var(--mat-sys-on-surface-variant)
-  )
-);
-
-// Slide toggle overrides - replaces slide toggle styling in _input.scss
-@include mat.slide-toggle-overrides(
-  (
-    // Selected state - using tertiary color for OpenAI style
-    selected-track-color: var(--mat-sys-tertiary),
-    selected-handle-color: var(--mat-sys-on-tertiary),
-    selected-hover-track-color: var(--mat-sys-tertiary),
-    // Unselected state
-    unselected-track-color: var(--mat-sys-outline-variant),
-    unselected-handle-color: var(--mat-sys-surface),
-    unselected-hover-track-color: var(--mat-sys-outline),
-    // Label styling
-    label-text-color: var(--mat-sys-on-surface),
-    label-text-font: 'Inter',
-    label-text-size: var(--mat-sys-body-large-size),
-    label-text-weight: var(--mat-sys-body-large-weight),
-    // Disabled state
-    disabled-selected-track-color: var(--mat-sys-on-surface-variant),
-    disabled-unselected-track-color: var(--mat-sys-on-surface-variant),
-    disabled-selected-handle-color: var(--mat-sys-on-surface-variant),
-    disabled-unselected-handle-color: var(--mat-sys-on-surface-variant)
-  )
-);
-
-// Toolbar overrides - replaces most of _toolbar.scss
-@include mat.toolbar-overrides(
-  (
-    // Container styling - OpenAI clean design
-    container-background-color: var(--mat-sys-surface),
-    container-text-color: var(--mat-sys-on-surface),
-    standard-height: var(--mat-sys-spacing-48, 48px),
-    mobile-height: var(--mat-sys-spacing-48, 48px)
-  )
-);
-
-// Sidenav overrides - MD3 token-based styling using correct Angular Material token format
-@include mat.sidenav-overrides(
-  (
-    // Container styling - using OpenAI-style surface token for navigation areas
-    container-background-color: var(--mat-sys-surface-container-low),
-    container-text-color: var(--mat-sys-on-surface),
-    container-shape: 0,
-    // Remove border-radius from sidenav container
-    // Content styling - main content area uses surface
-    content-background-color: var(--mat-sys-surface),
-    content-text-color: var(--mat-sys-on-surface)
-  )
-);
-
-// Remove Angular Material list overrides - they're causing conflicts
-// We'll use direct CSS styling instead for better control
-
-// Sidenav width and background - OpenAI style using proper tokens
-.vt-sidenav-standard {
-  width: var(--mat-sys-spacing-220, 220px);
-  min-width: var(--mat-sys-spacing-220, 220px);
-  max-width: var(--mat-sys-spacing-220, 220px);
-
-  // Use proper surface-container-low token for OpenAI sidenav background
-  background-color: var(--mat-sys-surface-container-low);
-
-  // CRITICAL: Remove border-radius from sidenav container
-  border-radius: 0;
-
-  // Remove scrollbars completely - OpenAI style has no visible scrollbars
-  overflow: hidden;
-}
-
-// Ensure sidenav background is applied with higher specificity
-mat-sidenav.vt-sidenav-standard {
-  --mat-drawer-container-color: var(--mat-sys-surface-container-low);
-
-  background-color: var(--mat-sys-surface-container-low);
-
-  // CRITICAL: Remove border-radius with high specificity
-  border-radius: 0;
-
-  // Ensure no scrollbars on the Material Design sidenav element itself
-  overflow: hidden;
-
-  // ENABLE SCROLLING: Allow vertical scrolling while hiding scrollbars
-  .mat-drawer-inner-container {
-    overflow-y: auto; // Enable vertical scrolling
-    overflow-x: hidden; // Prevent horizontal scrolling
-    scrollbar-width: none; // Firefox
-    -ms-overflow-style: none; // IE/Edge
-
-    &::-webkit-scrollbar {
-      display: none; // Chrome/Safari/Opera
-    }
-  }
-}
-
-// Also target the mat-sidenav element directly in case class isn't applied
-mat-sidenav {
-  --mat-drawer-container-color: var(--mat-sys-surface-container-low);
-
-  background-color: var(--mat-sys-surface-container-low);
-
-  // Also enable scrolling on any mat-sidenav
-  .mat-drawer-inner-container {
-    overflow-y: auto; // Enable vertical scrolling
-    overflow-x: hidden; // Prevent horizontal scrolling
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-}
-
-// Clean navigation item styling - OpenAI inspired
-.vt-sidenav-standard mat-nav-list a[mat-list-item] {
-  // Reset Material Design defaults and set base layout
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  position: relative;
-
-  // Layout - compact OpenAI-style with proper spacing
-  padding: 6px var(--mat-sys-spacing-8, 8px); // Compact padding with 8px token on sides
-  margin: 0; // No horizontal margin - container has padding for shading space
-  margin-bottom: var(--mat-sys-spacing-4, 4px); // 4px bottom spacing between items
-  border-radius: 6px; // OpenAI style - 6px rounded corners
-  min-height: auto; // Remove height constraints to let padding control size
-  height: auto; // Remove height constraints
-
-  // Default state - no background, gray text (like OpenAI)
-  background-color: transparent;
-  color: #6e6e80; // PRD color for default text
-  font-size: var(--mat-sys-body-medium-size, 14px);
-  line-height: var(--mat-sys-body-medium-line-height, 20px);
-  transition: all 0.15s ease;
-
-  // Icon styling
-  mat-icon {
-    font-size: var(--mat-sys-spacing-16, 16px);
-    width: var(--mat-sys-spacing-16, 16px);
-    height: var(--mat-sys-spacing-16, 16px);
-    line-height: var(--mat-sys-spacing-16, 16px);
-    margin-right: var(--mat-sys-spacing-12, 12px);
-    color: inherit;
-    flex-shrink: 0;
-  }
-
-  // Text styling
-  span {
-    font-size: var(--mat-sys-body-medium-size, 14px);
-    line-height: var(--mat-sys-body-medium-line-height, 20px);
-    color: inherit;
-    font-weight: 400; // Normal weight by default
-  }
-
-  // Hover state - using proper hover token (OpenAI style) - but not for active items
-  // Use higher specificity to override Angular Material
-  &:hover:not(.active) {
-    background-color: var(--mat-sys-hover); // OpenAI hover state using proper token
-    color: var(--mat-sys-on-surface); // Proper text color on hover
-  }
-
-  // Remove the problematic selector that was making all items active
-  // We'll add a separate rule for only .active items below
-
-  // Remove focus outline - OpenAI style has no focus indicators
-  &:focus,
-  &:focus-visible,
-  &:focus-within {
-    outline: none;
-    border: none;
-    box-shadow: none;
-  }
-
-  // Disable Material's ripple effects and state layers that might interfere
-  &::before,
-  &::after {
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .mat-ripple {
-    display: none;
-  }
-
-  .mat-mdc-focus-indicator {
-    display: none;
-  }
-}
-
-// Selected/active state - ONLY for items with .active class (using proper tokens)
-.vt-sidenav-standard mat-nav-list a[mat-list-item].active {
-  background-color: var(--mat-sys-selected); // OpenAI selected state using proper token
-  color: var(--mat-sys-on-surface); // Proper text color for selected
-  font-weight: 500; // Semi-bold for selected
-
-  span {
-    font-weight: 500;
-    color: inherit;
-  }
-
-  mat-icon {
-    color: inherit;
-  }
-
-  // No hover effect on active items - keep same styling
-  &:hover {
-    background-color: var(--mat-sys-selected); // Keep same background on hover
-    color: var(--mat-sys-on-surface); // Keep same text color on hover
-  }
-}
-
-// Higher specificity hover rule to override Angular Material
-.vt-sidenav-standard mat-nav-list a[mat-list-item].mat-mdc-list-item:hover:not(.active) {
-  background-color: var(--mat-sys-hover); // OpenAI hover state using proper token
-  color: var(--mat-sys-on-surface); // Proper text color on hover
-
-  span {
-    color: var(--mat-sys-on-surface); // Ensure text color is applied
-  }
-
-  mat-icon {
-    color: var(--mat-sys-on-surface); // Ensure icon color is applied
-  }
-}
-
-.vt-sidenav-header {
-  // Match toolbar height exactly: 64px = 8 × 8px foundation
-  height: var(--mat-sys-spacing-64, 64px);
-  padding: 0 var(--mat-sys-spacing-16, 16px);
-  border-bottom: 1px solid var(--mat-sys-outline-variant);
-  margin-bottom: var(--mat-sys-spacing-16, 16px);
-
-  // Center content vertically within the 64px height
-  display: flex;
-  align-items: center;
-}
-
-.vt-sidenav-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px; // Proper spacing between logo and text
-
-  span {
-    font-size: var(--mat-sys-title-medium-size, 16px); // Proper branding size
-    font-weight: var(--mat-sys-title-medium-weight, 600); // Semi-bold for branding
-    color: var(--mat-sys-on-surface);
-    line-height: 1.2; // Tight line height for branding
-  }
-}
-
-// Target the navigation content container with higher specificity
-mat-sidenav.vt-sidenav-standard .vt-sidenav-content,
-.vt-sidenav-standard .vt-sidenav-content {
-  // Add horizontal padding to create space around the shading
-  padding: 0 var(--mat-sys-spacing-8, 8px);
-
-  // Ensure content doesn't scroll - OpenAI style
-  overflow: hidden;
-}
-
-.vt-nav-section {
-  margin-bottom: 8px; // Reduced spacing between sections for tighter OpenAI look
-}
-
-.vt-nav-section-title {
-  // PRD specifications: 11px, 600 weight, uppercase, 0.5px letter-spacing
-  font-size: var(--mat-sys-label-small-size, 11px);
-  font-weight: var(--mat-sys-label-small-weight, 600);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #6e6e80; // PRD color specification
-  padding: 8px 12px; // Consistent with navigation items
-  margin-bottom: 6px; // Increased space between title and items for better separation
-}
-
-// Menu overrides - replaces most menu styling above
-@include mat.menu-overrides(
-  (
-    // Container styling - OpenAI clean design
-    container-color: var(--mat-sys-surface),
-    container-shape: var(--mat-sys-shape-corner-small),
-    // Item styling
-    item-label-text-color: var(--mat-sys-on-surface-variant),
-    item-label-text-font: 'Inter',
-    item-label-text-size: var(--mat-sys-body-medium-size),
-    item-label-text-weight: var(--mat-sys-body-medium-weight),
-    // Hover states
-    item-hover-state-layer-color: var(--mat-sys-hover),
-    // Icon styling
-    item-icon-color: var(--mat-sys-on-surface-variant),
-    item-icon-size: 16px
-  )
-);
-
-// NOTE: Additional component overrides (tabs, stepper, expansion, paginator)
-// will be added in Phase 3 after validating correct token names
-
-// Custom card CSS for properties not available as tokens
-.mat-mdc-card {
-  // OpenAI styling - 32px padding, borders, hover states
-  padding: 32px;
-  border: 1px solid var(--mat-sys-outline-variant);
-  box-shadow: none; // Ensure flat design
-  transition: all var(--mat-sys-motion-hover);
-
-  &:hover {
-    border-color: var(--mat-sys-outline);
-  }
-
-  // Card sections with proper spacing
-  .mat-mdc-card-header {
-    padding: 0;
-    margin-bottom: 24px;
-
-    .mat-mdc-card-header-text {
-      margin: 0;
-    }
-
-    .mat-mdc-card-title {
-      margin-bottom: 8px;
-    }
-
-    .mat-mdc-card-subtitle {
-      margin: 0;
-    }
-
-    .mat-mdc-card-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--mat-sys-shape-corner-full);
-      margin-right: 16px;
-    }
-  }
-
-  .mat-mdc-card-content {
-    padding: 0;
-    font-size: var(--mat-sys-body-large-size);
-    line-height: var(--mat-sys-body-large-line-height);
-    color: var(--mat-sys-on-surface);
-
-    > *:not(:last-child) {
-      margin-bottom: 16px;
-    }
-
-    p {
-      margin: 0 0 16px;
-
-      &:last-child {
-        margin-bottom: 0;
       }
     }
   }
 
-  .mat-mdc-card-actions {
-    padding: 0;
-    margin-top: 24px;
+  // Clean navigation item styling - OpenAI inspired with tighter spacing
+  .vt-sidenav-standard mat-nav-list a[mat-list-item] {
+    // Reset Material Design defaults and set base layout
     display: flex;
-    gap: 8px;
     align-items: center;
+    text-decoration: none;
+    position: relative;
 
-    &.mat-mdc-card-actions-align-end {
-      justify-content: flex-end;
+    // Layout - balanced OpenAI-style spacing using tokens
+    padding: var(--mat-sys-spacing-6, 6px) var(--mat-sys-spacing-8, 8px); // Token-based padding
+    margin: 0; // No horizontal margin - container has padding for shading space
+    margin-bottom: var(--mat-sys-spacing-3, 3px); // Token-based spacing between items
+    border-radius: var(--mat-sys-spacing-6, 6px); // Token-based OpenAI style rounded corners
+
+    // CRITICAL: Override Angular Material's fixed height to allow compact sizing
+    height: auto; // Override Material's 56px height
+    min-height: auto; // Remove min-height constraints
+
+    // Default state - no background, gray text using tokens (OpenAI style)
+    background-color: transparent;
+    color: var(--mat-sys-on-surface-variant); // Token-based color for default text
+    font-size: var(--mat-sys-body-medium-size, 14px);
+    line-height: var(--mat-sys-body-medium-line-height, 18px); // Token-based line height
+    transition: all var(--mat-sys-motion-duration-short2, 0.15s)
+      var(--mat-sys-motion-easing-standard, ease);
+
+    // Icon styling - tighter spacing
+    mat-icon {
+      font-size: var(--mat-sys-spacing-16, 16px);
+      width: var(--mat-sys-spacing-16, 16px);
+      height: var(--mat-sys-spacing-16, 16px);
+      line-height: var(--mat-sys-spacing-16, 16px);
+      margin-right: var(
+        --mat-sys-spacing-10,
+        10px
+      ); // Reduced from 12px to 10px for tighter spacing
+
+      color: inherit;
+      flex-shrink: 0;
     }
 
-    .mat-mdc-button,
-    .mat-mdc-raised-button,
-    .mat-mdc-outlined-button {
-      margin: 0;
+    // Text styling - tighter line height
+    span {
+      font-size: var(--mat-sys-body-medium-size, 14px);
+      line-height: var(--mat-sys-body-medium-line-height, 18px); // Reduced from 20px to 18px
+      color: inherit;
+      font-weight: 400; // Normal weight by default
+    }
+
+    // Hover state - using proper hover token (OpenAI style) - but not for active items
+    // Use higher specificity to override Angular Material
+    &:hover:not(.active) {
+      background-color: var(--mat-sys-surface-variant); // OpenAI hover state using proper token
+      color: var(--mat-sys-on-surface); // Proper text color on hover
     }
   }
 
-  .mat-mdc-card-footer {
-    padding: 0;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid var(--mat-sys-outline-variant);
-    font-size: var(--mat-sys-body-small-size);
-    color: var(--mat-sys-on-surface-variant);
+  // Selected/active state - ONLY for items with .active class (using proper tokens)
+  .vt-sidenav-standard mat-nav-list a[mat-list-item].active {
+    background-color: var(--mat-sys-primary); // OpenAI selected state using proper token
+    color: var(--mat-sys-on-surface); // Proper text color for selected
+    font-weight: 500; // Semi-bold for selected
+
+    span {
+      font-weight: 500;
+      color: inherit;
+    }
+
+    mat-icon {
+      color: inherit;
+    }
+
+    // No hover effect on active items - keep same styling
+    &:hover {
+      background-color: var(--mat-sys-primary); // Keep same background on hover
+      color: var(--mat-sys-on-surface); // Keep same text color on hover
+    }
   }
 
-  // Card image handling
-  .mat-mdc-card-image {
-    margin: -32px -32px 32px;
-    border-radius: var(--mat-sys-shape-corner-medium) var(--mat-sys-shape-corner-medium) 0 0;
-    width: calc(100% + 64px);
-    display: block;
+  // Higher specificity hover rule to override Angular Material
+  .vt-sidenav-standard mat-nav-list a[mat-list-item].mat-mdc-list-item:hover:not(.active) {
+    background-color: var(--mat-sys-surface-variant); // OpenAI hover state using proper token
+    color: var(--mat-sys-on-surface); // Proper text color on hover
+
+    span {
+      color: var(--mat-sys-on-surface); // Ensure text color is applied
+    }
+
+    mat-icon {
+      color: var(--mat-sys-on-surface); // Ensure icon color is applied
+    }
   }
 
-  .mat-mdc-card-sm-image {
-    width: 80px;
-    height: 80px;
-    border-radius: var(--mat-sys-shape-corner-small);
+  // Sidenav header styling
+  .vt-sidenav-header {
+    // Match toolbar height exactly: 64px = 8 × 8px foundation
+    height: var(--mat-sys-spacing-64, 64px);
+    padding: 0 var(--mat-sys-spacing-16, 16px);
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+    margin-bottom: var(--mat-sys-spacing-16, 16px);
+
+    // Center content vertically within the 64px height
+    display: flex;
+    align-items: center;
   }
 
-  .mat-mdc-card-lg-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: var(--mat-sys-shape-corner-small);
-    margin-bottom: 16px;
-  }
-}
+  .vt-sidenav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--mat-sys-spacing-8, 8px); // Token-based spacing between logo and text
 
-// Card variants and utility classes
-.mat-mdc-card.vt-card--compact {
-  padding: 24px;
-}
-
-.mat-mdc-card.vt-card--comfortable {
-  padding: 40px;
-}
-
-.mat-mdc-card.vt-card--borderless {
-  border: none;
-  background-color: transparent;
-  padding: 0;
-}
-
-.mat-mdc-card.vt-card--interactive {
-  cursor: pointer;
-
-  &:hover {
-    background-color: var(--mat-sys-hover);
-    border-color: var(--mat-sys-outline);
+    span {
+      font-size: var(--mat-sys-title-medium-size, 16px); // Proper branding size
+      font-weight: var(--mat-sys-title-medium-weight, 600); // Semi-bold for branding
+      color: var(--mat-sys-on-surface);
+      line-height: 1.2; // Tight line height for branding
+    }
   }
 
-  &:active {
-    background-color: var(--mat-sys-selected);
-  }
-}
+  // Target the navigation content container with higher specificity
+  mat-sidenav.vt-sidenav-standard .vt-sidenav-content,
+  .vt-sidenav-standard .vt-sidenav-content {
+    // Add horizontal padding to create space around the shading - tighter spacing
+    padding: 0 var(--mat-sys-spacing-6, 6px); // Reduced from 8px to 6px for tighter layout
 
-.mat-mdc-card.vt-card--selected {
-  background-color: var(--mat-sys-selected);
-  border-color: var(--mat-sys-primary);
-}
+    // Ensure content scrolls properly - OpenAI style
+    overflow-y: auto;
+    height: calc(100vh - 80px); // Account for header height
 
-// Layout helpers
-.vt-card-section {
-  margin-bottom: 32px;
+    // Custom scrollbar styling using tokens
+    &::-webkit-scrollbar {
+      width: var(--mat-sys-spacing-6, 6px); // Token-based scrollbar width
+    }
 
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
 
-.vt-card-grid {
-  display: grid;
-  gap: 24px;
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--mat-sys-outline-variant);
+      border-radius: var(--mat-sys-spacing-3, 3px); // Token-based border radius
 
-  &.vt-card-grid--2 {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-
-  &.vt-card-grid--3 {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      &:hover {
+        background-color: var(--mat-sys-outline);
+      }
+    }
   }
 
-  &.vt-card-grid--4 {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .vt-nav-section {
+    margin-bottom: var(--mat-sys-spacing-4, 4px); // Token-based section spacing for OpenAI look
+  }
+
+  .vt-nav-section-title {
+    // Token-based typography specifications
+    font-size: var(--mat-sys-label-small-size, 11px);
+    font-weight: var(--mat-sys-label-small-weight, 600);
+    text-transform: uppercase;
+    letter-spacing: var(--mat-sys-label-small-tracking, 0.5px);
+    color: var(--mat-sys-on-surface-variant); // Token-based color
+    padding: var(--mat-sys-spacing-6, 6px) var(--mat-sys-spacing-12, 12px); // Token-based padding
+    margin-bottom: var(--mat-sys-spacing-4, 4px); // Token-based margin
   }
 }
-
-.vt-card-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-// MD3 Filled Tonal Button Implementation
-// mat-flat-button without color attribute becomes filled-tonal variant
-.mat-mdc-unelevated-button:not([color]) {
-  --mat-button-filled-container-color: var(--mat-sys-secondary-container);
-  --mat-button-filled-label-text-color: var(--mat-sys-on-secondary-container);
-  --mat-button-filled-state-layer-color: var(--mat-sys-on-secondary-container);
-  --mat-button-filled-hover-state-layer-opacity: 0.08;
-  --mat-button-filled-pressed-state-layer-opacity: 0.12;
-  --mat-button-filled-focus-state-layer-opacity: 0.12;
-}
-
-// Density system implementation - MD3 best practices
-// Only include density mixins that are confirmed to exist in Angular Material
-@mixin vt-density-overrides($density: 0) {
-  // Core component densities that are confirmed to exist
-  @include mat.button-density($density);
-  @include mat.form-field-density($density);
-  @include mat.icon-button-density($density);
-  @include mat.checkbox-density($density);
-  @include mat.radio-density($density);
-  @include mat.slide-toggle-density($density);
-  @include mat.toolbar-density($density);
-  @include mat.tabs-density($density);
-  @include mat.table-density($density);
-  @include mat.stepper-density($density);
-  @include mat.expansion-density($density);
-  @include mat.paginator-density($density);
-  @include mat.sort-density($density);
-  @include mat.snack-bar-density($density);
-  @include mat.dialog-density($density);
-  @include mat.bottom-sheet-density($density);
-  @include mat.sidenav-density($density);
-  @include mat.progress-bar-density($density);
-  @include mat.progress-spinner-density($density);
-  @include mat.tooltip-density($density);
-  @include mat.button-toggle-density($density);
-  @include mat.fab-density($density);
-  @include mat.datepicker-density($density);
-}
-
-// Density utility classes for different density levels
-.vt-density-standard {
-  @include vt-density-overrides(0);
-}
-
-.vt-density-dense {
-  @include vt-density-overrides(-1);
-}
-
-.vt-density-very-dense {
-  @include vt-density-overrides(-2);
-}
-
-.vt-density-comfortable {
-  @include vt-density-overrides(1);
-}
-
-// Button text colors are now properly handled by excluding .mdc-button__label from global span rule

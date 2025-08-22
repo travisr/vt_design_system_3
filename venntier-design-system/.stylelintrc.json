@@ -27,7 +27,7 @@
       "lower",
       {
         "camelCaseSvgKeywords": true,
-        "ignoreProperties": ["--md-sys-*"]
+        "ignoreProperties": ["--mat-sys-*"]
       }
     ],
     "property-no-vendor-prefix": [
@@ -94,7 +94,8 @@
     "**/*.ts",
     "**/*.js",
     "projects/design-system/src/styles/tokens/**/*.scss",
-    "projects/design-system/src/styles/themes/**/*.scss",
+    "projects/design-system/src/styles/themes/base/_custom-tokens.scss",
+    "projects/design-system/src/styles/themes/_core-bulletproof.scss",
     "projects/design-system/src/styles/components/_icon.scss"
   ]
 }

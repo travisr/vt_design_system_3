@@ -8,7 +8,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
   selector: 'demo-typography',
   standalone: true,
   imports: [CommonModule, MatCardModule, PageHeaderComponent],
-  styleUrl: './typography.component.scss',
+
   template: `
     <div class="demo-page">
       <demo-page-header
@@ -31,15 +31,15 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
           <mat-card-content>
             <div class="typography-sample">
               <span class="type-label">Display Large · 56px · 200</span>
-              <p class="vt-typescale-display-large">Build amazing products</p>
+              <p class="mat-display-large">Build amazing products</p>
             </div>
             <div class="typography-sample">
               <span class="type-label">Display Medium · 44px · 200</span>
-              <p class="vt-typescale-display-medium">Build amazing products</p>
+              <p class="mat-display-medium">Build amazing products</p>
             </div>
             <div class="typography-sample">
               <span class="type-label">Display Small · 36px · 300</span>
-              <p class="vt-typescale-display-small">Build amazing products</p>
+              <p class="mat-display-small">Build amazing products</p>
             </div>
           </mat-card-content>
         </mat-card>
@@ -57,15 +57,15 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
           <mat-card-content>
             <div class="typography-sample">
               <span class="type-label">Headline Large · 32px · 450</span>
-              <p class="vt-typescale-headline-large">Create powerful interfaces</p>
+              <p class="mat-headline-large">Create powerful interfaces</p>
             </div>
             <div class="typography-sample">
               <span class="type-label">Headline Medium · 28px · 450</span>
-              <p class="vt-typescale-headline-medium">Create powerful interfaces</p>
+              <p class="mat-headline-medium">Create powerful interfaces</p>
             </div>
             <div class="typography-sample">
               <span class="type-label">Headline Small · 24px · 400</span>
-              <p class="vt-typescale-headline-small">Create powerful interfaces</p>
+              <p class="mat-headline-small">Create powerful interfaces</p>
             </div>
           </mat-card-content>
         </mat-card>
@@ -73,7 +73,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
 
       <section class="demo-section">
         <h2 class="demo-section-title">Body & Label Styles</h2>
-        <div class="typography-cards">
+        <div class="demo-card-grid">
           <mat-card>
             <mat-card-header>
               <mat-card-title>Title Typography</mat-card-title>
@@ -82,15 +82,15 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <mat-card-content>
               <div class="typography-sample">
                 <span class="type-label">Title Large · 22px · 450</span>
-                <p class="vt-typescale-title-large">Section titles and emphasis</p>
+                <p class="mat-title-large">Section titles and emphasis</p>
               </div>
               <div class="typography-sample">
                 <span class="type-label">Title Medium · 18px · 450</span>
-                <p class="vt-typescale-title-medium">Subsection headers</p>
+                <p class="mat-title-medium">Subsection headers</p>
               </div>
               <div class="typography-sample">
                 <span class="type-label">Title Small · 16px · 450</span>
-                <p class="vt-typescale-title-small">Card titles and labels</p>
+                <p class="mat-title-small">Card titles and labels</p>
               </div>
             </mat-card-content>
           </mat-card>
@@ -103,21 +103,21 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <mat-card-content>
               <div class="typography-sample">
                 <span class="type-label">Body Large · 16px · 400</span>
-                <p class="vt-typescale-body-large">
+                <p class="mat-body-large">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua.
                 </p>
               </div>
               <div class="typography-sample">
                 <span class="type-label">Body Medium · 14px · 400</span>
-                <p class="vt-typescale-body-medium">
+                <p class="mat-body-medium">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua.
                 </p>
               </div>
               <div class="typography-sample">
                 <span class="type-label">Body Small · 12px · 400</span>
-                <p class="vt-typescale-body-small">
+                <p class="mat-body-small">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua.
                 </p>
@@ -133,15 +133,15 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
             <mat-card-content>
               <div class="typography-sample">
                 <span class="type-label">Label Large · 14px · 450</span>
-                <p class="vt-typescale-label-large">BUTTON TEXT</p>
+                <p class="mat-label-large">BUTTON TEXT</p>
               </div>
               <div class="typography-sample">
                 <span class="type-label">Label Medium · 12px · 450</span>
-                <p class="vt-typescale-label-medium">SMALL BUTTON</p>
+                <p class="mat-label-medium">SMALL BUTTON</p>
               </div>
               <div class="typography-sample">
                 <span class="type-label">Label Small · 11px · 450</span>
-                <p class="vt-typescale-label-small">CAPTION TEXT</p>
+                <p class="mat-label-small">CAPTION TEXT</p>
               </div>
             </mat-card-content>
           </mat-card>

@@ -137,555 +137,558 @@
 
     <!-- Content Area -->
     <main class="content-wrapper">
-      <!-- Typography Section -->
-      @if (activeSection() === 'typography') {
-        <section>
-          <h2 class="section-title">Typography</h2>
-          <p class="section-description">
-            The Venntier Design System uses Inter as its primary typeface with a refined type scale
-            for optimal readability.
-          </p>
+      <div class="page-container">
+        <!-- Typography Section -->
+        @if (activeSection() === 'typography') {
+          <section>
+            <h2 class="section-title">Typography</h2>
+            <p class="section-description">
+              The Venntier Design System uses Inter as its primary typeface with a refined type
+              scale for optimal readability.
+            </p>
 
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Display Styles</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="typography-sample">
-                <span class="type-label">Display Large · 56px · 200</span>
-                <p class="vt-typescale-display-large">Build amazing products</p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Display Medium · 44px · 200</span>
-                <p class="vt-typescale-display-medium">Build amazing products</p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Display Small · 36px · 300</span>
-                <p class="vt-typescale-display-small">Build amazing products</p>
-              </div>
-            </mat-card-content>
-          </mat-card>
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Display Styles</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="typography-sample">
+                  <span class="type-label">Display Large · 56px · 200</span>
+                  <p class="vt-typescale-display-large">Build amazing products</p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Display Medium · 44px · 200</span>
+                  <p class="vt-typescale-display-medium">Build amazing products</p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Display Small · 36px · 300</span>
+                  <p class="vt-typescale-display-small">Build amazing products</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
 
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Headline Styles</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="typography-sample">
-                <span class="type-label">Headline Large · 32px · 450</span>
-                <p class="vt-typescale-headline-large">Create powerful interfaces</p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Headline Medium · 28px · 450</span>
-                <p class="vt-typescale-headline-medium">Create powerful interfaces</p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Headline Small · 24px · 400</span>
-                <p class="vt-typescale-headline-small">Create powerful interfaces</p>
-              </div>
-            </mat-card-content>
-          </mat-card>
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Headline Styles</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="typography-sample">
+                  <span class="type-label">Headline Large · 32px · 450</span>
+                  <p class="vt-typescale-headline-large">Create powerful interfaces</p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Headline Medium · 28px · 450</span>
+                  <p class="vt-typescale-headline-medium">Create powerful interfaces</p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Headline Small · 24px · 400</span>
+                  <p class="vt-typescale-headline-small">Create powerful interfaces</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
 
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Body & Label Styles</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="typography-sample">
-                <span class="type-label">Title Large · 22px · 450</span>
-                <p class="vt-typescale-title-large">Section titles and emphasis</p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Title Medium · 18px · 450</span>
-                <p class="vt-typescale-title-medium">Subsection headers</p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Title Small · 16px · 450</span>
-                <p class="vt-typescale-title-small">Card titles and labels</p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Body Large · 16px · 400</span>
-                <p class="vt-typescale-body-large">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Body Medium · 14px · 400</span>
-                <p class="vt-typescale-body-medium">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Body Small · 12px · 400</span>
-                <p class="vt-typescale-body-small">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Label Large · 14px · 450</span>
-                <p class="vt-typescale-label-large">BUTTON TEXT</p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Label Medium · 12px · 450</span>
-                <p class="vt-typescale-label-medium">SMALL BUTTON</p>
-              </div>
-              <div class="typography-sample">
-                <span class="type-label">Label Small · 11px · 450</span>
-                <p class="vt-typescale-label-small">CAPTION TEXT</p>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </section>
-      }
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Body & Label Styles</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="typography-sample">
+                  <span class="type-label">Title Large · 22px · 450</span>
+                  <p class="vt-typescale-title-large">Section titles and emphasis</p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Title Medium · 18px · 450</span>
+                  <p class="vt-typescale-title-medium">Subsection headers</p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Title Small · 16px · 450</span>
+                  <p class="vt-typescale-title-small">Card titles and labels</p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Body Large · 16px · 400</span>
+                  <p class="vt-typescale-body-large">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.
+                  </p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Body Medium · 14px · 400</span>
+                  <p class="vt-typescale-body-medium">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.
+                  </p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Body Small · 12px · 400</span>
+                  <p class="vt-typescale-body-small">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.
+                  </p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Label Large · 14px · 450</span>
+                  <p class="vt-typescale-label-large">BUTTON TEXT</p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Label Medium · 12px · 450</span>
+                  <p class="vt-typescale-label-medium">SMALL BUTTON</p>
+                </div>
+                <div class="typography-sample">
+                  <span class="type-label">Label Small · 11px · 450</span>
+                  <p class="vt-typescale-label-small">CAPTION TEXT</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </section>
+        }
 
-      <!-- Colors Section -->
-      @if (activeSection() === 'colors') {
-        <section>
-          <h2 class="section-title">Color System</h2>
-          <p class="section-description">
-            A refined monochromatic palette inspired by OpenAI's minimalist design. Our color system
-            emphasizes clarity and focus through subtle gray variations.
-          </p>
+        <!-- Colors Section -->
+        @if (activeSection() === 'colors') {
+          <section>
+            <h2 class="section-title">Color System</h2>
+            <p class="section-description">
+              A refined monochromatic palette inspired by OpenAI's minimalist design. Our color
+              system emphasizes clarity and focus through subtle gray variations.
+            </p>
 
-          <!-- Primary Palette -->
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Core Palette</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="color-grid">
-                <div class="color-group">
-                  <h4 class="color-group-title">Primary Colors</h4>
-                  <div class="color-swatches">
-                    <div class="color-swatch">
-                      <div
-                        class="swatch-preview"
-                        style="
-                          background: var(--mat-sys-color-primary);
-                          color: var(--mat-sys-color-on-primary);
-                        "
-                      ></div>
-                      <div class="swatch-info">
-                        <span class="swatch-name">Black</span>
-                        <span class="swatch-value">#000000</span>
-                        <span class="swatch-token">--mat-sys-color-primary</span>
+            <!-- Primary Palette -->
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Core Palette</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="color-grid">
+                  <div class="color-group">
+                    <h4 class="color-group-title">Primary Colors</h4>
+                    <div class="color-swatches">
+                      <div class="color-swatch">
+                        <div
+                          class="swatch-preview"
+                          style="
+                            background: var(--mat-sys-color-primary);
+                            color: var(--mat-sys-color-on-primary);
+                          "
+                        ></div>
+                        <div class="swatch-info">
+                          <span class="swatch-name">Black</span>
+                          <span class="swatch-value">#000000</span>
+                          <span class="swatch-token">--mat-sys-color-primary</span>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div
+                          class="swatch-preview"
+                          style="
+                            background: var(--mat-sys-color-on-primary);
+                            color: var(--mat-sys-color-primary);
+                            border: 1px solid var(--mat-sys-color-outline-variant);
+                          "
+                        ></div>
+                        <div class="swatch-info">
+                          <span class="swatch-name">White</span>
+                          <span class="swatch-value">#ffffff</span>
+                          <span class="swatch-token">--mat-sys-color-on-primary</span>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div
+                          class="swatch-preview"
+                          style="
+                            background: var(--mat-sys-color-tertiary);
+                            color: var(--mat-sys-color-on-tertiary);
+                          "
+                        ></div>
+                        <div class="swatch-info">
+                          <span class="swatch-name">Green (CTA)</span>
+                          <span class="swatch-value">#10a37f</span>
+                          <span class="swatch-token">--mat-sys-color-tertiary</span>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div
+                          class="swatch-preview"
+                          style="
+                            background: var(--mat-sys-color-data-primary);
+                            color: var(--mat-sys-color-on-data-primary);
+                          "
+                        ></div>
+                        <div class="swatch-info">
+                          <span class="swatch-name">Purple (Data)</span>
+                          <span class="swatch-value">#8b5cf6</span>
+                          <span class="swatch-token">--mat-sys-color-data-primary</span>
+                        </div>
                       </div>
                     </div>
-                    <div class="color-swatch">
-                      <div
-                        class="swatch-preview"
-                        style="
-                          background: var(--mat-sys-color-on-primary);
-                          color: var(--mat-sys-color-primary);
-                          border: 1px solid var(--mat-sys-color-outline-variant);
-                        "
-                      ></div>
-                      <div class="swatch-info">
-                        <span class="swatch-name">White</span>
-                        <span class="swatch-value">#ffffff</span>
-                        <span class="swatch-token">--mat-sys-color-on-primary</span>
-                      </div>
-                    </div>
-                    <div class="color-swatch">
-                      <div
-                        class="swatch-preview"
-                        style="
-                          background: var(--mat-sys-color-tertiary);
-                          color: var(--mat-sys-color-on-tertiary);
-                        "
-                      ></div>
-                      <div class="swatch-info">
-                        <span class="swatch-name">Green (CTA)</span>
-                        <span class="swatch-value">#10a37f</span>
-                        <span class="swatch-token">--mat-sys-color-tertiary</span>
-                      </div>
-                    </div>
-                    <div class="color-swatch">
-                      <div
-                        class="swatch-preview"
-                        style="
-                          background: var(--mat-sys-color-data-primary);
-                          color: var(--mat-sys-color-on-data-primary);
-                        "
-                      ></div>
-                      <div class="swatch-info">
-                        <span class="swatch-name">Purple (Data)</span>
-                        <span class="swatch-value">#8b5cf6</span>
-                        <span class="swatch-token">--mat-sys-color-data-primary</span>
-                      </div>
-                    </div>
                   </div>
                 </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
+              </mat-card-content>
+            </mat-card>
 
-          <!-- Gray Scale -->
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Gray Scale</mat-card-title>
-              <mat-card-subtitle>OpenAI-inspired refined grays for UI hierarchy</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="gray-scale-grid">
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-background);
-                      color: var(--mat-sys-color-on-background);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 950</span>
-                    <span class="gray-value">#0a0a0a</span>
-                    <span class="gray-usage">Dark theme background</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-on-surface);
-                      color: var(--mat-sys-color-surface);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 900</span>
-                    <span class="gray-value">#202123</span>
-                    <span class="gray-usage">Text primary</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-surface-variant);
-                      color: var(--mat-sys-color-on-surface-variant);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 800</span>
-                    <span class="gray-value">#353740</span>
-                    <span class="gray-usage">Dark sidebar</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-outline);
-                      color: var(--mat-sys-color-on-surface);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 700</span>
-                    <span class="gray-value">#40414f</span>
-                    <span class="gray-usage">Dark borders</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-on-surface-variant);
-                      color: var(--mat-sys-color-surface-variant);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 600</span>
-                    <span class="gray-value">#565869</span>
-                    <span class="gray-usage">Secondary text</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-focus-ring);
-                      color: var(--mat-sys-color-on-surface);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 500</span>
-                    <span class="gray-value">#6e6e80</span>
-                    <span class="gray-usage">Focus borders</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-disabled);
-                      color: var(--mat-sys-color-on-surface);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 400</span>
-                    <span class="gray-value">#9ca3af</span>
-                    <span class="gray-usage">Disabled text</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-outline);
-                      color: var(--mat-sys-color-on-surface);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 300</span>
-                    <span class="gray-value">#d1d5db</span>
-                    <span class="gray-usage">Standard borders</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-outline-variant);
-                      color: var(--mat-sys-color-on-surface);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 200</span>
-                    <span class="gray-value">#e5e5e5</span>
-                    <span class="gray-usage">Active state</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-surface-container-high);
-                      color: var(--mat-sys-color-on-surface);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 175</span>
-                    <span class="gray-value">#ececf1</span>
-                    <span class="gray-usage">Hover state</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-surface-container-low);
-                      color: var(--mat-sys-color-on-surface);
-                      border: 1px solid var(--mat-sys-color-outline-variant);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 150</span>
-                    <span class="gray-value">#f7f7f8</span>
-                    <span class="gray-usage">Sidenav background</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-surface-container);
-                      color: var(--mat-sys-color-on-surface);
-                      border: 1px solid var(--mat-sys-color-outline-variant);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 100</span>
-                    <span class="gray-value">#f9f9f9</span>
-                    <span class="gray-usage">Subtle backgrounds</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-surface-dim);
-                      color: var(--mat-sys-color-on-surface);
-                      border: 1px solid var(--mat-sys-color-outline-variant);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">Gray 50</span>
-                    <span class="gray-value">#fafafa</span>
-                    <span class="gray-usage">Alt sections</span>
-                  </div>
-                </div>
-                <div class="gray-swatch">
-                  <div
-                    class="gray-preview"
-                    style="
-                      background: var(--mat-sys-color-surface);
-                      color: var(--mat-sys-color-on-surface);
-                      border: 1px solid var(--mat-sys-color-outline-variant);
-                    "
-                  ></div>
-                  <div class="gray-info">
-                    <span class="gray-name">White</span>
-                    <span class="gray-value">#ffffff</span>
-                    <span class="gray-usage">Primary background</span>
-                  </div>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-
-          <!-- Interactive States -->
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Interactive States</mat-card-title>
-              <mat-card-subtitle
-                >Monochromatic state colors for consistent interactions</mat-card-subtitle
-              >
-            </mat-card-header>
-            <mat-card-content>
-              <div class="states-demo">
-                <div class="state-row">
-                  <div class="state-example">
-                    <button mat-stroked-button class="state-default">Default State</button>
-                    <span class="state-label">Default · #ffffff</span>
-                  </div>
-                  <div class="state-example">
-                    <button mat-stroked-button class="state-hover">Hover State</button>
-                    <span class="state-label">Hover · #ececf1</span>
-                  </div>
-                  <div class="state-example">
-                    <button mat-stroked-button class="state-selected">Selected State</button>
-                    <span class="state-label">Selected · #e5e5e5</span>
-                  </div>
-                  <div class="state-example">
-                    <button mat-stroked-button class="state-focus">Focus State</button>
-                    <span class="state-label">Focus · #6e6e80 border</span>
-                  </div>
-                  <div class="state-example">
-                    <button mat-stroked-button disabled>Disabled State</button>
-                    <span class="state-label">Disabled · #9ca3af</span>
-                  </div>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-
-          <!-- Usage Examples -->
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Color Usage Guidelines</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="usage-examples">
-                <div class="usage-section">
-                  <h4 class="usage-title">Background Hierarchy</h4>
-                  <div class="hierarchy-demo">
+            <!-- Gray Scale -->
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Gray Scale</mat-card-title>
+                <mat-card-subtitle
+                  >OpenAI-inspired refined grays for UI hierarchy</mat-card-subtitle
+                >
+              </mat-card-header>
+              <mat-card-content>
+                <div class="gray-scale-grid">
+                  <div class="gray-swatch">
                     <div
-                      class="hierarchy-level"
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-background);
+                        color: var(--mat-sys-color-on-background);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 950</span>
+                      <span class="gray-value">#0a0a0a</span>
+                      <span class="gray-usage">Dark theme background</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-on-surface);
+                        color: var(--mat-sys-color-surface);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 900</span>
+                      <span class="gray-value">#202123</span>
+                      <span class="gray-usage">Text primary</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-surface-variant);
+                        color: var(--mat-sys-color-on-surface-variant);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 800</span>
+                      <span class="gray-value">#353740</span>
+                      <span class="gray-usage">Dark sidebar</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-outline);
+                        color: var(--mat-sys-color-on-surface);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 700</span>
+                      <span class="gray-value">#40414f</span>
+                      <span class="gray-usage">Dark borders</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-on-surface-variant);
+                        color: var(--mat-sys-color-surface-variant);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 600</span>
+                      <span class="gray-value">#565869</span>
+                      <span class="gray-usage">Secondary text</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-focus-ring);
+                        color: var(--mat-sys-color-on-surface);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 500</span>
+                      <span class="gray-value">#6e6e80</span>
+                      <span class="gray-usage">Focus borders</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-disabled);
+                        color: var(--mat-sys-color-on-surface);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 400</span>
+                      <span class="gray-value">#9ca3af</span>
+                      <span class="gray-usage">Disabled text</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-outline);
+                        color: var(--mat-sys-color-on-surface);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 300</span>
+                      <span class="gray-value">#d1d5db</span>
+                      <span class="gray-usage">Standard borders</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-outline-variant);
+                        color: var(--mat-sys-color-on-surface);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 200</span>
+                      <span class="gray-value">#e5e5e5</span>
+                      <span class="gray-usage">Active state</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-surface-container-high);
+                        color: var(--mat-sys-color-on-surface);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 175</span>
+                      <span class="gray-value">#ececf1</span>
+                      <span class="gray-usage">Hover state</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-surface-container-low);
+                        color: var(--mat-sys-color-on-surface);
+                        border: 1px solid var(--mat-sys-color-outline-variant);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 150</span>
+                      <span class="gray-value">#f7f7f8</span>
+                      <span class="gray-usage">Sidenav background</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-surface-container);
+                        color: var(--mat-sys-color-on-surface);
+                        border: 1px solid var(--mat-sys-color-outline-variant);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 100</span>
+                      <span class="gray-value">#f9f9f9</span>
+                      <span class="gray-usage">Subtle backgrounds</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
+                      style="
+                        background: var(--mat-sys-color-surface-dim);
+                        color: var(--mat-sys-color-on-surface);
+                        border: 1px solid var(--mat-sys-color-outline-variant);
+                      "
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">Gray 50</span>
+                      <span class="gray-value">#fafafa</span>
+                      <span class="gray-usage">Alt sections</span>
+                    </div>
+                  </div>
+                  <div class="gray-swatch">
+                    <div
+                      class="gray-preview"
                       style="
                         background: var(--mat-sys-color-surface);
                         color: var(--mat-sys-color-on-surface);
-                        padding: 24px;
-                        border: 1px solid var(--mat-sys-color-surface-container-high);
-                        border-radius: 6px;
+                        border: 1px solid var(--mat-sys-color-outline-variant);
                       "
-                    >
-                      <span class="hierarchy-label">Body Background · #ffffff</span>
+                    ></div>
+                    <div class="gray-info">
+                      <span class="gray-name">White</span>
+                      <span class="gray-value">#ffffff</span>
+                      <span class="gray-usage">Primary background</span>
+                    </div>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+
+            <!-- Interactive States -->
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Interactive States</mat-card-title>
+                <mat-card-subtitle
+                  >Monochromatic state colors for consistent interactions</mat-card-subtitle
+                >
+              </mat-card-header>
+              <mat-card-content>
+                <div class="states-demo">
+                  <div class="state-row">
+                    <div class="state-example">
+                      <button mat-stroked-button class="state-default">Default State</button>
+                      <span class="state-label">Default · #ffffff</span>
+                    </div>
+                    <div class="state-example">
+                      <button mat-stroked-button class="state-hover">Hover State</button>
+                      <span class="state-label">Hover · #ececf1</span>
+                    </div>
+                    <div class="state-example">
+                      <button mat-stroked-button class="state-selected">Selected State</button>
+                      <span class="state-label">Selected · #e5e5e5</span>
+                    </div>
+                    <div class="state-example">
+                      <button mat-stroked-button class="state-focus">Focus State</button>
+                      <span class="state-label">Focus · #6e6e80 border</span>
+                    </div>
+                    <div class="state-example">
+                      <button mat-stroked-button disabled>Disabled State</button>
+                      <span class="state-label">Disabled · #9ca3af</span>
+                    </div>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+
+            <!-- Usage Examples -->
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Color Usage Guidelines</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="usage-examples">
+                  <div class="usage-section">
+                    <h4 class="usage-title">Background Hierarchy</h4>
+                    <div class="hierarchy-demo">
                       <div
                         class="hierarchy-level"
                         style="
                           background: var(--mat-sys-color-surface);
                           color: var(--mat-sys-color-on-surface);
                           padding: 24px;
-                          margin-top: 16px;
                           border: 1px solid var(--mat-sys-color-surface-container-high);
                           border-radius: 6px;
                         "
                       >
-                        <span class="hierarchy-label">Card Surface · #ffffff</span>
+                        <span class="hierarchy-label">Body Background · #ffffff</span>
                         <div
                           class="hierarchy-level"
                           style="
                             background: var(--mat-sys-color-surface);
                             color: var(--mat-sys-color-on-surface);
-                            padding: 16px;
+                            padding: 24px;
                             margin-top: 16px;
                             border: 1px solid var(--mat-sys-color-surface-container-high);
                             border-radius: 6px;
                           "
                         >
-                          <span class="hierarchy-label">Input Background · #ffffff</span>
+                          <span class="hierarchy-label">Card Surface · #ffffff</span>
+                          <div
+                            class="hierarchy-level"
+                            style="
+                              background: var(--mat-sys-color-surface);
+                              color: var(--mat-sys-color-on-surface);
+                              padding: 16px;
+                              margin-top: 16px;
+                              border: 1px solid var(--mat-sys-color-surface-container-high);
+                              border-radius: 6px;
+                            "
+                          >
+                            <span class="hierarchy-label">Input Background · #ffffff</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="usage-section">
-                  <h4 class="usage-title">Text Hierarchy</h4>
-                  <div class="text-examples">
-                    <p style="color: var(--mat-sys-color-on-surface); font-weight: 600">
-                      Primary Text · #202123 · Weight 600
-                    </p>
-                    <p style="color: var(--mat-sys-color-on-surface); font-weight: 400">
-                      Body Text · #202123 · Weight 400
-                    </p>
-                    <p style="color: var(--mat-sys-color-on-surface-variant); font-weight: 400">
-                      Secondary Text · #565869 · Weight 400
-                    </p>
-                    <p style="color: var(--mat-sys-color-disabled); font-weight: 400">
-                      Disabled Text · #9ca3af · Weight 400
-                    </p>
-                  </div>
-                </div>
-
-                <div class="usage-section">
-                  <h4 class="usage-title">Border Usage</h4>
-                  <div class="border-examples">
-                    <div
-                      class="border-example"
-                      style="border: 1px solid var(--mat-sys-color-outline); padding: 16px"
-                    >
-                      Standard Border · #d1d5db
-                    </div>
-                    <div
-                      class="border-example"
-                      style="
-                        border: 1px solid var(--mat-sys-color-outline-variant);
-                        padding: 16px;
-                        margin-top: 8px;
-                      "
-                    >
-                      Subtle Border · #e5e5e5
-                    </div>
-                    <div
-                      class="border-example"
-                      style="
-                        border: 2px solid var(--mat-sys-color-focus-ring);
-                        padding: 16px;
-                        margin-top: 8px;
-                      "
-                    >
-                      Focus Border · #6e6e80
+                  <div class="usage-section">
+                    <h4 class="usage-title">Text Hierarchy</h4>
+                    <div class="text-examples">
+                      <p style="color: var(--mat-sys-color-on-surface); font-weight: 600">
+                        Primary Text · #202123 · Weight 600
+                      </p>
+                      <p style="color: var(--mat-sys-color-on-surface); font-weight: 400">
+                        Body Text · #202123 · Weight 400
+                      </p>
+                      <p style="color: var(--mat-sys-color-on-surface-variant); font-weight: 400">
+                        Secondary Text · #565869 · Weight 400
+                      </p>
+                      <p style="color: var(--mat-sys-color-disabled); font-weight: 400">
+                        Disabled Text · #9ca3af · Weight 400
+                      </p>
                     </div>
                   </div>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
 
-          <!-- Implementation Code -->
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Implementation</mat-card-title>
-              <mat-card-subtitle>Using design tokens in your components</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="code-examples">
-                <div class="code-block">
-                  <h4>CSS Variables</h4>
-                  <pre><code>.my-component &#123;
+                  <div class="usage-section">
+                    <h4 class="usage-title">Border Usage</h4>
+                    <div class="border-examples">
+                      <div
+                        class="border-example"
+                        style="border: 1px solid var(--mat-sys-color-outline); padding: 16px"
+                      >
+                        Standard Border · #d1d5db
+                      </div>
+                      <div
+                        class="border-example"
+                        style="
+                          border: 1px solid var(--mat-sys-color-outline-variant);
+                          padding: 16px;
+                          margin-top: 8px;
+                        "
+                      >
+                        Subtle Border · #e5e5e5
+                      </div>
+                      <div
+                        class="border-example"
+                        style="
+                          border: 2px solid var(--mat-sys-color-focus-ring);
+                          padding: 16px;
+                          margin-top: 8px;
+                        "
+                      >
+                        Focus Border · #6e6e80
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+
+            <!-- Implementation Code -->
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Implementation</mat-card-title>
+                <mat-card-subtitle>Using design tokens in your components</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="code-examples">
+                  <div class="code-block">
+                    <h4>CSS Variables</h4>
+                    <pre><code>.my-component &#123;
   background: var(--mat-sys-color-surface);
   color: var(--mat-sys-color-on-surface);
   border: 1px solid var(--mat-sys-color-outline);
@@ -699,11 +702,11 @@
   background: var(--mat-sys-color-tertiary);
   color: var(--mat-sys-color-on-tertiary);
 &#125;</code></pre>
-                </div>
+                  </div>
 
-                <div class="code-block">
-                  <h4>SCSS Function</h4>
-                  <pre><code>&#64;use '&#64;venntier/design-system/styles/tokens/sys-color' as colors;
+                  <div class="code-block">
+                    <h4>SCSS Function</h4>
+                    <pre><code>&#64;use '&#64;venntier/design-system/styles/tokens/sys-color' as colors;
 
 .my-component &#123;
   background: colors.color('surface');
@@ -713,207 +716,208 @@
     background: colors.color('hover');
   &#125;
 &#125;</code></pre>
+                  </div>
                 </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </section>
-      }
+              </mat-card-content>
+            </mat-card>
+          </section>
+        }
 
-      <!-- Form Controls Section -->
-      @if (activeSection() === 'inputs') {
-        <section>
-          <h2 class="section-title">Text Inputs</h2>
-          <p class="section-description">
-            Input fields with clean borders and proper alignment for data entry.
-          </p>
+        <!-- Form Controls Section -->
+        @if (activeSection() === 'inputs') {
+          <section>
+            <h2 class="section-title">Text Inputs</h2>
+            <p class="section-description">
+              Input fields with clean borders and proper alignment for data entry.
+            </p>
 
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Input Fields</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="form-grid">
-                <mat-form-field appearance="outline">
-                  <mat-label>Email</mat-label>
-                  <input
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Input Fields</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="form-grid">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input
+                      matInput
+                      placeholder="name@example.com"
+                      [ngModel]="emailValue()"
+                      (ngModelChange)="updateEmailValue($event)"
+                    />
+                    <mat-icon matSuffix>email</mat-icon>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" placeholder="Enter password" />
+                    <mat-icon matSuffix>lock</mat-icon>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Search</mat-label>
+                    <input matInput placeholder="Search..." />
+                    <mat-icon matPrefix>search</mat-icon>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput type="tel" placeholder="+1 (555) 123-4567" />
+                    <mat-icon matSuffix>phone</mat-icon>
+                  </mat-form-field>
+                </div>
+              </mat-card-content>
+            </mat-card>
+
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Textarea</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Description</mat-label>
+                  <textarea
                     matInput
-                    placeholder="name@example.com"
-                    [ngModel]="emailValue()"
-                    (ngModelChange)="updateEmailValue($event)"
-                  />
-                  <mat-icon matSuffix>email</mat-icon>
+                    rows="4"
+                    placeholder="Enter a detailed description..."
+                  ></textarea>
                 </mat-form-field>
+              </mat-card-content>
+            </mat-card>
+          </section>
+        }
 
-                <mat-form-field appearance="outline">
-                  <mat-label>Password</mat-label>
-                  <input matInput type="password" placeholder="Enter password" />
-                  <mat-icon matSuffix>lock</mat-icon>
-                </mat-form-field>
+        <!-- Selection Controls -->
+        @if (activeSection() === 'selection') {
+          <section>
+            <h2 class="section-title">Selection Controls</h2>
+            <p class="section-description">
+              Dropdowns and selection components for choosing from predefined options.
+            </p>
 
-                <mat-form-field appearance="outline">
-                  <mat-label>Search</mat-label>
-                  <input matInput placeholder="Search..." />
-                  <mat-icon matPrefix>search</mat-icon>
-                </mat-form-field>
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Select Dropdowns</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="form-grid">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <mat-select
+                      [ngModel]="countryValue()"
+                      (ngModelChange)="updateCountryValue($event)"
+                    >
+                      <mat-option value="us">United States</mat-option>
+                      <mat-option value="uk">United Kingdom</mat-option>
+                      <mat-option value="ca">Canada</mat-option>
+                      <mat-option value="au">Australia</mat-option>
+                    </mat-select>
+                  </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                  <mat-label>Phone Number</mat-label>
-                  <input matInput type="tel" placeholder="+1 (555) 123-4567" />
-                  <mat-icon matSuffix>phone</mat-icon>
-                </mat-form-field>
-              </div>
-            </mat-card-content>
-          </mat-card>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Language</mat-label>
+                    <mat-select
+                      [ngModel]="languageValue()"
+                      (ngModelChange)="updateLanguageValue($event)"
+                    >
+                      <mat-option value="en">English</mat-option>
+                      <mat-option value="es">Spanish</mat-option>
+                      <mat-option value="fr">French</mat-option>
+                      <mat-option value="de">German</mat-option>
+                    </mat-select>
+                  </mat-form-field>
 
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Textarea</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Description</mat-label>
-                <textarea
-                  matInput
-                  rows="4"
-                  placeholder="Enter a detailed description..."
-                ></textarea>
-              </mat-form-field>
-            </mat-card-content>
-          </mat-card>
-        </section>
-      }
+                  <mat-form-field appearance="outline">
+                    <mat-label>Team Size</mat-label>
+                    <mat-select>
+                      <mat-option value="1">1-10 employees</mat-option>
+                      <mat-option value="2">11-50 employees</mat-option>
+                      <mat-option value="3">51-200 employees</mat-option>
+                      <mat-option value="4">201+ employees</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </section>
+        }
 
-      <!-- Selection Controls -->
-      @if (activeSection() === 'selection') {
-        <section>
-          <h2 class="section-title">Selection Controls</h2>
-          <p class="section-description">
-            Dropdowns and selection components for choosing from predefined options.
-          </p>
+        <!-- Choice Controls -->
+        @if (activeSection() === 'choice') {
+          <section>
+            <h2 class="section-title">Choice Controls</h2>
+            <p class="section-description">
+              Checkboxes, radio buttons, and toggles for binary and multiple choice selections.
+            </p>
 
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Select Dropdowns</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="form-grid">
-                <mat-form-field appearance="outline">
-                  <mat-label>Country</mat-label>
-                  <mat-select
-                    [ngModel]="countryValue()"
-                    (ngModelChange)="updateCountryValue($event)"
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Checkboxes</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="choice-group">
+                  <mat-checkbox [ngModel]="checkbox1()" (ngModelChange)="checkbox1.set($event)"
+                    >Receive email notifications</mat-checkbox
                   >
-                    <mat-option value="us">United States</mat-option>
-                    <mat-option value="uk">United Kingdom</mat-option>
-                    <mat-option value="ca">Canada</mat-option>
-                    <mat-option value="au">Australia</mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                  <mat-label>Language</mat-label>
-                  <mat-select
-                    [ngModel]="languageValue()"
-                    (ngModelChange)="updateLanguageValue($event)"
+                  <mat-checkbox [ngModel]="checkbox2()" (ngModelChange)="checkbox2.set($event)"
+                    >Receive SMS notifications</mat-checkbox
                   >
-                    <mat-option value="en">English</mat-option>
-                    <mat-option value="es">Spanish</mat-option>
-                    <mat-option value="fr">French</mat-option>
-                    <mat-option value="de">German</mat-option>
-                  </mat-select>
-                </mat-form-field>
+                  <mat-checkbox [ngModel]="checkbox3()" (ngModelChange)="checkbox3.set($event)"
+                    >Receive marketing updates</mat-checkbox
+                  >
+                </div>
+              </mat-card-content>
+            </mat-card>
 
-                <mat-form-field appearance="outline">
-                  <mat-label>Team Size</mat-label>
-                  <mat-select>
-                    <mat-option value="1">1-10 employees</mat-option>
-                    <mat-option value="2">11-50 employees</mat-option>
-                    <mat-option value="3">51-200 employees</mat-option>
-                    <mat-option value="4">201+ employees</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </section>
-      }
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Radio Buttons</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-radio-group
+                  [ngModel]="radioValue()"
+                  (ngModelChange)="updateRadioValue($event)"
+                  class="choice-group"
+                >
+                  <mat-radio-button value="monthly">Monthly billing</mat-radio-button>
+                  <mat-radio-button value="yearly">Yearly billing (save 20%)</mat-radio-button>
+                  <mat-radio-button value="enterprise">Enterprise (custom)</mat-radio-button>
+                </mat-radio-group>
+              </mat-card-content>
+            </mat-card>
 
-      <!-- Choice Controls -->
-      @if (activeSection() === 'choice') {
-        <section>
-          <h2 class="section-title">Choice Controls</h2>
-          <p class="section-description">
-            Checkboxes, radio buttons, and toggles for binary and multiple choice selections.
-          </p>
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Toggle Switches</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="choice-group">
+                  <mat-slide-toggle [ngModel]="toggle1()" (ngModelChange)="toggle1.set($event)"
+                    >Enable two-factor authentication</mat-slide-toggle
+                  >
+                  <mat-slide-toggle [ngModel]="toggle2()" (ngModelChange)="toggle2.set($event)"
+                    >Show profile publicly</mat-slide-toggle
+                  >
+                  <mat-slide-toggle [ngModel]="toggle3()" (ngModelChange)="toggle3.set($event)"
+                    >Allow data collection</mat-slide-toggle
+                  >
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </section>
+        }
 
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Checkboxes</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="choice-group">
-                <mat-checkbox [ngModel]="checkbox1()" (ngModelChange)="checkbox1.set($event)"
-                  >Receive email notifications</mat-checkbox
-                >
-                <mat-checkbox [ngModel]="checkbox2()" (ngModelChange)="checkbox2.set($event)"
-                  >Receive SMS notifications</mat-checkbox
-                >
-                <mat-checkbox [ngModel]="checkbox3()" (ngModelChange)="checkbox3.set($event)"
-                  >Receive marketing updates</mat-checkbox
-                >
-              </div>
-            </mat-card-content>
-          </mat-card>
-
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Radio Buttons</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <mat-radio-group
-                [ngModel]="radioValue()"
-                (ngModelChange)="updateRadioValue($event)"
-                class="choice-group"
-              >
-                <mat-radio-button value="monthly">Monthly billing</mat-radio-button>
-                <mat-radio-button value="yearly">Yearly billing (save 20%)</mat-radio-button>
-                <mat-radio-button value="enterprise">Enterprise (custom)</mat-radio-button>
-              </mat-radio-group>
-            </mat-card-content>
-          </mat-card>
-
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Toggle Switches</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div class="choice-group">
-                <mat-slide-toggle [ngModel]="toggle1()" (ngModelChange)="toggle1.set($event)"
-                  >Enable two-factor authentication</mat-slide-toggle
-                >
-                <mat-slide-toggle [ngModel]="toggle2()" (ngModelChange)="toggle2.set($event)"
-                  >Show profile publicly</mat-slide-toggle
-                >
-                <mat-slide-toggle [ngModel]="toggle3()" (ngModelChange)="toggle3.set($event)"
-                  >Allow data collection</mat-slide-toggle
-                >
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </section>
-      }
-
-      <!-- Default content for other sections -->
-      @if (!['typography', 'inputs', 'selection', 'choice'].includes(activeSection())) {
-        <section>
-          <h2 class="section-title">{{ activeSection() | titlecase }}</h2>
-          <p class="section-description">
-            This section is under construction. Select Typography, Text Inputs, Selection Controls,
-            or Choice Controls to see examples.
-          </p>
-        </section>
-      }
+        <!-- Default content for other sections -->
+        @if (!['typography', 'inputs', 'selection', 'choice'].includes(activeSection())) {
+          <section>
+            <h2 class="section-title">{{ activeSection() | titlecase }}</h2>
+            <p class="section-description">
+              This section is under construction. Select Typography, Text Inputs, Selection
+              Controls, or Choice Controls to see examples.
+            </p>
+          </section>
+        }
+      </div>
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

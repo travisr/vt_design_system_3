@@ -1,10 +1,10 @@
-// Material Icons font configuration for MD3
+// Material Icons font configuration for Angular Material 20
 // Ensures proper font rendering with ligature support
 @use '../tokens' as tokens;
 
 @mixin vt-icon-theme() {
-  // MD3-compliant icon font application
-  // Using low-specificity selector without !important per MD3 best practices
+  // Angular Material 20-compliant icon font application
+  // Using low-specificity selector without !important per Angular Material 20 best practices
   mat-icon {
     font-family: 'Material Icons', sans-serif;
     font-weight: normal;
@@ -23,7 +23,7 @@
     font-feature-settings: 'liga';
   }
 
-  // Size variants using MD3 spacing tokens
+  // Size variants using Angular Material 20 spacing tokens
   mat-icon.size-18 {
     font-size: var(--mat-sys-spacing-18, 18px);
     width: var(--mat-sys-spacing-18, 18px);
@@ -48,25 +48,25 @@
     height: var(--mat-sys-spacing-48, 48px);
   }
 
-  // Color variants using MD3 color tokens
+  // Color variants using Angular Material 20 color tokens
   mat-icon.color-on-surface {
-    color: var(--mat-sys-color-on-surface);
+    color: var(--mat-sys-on-surface);
   }
 
   mat-icon.color-primary {
-    color: var(--mat-sys-color-primary);
+    color: var(--mat-sys-primary);
   }
 
   mat-icon.color-secondary {
-    color: var(--mat-sys-color-secondary);
+    color: var(--mat-sys-secondary);
   }
 
   mat-icon.color-tertiary {
-    color: var(--mat-sys-color-tertiary);
+    color: var(--mat-sys-tertiary);
   }
 
   mat-icon.color-error {
-    color: var(--mat-sys-color-error);
+    color: var(--mat-sys-error);
   }
 
   mat-icon.color-success {

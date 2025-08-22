@@ -49,7 +49,7 @@ $theme: mat.define-theme((
     •	Use CSS variables from tokens for local adjustments:
 
 :host {
---md-sys-color-primary: #006A6A;
+--mat-sys-primary: #006A6A;
 }
 
     •	Support light/dark themes via tokens and prefers-color-scheme.

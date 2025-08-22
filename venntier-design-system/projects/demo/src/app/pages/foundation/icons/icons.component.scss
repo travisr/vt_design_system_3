@@ -12,7 +12,7 @@
 .style-group {
   h4 {
     margin-bottom: var(--mat-sys-spacing-16);
-    color: var(--mat-sys-color-on-surface);
+    color: var(--mat-sys-on-surface);
   }
 }
 
@@ -33,16 +33,16 @@
     var(--mat-sys-motion-easing-standard, ease);
 
   &:hover {
-    background-color: var(--mat-sys-color-surface-variant);
+    background-color: var(--mat-sys-surface-variant);
   }
 
   mat-icon {
-    color: var(--mat-sys-color-on-surface);
+    color: var(--mat-sys-on-surface);
   }
 
   span {
-    font-size: var(--mat-sys-typescale-label-medium-size, 12px);
-    color: var(--mat-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-label-medium-size, 12px);
+    color: var(--mat-sys-on-surface-variant);
     text-align: center;
     word-break: break-all;
   }
@@ -88,8 +88,8 @@
 
   h4 {
     margin: 0;
-    font-size: var(--mat-sys-typescale-body-medium-size, 14px);
-    color: var(--mat-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-body-medium-size, 14px);
+    color: var(--mat-sys-on-surface-variant);
   }
 }
 
@@ -101,27 +101,27 @@
 
   // Icon color modifiers with mat-icon specificity
   .color-on-surface mat-icon {
-    color: var(--mat-sys-color-on-surface);
+    color: var(--mat-sys-on-surface);
   }
 
   .color-primary mat-icon {
-    color: var(--mat-sys-color-primary);
+    color: var(--mat-sys-primary);
   }
 
   .color-secondary mat-icon {
-    color: var(--mat-sys-color-secondary);
+    color: var(--mat-sys-secondary);
   }
 
   .color-error mat-icon {
-    color: var(--mat-sys-color-error);
+    color: var(--mat-sys-error);
   }
 
   .color-success mat-icon {
-    color: var(--mat-sys-color-success, var(--mat-sys-color-tertiary));
+    color: var(--mat-sys-color-success, var(--mat-sys-tertiary));
   }
 
   .color-warning mat-icon {
-    color: var(--mat-sys-color-warning, var(--mat-sys-color-error));
+    color: var(--mat-sys-color-warning, var(--mat-sys-error));
   }
 }
 
@@ -133,8 +133,8 @@
 
   h4 {
     margin: 0;
-    font-size: var(--mat-sys-typescale-label-medium-size, 12px);
-    color: var(--mat-sys-color-on-surface-variant);
+    font-size: var(--mat-sys-label-medium-size, 12px);
+    color: var(--mat-sys-on-surface-variant);
   }
 }
 
@@ -149,7 +149,7 @@
 
   h4 {
     margin: 0 0 var(--mat-sys-spacing-12) 0;
-    color: var(--mat-sys-color-on-surface);
+    color: var(--mat-sys-on-surface);
   }
 }
 
@@ -162,8 +162,8 @@
   gap: var(--mat-sys-spacing-12);
 
   mat-icon {
-    font-family: var(--mat-sys-typescale-icon-font, 'Material Icons'), sans-serif;
-    color: var(--mat-sys-color-on-surface-variant);
+    font-family: var(--mat-sys-icon-font, 'Material Icons'), sans-serif;
+    color: var(--mat-sys-on-surface-variant);
     cursor: pointer;
 
     // Using margin instead of padding due to ligature rendering bug
@@ -174,10 +174,10 @@
       var(--mat-sys-motion-easing-standard, ease);
 
     &:hover {
-      background-color: var(--mat-sys-color-surface-variant);
+      background-color: var(--mat-sys-surface-variant);
 
       // Box-shadow provides visual feedback similar to padding on hover
-      box-shadow: 0 0 0 var(--mat-sys-spacing-8) var(--mat-sys-color-surface-variant);
+      box-shadow: 0 0 0 var(--mat-sys-spacing-8) var(--mat-sys-surface-variant);
     }
   }
 }
@@ -195,8 +195,8 @@
 
   h4 {
     margin: 0;
-    color: var(--mat-sys-color-on-surface);
-    font-size: var(--mat-sys-typescale-body-large-size, 16px);
+    color: var(--mat-sys-on-surface);
+    font-size: var(--mat-sys-body-large-size, 16px);
   }
 
   > div {

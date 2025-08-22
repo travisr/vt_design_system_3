@@ -269,7 +269,7 @@ import { MD3_DOCS } from '../../../shared/constants/documentation-links';
                 </button>
                 <button mat-stroked-button class="demo-btn demo-btn--hover">Hover State</button>
                 <button mat-stroked-button class="demo-btn demo-btn--selected">Selected</button>
-                <button mat-flat-button color="tertiary" class="demo-btn">Primary CTA</button>
+                <button mat-flat-button color="primary" class="demo-btn">Primary CTA</button>
               </div>
             </div>
           </div>

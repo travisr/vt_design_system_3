@@ -40,19 +40,19 @@
 // Rules for using icons as black on a light background
 
 .material-icons.md-dark {
-  color: var(--mat-sys-color-on-surface-variant);
+  color: var(--mat-sys-on-surface-variant);
 }
 
 .material-icons.md-dark.md-inactive {
-  color: var(--mat-sys-color-disabled);
+  color: color-mix(in sRGB, var(--mat-sys-on-surface) 38%, transparent);
 }
 
 // Rules for using icons as white on a dark background
 
 .material-icons.md-light {
-  color: var(--mat-sys-color-on-primary);
+  color: var(--mat-sys-on-primary);
 }
 
 .material-icons.md-light.md-inactive {
-  color: var(--mat-sys-color-disabled);
+  color: color-mix(in sRGB, var(--mat-sys-on-surface) 38%, transparent);
 }

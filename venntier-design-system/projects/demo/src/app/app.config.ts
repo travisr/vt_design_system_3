@@ -2,6 +2,8 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MAT_CARD_CONFIG } from '@angular/material/card';
+import { VENNTIER_CARD_CONFIG } from '@venntier/design-system';
 
 import { routes } from './app.routes';
 
@@ -14,6 +16,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },
+    },
+    // Set outlined as default appearance for all cards (OpenAI style)
+    {
+      provide: MAT_CARD_CONFIG,
+      useValue: VENNTIER_CARD_CONFIG,
     },
   ],
 };

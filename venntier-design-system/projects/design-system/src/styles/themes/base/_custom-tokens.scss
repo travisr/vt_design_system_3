@@ -1,0 +1,25 @@
+// ============================================================================
+// CUSTOM COLOR TOKENS
+// ============================================================================
+// Custom tokens not provided by Angular Material
+// These extend the Material Design 3 token system with OpenAI-inspired colors
+
+@mixin vt-custom-color-tokens() {
+  :root {
+    // OpenAI-inspired interaction tokens - refined but visible
+    --mat-sys-hover: #f0f0f2;
+    --mat-sys-selected: #e8e8ea;
+    --mat-sys-focus-ring: #6e6e80;
+    --mat-sys-surface-container-low: #ffffff;
+  }
+
+  // Dark theme custom tokens
+  [data-vt-theme='dark'],
+  .vt-theme-dark,
+  html[style*='color-scheme: dark'] {
+    --mat-sys-hover: #2a2a2a;
+    --mat-sys-selected: #3a3a3a;
+    --mat-sys-focus-ring: #6e6e80;
+    --mat-sys-surface-container-low: #353740;
+  }
+}

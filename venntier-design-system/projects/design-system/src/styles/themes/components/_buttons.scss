@@ -1,0 +1,234 @@
+// ============================================================================
+// BUTTON COMPONENTS
+// ============================================================================
+// Button, FAB, and button-related component styling
+
+@use '@angular/material' as mat;
+
+@mixin vt-button-overrides() {
+  // ============================================================================
+  // BUTTON OVERRIDES - Using official Angular Material API
+  // ============================================================================
+
+  @include mat.button-overrides(
+    (
+      // Heights controlled by density mixins - removed fixed heights for density support
+      // Filled button (primary CTA) - Green
+      filled-container-color: var(--mat-sys-tertiary),
+      filled-label-text-color: var(--mat-sys-on-tertiary),
+      filled-state-layer-color: var(--mat-sys-on-tertiary),
+      filled-hover-state-layer-opacity: 0.08,
+      filled-pressed-state-layer-opacity: 0.12,
+
+      // Outlined button (secondary) - Black outline
+      outlined-outline-color: var(--mat-sys-outline),
+      outlined-label-text-color: var(--mat-sys-on-surface),
+      outlined-state-layer-color: var(--mat-sys-on-surface),
+      outlined-hover-state-layer-opacity: 0.08,
+      outlined-pressed-state-layer-opacity: 0.12,
+      outlined-outline-width: 1px,
+
+      // Text button (tertiary)
+      text-label-text-color: var(--mat-sys-on-surface-variant),
+      text-state-layer-color: var(--mat-sys-on-surface-variant),
+      text-hover-state-layer-opacity: 0.08,
+      text-pressed-state-layer-opacity: 0.12,
+
+      // Shared properties
+      filled-container-shape: 6px,
+      outlined-container-shape: 6px,
+      text-container-shape: 6px,
+      filled-label-text-weight: 450,
+      outlined-label-text-weight: 450,
+      text-label-text-weight: 450,
+      filled-label-text-font: 'Inter',
+      outlined-label-text-font: 'Inter',
+      text-label-text-font: 'Inter'
+    )
+  );
+
+  // ============================================================================
+  // BUTTON TOGGLE OVERRIDES
+  // ============================================================================
+
+  @include mat.button-toggle-overrides(
+    (
+      // Selected state styling - OpenAI clean design
+      selected-state-background-color: var(--mat-sys-primary),
+      selected-state-text-color: var(--mat-sys-on-surface),
+      // Unselected state styling (using correct token names from error message)
+      background-color: var(--mat-sys-surface),
+      text-color: var(--mat-sys-on-surface),
+      // Border and divider styling
+      divider-color: var(--mat-sys-outline-variant),
+      // Shape
+      shape: var(--mat-sys-shape-corner-medium),
+      // Typography
+      label-text-font: 'Inter',
+      label-text-size: var(--mat-sys-body-large-size),
+      label-text-weight: 400
+    )
+  );
+
+  // ============================================================================
+  // FAB OVERRIDES
+  // ============================================================================
+
+  @include mat.fab-overrides(
+    (
+      // Container styling - OpenAI flat design
+      container-color: var(--mat-sys-tertiary),
+      container-shape: 16px,
+      container-elevation-shadow: none,
+
+      // Flat design
+      // Icon styling
+      foreground-color: var(--mat-sys-on-tertiary),
+      // State layer styling
+      state-layer-color: var(--mat-sys-on-tertiary),
+      hover-state-layer-opacity: 0.08,
+      focus-state-layer-opacity: 0.12,
+      pressed-state-layer-opacity: 0.12,
+
+      // Disabled state
+      disabled-state-container-color: var(--mat-sys-surface-variant),
+      disabled-state-foreground-color: var(--mat-sys-on-surface-variant),
+      // Ripple disabled
+      ripple-color: transparent
+    )
+  );
+
+  // ============================================================================
+  // ICON BUTTON OVERRIDES
+  // ============================================================================
+
+  @include mat.icon-button-overrides(
+    (
+      // Container styling - OpenAI 48px square
+      state-layer-size: 48px,
+      icon-size: 20px,
+
+      // State layer colors - clean OpenAI style
+      state-layer-color: var(--mat-sys-on-surface),
+      hover-state-layer-opacity: 0.08,
+      focus-state-layer-opacity: 0,
+      // Remove focus state layer
+      pressed-state-layer-opacity: 0.12,
+
+      // Disable ripples for clean design
+      ripple-color: transparent,
+
+      // Disable touch target display which might be causing the outline
+      touch-target-display: none,
+
+      // Icon colors - MD3 best practice: use on-surface for primary icon color
+      icon-color: var(--mat-sys-on-surface),
+      // Disabled state - use proper disabled color token
+      disabled-icon-color: var(--mat-sys-on-surface-variant),
+      disabled-state-layer-color: var(--mat-sys-on-surface-variant)
+    )
+  );
+
+  // ============================================================================
+  // ADDITIONAL BUTTON CUSTOMIZATIONS
+  // ============================================================================
+
+  // Regular buttons (not icon buttons) - Custom CSS for properties not available as tokens
+  .mat-mdc-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-flat-button,
+  .mat-mdc-stroked-button {
+    // Heights controlled by density mixins - removed fixed heights for density support
+    --mdc-text-button-label-text-font: var(--mat-sys-label-large-font);
+    --mdc-text-button-label-text-size: 14px;
+    --mdc-text-button-label-text-weight: 400;
+    --mdc-text-button-label-text-tracking: 0.01em;
+
+    border-radius: 6px;
+    padding: 0 20px;
+    transition: all 0.15s ease;
+    box-shadow: none;
+
+    // Disable ripples using CSS variables
+    --mat-ripple-color: transparent;
+    --mdc-ripple-color: transparent;
+    --mdc-ripple-hover-opacity: 0;
+    --mdc-ripple-focus-opacity: 0;
+    --mdc-ripple-pressed-opacity: 0;
+  }
+
+  // Primary button (green CTA) - Use CSS custom properties
+  .mat-mdc-raised-button.mat-primary,
+  .mat-mdc-flat-button.mat-primary {
+    --mdc-filled-button-container-color: var(--mat-sys-tertiary);
+    --mdc-filled-button-label-text-color: var(--mat-sys-on-tertiary);
+    --mdc-filled-button-hover-container-color: var(--mat-sys-tertiary-container);
+    --mdc-filled-button-label-text-weight: 500;
+
+    &:not(:disabled):hover {
+      transform: translateY(-1px);
+    }
+
+    &:not(:disabled):active {
+      transform: translateY(0);
+    }
+  }
+
+  // Secondary (outlined) - Use Material's outlined button tokens
+  .mat-mdc-stroked-button,
+  .mat-mdc-outlined-button {
+    --mdc-outlined-button-container-color: transparent;
+    --mdc-outlined-button-label-text-color: var(--mat-sys-on-surface);
+    --mdc-outlined-button-outline-color: var(--mat-sys-outline);
+    --mdc-outlined-button-hover-container-color: var(--mat-sys-surface-variant);
+    --mdc-outlined-button-hover-outline-color: var(--mat-sys-outline-variant);
+  }
+
+  // Tertiary (flat) and Text buttons - Use proper CSS custom properties
+  .mat-mdc-flat-button:not(.mat-primary) {
+    --mdc-filled-button-container-color: var(--mat-sys-surface-container);
+    --mdc-filled-button-label-text-color: var(--mat-sys-on-surface);
+    --mdc-filled-button-hover-container-color: var(--mat-sys-surface-container-high);
+
+    border: none;
+  }
+
+  .mat-mdc-button {
+    --mdc-text-button-container-color: transparent;
+    --mdc-text-button-label-text-color: var(--mat-sys-on-surface-variant);
+    --mdc-text-button-hover-container-color: var(--mat-sys-surface-variant);
+    --mdc-text-button-hover-label-text-color: var(--mat-sys-on-surface);
+
+    padding: 0 12px;
+  }
+
+  // Disabled state - using CSS custom properties
+  button:disabled {
+    --mdc-text-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
+    --mdc-filled-button-disabled-container-color: var(--mat-sys-surface-variant);
+    --mdc-filled-button-disabled-label-text-color: var(--mat-sys-on-surface-variant);
+
+    opacity: 0.4;
+  }
+
+  // Additional FAB customizations not available through overrides
+  .mat-mdc-fab,
+  .mat-mdc-mini-fab {
+    // Force flat design - override any elevation shadows with higher specificity
+    box-shadow: none;
+
+    // Ensure no elevation on all states
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: none;
+    }
+
+    // Ensure proper icon contrast - white icons on green background
+    // Using higher specificity instead of !important
+    &.mat-mdc-fab mat-icon,
+    &.mat-mdc-mini-fab mat-icon {
+      color: var(--mat-sys-on-tertiary);
+    }
+  }
+}

@@ -1,0 +1,35 @@
+// ============================================================================
+// DENSITY OVERRIDES
+// ============================================================================
+// Global density configuration using official Angular Material API
+
+@use '@angular/material' as mat;
+
+@mixin vt-density-overrides() {
+  // Global density configuration using official Angular Material API
+  // MD3 density scale: 0 is default/comfortable, negative values are more compact
+  @include mat.all-component-densities(0);
+
+  // MD3 density classes - only negative values and 0 are supported
+  .dense {
+    @include mat.all-component-densities(-3);
+  }
+
+  .compact {
+    @include mat.all-component-densities(-2);
+  }
+
+  .standard {
+    @include mat.all-component-densities(-1);
+  }
+
+  // Note: Positive density values (+1, +2) are not supported in MD3
+  // 0 is the maximum (most comfortable) density
+
+  // Density selector consistent width across all demo pages
+  .density-selector {
+    mat-form-field {
+      width: 450px; // Fixed width to show full option text on single line
+    }
+  }
+}

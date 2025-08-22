@@ -8,24 +8,27 @@
 // COLOR REFERENCE TOKENS
 // ============================================================================
 
-// Core brand colors
-$black: #000000;
+// Core brand colors - OpenAI authentic
+$black: #1a1a1a; // Very dark gray, not pure black (OpenAI style)
 $white: #ffffff;
 $green: #10a37f; // OpenAI brand green
 $red: #ef4444; // Error/warn red
-$purple: #8b5cf6; // Accent purple
+$purple: #7c3aed; // Refined purple for better contrast with green
 
-// OpenAI-inspired gray scale (refined, warmer)
+// OpenAI-inspired gray scale (refined, authentic)
 $gray-950: #0a0a0a; // Deepest dark
 $gray-900: #202123; // OpenAI dark mode background
+$gray-850: #2d2d30; // Dark mode cards/surfaces
 $gray-800: #353740; // OpenAI sidebar dark
 $gray-700: #40414f; // OpenAI border dark
+$gray-650: #4a4a4a; // Dark mode prominent borders
 $gray-600: #565869; // OpenAI secondary text
 $gray-500: #6e6e80; // OpenAI focus border
-$gray-400: #9ca3af; // OpenAI disabled text
-$gray-300: #d1d5db; // OpenAI standard border
-$gray-200: #e5e5e5; // OpenAI active state (exact match)
-$gray-175: #ececf1; // OpenAI hover state (exact match)
+$gray-450: #9ca3af; // OpenAI disabled text
+$gray-400: #d1d5db; // Light secondary text (improved contrast)
+$gray-300: #e5e7eb; // OpenAI standard border (refined)
+$gray-200: #ececf1; // OpenAI hover state (exact match)
+$gray-175: #f0f0f0; // Very subtle borders
 $gray-150: #f7f7f8; // OpenAI sidenav background (exact match)
 $gray-100: #f9f9f9; // OpenAI input background
 $gray-50: #fafafa; // OpenAI body background
@@ -51,7 +54,7 @@ $green-500: #10a37f; // Base green (same as $green)
 
 // Light theme semantic mappings
 $light-theme-colors: (
-  // Primary role (monochrome/neutral)
+  // Primary role (monochrome/neutral) - OpenAI dark gray
   primary: $black,
   on-primary: $white,
   primary-container: $gray-100,
@@ -75,6 +78,22 @@ $light-theme-colors: (
   surface-variant: $gray-50,
   on-surface-variant: $gray-600,
 
+  // Surface containers - OpenAI-style light theme hierarchy
+  surface-container-lowest: $white,
+  // Default surface for cards, dialogs, etc.
+  surface-container-low: $white,
+  // Clean white for low elevation
+  surface-container: $white,
+  // Default surface - cards, main content
+  surface-container-high: $gray-100,
+  // Slightly elevated surfaces
+  surface-container-highest: $gray-150,
+
+  // Highest elevation
+  // Navigation-specific surface for OpenAI-style sidenav
+  surface-container-nav: $gray-150,
+
+  // OpenAI sidenav background (#f7f7f8)
   // Utility colors
   outline: $gray-300,
   outline-variant: $gray-200,
@@ -84,7 +103,7 @@ $light-theme-colors: (
   on-error-container: $red-600
 );
 
-// Dark theme semantic mappings
+// Dark theme semantic mappings - OpenAI authentic
 $dark-theme-colors: (
   // Primary role (inverted for dark mode)
   primary: $white,
@@ -104,15 +123,31 @@ $dark-theme-colors: (
   tertiary-container: $gray-800,
   on-tertiary-container: $green-100,
 
-  // Surface hierarchy (dark)
+  // Surface hierarchy (dark) - improved OpenAI-style depth
   surface: $gray-900,
   on-surface: $white,
   surface-variant: $gray-800,
   on-surface-variant: $gray-400,
 
-  // Utility colors (dark)
-  outline: $gray-600,
-  outline-variant: $gray-700,
+  // Surface containers - refined hierarchy for better visual depth
+  surface-container-lowest: $gray-950,
+  // Deepest dark backgrounds
+  surface-container-low: $gray-800,
+  // OpenAI dark sidenav background (#353740)
+  surface-container: $gray-850,
+  // Cards and elevated content (#2d2d30)
+  surface-container-high: $gray-700,
+  // Higher elevation surfaces (#40414f)
+  surface-container-highest: $gray-650,
+
+  // Highest elevation (#4a4a4a)
+  // Navigation-specific surface for OpenAI-style dark sidenav
+  surface-container-nav: $gray-800,
+
+  // OpenAI dark sidenav background (#353740)
+  // Utility colors (dark) - refined for better contrast
+  outline: $gray-650,
+  outline-variant: $gray-600,
   error: $red-500,
   on-error: $white,
   error-container: $red-900,
@@ -133,10 +168,13 @@ $dark-theme-colors: (
     'purple': $purple,
     'gray-950': $gray-950,
     'gray-900': $gray-900,
+    'gray-850': $gray-850,
     'gray-800': $gray-800,
     'gray-700': $gray-700,
+    'gray-650': $gray-650,
     'gray-600': $gray-600,
     'gray-500': $gray-500,
+    'gray-450': $gray-450,
     'gray-400': $gray-400,
     'gray-300': $gray-300,
     'gray-200': $gray-200,
